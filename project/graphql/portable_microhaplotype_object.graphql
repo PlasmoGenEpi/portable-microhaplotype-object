@@ -20,8 +20,19 @@ type DemultiplexedTargetForSample
 
 type DemultiplexedTargetsForSample
   {
-    sampleId: String!
+    experimentId: String!
     demultiplexedTargets: [DemultiplexedTargetForSample]!
+  }
+
+type ExperimentInfo
+  {
+    sequencingInfoId: String!
+    plateName: String!
+    plateRow: String!
+    plateCol: String!
+    specimenId: String!
+    panelId: String!
+    experimentId: String!
   }
 
 type GenomeInfo
@@ -57,7 +68,7 @@ type MicrohaplotypesDetected
 
 type MicrohaplotypesForSample
   {
-    sampleId: String!
+    experimentId: String!
     targetResults: [MicrohaplotypesForTarget]!
   }
 
@@ -76,6 +87,7 @@ type PanelInfo
 
 type PortableMicrohaplotypeObject
   {
+    experimentInfos: [ExperimentInfo]!
     specimenInfos: [SpecimenInfo]!
     sequencingInfo: SequencingInfo!
     bioinformaticsInfo: TarAmpBioinformaticsInfo!
@@ -117,7 +129,8 @@ type SequencingInfo
     seqDate: String!
     nuclAcidExt: String!
     nuclAcidAmp: String!
-    nuclAcidDate: String!
+    nuclAcidExtDate: String!
+    nuclAcidAmpDate: String!
     pcrCond: String!
     libScreen: String!
     libLayout: String!
@@ -127,22 +140,24 @@ type SequencingInfo
 
 type SpecimenInfo
   {
-    sampleId: String!
+    specimenId: String!
+    plateName: String!
+    plateRow: String!
+    plateCol: String!
     sampTaxonId: Integer!
+    individualId: String
     hostTaxonId: Integer
     alternateIdentifiers: [String]
     parasiteDensity: Integer
     collectionDate: String!
     latLon: String!
+    geoLocName: String!
     collector: String!
     sampStoreLoc: String!
     sampCollectDevice: String!
     projectName: String!
     accession: String
     sampleComments: String
-    plateName: String!
-    plateRow: String!
-    plateCol: String!
   }
 
 type TarAmpBioinformaticsInfo

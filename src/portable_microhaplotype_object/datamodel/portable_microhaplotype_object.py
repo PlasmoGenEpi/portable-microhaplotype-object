@@ -1,5 +1,5 @@
 # Auto generated from portable_microhaplotype_object.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-07-15T10:23:26
+# Generation date: 2024-07-15T16:56:36
 # Schema: portable-microhaplotype-object
 #
 # id: https://plasmogenepi.github.io/portable-microhaplotype-object
@@ -43,19 +43,19 @@ DEFAULT_ = PORTABLE_MICROHAPLOTYPE_OBJECT
 # Types
 
 # Class references
-class DemultiplexedTargetsForSampleSampleId(extended_str):
-    pass
-
-
-class MicrohaplotypesForSampleSampleId(extended_str):
-    pass
-
-
 class TarAmpBioinformaticsInfoTarAmpBioinformaticsInfoId(extended_str):
     pass
 
 
-class SpecimenInfoSampleId(extended_str):
+class ExperimentInfoExperimentId(extended_str):
+    pass
+
+
+class SequencingInfoSequencingInfoId(extended_str):
+    pass
+
+
+class SpecimenInfoSpecimenId(extended_str):
     pass
 
 
@@ -220,7 +220,7 @@ class MicrohaplotypesDetected(YAMLRoot):
 
     sequencing_id: str = None
     bioinformatics_id: str = None
-    samples: Union[Union[str, MicrohaplotypesForSampleSampleId], List[Union[str, MicrohaplotypesForSampleSampleId]]] = None
+    samples: Union[Union[dict, "MicrohaplotypesForSample"], List[Union[dict, "MicrohaplotypesForSample"]]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.sequencing_id):
@@ -235,9 +235,7 @@ class MicrohaplotypesDetected(YAMLRoot):
 
         if self._is_empty(self.samples):
             self.MissingRequiredField("samples")
-        if not isinstance(self.samples, list):
-            self.samples = [self.samples] if self.samples is not None else []
-        self.samples = [v if isinstance(v, MicrohaplotypesForSampleSampleId) else MicrohaplotypesForSampleSampleId(v) for v in self.samples]
+        self._normalize_inlined_as_dict(slot_name="samples", slot_type=MicrohaplotypesForSample, key_name="experiment_id", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -254,14 +252,12 @@ class DemultiplexedSamples(YAMLRoot):
     class_name: ClassVar[str] = "DemultiplexedSamples"
     class_model_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT.DemultiplexedSamples
 
-    demultiplexed_samples: Union[Union[str, DemultiplexedTargetsForSampleSampleId], List[Union[str, DemultiplexedTargetsForSampleSampleId]]] = None
+    demultiplexed_samples: Union[Union[dict, "DemultiplexedTargetsForSample"], List[Union[dict, "DemultiplexedTargetsForSample"]]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.demultiplexed_samples):
             self.MissingRequiredField("demultiplexed_samples")
-        if not isinstance(self.demultiplexed_samples, list):
-            self.demultiplexed_samples = [self.demultiplexed_samples] if self.demultiplexed_samples is not None else []
-        self.demultiplexed_samples = [v if isinstance(v, DemultiplexedTargetsForSampleSampleId) else DemultiplexedTargetsForSampleSampleId(v) for v in self.demultiplexed_samples]
+        self._normalize_inlined_as_dict(slot_name="demultiplexed_samples", slot_type=DemultiplexedTargetsForSample, key_name="experiment_id", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -278,14 +274,14 @@ class DemultiplexedTargetsForSample(YAMLRoot):
     class_name: ClassVar[str] = "DemultiplexedTargetsForSample"
     class_model_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT.DemultiplexedTargetsForSample
 
-    sample_id: Union[str, DemultiplexedTargetsForSampleSampleId] = None
+    experiment_id: str = None
     demultiplexed_targets: Union[Union[dict, "DemultiplexedTargetForSample"], List[Union[dict, "DemultiplexedTargetForSample"]]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.sample_id):
-            self.MissingRequiredField("sample_id")
-        if not isinstance(self.sample_id, DemultiplexedTargetsForSampleSampleId):
-            self.sample_id = DemultiplexedTargetsForSampleSampleId(self.sample_id)
+        if self._is_empty(self.experiment_id):
+            self.MissingRequiredField("experiment_id")
+        if not isinstance(self.experiment_id, str):
+            self.experiment_id = str(self.experiment_id)
 
         if self._is_empty(self.demultiplexed_targets):
             self.MissingRequiredField("demultiplexed_targets")
@@ -468,14 +464,14 @@ class MicrohaplotypesForSample(YAMLRoot):
     class_name: ClassVar[str] = "MicrohaplotypesForSample"
     class_model_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT.MicrohaplotypesForSample
 
-    sample_id: Union[str, MicrohaplotypesForSampleSampleId] = None
+    experiment_id: str = None
     target_results: Union[Union[dict, "MicrohaplotypesForTarget"], List[Union[dict, "MicrohaplotypesForTarget"]]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.sample_id):
-            self.MissingRequiredField("sample_id")
-        if not isinstance(self.sample_id, MicrohaplotypesForSampleSampleId):
-            self.sample_id = MicrohaplotypesForSampleSampleId(self.sample_id)
+        if self._is_empty(self.experiment_id):
+            self.MissingRequiredField("experiment_id")
+        if not isinstance(self.experiment_id, str):
+            self.experiment_id = str(self.experiment_id)
 
         if self._is_empty(self.target_results):
             self.MissingRequiredField("target_results")
@@ -634,6 +630,65 @@ class BioMethod(YAMLRoot):
 
 
 @dataclass
+class ExperimentInfo(YAMLRoot):
+    """
+    Information about a specific amplification and sequencing of a specimen
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT["ExperimentInfo"]
+    class_class_curie: ClassVar[str] = "portable_microhaplotype_object:ExperimentInfo"
+    class_name: ClassVar[str] = "ExperimentInfo"
+    class_model_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT.ExperimentInfo
+
+    experiment_id: Union[str, ExperimentInfoExperimentId] = None
+    sequencing_info_id: str = None
+    plate_name: str = None
+    plate_row: str = None
+    plate_col: str = None
+    specimen_id: str = None
+    panel_id: str = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.experiment_id):
+            self.MissingRequiredField("experiment_id")
+        if not isinstance(self.experiment_id, ExperimentInfoExperimentId):
+            self.experiment_id = ExperimentInfoExperimentId(self.experiment_id)
+
+        if self._is_empty(self.sequencing_info_id):
+            self.MissingRequiredField("sequencing_info_id")
+        if not isinstance(self.sequencing_info_id, str):
+            self.sequencing_info_id = str(self.sequencing_info_id)
+
+        if self._is_empty(self.plate_name):
+            self.MissingRequiredField("plate_name")
+        if not isinstance(self.plate_name, str):
+            self.plate_name = str(self.plate_name)
+
+        if self._is_empty(self.plate_row):
+            self.MissingRequiredField("plate_row")
+        if not isinstance(self.plate_row, str):
+            self.plate_row = str(self.plate_row)
+
+        if self._is_empty(self.plate_col):
+            self.MissingRequiredField("plate_col")
+        if not isinstance(self.plate_col, str):
+            self.plate_col = str(self.plate_col)
+
+        if self._is_empty(self.specimen_id):
+            self.MissingRequiredField("specimen_id")
+        if not isinstance(self.specimen_id, str):
+            self.specimen_id = str(self.specimen_id)
+
+        if self._is_empty(self.panel_id):
+            self.MissingRequiredField("panel_id")
+        if not isinstance(self.panel_id, str):
+            self.panel_id = str(self.panel_id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class SequencingInfo(YAMLRoot):
     """
     Information on sequencing info
@@ -645,12 +700,13 @@ class SequencingInfo(YAMLRoot):
     class_name: ClassVar[str] = "SequencingInfo"
     class_model_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT.SequencingInfo
 
-    sequencing_info_id: str = None
+    sequencing_info_id: Union[str, SequencingInfoSequencingInfoId] = None
     seq_instrument: str = None
     seq_date: str = None
     nucl_acid_ext: str = None
     nucl_acid_amp: str = None
-    nucl_acid_date: str = None
+    nucl_acid_ext_date: str = None
+    nucl_acid_amp_date: str = None
     pcr_cond: str = None
     lib_screen: str = None
     lib_layout: str = None
@@ -660,8 +716,8 @@ class SequencingInfo(YAMLRoot):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.sequencing_info_id):
             self.MissingRequiredField("sequencing_info_id")
-        if not isinstance(self.sequencing_info_id, str):
-            self.sequencing_info_id = str(self.sequencing_info_id)
+        if not isinstance(self.sequencing_info_id, SequencingInfoSequencingInfoId):
+            self.sequencing_info_id = SequencingInfoSequencingInfoId(self.sequencing_info_id)
 
         if self._is_empty(self.seq_instrument):
             self.MissingRequiredField("seq_instrument")
@@ -683,10 +739,15 @@ class SequencingInfo(YAMLRoot):
         if not isinstance(self.nucl_acid_amp, str):
             self.nucl_acid_amp = str(self.nucl_acid_amp)
 
-        if self._is_empty(self.nucl_acid_date):
-            self.MissingRequiredField("nucl_acid_date")
-        if not isinstance(self.nucl_acid_date, str):
-            self.nucl_acid_date = str(self.nucl_acid_date)
+        if self._is_empty(self.nucl_acid_ext_date):
+            self.MissingRequiredField("nucl_acid_ext_date")
+        if not isinstance(self.nucl_acid_ext_date, str):
+            self.nucl_acid_ext_date = str(self.nucl_acid_ext_date)
+
+        if self._is_empty(self.nucl_acid_amp_date):
+            self.MissingRequiredField("nucl_acid_amp_date")
+        if not isinstance(self.nucl_acid_amp_date, str):
+            self.nucl_acid_amp_date = str(self.nucl_acid_amp_date)
 
         if self._is_empty(self.pcr_cond):
             self.MissingRequiredField("pcr_cond")
@@ -728,17 +789,19 @@ class SpecimenInfo(YAMLRoot):
     class_name: ClassVar[str] = "SpecimenInfo"
     class_model_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT.SpecimenInfo
 
-    sample_id: Union[str, SpecimenInfoSampleId] = None
+    specimen_id: Union[str, SpecimenInfoSpecimenId] = None
+    plate_name: str = None
+    plate_row: str = None
+    plate_col: str = None
     samp_taxon_id: int = None
     collection_date: str = None
     lat_lon: str = None
+    geo_loc_name: str = None
     collector: str = None
     samp_store_loc: str = None
     samp_collect_device: str = None
     project_name: str = None
-    plate_name: str = None
-    plate_row: str = None
-    plate_col: str = None
+    individual_id: Optional[str] = None
     host_taxon_id: Optional[int] = None
     alternate_identifiers: Optional[Union[str, List[str]]] = empty_list()
     parasite_density: Optional[int] = None
@@ -746,10 +809,25 @@ class SpecimenInfo(YAMLRoot):
     sample_comments: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.sample_id):
-            self.MissingRequiredField("sample_id")
-        if not isinstance(self.sample_id, SpecimenInfoSampleId):
-            self.sample_id = SpecimenInfoSampleId(self.sample_id)
+        if self._is_empty(self.specimen_id):
+            self.MissingRequiredField("specimen_id")
+        if not isinstance(self.specimen_id, SpecimenInfoSpecimenId):
+            self.specimen_id = SpecimenInfoSpecimenId(self.specimen_id)
+
+        if self._is_empty(self.plate_name):
+            self.MissingRequiredField("plate_name")
+        if not isinstance(self.plate_name, str):
+            self.plate_name = str(self.plate_name)
+
+        if self._is_empty(self.plate_row):
+            self.MissingRequiredField("plate_row")
+        if not isinstance(self.plate_row, str):
+            self.plate_row = str(self.plate_row)
+
+        if self._is_empty(self.plate_col):
+            self.MissingRequiredField("plate_col")
+        if not isinstance(self.plate_col, str):
+            self.plate_col = str(self.plate_col)
 
         if self._is_empty(self.samp_taxon_id):
             self.MissingRequiredField("samp_taxon_id")
@@ -765,6 +843,11 @@ class SpecimenInfo(YAMLRoot):
             self.MissingRequiredField("lat_lon")
         if not isinstance(self.lat_lon, str):
             self.lat_lon = str(self.lat_lon)
+
+        if self._is_empty(self.geo_loc_name):
+            self.MissingRequiredField("geo_loc_name")
+        if not isinstance(self.geo_loc_name, str):
+            self.geo_loc_name = str(self.geo_loc_name)
 
         if self._is_empty(self.collector):
             self.MissingRequiredField("collector")
@@ -786,20 +869,8 @@ class SpecimenInfo(YAMLRoot):
         if not isinstance(self.project_name, str):
             self.project_name = str(self.project_name)
 
-        if self._is_empty(self.plate_name):
-            self.MissingRequiredField("plate_name")
-        if not isinstance(self.plate_name, str):
-            self.plate_name = str(self.plate_name)
-
-        if self._is_empty(self.plate_row):
-            self.MissingRequiredField("plate_row")
-        if not isinstance(self.plate_row, str):
-            self.plate_row = str(self.plate_row)
-
-        if self._is_empty(self.plate_col):
-            self.MissingRequiredField("plate_col")
-        if not isinstance(self.plate_col, str):
-            self.plate_col = str(self.plate_col)
+        if self.individual_id is not None and not isinstance(self.individual_id, str):
+            self.individual_id = str(self.individual_id)
 
         if self.host_taxon_id is not None and not isinstance(self.host_taxon_id, int):
             self.host_taxon_id = int(self.host_taxon_id)
@@ -832,7 +903,8 @@ class PortableMicrohaplotypeObject(YAMLRoot):
     class_name: ClassVar[str] = "PortableMicrohaplotypeObject"
     class_model_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT.PortableMicrohaplotypeObject
 
-    specimen_infos: Union[Dict[Union[str, SpecimenInfoSampleId], Union[dict, SpecimenInfo]], List[Union[dict, SpecimenInfo]]] = empty_dict()
+    experiment_infos: Union[Dict[Union[str, ExperimentInfoExperimentId], Union[dict, ExperimentInfo]], List[Union[dict, ExperimentInfo]]] = empty_dict()
+    specimen_infos: Union[Dict[Union[str, SpecimenInfoSpecimenId], Union[dict, SpecimenInfo]], List[Union[dict, SpecimenInfo]]] = empty_dict()
     sequencing_info: Union[dict, SequencingInfo] = None
     bioinformatics_info: Union[str, TarAmpBioinformaticsInfoTarAmpBioinformaticsInfoId] = None
     panel_info: Union[dict, PanelInfo] = None
@@ -841,9 +913,13 @@ class PortableMicrohaplotypeObject(YAMLRoot):
     target_demultiplexed_samples: Union[dict, DemultiplexedSamples] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.experiment_infos):
+            self.MissingRequiredField("experiment_infos")
+        self._normalize_inlined_as_list(slot_name="experiment_infos", slot_type=ExperimentInfo, key_name="experiment_id", keyed=True)
+
         if self._is_empty(self.specimen_infos):
             self.MissingRequiredField("specimen_infos")
-        self._normalize_inlined_as_list(slot_name="specimen_infos", slot_type=SpecimenInfo, key_name="sample_id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="specimen_infos", slot_type=SpecimenInfo, key_name="specimen_id", keyed=True)
 
         if self._is_empty(self.sequencing_info):
             self.MissingRequiredField("sequencing_info")
@@ -888,9 +964,13 @@ slots.seq = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.seq, name="seq", curie=PORTA
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.seq, domain=None, range=str,
                    pattern=re.compile(r'^[A-z]$'))
 
-slots.sample_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sample_id, name="sample_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('sample_id'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sample_id, domain=None, range=URIRef,
+slots.specimen_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimen_id, name="specimen_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('specimen_id'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimen_id, domain=None, range=str,
                    pattern=re.compile(r'^[A-z-._0-9]$'))
+
+slots.experiment_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.experiment_id, name="experiment_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('experiment_id'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.experiment_id, domain=None, range=str,
+                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
 
 slots.target_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.target_id, name="target_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('target_id'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.target_id, domain=None, range=str,
@@ -899,6 +979,26 @@ slots.target_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.target_id, name="targe
 slots.microhaplotype_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.microhaplotype_id, name="microhaplotype_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('microhaplotype_id'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.microhaplotype_id, domain=None, range=str,
                    pattern=re.compile(r'^[A-z-._0-9]$'))
+
+slots.panel_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.panel_id, name="panel_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('panel_id'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.panel_id, domain=None, range=str,
+                   pattern=re.compile(r'^[A-z-._0-9]$'))
+
+slots.plate_name = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_name, name="plate_name", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('plate_name'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_name, domain=None, range=str,
+                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
+
+slots.plate_row = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_row, name="plate_row", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('plate_row'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_row, domain=None, range=str,
+                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
+
+slots.plate_col = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_col, name="plate_col", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('plate_col'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_col, domain=None, range=str,
+                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
+
+slots.sequencing_info_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencing_info_id, name="sequencing_info_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('sequencing_info_id'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencing_info_id, domain=None, range=str,
+                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
 
 slots.targetInfo__gene_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.gene_id, name="targetInfo__gene_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('gene_id'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.targetInfo__gene_id, domain=None, range=Optional[str],
@@ -912,10 +1012,6 @@ slots.targetInfo__forward_primers = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.forw
 
 slots.targetInfo__reverse_primers = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.reverse_primers, name="targetInfo__reverse_primers", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('reverse_primers'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.targetInfo__reverse_primers, domain=None, range=Union[dict, Primers])
-
-slots.panelInfo__panel_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.panel_id, name="panelInfo__panel_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('panel_id'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.panelInfo__panel_id, domain=None, range=str,
-                   pattern=re.compile(r'^[A-z-._0-9]$'))
 
 slots.panelInfo__target_genome = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.target_genome, name="panelInfo__target_genome", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('target_genome'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.panelInfo__target_genome, domain=None, range=Union[dict, GenomeInfo])
@@ -942,10 +1038,10 @@ slots.microhaplotypesDetected__bioinformatics_id = Slot(uri=PORTABLE_MICROHAPLOT
                    pattern=re.compile(r'^[A-z-._0-9]$'))
 
 slots.microhaplotypesDetected__samples = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.samples, name="microhaplotypesDetected__samples", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('samples'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.microhaplotypesDetected__samples, domain=None, range=Union[Union[str, MicrohaplotypesForSampleSampleId], List[Union[str, MicrohaplotypesForSampleSampleId]]])
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.microhaplotypesDetected__samples, domain=None, range=Union[Union[dict, MicrohaplotypesForSample], List[Union[dict, MicrohaplotypesForSample]]])
 
 slots.demultiplexedSamples__demultiplexed_samples = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.demultiplexed_samples, name="demultiplexedSamples__demultiplexed_samples", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('demultiplexed_samples'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.demultiplexedSamples__demultiplexed_samples, domain=None, range=Union[Union[str, DemultiplexedTargetsForSampleSampleId], List[Union[str, DemultiplexedTargetsForSampleSampleId]]])
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.demultiplexedSamples__demultiplexed_samples, domain=None, range=Union[Union[dict, DemultiplexedTargetsForSample], List[Union[dict, DemultiplexedTargetsForSample]]])
 
 slots.demultiplexedTargetsForSample__demultiplexed_targets = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.demultiplexed_targets, name="demultiplexedTargetsForSample__demultiplexed_targets", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('demultiplexed_targets'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.demultiplexedTargetsForSample__demultiplexed_targets, domain=None, range=Union[Union[dict, DemultiplexedTargetForSample], List[Union[dict, DemultiplexedTargetForSample]]])
@@ -1039,10 +1135,6 @@ slots.bioMethod__additional_argument = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.a
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.bioMethod__additional_argument, domain=None, range=Optional[Union[str, List[str]]],
                    pattern=re.compile(r'^[A-z-._0-9 ]$'))
 
-slots.sequencingInfo__sequencing_info_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencing_info_id, name="sequencingInfo__sequencing_info_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('sequencing_info_id'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencingInfo__sequencing_info_id, domain=None, range=str,
-                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
-
 slots.sequencingInfo__seq_instrument = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.seq_instrument, name="sequencingInfo__seq_instrument", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('seq_instrument'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencingInfo__seq_instrument, domain=None, range=str,
                    pattern=re.compile(r'^[A-z-._0-9 ]$'))
@@ -1059,8 +1151,12 @@ slots.sequencingInfo__nucl_acid_amp = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.nu
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencingInfo__nucl_acid_amp, domain=None, range=str,
                    pattern=re.compile(r'r"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$"'))
 
-slots.sequencingInfo__nucl_acid_date = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.nucl_acid_date, name="sequencingInfo__nucl_acid_date", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('nucl_acid_date'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencingInfo__nucl_acid_date, domain=None, range=str,
+slots.sequencingInfo__nucl_acid_ext_date = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.nucl_acid_ext_date, name="sequencingInfo__nucl_acid_ext_date", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('nucl_acid_ext_date'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencingInfo__nucl_acid_ext_date, domain=None, range=str,
+                   pattern=re.compile(r'r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"'))
+
+slots.sequencingInfo__nucl_acid_amp_date = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.nucl_acid_amp_date, name="sequencingInfo__nucl_acid_amp_date", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('nucl_acid_amp_date'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencingInfo__nucl_acid_amp_date, domain=None, range=str,
                    pattern=re.compile(r'r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"'))
 
 slots.sequencingInfo__pcr_cond = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.pcr_cond, name="sequencingInfo__pcr_cond", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('pcr_cond'),
@@ -1087,6 +1183,10 @@ slots.specimenInfo__samp_taxon_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.samp
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__samp_taxon_id, domain=None, range=int,
                    pattern=re.compile(r'^[0-9]$'))
 
+slots.specimenInfo__individual_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.individual_id, name="specimenInfo__individual_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('individual_id'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__individual_id, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
+
 slots.specimenInfo__host_taxon_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.host_taxon_id, name="specimenInfo__host_taxon_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('host_taxon_id'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__host_taxon_id, domain=None, range=Optional[int],
                    pattern=re.compile(r'^[0-9]$'))
@@ -1106,6 +1206,10 @@ slots.specimenInfo__collection_date = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.co
 slots.specimenInfo__lat_lon = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.lat_lon, name="specimenInfo__lat_lon", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('lat_lon'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__lat_lon, domain=None, range=str,
                    pattern=re.compile(r'r'^[-+]?\d{1,2}(?:\.\d+)?,[-+]?\d{1,3}(?:\.\d+)?$''))
+
+slots.specimenInfo__geo_loc_name = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.geo_loc_name, name="specimenInfo__geo_loc_name", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('geo_loc_name'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__geo_loc_name, domain=None, range=str,
+                   pattern=re.compile(r'^([^\s-]{1,2}|[^\s-]+.+[^\s-]+): ([^\s-]{1,2}|[^\s-]+.+[^\s-]+), ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.specimenInfo__collector = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.collector, name="specimenInfo__collector", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('collector'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__collector, domain=None, range=str,
@@ -1131,20 +1235,11 @@ slots.specimenInfo__sample_comments = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sa
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__sample_comments, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[A-z-._0-9 ]$'))
 
-slots.specimenInfo__plate_name = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_name, name="specimenInfo__plate_name", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('plate_name'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__plate_name, domain=None, range=str,
-                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
-
-slots.specimenInfo__plate_row = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_row, name="specimenInfo__plate_row", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('plate_row'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__plate_row, domain=None, range=str,
-                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
-
-slots.specimenInfo__plate_col = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_col, name="specimenInfo__plate_col", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('plate_col'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__plate_col, domain=None, range=str,
-                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
+slots.portableMicrohaplotypeObject__experiment_infos = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.experiment_infos, name="portableMicrohaplotypeObject__experiment_infos", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('experiment_infos'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.portableMicrohaplotypeObject__experiment_infos, domain=None, range=Union[Dict[Union[str, ExperimentInfoExperimentId], Union[dict, ExperimentInfo]], List[Union[dict, ExperimentInfo]]])
 
 slots.portableMicrohaplotypeObject__specimen_infos = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimen_infos, name="portableMicrohaplotypeObject__specimen_infos", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('specimen_infos'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.portableMicrohaplotypeObject__specimen_infos, domain=None, range=Union[Dict[Union[str, SpecimenInfoSampleId], Union[dict, SpecimenInfo]], List[Union[dict, SpecimenInfo]]])
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.portableMicrohaplotypeObject__specimen_infos, domain=None, range=Union[Dict[Union[str, SpecimenInfoSpecimenId], Union[dict, SpecimenInfo]], List[Union[dict, SpecimenInfo]]])
 
 slots.portableMicrohaplotypeObject__sequencing_info = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencing_info, name="portableMicrohaplotypeObject__sequencing_info", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('sequencing_info'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.portableMicrohaplotypeObject__sequencing_info, domain=None, range=Union[dict, SequencingInfo])
@@ -1163,3 +1258,23 @@ slots.portableMicrohaplotypeObject__microhaplotypes_detected = Slot(uri=PORTABLE
 
 slots.portableMicrohaplotypeObject__target_demultiplexed_samples = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.target_demultiplexed_samples, name="portableMicrohaplotypeObject__target_demultiplexed_samples", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('target_demultiplexed_samples'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.portableMicrohaplotypeObject__target_demultiplexed_samples, domain=None, range=Union[dict, DemultiplexedSamples])
+
+slots.ExperimentInfo_specimen_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimen_id, name="ExperimentInfo_specimen_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('specimen_id'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.ExperimentInfo_specimen_id, domain=ExperimentInfo, range=str,
+                   pattern=re.compile(r'^[A-z-._0-9]$'))
+
+slots.ExperimentInfo_panel_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.panel_id, name="ExperimentInfo_panel_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('panel_id'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.ExperimentInfo_panel_id, domain=ExperimentInfo, range=str,
+                   pattern=re.compile(r'^[A-z-._0-9]$'))
+
+slots.ExperimentInfo_experiment_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.experiment_id, name="ExperimentInfo_experiment_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('experiment_id'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.ExperimentInfo_experiment_id, domain=ExperimentInfo, range=Union[str, ExperimentInfoExperimentId],
+                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
+
+slots.SequencingInfo_sequencing_info_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencing_info_id, name="SequencingInfo_sequencing_info_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('sequencing_info_id'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.SequencingInfo_sequencing_info_id, domain=SequencingInfo, range=Union[str, SequencingInfoSequencingInfoId],
+                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
+
+slots.SpecimenInfo_specimen_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimen_id, name="SpecimenInfo_specimen_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('specimen_id'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.SpecimenInfo_specimen_id, domain=SpecimenInfo, range=Union[str, SpecimenInfoSpecimenId],
+                   pattern=re.compile(r'^[A-z-._0-9]$'))

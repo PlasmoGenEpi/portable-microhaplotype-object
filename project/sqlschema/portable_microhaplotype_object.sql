@@ -26,7 +26,8 @@
 -- # Class: "DemultiplexedSamples" Description: "a list of raw reads counts for each sample for all targets within panel "
 --     * Slot: id Description: 
 -- # Class: "DemultiplexedTargetsForSample" Description: "a list of raw reads for a sample for all targets within panel"
---     * Slot: sample_id Description: the name of the sample
+--     * Slot: id Description: 
+--     * Slot: experiment_id Description: a unique identifier for this sequence/amplification run on a specimen
 -- # Class: "DemultiplexedTargetForSample" Description: "the raw read count for a sample for a target"
 --     * Slot: id Description: 
 --     * Slot: target_id Description: name of the target
@@ -52,7 +53,8 @@
 -- # Class: "Primers" Description: "A holder of primer sequences"
 --     * Slot: id Description: 
 -- # Class: "MicrohaplotypesForSample" Description: "Microhaplotypes detected for a sample for all targets"
---     * Slot: sample_id Description: the name of the sample
+--     * Slot: id Description: 
+--     * Slot: experiment_id Description: a unique identifier for this sequence/amplification run on a specimen
 -- # Class: "MicrohaplotypeForTarget" Description: "Microhaplotype detected for a specific target"
 --     * Slot: id Description: 
 --     * Slot: microhaplotype_id Description: name of the microhaplotype, should be unique to this microhaplotype
@@ -73,40 +75,51 @@
 --     * Slot: purpose Description: the propose for this method
 --     * Slot: program_version Description: a versioning info for the program
 --     * Slot: TarAmpBioinformaticsInfo_tar_amp_bioinformatics_info_id Description: Autocreated FK slot
+-- # Class: "ExperimentInfo" Description: "Information about a specific amplification and sequencing of a specimen"
+--     * Slot: sequencing_info_id Description: a unique identifier for this sequencing info
+--     * Slot: plate_name Description: a name of plate the specimen was in
+--     * Slot: plate_row Description: the row the specimen was in
+--     * Slot: plate_col Description: the column the specimen was in
+--     * Slot: specimen_id Description: the name of the specimen of a individual
+--     * Slot: panel_id Description: name of the panel
+--     * Slot: experiment_id Description: a unique identifier for this sequence/amplification run on a specimen
+--     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
 -- # Class: "SequencingInfo" Description: "Information on sequencing info"
---     * Slot: id Description: 
 --     * Slot: sequencing_info_id Description: a unique identifier for this sequencing info
 --     * Slot: seq_instrument Description: the sequencing instrument used to sequence the run, e.g. ILLUMINA, Illumina MiSeq
 --     * Slot: seq_date Description: the date of sequencing, should be YYYY-MM or YYYY-MM-DD
 --     * Slot: nucl_acid_ext Description: Link to a reference or kit that describes the recovery of nucleic acids from the sample
 --     * Slot: nucl_acid_amp Description: Link to a reference or kit that describes the enzymatic amplification of nucleic acids,
---     * Slot: nucl_acid_date Description: the date of the extraction/amplification
+--     * Slot: nucl_acid_ext_date Description: the date of the nucleoacide extraction
+--     * Slot: nucl_acid_amp_date Description: the date of the nucleoacide amplification
 --     * Slot: pcr_cond Description: the method/conditions for PCR, List PCR cycles used to amplify the target
 --     * Slot: lib_screen Description: Describe enrichment, screening, or normalization methods applied during amplification or library preparation, e.g. size selection 390bp, diluted to 1 ng DNA/sample
 --     * Slot: lib_layout Description: Specify the configuration of reads, e.g. paired-end
 --     * Slot: lib_kit Description: Name, version, and applicable cell or cycle numbers for the kit used to prepare libraries and load cells or chips for sequencing. If possible, include a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001
 --     * Slot: seq_center Description: Name of facility where sequencing was performed (lab, core facility, or company)
 -- # Class: "SpecimenInfo" Description: "Information on specimen info"
---     * Slot: sample_id Description: the name of the sample
+--     * Slot: specimen_id Description: the name of the specimen of a individual
+--     * Slot: plate_name Description: a name of plate the specimen was in
+--     * Slot: plate_row Description: the row the specimen was in
+--     * Slot: plate_col Description: the column the specimen was in
 --     * Slot: samp_taxon_id Description: the NCBI taxonomy number of the organism of interest
+--     * Slot: individual_id Description: an identifier for the individual a specimen was collected from
 --     * Slot: host_taxon_id Description: optional the NCBI taxonomy number of the host of the organism
 --     * Slot: parasite_density Description: the parasite density in microliters
 --     * Slot: collection_date Description: the date of the sample collection
 --     * Slot: lat_lon Description: the latitude and longitude of the collection site of the specimen
+--     * Slot: geo_loc_name Description: The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)
 --     * Slot: collector Description: the name of the primary person managing the specimen
 --     * Slot: samp_store_loc Description: the sample store site, address or facility name
 --     * Slot: samp_collect_device Description: the way the sample was collected, e.g. whole blood, dried blood spot, etc
 --     * Slot: project_name Description: a name of the project under which the sample is organized
 --     * Slot: accession Description: ERA/SRA accession number for the sample if it was submitted
 --     * Slot: sample_comments Description: any additional comments about the sample
---     * Slot: plate_name Description: a name of plate the specimen was in
---     * Slot: plate_row Description: the row the specimen was in
---     * Slot: plate_col Description: the column the specimen was in 
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
 -- # Class: "PortableMicrohaplotypeObject" Description: "Information on final results from a targeted amplicon analysis"
 --     * Slot: id Description: 
 --     * Slot: bioinformatics_info Description: the bioinformatics pipeline info for this project
---     * Slot: sequencing_info_id Description: the sequencing info for this project
+--     * Slot: sequencing_info_sequencing_info_id Description: the sequencing info for this project
 --     * Slot: panel_info_id Description: the info on the panel used for this project
 --     * Slot: microhaplotypes_detected_id Description: the microhaplotypes detected in this projects
 --     * Slot: target_demultiplexed_samples_id Description: the raw demultiplex target counts for each sample  
@@ -115,21 +128,21 @@
 --     * Slot: alt_annotations Description: a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc
 -- # Class: "MicrohaplotypesDetected_samples" Description: ""
 --     * Slot: MicrohaplotypesDetected_id Description: Autocreated FK slot
---     * Slot: samples_sample_id Description: a list of the microhaplotypes detected for a sample for various targets 
+--     * Slot: samples_id Description: a list of the microhaplotypes detected for a sample for various targets 
 -- # Class: "DemultiplexedSamples_demultiplexed_samples" Description: ""
 --     * Slot: DemultiplexedSamples_id Description: Autocreated FK slot
---     * Slot: demultiplexed_samples_sample_id Description: a list of the samples with the number of raw reads extracted 
+--     * Slot: demultiplexed_samples_id Description: a list of the samples with the number of raw reads extracted 
 -- # Class: "DemultiplexedTargetsForSample_demultiplexed_targets" Description: ""
---     * Slot: DemultiplexedTargetsForSample_sample_id Description: Autocreated FK slot
+--     * Slot: DemultiplexedTargetsForSample_id Description: Autocreated FK slot
 --     * Slot: demultiplexed_targets_id Description: a list of the targets extracted for a sample 
 -- # Class: "MicrohaplotypesForSample_target_results" Description: ""
---     * Slot: MicrohaplotypesForSample_sample_id Description: Autocreated FK slot
+--     * Slot: MicrohaplotypesForSample_id Description: Autocreated FK slot
 --     * Slot: target_results_id Description: a list of the microhaplotypes detected for a list of targets
 -- # Class: "BioMethod_additional_argument" Description: ""
 --     * Slot: BioMethod_id Description: Autocreated FK slot
 --     * Slot: additional_argument Description: any additional arguments that differ from the default
 -- # Class: "SpecimenInfo_alternate_identifiers" Description: ""
---     * Slot: SpecimenInfo_sample_id Description: Autocreated FK slot
+--     * Slot: SpecimenInfo_specimen_id Description: Autocreated FK slot
 --     * Slot: alternate_identifiers Description: a list of optional alternative names for the samples
 -- # Class: "PortableMicrohaplotypeObject_representative_microhaplotype_sequences" Description: ""
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
@@ -151,8 +164,9 @@ CREATE TABLE "DemultiplexedSamples" (
 	PRIMARY KEY (id)
 );
 CREATE TABLE "DemultiplexedTargetsForSample" (
-	sample_id TEXT NOT NULL, 
-	PRIMARY KEY (sample_id)
+	id INTEGER NOT NULL, 
+	experiment_id TEXT NOT NULL, 
+	PRIMARY KEY (id)
 );
 CREATE TABLE "DemultiplexedTargetForSample" (
 	id INTEGER NOT NULL, 
@@ -182,8 +196,9 @@ CREATE TABLE "Primers" (
 	PRIMARY KEY (id)
 );
 CREATE TABLE "MicrohaplotypesForSample" (
-	sample_id TEXT NOT NULL, 
-	PRIMARY KEY (sample_id)
+	id INTEGER NOT NULL, 
+	experiment_id TEXT NOT NULL, 
+	PRIMARY KEY (id)
 );
 CREATE TABLE "MicrohaplotypesForTarget" (
 	id INTEGER NOT NULL, 
@@ -210,19 +225,19 @@ CREATE TABLE "BioMethod" (
 	FOREIGN KEY("TarAmpBioinformaticsInfo_tar_amp_bioinformatics_info_id") REFERENCES "TarAmpBioinformaticsInfo" (tar_amp_bioinformatics_info_id)
 );
 CREATE TABLE "SequencingInfo" (
-	id INTEGER NOT NULL, 
 	sequencing_info_id TEXT NOT NULL, 
 	seq_instrument TEXT NOT NULL, 
 	seq_date TEXT NOT NULL, 
 	nucl_acid_ext TEXT NOT NULL, 
 	nucl_acid_amp TEXT NOT NULL, 
-	nucl_acid_date TEXT NOT NULL, 
+	nucl_acid_ext_date TEXT NOT NULL, 
+	nucl_acid_amp_date TEXT NOT NULL, 
 	pcr_cond TEXT NOT NULL, 
 	lib_screen TEXT NOT NULL, 
 	lib_layout TEXT NOT NULL, 
 	lib_kit TEXT NOT NULL, 
 	seq_center TEXT NOT NULL, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (sequencing_info_id)
 );
 CREATE TABLE "PanelInfo" (
 	id INTEGER NOT NULL, 
@@ -260,30 +275,30 @@ CREATE TABLE "MicrohaplotypeForTarget" (
 );
 CREATE TABLE "MicrohaplotypesDetected_samples" (
 	"MicrohaplotypesDetected_id" INTEGER, 
-	samples_sample_id TEXT NOT NULL, 
-	PRIMARY KEY ("MicrohaplotypesDetected_id", samples_sample_id), 
+	samples_id INTEGER NOT NULL, 
+	PRIMARY KEY ("MicrohaplotypesDetected_id", samples_id), 
 	FOREIGN KEY("MicrohaplotypesDetected_id") REFERENCES "MicrohaplotypesDetected" (id), 
-	FOREIGN KEY(samples_sample_id) REFERENCES "MicrohaplotypesForSample" (sample_id)
+	FOREIGN KEY(samples_id) REFERENCES "MicrohaplotypesForSample" (id)
 );
 CREATE TABLE "DemultiplexedSamples_demultiplexed_samples" (
 	"DemultiplexedSamples_id" INTEGER, 
-	demultiplexed_samples_sample_id TEXT NOT NULL, 
-	PRIMARY KEY ("DemultiplexedSamples_id", demultiplexed_samples_sample_id), 
+	demultiplexed_samples_id INTEGER NOT NULL, 
+	PRIMARY KEY ("DemultiplexedSamples_id", demultiplexed_samples_id), 
 	FOREIGN KEY("DemultiplexedSamples_id") REFERENCES "DemultiplexedSamples" (id), 
-	FOREIGN KEY(demultiplexed_samples_sample_id) REFERENCES "DemultiplexedTargetsForSample" (sample_id)
+	FOREIGN KEY(demultiplexed_samples_id) REFERENCES "DemultiplexedTargetsForSample" (id)
 );
 CREATE TABLE "DemultiplexedTargetsForSample_demultiplexed_targets" (
-	"DemultiplexedTargetsForSample_sample_id" TEXT, 
+	"DemultiplexedTargetsForSample_id" INTEGER, 
 	demultiplexed_targets_id INTEGER NOT NULL, 
-	PRIMARY KEY ("DemultiplexedTargetsForSample_sample_id", demultiplexed_targets_id), 
-	FOREIGN KEY("DemultiplexedTargetsForSample_sample_id") REFERENCES "DemultiplexedTargetsForSample" (sample_id), 
+	PRIMARY KEY ("DemultiplexedTargetsForSample_id", demultiplexed_targets_id), 
+	FOREIGN KEY("DemultiplexedTargetsForSample_id") REFERENCES "DemultiplexedTargetsForSample" (id), 
 	FOREIGN KEY(demultiplexed_targets_id) REFERENCES "DemultiplexedTargetForSample" (id)
 );
 CREATE TABLE "MicrohaplotypesForSample_target_results" (
-	"MicrohaplotypesForSample_sample_id" TEXT, 
+	"MicrohaplotypesForSample_id" INTEGER, 
 	target_results_id INTEGER NOT NULL, 
-	PRIMARY KEY ("MicrohaplotypesForSample_sample_id", target_results_id), 
-	FOREIGN KEY("MicrohaplotypesForSample_sample_id") REFERENCES "MicrohaplotypesForSample" (sample_id), 
+	PRIMARY KEY ("MicrohaplotypesForSample_id", target_results_id), 
+	FOREIGN KEY("MicrohaplotypesForSample_id") REFERENCES "MicrohaplotypesForSample" (id), 
 	FOREIGN KEY(target_results_id) REFERENCES "MicrohaplotypesForTarget" (id)
 );
 CREATE TABLE "BioMethod_additional_argument" (
@@ -309,13 +324,13 @@ CREATE TABLE "TargetInfo" (
 CREATE TABLE "PortableMicrohaplotypeObject" (
 	id INTEGER NOT NULL, 
 	bioinformatics_info TEXT NOT NULL, 
-	sequencing_info_id INTEGER NOT NULL, 
+	sequencing_info_sequencing_info_id TEXT NOT NULL, 
 	panel_info_id INTEGER NOT NULL, 
 	microhaplotypes_detected_id INTEGER NOT NULL, 
 	target_demultiplexed_samples_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(bioinformatics_info) REFERENCES "TarAmpBioinformaticsInfo" (tar_amp_bioinformatics_info_id), 
-	FOREIGN KEY(sequencing_info_id) REFERENCES "SequencingInfo" (id), 
+	FOREIGN KEY(sequencing_info_sequencing_info_id) REFERENCES "SequencingInfo" (sequencing_info_id), 
 	FOREIGN KEY(panel_info_id) REFERENCES "PanelInfo" (id), 
 	FOREIGN KEY(microhaplotypes_detected_id) REFERENCES "MicrohaplotypesDetected" (id), 
 	FOREIGN KEY(target_demultiplexed_samples_id) REFERENCES "DemultiplexedSamples" (id)
@@ -326,24 +341,38 @@ CREATE TABLE "RepresentativeMicrohaplotypeSequence_alt_annotations" (
 	PRIMARY KEY ("RepresentativeMicrohaplotypeSequence_id", alt_annotations), 
 	FOREIGN KEY("RepresentativeMicrohaplotypeSequence_id") REFERENCES "RepresentativeMicrohaplotypeSequence" (id)
 );
+CREATE TABLE "ExperimentInfo" (
+	sequencing_info_id TEXT NOT NULL, 
+	plate_name TEXT NOT NULL, 
+	plate_row TEXT NOT NULL, 
+	plate_col TEXT NOT NULL, 
+	specimen_id TEXT NOT NULL, 
+	panel_id TEXT NOT NULL, 
+	experiment_id TEXT NOT NULL, 
+	"PortableMicrohaplotypeObject_id" INTEGER, 
+	PRIMARY KEY (experiment_id), 
+	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
+);
 CREATE TABLE "SpecimenInfo" (
-	sample_id TEXT NOT NULL, 
+	specimen_id TEXT NOT NULL, 
+	plate_name TEXT NOT NULL, 
+	plate_row TEXT NOT NULL, 
+	plate_col TEXT NOT NULL, 
 	samp_taxon_id INTEGER NOT NULL, 
+	individual_id TEXT, 
 	host_taxon_id INTEGER, 
 	parasite_density INTEGER, 
 	collection_date TEXT NOT NULL, 
 	lat_lon TEXT NOT NULL, 
+	geo_loc_name TEXT NOT NULL, 
 	collector TEXT NOT NULL, 
 	samp_store_loc TEXT NOT NULL, 
 	samp_collect_device TEXT NOT NULL, 
 	project_name TEXT NOT NULL, 
 	accession TEXT, 
 	sample_comments TEXT, 
-	plate_name TEXT NOT NULL, 
-	plate_row TEXT NOT NULL, 
-	plate_col TEXT NOT NULL, 
 	"PortableMicrohaplotypeObject_id" INTEGER, 
-	PRIMARY KEY (sample_id), 
+	PRIMARY KEY (specimen_id), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
 );
 CREATE TABLE "PortableMicrohaplotypeObject_representative_microhaplotype_sequences" (
@@ -354,8 +383,8 @@ CREATE TABLE "PortableMicrohaplotypeObject_representative_microhaplotype_sequenc
 	FOREIGN KEY(representative_microhaplotype_sequences_id) REFERENCES "RepresentativeMicrohaplotypeSequences" (id)
 );
 CREATE TABLE "SpecimenInfo_alternate_identifiers" (
-	"SpecimenInfo_sample_id" TEXT, 
+	"SpecimenInfo_specimen_id" TEXT, 
 	alternate_identifiers TEXT, 
-	PRIMARY KEY ("SpecimenInfo_sample_id", alternate_identifiers), 
-	FOREIGN KEY("SpecimenInfo_sample_id") REFERENCES "SpecimenInfo" (sample_id)
+	PRIMARY KEY ("SpecimenInfo_specimen_id", alternate_identifiers), 
+	FOREIGN KEY("SpecimenInfo_specimen_id") REFERENCES "SpecimenInfo" (specimen_id)
 );

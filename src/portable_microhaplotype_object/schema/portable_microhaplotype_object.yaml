@@ -85,13 +85,9 @@ classes:
   PanelInfo:
     description: >-
       information on a panel of targeted amplicon primer pairs
+    slots:
+      - panel_id
     attributes:
-      panel_id:
-        range: string
-        pattern: "^[A-z-._0-9]$"
-        required: true
-        description: >-
-          name of the panel
       target_genome:
         range: GenomeInfo
         required: true
@@ -184,7 +180,7 @@ classes:
     description: >-
       a list of raw reads for a sample for all targets within panel
     slots:
-      - sample_id
+      - experiment_id
     attributes:
       demultiplexed_targets:
         required: true
@@ -296,7 +292,7 @@ classes:
     description: >-
       Microhaplotypes detected for a sample for all targets
     slots:
-      - sample_id
+      - experiment_id
     attributes:
       target_results:
         required: true
@@ -401,16 +397,37 @@ classes:
         inlined_as_list: true
         description: >-
           any additional arguments that differ from the default
+  
+  ExperimentInfo:
+    description: >-
+      Information about a specific amplification and sequencing of a specimen
+    slots:
+      - sequencing_info_id
+      - plate_name
+      - plate_row
+      - plate_col
+      - specimen_id
+      - panel_id
+      - experiment_id
+    slot_usage:
+      specimen_id:
+        identifier: false
+      panel_id:
+        identifier: false
+      experiment_id:
+        identifier: true
+
+
+
   SequencingInfo:
     description: >-
       Information on sequencing info
-    attributes:
+    slots:
+      - sequencing_info_id
+    slot_usage:
       sequencing_info_id:
-        range: string
-        pattern: "^[A-z-._0-9 ]$"
-        required: true
-        description: >-
-          a unique identifier for this sequencing info
+        identifier: true
+    attributes:
       seq_instrument:
         range: string
         pattern: "^[A-z-._0-9 ]$"
@@ -435,12 +452,18 @@ classes:
         required: true
         description: >-
           Link to a reference or kit that describes the enzymatic amplification of nucleic acids,
-      nucl_acid_date:
+      nucl_acid_ext_date:
         range: string
         pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
         required: true
         description: >-
-          the date of the extraction/amplification
+          the date of the nucleoacide extraction
+      nucl_acid_amp_date:
+        range: string
+        pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+        required: true
+        description: >-
+          the date of the nucleoacide amplification
       pcr_cond:
         range: string
         pattern: "^[A-z-._0-9 ]$"
@@ -476,7 +499,13 @@ classes:
     description: >-
       Information on specimen info
     slots:
-      - sample_id
+      - specimen_id
+      - plate_name
+      - plate_row
+      - plate_col
+    slot_usage:
+      specimen_id:
+        identifier: true
     attributes:
       samp_taxon_id:
         range: integer
@@ -484,6 +513,12 @@ classes:
         required: true
         description: >-
           the NCBI taxonomy number of the organism of interest
+      individual_id:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: false
+        description: >-
+          an identifier for the individual a specimen was collected from
       host_taxon_id:
         range: integer
         pattern: "^[0-9]$"
@@ -516,6 +551,24 @@ classes:
         required: true
         description: >-
           the latitude and longitude of the collection site of the specimen
+      geo_loc_name:
+        description: The geographical origin of the sample as defined by the country or
+          sea name followed by specific region name. Country or sea names should be chosen
+          from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology
+          (http://purl.bioontology.org/ontology/GAZ)
+        title: geographic location (country and/or sea,region)
+        examples:
+        - value: 'USA: Maryland, Bethesda'
+        keywords:
+        - geographic
+        - location
+        range: string
+        required: true
+        pattern: '^([^\s-]{1,2}|[^\s-]+.+[^\s-]+): ([^\s-]{1,2}|[^\s-]+.+[^\s-]+), ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'
+        structured_pattern:
+          syntax: '^{text}: {text}, {text}$'
+          interpolated: true
+          partial_match: true
       collector:
         range: string
         pattern: "^[A-z-._0-9 ]$"
@@ -552,24 +605,7 @@ classes:
         required: false
         description: >-
           any additional comments about the sample
-      plate_name:
-        range: string
-        pattern: "^[A-z-._0-9 ]$"
-        required: true
-        description: >-
-          a name of plate the specimen was in
-      plate_row:
-        range: string
-        pattern: "^[A-z-._0-9 ]$"
-        required: true
-        description: >-
-          the row the specimen was in
-      plate_col:
-        range: string
-        pattern: "^[A-z-._0-9 ]$"
-        required: true
-        description: >-
-          the column the specimen was in 
+
 
 
   PortableMicrohaplotypeObject:
@@ -577,6 +613,13 @@ classes:
       Information on final results from a targeted amplicon analysis
     tree_root: true
     attributes:
+      experiment_infos:
+        range: ExperimentInfo
+        required: true
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          a list of experiments of all the seq/amp of samples within this project
       specimen_infos:
         range: SpecimenInfo
         required: true
@@ -625,13 +668,18 @@ slots:
     required: true
     description: >-
       the DNA sequence
-  sample_id:
+  specimen_id:
     range: string
     pattern: "^[A-z-._0-9]$"
     required: true
-    identifier: true
     description: >-
-      the name of the sample
+      the name of the specimen of a individual
+  experiment_id:
+    range: string
+    pattern: "^[A-z-._0-9 ]$"
+    required: true
+    description: >-
+      a unique identifier for this sequence/amplification run on a specimen
   target_id:
     range: string
     pattern: "^[A-z-._0-9]$"
@@ -644,6 +692,36 @@ slots:
     required: true
     description: >-
       name of the microhaplotype, should be unique to this microhaplotype
+  panel_id:
+    range: string
+    pattern: "^[A-z-._0-9]$"
+    required: true
+    description: >-
+      name of the panel
+  plate_name:
+    range: string
+    pattern: "^[A-z-._0-9 ]$"
+    required: true
+    description: >-
+      a name of plate the specimen was in
+  plate_row:
+    range: string
+    pattern: "^[A-z-._0-9 ]$"
+    required: true
+    description: >-
+      the row the specimen was in
+  plate_col:
+    range: string
+    pattern: "^[A-z-._0-9 ]$"
+    required: true
+    description: >-
+      the column the specimen was in
+  sequencing_info_id:
+    range: string
+    pattern: "^[A-z-._0-9 ]$"
+    required: true
+    description: >-
+      a unique identifier for this sequencing info
 
 # slots:
 #   id:

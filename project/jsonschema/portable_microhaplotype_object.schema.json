@@ -43,7 +43,7 @@
                 "demultiplexed_samples": {
                     "description": "a list of the samples with the number of raw reads extracted ",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/DemultiplexedTargetsForSample"
                     },
                     "type": "array"
                 }
@@ -86,17 +86,69 @@
                     },
                     "type": "array"
                 },
-                "sample_id": {
-                    "description": "the name of the sample",
+                "experiment_id": {
+                    "description": "a unique identifier for this sequence/amplification run on a specimen",
+                    "pattern": "^[A-z-._0-9 ]$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "experiment_id",
+                "demultiplexed_targets"
+            ],
+            "title": "DemultiplexedTargetsForSample",
+            "type": "object"
+        },
+        "ExperimentInfo": {
+            "additionalProperties": false,
+            "description": "Information about a specific amplification and sequencing of a specimen",
+            "properties": {
+                "experiment_id": {
+                    "description": "a unique identifier for this sequence/amplification run on a specimen",
+                    "pattern": "^[A-z-._0-9 ]$",
+                    "type": "string"
+                },
+                "panel_id": {
+                    "description": "name of the panel",
+                    "pattern": "^[A-z-._0-9]$",
+                    "type": "string"
+                },
+                "plate_col": {
+                    "description": "the column the specimen was in",
+                    "pattern": "^[A-z-._0-9 ]$",
+                    "type": "string"
+                },
+                "plate_name": {
+                    "description": "a name of plate the specimen was in",
+                    "pattern": "^[A-z-._0-9 ]$",
+                    "type": "string"
+                },
+                "plate_row": {
+                    "description": "the row the specimen was in",
+                    "pattern": "^[A-z-._0-9 ]$",
+                    "type": "string"
+                },
+                "sequencing_info_id": {
+                    "description": "a unique identifier for this sequencing info",
+                    "pattern": "^[A-z-._0-9 ]$",
+                    "type": "string"
+                },
+                "specimen_id": {
+                    "description": "the name of the specimen of a individual",
                     "pattern": "^[A-z-._0-9]$",
                     "type": "string"
                 }
             },
             "required": [
-                "sample_id",
-                "demultiplexed_targets"
+                "sequencing_info_id",
+                "plate_name",
+                "plate_row",
+                "plate_col",
+                "specimen_id",
+                "panel_id",
+                "experiment_id"
             ],
-            "title": "DemultiplexedTargetsForSample",
+            "title": "ExperimentInfo",
             "type": "object"
         },
         "GenomeInfo": {
@@ -208,7 +260,7 @@
                 "samples": {
                     "description": "a list of the microhaplotypes detected for a sample for various targets ",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/MicrohaplotypesForSample"
                     },
                     "type": "array"
                 },
@@ -230,9 +282,9 @@
             "additionalProperties": false,
             "description": "Microhaplotypes detected for a sample for all targets",
             "properties": {
-                "sample_id": {
-                    "description": "the name of the sample",
-                    "pattern": "^[A-z-._0-9]$",
+                "experiment_id": {
+                    "description": "a unique identifier for this sequence/amplification run on a specimen",
+                    "pattern": "^[A-z-._0-9 ]$",
                     "type": "string"
                 },
                 "target_results": {
@@ -244,7 +296,7 @@
                 }
             },
             "required": [
-                "sample_id",
+                "experiment_id",
                 "target_results"
             ],
             "title": "MicrohaplotypesForSample",
@@ -311,6 +363,13 @@
                     "description": "the bioinformatics pipeline info for this project",
                     "type": "string"
                 },
+                "experiment_infos": {
+                    "description": "a list of experiments of all the seq/amp of samples within this project",
+                    "items": {
+                        "$ref": "#/$defs/ExperimentInfo"
+                    },
+                    "type": "array"
+                },
                 "microhaplotypes_detected": {
                     "$ref": "#/$defs/MicrohaplotypesDetected",
                     "description": "the microhaplotypes detected in this projects"
@@ -343,6 +402,7 @@
                 }
             },
             "required": [
+                "experiment_infos",
                 "specimen_infos",
                 "sequencing_info",
                 "bioinformatics_info",
@@ -471,14 +531,19 @@
                     "pattern": "r\"^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$\"",
                     "type": "string"
                 },
-                "nucl_acid_date": {
-                    "description": "the date of the extraction/amplification",
+                "nucl_acid_amp_date": {
+                    "description": "the date of the nucleoacide amplification",
                     "pattern": "r\"\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?\"",
                     "type": "string"
                 },
                 "nucl_acid_ext": {
                     "description": "Link to a reference or kit that describes the recovery of nucleic acids from the sample",
                     "pattern": "r\"^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$\"",
+                    "type": "string"
+                },
+                "nucl_acid_ext_date": {
+                    "description": "the date of the nucleoacide extraction",
+                    "pattern": "r\"\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?\"",
                     "type": "string"
                 },
                 "pcr_cond": {
@@ -513,7 +578,8 @@
                 "seq_date",
                 "nucl_acid_ext",
                 "nucl_acid_amp",
-                "nucl_acid_date",
+                "nucl_acid_ext_date",
+                "nucl_acid_amp_date",
                 "pcr_cond",
                 "lib_screen",
                 "lib_layout",
@@ -550,10 +616,20 @@
                     "pattern": "^[A-z-._0-9 ]$",
                     "type": "string"
                 },
+                "geo_loc_name": {
+                    "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)",
+                    "pattern": "^([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+): ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+), ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)$",
+                    "type": "string"
+                },
                 "host_taxon_id": {
                     "description": "optional the NCBI taxonomy number of the host of the organism",
                     "pattern": "^[0-9]$",
                     "type": "integer"
+                },
+                "individual_id": {
+                    "description": "an identifier for the individual a specimen was collected from",
+                    "pattern": "^[A-z-._0-9 ]$",
+                    "type": "string"
                 },
                 "lat_lon": {
                     "description": "the latitude and longitude of the collection site of the specimen",
@@ -566,7 +642,7 @@
                     "type": "integer"
                 },
                 "plate_col": {
-                    "description": "the column the specimen was in ",
+                    "description": "the column the specimen was in",
                     "pattern": "^[A-z-._0-9 ]$",
                     "type": "string"
                 },
@@ -605,24 +681,25 @@
                     "pattern": "^[A-z-._0-9 ]$",
                     "type": "string"
                 },
-                "sample_id": {
-                    "description": "the name of the sample",
+                "specimen_id": {
+                    "description": "the name of the specimen of a individual",
                     "pattern": "^[A-z-._0-9]$",
                     "type": "string"
                 }
             },
             "required": [
-                "sample_id",
+                "specimen_id",
+                "plate_name",
+                "plate_row",
+                "plate_col",
                 "samp_taxon_id",
                 "collection_date",
                 "lat_lon",
+                "geo_loc_name",
                 "collector",
                 "samp_store_loc",
                 "samp_collect_device",
-                "project_name",
-                "plate_name",
-                "plate_row",
-                "plate_col"
+                "project_name"
             ],
             "title": "SpecimenInfo",
             "type": "object"
@@ -712,6 +789,13 @@
             "description": "the bioinformatics pipeline info for this project",
             "type": "string"
         },
+        "experiment_infos": {
+            "description": "a list of experiments of all the seq/amp of samples within this project",
+            "items": {
+                "$ref": "#/$defs/ExperimentInfo"
+            },
+            "type": "array"
+        },
         "microhaplotypes_detected": {
             "$ref": "#/$defs/MicrohaplotypesDetected",
             "description": "the microhaplotypes detected in this projects"
@@ -744,6 +828,7 @@
         }
     },
     "required": [
+        "experiment_infos",
         "specimen_infos",
         "sequencing_info",
         "bioinformatics_info",

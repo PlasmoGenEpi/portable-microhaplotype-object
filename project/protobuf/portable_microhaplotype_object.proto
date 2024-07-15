@@ -23,8 +23,19 @@ message DemultiplexedTargetForSample
 // a list of raw reads for a sample for all targets within panel
 message DemultiplexedTargetsForSample
  {
-  string sampleId = 0
+  string experimentId = 0
  repeated  demultiplexedTargetForSample demultiplexedTargets = 0
+ }
+// Information about a specific amplification and sequencing of a specimen
+message ExperimentInfo
+ {
+  string sequencingInfoId = 0
+  string plateName = 0
+  string plateRow = 0
+  string plateCol = 0
+  string specimenId = 0
+  string panelId = 0
+  string experimentId = 0
  }
 // information on a genome
 message GenomeInfo
@@ -60,7 +71,7 @@ message MicrohaplotypesDetected
 // Microhaplotypes detected for a sample for all targets
 message MicrohaplotypesForSample
  {
-  string sampleId = 0
+  string experimentId = 0
  repeated  microhaplotypesForTarget targetResults = 0
  }
 // Microhaplotypes detected for a specific target
@@ -79,6 +90,7 @@ message PanelInfo
 // Information on final results from a targeted amplicon analysis
 message PortableMicrohaplotypeObject
  {
+ repeated  experimentInfo experimentInfos = 0
  repeated  specimenInfo specimenInfos = 0
   sequencingInfo sequencingInfo = 0
   tarAmpBioinformaticsInfo bioinformaticsInfo = 0
@@ -120,7 +132,8 @@ message SequencingInfo
   string seqDate = 0
   string nuclAcidExt = 0
   string nuclAcidAmp = 0
-  string nuclAcidDate = 0
+  string nuclAcidExtDate = 0
+  string nuclAcidAmpDate = 0
   string pcrCond = 0
   string libScreen = 0
   string libLayout = 0
@@ -130,22 +143,24 @@ message SequencingInfo
 // Information on specimen info
 message SpecimenInfo
  {
-  string sampleId = 0
+  string specimenId = 0
+  string plateName = 0
+  string plateRow = 0
+  string plateCol = 0
   integer sampTaxonId = 0
+  string individualId = 0
   integer hostTaxonId = 0
  repeated  string alternateIdentifiers = 0
   integer parasiteDensity = 0
   string collectionDate = 0
   string latLon = 0
+  string geoLocName = 0
   string collector = 0
   string sampStoreLoc = 0
   string sampCollectDevice = 0
   string projectName = 0
   string accession = 0
   string sampleComments = 0
-  string plateName = 0
-  string plateRow = 0
-  string plateCol = 0
  }
 // the targeted amplicon bioinformatics pipeline
 message TarAmpBioinformaticsInfo
