@@ -1,15 +1,15 @@
 ---
-id: https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object
+id: https://plasmogenepi.github.io/portable-microhaplotype-object
 name: portable-microhaplotype-object
 title: portable-microhaplotype-object
 description: |-
-  A shcema to define the minimum amount of data needed to export a microhaplotype calling pipeline analysis with associated metadata
+  A schema to define the minimum amount of data needed to export a microhaplotype calling pipeline analysis with associated metadata
 license: GNU GPL v3.0
 see_also:
   - https://PlasmoGenEpi.github.io/portable-microhaplotype-object
 
 prefixes:
-  portable_microhaplotype_object: https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object/
+  portable_microhaplotype_object: https://plasmogenepi.github.io/portable-microhaplotype-object/
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/
   schema: http://schema.org/
@@ -23,74 +23,663 @@ imports:
 
 classes:
 
-  NamedThing:
-    description: >-
-      A generic grouping for any identifiable entity
-    slots:
-      - id
-      - name
-      - description
-    class_uri: schema:Thing
+  # NamedThing:
+  #   description: >-
+  #     A generic grouping for any identifiable entity
+  #   slots:
+  #     - id
+  #     - name
+  #     - description
+  #   class_uri: schema:Thing
 
-  PortableMicrohaplotypeObject:
-    is_a: NamedThing
+  # Project:
+  #   is_a: NamedThing
+  #   description: >-
+  #     Represents a Project
+  #   slots:
+  #     - primary_email
+  #     - birth_date
+  #     - age_in_years
+  #     - vital_status
+  #   slot_usage:
+  #     primary_email:
+  #       pattern: "^\\S+@[\\S+\\.]+\\S+"
+  # 
+  # ProjectCollection:
+  #   tree_root: true
+  #   description: >-
+  #     A holder for Project objects
+  #   attributes:
+  #     entries:
+  #       range: Project
+  #       multivalued: true
+  #       inlined: true
+  
+  TargetInfo:
     description: >-
-      Represents a PortableMicrohaplotypeObject
+      Information about a specific target within a genome
     slots:
-      - primary_email
-      - birth_date
-      - age_in_years
-      - vital_status
-    slot_usage:
-      primary_email:
-        pattern: "^\\S+@[\\S+\\.]+\\S+"
+      - target_id
+    attributes:
+      gene_id:
+        range: string
+        pattern: "^[A-z-._0-9]$"
+        description: >-
+          an identifier of the gene, if any, is being covered with this targeted
+      insert_location:
+        range: GenomicLocation
+        required: true
+        description: >- 
+          the intended genomic location of the insert of the amplicon (the location between the end of the forward primer and the beginning of the reverse primer)
+      forward_primers:
+        range: Primers
+        required: true
+        description: >-
+          A holder of forward primers associated with this target
+      reverse_primers:
+        range: Primers
+        required: true
+        description: >-
+          A holder of reverse primers associated with this target
 
-  PortableMicrohaplotypeObjectCollection:
+  PanelInfo:
+    description: >-
+      information on a panel of targeted amplicon primer pairs
+    attributes:
+      panel_id:
+        range: string
+        pattern: "^[A-z-._0-9]$"
+        required: true
+        description: >-
+          name of the panel
+      target_genome:
+        range: GenomeInfo
+        required: true
+        description: >-
+          the info on the target reference genome for this panel
+      targets:
+        required: true
+        range: TargetInfo
+        multivalued: true
+        inlined: true
+        inlined_as_list: false
+        description: >-
+          a list of the target infos for the targets in this panel 
+
+  RepresentativeHaplotypeSequence:
+    description: >-
+      the representative sequence for a haplotype, similar to a fast(a/q) format
+    slots:
+      - seq
+      - haplotype_id
+    attributes:
+      quality:
+        range: string
+        pattern: "^[A-z-._0-9]$"
+        required: false
+        description: >-
+          the ansi fastq per base quality score for this sequence, this is optional
+      alt_annotations:
+        required: false
+        range: string
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          a list of additional annotations associated with this haplotype, e.g. wildtype, amino acid changes etc
+
+  RepresentativeHaplotypeSequences:
+    description: >-
+      a list of the representative sequence for a haplotypes, similar to a fast(a/q) format
+    slots:
+      - target_id
+    attributes:
+      seqs:
+        required: true
+        range: RepresentativeHaplotypeSequence
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          a list of the haplotypes detected for a sample for various targets 
+      
+
+
+
+  HaplotypesDetected:
+    description: >-
+      the haplotypes detected in a targeted amplicon analysis
+    attributes:
+      sequencing_id:
+        range: string
+        pattern: "^[A-z-._0-9]$"
+        required: true
+        description: >-
+          the name of the sequencing/wet lab processing steps associated with this run
+      bioinformatics_id:
+        range: string
+        pattern: "^[A-z-._0-9]$"
+        required: true
+        description: >-
+          the name of the bioinformatics processing steps associated with this run
+      samples:
+        required: true
+        range: HaplotypesForSample
+        multivalued: true
+        inlined_as_list: false
+        description: >-
+          a list of the haplotypes detected for a sample for various targets 
+
+  DemultiplexedSamples:
+    description: >-
+      a list of raw reads counts for each sample for all targets within panel 
+    attributes:
+      demultiplexed_samples:
+        required: true
+        range: DemultiplexedTargetsForSample
+        multivalued: true
+        inlined_as_list: false
+        description: >-
+          a list of the samples with the number of raw reads extracted 
+
+  DemultiplexedTargetsForSample:
+    description: >-
+      a list of raw reads for a sample for all targets within panel
+    slots:
+      - sample_id
+    attributes:
+      demultiplexed_targets:
+        required: true
+        range: DemultiplexedTargetForSample
+        multivalued: true
+        inlined_as_list: false
+        description: >-
+          a list of the targets extracted for a sample 
+
+  DemultiplexedTargetForSample:
+    description: >-
+      the raw read count for a sample for a target
+    slots:
+      - target_id
+    attributes:
+      raw_read_count:
+        required: true
+        range: double
+        description: >-
+          the raw read counts extracted for a target for a sample
+  
+
+  GenomeInfo:
+    description: >-
+      information on a genome
+    attributes:
+      name:
+        range: string
+        pattern: "^[A-z-._0-9]$"
+        required: true
+        description: >-
+          name of the genome
+      version:
+        range: string
+        pattern: "^[A-z-._0-9]$"
+        required: true
+        description: >-
+          the genome version
+      taxon_id:
+        range: integer
+        pattern: "^[0-9]$"
+        required: true
+        description: >-
+          the NCBI taxonomy number
+      url:
+        range: string
+        pattern: r"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$"
+        required: true
+        description: >-
+          a link to the where this genome file could be downloaded
+      gff_url:
+        range: string
+        pattern: r"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$"
+        required: false
+        description: >-
+          a link to the where this genome's annotation file could be downloaded
+
+  GenomicLocation:
+    description: >- 
+      information on the genomic location of specific sequence
+    attributes:
+      chrom:
+        range: string
+        pattern: "^[A-z-._0-9]$"
+        required: true
+        description: >-
+          the chromosome name
+      start:
+        range: integer
+        pattern: "^[0-9]$"
+        required: true
+        description: >-
+          the start of the location, 0-based positioning
+      end:
+        range: integer
+        pattern: "^[0-9]$"
+        required: true
+        description: >-
+          the end of the location, 0-based positioning
+      strand:
+        range: string
+        required: false
+        pattern: r'[+-]'
+        description: >- 
+          which strand the location is, either + for plus strand or - for negative strand 
+
+  PrimerInfo:
+    description: >- 
+      information on a primer sequence
+    slots:
+      - seq
+    attributes:
+      location:
+        range: GenomicLocation
+        required: true
+        description: >-
+          what the intended genomic location of the primer is  
+            
+  Primers:
     tree_root: true
     description: >-
-      A holder for PortableMicrohaplotypeObject objects
+      A holder of primer sequences
     attributes:
       entries:
-        range: PortableMicrohaplotypeObject
+        range: PrimerInfo
         multivalued: true
         inlined: true
 
-slots:
-  id:
-    identifier: true
-    slot_uri: schema:identifier
-    range: uriorcurie
-    description: A unique identifier for a thing
-  name:
-    slot_uri: schema:name
-    description: A human-readable name for a thing
-  description:
-    slot_uri: schema:description
-    description: A human-readable description for a thing
-  primary_email:
-    slot_uri: schema:email
-    description: The main email address of a person
-  birth_date:
-    slot_uri: schema:birthDate
-    range: date
-    description: Date on which a person is born
-  age_in_years:
-    range: integer
-    description: Number of years since birth
-  vital_status:
-    range: PersonStatus
-    description: living or dead status
+  HaplotypesForSample:
+    description: >-
+      Haplotypes detected for a sample for all targets
+    slots:
+      - sample_id
+    attributes:
+      target_results:
+        required: true
+        range: HaplotypesForTarget
+        multivalued: true
+        inlined_as_list: false
+        description: >-
+          a list of the haplotypes detected for a list of targets
 
-enums:
-  PersonStatus:
-    permissible_values:
-      ALIVE:
-        description: the person is living
-        meaning: PATO:0001421
-      DEAD:
-        description: the person is deceased
-        meaning: PATO:0001422
-      UNKNOWN:
-        description: the vital status is not known
-        todos:
-          - map this to an ontology
+  HaplotypeForTarget:
+    description: >-
+      Haplotype detected for a specific target
+    slots:
+      - target_id
+      - haplotype_id
+    attributes:
+      read_count:
+        required: true
+        range: double
+        description: >-
+          the read count associated with this haplotype
+      umi_count:
+        required: false
+        range: double
+        description: >-
+          the unique molecular identifier (umi) count associated with this haplotype
+
+  HaplotypesForTarget:
+    description: >-
+      Haplotypes detected for a specific target
+    slots:
+      - target_id
+    attributes:
+      haplotypes:
+        required: true
+        range: HaplotypeForTarget
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          a list of the haplotypes detected for this target
+
+  TarAmpBioinformaticsInfo:
+    description: >-
+      the targeted amplicon bioinformatics pipeline
+    attributes:
+      tar_amp_bioinformatics_info_id:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        identifier: true
+        description: >-
+          a unique identifier for this bioinformatics info
+      demultiplexing_method:
+        range: BioMethod
+        required: true
+        description: >-
+          the demultiplexing method used to separate raw reads from barcodes and primer targets
+      denoising_method:
+        range: BioMethod
+        required: true
+        description: >-
+          the method used to de-noise and/or cluster the raw reads
+      population_clustering_method:
+        range: BioMethod
+        required: true
+        description: >-
+          the method used to compare clustered/de-noised reads across samples for a target
+      additional_methods:
+        range: BioMethod
+        required: false
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          any additional methods used to analyze the data
+  BioMethod:
+    description: >-
+      methodology description of a portion of a bioinformatics pipeline
+    attributes:
+      program:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        description: >-
+          name of the program used for this portion of the pipeline
+      purpose:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        description: >-
+          the propose for this method
+      program_version:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        description: >-
+          a versioning info for the program
+      additional_argument:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: false
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          any additional arguments that differ from the default
+  SequencingInfo:
+    description: >-
+      Information on sequencing info
+    attributes:
+      sequencing_info_id:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        description: >-
+          a unique identifier for this sequencing info
+      seq_instrument:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        description: >-
+          the sequencing instrument used to sequence the run, e.g. ILLUMINA, Illumina MiSeq
+      seq_date:
+        range: string
+        pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+        required: true
+        description: >-
+          the date of sequencing, should be YYYY-MM or YYYY-MM-DD
+      nucl_acid_ext:
+        range: string
+        pattern: r"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$"
+        required: true
+        description: >-
+          Link to a reference or kit that describes the recovery of nucleic acids from the sample
+      nucl_acid_amp:
+        range: string
+        pattern: r"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$"
+        required: true
+        description: >-
+          Link to a reference or kit that describes the enzymatic amplification of nucleic acids,
+      nucl_acid_date:
+        range: string
+        pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+        required: true
+        description: >-
+          the date of the extraction/amplification
+      pcr_cond:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        description: >-
+          the method/conditions for PCR, List PCR cycles used to amplify the target
+      lib_screen:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        description: >-
+          Describe enrichment, screening, or normalization methods applied during amplification or library preparation, e.g. size selection 390bp, diluted to 1 ng DNA/sample
+      lib_layout:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        description: >-
+          Specify the configuration of reads, e.g. paired-end
+      lib_kit:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        description: >-
+          Name, version, and applicable cell or cycle numbers for the kit used to prepare libraries and load cells or chips for sequencing. If possible, include a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001
+      seq_center:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        description: >-
+          Name of facility where sequencing was performed (lab, core facility, or company)
+
+  SpecimenInfo:
+    description: >-
+      Information on specimen info
+    slots:
+      - sample_id
+    attributes:
+      samp_taxon_id:
+        range: integer
+        pattern: "^[0-9]$"
+        required: true
+        description: >-
+          the NCBI taxonomy number of the organism of interest
+      host_taxon_id:
+        range: integer
+        pattern: "^[0-9]$"
+        required: false
+        description: >-
+          optional the NCBI taxonomy number of the host of the organism
+      alternate_identifiers:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: false
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          a list of optional alternative names for the samples
+      parasite_density:
+        range: integer
+        pattern: r'^[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?$'
+        required: false
+        description: >-
+          the parasite density in microliters
+      collection_date:
+        range: string
+        pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+        required: true
+        description: >-
+          the date of the sample collection
+      lat_lon:
+        range: string
+        pattern: r'^[-+]?\d{1,2}(?:\.\d+)?,[-+]?\d{1,3}(?:\.\d+)?$'
+        required: true
+        description: >-
+          the latitude and longitude of the collection site of the specimen
+      collector:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        description: >-
+          the name of the primary person managing the specimen
+      samp_store_loc:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        description: >-
+          the sample store site, address or facility name
+      samp_collect_device:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        description: >-
+          the way the sample was collected, e.g. whole blood, dried blood spot, etc
+      project_name:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        description: >-
+          a name of the project under which the sample is organized
+      accession:
+        range: string
+        pattern: "^[A-z-._0-9]$"
+        required: false
+        description: >-
+          ERA/SRA accession number for the sample if it was submitted
+      sample_comments:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: false
+        description: >-
+          any additional comments about the sample
+      plate_name:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        description: >-
+          a name of plate the specimen was in
+      plate_row:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        description: >-
+          the row the specimen was in
+      plate_col:
+        range: string
+        pattern: "^[A-z-._0-9 ]$"
+        required: true
+        description: >-
+          the column the specimen was in 
+
+
+  PortableMicrohaplotypeObject:
+    description: >-
+      Information on final results from a targeted amplicon analysis
+    attributes:
+      specimen_infos:
+        range: SpecimenInfo
+        required: true
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          a list of SpecimenInfo of all the samples within this project
+      sequencing_info:
+        range: SequencingInfo
+        required: true
+        description: >-
+          the sequencing info for this project
+      bioinformatics_info:
+        range: TarAmpBioinformaticsInfo
+        required: true
+        description: >-
+          the bioinformatics pipeline info for this project
+      panel_info:
+        range: PanelInfo
+        required: true
+        description: >-
+          the info on the panel used for this project
+      representative_haplotype_sequences:
+        range: RepresentativeHaplotypeSequences
+        required: true
+        multivalued: true
+        inlined_as_list: false
+        description: >-
+          a list of the representative sequences for the results for this project
+      haplotypes_detected:
+        range: HaplotypesDetected
+        required: true
+        description: >-
+          the haplotypes detected in this projects
+      target_demultiplexed_samples:
+        range: DemultiplexedSamples
+        required: true
+        description: >-
+          the raw demultiplex target counts for each sample  
+
+slots:
+  seq:
+    range: string
+    pattern: "^[A-z]$"
+    required: true
+    description: >-
+      the DNA sequence
+  sample_id:
+    range: string
+    pattern: "^[A-z-._0-9]$"
+    required: true
+    identifier: true
+    description: >-
+      the name of the sample
+  target_id:
+    range: string
+    pattern: "^[A-z-._0-9]$"
+    required: true
+    description: >-
+      name of the target
+  haplotype_id:
+    range: string
+    pattern: "^[A-z-._0-9]$"
+    required: true
+    description: >-
+      name of the haplotype, should be unique to this haplotype
+
+# slots:
+#   id:
+#     identifier: true
+#     slot_uri: schema:identifier
+#     range: uriorcurie
+#     description: A unique identifier for a thing
+#   name:
+#     slot_uri: schema:name
+#     description: A human-readable name for a thing
+#   description:
+#     slot_uri: schema:description
+#     description: A human-readable description for a thing
+#   primary_email:
+#     slot_uri: schema:email
+#     description: The main email address of a person
+#   birth_date:
+#     slot_uri: schema:birthDate
+#     range: date
+#     description: Date on which a person is born
+#   age_in_years:
+#     range: integer
+#     description: Number of years since birth
+#   vital_status:
+#     range: PersonStatus
+#     description: living or dead status
+# 
+# enums:
+#   PersonStatus:
+#     permissible_values:
+#       ALIVE:
+#         description: the person is living
+#         meaning: PATO:0001421
+#       DEAD:
+#         description: the person is deceased
+#         meaning: PATO:0001422
+#       UNKNOWN:
+#         description: the vital status is not known
+#         todos:
+#           - map this to an ontology

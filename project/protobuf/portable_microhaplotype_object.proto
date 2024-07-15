@@ -1,26 +1,168 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// A generic grouping for any identifiable entity
-message NamedThing
+// methodology description of a portion of a bioinformatics pipeline
+message BioMethod
  {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
+  string program = 0
+  string purpose = 0
+  string programVersion = 0
+ repeated  string additionalArgument = 0
  }
-// Represents a PortableMicrohaplotypeObject
+// a list of raw reads counts for each sample for all targets within panel 
+message DemultiplexedSamples
+ {
+ repeated  demultiplexedTargetsForSample demultiplexedSamples = 0
+ }
+// the raw read count for a sample for a target
+message DemultiplexedTargetForSample
+ {
+  string targetId = 0
+  double rawReadCount = 0
+ }
+// a list of raw reads for a sample for all targets within panel
+message DemultiplexedTargetsForSample
+ {
+  string sampleId = 0
+ repeated  demultiplexedTargetForSample demultiplexedTargets = 0
+ }
+// information on a genome
+message GenomeInfo
+ {
+  string name = 0
+  string version = 0
+  integer taxonId = 0
+  string url = 0
+  string gffUrl = 0
+ }
+// information on the genomic location of specific sequence
+message GenomicLocation
+ {
+  string chrom = 0
+  integer start = 0
+  integer end = 0
+  string strand = 0
+ }
+// Haplotype detected for a specific target
+message HaplotypeForTarget
+ {
+  string targetId = 0
+  string haplotypeId = 0
+  double readCount = 0
+  double umiCount = 0
+ }
+// the haplotypes detected in a targeted amplicon analysis
+message HaplotypesDetected
+ {
+  string sequencingId = 0
+  string bioinformaticsId = 0
+ repeated  haplotypesForSample samples = 0
+ }
+// Haplotypes detected for a sample for all targets
+message HaplotypesForSample
+ {
+  string sampleId = 0
+ repeated  haplotypesForTarget targetResults = 0
+ }
+// Haplotypes detected for a specific target
+message HaplotypesForTarget
+ {
+  string targetId = 0
+ repeated  haplotypeForTarget haplotypes = 0
+ }
+// information on a panel of targeted amplicon primer pairs
+message PanelInfo
+ {
+  string panelId = 0
+  genomeInfo targetGenome = 0
+ repeated  targetInfo targets = 0
+ }
+// Information on final results from a targeted amplicon analysis
 message PortableMicrohaplotypeObject
  {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  string primaryEmail = 0
-  date birthDate = 0
-  integer ageInYears = 0
-  personStatus vitalStatus = 0
+ repeated  specimenInfo specimenInfos = 0
+  sequencingInfo sequencingInfo = 0
+  tarAmpBioinformaticsInfo bioinformaticsInfo = 0
+  panelInfo panelInfo = 0
+ repeated  representativeHaplotypeSequences representativeHaplotypeSequences = 0
+  haplotypesDetected haplotypesDetected = 0
+  demultiplexedSamples targetDemultiplexedSamples = 0
  }
-// A holder for PortableMicrohaplotypeObject objects
-message PortableMicrohaplotypeObjectCollection
+// information on a primer sequence
+message PrimerInfo
  {
- repeated  portableMicrohaplotypeObject entries = 0
+  string seq = 0
+  genomicLocation location = 0
+ }
+// A holder of primer sequences
+message Primers
+ {
+ repeated  primerInfo entries = 0
+ }
+// the representative sequence for a haplotype, similar to a fast(a/q) format
+message RepresentativeHaplotypeSequence
+ {
+  string seq = 0
+  string haplotypeId = 0
+  string quality = 0
+ repeated  string altAnnotations = 0
+ }
+// a list of the representative sequence for a haplotypes, similar to a fast(a/q) format
+message RepresentativeHaplotypeSequences
+ {
+  string targetId = 0
+ repeated  representativeHaplotypeSequence seqs = 0
+ }
+// Information on sequencing info
+message SequencingInfo
+ {
+  string sequencingInfoId = 0
+  string seqInstrument = 0
+  string seqDate = 0
+  string nuclAcidExt = 0
+  string nuclAcidAmp = 0
+  string nuclAcidDate = 0
+  string pcrCond = 0
+  string libScreen = 0
+  string libLayout = 0
+  string libKit = 0
+  string seqCenter = 0
+ }
+// Information on specimen info
+message SpecimenInfo
+ {
+  string sampleId = 0
+  integer sampTaxonId = 0
+  integer hostTaxonId = 0
+ repeated  string alternateIdentifiers = 0
+  integer parasiteDensity = 0
+  string collectionDate = 0
+  string latLon = 0
+  string collector = 0
+  string sampStoreLoc = 0
+  string sampCollectDevice = 0
+  string projectName = 0
+  string accession = 0
+  string sampleComments = 0
+  string plateName = 0
+  string plateRow = 0
+  string plateCol = 0
+ }
+// the targeted amplicon bioinformatics pipeline
+message TarAmpBioinformaticsInfo
+ {
+  string tarAmpBioinformaticsInfoId = 0
+  bioMethod demultiplexingMethod = 0
+  bioMethod denoisingMethod = 0
+  bioMethod populationClusteringMethod = 0
+ repeated  bioMethod additionalMethods = 0
+ }
+// Information about a specific target within a genome
+message TargetInfo
+ {
+  string targetId = 0
+  string geneId = 0
+  genomicLocation insertLocation = 0
+  primers forwardPrimers = 0
+  primers reversePrimers = 0
  }

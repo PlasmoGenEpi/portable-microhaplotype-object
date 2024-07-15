@@ -1,24 +1,166 @@
 # metamodel_version: 1.7.0
-type NamedThing
+type BioMethod
   {
-    id: Uriorcurie!
-    name: String
-    description: String
+    program: String!
+    purpose: String!
+    programVersion: String!
+    additionalArgument: [String]
+  }
+
+type DemultiplexedSamples
+  {
+    demultiplexedSamples: [DemultiplexedTargetsForSample]!
+  }
+
+type DemultiplexedTargetForSample
+  {
+    targetId: String!
+    rawReadCount: Double!
+  }
+
+type DemultiplexedTargetsForSample
+  {
+    sampleId: String!
+    demultiplexedTargets: [DemultiplexedTargetForSample]!
+  }
+
+type GenomeInfo
+  {
+    name: String!
+    version: String!
+    taxonId: Integer!
+    url: String!
+    gffUrl: String
+  }
+
+type GenomicLocation
+  {
+    chrom: String!
+    start: Integer!
+    end: Integer!
+    strand: String
+  }
+
+type HaplotypeForTarget
+  {
+    targetId: String!
+    haplotypeId: String!
+    readCount: Double!
+    umiCount: Double
+  }
+
+type HaplotypesDetected
+  {
+    sequencingId: String!
+    bioinformaticsId: String!
+    samples: [HaplotypesForSample]!
+  }
+
+type HaplotypesForSample
+  {
+    sampleId: String!
+    targetResults: [HaplotypesForTarget]!
+  }
+
+type HaplotypesForTarget
+  {
+    targetId: String!
+    haplotypes: [HaplotypeForTarget]!
+  }
+
+type PanelInfo
+  {
+    panelId: String!
+    targetGenome: GenomeInfo!
+    targets: [TargetInfo]!
   }
 
 type PortableMicrohaplotypeObject
   {
-    id: Uriorcurie!
-    name: String
-    description: String
-    primaryEmail: String
-    birthDate: Date
-    ageInYears: Integer
-    vitalStatus: PersonStatus
+    specimenInfos: [SpecimenInfo]!
+    sequencingInfo: SequencingInfo!
+    bioinformaticsInfo: TarAmpBioinformaticsInfo!
+    panelInfo: PanelInfo!
+    representativeHaplotypeSequences: [RepresentativeHaplotypeSequences]!
+    haplotypesDetected: HaplotypesDetected!
+    targetDemultiplexedSamples: DemultiplexedSamples!
   }
 
-type PortableMicrohaplotypeObjectCollection
+type PrimerInfo
   {
-    entries: [PortableMicrohaplotypeObject]
+    seq: String!
+    location: GenomicLocation!
+  }
+
+type Primers
+  {
+    entries: [PrimerInfo]
+  }
+
+type RepresentativeHaplotypeSequence
+  {
+    seq: String!
+    haplotypeId: String!
+    quality: String
+    altAnnotations: [String]
+  }
+
+type RepresentativeHaplotypeSequences
+  {
+    targetId: String!
+    seqs: [RepresentativeHaplotypeSequence]!
+  }
+
+type SequencingInfo
+  {
+    sequencingInfoId: String!
+    seqInstrument: String!
+    seqDate: String!
+    nuclAcidExt: String!
+    nuclAcidAmp: String!
+    nuclAcidDate: String!
+    pcrCond: String!
+    libScreen: String!
+    libLayout: String!
+    libKit: String!
+    seqCenter: String!
+  }
+
+type SpecimenInfo
+  {
+    sampleId: String!
+    sampTaxonId: Integer!
+    hostTaxonId: Integer
+    alternateIdentifiers: [String]
+    parasiteDensity: Integer
+    collectionDate: String!
+    latLon: String!
+    collector: String!
+    sampStoreLoc: String!
+    sampCollectDevice: String!
+    projectName: String!
+    accession: String
+    sampleComments: String
+    plateName: String!
+    plateRow: String!
+    plateCol: String!
+  }
+
+type TarAmpBioinformaticsInfo
+  {
+    tarAmpBioinformaticsInfoId: String!
+    demultiplexingMethod: BioMethod!
+    denoisingMethod: BioMethod!
+    populationClusteringMethod: BioMethod!
+    additionalMethods: [BioMethod]
+  }
+
+type TargetInfo
+  {
+    targetId: String!
+    geneId: String
+    insertLocation: GenomicLocation!
+    forwardPrimers: Primers!
+    reversePrimers: Primers!
   }
 

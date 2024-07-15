@@ -1,9 +1,8 @@
 # metamodel_version: 1.7.0
-BASE <https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object/>
+BASE <https://plasmogenepi.github.io/portable-microhaplotype-object/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
-PREFIX schema1: <http://schema.org/>
 
 
 linkml:String xsd:string
@@ -44,32 +43,200 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
-<NamedThing>  (
-    CLOSED {
-       (  $<NamedThing_tes> (  schema1:name @linkml:String ? ;
-             schema1:description @linkml:String ?
-          ) ;
-          rdf:type [ schema1:Thing ]
-       )
-    } OR @<PortableMicrohaplotypeObject>
-)
-
-<PortableMicrohaplotypeObject> CLOSED {
-    (  $<PortableMicrohaplotypeObject_tes> (  &<NamedThing_tes> ;
-          rdf:type [ schema1:Thing ] ? ;
-          schema1:email @linkml:String ? ;
-          schema1:birthDate @linkml:Date ? ;
-          <age_in_years> @linkml:Integer ? ;
-          <vital_status> [ <http://purl.obolibrary.org/obo/PATO_0001421> <http://purl.obolibrary.org/obo/PATO_0001422>
-             <https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object/PersonStatus#UNKNOWN> ] ?
+<BioMethod> CLOSED {
+    (  $<BioMethod_tes> (  <program> @linkml:String ;
+          <purpose> @linkml:String ;
+          <program_version> @linkml:String ;
+          <additional_argument> @linkml:String *
        ) ;
-       rdf:type [ <PortableMicrohaplotypeObject> ]
+       rdf:type [ <BioMethod> ] ?
     )
 }
 
-<PortableMicrohaplotypeObjectCollection> CLOSED {
-    (  $<PortableMicrohaplotypeObjectCollection_tes> <entries> @<PortableMicrohaplotypeObject> * ;
-       rdf:type [ <PortableMicrohaplotypeObjectCollection> ] ?
+<DemultiplexedSamples> CLOSED {
+    (  $<DemultiplexedSamples_tes> <demultiplexed_samples> @<DemultiplexedTargetsForSample> + ;
+       rdf:type [ <DemultiplexedSamples> ] ?
+    )
+}
+
+<DemultiplexedTargetForSample> CLOSED {
+    (  $<DemultiplexedTargetForSample_tes> (  <target_id> @linkml:String ;
+          <raw_read_count> @linkml:Double
+       ) ;
+       rdf:type [ <DemultiplexedTargetForSample> ] ?
+    )
+}
+
+<DemultiplexedTargetsForSample> CLOSED {
+    (  $<DemultiplexedTargetsForSample_tes> <demultiplexed_targets> @<DemultiplexedTargetForSample> + ;
+       rdf:type [ <DemultiplexedTargetsForSample> ]
+    )
+}
+
+<GenomeInfo> CLOSED {
+    (  $<GenomeInfo_tes> (  <name> @linkml:String ;
+          <version> @linkml:String ;
+          <taxon_id> @linkml:Integer ;
+          <url> @linkml:String ;
+          <gff_url> @linkml:String ?
+       ) ;
+       rdf:type [ <GenomeInfo> ] ?
+    )
+}
+
+<GenomicLocation> CLOSED {
+    (  $<GenomicLocation_tes> (  <chrom> @linkml:String ;
+          <start> @linkml:Integer ;
+          <end> @linkml:Integer ;
+          <strand> @linkml:String ?
+       ) ;
+       rdf:type [ <GenomicLocation> ] ?
+    )
+}
+
+<HaplotypeForTarget> CLOSED {
+    (  $<HaplotypeForTarget_tes> (  <target_id> @linkml:String ;
+          <haplotype_id> @linkml:String ;
+          <read_count> @linkml:Double ;
+          <umi_count> @linkml:Double ?
+       ) ;
+       rdf:type [ <HaplotypeForTarget> ] ?
+    )
+}
+
+<HaplotypesDetected> CLOSED {
+    (  $<HaplotypesDetected_tes> (  <sequencing_id> @linkml:String ;
+          <bioinformatics_id> @linkml:String ;
+          <samples> @<HaplotypesForSample> +
+       ) ;
+       rdf:type [ <HaplotypesDetected> ] ?
+    )
+}
+
+<HaplotypesForSample> CLOSED {
+    (  $<HaplotypesForSample_tes> <target_results> @<HaplotypesForTarget> + ;
+       rdf:type [ <HaplotypesForSample> ]
+    )
+}
+
+<HaplotypesForTarget> CLOSED {
+    (  $<HaplotypesForTarget_tes> (  <target_id> @linkml:String ;
+          <haplotypes> @<HaplotypeForTarget> +
+       ) ;
+       rdf:type [ <HaplotypesForTarget> ] ?
+    )
+}
+
+<PanelInfo> CLOSED {
+    (  $<PanelInfo_tes> (  <panel_id> @linkml:String ;
+          <target_genome> @<GenomeInfo> ;
+          <targets> @<TargetInfo> +
+       ) ;
+       rdf:type [ <PanelInfo> ] ?
+    )
+}
+
+<PortableMicrohaplotypeObject> CLOSED {
+    (  $<PortableMicrohaplotypeObject_tes> (  <specimen_infos> @<SpecimenInfo> + ;
+          <sequencing_info> @<SequencingInfo> ;
+          <bioinformatics_info> @<TarAmpBioinformaticsInfo> ;
+          <panel_info> @<PanelInfo> ;
+          <representative_haplotype_sequences> @<RepresentativeHaplotypeSequences> + ;
+          <haplotypes_detected> @<HaplotypesDetected> ;
+          <target_demultiplexed_samples> @<DemultiplexedSamples>
+       ) ;
+       rdf:type [ <PortableMicrohaplotypeObject> ] ?
+    )
+}
+
+<PrimerInfo> CLOSED {
+    (  $<PrimerInfo_tes> (  <seq> @linkml:String ;
+          <location> @<GenomicLocation>
+       ) ;
+       rdf:type [ <PrimerInfo> ] ?
+    )
+}
+
+<Primers> CLOSED {
+    (  $<Primers_tes> <entries> @<PrimerInfo> * ;
+       rdf:type [ <Primers> ] ?
+    )
+}
+
+<RepresentativeHaplotypeSequence> CLOSED {
+    (  $<RepresentativeHaplotypeSequence_tes> (  <seq> @linkml:String ;
+          <haplotype_id> @linkml:String ;
+          <quality> @linkml:String ? ;
+          <alt_annotations> @linkml:String *
+       ) ;
+       rdf:type [ <RepresentativeHaplotypeSequence> ] ?
+    )
+}
+
+<RepresentativeHaplotypeSequences> CLOSED {
+    (  $<RepresentativeHaplotypeSequences_tes> (  <target_id> @linkml:String ;
+          <seqs> @<RepresentativeHaplotypeSequence> +
+       ) ;
+       rdf:type [ <RepresentativeHaplotypeSequences> ] ?
+    )
+}
+
+<SequencingInfo> CLOSED {
+    (  $<SequencingInfo_tes> (  <sequencing_info_id> @linkml:String ;
+          <seq_instrument> @linkml:String ;
+          <seq_date> @linkml:String ;
+          <nucl_acid_ext> @linkml:String ;
+          <nucl_acid_amp> @linkml:String ;
+          <nucl_acid_date> @linkml:String ;
+          <pcr_cond> @linkml:String ;
+          <lib_screen> @linkml:String ;
+          <lib_layout> @linkml:String ;
+          <lib_kit> @linkml:String ;
+          <seq_center> @linkml:String
+       ) ;
+       rdf:type [ <SequencingInfo> ] ?
+    )
+}
+
+<SpecimenInfo> CLOSED {
+    (  $<SpecimenInfo_tes> (  <samp_taxon_id> @linkml:Integer ;
+          <host_taxon_id> @linkml:Integer ? ;
+          <alternate_identifiers> @linkml:String * ;
+          <parasite_density> @linkml:Integer ? ;
+          <collection_date> @linkml:String ;
+          <lat_lon> @linkml:String ;
+          <collector> @linkml:String ;
+          <samp_store_loc> @linkml:String ;
+          <samp_collect_device> @linkml:String ;
+          <project_name> @linkml:String ;
+          <accession> @linkml:String ? ;
+          <sample_comments> @linkml:String ? ;
+          <plate_name> @linkml:String ;
+          <plate_row> @linkml:String ;
+          <plate_col> @linkml:String
+       ) ;
+       rdf:type [ <SpecimenInfo> ]
+    )
+}
+
+<TarAmpBioinformaticsInfo> CLOSED {
+    (  $<TarAmpBioinformaticsInfo_tes> (  <demultiplexing_method> @<BioMethod> ;
+          <denoising_method> @<BioMethod> ;
+          <population_clustering_method> @<BioMethod> ;
+          <additional_methods> @<BioMethod> *
+       ) ;
+       rdf:type [ <TarAmpBioinformaticsInfo> ]
+    )
+}
+
+<TargetInfo> CLOSED {
+    (  $<TargetInfo_tes> (  <target_id> @linkml:String ;
+          <gene_id> @linkml:String ? ;
+          <insert_location> @<GenomicLocation> ;
+          <forward_primers> @<Primers> ;
+          <reverse_primers> @<Primers>
+       ) ;
+       rdf:type [ <TargetInfo> ] ?
     )
 }
 
