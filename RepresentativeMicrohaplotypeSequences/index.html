@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/RepresentativeHaplotypeSequence/" rel="canonical"/>
+<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypeSequences/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: RepresentativeHaplotypeSequence - portable-microhaplotype-object</title>
+<title>Class: RepresentativeMicrohaplotypeSequences - portable-microhaplotype-object</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-representativehaplotypesequence">
+<a class="md-skip" href="#class-representativemicrohaplotypesequences">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: RepresentativeHaplotypeSequence
+              Class: RepresentativeMicrohaplotypeSequences
             
           </span>
 </div>
@@ -196,22 +196,25 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/RepresentativeHaplotypeSequence.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/RepresentativeMicrohaplotypeSequences.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-representativehaplotypesequence">Class: RepresentativeHaplotypeSequence</h1>
-<p><em>the representative sequence for a haplotype, similar to a fast(a/q) format</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/RepresentativeHaplotypeSequence">portable_microhaplotype_object:RepresentativeHaplotypeSequence</a></p>
+<h1 id="class-representativemicrohaplotypesequences">Class: RepresentativeMicrohaplotypeSequences</h1>
+<p><em>a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypeSequences">portable_microhaplotype_object:RepresentativeMicrohaplotypeSequences</a></p>
 <div class="mermaid"> classDiagram
-    class RepresentativeHaplotypeSequence
-    click RepresentativeHaplotypeSequence href "../RepresentativeHaplotypeSequence"
-      RepresentativeHaplotypeSequence : alt_annotations
+    class RepresentativeMicrohaplotypeSequences
+    click RepresentativeMicrohaplotypeSequences href "../RepresentativeMicrohaplotypeSequences"
+      RepresentativeMicrohaplotypeSequences : seqs
 
-      RepresentativeHaplotypeSequence : haplotype_id
 
-      RepresentativeHaplotypeSequence : quality
 
-      RepresentativeHaplotypeSequence : seq
+
+    RepresentativeMicrohaplotypeSequences --&gt; "1..*" RepresentativeMicrohaplotypeSequence : seqs
+    click RepresentativeMicrohaplotypeSequence href "../RepresentativeMicrohaplotypeSequence"
+
+
+      RepresentativeMicrohaplotypeSequences : target_id
 
 
 </div>
@@ -228,27 +231,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../seq/">seq</a></td>
+<td><a href="../target_id/">target_id</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>the DNA sequence</td>
+<td>name of the target</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../haplotype_id/">haplotype_id</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>name of the haplotype, should be unique to this haplotype</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../quality/">quality</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the ansi fastq per base quality score for this sequence, this is optional</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../alt_annotations/">alt_annotations</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>a list of additional annotations associated with this haplotype, e</td>
+<td><a href="../seqs/">seqs</a></td>
+<td>1..* <br/> <a href="../RepresentativeMicrohaplotypeSequence/">RepresentativeMicrohaplotypeSequence</a></td>
+<td>a list of the microhaplotypes detected for a sample for various targets</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -265,10 +256,10 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../RepresentativeHaplotypeSequences/">RepresentativeHaplotypeSequences</a></td>
-<td><a href="../seqs/">seqs</a></td>
+<td><a href="../PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
+<td><a href="../representative_microhaplotype_sequences/">representative_microhaplotype_sequences</a></td>
 <td>range</td>
-<td><a href="./">RepresentativeHaplotypeSequence</a></td>
+<td><a href="./">RepresentativeMicrohaplotypeSequences</a></td>
 </tr>
 </tbody>
 </table>
@@ -288,11 +279,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:RepresentativeHaplotypeSequence</td>
+<td>portable_microhaplotype_object:RepresentativeMicrohaplotypeSequences</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:RepresentativeHaplotypeSequence</td>
+<td>portable_microhaplotype_object:RepresentativeMicrohaplotypeSequences</td>
 </tr>
 </tbody>
 </table>
@@ -300,34 +291,23 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: RepresentativeHaplotypeSequence
-description: the representative sequence for a haplotype, similar to a fast(a/q) format
+<pre><code class="language-yaml">name: RepresentativeMicrohaplotypeSequences
+description: a list of the representative sequence for a microhaplotypes, similar
+  to a fast(a/q) format
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
-- seq
-- haplotype_id
+- target_id
 attributes:
-  quality:
-    name: quality
-    description: the ansi fastq per base quality score for this sequence, this is
-      optional
+  seqs:
+    name: seqs
+    description: 'a list of the microhaplotypes detected for a sample for various
+      targets '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
-    - RepresentativeHaplotypeSequence
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9]$
-  alt_annotations:
-    name: alt_annotations
-    description: a list of additional annotations associated with this haplotype,
-      e.g. wildtype, amino acid changes etc
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - RepresentativeHaplotypeSequence
-    range: string
-    required: false
+    - RepresentativeMicrohaplotypeSequences
+    range: RepresentativeMicrohaplotypeSequence
+    required: true
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -336,61 +316,38 @@ attributes:
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: RepresentativeHaplotypeSequence
-description: the representative sequence for a haplotype, similar to a fast(a/q) format
+<pre><code class="language-yaml">name: RepresentativeMicrohaplotypeSequences
+description: a list of the representative sequence for a microhaplotypes, similar
+  to a fast(a/q) format
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  quality:
-    name: quality
-    description: the ansi fastq per base quality score for this sequence, this is
-      optional
+  seqs:
+    name: seqs
+    description: 'a list of the microhaplotypes detected for a sample for various
+      targets '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: quality
-    owner: RepresentativeHaplotypeSequence
+    alias: seqs
+    owner: RepresentativeMicrohaplotypeSequences
     domain_of:
-    - RepresentativeHaplotypeSequence
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9]$
-  alt_annotations:
-    name: alt_annotations
-    description: a list of additional annotations associated with this haplotype,
-      e.g. wildtype, amino acid changes etc
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: alt_annotations
-    owner: RepresentativeHaplotypeSequence
-    domain_of:
-    - RepresentativeHaplotypeSequence
-    range: string
-    required: false
+    - RepresentativeMicrohaplotypeSequences
+    range: RepresentativeMicrohaplotypeSequence
+    required: true
     multivalued: true
     inlined: true
     inlined_as_list: true
-  seq:
-    name: seq
-    description: the DNA sequence
+  target_id:
+    name: target_id
+    description: name of the target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: seq
-    owner: RepresentativeHaplotypeSequence
+    alias: target_id
+    owner: RepresentativeMicrohaplotypeSequences
     domain_of:
-    - RepresentativeHaplotypeSequence
-    - PrimerInfo
-    range: string
-    required: true
-    pattern: ^[A-z]$
-  haplotype_id:
-    name: haplotype_id
-    description: name of the haplotype, should be unique to this haplotype
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: haplotype_id
-    owner: RepresentativeHaplotypeSequence
-    domain_of:
-    - RepresentativeHaplotypeSequence
-    - HaplotypeForTarget
+    - TargetInfo
+    - RepresentativeMicrohaplotypeSequences
+    - DemultiplexedTargetForSample
+    - MicrohaplotypesForTarget
     range: string
     required: true
     pattern: ^[A-z-._0-9]$

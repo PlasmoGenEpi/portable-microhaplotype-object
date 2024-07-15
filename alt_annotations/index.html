@@ -324,7 +324,7 @@
 
 
 <h1 id="slot-alt_annotations">Slot: alt_annotations</h1>
-<p><em>a list of additional annotations associated with this haplotype, e.g. wildtype, amino acid changes etc</em></p>
+<p><em>a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/alt_annotations">portable_microhaplotype_object:alt_annotations</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -339,8 +339,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../RepresentativeHaplotypeSequence/">RepresentativeHaplotypeSequence</a></td>
-<td>the representative sequence for a haplotype, similar to a fast(a/q) format</td>
+<td><a href="../RepresentativeMicrohaplotypeSequence/">RepresentativeMicrohaplotypeSequence</a></td>
+<td>the representative sequence for a microhaplotype, similar to a fast(a/q) form...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -382,14 +382,14 @@
 <details>
 
 <pre><code class="language-yaml">name: alt_annotations
-description: a list of additional annotations associated with this haplotype, e.g.
-  wildtype, amino acid changes etc
+description: a list of additional annotations associated with this microhaplotype,
+  e.g. wildtype, amino acid changes etc
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: alt_annotations
-owner: RepresentativeHaplotypeSequence
+owner: RepresentativeMicrohaplotypeSequence
 domain_of:
-- RepresentativeHaplotypeSequence
+- RepresentativeMicrohaplotypeSequence
 range: string
 required: false
 multivalued: true

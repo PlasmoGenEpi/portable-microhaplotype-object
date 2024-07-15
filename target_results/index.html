@@ -324,7 +324,7 @@
 
 
 <h1 id="slot-target_results">Slot: target_results</h1>
-<p><em>a list of the haplotypes detected for a list of targets</em></p>
+<p><em>a list of the microhaplotypes detected for a list of targets</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/target_results">portable_microhaplotype_object:target_results</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -339,8 +339,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../HaplotypesForSample/">HaplotypesForSample</a></td>
-<td>Haplotypes detected for a sample for all targets</td>
+<td><a href="../MicrohaplotypesForSample/">MicrohaplotypesForSample</a></td>
+<td>Microhaplotypes detected for a sample for all targets</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -348,7 +348,7 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../HaplotypesForTarget/">HaplotypesForTarget</a></p>
+<p>Range: <a href="../MicrohaplotypesForTarget/">MicrohaplotypesForTarget</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -385,14 +385,14 @@
 <details>
 
 <pre><code class="language-yaml">name: target_results
-description: a list of the haplotypes detected for a list of targets
+description: a list of the microhaplotypes detected for a list of targets
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: target_results
-owner: HaplotypesForSample
+owner: MicrohaplotypesForSample
 domain_of:
-- HaplotypesForSample
-range: HaplotypesForTarget
+- MicrohaplotypesForSample
+range: MicrohaplotypesForTarget
 required: true
 multivalued: true
 inlined_as_list: false

@@ -324,7 +324,7 @@
 
 
 <h1 id="slot-seqs">Slot: seqs</h1>
-<p>_a list of the haplotypes detected for a sample for various targets _</p>
+<p>_a list of the microhaplotypes detected for a sample for various targets _</p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/seqs">portable_microhaplotype_object:seqs</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -339,8 +339,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../RepresentativeHaplotypeSequences/">RepresentativeHaplotypeSequences</a></td>
-<td>a list of the representative sequence for a haplotypes, similar to a fast(a/q...</td>
+<td><a href="../RepresentativeMicrohaplotypeSequences/">RepresentativeMicrohaplotypeSequences</a></td>
+<td>a list of the representative sequence for a microhaplotypes, similar to a fas...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -348,7 +348,7 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../RepresentativeHaplotypeSequence/">RepresentativeHaplotypeSequence</a></p>
+<p>Range: <a href="../RepresentativeMicrohaplotypeSequence/">RepresentativeMicrohaplotypeSequence</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -385,14 +385,14 @@
 <details>
 
 <pre><code class="language-yaml">name: seqs
-description: 'a list of the haplotypes detected for a sample for various targets '
+description: 'a list of the microhaplotypes detected for a sample for various targets '
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: seqs
-owner: RepresentativeHaplotypeSequences
+owner: RepresentativeMicrohaplotypeSequences
 domain_of:
-- RepresentativeHaplotypeSequences
-range: RepresentativeHaplotypeSequence
+- RepresentativeMicrohaplotypeSequences
+range: RepresentativeMicrohaplotypeSequence
 required: true
 multivalued: true
 inlined: true

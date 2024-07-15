@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/HaplotypesForSample/" rel="canonical"/>
+<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/MicrohaplotypesForSample/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: HaplotypesForSample - portable-microhaplotype-object</title>
+<title>Class: MicrohaplotypesForSample - portable-microhaplotype-object</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-haplotypesforsample">
+<a class="md-skip" href="#class-microhaplotypesforsample">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: HaplotypesForSample
+              Class: MicrohaplotypesForSample
             
           </span>
 </div>
@@ -196,24 +196,24 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/HaplotypesForSample.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/MicrohaplotypesForSample.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-haplotypesforsample">Class: HaplotypesForSample</h1>
-<p><em>Haplotypes detected for a sample for all targets</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/HaplotypesForSample">portable_microhaplotype_object:HaplotypesForSample</a></p>
+<h1 id="class-microhaplotypesforsample">Class: MicrohaplotypesForSample</h1>
+<p><em>Microhaplotypes detected for a sample for all targets</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/MicrohaplotypesForSample">portable_microhaplotype_object:MicrohaplotypesForSample</a></p>
 <div class="mermaid"> classDiagram
-    class HaplotypesForSample
-    click HaplotypesForSample href "../HaplotypesForSample"
-      HaplotypesForSample : sample_id
+    class MicrohaplotypesForSample
+    click MicrohaplotypesForSample href "../MicrohaplotypesForSample"
+      MicrohaplotypesForSample : sample_id
 
-      HaplotypesForSample : target_results
-
-
+      MicrohaplotypesForSample : target_results
 
 
-    HaplotypesForSample --&gt; "1..*" HaplotypesForTarget : target_results
-    click HaplotypesForTarget href "../HaplotypesForTarget"
+
+
+    MicrohaplotypesForSample --&gt; "1..*" MicrohaplotypesForTarget : target_results
+    click MicrohaplotypesForTarget href "../MicrohaplotypesForTarget"
 
 
 
@@ -238,8 +238,8 @@
 </tr>
 <tr>
 <td><a href="../target_results/">target_results</a></td>
-<td>1..* <br/> <a href="../HaplotypesForTarget/">HaplotypesForTarget</a></td>
-<td>a list of the haplotypes detected for a list of targets</td>
+<td>1..* <br/> <a href="../MicrohaplotypesForTarget/">MicrohaplotypesForTarget</a></td>
+<td>a list of the microhaplotypes detected for a list of targets</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -256,10 +256,10 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../HaplotypesDetected/">HaplotypesDetected</a></td>
+<td><a href="../MicrohaplotypesDetected/">MicrohaplotypesDetected</a></td>
 <td><a href="../samples/">samples</a></td>
 <td>range</td>
-<td><a href="./">HaplotypesForSample</a></td>
+<td><a href="./">MicrohaplotypesForSample</a></td>
 </tr>
 </tbody>
 </table>
@@ -279,11 +279,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:HaplotypesForSample</td>
+<td>portable_microhaplotype_object:MicrohaplotypesForSample</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:HaplotypesForSample</td>
+<td>portable_microhaplotype_object:MicrohaplotypesForSample</td>
 </tr>
 </tbody>
 </table>
@@ -291,20 +291,20 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: HaplotypesForSample
-description: Haplotypes detected for a sample for all targets
+<pre><code class="language-yaml">name: MicrohaplotypesForSample
+description: Microhaplotypes detected for a sample for all targets
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
 - sample_id
 attributes:
   target_results:
     name: target_results
-    description: a list of the haplotypes detected for a list of targets
+    description: a list of the microhaplotypes detected for a list of targets
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
-    - HaplotypesForSample
-    range: HaplotypesForTarget
+    - MicrohaplotypesForSample
+    range: MicrohaplotypesForTarget
     required: true
     multivalued: true
     inlined_as_list: false
@@ -313,20 +313,20 @@ attributes:
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: HaplotypesForSample
-description: Haplotypes detected for a sample for all targets
+<pre><code class="language-yaml">name: MicrohaplotypesForSample
+description: Microhaplotypes detected for a sample for all targets
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
   target_results:
     name: target_results
-    description: a list of the haplotypes detected for a list of targets
+    description: a list of the microhaplotypes detected for a list of targets
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: target_results
-    owner: HaplotypesForSample
+    owner: MicrohaplotypesForSample
     domain_of:
-    - HaplotypesForSample
-    range: HaplotypesForTarget
+    - MicrohaplotypesForSample
+    range: MicrohaplotypesForTarget
     required: true
     multivalued: true
     inlined_as_list: false
@@ -337,10 +337,10 @@ attributes:
     rank: 1000
     identifier: true
     alias: sample_id
-    owner: HaplotypesForSample
+    owner: MicrohaplotypesForSample
     domain_of:
     - DemultiplexedTargetsForSample
-    - HaplotypesForSample
+    - MicrohaplotypesForSample
     - SpecimenInfo
     range: string
     required: true

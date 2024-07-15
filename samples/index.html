@@ -324,7 +324,7 @@
 
 
 <h1 id="slot-samples">Slot: samples</h1>
-<p>_a list of the haplotypes detected for a sample for various targets _</p>
+<p>_a list of the microhaplotypes detected for a sample for various targets _</p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/samples">portable_microhaplotype_object:samples</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -339,8 +339,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../HaplotypesDetected/">HaplotypesDetected</a></td>
-<td>the haplotypes detected in a targeted amplicon analysis</td>
+<td><a href="../MicrohaplotypesDetected/">MicrohaplotypesDetected</a></td>
+<td>the microhaplotypes detected in a targeted amplicon analysis</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -348,7 +348,7 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../HaplotypesForSample/">HaplotypesForSample</a></p>
+<p>Range: <a href="../MicrohaplotypesForSample/">MicrohaplotypesForSample</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -385,14 +385,14 @@
 <details>
 
 <pre><code class="language-yaml">name: samples
-description: 'a list of the haplotypes detected for a sample for various targets '
+description: 'a list of the microhaplotypes detected for a sample for various targets '
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: samples
-owner: HaplotypesDetected
+owner: MicrohaplotypesDetected
 domain_of:
-- HaplotypesDetected
-range: HaplotypesForSample
+- MicrohaplotypesDetected
+range: MicrohaplotypesForSample
 required: true
 multivalued: true
 inlined_as_list: false

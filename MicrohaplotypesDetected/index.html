@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/RepresentativeHaplotypeSequences/" rel="canonical"/>
+<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/MicrohaplotypesDetected/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: RepresentativeHaplotypeSequences - portable-microhaplotype-object</title>
+<title>Class: MicrohaplotypesDetected - portable-microhaplotype-object</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-representativehaplotypesequences">
+<a class="md-skip" href="#class-microhaplotypesdetected">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: RepresentativeHaplotypeSequences
+              Class: MicrohaplotypesDetected
             
           </span>
 </div>
@@ -196,25 +196,27 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/RepresentativeHaplotypeSequences.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/MicrohaplotypesDetected.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-representativehaplotypesequences">Class: RepresentativeHaplotypeSequences</h1>
-<p><em>a list of the representative sequence for a haplotypes, similar to a fast(a/q) format</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/RepresentativeHaplotypeSequences">portable_microhaplotype_object:RepresentativeHaplotypeSequences</a></p>
+<h1 id="class-microhaplotypesdetected">Class: MicrohaplotypesDetected</h1>
+<p><em>the microhaplotypes detected in a targeted amplicon analysis</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/MicrohaplotypesDetected">portable_microhaplotype_object:MicrohaplotypesDetected</a></p>
 <div class="mermaid"> classDiagram
-    class RepresentativeHaplotypeSequences
-    click RepresentativeHaplotypeSequences href "../RepresentativeHaplotypeSequences"
-      RepresentativeHaplotypeSequences : seqs
+    class MicrohaplotypesDetected
+    click MicrohaplotypesDetected href "../MicrohaplotypesDetected"
+      MicrohaplotypesDetected : bioinformatics_id
+
+      MicrohaplotypesDetected : samples
 
 
 
 
-    RepresentativeHaplotypeSequences --&gt; "1..*" RepresentativeHaplotypeSequence : seqs
-    click RepresentativeHaplotypeSequence href "../RepresentativeHaplotypeSequence"
+    MicrohaplotypesDetected --&gt; "1..*" MicrohaplotypesForSample : samples
+    click MicrohaplotypesForSample href "../MicrohaplotypesForSample"
 
 
-      RepresentativeHaplotypeSequences : target_id
+      MicrohaplotypesDetected : sequencing_id
 
 
 </div>
@@ -231,15 +233,21 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../target_id/">target_id</a></td>
+<td><a href="../sequencing_id/">sequencing_id</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>name of the target</td>
+<td>the name of the sequencing/wet lab processing steps associated with this run</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../seqs/">seqs</a></td>
-<td>1..* <br/> <a href="../RepresentativeHaplotypeSequence/">RepresentativeHaplotypeSequence</a></td>
-<td>a list of the haplotypes detected for a sample for various targets</td>
+<td><a href="../bioinformatics_id/">bioinformatics_id</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>the name of the bioinformatics processing steps associated with this run</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../samples/">samples</a></td>
+<td>1..* <br/> <a href="../MicrohaplotypesForSample/">MicrohaplotypesForSample</a></td>
+<td>a list of the microhaplotypes detected for a sample for various targets</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -257,9 +265,9 @@
 <tbody>
 <tr>
 <td><a href="../PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
-<td><a href="../representative_haplotype_sequences/">representative_haplotype_sequences</a></td>
+<td><a href="../microhaplotypes_detected/">microhaplotypes_detected</a></td>
 <td>range</td>
-<td><a href="./">RepresentativeHaplotypeSequences</a></td>
+<td><a href="./">MicrohaplotypesDetected</a></td>
 </tr>
 </tbody>
 </table>
@@ -279,11 +287,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:RepresentativeHaplotypeSequences</td>
+<td>portable_microhaplotype_object:MicrohaplotypesDetected</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:RepresentativeHaplotypeSequences</td>
+<td>portable_microhaplotype_object:MicrohaplotypesDetected</td>
 </tr>
 </tbody>
 </table>
@@ -291,64 +299,93 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: RepresentativeHaplotypeSequences
-description: a list of the representative sequence for a haplotypes, similar to a
-  fast(a/q) format
+<pre><code class="language-yaml">name: MicrohaplotypesDetected
+description: the microhaplotypes detected in a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-slots:
-- target_id
 attributes:
-  seqs:
-    name: seqs
-    description: 'a list of the haplotypes detected for a sample for various targets '
+  sequencing_id:
+    name: sequencing_id
+    description: the name of the sequencing/wet lab processing steps associated with
+      this run
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
-    - RepresentativeHaplotypeSequences
-    range: RepresentativeHaplotypeSequence
+    - MicrohaplotypesDetected
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9]$
+  bioinformatics_id:
+    name: bioinformatics_id
+    description: the name of the bioinformatics processing steps associated with this
+      run
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - MicrohaplotypesDetected
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9]$
+  samples:
+    name: samples
+    description: 'a list of the microhaplotypes detected for a sample for various
+      targets '
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - MicrohaplotypesDetected
+    range: MicrohaplotypesForSample
     required: true
     multivalued: true
-    inlined: true
-    inlined_as_list: true
+    inlined_as_list: false
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: RepresentativeHaplotypeSequences
-description: a list of the representative sequence for a haplotypes, similar to a
-  fast(a/q) format
+<pre><code class="language-yaml">name: MicrohaplotypesDetected
+description: the microhaplotypes detected in a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  seqs:
-    name: seqs
-    description: 'a list of the haplotypes detected for a sample for various targets '
+  sequencing_id:
+    name: sequencing_id
+    description: the name of the sequencing/wet lab processing steps associated with
+      this run
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: seqs
-    owner: RepresentativeHaplotypeSequences
+    alias: sequencing_id
+    owner: MicrohaplotypesDetected
     domain_of:
-    - RepresentativeHaplotypeSequences
-    range: RepresentativeHaplotypeSequence
-    required: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  target_id:
-    name: target_id
-    description: name of the target
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: target_id
-    owner: RepresentativeHaplotypeSequences
-    domain_of:
-    - TargetInfo
-    - RepresentativeHaplotypeSequences
-    - DemultiplexedTargetForSample
-    - HaplotypesForTarget
+    - MicrohaplotypesDetected
     range: string
     required: true
     pattern: ^[A-z-._0-9]$
+  bioinformatics_id:
+    name: bioinformatics_id
+    description: the name of the bioinformatics processing steps associated with this
+      run
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: bioinformatics_id
+    owner: MicrohaplotypesDetected
+    domain_of:
+    - MicrohaplotypesDetected
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9]$
+  samples:
+    name: samples
+    description: 'a list of the microhaplotypes detected for a sample for various
+      targets '
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: samples
+    owner: MicrohaplotypesDetected
+    domain_of:
+    - MicrohaplotypesDetected
+    range: MicrohaplotypesForSample
+    required: true
+    multivalued: true
+    inlined_as_list: false
 
 </code></pre>
 </details>

@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/HaplotypeForTarget/" rel="canonical"/>
+<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/MicrohaplotypeForTarget/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: HaplotypeForTarget - portable-microhaplotype-object</title>
+<title>Class: MicrohaplotypeForTarget - portable-microhaplotype-object</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-haplotypefortarget">
+<a class="md-skip" href="#class-microhaplotypefortarget">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: HaplotypeForTarget
+              Class: MicrohaplotypeForTarget
             
           </span>
 </div>
@@ -196,20 +196,20 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/HaplotypeForTarget.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/MicrohaplotypeForTarget.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-haplotypefortarget">Class: HaplotypeForTarget</h1>
-<p><em>Haplotype detected for a specific target</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/HaplotypeForTarget">portable_microhaplotype_object:HaplotypeForTarget</a></p>
+<h1 id="class-microhaplotypefortarget">Class: MicrohaplotypeForTarget</h1>
+<p><em>Microhaplotype detected for a specific target</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/MicrohaplotypeForTarget">portable_microhaplotype_object:MicrohaplotypeForTarget</a></p>
 <div class="mermaid"> classDiagram
-    class HaplotypeForTarget
-    click HaplotypeForTarget href "../HaplotypeForTarget"
-      HaplotypeForTarget : haplotype_id
+    class MicrohaplotypeForTarget
+    click MicrohaplotypeForTarget href "../MicrohaplotypeForTarget"
+      MicrohaplotypeForTarget : microhaplotype_id
 
-      HaplotypeForTarget : read_count
+      MicrohaplotypeForTarget : read_count
 
-      HaplotypeForTarget : umi_count
+      MicrohaplotypeForTarget : umi_count
 
 
 </div>
@@ -226,21 +226,21 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../haplotype_id/">haplotype_id</a></td>
+<td><a href="../microhaplotype_id/">microhaplotype_id</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>name of the haplotype, should be unique to this haplotype</td>
+<td>name of the microhaplotype, should be unique to this microhaplotype</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../read_count/">read_count</a></td>
 <td>1 <br/> <a href="../Double/">Double</a></td>
-<td>the read count associated with this haplotype</td>
+<td>the read count associated with this microhaplotype</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../umi_count/">umi_count</a></td>
 <td>0..1 <br/> <a href="../Double/">Double</a></td>
-<td>the unique molecular identifier (umi) count associated with this haplotype</td>
+<td>the unique molecular identifier (umi) count associated with this microhaploty...</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -257,10 +257,10 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../HaplotypesForTarget/">HaplotypesForTarget</a></td>
-<td><a href="../haplotypes/">haplotypes</a></td>
+<td><a href="../MicrohaplotypesForTarget/">MicrohaplotypesForTarget</a></td>
+<td><a href="../microhaplotypes/">microhaplotypes</a></td>
 <td>range</td>
-<td><a href="./">HaplotypeForTarget</a></td>
+<td><a href="./">MicrohaplotypeForTarget</a></td>
 </tr>
 </tbody>
 </table>
@@ -280,11 +280,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:HaplotypeForTarget</td>
+<td>portable_microhaplotype_object:MicrohaplotypeForTarget</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:HaplotypeForTarget</td>
+<td>portable_microhaplotype_object:MicrohaplotypeForTarget</td>
 </tr>
 </tbody>
 </table>
@@ -292,29 +292,29 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: HaplotypeForTarget
-description: Haplotype detected for a specific target
+<pre><code class="language-yaml">name: MicrohaplotypeForTarget
+description: Microhaplotype detected for a specific target
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
-- haplotype_id
+- microhaplotype_id
 attributes:
   read_count:
     name: read_count
-    description: the read count associated with this haplotype
+    description: the read count associated with this microhaplotype
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
-    - HaplotypeForTarget
+    - MicrohaplotypeForTarget
     range: double
     required: true
   umi_count:
     name: umi_count
     description: the unique molecular identifier (umi) count associated with this
-      haplotype
+      microhaplotype
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
-    - HaplotypeForTarget
+    - MicrohaplotypeForTarget
     range: double
     required: false
 
@@ -322,43 +322,43 @@ attributes:
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: HaplotypeForTarget
-description: Haplotype detected for a specific target
+<pre><code class="language-yaml">name: MicrohaplotypeForTarget
+description: Microhaplotype detected for a specific target
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
   read_count:
     name: read_count
-    description: the read count associated with this haplotype
+    description: the read count associated with this microhaplotype
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: read_count
-    owner: HaplotypeForTarget
+    owner: MicrohaplotypeForTarget
     domain_of:
-    - HaplotypeForTarget
+    - MicrohaplotypeForTarget
     range: double
     required: true
   umi_count:
     name: umi_count
     description: the unique molecular identifier (umi) count associated with this
-      haplotype
+      microhaplotype
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: umi_count
-    owner: HaplotypeForTarget
+    owner: MicrohaplotypeForTarget
     domain_of:
-    - HaplotypeForTarget
+    - MicrohaplotypeForTarget
     range: double
     required: false
-  haplotype_id:
-    name: haplotype_id
-    description: name of the haplotype, should be unique to this haplotype
+  microhaplotype_id:
+    name: microhaplotype_id
+    description: name of the microhaplotype, should be unique to this microhaplotype
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: haplotype_id
-    owner: HaplotypeForTarget
+    alias: microhaplotype_id
+    owner: MicrohaplotypeForTarget
     domain_of:
-    - RepresentativeHaplotypeSequence
-    - HaplotypeForTarget
+    - RepresentativeMicrohaplotypeSequence
+    - MicrohaplotypeForTarget
     range: string
     required: true
     pattern: ^[A-z-._0-9]$

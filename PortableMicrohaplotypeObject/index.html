@@ -209,13 +209,13 @@
     click TarAmpBioinformaticsInfo href "../TarAmpBioinformaticsInfo"
 
 
-      PortableMicrohaplotypeObject : haplotypes_detected
+      PortableMicrohaplotypeObject : microhaplotypes_detected
 
 
 
 
-    PortableMicrohaplotypeObject --&gt; "1" HaplotypesDetected : haplotypes_detected
-    click HaplotypesDetected href "../HaplotypesDetected"
+    PortableMicrohaplotypeObject --&gt; "1" MicrohaplotypesDetected : microhaplotypes_detected
+    click MicrohaplotypesDetected href "../MicrohaplotypesDetected"
 
 
       PortableMicrohaplotypeObject : panel_info
@@ -227,13 +227,13 @@
     click PanelInfo href "../PanelInfo"
 
 
-      PortableMicrohaplotypeObject : representative_haplotype_sequences
+      PortableMicrohaplotypeObject : representative_microhaplotype_sequences
 
 
 
 
-    PortableMicrohaplotypeObject --&gt; "1..*" RepresentativeHaplotypeSequences : representative_haplotype_sequences
-    click RepresentativeHaplotypeSequences href "../RepresentativeHaplotypeSequences"
+    PortableMicrohaplotypeObject --&gt; "1..*" RepresentativeMicrohaplotypeSequences : representative_microhaplotype_sequences
+    click RepresentativeMicrohaplotypeSequences href "../RepresentativeMicrohaplotypeSequences"
 
 
       PortableMicrohaplotypeObject : sequencing_info
@@ -302,15 +302,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../representative_haplotype_sequences/">representative_haplotype_sequences</a></td>
-<td>1..* <br/> <a href="../RepresentativeHaplotypeSequences/">RepresentativeHaplotypeSequences</a></td>
+<td><a href="../representative_microhaplotype_sequences/">representative_microhaplotype_sequences</a></td>
+<td>1..* <br/> <a href="../RepresentativeMicrohaplotypeSequences/">RepresentativeMicrohaplotypeSequences</a></td>
 <td>a list of the representative sequences for the results for this project</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../haplotypes_detected/">haplotypes_detected</a></td>
-<td>1 <br/> <a href="../HaplotypesDetected/">HaplotypesDetected</a></td>
-<td>the haplotypes detected in this projects</td>
+<td><a href="../microhaplotypes_detected/">microhaplotypes_detected</a></td>
+<td>1 <br/> <a href="../MicrohaplotypesDetected/">MicrohaplotypesDetected</a></td>
+<td>the microhaplotypes detected in this projects</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -394,25 +394,25 @@ attributes:
     - PortableMicrohaplotypeObject
     range: PanelInfo
     required: true
-  representative_haplotype_sequences:
-    name: representative_haplotype_sequences
+  representative_microhaplotype_sequences:
+    name: representative_microhaplotype_sequences
     description: a list of the representative sequences for the results for this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - PortableMicrohaplotypeObject
-    range: RepresentativeHaplotypeSequences
+    range: RepresentativeMicrohaplotypeSequences
     required: true
     multivalued: true
     inlined_as_list: false
-  haplotypes_detected:
-    name: haplotypes_detected
-    description: the haplotypes detected in this projects
+  microhaplotypes_detected:
+    name: microhaplotypes_detected
+    description: the microhaplotypes detected in this projects
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - PortableMicrohaplotypeObject
-    range: HaplotypesDetected
+    range: MicrohaplotypesDetected
     required: true
   target_demultiplexed_samples:
     name: target_demultiplexed_samples
@@ -482,29 +482,29 @@ attributes:
     - PortableMicrohaplotypeObject
     range: PanelInfo
     required: true
-  representative_haplotype_sequences:
-    name: representative_haplotype_sequences
+  representative_microhaplotype_sequences:
+    name: representative_microhaplotype_sequences
     description: a list of the representative sequences for the results for this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: representative_haplotype_sequences
+    alias: representative_microhaplotype_sequences
     owner: PortableMicrohaplotypeObject
     domain_of:
     - PortableMicrohaplotypeObject
-    range: RepresentativeHaplotypeSequences
+    range: RepresentativeMicrohaplotypeSequences
     required: true
     multivalued: true
     inlined_as_list: false
-  haplotypes_detected:
-    name: haplotypes_detected
-    description: the haplotypes detected in this projects
+  microhaplotypes_detected:
+    name: microhaplotypes_detected
+    description: the microhaplotypes detected in this projects
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: haplotypes_detected
+    alias: microhaplotypes_detected
     owner: PortableMicrohaplotypeObject
     domain_of:
     - PortableMicrohaplotypeObject
-    range: HaplotypesDetected
+    range: MicrohaplotypesDetected
     required: true
   target_demultiplexed_samples:
     name: target_demultiplexed_samples

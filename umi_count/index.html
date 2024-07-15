@@ -324,7 +324,7 @@
 
 
 <h1 id="slot-umi_count">Slot: umi_count</h1>
-<p><em>the unique molecular identifier (umi) count associated with this haplotype</em></p>
+<p><em>the unique molecular identifier (umi) count associated with this microhaplotype</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/umi_count">portable_microhaplotype_object:umi_count</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -339,8 +339,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../HaplotypeForTarget/">HaplotypeForTarget</a></td>
-<td>Haplotype detected for a specific target</td>
+<td><a href="../MicrohaplotypeForTarget/">MicrohaplotypeForTarget</a></td>
+<td>Microhaplotype detected for a specific target</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -377,13 +377,13 @@
 <details>
 
 <pre><code class="language-yaml">name: umi_count
-description: the unique molecular identifier (umi) count associated with this haplotype
+description: the unique molecular identifier (umi) count associated with this microhaplotype
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: umi_count
-owner: HaplotypeForTarget
+owner: MicrohaplotypeForTarget
 domain_of:
-- HaplotypeForTarget
+- MicrohaplotypeForTarget
 range: double
 required: false
 
