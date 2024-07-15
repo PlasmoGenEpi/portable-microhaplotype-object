@@ -95,8 +95,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <HaplotypeForTarget> CLOSED {
-    (  $<HaplotypeForTarget_tes> (  <target_id> @linkml:String ;
-          <haplotype_id> @linkml:String ;
+    (  $<HaplotypeForTarget_tes> (  <haplotype_id> @linkml:String ;
           <read_count> @linkml:Double ;
           <umi_count> @linkml:Double ?
        ) ;

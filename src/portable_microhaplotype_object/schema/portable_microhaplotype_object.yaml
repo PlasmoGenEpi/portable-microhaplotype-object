@@ -284,7 +284,6 @@ classes:
           what the intended genomic location of the primer is  
             
   Primers:
-    tree_root: true
     description: >-
       A holder of primer sequences
     attributes:
@@ -311,7 +310,7 @@ classes:
     description: >-
       Haplotype detected for a specific target
     slots:
-      - target_id
+#      - target_id
       - haplotype_id
     attributes:
       read_count:
@@ -576,6 +575,7 @@ classes:
   PortableMicrohaplotypeObject:
     description: >-
       Information on final results from a targeted amplicon analysis
+    tree_root: true
     attributes:
       specimen_infos:
         range: SpecimenInfo
@@ -587,6 +587,7 @@ classes:
       sequencing_info:
         range: SequencingInfo
         required: true
+        inlined_as_list: true
         description: >-
           the sequencing info for this project
       bioinformatics_info:

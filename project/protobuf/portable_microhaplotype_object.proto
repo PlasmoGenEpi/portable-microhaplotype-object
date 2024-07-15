@@ -46,7 +46,6 @@ message GenomicLocation
 // Haplotype detected for a specific target
 message HaplotypeForTarget
  {
-  string targetId = 0
   string haplotypeId = 0
   double readCount = 0
   double umiCount = 0

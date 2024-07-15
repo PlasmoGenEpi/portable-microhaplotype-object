@@ -394,7 +394,6 @@
         "TargetInfo",
         "RepresentativeHaplotypeSequences",
         "DemultiplexedTargetForSample",
-        "HaplotypeForTarget",
         "HaplotypesForTarget"
       ],
       "range": "string",
@@ -1910,7 +1909,6 @@
         }
       ],
       "class_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/Primers",
-      "tree_root": true,
       "@type": "ClassDefinition"
     },
     {
@@ -1942,7 +1940,6 @@
       "description": "Haplotype detected for a specific target",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
-        "target_id",
         "haplotype_id",
         "haplotypeForTarget__read_count",
         "haplotypeForTarget__umi_count"
@@ -2424,14 +2421,15 @@
         }
       ],
       "class_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/PortableMicrohaplotypeObject",
+      "tree_root": true,
       "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2024-07-14T23:25:43",
-  "source_file_size": 20177,
-  "generation_date": "2024-07-14T23:29:32",
+  "source_file_date": "2024-07-14T23:47:37",
+  "source_file_size": 20178,
+  "generation_date": "2024-07-14T23:47:43",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",

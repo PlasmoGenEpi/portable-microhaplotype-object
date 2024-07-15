@@ -1,5 +1,5 @@
 # Auto generated from portable_microhaplotype_object.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-07-14T23:29:33
+# Generation date: 2024-07-14T23:47:44
 # Schema: portable-microhaplotype-object
 #
 # id: https://plasmogenepi.github.io/portable-microhaplotype-object
@@ -496,17 +496,11 @@ class HaplotypeForTarget(YAMLRoot):
     class_name: ClassVar[str] = "HaplotypeForTarget"
     class_model_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT.HaplotypeForTarget
 
-    target_id: str = None
     haplotype_id: str = None
     read_count: float = None
     umi_count: Optional[float] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.target_id):
-            self.MissingRequiredField("target_id")
-        if not isinstance(self.target_id, str):
-            self.target_id = str(self.target_id)
-
         if self._is_empty(self.haplotype_id):
             self.MissingRequiredField("haplotype_id")
         if not isinstance(self.haplotype_id, str):

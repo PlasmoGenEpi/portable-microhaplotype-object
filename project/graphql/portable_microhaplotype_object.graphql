@@ -43,7 +43,6 @@ type GenomicLocation
 
 type HaplotypeForTarget
   {
-    targetId: String!
     haplotypeId: String!
     readCount: Double!
     umiCount: Double

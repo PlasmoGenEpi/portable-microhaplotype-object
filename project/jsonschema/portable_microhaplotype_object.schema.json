@@ -184,18 +184,12 @@
                     "description": "the read count associated with this haplotype",
                     "type": "number"
                 },
-                "target_id": {
-                    "description": "name of the target",
-                    "pattern": "^[A-z-._0-9]$",
-                    "type": "string"
-                },
                 "umi_count": {
                     "description": "the unique molecular identifier (umi) count associated with this haplotype",
                     "type": "number"
                 }
             },
             "required": [
-                "target_id",
                 "haplotype_id",
                 "read_count"
             ],
@@ -711,16 +705,53 @@
     "$id": "https://plasmogenepi.github.io/portable-microhaplotype-object",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
-    "description": "A holder of primer sequences",
+    "description": "Information on final results from a targeted amplicon analysis",
     "metamodel_version": "1.7.0",
     "properties": {
-        "entries": {
+        "bioinformatics_info": {
+            "description": "the bioinformatics pipeline info for this project",
+            "type": "string"
+        },
+        "haplotypes_detected": {
+            "$ref": "#/$defs/HaplotypesDetected",
+            "description": "the haplotypes detected in this projects"
+        },
+        "panel_info": {
+            "$ref": "#/$defs/PanelInfo",
+            "description": "the info on the panel used for this project"
+        },
+        "representative_haplotype_sequences": {
+            "description": "a list of the representative sequences for the results for this project",
             "items": {
-                "$ref": "#/$defs/PrimerInfo"
+                "$ref": "#/$defs/RepresentativeHaplotypeSequences"
             },
             "type": "array"
+        },
+        "sequencing_info": {
+            "$ref": "#/$defs/SequencingInfo",
+            "description": "the sequencing info for this project"
+        },
+        "specimen_infos": {
+            "description": "a list of SpecimenInfo of all the samples within this project",
+            "items": {
+                "$ref": "#/$defs/SpecimenInfo"
+            },
+            "type": "array"
+        },
+        "target_demultiplexed_samples": {
+            "$ref": "#/$defs/DemultiplexedSamples",
+            "description": "the raw demultiplex target counts for each sample  "
         }
     },
+    "required": [
+        "specimen_infos",
+        "sequencing_info",
+        "bioinformatics_info",
+        "panel_info",
+        "representative_haplotype_sequences",
+        "haplotypes_detected",
+        "target_demultiplexed_samples"
+    ],
     "title": "portable-microhaplotype-object",
     "type": "object",
     "version": null

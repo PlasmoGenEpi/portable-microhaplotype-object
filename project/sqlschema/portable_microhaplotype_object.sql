@@ -55,7 +55,6 @@
 --     * Slot: sample_id Description: the name of the sample
 -- # Class: "HaplotypeForTarget" Description: "Haplotype detected for a specific target"
 --     * Slot: id Description: 
---     * Slot: target_id Description: name of the target
 --     * Slot: haplotype_id Description: name of the haplotype, should be unique to this haplotype
 --     * Slot: read_count Description: the read count associated with this haplotype
 --     * Slot: umi_count Description: the unique molecular identifier (umi) count associated with this haplotype
@@ -252,7 +251,6 @@ CREATE TABLE "PrimerInfo" (
 );
 CREATE TABLE "HaplotypeForTarget" (
 	id INTEGER NOT NULL, 
-	target_id TEXT NOT NULL, 
 	haplotype_id TEXT NOT NULL, 
 	read_count FLOAT NOT NULL, 
 	umi_count FLOAT, 
