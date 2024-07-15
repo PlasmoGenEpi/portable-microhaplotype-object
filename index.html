@@ -380,8 +380,8 @@
 
 
 <h1 id="portable-microhaplotype-object">portable-microhaplotype-object</h1>
-<p>A shcema to define the minimum amount of data needed to export a microhaplotype calling pipeline analysis with associated metadata</p>
-<p>URI: https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object</p>
+<p>A schema to define the minimum amount of data needed to export a microhaplotype calling pipeline analysis with associated metadata</p>
+<p>URI: https://plasmogenepi.github.io/portable-microhaplotype-object</p>
 <p>Name: portable-microhaplotype-object</p>
 <h2 id="classes">Classes</h2>
 <table>
@@ -393,16 +393,84 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="NamedThing/">NamedThing</a></td>
-<td>A generic grouping for any identifiable entity</td>
+<td><a href="BioMethod/">BioMethod</a></td>
+<td>methodology description of a portion of a bioinformatics pipeline</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
-<td>Represents a PortableMicrohaplotypeObject</td>
+<td><a href="DemultiplexedSamples/">DemultiplexedSamples</a></td>
+<td>a list of raw reads counts for each sample for all targets within panel</td>
 </tr>
 <tr>
-<td><a href="PortableMicrohaplotypeObjectCollection/">PortableMicrohaplotypeObjectCollection</a></td>
-<td>A holder for PortableMicrohaplotypeObject objects</td>
+<td><a href="DemultiplexedTargetForSample/">DemultiplexedTargetForSample</a></td>
+<td>the raw read count for a sample for a target</td>
+</tr>
+<tr>
+<td><a href="DemultiplexedTargetsForSample/">DemultiplexedTargetsForSample</a></td>
+<td>a list of raw reads for a sample for all targets within panel</td>
+</tr>
+<tr>
+<td><a href="GenomeInfo/">GenomeInfo</a></td>
+<td>information on a genome</td>
+</tr>
+<tr>
+<td><a href="GenomicLocation/">GenomicLocation</a></td>
+<td>information on the genomic location of specific sequence</td>
+</tr>
+<tr>
+<td><a href="HaplotypeForTarget/">HaplotypeForTarget</a></td>
+<td>Haplotype detected for a specific target</td>
+</tr>
+<tr>
+<td><a href="HaplotypesDetected/">HaplotypesDetected</a></td>
+<td>the haplotypes detected in a targeted amplicon analysis</td>
+</tr>
+<tr>
+<td><a href="HaplotypesForSample/">HaplotypesForSample</a></td>
+<td>Haplotypes detected for a sample for all targets</td>
+</tr>
+<tr>
+<td><a href="HaplotypesForTarget/">HaplotypesForTarget</a></td>
+<td>Haplotypes detected for a specific target</td>
+</tr>
+<tr>
+<td><a href="PanelInfo/">PanelInfo</a></td>
+<td>information on a panel of targeted amplicon primer pairs</td>
+</tr>
+<tr>
+<td><a href="PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
+<td>Information on final results from a targeted amplicon analysis</td>
+</tr>
+<tr>
+<td><a href="PrimerInfo/">PrimerInfo</a></td>
+<td>information on a primer sequence</td>
+</tr>
+<tr>
+<td><a href="Primers/">Primers</a></td>
+<td>A holder of primer sequences</td>
+</tr>
+<tr>
+<td><a href="RepresentativeHaplotypeSequence/">RepresentativeHaplotypeSequence</a></td>
+<td>the representative sequence for a haplotype, similar to a fast(a/q) format</td>
+</tr>
+<tr>
+<td><a href="RepresentativeHaplotypeSequences/">RepresentativeHaplotypeSequences</a></td>
+<td>a list of the representative sequence for a haplotypes, similar to a fast(a/q) format</td>
+</tr>
+<tr>
+<td><a href="SequencingInfo/">SequencingInfo</a></td>
+<td>Information on sequencing info</td>
+</tr>
+<tr>
+<td><a href="SpecimenInfo/">SpecimenInfo</a></td>
+<td>Information on specimen info</td>
+</tr>
+<tr>
+<td><a href="TarAmpBioinformaticsInfo/">TarAmpBioinformaticsInfo</a></td>
+<td>the targeted amplicon bioinformatics pipeline</td>
+</tr>
+<tr>
+<td><a href="TargetInfo/">TargetInfo</a></td>
+<td>Information about a specific target within a genome</td>
 </tr>
 </tbody>
 </table>
@@ -416,36 +484,312 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="age_in_years/">age_in_years</a></td>
-<td>Number of years since birth</td>
+<td><a href="accession/">accession</a></td>
+<td>ERA/SRA accession number for the sample if it was submitted</td>
 </tr>
 <tr>
-<td><a href="birth_date/">birth_date</a></td>
-<td>Date on which a person is born</td>
+<td><a href="additional_argument/">additional_argument</a></td>
+<td>any additional arguments that differ from the default</td>
 </tr>
 <tr>
-<td><a href="description/">description</a></td>
-<td>A human-readable description for a thing</td>
+<td><a href="additional_methods/">additional_methods</a></td>
+<td>any additional methods used to analyze the data</td>
+</tr>
+<tr>
+<td><a href="alt_annotations/">alt_annotations</a></td>
+<td>a list of additional annotations associated with this haplotype, e</td>
+</tr>
+<tr>
+<td><a href="alternate_identifiers/">alternate_identifiers</a></td>
+<td>a list of optional alternative names for the samples</td>
+</tr>
+<tr>
+<td><a href="bioinformatics_id/">bioinformatics_id</a></td>
+<td>the name of the bioinformatics processing steps associated with this run</td>
+</tr>
+<tr>
+<td><a href="bioinformatics_info/">bioinformatics_info</a></td>
+<td>the bioinformatics pipeline info for this project</td>
+</tr>
+<tr>
+<td><a href="chrom/">chrom</a></td>
+<td>the chromosome name</td>
+</tr>
+<tr>
+<td><a href="collection_date/">collection_date</a></td>
+<td>the date of the sample collection</td>
+</tr>
+<tr>
+<td><a href="collector/">collector</a></td>
+<td>the name of the primary person managing the specimen</td>
+</tr>
+<tr>
+<td><a href="demultiplexed_samples/">demultiplexed_samples</a></td>
+<td>a list of the samples with the number of raw reads extracted</td>
+</tr>
+<tr>
+<td><a href="demultiplexed_targets/">demultiplexed_targets</a></td>
+<td>a list of the targets extracted for a sample</td>
+</tr>
+<tr>
+<td><a href="demultiplexing_method/">demultiplexing_method</a></td>
+<td>the demultiplexing method used to separate raw reads from barcodes and primer...</td>
+</tr>
+<tr>
+<td><a href="denoising_method/">denoising_method</a></td>
+<td>the method used to de-noise and/or cluster the raw reads</td>
+</tr>
+<tr>
+<td><a href="end/">end</a></td>
+<td>the end of the location, 0-based positioning</td>
 </tr>
 <tr>
 <td><a href="entries/">entries</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="id/">id</a></td>
-<td>A unique identifier for a thing</td>
+<td><a href="forward_primers/">forward_primers</a></td>
+<td>A holder of forward primers associated with this target</td>
+</tr>
+<tr>
+<td><a href="gene_id/">gene_id</a></td>
+<td>an identifier of the gene, if any, is being covered with this targeted</td>
+</tr>
+<tr>
+<td><a href="gff_url/">gff_url</a></td>
+<td>a link to the where this genome's annotation file could be downloaded</td>
+</tr>
+<tr>
+<td><a href="haplotype_id/">haplotype_id</a></td>
+<td>name of the haplotype, should be unique to this haplotype</td>
+</tr>
+<tr>
+<td><a href="haplotypes/">haplotypes</a></td>
+<td>a list of the haplotypes detected for this target</td>
+</tr>
+<tr>
+<td><a href="haplotypes_detected/">haplotypes_detected</a></td>
+<td>the haplotypes detected in this projects</td>
+</tr>
+<tr>
+<td><a href="host_taxon_id/">host_taxon_id</a></td>
+<td>optional the NCBI taxonomy number of the host of the organism</td>
+</tr>
+<tr>
+<td><a href="insert_location/">insert_location</a></td>
+<td>the intended genomic location of the insert of the amplicon (the location bet...</td>
+</tr>
+<tr>
+<td><a href="lat_lon/">lat_lon</a></td>
+<td>the latitude and longitude of the collection site of the specimen</td>
+</tr>
+<tr>
+<td><a href="lib_kit/">lib_kit</a></td>
+<td>Name, version, and applicable cell or cycle numbers for the kit used to prepa...</td>
+</tr>
+<tr>
+<td><a href="lib_layout/">lib_layout</a></td>
+<td>Specify the configuration of reads, e</td>
+</tr>
+<tr>
+<td><a href="lib_screen/">lib_screen</a></td>
+<td>Describe enrichment, screening, or normalization methods applied during ampli...</td>
+</tr>
+<tr>
+<td><a href="location/">location</a></td>
+<td>what the intended genomic location of the primer is</td>
 </tr>
 <tr>
 <td><a href="name/">name</a></td>
-<td>A human-readable name for a thing</td>
+<td>name of the genome</td>
 </tr>
 <tr>
-<td><a href="primary_email/">primary_email</a></td>
-<td>The main email address of a person</td>
+<td><a href="nucl_acid_amp/">nucl_acid_amp</a></td>
+<td>Link to a reference or kit that describes the enzymatic amplification of nucl...</td>
 </tr>
 <tr>
-<td><a href="vital_status/">vital_status</a></td>
-<td>living or dead status</td>
+<td><a href="nucl_acid_date/">nucl_acid_date</a></td>
+<td>the date of the extraction/amplification</td>
+</tr>
+<tr>
+<td><a href="nucl_acid_ext/">nucl_acid_ext</a></td>
+<td>Link to a reference or kit that describes the recovery of nucleic acids from ...</td>
+</tr>
+<tr>
+<td><a href="panel_id/">panel_id</a></td>
+<td>name of the panel</td>
+</tr>
+<tr>
+<td><a href="panel_info/">panel_info</a></td>
+<td>the info on the panel used for this project</td>
+</tr>
+<tr>
+<td><a href="parasite_density/">parasite_density</a></td>
+<td>the parasite density in microliters</td>
+</tr>
+<tr>
+<td><a href="pcr_cond/">pcr_cond</a></td>
+<td>the method/conditions for PCR, List PCR cycles used to amplify the target</td>
+</tr>
+<tr>
+<td><a href="plate_col/">plate_col</a></td>
+<td>the column the specimen was in</td>
+</tr>
+<tr>
+<td><a href="plate_name/">plate_name</a></td>
+<td>a name of plate the specimen was in</td>
+</tr>
+<tr>
+<td><a href="plate_row/">plate_row</a></td>
+<td>the row the specimen was in</td>
+</tr>
+<tr>
+<td><a href="population_clustering_method/">population_clustering_method</a></td>
+<td>the method used to compare clustered/de-noised reads across samples for a tar...</td>
+</tr>
+<tr>
+<td><a href="program/">program</a></td>
+<td>name of the program used for this portion of the pipeline</td>
+</tr>
+<tr>
+<td><a href="program_version/">program_version</a></td>
+<td>a versioning info for the program</td>
+</tr>
+<tr>
+<td><a href="project_name/">project_name</a></td>
+<td>a name of the project under which the sample is organized</td>
+</tr>
+<tr>
+<td><a href="purpose/">purpose</a></td>
+<td>the propose for this method</td>
+</tr>
+<tr>
+<td><a href="quality/">quality</a></td>
+<td>the ansi fastq per base quality score for this sequence, this is optional</td>
+</tr>
+<tr>
+<td><a href="raw_read_count/">raw_read_count</a></td>
+<td>the raw read counts extracted for a target for a sample</td>
+</tr>
+<tr>
+<td><a href="read_count/">read_count</a></td>
+<td>the read count associated with this haplotype</td>
+</tr>
+<tr>
+<td><a href="representative_haplotype_sequences/">representative_haplotype_sequences</a></td>
+<td>a list of the representative sequences for the results for this project</td>
+</tr>
+<tr>
+<td><a href="reverse_primers/">reverse_primers</a></td>
+<td>A holder of reverse primers associated with this target</td>
+</tr>
+<tr>
+<td><a href="samp_collect_device/">samp_collect_device</a></td>
+<td>the way the sample was collected, e</td>
+</tr>
+<tr>
+<td><a href="samp_store_loc/">samp_store_loc</a></td>
+<td>the sample store site, address or facility name</td>
+</tr>
+<tr>
+<td><a href="samp_taxon_id/">samp_taxon_id</a></td>
+<td>the NCBI taxonomy number of the organism of interest</td>
+</tr>
+<tr>
+<td><a href="sample_comments/">sample_comments</a></td>
+<td>any additional comments about the sample</td>
+</tr>
+<tr>
+<td><a href="sample_id/">sample_id</a></td>
+<td>the name of the sample</td>
+</tr>
+<tr>
+<td><a href="samples/">samples</a></td>
+<td>a list of the haplotypes detected for a sample for various targets</td>
+</tr>
+<tr>
+<td><a href="seq/">seq</a></td>
+<td>the DNA sequence</td>
+</tr>
+<tr>
+<td><a href="seq_center/">seq_center</a></td>
+<td>Name of facility where sequencing was performed (lab, core facility, or compa...</td>
+</tr>
+<tr>
+<td><a href="seq_date/">seq_date</a></td>
+<td>the date of sequencing, should be YYYY-MM or YYYY-MM-DD</td>
+</tr>
+<tr>
+<td><a href="seq_instrument/">seq_instrument</a></td>
+<td>the sequencing instrument used to sequence the run, e</td>
+</tr>
+<tr>
+<td><a href="seqs/">seqs</a></td>
+<td>a list of the haplotypes detected for a sample for various targets</td>
+</tr>
+<tr>
+<td><a href="sequencing_id/">sequencing_id</a></td>
+<td>the name of the sequencing/wet lab processing steps associated with this run</td>
+</tr>
+<tr>
+<td><a href="sequencing_info/">sequencing_info</a></td>
+<td>the sequencing info for this project</td>
+</tr>
+<tr>
+<td><a href="sequencing_info_id/">sequencing_info_id</a></td>
+<td>a unique identifier for this sequencing info</td>
+</tr>
+<tr>
+<td><a href="specimen_infos/">specimen_infos</a></td>
+<td>a list of SpecimenInfo of all the samples within this project</td>
+</tr>
+<tr>
+<td><a href="start/">start</a></td>
+<td>the start of the location, 0-based positioning</td>
+</tr>
+<tr>
+<td><a href="strand/">strand</a></td>
+<td>which strand the location is, either + for plus strand or - for negative stra...</td>
+</tr>
+<tr>
+<td><a href="tar_amp_bioinformatics_info_id/">tar_amp_bioinformatics_info_id</a></td>
+<td>a unique identifier for this bioinformatics info</td>
+</tr>
+<tr>
+<td><a href="target_demultiplexed_samples/">target_demultiplexed_samples</a></td>
+<td>the raw demultiplex target counts for each sample</td>
+</tr>
+<tr>
+<td><a href="target_genome/">target_genome</a></td>
+<td>the info on the target reference genome for this panel</td>
+</tr>
+<tr>
+<td><a href="target_id/">target_id</a></td>
+<td>name of the target</td>
+</tr>
+<tr>
+<td><a href="target_results/">target_results</a></td>
+<td>a list of the haplotypes detected for a list of targets</td>
+</tr>
+<tr>
+<td><a href="targets/">targets</a></td>
+<td>a list of the target infos for the targets in this panel</td>
+</tr>
+<tr>
+<td><a href="taxon_id/">taxon_id</a></td>
+<td>the NCBI taxonomy number</td>
+</tr>
+<tr>
+<td><a href="umi_count/">umi_count</a></td>
+<td>the unique molecular identifier (umi) count associated with this haplotype</td>
+</tr>
+<tr>
+<td><a href="url/">url</a></td>
+<td>a link to the where this genome file could be downloaded</td>
+</tr>
+<tr>
+<td><a href="version/">version</a></td>
+<td>the genome version</td>
 </tr>
 </tbody>
 </table>
@@ -459,7 +803,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="PersonStatus/">PersonStatus</a></td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
