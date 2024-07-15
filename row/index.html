@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/seq/">
+        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/row/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: seq - portable-microhaplotype-object</title>
+        <title>Slot: row - portable-microhaplotype-object</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-seq" class="md-skip">
+        <a href="#slot-row" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: seq
+              Slot: row
             
           </span>
         </div>
@@ -317,15 +317,15 @@
                 
                   
 
-  <a href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/seq.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/row.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-seq">Slot: seq</h1>
-<p><em>the DNA sequence</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/seq">portable_microhaplotype_object:seq</a></p>
+<h1 id="slot-row">Slot: row</h1>
+<p><em>the row the specimen was in</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/row">portable_microhaplotype_object:row</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -339,13 +339,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../RepresentativeHaplotypeSequence/">RepresentativeHaplotypeSequence</a></td>
-<td>the representative sequence for a haplotype, similar to a fast(a/q) format</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PrimerInfo/">PrimerInfo</a></td>
-<td>information on a primer sequence</td>
+<td><a href="../PlateWellInfo/">PlateWellInfo</a></td>
+<td>Information on plate location of the specimen</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -359,7 +354,7 @@
 <p>Required: True</p>
 </li>
 <li>
-<p>Regex pattern: <code>^[A-z]$</code></p>
+<p>Regex pattern: <code>^[A-z-._0-9 ]$</code></p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -378,28 +373,28 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:seq</td>
+<td>portable_microhaplotype_object:row</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:seq</td>
+<td>portable_microhaplotype_object:row</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: seq
-description: the DNA sequence
+<pre><code class="language-yaml">name: row
+description: the row the specimen was in
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-alias: seq
+alias: row
+owner: PlateWellInfo
 domain_of:
-- RepresentativeHaplotypeSequence
-- PrimerInfo
+- PlateWellInfo
 range: string
 required: true
-pattern: ^[A-z]$
+pattern: ^[A-z-._0-9 ]$
 
 </code></pre>
 

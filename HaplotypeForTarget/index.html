@@ -209,8 +209,6 @@
 
       HaplotypeForTarget : read_count
 
-      HaplotypeForTarget : target_id
-
       HaplotypeForTarget : umi_count
 
 
@@ -227,12 +225,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="../target_id/">target_id</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>name of the target</td>
-<td>direct</td>
-</tr>
 <tr>
 <td><a href="../haplotype_id/">haplotype_id</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
@@ -304,7 +296,6 @@
 description: Haplotype detected for a specific target
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
-- target_id
 - haplotype_id
 attributes:
   read_count:
@@ -358,22 +349,6 @@ attributes:
     - HaplotypeForTarget
     range: double
     required: false
-  target_id:
-    name: target_id
-    description: name of the target
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: target_id
-    owner: HaplotypeForTarget
-    domain_of:
-    - TargetInfo
-    - RepresentativeHaplotypeSequences
-    - DemultiplexedTargetForSample
-    - HaplotypeForTarget
-    - HaplotypesForTarget
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9]$
   haplotype_id:
     name: haplotype_id
     description: name of the haplotype, should be unique to this haplotype
