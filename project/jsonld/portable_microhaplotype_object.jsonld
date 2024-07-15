@@ -1435,6 +1435,7 @@
       "range": "SequencingInfo",
       "required": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2381,6 +2382,7 @@
           "description": "the sequencing info for this project",
           "range": "SequencingInfo",
           "required": true,
+          "inlined_as_list": true,
           "@type": "SlotDefinition"
         },
         {
@@ -2427,9 +2429,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2024-07-14T23:47:37",
-  "source_file_size": 20178,
-  "generation_date": "2024-07-14T23:47:43",
+  "source_file_date": "2024-07-15T00:03:19",
+  "source_file_size": 20208,
+  "generation_date": "2024-07-15T01:45:59",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",
