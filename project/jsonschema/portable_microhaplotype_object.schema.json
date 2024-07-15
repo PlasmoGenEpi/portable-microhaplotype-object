@@ -171,34 +171,34 @@
             "title": "GenomicLocation",
             "type": "object"
         },
-        "HaplotypeForTarget": {
+        "MicrohaplotypeForTarget": {
             "additionalProperties": false,
-            "description": "Haplotype detected for a specific target",
+            "description": "Microhaplotype detected for a specific target",
             "properties": {
-                "haplotype_id": {
-                    "description": "name of the haplotype, should be unique to this haplotype",
+                "microhaplotype_id": {
+                    "description": "name of the microhaplotype, should be unique to this microhaplotype",
                     "pattern": "^[A-z-._0-9]$",
                     "type": "string"
                 },
                 "read_count": {
-                    "description": "the read count associated with this haplotype",
+                    "description": "the read count associated with this microhaplotype",
                     "type": "number"
                 },
                 "umi_count": {
-                    "description": "the unique molecular identifier (umi) count associated with this haplotype",
+                    "description": "the unique molecular identifier (umi) count associated with this microhaplotype",
                     "type": "number"
                 }
             },
             "required": [
-                "haplotype_id",
+                "microhaplotype_id",
                 "read_count"
             ],
-            "title": "HaplotypeForTarget",
+            "title": "MicrohaplotypeForTarget",
             "type": "object"
         },
-        "HaplotypesDetected": {
+        "MicrohaplotypesDetected": {
             "additionalProperties": false,
-            "description": "the haplotypes detected in a targeted amplicon analysis",
+            "description": "the microhaplotypes detected in a targeted amplicon analysis",
             "properties": {
                 "bioinformatics_id": {
                     "description": "the name of the bioinformatics processing steps associated with this run",
@@ -206,7 +206,7 @@
                     "type": "string"
                 },
                 "samples": {
-                    "description": "a list of the haplotypes detected for a sample for various targets ",
+                    "description": "a list of the microhaplotypes detected for a sample for various targets ",
                     "items": {
                         "type": "string"
                     },
@@ -223,12 +223,12 @@
                 "bioinformatics_id",
                 "samples"
             ],
-            "title": "HaplotypesDetected",
+            "title": "MicrohaplotypesDetected",
             "type": "object"
         },
-        "HaplotypesForSample": {
+        "MicrohaplotypesForSample": {
             "additionalProperties": false,
-            "description": "Haplotypes detected for a sample for all targets",
+            "description": "Microhaplotypes detected for a sample for all targets",
             "properties": {
                 "sample_id": {
                     "description": "the name of the sample",
@@ -236,9 +236,9 @@
                     "type": "string"
                 },
                 "target_results": {
-                    "description": "a list of the haplotypes detected for a list of targets",
+                    "description": "a list of the microhaplotypes detected for a list of targets",
                     "items": {
-                        "$ref": "#/$defs/HaplotypesForTarget"
+                        "$ref": "#/$defs/MicrohaplotypesForTarget"
                     },
                     "type": "array"
                 }
@@ -247,17 +247,17 @@
                 "sample_id",
                 "target_results"
             ],
-            "title": "HaplotypesForSample",
+            "title": "MicrohaplotypesForSample",
             "type": "object"
         },
-        "HaplotypesForTarget": {
+        "MicrohaplotypesForTarget": {
             "additionalProperties": false,
-            "description": "Haplotypes detected for a specific target",
+            "description": "Microhaplotypes detected for a specific target",
             "properties": {
-                "haplotypes": {
-                    "description": "a list of the haplotypes detected for this target",
+                "microhaplotypes": {
+                    "description": "a list of the microhaplotypes detected for this target",
                     "items": {
-                        "$ref": "#/$defs/HaplotypeForTarget"
+                        "$ref": "#/$defs/MicrohaplotypeForTarget"
                     },
                     "type": "array"
                 },
@@ -269,9 +269,9 @@
             },
             "required": [
                 "target_id",
-                "haplotypes"
+                "microhaplotypes"
             ],
-            "title": "HaplotypesForTarget",
+            "title": "MicrohaplotypesForTarget",
             "type": "object"
         },
         "PanelInfo": {
@@ -311,18 +311,18 @@
                     "description": "the bioinformatics pipeline info for this project",
                     "type": "string"
                 },
-                "haplotypes_detected": {
-                    "$ref": "#/$defs/HaplotypesDetected",
-                    "description": "the haplotypes detected in this projects"
+                "microhaplotypes_detected": {
+                    "$ref": "#/$defs/MicrohaplotypesDetected",
+                    "description": "the microhaplotypes detected in this projects"
                 },
                 "panel_info": {
                     "$ref": "#/$defs/PanelInfo",
                     "description": "the info on the panel used for this project"
                 },
-                "representative_haplotype_sequences": {
+                "representative_microhaplotype_sequences": {
                     "description": "a list of the representative sequences for the results for this project",
                     "items": {
-                        "$ref": "#/$defs/RepresentativeHaplotypeSequences"
+                        "$ref": "#/$defs/RepresentativeMicrohaplotypeSequences"
                     },
                     "type": "array"
                 },
@@ -347,8 +347,8 @@
                 "sequencing_info",
                 "bioinformatics_info",
                 "panel_info",
-                "representative_haplotype_sequences",
-                "haplotypes_detected",
+                "representative_microhaplotype_sequences",
+                "microhaplotypes_detected",
                 "target_demultiplexed_samples"
             ],
             "title": "PortableMicrohaplotypeObject",
@@ -389,19 +389,19 @@
             "title": "Primers",
             "type": "object"
         },
-        "RepresentativeHaplotypeSequence": {
+        "RepresentativeMicrohaplotypeSequence": {
             "additionalProperties": false,
-            "description": "the representative sequence for a haplotype, similar to a fast(a/q) format",
+            "description": "the representative sequence for a microhaplotype, similar to a fast(a/q) format",
             "properties": {
                 "alt_annotations": {
-                    "description": "a list of additional annotations associated with this haplotype, e.g. wildtype, amino acid changes etc",
+                    "description": "a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
-                "haplotype_id": {
-                    "description": "name of the haplotype, should be unique to this haplotype",
+                "microhaplotype_id": {
+                    "description": "name of the microhaplotype, should be unique to this microhaplotype",
                     "pattern": "^[A-z-._0-9]$",
                     "type": "string"
                 },
@@ -418,19 +418,19 @@
             },
             "required": [
                 "seq",
-                "haplotype_id"
+                "microhaplotype_id"
             ],
-            "title": "RepresentativeHaplotypeSequence",
+            "title": "RepresentativeMicrohaplotypeSequence",
             "type": "object"
         },
-        "RepresentativeHaplotypeSequences": {
+        "RepresentativeMicrohaplotypeSequences": {
             "additionalProperties": false,
-            "description": "a list of the representative sequence for a haplotypes, similar to a fast(a/q) format",
+            "description": "a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format",
             "properties": {
                 "seqs": {
-                    "description": "a list of the haplotypes detected for a sample for various targets ",
+                    "description": "a list of the microhaplotypes detected for a sample for various targets ",
                     "items": {
-                        "$ref": "#/$defs/RepresentativeHaplotypeSequence"
+                        "$ref": "#/$defs/RepresentativeMicrohaplotypeSequence"
                     },
                     "type": "array"
                 },
@@ -444,7 +444,7 @@
                 "target_id",
                 "seqs"
             ],
-            "title": "RepresentativeHaplotypeSequences",
+            "title": "RepresentativeMicrohaplotypeSequences",
             "type": "object"
         },
         "SequencingInfo": {
@@ -712,18 +712,18 @@
             "description": "the bioinformatics pipeline info for this project",
             "type": "string"
         },
-        "haplotypes_detected": {
-            "$ref": "#/$defs/HaplotypesDetected",
-            "description": "the haplotypes detected in this projects"
+        "microhaplotypes_detected": {
+            "$ref": "#/$defs/MicrohaplotypesDetected",
+            "description": "the microhaplotypes detected in this projects"
         },
         "panel_info": {
             "$ref": "#/$defs/PanelInfo",
             "description": "the info on the panel used for this project"
         },
-        "representative_haplotype_sequences": {
+        "representative_microhaplotype_sequences": {
             "description": "a list of the representative sequences for the results for this project",
             "items": {
-                "$ref": "#/$defs/RepresentativeHaplotypeSequences"
+                "$ref": "#/$defs/RepresentativeMicrohaplotypeSequences"
             },
             "type": "array"
         },
@@ -748,8 +748,8 @@
         "sequencing_info",
         "bioinformatics_info",
         "panel_info",
-        "representative_haplotype_sequences",
-        "haplotypes_detected",
+        "representative_microhaplotype_sequences",
+        "microhaplotypes_detected",
         "target_demultiplexed_samples"
     ],
     "title": "portable-microhaplotype-object",

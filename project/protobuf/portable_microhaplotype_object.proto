@@ -43,31 +43,31 @@ message GenomicLocation
   integer end = 0
   string strand = 0
  }
-// Haplotype detected for a specific target
-message HaplotypeForTarget
+// Microhaplotype detected for a specific target
+message MicrohaplotypeForTarget
  {
-  string haplotypeId = 0
+  string microhaplotypeId = 0
   double readCount = 0
   double umiCount = 0
  }
-// the haplotypes detected in a targeted amplicon analysis
-message HaplotypesDetected
+// the microhaplotypes detected in a targeted amplicon analysis
+message MicrohaplotypesDetected
  {
   string sequencingId = 0
   string bioinformaticsId = 0
- repeated  haplotypesForSample samples = 0
+ repeated  microhaplotypesForSample samples = 0
  }
-// Haplotypes detected for a sample for all targets
-message HaplotypesForSample
+// Microhaplotypes detected for a sample for all targets
+message MicrohaplotypesForSample
  {
   string sampleId = 0
- repeated  haplotypesForTarget targetResults = 0
+ repeated  microhaplotypesForTarget targetResults = 0
  }
-// Haplotypes detected for a specific target
-message HaplotypesForTarget
+// Microhaplotypes detected for a specific target
+message MicrohaplotypesForTarget
  {
   string targetId = 0
- repeated  haplotypeForTarget haplotypes = 0
+ repeated  microhaplotypeForTarget microhaplotypes = 0
  }
 // information on a panel of targeted amplicon primer pairs
 message PanelInfo
@@ -83,8 +83,8 @@ message PortableMicrohaplotypeObject
   sequencingInfo sequencingInfo = 0
   tarAmpBioinformaticsInfo bioinformaticsInfo = 0
   panelInfo panelInfo = 0
- repeated  representativeHaplotypeSequences representativeHaplotypeSequences = 0
-  haplotypesDetected haplotypesDetected = 0
+ repeated  representativeMicrohaplotypeSequences representativeMicrohaplotypeSequences = 0
+  microhaplotypesDetected microhaplotypesDetected = 0
   demultiplexedSamples targetDemultiplexedSamples = 0
  }
 // information on a primer sequence
@@ -98,19 +98,19 @@ message Primers
  {
  repeated  primerInfo entries = 0
  }
-// the representative sequence for a haplotype, similar to a fast(a/q) format
-message RepresentativeHaplotypeSequence
+// the representative sequence for a microhaplotype, similar to a fast(a/q) format
+message RepresentativeMicrohaplotypeSequence
  {
   string seq = 0
-  string haplotypeId = 0
+  string microhaplotypeId = 0
   string quality = 0
  repeated  string altAnnotations = 0
  }
-// a list of the representative sequence for a haplotypes, similar to a fast(a/q) format
-message RepresentativeHaplotypeSequences
+// a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format
+message RepresentativeMicrohaplotypeSequences
  {
   string targetId = 0
- repeated  representativeHaplotypeSequence seqs = 0
+ repeated  representativeMicrohaplotypeSequence seqs = 0
  }
 // Information on sequencing info
 message SequencingInfo

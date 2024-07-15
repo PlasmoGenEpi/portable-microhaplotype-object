@@ -41,30 +41,30 @@ type GenomicLocation
     strand: String
   }
 
-type HaplotypeForTarget
+type MicrohaplotypeForTarget
   {
-    haplotypeId: String!
+    microhaplotypeId: String!
     readCount: Double!
     umiCount: Double
   }
 
-type HaplotypesDetected
+type MicrohaplotypesDetected
   {
     sequencingId: String!
     bioinformaticsId: String!
-    samples: [HaplotypesForSample]!
+    samples: [MicrohaplotypesForSample]!
   }
 
-type HaplotypesForSample
+type MicrohaplotypesForSample
   {
     sampleId: String!
-    targetResults: [HaplotypesForTarget]!
+    targetResults: [MicrohaplotypesForTarget]!
   }
 
-type HaplotypesForTarget
+type MicrohaplotypesForTarget
   {
     targetId: String!
-    haplotypes: [HaplotypeForTarget]!
+    microhaplotypes: [MicrohaplotypeForTarget]!
   }
 
 type PanelInfo
@@ -80,8 +80,8 @@ type PortableMicrohaplotypeObject
     sequencingInfo: SequencingInfo!
     bioinformaticsInfo: TarAmpBioinformaticsInfo!
     panelInfo: PanelInfo!
-    representativeHaplotypeSequences: [RepresentativeHaplotypeSequences]!
-    haplotypesDetected: HaplotypesDetected!
+    representativeMicrohaplotypeSequences: [RepresentativeMicrohaplotypeSequences]!
+    microhaplotypesDetected: MicrohaplotypesDetected!
     targetDemultiplexedSamples: DemultiplexedSamples!
   }
 
@@ -96,18 +96,18 @@ type Primers
     entries: [PrimerInfo]
   }
 
-type RepresentativeHaplotypeSequence
+type RepresentativeMicrohaplotypeSequence
   {
     seq: String!
-    haplotypeId: String!
+    microhaplotypeId: String!
     quality: String
     altAnnotations: [String]
   }
 
-type RepresentativeHaplotypeSequences
+type RepresentativeMicrohaplotypeSequences
   {
     targetId: String!
-    seqs: [RepresentativeHaplotypeSequence]!
+    seqs: [RepresentativeMicrohaplotypeSequence]!
   }
 
 type SequencingInfo

@@ -10,16 +10,16 @@
 --     * Slot: id Description: 
 --     * Slot: panel_id Description: name of the panel
 --     * Slot: target_genome_id Description: the info on the target reference genome for this panel
--- # Class: "RepresentativeHaplotypeSequence" Description: "the representative sequence for a haplotype, similar to a fast(a/q) format"
+-- # Class: "RepresentativeMicrohaplotypeSequence" Description: "the representative sequence for a microhaplotype, similar to a fast(a/q) format"
 --     * Slot: id Description: 
 --     * Slot: seq Description: the DNA sequence
---     * Slot: haplotype_id Description: name of the haplotype, should be unique to this haplotype
+--     * Slot: microhaplotype_id Description: name of the microhaplotype, should be unique to this microhaplotype
 --     * Slot: quality Description: the ansi fastq per base quality score for this sequence, this is optional
---     * Slot: RepresentativeHaplotypeSequences_id Description: Autocreated FK slot
--- # Class: "RepresentativeHaplotypeSequences" Description: "a list of the representative sequence for a haplotypes, similar to a fast(a/q) format"
+--     * Slot: RepresentativeMicrohaplotypeSequences_id Description: Autocreated FK slot
+-- # Class: "RepresentativeMicrohaplotypeSequences" Description: "a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format"
 --     * Slot: id Description: 
 --     * Slot: target_id Description: name of the target
--- # Class: "HaplotypesDetected" Description: "the haplotypes detected in a targeted amplicon analysis"
+-- # Class: "MicrohaplotypesDetected" Description: "the microhaplotypes detected in a targeted amplicon analysis"
 --     * Slot: id Description: 
 --     * Slot: sequencing_id Description: the name of the sequencing/wet lab processing steps associated with this run
 --     * Slot: bioinformatics_id Description: the name of the bioinformatics processing steps associated with this run
@@ -51,15 +51,15 @@
 --     * Slot: location_id Description: what the intended genomic location of the primer is    
 -- # Class: "Primers" Description: "A holder of primer sequences"
 --     * Slot: id Description: 
--- # Class: "HaplotypesForSample" Description: "Haplotypes detected for a sample for all targets"
+-- # Class: "MicrohaplotypesForSample" Description: "Microhaplotypes detected for a sample for all targets"
 --     * Slot: sample_id Description: the name of the sample
--- # Class: "HaplotypeForTarget" Description: "Haplotype detected for a specific target"
+-- # Class: "MicrohaplotypeForTarget" Description: "Microhaplotype detected for a specific target"
 --     * Slot: id Description: 
---     * Slot: haplotype_id Description: name of the haplotype, should be unique to this haplotype
---     * Slot: read_count Description: the read count associated with this haplotype
---     * Slot: umi_count Description: the unique molecular identifier (umi) count associated with this haplotype
---     * Slot: HaplotypesForTarget_id Description: Autocreated FK slot
--- # Class: "HaplotypesForTarget" Description: "Haplotypes detected for a specific target"
+--     * Slot: microhaplotype_id Description: name of the microhaplotype, should be unique to this microhaplotype
+--     * Slot: read_count Description: the read count associated with this microhaplotype
+--     * Slot: umi_count Description: the unique molecular identifier (umi) count associated with this microhaplotype
+--     * Slot: MicrohaplotypesForTarget_id Description: Autocreated FK slot
+-- # Class: "MicrohaplotypesForTarget" Description: "Microhaplotypes detected for a specific target"
 --     * Slot: id Description: 
 --     * Slot: target_id Description: name of the target
 -- # Class: "TarAmpBioinformaticsInfo" Description: "the targeted amplicon bioinformatics pipeline"
@@ -108,39 +108,39 @@
 --     * Slot: bioinformatics_info Description: the bioinformatics pipeline info for this project
 --     * Slot: sequencing_info_id Description: the sequencing info for this project
 --     * Slot: panel_info_id Description: the info on the panel used for this project
---     * Slot: haplotypes_detected_id Description: the haplotypes detected in this projects
+--     * Slot: microhaplotypes_detected_id Description: the microhaplotypes detected in this projects
 --     * Slot: target_demultiplexed_samples_id Description: the raw demultiplex target counts for each sample  
--- # Class: "RepresentativeHaplotypeSequence_alt_annotations" Description: ""
---     * Slot: RepresentativeHaplotypeSequence_id Description: Autocreated FK slot
---     * Slot: alt_annotations Description: a list of additional annotations associated with this haplotype, e.g. wildtype, amino acid changes etc
--- # Class: "HaplotypesDetected_samples" Description: ""
---     * Slot: HaplotypesDetected_id Description: Autocreated FK slot
---     * Slot: samples_sample_id Description: a list of the haplotypes detected for a sample for various targets 
+-- # Class: "RepresentativeMicrohaplotypeSequence_alt_annotations" Description: ""
+--     * Slot: RepresentativeMicrohaplotypeSequence_id Description: Autocreated FK slot
+--     * Slot: alt_annotations Description: a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc
+-- # Class: "MicrohaplotypesDetected_samples" Description: ""
+--     * Slot: MicrohaplotypesDetected_id Description: Autocreated FK slot
+--     * Slot: samples_sample_id Description: a list of the microhaplotypes detected for a sample for various targets 
 -- # Class: "DemultiplexedSamples_demultiplexed_samples" Description: ""
 --     * Slot: DemultiplexedSamples_id Description: Autocreated FK slot
 --     * Slot: demultiplexed_samples_sample_id Description: a list of the samples with the number of raw reads extracted 
 -- # Class: "DemultiplexedTargetsForSample_demultiplexed_targets" Description: ""
 --     * Slot: DemultiplexedTargetsForSample_sample_id Description: Autocreated FK slot
 --     * Slot: demultiplexed_targets_id Description: a list of the targets extracted for a sample 
--- # Class: "HaplotypesForSample_target_results" Description: ""
---     * Slot: HaplotypesForSample_sample_id Description: Autocreated FK slot
---     * Slot: target_results_id Description: a list of the haplotypes detected for a list of targets
+-- # Class: "MicrohaplotypesForSample_target_results" Description: ""
+--     * Slot: MicrohaplotypesForSample_sample_id Description: Autocreated FK slot
+--     * Slot: target_results_id Description: a list of the microhaplotypes detected for a list of targets
 -- # Class: "BioMethod_additional_argument" Description: ""
 --     * Slot: BioMethod_id Description: Autocreated FK slot
 --     * Slot: additional_argument Description: any additional arguments that differ from the default
 -- # Class: "SpecimenInfo_alternate_identifiers" Description: ""
 --     * Slot: SpecimenInfo_sample_id Description: Autocreated FK slot
 --     * Slot: alternate_identifiers Description: a list of optional alternative names for the samples
--- # Class: "PortableMicrohaplotypeObject_representative_haplotype_sequences" Description: ""
+-- # Class: "PortableMicrohaplotypeObject_representative_microhaplotype_sequences" Description: ""
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
---     * Slot: representative_haplotype_sequences_id Description: a list of the representative sequences for the results for this project
+--     * Slot: representative_microhaplotype_sequences_id Description: a list of the representative sequences for the results for this project
 
-CREATE TABLE "RepresentativeHaplotypeSequences" (
+CREATE TABLE "RepresentativeMicrohaplotypeSequences" (
 	id INTEGER NOT NULL, 
 	target_id TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
-CREATE TABLE "HaplotypesDetected" (
+CREATE TABLE "MicrohaplotypesDetected" (
 	id INTEGER NOT NULL, 
 	sequencing_id TEXT NOT NULL, 
 	bioinformatics_id TEXT NOT NULL, 
@@ -181,11 +181,11 @@ CREATE TABLE "Primers" (
 	id INTEGER NOT NULL, 
 	PRIMARY KEY (id)
 );
-CREATE TABLE "HaplotypesForSample" (
+CREATE TABLE "MicrohaplotypesForSample" (
 	sample_id TEXT NOT NULL, 
 	PRIMARY KEY (sample_id)
 );
-CREATE TABLE "HaplotypesForTarget" (
+CREATE TABLE "MicrohaplotypesForTarget" (
 	id INTEGER NOT NULL, 
 	target_id TEXT NOT NULL, 
 	PRIMARY KEY (id)
@@ -231,14 +231,14 @@ CREATE TABLE "PanelInfo" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(target_genome_id) REFERENCES "GenomeInfo" (id)
 );
-CREATE TABLE "RepresentativeHaplotypeSequence" (
+CREATE TABLE "RepresentativeMicrohaplotypeSequence" (
 	id INTEGER NOT NULL, 
 	seq TEXT NOT NULL, 
-	haplotype_id TEXT NOT NULL, 
+	microhaplotype_id TEXT NOT NULL, 
 	quality TEXT, 
-	"RepresentativeHaplotypeSequences_id" INTEGER, 
+	"RepresentativeMicrohaplotypeSequences_id" INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY("RepresentativeHaplotypeSequences_id") REFERENCES "RepresentativeHaplotypeSequences" (id)
+	FOREIGN KEY("RepresentativeMicrohaplotypeSequences_id") REFERENCES "RepresentativeMicrohaplotypeSequences" (id)
 );
 CREATE TABLE "PrimerInfo" (
 	id INTEGER NOT NULL, 
@@ -249,21 +249,21 @@ CREATE TABLE "PrimerInfo" (
 	FOREIGN KEY("Primers_id") REFERENCES "Primers" (id), 
 	FOREIGN KEY(location_id) REFERENCES "GenomicLocation" (id)
 );
-CREATE TABLE "HaplotypeForTarget" (
+CREATE TABLE "MicrohaplotypeForTarget" (
 	id INTEGER NOT NULL, 
-	haplotype_id TEXT NOT NULL, 
+	microhaplotype_id TEXT NOT NULL, 
 	read_count FLOAT NOT NULL, 
 	umi_count FLOAT, 
-	"HaplotypesForTarget_id" INTEGER, 
+	"MicrohaplotypesForTarget_id" INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY("HaplotypesForTarget_id") REFERENCES "HaplotypesForTarget" (id)
+	FOREIGN KEY("MicrohaplotypesForTarget_id") REFERENCES "MicrohaplotypesForTarget" (id)
 );
-CREATE TABLE "HaplotypesDetected_samples" (
-	"HaplotypesDetected_id" INTEGER, 
+CREATE TABLE "MicrohaplotypesDetected_samples" (
+	"MicrohaplotypesDetected_id" INTEGER, 
 	samples_sample_id TEXT NOT NULL, 
-	PRIMARY KEY ("HaplotypesDetected_id", samples_sample_id), 
-	FOREIGN KEY("HaplotypesDetected_id") REFERENCES "HaplotypesDetected" (id), 
-	FOREIGN KEY(samples_sample_id) REFERENCES "HaplotypesForSample" (sample_id)
+	PRIMARY KEY ("MicrohaplotypesDetected_id", samples_sample_id), 
+	FOREIGN KEY("MicrohaplotypesDetected_id") REFERENCES "MicrohaplotypesDetected" (id), 
+	FOREIGN KEY(samples_sample_id) REFERENCES "MicrohaplotypesForSample" (sample_id)
 );
 CREATE TABLE "DemultiplexedSamples_demultiplexed_samples" (
 	"DemultiplexedSamples_id" INTEGER, 
@@ -279,12 +279,12 @@ CREATE TABLE "DemultiplexedTargetsForSample_demultiplexed_targets" (
 	FOREIGN KEY("DemultiplexedTargetsForSample_sample_id") REFERENCES "DemultiplexedTargetsForSample" (sample_id), 
 	FOREIGN KEY(demultiplexed_targets_id) REFERENCES "DemultiplexedTargetForSample" (id)
 );
-CREATE TABLE "HaplotypesForSample_target_results" (
-	"HaplotypesForSample_sample_id" TEXT, 
+CREATE TABLE "MicrohaplotypesForSample_target_results" (
+	"MicrohaplotypesForSample_sample_id" TEXT, 
 	target_results_id INTEGER NOT NULL, 
-	PRIMARY KEY ("HaplotypesForSample_sample_id", target_results_id), 
-	FOREIGN KEY("HaplotypesForSample_sample_id") REFERENCES "HaplotypesForSample" (sample_id), 
-	FOREIGN KEY(target_results_id) REFERENCES "HaplotypesForTarget" (id)
+	PRIMARY KEY ("MicrohaplotypesForSample_sample_id", target_results_id), 
+	FOREIGN KEY("MicrohaplotypesForSample_sample_id") REFERENCES "MicrohaplotypesForSample" (sample_id), 
+	FOREIGN KEY(target_results_id) REFERENCES "MicrohaplotypesForTarget" (id)
 );
 CREATE TABLE "BioMethod_additional_argument" (
 	"BioMethod_id" INTEGER, 
@@ -311,20 +311,20 @@ CREATE TABLE "PortableMicrohaplotypeObject" (
 	bioinformatics_info TEXT NOT NULL, 
 	sequencing_info_id INTEGER NOT NULL, 
 	panel_info_id INTEGER NOT NULL, 
-	haplotypes_detected_id INTEGER NOT NULL, 
+	microhaplotypes_detected_id INTEGER NOT NULL, 
 	target_demultiplexed_samples_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(bioinformatics_info) REFERENCES "TarAmpBioinformaticsInfo" (tar_amp_bioinformatics_info_id), 
 	FOREIGN KEY(sequencing_info_id) REFERENCES "SequencingInfo" (id), 
 	FOREIGN KEY(panel_info_id) REFERENCES "PanelInfo" (id), 
-	FOREIGN KEY(haplotypes_detected_id) REFERENCES "HaplotypesDetected" (id), 
+	FOREIGN KEY(microhaplotypes_detected_id) REFERENCES "MicrohaplotypesDetected" (id), 
 	FOREIGN KEY(target_demultiplexed_samples_id) REFERENCES "DemultiplexedSamples" (id)
 );
-CREATE TABLE "RepresentativeHaplotypeSequence_alt_annotations" (
-	"RepresentativeHaplotypeSequence_id" INTEGER, 
+CREATE TABLE "RepresentativeMicrohaplotypeSequence_alt_annotations" (
+	"RepresentativeMicrohaplotypeSequence_id" INTEGER, 
 	alt_annotations TEXT, 
-	PRIMARY KEY ("RepresentativeHaplotypeSequence_id", alt_annotations), 
-	FOREIGN KEY("RepresentativeHaplotypeSequence_id") REFERENCES "RepresentativeHaplotypeSequence" (id)
+	PRIMARY KEY ("RepresentativeMicrohaplotypeSequence_id", alt_annotations), 
+	FOREIGN KEY("RepresentativeMicrohaplotypeSequence_id") REFERENCES "RepresentativeMicrohaplotypeSequence" (id)
 );
 CREATE TABLE "SpecimenInfo" (
 	sample_id TEXT NOT NULL, 
@@ -346,12 +346,12 @@ CREATE TABLE "SpecimenInfo" (
 	PRIMARY KEY (sample_id), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
 );
-CREATE TABLE "PortableMicrohaplotypeObject_representative_haplotype_sequences" (
+CREATE TABLE "PortableMicrohaplotypeObject_representative_microhaplotype_sequences" (
 	"PortableMicrohaplotypeObject_id" INTEGER, 
-	representative_haplotype_sequences_id INTEGER NOT NULL, 
-	PRIMARY KEY ("PortableMicrohaplotypeObject_id", representative_haplotype_sequences_id), 
+	representative_microhaplotype_sequences_id INTEGER NOT NULL, 
+	PRIMARY KEY ("PortableMicrohaplotypeObject_id", representative_microhaplotype_sequences_id), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id), 
-	FOREIGN KEY(representative_haplotype_sequences_id) REFERENCES "RepresentativeHaplotypeSequences" (id)
+	FOREIGN KEY(representative_microhaplotype_sequences_id) REFERENCES "RepresentativeMicrohaplotypeSequences" (id)
 );
 CREATE TABLE "SpecimenInfo_alternate_identifiers" (
 	"SpecimenInfo_sample_id" TEXT, 

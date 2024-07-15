@@ -94,35 +94,35 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<HaplotypeForTarget> CLOSED {
-    (  $<HaplotypeForTarget_tes> (  <haplotype_id> @linkml:String ;
+<MicrohaplotypeForTarget> CLOSED {
+    (  $<MicrohaplotypeForTarget_tes> (  <microhaplotype_id> @linkml:String ;
           <read_count> @linkml:Double ;
           <umi_count> @linkml:Double ?
        ) ;
-       rdf:type [ <HaplotypeForTarget> ] ?
+       rdf:type [ <MicrohaplotypeForTarget> ] ?
     )
 }
 
-<HaplotypesDetected> CLOSED {
-    (  $<HaplotypesDetected_tes> (  <sequencing_id> @linkml:String ;
+<MicrohaplotypesDetected> CLOSED {
+    (  $<MicrohaplotypesDetected_tes> (  <sequencing_id> @linkml:String ;
           <bioinformatics_id> @linkml:String ;
-          <samples> @<HaplotypesForSample> +
+          <samples> @<MicrohaplotypesForSample> +
        ) ;
-       rdf:type [ <HaplotypesDetected> ] ?
+       rdf:type [ <MicrohaplotypesDetected> ] ?
     )
 }
 
-<HaplotypesForSample> CLOSED {
-    (  $<HaplotypesForSample_tes> <target_results> @<HaplotypesForTarget> + ;
-       rdf:type [ <HaplotypesForSample> ]
+<MicrohaplotypesForSample> CLOSED {
+    (  $<MicrohaplotypesForSample_tes> <target_results> @<MicrohaplotypesForTarget> + ;
+       rdf:type [ <MicrohaplotypesForSample> ]
     )
 }
 
-<HaplotypesForTarget> CLOSED {
-    (  $<HaplotypesForTarget_tes> (  <target_id> @linkml:String ;
-          <haplotypes> @<HaplotypeForTarget> +
+<MicrohaplotypesForTarget> CLOSED {
+    (  $<MicrohaplotypesForTarget_tes> (  <target_id> @linkml:String ;
+          <microhaplotypes> @<MicrohaplotypeForTarget> +
        ) ;
-       rdf:type [ <HaplotypesForTarget> ] ?
+       rdf:type [ <MicrohaplotypesForTarget> ] ?
     )
 }
 
@@ -140,8 +140,8 @@ linkml:Sparqlpath xsd:string
           <sequencing_info> @<SequencingInfo> ;
           <bioinformatics_info> @<TarAmpBioinformaticsInfo> ;
           <panel_info> @<PanelInfo> ;
-          <representative_haplotype_sequences> @<RepresentativeHaplotypeSequences> + ;
-          <haplotypes_detected> @<HaplotypesDetected> ;
+          <representative_microhaplotype_sequences> @<RepresentativeMicrohaplotypeSequences> + ;
+          <microhaplotypes_detected> @<MicrohaplotypesDetected> ;
           <target_demultiplexed_samples> @<DemultiplexedSamples>
        ) ;
        rdf:type [ <PortableMicrohaplotypeObject> ] ?
@@ -162,21 +162,21 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<RepresentativeHaplotypeSequence> CLOSED {
-    (  $<RepresentativeHaplotypeSequence_tes> (  <seq> @linkml:String ;
-          <haplotype_id> @linkml:String ;
+<RepresentativeMicrohaplotypeSequence> CLOSED {
+    (  $<RepresentativeMicrohaplotypeSequence_tes> (  <seq> @linkml:String ;
+          <microhaplotype_id> @linkml:String ;
           <quality> @linkml:String ? ;
           <alt_annotations> @linkml:String *
        ) ;
-       rdf:type [ <RepresentativeHaplotypeSequence> ] ?
+       rdf:type [ <RepresentativeMicrohaplotypeSequence> ] ?
     )
 }
 
-<RepresentativeHaplotypeSequences> CLOSED {
-    (  $<RepresentativeHaplotypeSequences_tes> (  <target_id> @linkml:String ;
-          <seqs> @<RepresentativeHaplotypeSequence> +
+<RepresentativeMicrohaplotypeSequences> CLOSED {
+    (  $<RepresentativeMicrohaplotypeSequences_tes> (  <target_id> @linkml:String ;
+          <seqs> @<RepresentativeMicrohaplotypeSequence> +
        ) ;
-       rdf:type [ <RepresentativeHaplotypeSequences> ] ?
+       rdf:type [ <RepresentativeMicrohaplotypeSequences> ] ?
     )
 }
 

@@ -106,12 +106,12 @@ classes:
         description: >-
           a list of the target infos for the targets in this panel 
 
-  RepresentativeHaplotypeSequence:
+  RepresentativeMicrohaplotypeSequence:
     description: >-
-      the representative sequence for a haplotype, similar to a fast(a/q) format
+      the representative sequence for a microhaplotype, similar to a fast(a/q) format
     slots:
       - seq
-      - haplotype_id
+      - microhaplotype_id
     attributes:
       quality:
         range: string
@@ -125,28 +125,28 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of additional annotations associated with this haplotype, e.g. wildtype, amino acid changes etc
+          a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc
 
-  RepresentativeHaplotypeSequences:
+  RepresentativeMicrohaplotypeSequences:
     description: >-
-      a list of the representative sequence for a haplotypes, similar to a fast(a/q) format
+      a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format
     slots:
       - target_id
     attributes:
       seqs:
         required: true
-        range: RepresentativeHaplotypeSequence
+        range: RepresentativeMicrohaplotypeSequence
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of the haplotypes detected for a sample for various targets 
+          a list of the microhaplotypes detected for a sample for various targets 
       
 
 
 
-  HaplotypesDetected:
+  MicrohaplotypesDetected:
     description: >-
-      the haplotypes detected in a targeted amplicon analysis
+      the microhaplotypes detected in a targeted amplicon analysis
     attributes:
       sequencing_id:
         range: string
@@ -162,11 +162,11 @@ classes:
           the name of the bioinformatics processing steps associated with this run
       samples:
         required: true
-        range: HaplotypesForSample
+        range: MicrohaplotypesForSample
         multivalued: true
         inlined_as_list: false
         description: >-
-          a list of the haplotypes detected for a sample for various targets 
+          a list of the microhaplotypes detected for a sample for various targets 
 
   DemultiplexedSamples:
     description: >-
@@ -292,51 +292,51 @@ classes:
         multivalued: true
         inlined: true
 
-  HaplotypesForSample:
+  MicrohaplotypesForSample:
     description: >-
-      Haplotypes detected for a sample for all targets
+      Microhaplotypes detected for a sample for all targets
     slots:
       - sample_id
     attributes:
       target_results:
         required: true
-        range: HaplotypesForTarget
+        range: MicrohaplotypesForTarget
         multivalued: true
         inlined_as_list: false
         description: >-
-          a list of the haplotypes detected for a list of targets
+          a list of the microhaplotypes detected for a list of targets
 
-  HaplotypeForTarget:
+  MicrohaplotypeForTarget:
     description: >-
-      Haplotype detected for a specific target
+      Microhaplotype detected for a specific target
     slots:
 #      - target_id
-      - haplotype_id
+      - microhaplotype_id
     attributes:
       read_count:
         required: true
         range: double
         description: >-
-          the read count associated with this haplotype
+          the read count associated with this microhaplotype
       umi_count:
         required: false
         range: double
         description: >-
-          the unique molecular identifier (umi) count associated with this haplotype
+          the unique molecular identifier (umi) count associated with this microhaplotype
 
-  HaplotypesForTarget:
+  MicrohaplotypesForTarget:
     description: >-
-      Haplotypes detected for a specific target
+      Microhaplotypes detected for a specific target
     slots:
       - target_id
     attributes:
-      haplotypes:
+      microhaplotypes:
         required: true
-        range: HaplotypeForTarget
+        range: MicrohaplotypeForTarget
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of the haplotypes detected for this target
+          a list of the microhaplotypes detected for this target
 
   TarAmpBioinformaticsInfo:
     description: >-
@@ -600,18 +600,18 @@ classes:
         required: true
         description: >-
           the info on the panel used for this project
-      representative_haplotype_sequences:
-        range: RepresentativeHaplotypeSequences
+      representative_microhaplotype_sequences:
+        range: RepresentativeMicrohaplotypeSequences
         required: true
         multivalued: true
         inlined_as_list: false
         description: >-
           a list of the representative sequences for the results for this project
-      haplotypes_detected:
-        range: HaplotypesDetected
+      microhaplotypes_detected:
+        range: MicrohaplotypesDetected
         required: true
         description: >-
-          the haplotypes detected in this projects
+          the microhaplotypes detected in this projects
       target_demultiplexed_samples:
         range: DemultiplexedSamples
         required: true
@@ -638,12 +638,12 @@ slots:
     required: true
     description: >-
       name of the target
-  haplotype_id:
+  microhaplotype_id:
     range: string
     pattern: "^[A-z-._0-9]$"
     required: true
     description: >-
-      name of the haplotype, should be unique to this haplotype
+      name of the microhaplotype, should be unique to this microhaplotype
 
 # slots:
 #   id:
