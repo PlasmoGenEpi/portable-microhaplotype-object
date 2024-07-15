@@ -1,0 +1,96 @@
+---
+id: https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object
+name: portable-microhaplotype-object
+title: portable-microhaplotype-object
+description: |-
+  A shcema to define the minimum amount of data needed to export a microhaplotype calling pipeline analysis with associated metadata
+license: GNU GPL v3.0
+see_also:
+  - https://PlasmoGenEpi.github.io/portable-microhaplotype-object
+
+prefixes:
+  portable_microhaplotype_object: https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object/
+  linkml: https://w3id.org/linkml/
+  biolink: https://w3id.org/biolink/
+  schema: http://schema.org/
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  example: https://example.org/
+default_prefix: portable_microhaplotype_object
+default_range: string
+
+imports:
+  - linkml:types
+
+classes:
+
+  NamedThing:
+    description: >-
+      A generic grouping for any identifiable entity
+    slots:
+      - id
+      - name
+      - description
+    class_uri: schema:Thing
+
+  PortableMicrohaplotypeObject:
+    is_a: NamedThing
+    description: >-
+      Represents a PortableMicrohaplotypeObject
+    slots:
+      - primary_email
+      - birth_date
+      - age_in_years
+      - vital_status
+    slot_usage:
+      primary_email:
+        pattern: "^\\S+@[\\S+\\.]+\\S+"
+
+  PortableMicrohaplotypeObjectCollection:
+    tree_root: true
+    description: >-
+      A holder for PortableMicrohaplotypeObject objects
+    attributes:
+      entries:
+        range: PortableMicrohaplotypeObject
+        multivalued: true
+        inlined: true
+
+slots:
+  id:
+    identifier: true
+    slot_uri: schema:identifier
+    range: uriorcurie
+    description: A unique identifier for a thing
+  name:
+    slot_uri: schema:name
+    description: A human-readable name for a thing
+  description:
+    slot_uri: schema:description
+    description: A human-readable description for a thing
+  primary_email:
+    slot_uri: schema:email
+    description: The main email address of a person
+  birth_date:
+    slot_uri: schema:birthDate
+    range: date
+    description: Date on which a person is born
+  age_in_years:
+    range: integer
+    description: Number of years since birth
+  vital_status:
+    range: PersonStatus
+    description: living or dead status
+
+enums:
+  PersonStatus:
+    permissible_values:
+      ALIVE:
+        description: the person is living
+        meaning: PATO:0001421
+      DEAD:
+        description: the person is deceased
+        meaning: PATO:0001422
+      UNKNOWN:
+        description: the vital status is not known
+        todos:
+          - map this to an ontology

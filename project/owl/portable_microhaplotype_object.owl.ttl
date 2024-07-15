@@ -1,0 +1,182 @@
+@prefix PATO: <http://purl.obolibrary.org/obo/PATO_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix portable_microhaplotype_object: <https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+portable_microhaplotype_object:PortableMicrohaplotypeObjectCollection a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "PortableMicrohaplotypeObjectCollection" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:PortableMicrohaplotypeObject ;
+            owl:onProperty portable_microhaplotype_object:entries ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:entries ] ;
+    skos:definition "A holder for PortableMicrohaplotypeObject objects" ;
+    skos:inScheme <https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object> .
+
+portable_microhaplotype_object:NamedThing a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "NamedThing" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty portable_microhaplotype_object:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty portable_microhaplotype_object:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty portable_microhaplotype_object:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:name ] ;
+    skos:definition "A generic grouping for any identifiable entity" ;
+    skos:exactMatch schema1:Thing ;
+    skos:inScheme <https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object> .
+
+portable_microhaplotype_object:PortableMicrohaplotypeObject a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "PortableMicrohaplotypeObject" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:age_in_years ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:vital_status ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Date ;
+            owl:onProperty portable_microhaplotype_object:birth_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:primary_email ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:onDatatype xsd:string ;
+                    owl:withRestrictions ( [ xsd:pattern "^\\S+@[\\S+\\.]+\\S+" ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:primary_email ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:primary_email ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:birth_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:birth_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:vital_status ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty portable_microhaplotype_object:age_in_years ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:PersonStatus ;
+            owl:onProperty portable_microhaplotype_object:vital_status ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:age_in_years ],
+        portable_microhaplotype_object:NamedThing ;
+    skos:definition "Represents a PortableMicrohaplotypeObject" ;
+    skos:inScheme <https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object> .
+
+PATO:0001421 a owl:Class,
+        portable_microhaplotype_object:PersonStatus ;
+    rdfs:label "ALIVE" ;
+    rdfs:subClassOf portable_microhaplotype_object:PersonStatus .
+
+PATO:0001422 a owl:Class,
+        portable_microhaplotype_object:PersonStatus ;
+    rdfs:label "DEAD" ;
+    rdfs:subClassOf portable_microhaplotype_object:PersonStatus .
+
+<https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object/PersonStatus#UNKNOWN> a owl:Class,
+        portable_microhaplotype_object:PersonStatus ;
+    rdfs:label "UNKNOWN" ;
+    rdfs:subClassOf portable_microhaplotype_object:PersonStatus .
+
+portable_microhaplotype_object:entries a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "entries" ;
+    skos:inScheme <https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object> .
+
+portable_microhaplotype_object:age_in_years a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "age_in_years" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Number of years since birth" ;
+    skos:inScheme <https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object> .
+
+portable_microhaplotype_object:birth_date a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "birth_date" ;
+    rdfs:range linkml:Date ;
+    skos:definition "Date on which a person is born" ;
+    skos:inScheme <https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object> .
+
+portable_microhaplotype_object:description a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "description" ;
+    skos:definition "A human-readable description for a thing" ;
+    skos:inScheme <https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object> .
+
+portable_microhaplotype_object:id a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "id" ;
+    rdfs:range linkml:Uriorcurie ;
+    skos:definition "A unique identifier for a thing" ;
+    skos:inScheme <https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object> .
+
+portable_microhaplotype_object:name a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "name" ;
+    skos:definition "A human-readable name for a thing" ;
+    skos:inScheme <https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object> .
+
+portable_microhaplotype_object:primary_email a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "primary_email" ;
+    skos:definition "The main email address of a person" ;
+    skos:inScheme <https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object> .
+
+portable_microhaplotype_object:vital_status a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "vital_status" ;
+    rdfs:range portable_microhaplotype_object:PersonStatus ;
+    skos:definition "living or dead status" ;
+    skos:inScheme <https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object> .
+
+portable_microhaplotype_object:PersonStatus a owl:Class,
+        linkml:EnumDefinition ;
+    owl:unionOf ( PATO:0001421 PATO:0001422 <https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object/PersonStatus#UNKNOWN> ) ;
+    linkml:permissible_values PATO:0001421,
+        PATO:0001422,
+        <https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object/PersonStatus#UNKNOWN> .
+
+<https://w3id.org/PlasmoGenEpi/portable-microhaplotype-object> a owl:Ontology ;
+    rdfs:label "portable-microhaplotype-object" ;
+    dcterms:license "GNU GPL v3.0" ;
+    dcterms:title "portable-microhaplotype-object" ;
+    rdfs:seeAlso <https://PlasmoGenEpi.github.io/portable-microhaplotype-object> ;
+    skos:definition "A shcema to define the minimum amount of data needed to export a microhaplotype calling pipeline analysis with associated metadata" .
+

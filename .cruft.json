@@ -1,0 +1,27 @@
+{
+  "template": "https://github.com/linkml/linkml-project-cookiecutter",
+  "commit": "b2da87eb7835bfec748a76823d098cac85e8363a",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "portable-microhaplotype-object",
+      "__project_slug": "portable_microhaplotype_object",
+      "github_org": "PlasmoGenEpi",
+      "__source_path": "src/portable_microhaplotype_object/schema/portable_microhaplotype_object.yaml",
+      "project_description": "A shcema to define the minimum amount of data needed to export a microhaplotype calling pipeline analysis with associated metadata",
+      "full_name": "Nicholas hathaway",
+      "email": "nickjhathaway@gmail.com",
+      "__author": "Nicholas hathaway <nickjhathaway@gmail.com>",
+      "license": "GNU GPL v3.0",
+      "main_schema_class": "PortableMicrohaplotypeObject",
+      "create_python_classes": "Yes",
+      "use_schemasheets": "No",
+      "google_sheet_id": "1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ",
+      "google_sheet_tabs": "personinfo enums",
+      "__google_sheet_module": "personinfo_enums",
+      "github_token_for_pypi_deployment": "PYPI_PASSWORD",
+      "_template": "https://github.com/linkml/linkml-project-cookiecutter"
+    }
+  },
+  "directory": null
+}
