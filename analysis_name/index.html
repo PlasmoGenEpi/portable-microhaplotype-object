@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/bioinformatics_info/">
+        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/analysis_name/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: bioinformatics_info - portable-microhaplotype-object</title>
+        <title>Slot: analysis_name - portable-microhaplotype-object</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-bioinformatics_info" class="md-skip">
+        <a href="#slot-analysis_name" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: bioinformatics_info
+              Slot: analysis_name
             
           </span>
         </div>
@@ -317,15 +317,15 @@
                 
                   
 
-  <a href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/bioinformatics_info.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/analysis_name.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-bioinformatics_info">Slot: bioinformatics_info</h1>
-<p><em>the bioinformatics pipeline info for this project</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/bioinformatics_info">portable_microhaplotype_object:bioinformatics_info</a></p>
+<h1 id="slot-analysis_name">Slot: analysis_name</h1>
+<p><em>a name for the analysis detailed here in this experiment, can be a concatenation of names if combined more than one PMO</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/analysis_name">portable_microhaplotype_object:analysis_name</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -348,7 +348,7 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../TarAmpBioinformaticsInfo/">TarAmpBioinformaticsInfo</a></p>
+<p>Range: <a href="../String/">String</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -370,26 +370,28 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:bioinformatics_info</td>
+<td>portable_microhaplotype_object:analysis_name</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:bioinformatics_info</td>
+<td>portable_microhaplotype_object:analysis_name</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: bioinformatics_info
-description: the bioinformatics pipeline info for this project
+<pre><code class="language-yaml">name: analysis_name
+description: a name for the analysis detailed here in this experiment, can be a concatenation
+  of names if combined more than one PMO
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-alias: bioinformatics_info
+identifier: true
+alias: analysis_name
 owner: PortableMicrohaplotypeObject
 domain_of:
 - PortableMicrohaplotypeObject
-range: TarAmpBioinformaticsInfo
+range: string
 required: true
 
 </code></pre>

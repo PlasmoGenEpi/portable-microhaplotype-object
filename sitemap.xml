@@ -236,12 +236,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/analysis_name/</loc>
+         <lastmod>2024-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/bioinformatics_id/</loc>
          <lastmod>2024-07-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/bioinformatics_info/</loc>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/bioinformatics_infos/</loc>
          <lastmod>2024-07-16</lastmod>
          <changefreq>daily</changefreq>
     </url>

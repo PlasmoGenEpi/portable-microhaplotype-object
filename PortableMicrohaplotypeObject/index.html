@@ -200,12 +200,14 @@
 <div class="mermaid"> classDiagram
     class PortableMicrohaplotypeObject
     click PortableMicrohaplotypeObject href "../PortableMicrohaplotypeObject"
-      PortableMicrohaplotypeObject : bioinformatics_info
+      PortableMicrohaplotypeObject : analysis_name
+
+      PortableMicrohaplotypeObject : bioinformatics_infos
 
 
 
 
-    PortableMicrohaplotypeObject --&gt; "1" TarAmpBioinformaticsInfo : bioinformatics_info
+    PortableMicrohaplotypeObject --&gt; "1" TarAmpBioinformaticsInfo : bioinformatics_infos
     click TarAmpBioinformaticsInfo href "../TarAmpBioinformaticsInfo"
 
 
@@ -287,6 +289,12 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../analysis_name/">analysis_name</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>a name for the analysis detailed here in this experiment, can be a concatenat...</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../experiment_infos/">experiment_infos</a></td>
 <td>1..* <br/> <a href="../ExperimentInfo/">ExperimentInfo</a></td>
 <td>a list of experiments of all the seq/amp of samples within this project</td>
@@ -302,12 +310,6 @@
 <td><a href="../sequencing_info/">sequencing_info</a></td>
 <td>1 <br/> <a href="../SequencingInfo/">SequencingInfo</a></td>
 <td>the sequencing info for this project</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../bioinformatics_info/">bioinformatics_info</a></td>
-<td>1 <br/> <a href="../TarAmpBioinformaticsInfo/">TarAmpBioinformaticsInfo</a></td>
-<td>the bioinformatics pipeline info for this project</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -332,6 +334,12 @@
 <td><a href="../target_demultiplexed_samples/">target_demultiplexed_samples</a></td>
 <td>1 <br/> <a href="../DemultiplexedSamples/">DemultiplexedSamples</a></td>
 <td>the raw demultiplex target counts for each sample</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../bioinformatics_infos/">bioinformatics_infos</a></td>
+<td>1 <br/> <a href="../TarAmpBioinformaticsInfo/">TarAmpBioinformaticsInfo</a></td>
+<td>the bioinformatics pipeline info for this project</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -368,6 +376,17 @@
 description: Information on final results from a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
+  analysis_name:
+    name: analysis_name
+    description: a name for the analysis detailed here in this experiment, can be
+      a concatenation of names if combined more than one PMO
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    identifier: true
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: string
+    required: true
   experiment_infos:
     name: experiment_infos
     description: a list of experiments of all the seq/amp of samples within this project
@@ -403,15 +422,6 @@ attributes:
     required: true
     inlined: true
     inlined_as_list: true
-  bioinformatics_info:
-    name: bioinformatics_info
-    description: the bioinformatics pipeline info for this project
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - PortableMicrohaplotypeObject
-    range: TarAmpBioinformaticsInfo
-    required: true
   panel_info:
     name: panel_info
     description: the info on the panel used for this project
@@ -443,13 +453,24 @@ attributes:
     required: true
   target_demultiplexed_samples:
     name: target_demultiplexed_samples
-    description: 'the raw demultiplex target counts for each sample  '
+    description: the raw demultiplex target counts for each sample
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - PortableMicrohaplotypeObject
     range: DemultiplexedSamples
     required: true
+  bioinformatics_infos:
+    name: bioinformatics_infos
+    description: the bioinformatics pipeline info for this project
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: TarAmpBioinformaticsInfo
+    required: true
+    inlined: true
+    inlined_as_list: true
 tree_root: true
 
 </code></pre>
@@ -460,6 +481,19 @@ tree_root: true
 description: Information on final results from a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
+  analysis_name:
+    name: analysis_name
+    description: a name for the analysis detailed here in this experiment, can be
+      a concatenation of names if combined more than one PMO
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    identifier: true
+    alias: analysis_name
+    owner: PortableMicrohaplotypeObject
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: string
+    required: true
   experiment_infos:
     name: experiment_infos
     description: a list of experiments of all the seq/amp of samples within this project
@@ -501,17 +535,6 @@ attributes:
     required: true
     inlined: true
     inlined_as_list: true
-  bioinformatics_info:
-    name: bioinformatics_info
-    description: the bioinformatics pipeline info for this project
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: bioinformatics_info
-    owner: PortableMicrohaplotypeObject
-    domain_of:
-    - PortableMicrohaplotypeObject
-    range: TarAmpBioinformaticsInfo
-    required: true
   panel_info:
     name: panel_info
     description: the info on the panel used for this project
@@ -549,7 +572,7 @@ attributes:
     required: true
   target_demultiplexed_samples:
     name: target_demultiplexed_samples
-    description: 'the raw demultiplex target counts for each sample  '
+    description: the raw demultiplex target counts for each sample
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: target_demultiplexed_samples
@@ -558,6 +581,19 @@ attributes:
     - PortableMicrohaplotypeObject
     range: DemultiplexedSamples
     required: true
+  bioinformatics_infos:
+    name: bioinformatics_infos
+    description: the bioinformatics pipeline info for this project
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: bioinformatics_infos
+    owner: PortableMicrohaplotypeObject
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: TarAmpBioinformaticsInfo
+    required: true
+    inlined: true
+    inlined_as_list: true
 tree_root: true
 
 </code></pre>
