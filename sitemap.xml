@@ -251,6 +251,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/collection_country/</loc>
+         <lastmod>2024-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/collection_date/</loc>
          <lastmod>2024-07-16</lastmod>
          <changefreq>daily</changefreq>
@@ -311,7 +316,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/geo_loc_name/</loc>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/geo_admin1/</loc>
+         <lastmod>2024-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/geo_admin2/</loc>
+         <lastmod>2024-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/geo_admin3/</loc>
          <lastmod>2024-07-16</lastmod>
          <changefreq>daily</changefreq>
     </url>

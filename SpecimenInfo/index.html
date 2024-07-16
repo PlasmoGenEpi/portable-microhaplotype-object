@@ -209,11 +209,17 @@
 
       SpecimenInfo : alternate_identifiers
 
+      SpecimenInfo : collection_country
+
       SpecimenInfo : collection_date
 
       SpecimenInfo : collector
 
-      SpecimenInfo : geo_loc_name
+      SpecimenInfo : geo_admin1
+
+      SpecimenInfo : geo_admin2
+
+      SpecimenInfo : geo_admin3
 
       SpecimenInfo : host_taxon_id
 
@@ -316,15 +322,33 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../lat_lon/">lat_lon</a></td>
+<td><a href="../collection_country/">collection_country</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>the latitude and longitude of the collection site of the specimen</td>
+<td>the name of country collected in, would be the same as admin level 0</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../geo_loc_name/">geo_loc_name</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>The geographical origin of the sample as defined by the country or sea name f...</td>
+<td><a href="../geo_admin1/">geo_admin1</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>geographical admin level 1, the secondary large demarcation of a nation (nati...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../geo_admin2/">geo_admin2</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>geographical admin level 2, the third large demarcation of a nation (nation =...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../geo_admin3/">geo_admin3</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>geographical admin level 3, the third large demarcation of a nation (nation =...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../lat_lon/">lat_lon</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the latitude and longitude of the collection site of the specimen</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -491,6 +515,60 @@ attributes:
     range: string
     required: true
     pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+  collection_country:
+    name: collection_country
+    description: the name of country collected in, would be the same as admin level
+      0
+    examples:
+    - value: Senegal
+    - value: USA
+    - value: Japan
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]$
+  geo_admin1:
+    name: geo_admin1
+    description: geographical admin level 1, the secondary large demarcation of a
+      nation (nation = admin level 0)
+    examples:
+    - value: State/Province
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9 ]$
+  geo_admin2:
+    name: geo_admin2
+    description: geographical admin level 2, the third large demarcation of a nation
+      (nation = admin level 0)
+    examples:
+    - value: city
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9 ]$
+  geo_admin3:
+    name: geo_admin3
+    description: geographical admin level 3, the third large demarcation of a nation
+      (nation = admin level 0)
+    examples:
+    - value: district of a city
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9 ]$
   lat_lon:
     name: lat_lon
     description: the latitude and longitude of the collection site of the specimen
@@ -499,31 +577,8 @@ attributes:
     domain_of:
     - SpecimenInfo
     range: string
-    required: true
+    required: false
     pattern: r'^[-+]?\d{1,2}(?:\.\d+)?,[-+]?\d{1,3}(?:\.\d+)?$'
-  geo_loc_name:
-    name: geo_loc_name
-    description: The geographical origin of the sample as defined by the country or
-      sea name followed by specific region name. Country or sea names should be chosen
-      from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology
-      (http://purl.bioontology.org/ontology/GAZ)
-    title: geographic location (country and/or sea,region)
-    examples:
-    - value: 'USA: Maryland, Bethesda'
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    keywords:
-    - geographic
-    - location
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: '^([^\s-]{1,2}|[^\s-]+.+[^\s-]+): ([^\s-]{1,2}|[^\s-]+.+[^\s-]+), ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'
-    structured_pattern:
-      syntax: '^{text}: {text}, {text}$'
-      interpolated: true
-      partial_match: true
   collector:
     name: collector
     description: the name of the primary person managing the specimen
@@ -676,6 +731,68 @@ attributes:
     range: string
     required: true
     pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+  collection_country:
+    name: collection_country
+    description: the name of country collected in, would be the same as admin level
+      0
+    examples:
+    - value: Senegal
+    - value: USA
+    - value: Japan
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: collection_country
+    owner: SpecimenInfo
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]$
+  geo_admin1:
+    name: geo_admin1
+    description: geographical admin level 1, the secondary large demarcation of a
+      nation (nation = admin level 0)
+    examples:
+    - value: State/Province
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: geo_admin1
+    owner: SpecimenInfo
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9 ]$
+  geo_admin2:
+    name: geo_admin2
+    description: geographical admin level 2, the third large demarcation of a nation
+      (nation = admin level 0)
+    examples:
+    - value: city
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: geo_admin2
+    owner: SpecimenInfo
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9 ]$
+  geo_admin3:
+    name: geo_admin3
+    description: geographical admin level 3, the third large demarcation of a nation
+      (nation = admin level 0)
+    examples:
+    - value: district of a city
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: geo_admin3
+    owner: SpecimenInfo
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9 ]$
   lat_lon:
     name: lat_lon
     description: the latitude and longitude of the collection site of the specimen
@@ -686,33 +803,8 @@ attributes:
     domain_of:
     - SpecimenInfo
     range: string
-    required: true
+    required: false
     pattern: r'^[-+]?\d{1,2}(?:\.\d+)?,[-+]?\d{1,3}(?:\.\d+)?$'
-  geo_loc_name:
-    name: geo_loc_name
-    description: The geographical origin of the sample as defined by the country or
-      sea name followed by specific region name. Country or sea names should be chosen
-      from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology
-      (http://purl.bioontology.org/ontology/GAZ)
-    title: geographic location (country and/or sea,region)
-    examples:
-    - value: 'USA: Maryland, Bethesda'
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    keywords:
-    - geographic
-    - location
-    alias: geo_loc_name
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: '^([^\s-]{1,2}|[^\s-]+.+[^\s-]+): ([^\s-]{1,2}|[^\s-]+.+[^\s-]+), ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'
-    structured_pattern:
-      syntax: '^{text}: {text}, {text}$'
-      interpolated: true
-      partial_match: true
   collector:
     name: collector
     description: the name of the primary person managing the specimen

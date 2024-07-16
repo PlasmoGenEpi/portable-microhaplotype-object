@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/geo_loc_name/">
+        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/geo_admin1/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: geographic location (country and/or sea,region) (geo_loc_name) - portable-microhaplotype-object</title>
+        <title>Slot: geo_admin1 - portable-microhaplotype-object</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-geographic-location-country-andor-searegion-geo_loc_name" class="md-skip">
+        <a href="#slot-geo_admin1" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: geographic location (country and/or sea,region) (geo_loc_name)
+              Slot: geo_admin1
             
           </span>
         </div>
@@ -324,15 +324,15 @@
                 
                   
 
-  <a href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/geo_loc_name.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/geo_admin1.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-geographic-location-country-andor-searegion-geo_loc_name">Slot: geographic location (country and/or sea,region) (geo_loc_name)</h1>
-<p><em>The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/geo_loc_name">portable_microhaplotype_object:geo_loc_name</a></p>
+<h1 id="slot-geo_admin1">Slot: geo_admin1</h1>
+<p><em>geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/geo_admin1">portable_microhaplotype_object:geo_admin1</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -358,10 +358,7 @@
 <p>Range: <a href="../String/">String</a></p>
 </li>
 <li>
-<p>Required: True</p>
-</li>
-<li>
-<p>Regex pattern: <code>^([^\s-]{1,2}|[^\s-]+.+[^\s-]+): ([^\s-]{1,2}|[^\s-]+.+[^\s-]+), ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$</code></p>
+<p>Regex pattern: <code>^[A-z-._0-9 ]$</code></p>
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
@@ -373,7 +370,7 @@
 </thead>
 <tbody>
 <tr>
-<td>USA: Maryland, Bethesda</td>
+<td>State/Province</td>
 </tr>
 </tbody>
 </table>
@@ -393,40 +390,31 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:geo_loc_name</td>
+<td>portable_microhaplotype_object:geo_admin1</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:geo_loc_name</td>
+<td>portable_microhaplotype_object:geo_admin1</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: geo_loc_name
-description: The geographical origin of the sample as defined by the country or sea
-  name followed by specific region name. Country or sea names should be chosen from
-  the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)
-title: geographic location (country and/or sea,region)
+<pre><code class="language-yaml">name: geo_admin1
+description: geographical admin level 1, the secondary large demarcation of a nation
+  (nation = admin level 0)
 examples:
-- value: 'USA: Maryland, Bethesda'
+- value: State/Province
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-keywords:
-- geographic
-- location
-alias: geo_loc_name
+alias: geo_admin1
 owner: SpecimenInfo
 domain_of:
 - SpecimenInfo
 range: string
-required: true
-pattern: '^([^\s-]{1,2}|[^\s-]+.+[^\s-]+): ([^\s-]{1,2}|[^\s-]+.+[^\s-]+), ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'
-structured_pattern:
-  syntax: '^{text}: {text}, {text}$'
-  interpolated: true
-  partial_match: true
+required: false
+pattern: ^[A-z-._0-9 ]$
 
 </code></pre>
 
