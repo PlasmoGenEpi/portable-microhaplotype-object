@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "portable_microhaplotype_object"
 version = "0.1.0"
-description = "A shcema to define the minimum amount of data needed to export a microhaplotype calling pipeline analysis with associated metadata"
+description = "A schema to define the minimum amount of data needed to export a microhaplotype calling pipeline analysis with associated metadata"
 authors = ["Nicholas hathaway <nickjhathaway@gmail.com>"]
 license = "GNU GPL v3.0"
 readme = "README.md"
