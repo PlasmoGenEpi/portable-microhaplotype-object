@@ -1,5 +1,5 @@
 # Auto generated from portable_microhaplotype_object.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-07-15T17:04:13
+# Generation date: 2024-07-15T17:37:18
 # Schema: portable-microhaplotype-object
 #
 # id: https://plasmogenepi.github.io/portable-microhaplotype-object
@@ -795,8 +795,7 @@ class SpecimenInfo(YAMLRoot):
     plate_col: str = None
     samp_taxon_id: int = None
     collection_date: str = None
-    lat_lon: str = None
-    geo_loc_name: str = None
+    collection_country: str = None
     collector: str = None
     samp_store_loc: str = None
     samp_collect_device: str = None
@@ -805,6 +804,10 @@ class SpecimenInfo(YAMLRoot):
     host_taxon_id: Optional[int] = None
     alternate_identifiers: Optional[Union[str, List[str]]] = empty_list()
     parasite_density: Optional[int] = None
+    geo_admin1: Optional[str] = None
+    geo_admin2: Optional[str] = None
+    geo_admin3: Optional[str] = None
+    lat_lon: Optional[str] = None
     accession: Optional[str] = None
     sample_comments: Optional[str] = None
 
@@ -839,15 +842,10 @@ class SpecimenInfo(YAMLRoot):
         if not isinstance(self.collection_date, str):
             self.collection_date = str(self.collection_date)
 
-        if self._is_empty(self.lat_lon):
-            self.MissingRequiredField("lat_lon")
-        if not isinstance(self.lat_lon, str):
-            self.lat_lon = str(self.lat_lon)
-
-        if self._is_empty(self.geo_loc_name):
-            self.MissingRequiredField("geo_loc_name")
-        if not isinstance(self.geo_loc_name, str):
-            self.geo_loc_name = str(self.geo_loc_name)
+        if self._is_empty(self.collection_country):
+            self.MissingRequiredField("collection_country")
+        if not isinstance(self.collection_country, str):
+            self.collection_country = str(self.collection_country)
 
         if self._is_empty(self.collector):
             self.MissingRequiredField("collector")
@@ -881,6 +879,18 @@ class SpecimenInfo(YAMLRoot):
 
         if self.parasite_density is not None and not isinstance(self.parasite_density, int):
             self.parasite_density = int(self.parasite_density)
+
+        if self.geo_admin1 is not None and not isinstance(self.geo_admin1, str):
+            self.geo_admin1 = str(self.geo_admin1)
+
+        if self.geo_admin2 is not None and not isinstance(self.geo_admin2, str):
+            self.geo_admin2 = str(self.geo_admin2)
+
+        if self.geo_admin3 is not None and not isinstance(self.geo_admin3, str):
+            self.geo_admin3 = str(self.geo_admin3)
+
+        if self.lat_lon is not None and not isinstance(self.lat_lon, str):
+            self.lat_lon = str(self.lat_lon)
 
         if self.accession is not None and not isinstance(self.accession, str):
             self.accession = str(self.accession)
@@ -1203,13 +1213,25 @@ slots.specimenInfo__collection_date = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.co
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__collection_date, domain=None, range=str,
                    pattern=re.compile(r'r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"'))
 
-slots.specimenInfo__lat_lon = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.lat_lon, name="specimenInfo__lat_lon", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('lat_lon'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__lat_lon, domain=None, range=str,
-                   pattern=re.compile(r'r'^[-+]?\d{1,2}(?:\.\d+)?,[-+]?\d{1,3}(?:\.\d+)?$''))
+slots.specimenInfo__collection_country = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.collection_country, name="specimenInfo__collection_country", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('collection_country'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__collection_country, domain=None, range=str,
+                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
 
-slots.specimenInfo__geo_loc_name = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.geo_loc_name, name="specimenInfo__geo_loc_name", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('geo_loc_name'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__geo_loc_name, domain=None, range=str,
-                   pattern=re.compile(r'^([^\s-]{1,2}|[^\s-]+.+[^\s-]+): ([^\s-]{1,2}|[^\s-]+.+[^\s-]+), ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
+slots.specimenInfo__geo_admin1 = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.geo_admin1, name="specimenInfo__geo_admin1", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('geo_admin1'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__geo_admin1, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
+
+slots.specimenInfo__geo_admin2 = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.geo_admin2, name="specimenInfo__geo_admin2", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('geo_admin2'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__geo_admin2, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
+
+slots.specimenInfo__geo_admin3 = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.geo_admin3, name="specimenInfo__geo_admin3", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('geo_admin3'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__geo_admin3, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
+
+slots.specimenInfo__lat_lon = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.lat_lon, name="specimenInfo__lat_lon", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('lat_lon'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__lat_lon, domain=None, range=Optional[str],
+                   pattern=re.compile(r'r'^[-+]?\d{1,2}(?:\.\d+)?,[-+]?\d{1,3}(?:\.\d+)?$''))
 
 slots.specimenInfo__collector = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.collector, name="specimenInfo__collector", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('collector'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__collector, domain=None, range=str,

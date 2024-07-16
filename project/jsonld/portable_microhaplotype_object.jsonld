@@ -1354,6 +1354,95 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "specimenInfo__collection_country",
+      "description": "the name of country collected in, would be the same as admin level 0",
+      "examples": [
+        {
+          "value": "Senegal",
+          "@type": "Example"
+        },
+        {
+          "value": "USA",
+          "@type": "Example"
+        },
+        {
+          "value": "Japan",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/collection_country",
+      "alias": "collection_country",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "SpecimenInfo"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^[A-z-._0-9 ]$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "specimenInfo__geo_admin1",
+      "description": "geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)",
+      "examples": [
+        {
+          "value": "State/Province",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/geo_admin1",
+      "alias": "geo_admin1",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "SpecimenInfo"
+      ],
+      "range": "string",
+      "pattern": "^[A-z-._0-9 ]$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "specimenInfo__geo_admin2",
+      "description": "geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)",
+      "examples": [
+        {
+          "value": "city",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/geo_admin2",
+      "alias": "geo_admin2",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "SpecimenInfo"
+      ],
+      "range": "string",
+      "pattern": "^[A-z-._0-9 ]$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "specimenInfo__geo_admin3",
+      "description": "geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)",
+      "examples": [
+        {
+          "value": "district of a city",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/geo_admin3",
+      "alias": "geo_admin3",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "SpecimenInfo"
+      ],
+      "range": "string",
+      "pattern": "^[A-z-._0-9 ]$",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "specimenInfo__lat_lon",
       "description": "the latitude and longitude of the collection site of the specimen",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
@@ -1364,40 +1453,7 @@
         "SpecimenInfo"
       ],
       "range": "string",
-      "required": true,
       "pattern": "r'^[-+]?\\d{1,2}(?:\\.\\d+)?,[-+]?\\d{1,3}(?:\\.\\d+)?$'",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "specimenInfo__geo_loc_name",
-      "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)",
-      "title": "geographic location (country and/or sea,region)",
-      "examples": [
-        {
-          "value": "USA: Maryland, Bethesda",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "keywords": [
-        "geographic",
-        "location"
-      ],
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/geo_loc_name",
-      "alias": "geo_loc_name",
-      "owner": "SpecimenInfo",
-      "domain_of": [
-        "SpecimenInfo"
-      ],
-      "range": "string",
-      "required": true,
-      "pattern": "^([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+): ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+), ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)$",
-      "structured_pattern": {
-        "syntax": "^{text}: {text}, {text}$",
-        "interpolated": true,
-        "partial_match": true,
-        "@type": "PatternExpression"
-      },
       "@type": "SlotDefinition"
     },
     {
@@ -2436,8 +2492,11 @@
         "specimenInfo__alternate_identifiers",
         "specimenInfo__parasite_density",
         "specimenInfo__collection_date",
+        "specimenInfo__collection_country",
+        "specimenInfo__geo_admin1",
+        "specimenInfo__geo_admin2",
+        "specimenInfo__geo_admin3",
         "specimenInfo__lat_lon",
-        "specimenInfo__geo_loc_name",
         "specimenInfo__collector",
         "specimenInfo__samp_store_loc",
         "specimenInfo__samp_collect_device",
@@ -2494,36 +2553,71 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "lat_lon",
-          "description": "the latitude and longitude of the collection site of the specimen",
-          "range": "string",
-          "required": true,
-          "pattern": "r'^[-+]?\\d{1,2}(?:\\.\\d+)?,[-+]?\\d{1,3}(?:\\.\\d+)?$'",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "geo_loc_name",
-          "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)",
-          "title": "geographic location (country and/or sea,region)",
+          "name": "collection_country",
+          "description": "the name of country collected in, would be the same as admin level 0",
           "examples": [
             {
-              "value": "USA: Maryland, Bethesda",
+              "value": "Senegal",
+              "@type": "Example"
+            },
+            {
+              "value": "USA",
+              "@type": "Example"
+            },
+            {
+              "value": "Japan",
               "@type": "Example"
             }
           ],
-          "keywords": [
-            "geographic",
-            "location"
-          ],
           "range": "string",
           "required": true,
-          "pattern": "^([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+): ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+), ([^\\s-]{1,2}|[^\\s-]+.+[^\\s-]+)$",
-          "structured_pattern": {
-            "syntax": "^{text}: {text}, {text}$",
-            "interpolated": true,
-            "partial_match": true,
-            "@type": "PatternExpression"
-          },
+          "pattern": "^[A-z-._0-9 ]$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "geo_admin1",
+          "description": "geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)",
+          "examples": [
+            {
+              "value": "State/Province",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "pattern": "^[A-z-._0-9 ]$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "geo_admin2",
+          "description": "geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)",
+          "examples": [
+            {
+              "value": "city",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "pattern": "^[A-z-._0-9 ]$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "geo_admin3",
+          "description": "geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)",
+          "examples": [
+            {
+              "value": "district of a city",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "pattern": "^[A-z-._0-9 ]$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "lat_lon",
+          "description": "the latitude and longitude of the collection site of the specimen",
+          "range": "string",
+          "pattern": "r'^[-+]?\\d{1,2}(?:\\.\\d+)?,[-+]?\\d{1,3}(?:\\.\\d+)?$'",
           "@type": "SlotDefinition"
         },
         {
@@ -2663,9 +2757,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2024-07-15T16:43:24",
-  "source_file_size": 22598,
-  "generation_date": "2024-07-15T17:04:11",
+  "source_file_date": "2024-07-15T17:36:20",
+  "source_file_size": 22924,
+  "generation_date": "2024-07-15T17:37:17",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",

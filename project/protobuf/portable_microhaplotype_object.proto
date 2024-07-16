@@ -153,8 +153,11 @@ message SpecimenInfo
  repeated  string alternateIdentifiers = 0
   integer parasiteDensity = 0
   string collectionDate = 0
+  string collectionCountry = 0
+  string geoAdmin1 = 0
+  string geoAdmin2 = 0
+  string geoAdmin3 = 0
   string latLon = 0
-  string geoLocName = 0
   string collector = 0
   string sampStoreLoc = 0
   string sampCollectDevice = 0

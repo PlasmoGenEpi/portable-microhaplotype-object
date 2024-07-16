@@ -107,8 +107,11 @@
 --     * Slot: host_taxon_id Description: optional the NCBI taxonomy number of the host of the organism
 --     * Slot: parasite_density Description: the parasite density in microliters
 --     * Slot: collection_date Description: the date of the sample collection
+--     * Slot: collection_country Description: the name of country collected in, would be the same as admin level 0
+--     * Slot: geo_admin1 Description: geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)
+--     * Slot: geo_admin2 Description: geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)
+--     * Slot: geo_admin3 Description: geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)
 --     * Slot: lat_lon Description: the latitude and longitude of the collection site of the specimen
---     * Slot: geo_loc_name Description: The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)
 --     * Slot: collector Description: the name of the primary person managing the specimen
 --     * Slot: samp_store_loc Description: the sample store site, address or facility name
 --     * Slot: samp_collect_device Description: the way the sample was collected, e.g. whole blood, dried blood spot, etc
@@ -363,8 +366,11 @@ CREATE TABLE "SpecimenInfo" (
 	host_taxon_id INTEGER, 
 	parasite_density INTEGER, 
 	collection_date TEXT NOT NULL, 
-	lat_lon TEXT NOT NULL, 
-	geo_loc_name TEXT NOT NULL, 
+	collection_country TEXT NOT NULL, 
+	geo_admin1 TEXT, 
+	geo_admin2 TEXT, 
+	geo_admin3 TEXT, 
+	lat_lon TEXT, 
 	collector TEXT NOT NULL, 
 	samp_store_loc TEXT NOT NULL, 
 	samp_collect_device TEXT NOT NULL, 

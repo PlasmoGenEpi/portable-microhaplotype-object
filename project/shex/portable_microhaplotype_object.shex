@@ -224,8 +224,11 @@ linkml:Sparqlpath xsd:string
           <alternate_identifiers> @linkml:String * ;
           <parasite_density> @linkml:Integer ? ;
           <collection_date> @linkml:String ;
-          <lat_lon> @linkml:String ;
-          <geo_loc_name> @linkml:String ;
+          <collection_country> @linkml:String ;
+          <geo_admin1> @linkml:String ? ;
+          <geo_admin2> @linkml:String ? ;
+          <geo_admin3> @linkml:String ? ;
+          <lat_lon> @linkml:String ? ;
           <collector> @linkml:String ;
           <samp_store_loc> @linkml:String ;
           <samp_collect_device> @linkml:String ;

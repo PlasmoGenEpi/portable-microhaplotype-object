@@ -150,8 +150,11 @@ type SpecimenInfo
     alternateIdentifiers: [String]
     parasiteDensity: Integer
     collectionDate: String!
-    latLon: String!
-    geoLocName: String!
+    collectionCountry: String!
+    geoAdmin1: String
+    geoAdmin2: String
+    geoAdmin3: String
+    latLon: String
     collector: String!
     sampStoreLoc: String!
     sampCollectDevice: String!
