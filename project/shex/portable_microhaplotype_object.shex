@@ -155,13 +155,13 @@ linkml:Sparqlpath xsd:string
     (  $<PortableMicrohaplotypeObject_tes> (  <experiment_infos> @<ExperimentInfo> + ;
           <specimen_infos> @<SpecimenInfo> + ;
           <sequencing_info> @<SequencingInfo> ;
-          <bioinformatics_info> @<TarAmpBioinformaticsInfo> ;
           <panel_info> @<PanelInfo> ;
           <representative_microhaplotype_sequences> @<RepresentativeMicrohaplotypeSequences> + ;
           <microhaplotypes_detected> @<MicrohaplotypesDetected> ;
-          <target_demultiplexed_samples> @<DemultiplexedSamples>
+          <target_demultiplexed_samples> @<DemultiplexedSamples> ;
+          <bioinformatics_infos> @<TarAmpBioinformaticsInfo>
        ) ;
-       rdf:type [ <PortableMicrohaplotypeObject> ] ?
+       rdf:type [ <PortableMicrohaplotypeObject> ]
     )
 }
 

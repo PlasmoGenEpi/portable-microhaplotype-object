@@ -90,14 +90,15 @@ message PanelInfo
 // Information on final results from a targeted amplicon analysis
 message PortableMicrohaplotypeObject
  {
+  string analysisName = 0
  repeated  experimentInfo experimentInfos = 0
  repeated  specimenInfo specimenInfos = 0
   sequencingInfo sequencingInfo = 0
-  tarAmpBioinformaticsInfo bioinformaticsInfo = 0
   panelInfo panelInfo = 0
  repeated  representativeMicrohaplotypeSequences representativeMicrohaplotypeSequences = 0
   microhaplotypesDetected microhaplotypesDetected = 0
   demultiplexedSamples targetDemultiplexedSamples = 0
+  tarAmpBioinformaticsInfo bioinformaticsInfos = 0
  }
 // information on a primer sequence
 message PrimerInfo

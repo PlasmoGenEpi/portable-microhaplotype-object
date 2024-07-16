@@ -73,7 +73,7 @@
 --     * Slot: id Description: 
 --     * Slot: program Description: name of the program used for this portion of the pipeline
 --     * Slot: purpose Description: the propose for this method
---     * Slot: program_version Description: a versioning info for the program
+--     * Slot: program_version Description: versioning info for the program
 --     * Slot: TarAmpBioinformaticsInfo_tar_amp_bioinformatics_info_id Description: Autocreated FK slot
 -- # Class: "ExperimentInfo" Description: "Information about a specific amplification and sequencing of a specimen"
 --     * Slot: sequencing_info_id Description: a unique identifier for this sequencing info
@@ -83,7 +83,7 @@
 --     * Slot: specimen_id Description: the name of the specimen of a individual
 --     * Slot: panel_id Description: name of the panel
 --     * Slot: experiment_id Description: a unique identifier for this sequence/amplification run on a specimen
---     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
+--     * Slot: PortableMicrohaplotypeObject_analysis_name Description: Autocreated FK slot
 -- # Class: "SequencingInfo" Description: "Information on sequencing info"
 --     * Slot: sequencing_info_id Description: a unique identifier for this sequencing info
 --     * Slot: seq_instrument Description: the sequencing instrument used to sequence the run, e.g. ILLUMINA, Illumina MiSeq
@@ -118,14 +118,14 @@
 --     * Slot: project_name Description: a name of the project under which the sample is organized
 --     * Slot: accession Description: ERA/SRA accession number for the sample if it was submitted
 --     * Slot: sample_comments Description: any additional comments about the sample
---     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
+--     * Slot: PortableMicrohaplotypeObject_analysis_name Description: Autocreated FK slot
 -- # Class: "PortableMicrohaplotypeObject" Description: "Information on final results from a targeted amplicon analysis"
---     * Slot: id Description: 
---     * Slot: bioinformatics_info Description: the bioinformatics pipeline info for this project
+--     * Slot: analysis_name Description: a name for the analysis detailed here in this experiment, can be a concatenation of names if combined more than one PMO
 --     * Slot: sequencing_info_sequencing_info_id Description: the sequencing info for this project
 --     * Slot: panel_info_id Description: the info on the panel used for this project
 --     * Slot: microhaplotypes_detected_id Description: the microhaplotypes detected in this projects
---     * Slot: target_demultiplexed_samples_id Description: the raw demultiplex target counts for each sample  
+--     * Slot: target_demultiplexed_samples_id Description: the raw demultiplex target counts for each sample
+--     * Slot: bioinformatics_infos_tar_amp_bioinformatics_info_id Description: the bioinformatics pipeline info for this project
 -- # Class: "RepresentativeMicrohaplotypeSequence_alt_annotations" Description: ""
 --     * Slot: RepresentativeMicrohaplotypeSequence_id Description: Autocreated FK slot
 --     * Slot: alt_annotations Description: a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc
@@ -148,7 +148,7 @@
 --     * Slot: SpecimenInfo_specimen_id Description: Autocreated FK slot
 --     * Slot: alternate_identifiers Description: a list of optional alternative names for the samples
 -- # Class: "PortableMicrohaplotypeObject_representative_microhaplotype_sequences" Description: ""
---     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
+--     * Slot: PortableMicrohaplotypeObject_analysis_name Description: Autocreated FK slot
 --     * Slot: representative_microhaplotype_sequences_id Description: a list of the representative sequences for the results for this project
 
 CREATE TABLE "RepresentativeMicrohaplotypeSequences" (
@@ -325,18 +325,18 @@ CREATE TABLE "TargetInfo" (
 	FOREIGN KEY(reverse_primers_id) REFERENCES "Primers" (id)
 );
 CREATE TABLE "PortableMicrohaplotypeObject" (
-	id INTEGER NOT NULL, 
-	bioinformatics_info TEXT NOT NULL, 
+	analysis_name TEXT NOT NULL, 
 	sequencing_info_sequencing_info_id TEXT NOT NULL, 
 	panel_info_id INTEGER NOT NULL, 
 	microhaplotypes_detected_id INTEGER NOT NULL, 
 	target_demultiplexed_samples_id INTEGER NOT NULL, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(bioinformatics_info) REFERENCES "TarAmpBioinformaticsInfo" (tar_amp_bioinformatics_info_id), 
+	bioinformatics_infos_tar_amp_bioinformatics_info_id TEXT NOT NULL, 
+	PRIMARY KEY (analysis_name), 
 	FOREIGN KEY(sequencing_info_sequencing_info_id) REFERENCES "SequencingInfo" (sequencing_info_id), 
 	FOREIGN KEY(panel_info_id) REFERENCES "PanelInfo" (id), 
 	FOREIGN KEY(microhaplotypes_detected_id) REFERENCES "MicrohaplotypesDetected" (id), 
-	FOREIGN KEY(target_demultiplexed_samples_id) REFERENCES "DemultiplexedSamples" (id)
+	FOREIGN KEY(target_demultiplexed_samples_id) REFERENCES "DemultiplexedSamples" (id), 
+	FOREIGN KEY(bioinformatics_infos_tar_amp_bioinformatics_info_id) REFERENCES "TarAmpBioinformaticsInfo" (tar_amp_bioinformatics_info_id)
 );
 CREATE TABLE "RepresentativeMicrohaplotypeSequence_alt_annotations" (
 	"RepresentativeMicrohaplotypeSequence_id" INTEGER, 
@@ -352,9 +352,9 @@ CREATE TABLE "ExperimentInfo" (
 	specimen_id TEXT NOT NULL, 
 	panel_id TEXT NOT NULL, 
 	experiment_id TEXT NOT NULL, 
-	"PortableMicrohaplotypeObject_id" INTEGER, 
+	"PortableMicrohaplotypeObject_analysis_name" TEXT, 
 	PRIMARY KEY (experiment_id), 
-	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
+	FOREIGN KEY("PortableMicrohaplotypeObject_analysis_name") REFERENCES "PortableMicrohaplotypeObject" (analysis_name)
 );
 CREATE TABLE "SpecimenInfo" (
 	specimen_id TEXT NOT NULL, 
@@ -377,15 +377,15 @@ CREATE TABLE "SpecimenInfo" (
 	project_name TEXT NOT NULL, 
 	accession TEXT, 
 	sample_comments TEXT, 
-	"PortableMicrohaplotypeObject_id" INTEGER, 
+	"PortableMicrohaplotypeObject_analysis_name" TEXT, 
 	PRIMARY KEY (specimen_id), 
-	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
+	FOREIGN KEY("PortableMicrohaplotypeObject_analysis_name") REFERENCES "PortableMicrohaplotypeObject" (analysis_name)
 );
 CREATE TABLE "PortableMicrohaplotypeObject_representative_microhaplotype_sequences" (
-	"PortableMicrohaplotypeObject_id" INTEGER, 
+	"PortableMicrohaplotypeObject_analysis_name" TEXT, 
 	representative_microhaplotype_sequences_id INTEGER NOT NULL, 
-	PRIMARY KEY ("PortableMicrohaplotypeObject_id", representative_microhaplotype_sequences_id), 
-	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id), 
+	PRIMARY KEY ("PortableMicrohaplotypeObject_analysis_name", representative_microhaplotype_sequences_id), 
+	FOREIGN KEY("PortableMicrohaplotypeObject_analysis_name") REFERENCES "PortableMicrohaplotypeObject" (analysis_name), 
 	FOREIGN KEY(representative_microhaplotype_sequences_id) REFERENCES "RepresentativeMicrohaplotypeSequences" (id)
 );
 CREATE TABLE "SpecimenInfo_alternate_identifiers" (

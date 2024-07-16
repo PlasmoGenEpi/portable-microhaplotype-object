@@ -890,6 +890,7 @@
     },
     {
       "name": "primers__entries",
+      "description": "a list of primers  ",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/entries",
       "alias": "entries",
@@ -1071,7 +1072,7 @@
     },
     {
       "name": "bioMethod__program_version",
-      "description": "a versioning info for the program",
+      "description": "versioning info for the program",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/program_version",
       "alias": "program_version",
@@ -1545,6 +1546,21 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "portableMicrohaplotypeObject__analysis_name",
+      "description": "a name for the analysis detailed here in this experiment, can be a concatenation of names if combined more than one PMO",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/analysis_name",
+      "identifier": true,
+      "alias": "analysis_name",
+      "owner": "PortableMicrohaplotypeObject",
+      "domain_of": [
+        "PortableMicrohaplotypeObject"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "portableMicrohaplotypeObject__experiment_infos",
       "description": "a list of experiments of all the seq/amp of samples within this project",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
@@ -1595,20 +1611,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "portableMicrohaplotypeObject__bioinformatics_info",
-      "description": "the bioinformatics pipeline info for this project",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/bioinformatics_info",
-      "alias": "bioinformatics_info",
-      "owner": "PortableMicrohaplotypeObject",
-      "domain_of": [
-        "PortableMicrohaplotypeObject"
-      ],
-      "range": "TarAmpBioinformaticsInfo",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "portableMicrohaplotypeObject__panel_info",
       "description": "the info on the panel used for this project",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
@@ -1656,7 +1658,7 @@
     },
     {
       "name": "portableMicrohaplotypeObject__target_demultiplexed_samples",
-      "description": "the raw demultiplex target counts for each sample  ",
+      "description": "the raw demultiplex target counts for each sample",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/target_demultiplexed_samples",
       "alias": "target_demultiplexed_samples",
@@ -1667,6 +1669,22 @@
       "range": "DemultiplexedSamples",
       "required": true,
       "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "portableMicrohaplotypeObject__bioinformatics_infos",
+      "description": "the bioinformatics pipeline info for this project",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/bioinformatics_infos",
+      "alias": "bioinformatics_infos",
+      "owner": "PortableMicrohaplotypeObject",
+      "domain_of": [
+        "PortableMicrohaplotypeObject"
+      ],
+      "range": "TarAmpBioinformaticsInfo",
+      "required": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2154,6 +2172,7 @@
       "attributes": [
         {
           "name": "entries",
+          "description": "a list of primers  ",
           "range": "PrimerInfo",
           "multivalued": true,
           "inlined": true,
@@ -2326,7 +2345,7 @@
         },
         {
           "name": "program_version",
-          "description": "a versioning info for the program",
+          "description": "versioning info for the program",
           "range": "string",
           "required": true,
           "pattern": "^[A-z-._0-9 ]$",
@@ -2676,17 +2695,26 @@
       "description": "Information on final results from a targeted amplicon analysis",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
+        "portableMicrohaplotypeObject__analysis_name",
         "portableMicrohaplotypeObject__experiment_infos",
         "portableMicrohaplotypeObject__specimen_infos",
         "portableMicrohaplotypeObject__sequencing_info",
-        "portableMicrohaplotypeObject__bioinformatics_info",
         "portableMicrohaplotypeObject__panel_info",
         "portableMicrohaplotypeObject__representative_microhaplotype_sequences",
         "portableMicrohaplotypeObject__microhaplotypes_detected",
-        "portableMicrohaplotypeObject__target_demultiplexed_samples"
+        "portableMicrohaplotypeObject__target_demultiplexed_samples",
+        "portableMicrohaplotypeObject__bioinformatics_infos"
       ],
       "slot_usage": {},
       "attributes": [
+        {
+          "name": "analysis_name",
+          "description": "a name for the analysis detailed here in this experiment, can be a concatenation of names if combined more than one PMO",
+          "identifier": true,
+          "range": "string",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
         {
           "name": "experiment_infos",
           "description": "a list of experiments of all the seq/amp of samples within this project",
@@ -2714,13 +2742,6 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "bioinformatics_info",
-          "description": "the bioinformatics pipeline info for this project",
-          "range": "TarAmpBioinformaticsInfo",
-          "required": true,
-          "@type": "SlotDefinition"
-        },
-        {
           "name": "panel_info",
           "description": "the info on the panel used for this project",
           "range": "PanelInfo",
@@ -2744,9 +2765,17 @@
         },
         {
           "name": "target_demultiplexed_samples",
-          "description": "the raw demultiplex target counts for each sample  ",
+          "description": "the raw demultiplex target counts for each sample",
           "range": "DemultiplexedSamples",
           "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "bioinformatics_infos",
+          "description": "the bioinformatics pipeline info for this project",
+          "range": "TarAmpBioinformaticsInfo",
+          "required": true,
+          "inlined_as_list": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -2757,9 +2786,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2024-07-15T17:36:20",
-  "source_file_size": 22924,
-  "generation_date": "2024-07-15T17:37:17",
+  "source_file_date": "2024-07-16T13:55:09",
+  "source_file_size": 23251,
+  "generation_date": "2024-07-16T13:55:18",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",

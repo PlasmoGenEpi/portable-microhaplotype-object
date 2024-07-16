@@ -287,6 +287,8 @@ classes:
         range: PrimerInfo
         multivalued: true
         inlined: true
+        description: >-
+          a list of primers  
 
   MicrohaplotypesForSample:
     description: >-
@@ -388,7 +390,7 @@ classes:
         pattern: "^[A-z-._0-9 ]$"
         required: true
         description: >-
-          a versioning info for the program
+          versioning info for the program
       additional_argument:
         range: string
         pattern: "^[A-z-._0-9 ]$"
@@ -630,6 +632,12 @@ classes:
       Information on final results from a targeted amplicon analysis
     tree_root: true
     attributes:
+      analysis_name:
+        range: string
+        identifier: true
+        required : true
+        description: >-
+          a name for the analysis detailed here in this experiment, can be a concatenation of names if combined more than one PMO
       experiment_infos:
         range: ExperimentInfo
         required: true
@@ -650,11 +658,6 @@ classes:
         inlined_as_list: true
         description: >-
           the sequencing info for this project
-      bioinformatics_info:
-        range: TarAmpBioinformaticsInfo
-        required: true
-        description: >-
-          the bioinformatics pipeline info for this project
       panel_info:
         range: PanelInfo
         required: true
@@ -676,7 +679,13 @@ classes:
         range: DemultiplexedSamples
         required: true
         description: >-
-          the raw demultiplex target counts for each sample  
+          the raw demultiplex target counts for each sample
+      bioinformatics_infos:
+        range: TarAmpBioinformaticsInfo
+        required: true
+        inlined_as_list: true
+        description: >-
+          the bioinformatics pipeline info for this project
 
 slots:
   seq:

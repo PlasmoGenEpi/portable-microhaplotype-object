@@ -87,14 +87,15 @@ type PanelInfo
 
 type PortableMicrohaplotypeObject
   {
+    analysisName: String!
     experimentInfos: [ExperimentInfo]!
     specimenInfos: [SpecimenInfo]!
     sequencingInfo: SequencingInfo!
-    bioinformaticsInfo: TarAmpBioinformaticsInfo!
     panelInfo: PanelInfo!
     representativeMicrohaplotypeSequences: [RepresentativeMicrohaplotypeSequences]!
     microhaplotypesDetected: MicrohaplotypesDetected!
     targetDemultiplexedSamples: DemultiplexedSamples!
+    bioinformaticsInfos: TarAmpBioinformaticsInfo!
   }
 
 type PrimerInfo

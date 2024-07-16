@@ -18,7 +18,7 @@
                     "type": "string"
                 },
                 "program_version": {
-                    "description": "a versioning info for the program",
+                    "description": "versioning info for the program",
                     "pattern": "^[A-z-._0-9 ]$",
                     "type": "string"
                 },
@@ -359,9 +359,13 @@
             "additionalProperties": false,
             "description": "Information on final results from a targeted amplicon analysis",
             "properties": {
-                "bioinformatics_info": {
-                    "description": "the bioinformatics pipeline info for this project",
+                "analysis_name": {
+                    "description": "a name for the analysis detailed here in this experiment, can be a concatenation of names if combined more than one PMO",
                     "type": "string"
+                },
+                "bioinformatics_infos": {
+                    "$ref": "#/$defs/TarAmpBioinformaticsInfo",
+                    "description": "the bioinformatics pipeline info for this project"
                 },
                 "experiment_infos": {
                     "description": "a list of experiments of all the seq/amp of samples within this project",
@@ -398,18 +402,19 @@
                 },
                 "target_demultiplexed_samples": {
                     "$ref": "#/$defs/DemultiplexedSamples",
-                    "description": "the raw demultiplex target counts for each sample  "
+                    "description": "the raw demultiplex target counts for each sample"
                 }
             },
             "required": [
+                "analysis_name",
                 "experiment_infos",
                 "specimen_infos",
                 "sequencing_info",
-                "bioinformatics_info",
                 "panel_info",
                 "representative_microhaplotype_sequences",
                 "microhaplotypes_detected",
-                "target_demultiplexed_samples"
+                "target_demultiplexed_samples",
+                "bioinformatics_infos"
             ],
             "title": "PortableMicrohaplotypeObject",
             "type": "object"
@@ -440,6 +445,7 @@
             "description": "A holder of primer sequences",
             "properties": {
                 "entries": {
+                    "description": "a list of primers  ",
                     "items": {
                         "$ref": "#/$defs/PrimerInfo"
                     },
@@ -799,9 +805,13 @@
     "description": "Information on final results from a targeted amplicon analysis",
     "metamodel_version": "1.7.0",
     "properties": {
-        "bioinformatics_info": {
-            "description": "the bioinformatics pipeline info for this project",
+        "analysis_name": {
+            "description": "a name for the analysis detailed here in this experiment, can be a concatenation of names if combined more than one PMO",
             "type": "string"
+        },
+        "bioinformatics_infos": {
+            "$ref": "#/$defs/TarAmpBioinformaticsInfo",
+            "description": "the bioinformatics pipeline info for this project"
         },
         "experiment_infos": {
             "description": "a list of experiments of all the seq/amp of samples within this project",
@@ -838,18 +848,19 @@
         },
         "target_demultiplexed_samples": {
             "$ref": "#/$defs/DemultiplexedSamples",
-            "description": "the raw demultiplex target counts for each sample  "
+            "description": "the raw demultiplex target counts for each sample"
         }
     },
     "required": [
+        "analysis_name",
         "experiment_infos",
         "specimen_infos",
         "sequencing_info",
-        "bioinformatics_info",
         "panel_info",
         "representative_microhaplotype_sequences",
         "microhaplotypes_detected",
-        "target_demultiplexed_samples"
+        "target_demultiplexed_samples",
+        "bioinformatics_infos"
     ],
     "title": "portable-microhaplotype-object",
     "type": "object",
