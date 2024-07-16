@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/SpecimenInfo/" rel="canonical"/>
+<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/ExperimentInfo/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: SpecimenInfo - portable-microhaplotype-object</title>
+<title>Class: ExperimentInfo - portable-microhaplotype-object</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-specimeninfo">
+<a class="md-skip" href="#class-experimentinfo">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: SpecimenInfo
+              Class: ExperimentInfo
             
           </span>
 </div>
@@ -196,50 +196,28 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/SpecimenInfo.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/ExperimentInfo.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-specimeninfo">Class: SpecimenInfo</h1>
-<p><em>Information on specimen info</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/SpecimenInfo">portable_microhaplotype_object:SpecimenInfo</a></p>
+<h1 id="class-experimentinfo">Class: ExperimentInfo</h1>
+<p><em>Information about a specific amplification and sequencing of a specimen</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/ExperimentInfo">portable_microhaplotype_object:ExperimentInfo</a></p>
 <div class="mermaid"> classDiagram
-    class SpecimenInfo
-    click SpecimenInfo href "../SpecimenInfo"
-      SpecimenInfo : accession
+    class ExperimentInfo
+    click ExperimentInfo href "../ExperimentInfo"
+      ExperimentInfo : experiment_id
 
-      SpecimenInfo : alternate_identifiers
+      ExperimentInfo : panel_id
 
-      SpecimenInfo : collection_date
+      ExperimentInfo : plate_col
 
-      SpecimenInfo : collector
+      ExperimentInfo : plate_name
 
-      SpecimenInfo : geo_loc_name
+      ExperimentInfo : plate_row
 
-      SpecimenInfo : host_taxon_id
+      ExperimentInfo : sequencing_info_id
 
-      SpecimenInfo : individual_id
-
-      SpecimenInfo : lat_lon
-
-      SpecimenInfo : parasite_density
-
-      SpecimenInfo : plate_col
-
-      SpecimenInfo : plate_name
-
-      SpecimenInfo : plate_row
-
-      SpecimenInfo : project_name
-
-      SpecimenInfo : samp_collect_device
-
-      SpecimenInfo : samp_store_loc
-
-      SpecimenInfo : samp_taxon_id
-
-      SpecimenInfo : sample_comments
-
-      SpecimenInfo : specimen_id
+      ExperimentInfo : specimen_id
 
 
 </div>
@@ -256,9 +234,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../specimen_id/">specimen_id</a></td>
+<td><a href="../sequencing_info_id/">sequencing_info_id</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>the name of the specimen of a individual</td>
+<td>a unique identifier for this sequencing info</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -280,87 +258,21 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../samp_taxon_id/">samp_taxon_id</a></td>
-<td>1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the NCBI taxonomy number of the organism of interest</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../individual_id/">individual_id</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>an identifier for the individual a specimen was collected from</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../host_taxon_id/">host_taxon_id</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>optional the NCBI taxonomy number of the host of the organism</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../alternate_identifiers/">alternate_identifiers</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>a list of optional alternative names for the samples</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../parasite_density/">parasite_density</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the parasite density in microliters</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../collection_date/">collection_date</a></td>
+<td><a href="../specimen_id/">specimen_id</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>the date of the sample collection</td>
+<td>the name of the specimen of a individual</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../lat_lon/">lat_lon</a></td>
+<td><a href="../panel_id/">panel_id</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>the latitude and longitude of the collection site of the specimen</td>
+<td>name of the panel</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../geo_loc_name/">geo_loc_name</a></td>
+<td><a href="../experiment_id/">experiment_id</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>The geographical origin of the sample as defined by the country or sea name f...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../collector/">collector</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>the name of the primary person managing the specimen</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../samp_store_loc/">samp_store_loc</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>the sample store site, address or facility name</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../samp_collect_device/">samp_collect_device</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>the way the sample was collected, e</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../project_name/">project_name</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>a name of the project under which the sample is organized</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../accession/">accession</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>ERA/SRA accession number for the sample if it was submitted</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../sample_comments/">sample_comments</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>any additional comments about the sample</td>
+<td>a unique identifier for this sequence/amplification run on a specimen</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -378,9 +290,9 @@
 <tbody>
 <tr>
 <td><a href="../PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
-<td><a href="../specimen_infos/">specimen_infos</a></td>
+<td><a href="../experiment_infos/">experiment_infos</a></td>
 <td>range</td>
-<td><a href="./">SpecimenInfo</a></td>
+<td><a href="./">ExperimentInfo</a></td>
 </tr>
 </tbody>
 </table>
@@ -400,11 +312,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:SpecimenInfo</td>
+<td>portable_microhaplotype_object:ExperimentInfo</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:SpecimenInfo</td>
+<td>portable_microhaplotype_object:ExperimentInfo</td>
 </tr>
 </tbody>
 </table>
@@ -412,401 +324,86 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: SpecimenInfo
-description: Information on specimen info
+<pre><code class="language-yaml">name: ExperimentInfo
+description: Information about a specific amplification and sequencing of a specimen
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
-- specimen_id
+- sequencing_info_id
 - plate_name
 - plate_row
 - plate_col
+- specimen_id
+- panel_id
+- experiment_id
 slot_usage:
   specimen_id:
     name: specimen_id
-    identifier: true
+    identifier: false
     domain_of:
     - ExperimentInfo
     - SpecimenInfo
-attributes:
-  samp_taxon_id:
-    name: samp_taxon_id
-    description: the NCBI taxonomy number of the organism of interest
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
+  panel_id:
+    name: panel_id
+    identifier: false
     domain_of:
-    - SpecimenInfo
-    range: integer
-    required: true
-    pattern: ^[0-9]$
-  individual_id:
-    name: individual_id
-    description: an identifier for the individual a specimen was collected from
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
+    - PanelInfo
+    - ExperimentInfo
+  experiment_id:
+    name: experiment_id
+    identifier: true
     domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9 ]$
-  host_taxon_id:
-    name: host_taxon_id
-    description: optional the NCBI taxonomy number of the host of the organism
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: integer
-    required: false
-    pattern: ^[0-9]$
-  alternate_identifiers:
-    name: alternate_identifiers
-    description: a list of optional alternative names for the samples
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-    pattern: ^[A-z-._0-9 ]$
-  parasite_density:
-    name: parasite_density
-    description: the parasite density in microliters
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: integer
-    required: false
-    pattern: r'^[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?$'
-  collection_date:
-    name: collection_date
-    description: the date of the sample collection
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
-  lat_lon:
-    name: lat_lon
-    description: the latitude and longitude of the collection site of the specimen
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: r'^[-+]?\d{1,2}(?:\.\d+)?,[-+]?\d{1,3}(?:\.\d+)?$'
-  geo_loc_name:
-    name: geo_loc_name
-    description: The geographical origin of the sample as defined by the country or
-      sea name followed by specific region name. Country or sea names should be chosen
-      from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology
-      (http://purl.bioontology.org/ontology/GAZ)
-    title: geographic location (country and/or sea,region)
-    examples:
-    - value: 'USA: Maryland, Bethesda'
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    keywords:
-    - geographic
-    - location
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: '^([^\s-]{1,2}|[^\s-]+.+[^\s-]+): ([^\s-]{1,2}|[^\s-]+.+[^\s-]+), ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'
-    structured_pattern:
-      syntax: '^{text}: {text}, {text}$'
-      interpolated: true
-      partial_match: true
-  collector:
-    name: collector
-    description: the name of the primary person managing the specimen
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
-  samp_store_loc:
-    name: samp_store_loc
-    description: the sample store site, address or facility name
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
-  samp_collect_device:
-    name: samp_collect_device
-    description: the way the sample was collected, e.g. whole blood, dried blood spot,
-      etc
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
-  project_name:
-    name: project_name
-    description: a name of the project under which the sample is organized
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
-  accession:
-    name: accession
-    description: ERA/SRA accession number for the sample if it was submitted
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9]$
-  sample_comments:
-    name: sample_comments
-    description: any additional comments about the sample
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9 ]$
+    - DemultiplexedTargetsForSample
+    - MicrohaplotypesForSample
+    - ExperimentInfo
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: SpecimenInfo
-description: Information on specimen info
+<pre><code class="language-yaml">name: ExperimentInfo
+description: Information about a specific amplification and sequencing of a specimen
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slot_usage:
   specimen_id:
     name: specimen_id
-    identifier: true
+    identifier: false
     domain_of:
     - ExperimentInfo
     - SpecimenInfo
+  panel_id:
+    name: panel_id
+    identifier: false
+    domain_of:
+    - PanelInfo
+    - ExperimentInfo
+  experiment_id:
+    name: experiment_id
+    identifier: true
+    domain_of:
+    - DemultiplexedTargetsForSample
+    - MicrohaplotypesForSample
+    - ExperimentInfo
 attributes:
-  samp_taxon_id:
-    name: samp_taxon_id
-    description: the NCBI taxonomy number of the organism of interest
+  sequencing_info_id:
+    name: sequencing_info_id
+    description: a unique identifier for this sequencing info
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: samp_taxon_id
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: integer
-    required: true
-    pattern: ^[0-9]$
-  individual_id:
-    name: individual_id
-    description: an identifier for the individual a specimen was collected from
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: individual_id
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9 ]$
-  host_taxon_id:
-    name: host_taxon_id
-    description: optional the NCBI taxonomy number of the host of the organism
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: host_taxon_id
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: integer
-    required: false
-    pattern: ^[0-9]$
-  alternate_identifiers:
-    name: alternate_identifiers
-    description: a list of optional alternative names for the samples
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: alternate_identifiers
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-    pattern: ^[A-z-._0-9 ]$
-  parasite_density:
-    name: parasite_density
-    description: the parasite density in microliters
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: parasite_density
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: integer
-    required: false
-    pattern: r'^[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?$'
-  collection_date:
-    name: collection_date
-    description: the date of the sample collection
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: collection_date
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
-  lat_lon:
-    name: lat_lon
-    description: the latitude and longitude of the collection site of the specimen
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: lat_lon
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: r'^[-+]?\d{1,2}(?:\.\d+)?,[-+]?\d{1,3}(?:\.\d+)?$'
-  geo_loc_name:
-    name: geo_loc_name
-    description: The geographical origin of the sample as defined by the country or
-      sea name followed by specific region name. Country or sea names should be chosen
-      from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology
-      (http://purl.bioontology.org/ontology/GAZ)
-    title: geographic location (country and/or sea,region)
-    examples:
-    - value: 'USA: Maryland, Bethesda'
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    keywords:
-    - geographic
-    - location
-    alias: geo_loc_name
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: '^([^\s-]{1,2}|[^\s-]+.+[^\s-]+): ([^\s-]{1,2}|[^\s-]+.+[^\s-]+), ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'
-    structured_pattern:
-      syntax: '^{text}: {text}, {text}$'
-      interpolated: true
-      partial_match: true
-  collector:
-    name: collector
-    description: the name of the primary person managing the specimen
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: collector
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
-  samp_store_loc:
-    name: samp_store_loc
-    description: the sample store site, address or facility name
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: samp_store_loc
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
-  samp_collect_device:
-    name: samp_collect_device
-    description: the way the sample was collected, e.g. whole blood, dried blood spot,
-      etc
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: samp_collect_device
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
-  project_name:
-    name: project_name
-    description: a name of the project under which the sample is organized
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: project_name
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
-  accession:
-    name: accession
-    description: ERA/SRA accession number for the sample if it was submitted
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: accession
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9]$
-  sample_comments:
-    name: sample_comments
-    description: any additional comments about the sample
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: sample_comments
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9 ]$
-  specimen_id:
-    name: specimen_id
-    description: the name of the specimen of a individual
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    identifier: true
-    alias: specimen_id
-    owner: SpecimenInfo
+    alias: sequencing_info_id
+    owner: ExperimentInfo
     domain_of:
     - ExperimentInfo
-    - SpecimenInfo
+    - SequencingInfo
     range: string
     required: true
-    pattern: ^[A-z-._0-9]$
+    pattern: ^[A-z-._0-9 ]$
   plate_name:
     name: plate_name
     description: a name of plate the specimen was in
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: plate_name
-    owner: SpecimenInfo
+    owner: ExperimentInfo
     domain_of:
     - ExperimentInfo
     - SpecimenInfo
@@ -819,7 +416,7 @@ attributes:
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: plate_row
-    owner: SpecimenInfo
+    owner: ExperimentInfo
     domain_of:
     - ExperimentInfo
     - SpecimenInfo
@@ -832,10 +429,53 @@ attributes:
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: plate_col
-    owner: SpecimenInfo
+    owner: ExperimentInfo
     domain_of:
     - ExperimentInfo
     - SpecimenInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]$
+  specimen_id:
+    name: specimen_id
+    description: the name of the specimen of a individual
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    identifier: false
+    alias: specimen_id
+    owner: ExperimentInfo
+    domain_of:
+    - ExperimentInfo
+    - SpecimenInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9]$
+  panel_id:
+    name: panel_id
+    description: name of the panel
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    identifier: false
+    alias: panel_id
+    owner: ExperimentInfo
+    domain_of:
+    - PanelInfo
+    - ExperimentInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9]$
+  experiment_id:
+    name: experiment_id
+    description: a unique identifier for this sequence/amplification run on a specimen
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    identifier: true
+    alias: experiment_id
+    owner: ExperimentInfo
+    domain_of:
+    - DemultiplexedTargetsForSample
+    - MicrohaplotypesForSample
+    - ExperimentInfo
     range: string
     required: true
     pattern: ^[A-z-._0-9 ]$

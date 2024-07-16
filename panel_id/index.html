@@ -339,6 +339,11 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../ExperimentInfo/">ExperimentInfo</a></td>
+<td>Information about a specific amplification and sequencing of a specimen</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../PanelInfo/">PanelInfo</a></td>
 <td>information on a panel of targeted amplicon primer pairs</td>
 <td>no</td>
@@ -389,9 +394,9 @@ description: name of the panel
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: panel_id
-owner: PanelInfo
 domain_of:
 - PanelInfo
+- ExperimentInfo
 range: string
 required: true
 pattern: ^[A-z-._0-9]$

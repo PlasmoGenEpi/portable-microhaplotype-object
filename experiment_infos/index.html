@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/nucl_acid_date/">
+        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/experiment_infos/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: nucl_acid_date - portable-microhaplotype-object</title>
+        <title>Slot: experiment_infos - portable-microhaplotype-object</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-nucl_acid_date" class="md-skip">
+        <a href="#slot-experiment_infos" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: nucl_acid_date
+              Slot: experiment_infos
             
           </span>
         </div>
@@ -317,15 +317,15 @@
                 
                   
 
-  <a href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/nucl_acid_date.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/experiment_infos.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-nucl_acid_date">Slot: nucl_acid_date</h1>
-<p><em>the date of the extraction/amplification</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/nucl_acid_date">portable_microhaplotype_object:nucl_acid_date</a></p>
+<h1 id="slot-experiment_infos">Slot: experiment_infos</h1>
+<p><em>a list of experiments of all the seq/amp of samples within this project</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/experiment_infos">portable_microhaplotype_object:experiment_infos</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -339,8 +339,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../SequencingInfo/">SequencingInfo</a></td>
-<td>Information on sequencing info</td>
+<td><a href="../PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
+<td>Information on final results from a targeted amplicon analysis</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -348,13 +348,13 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../String/">String</a></p>
+<p>Range: <a href="../ExperimentInfo/">ExperimentInfo</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
 </li>
 <li>
 <p>Required: True</p>
-</li>
-<li>
-<p>Regex pattern: <code>r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"</code></p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -373,28 +373,30 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:nucl_acid_date</td>
+<td>portable_microhaplotype_object:experiment_infos</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:nucl_acid_date</td>
+<td>portable_microhaplotype_object:experiment_infos</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: nucl_acid_date
-description: the date of the extraction/amplification
+<pre><code class="language-yaml">name: experiment_infos
+description: a list of experiments of all the seq/amp of samples within this project
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-alias: nucl_acid_date
-owner: SequencingInfo
+alias: experiment_infos
+owner: PortableMicrohaplotypeObject
 domain_of:
-- SequencingInfo
-range: string
+- PortableMicrohaplotypeObject
+range: ExperimentInfo
 required: true
-pattern: r&quot;\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?&quot;
+multivalued: true
+inlined: true
+inlined_as_list: true
 
 </code></pre>
 

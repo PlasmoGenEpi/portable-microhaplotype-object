@@ -409,6 +409,10 @@
 <td>a list of raw reads for a sample for all targets within panel</td>
 </tr>
 <tr>
+<td><a href="ExperimentInfo/">ExperimentInfo</a></td>
+<td>Information about a specific amplification and sequencing of a specimen</td>
+</tr>
+<tr>
 <td><a href="GenomeInfo/">GenomeInfo</a></td>
 <td>information on a genome</td>
 </tr>
@@ -548,6 +552,14 @@
 <td></td>
 </tr>
 <tr>
+<td><a href="experiment_id/">experiment_id</a></td>
+<td>a unique identifier for this sequence/amplification run on a specimen</td>
+</tr>
+<tr>
+<td><a href="experiment_infos/">experiment_infos</a></td>
+<td>a list of experiments of all the seq/amp of samples within this project</td>
+</tr>
+<tr>
 <td><a href="forward_primers/">forward_primers</a></td>
 <td>A holder of forward primers associated with this target</td>
 </tr>
@@ -556,12 +568,20 @@
 <td>an identifier of the gene, if any, is being covered with this targeted</td>
 </tr>
 <tr>
+<td><a href="geo_loc_name/">geo_loc_name</a></td>
+<td>The geographical origin of the sample as defined by the country or sea name f...</td>
+</tr>
+<tr>
 <td><a href="gff_url/">gff_url</a></td>
 <td>a link to the where this genome's annotation file could be downloaded</td>
 </tr>
 <tr>
 <td><a href="host_taxon_id/">host_taxon_id</a></td>
 <td>optional the NCBI taxonomy number of the host of the organism</td>
+</tr>
+<tr>
+<td><a href="individual_id/">individual_id</a></td>
+<td>an identifier for the individual a specimen was collected from</td>
 </tr>
 <tr>
 <td><a href="insert_location/">insert_location</a></td>
@@ -608,12 +628,16 @@
 <td>Link to a reference or kit that describes the enzymatic amplification of nucl...</td>
 </tr>
 <tr>
-<td><a href="nucl_acid_date/">nucl_acid_date</a></td>
-<td>the date of the extraction/amplification</td>
+<td><a href="nucl_acid_amp_date/">nucl_acid_amp_date</a></td>
+<td>the date of the nucleoacide amplification</td>
 </tr>
 <tr>
 <td><a href="nucl_acid_ext/">nucl_acid_ext</a></td>
 <td>Link to a reference or kit that describes the recovery of nucleic acids from ...</td>
+</tr>
+<tr>
+<td><a href="nucl_acid_ext_date/">nucl_acid_ext_date</a></td>
+<td>the date of the nucleoacide extraction</td>
 </tr>
 <tr>
 <td><a href="panel_id/">panel_id</a></td>
@@ -700,10 +724,6 @@
 <td>any additional comments about the sample</td>
 </tr>
 <tr>
-<td><a href="sample_id/">sample_id</a></td>
-<td>the name of the sample</td>
-</tr>
-<tr>
 <td><a href="samples/">samples</a></td>
 <td>a list of the microhaplotypes detected for a sample for various targets</td>
 </tr>
@@ -738,6 +758,10 @@
 <tr>
 <td><a href="sequencing_info_id/">sequencing_info_id</a></td>
 <td>a unique identifier for this sequencing info</td>
+</tr>
+<tr>
+<td><a href="specimen_id/">specimen_id</a></td>
+<td>the name of the specimen of a individual</td>
 </tr>
 <tr>
 <td><a href="specimen_infos/">specimen_infos</a></td>

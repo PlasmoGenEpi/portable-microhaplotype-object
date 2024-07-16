@@ -205,7 +205,7 @@
 <div class="mermaid"> classDiagram
     class MicrohaplotypesForSample
     click MicrohaplotypesForSample href "../MicrohaplotypesForSample"
-      MicrohaplotypesForSample : sample_id
+      MicrohaplotypesForSample : experiment_id
 
       MicrohaplotypesForSample : target_results
 
@@ -231,9 +231,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../sample_id/">sample_id</a></td>
+<td><a href="../experiment_id/">experiment_id</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>the name of the sample</td>
+<td>a unique identifier for this sequence/amplification run on a specimen</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -295,7 +295,7 @@
 description: Microhaplotypes detected for a sample for all targets
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
-- sample_id
+- experiment_id
 attributes:
   target_results:
     name: target_results
@@ -330,21 +330,20 @@ attributes:
     required: true
     multivalued: true
     inlined_as_list: false
-  sample_id:
-    name: sample_id
-    description: the name of the sample
+  experiment_id:
+    name: experiment_id
+    description: a unique identifier for this sequence/amplification run on a specimen
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    identifier: true
-    alias: sample_id
+    alias: experiment_id
     owner: MicrohaplotypesForSample
     domain_of:
     - DemultiplexedTargetsForSample
     - MicrohaplotypesForSample
-    - SpecimenInfo
+    - ExperimentInfo
     range: string
     required: true
-    pattern: ^[A-z-._0-9]$
+    pattern: ^[A-z-._0-9 ]$
 
 </code></pre>
 </details>

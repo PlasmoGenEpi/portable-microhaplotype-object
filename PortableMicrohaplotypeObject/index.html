@@ -209,6 +209,15 @@
     click TarAmpBioinformaticsInfo href "../TarAmpBioinformaticsInfo"
 
 
+      PortableMicrohaplotypeObject : experiment_infos
+
+
+
+
+    PortableMicrohaplotypeObject --&gt; "1..*" ExperimentInfo : experiment_infos
+    click ExperimentInfo href "../ExperimentInfo"
+
+
       PortableMicrohaplotypeObject : microhaplotypes_detected
 
 
@@ -277,6 +286,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../experiment_infos/">experiment_infos</a></td>
+<td>1..* <br/> <a href="../ExperimentInfo/">ExperimentInfo</a></td>
+<td>a list of experiments of all the seq/amp of samples within this project</td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../specimen_infos/">specimen_infos</a></td>
 <td>1..* <br/> <a href="../SpecimenInfo/">SpecimenInfo</a></td>
@@ -353,6 +368,18 @@
 description: Information on final results from a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
+  experiment_infos:
+    name: experiment_infos
+    description: a list of experiments of all the seq/amp of samples within this project
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: ExperimentInfo
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   specimen_infos:
     name: specimen_infos
     description: a list of SpecimenInfo of all the samples within this project
@@ -433,6 +460,20 @@ tree_root: true
 description: Information on final results from a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
+  experiment_infos:
+    name: experiment_infos
+    description: a list of experiments of all the seq/amp of samples within this project
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: experiment_infos
+    owner: PortableMicrohaplotypeObject
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: ExperimentInfo
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   specimen_infos:
     name: specimen_infos
     description: a list of SpecimenInfo of all the samples within this project

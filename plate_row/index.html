@@ -343,6 +343,11 @@
 <td>Information on specimen info</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../ExperimentInfo/">ExperimentInfo</a></td>
+<td>Information about a specific amplification and sequencing of a specimen</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
@@ -389,8 +394,8 @@ description: the row the specimen was in
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: plate_row
-owner: SpecimenInfo
 domain_of:
+- ExperimentInfo
 - SpecimenInfo
 range: string
 required: true

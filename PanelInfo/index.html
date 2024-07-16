@@ -309,17 +309,9 @@
 <pre><code class="language-yaml">name: PanelInfo
 description: information on a panel of targeted amplicon primer pairs
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+slots:
+- panel_id
 attributes:
-  panel_id:
-    name: panel_id
-    description: name of the panel
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - PanelInfo
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9]$
   target_genome:
     name: target_genome
     description: the info on the target reference genome for this panel
@@ -350,18 +342,6 @@ attributes:
 description: information on a panel of targeted amplicon primer pairs
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  panel_id:
-    name: panel_id
-    description: name of the panel
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: panel_id
-    owner: PanelInfo
-    domain_of:
-    - PanelInfo
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9]$
   target_genome:
     name: target_genome
     description: the info on the target reference genome for this panel
@@ -387,6 +367,19 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: false
+  panel_id:
+    name: panel_id
+    description: name of the panel
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: panel_id
+    owner: PanelInfo
+    domain_of:
+    - PanelInfo
+    - ExperimentInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9]$
 
 </code></pre>
 </details>

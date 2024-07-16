@@ -324,7 +324,7 @@
 
 
 <h1 id="slot-plate_col">Slot: plate_col</h1>
-<p>_the column the specimen was in _</p>
+<p><em>the column the specimen was in</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/plate_col">portable_microhaplotype_object:plate_col</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -341,6 +341,11 @@
 <tr>
 <td><a href="../SpecimenInfo/">SpecimenInfo</a></td>
 <td>Information on specimen info</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ExperimentInfo/">ExperimentInfo</a></td>
+<td>Information about a specific amplification and sequencing of a specimen</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -385,12 +390,12 @@
 <details>
 
 <pre><code class="language-yaml">name: plate_col
-description: 'the column the specimen was in '
+description: the column the specimen was in
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: plate_col
-owner: SpecimenInfo
 domain_of:
+- ExperimentInfo
 - SpecimenInfo
 range: string
 required: true

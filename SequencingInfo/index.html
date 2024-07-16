@@ -213,9 +213,11 @@
 
       SequencingInfo : nucl_acid_amp
 
-      SequencingInfo : nucl_acid_date
+      SequencingInfo : nucl_acid_amp_date
 
       SequencingInfo : nucl_acid_ext
+
+      SequencingInfo : nucl_acid_ext_date
 
       SequencingInfo : pcr_cond
 
@@ -272,9 +274,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../nucl_acid_date/">nucl_acid_date</a></td>
+<td><a href="../nucl_acid_ext_date/">nucl_acid_ext_date</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>the date of the extraction/amplification</td>
+<td>the date of the nucleoacide extraction</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../nucl_acid_amp_date/">nucl_acid_amp_date</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>the date of the nucleoacide amplification</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -359,17 +367,16 @@
 <pre><code class="language-yaml">name: SequencingInfo
 description: Information on sequencing info
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-attributes:
+slots:
+- sequencing_info_id
+slot_usage:
   sequencing_info_id:
     name: sequencing_info_id
-    description: a unique identifier for this sequencing info
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
+    identifier: true
     domain_of:
+    - ExperimentInfo
     - SequencingInfo
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
+attributes:
   seq_instrument:
     name: seq_instrument
     description: the sequencing instrument used to sequence the run, e.g. ILLUMINA,
@@ -413,9 +420,19 @@ attributes:
     range: string
     required: true
     pattern: r"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$"
-  nucl_acid_date:
-    name: nucl_acid_date
-    description: the date of the extraction/amplification
+  nucl_acid_ext_date:
+    name: nucl_acid_ext_date
+    description: the date of the nucleoacide extraction
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SequencingInfo
+    range: string
+    required: true
+    pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+  nucl_acid_amp_date:
+    name: nucl_acid_amp_date
+    description: the date of the nucleoacide amplification
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -487,19 +504,14 @@ attributes:
 <pre><code class="language-yaml">name: SequencingInfo
 description: Information on sequencing info
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-attributes:
+slot_usage:
   sequencing_info_id:
     name: sequencing_info_id
-    description: a unique identifier for this sequencing info
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: sequencing_info_id
-    owner: SequencingInfo
+    identifier: true
     domain_of:
+    - ExperimentInfo
     - SequencingInfo
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
+attributes:
   seq_instrument:
     name: seq_instrument
     description: the sequencing instrument used to sequence the run, e.g. ILLUMINA,
@@ -551,12 +563,24 @@ attributes:
     range: string
     required: true
     pattern: r"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$"
-  nucl_acid_date:
-    name: nucl_acid_date
-    description: the date of the extraction/amplification
+  nucl_acid_ext_date:
+    name: nucl_acid_ext_date
+    description: the date of the nucleoacide extraction
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: nucl_acid_date
+    alias: nucl_acid_ext_date
+    owner: SequencingInfo
+    domain_of:
+    - SequencingInfo
+    range: string
+    required: true
+    pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+  nucl_acid_amp_date:
+    name: nucl_acid_amp_date
+    description: the date of the nucleoacide amplification
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: nucl_acid_amp_date
     owner: SequencingInfo
     domain_of:
     - SequencingInfo
@@ -625,6 +649,20 @@ attributes:
     alias: seq_center
     owner: SequencingInfo
     domain_of:
+    - SequencingInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]$
+  sequencing_info_id:
+    name: sequencing_info_id
+    description: a unique identifier for this sequencing info
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    identifier: true
+    alias: sequencing_info_id
+    owner: SequencingInfo
+    domain_of:
+    - ExperimentInfo
     - SequencingInfo
     range: string
     required: true
