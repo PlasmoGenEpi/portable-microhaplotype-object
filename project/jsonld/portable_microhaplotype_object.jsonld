@@ -460,7 +460,7 @@
         "SpecimenInfo"
       ],
       "range": "string",
-      "pattern": "^[0-9]$",
+      "pattern": "^[A-z-._0-9 ]$",
       "@type": "SlotDefinition"
     },
     {
@@ -489,8 +489,8 @@
         "ExperimentInfo",
         "SpecimenInfo"
       ],
-      "range": "string",
-      "pattern": "^[A-z-._0-9 ]$",
+      "range": "integer",
+      "pattern": "^[0-9]$",
       "@type": "SlotDefinition"
     },
     {
@@ -556,7 +556,7 @@
     },
     {
       "name": "targetInfo__forward_primers",
-      "description": "A holder of forward primers associated with this target",
+      "description": "A list of forward primers associated with this target",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/forward_primers",
       "alias": "forward_primers",
@@ -564,14 +564,15 @@
       "domain_of": [
         "TargetInfo"
       ],
-      "range": "Primers",
+      "range": "PrimerInfo",
       "required": true,
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "targetInfo__reverse_primers",
-      "description": "A holder of reverse primers associated with this target",
+      "description": "A list of reverse primers associated with this target",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/reverse_primers",
       "alias": "reverse_primers",
@@ -579,8 +580,9 @@
       "domain_of": [
         "TargetInfo"
       ],
-      "range": "Primers",
+      "range": "PrimerInfo",
       "required": true,
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -719,11 +721,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "microhaplotypesDetected__samples",
+      "name": "microhaplotypesDetected__experiment_samples",
       "description": "a list of the microhaplotypes detected for a sample for various targets ",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/samples",
-      "alias": "samples",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/experiment_samples",
+      "alias": "experiment_samples",
       "owner": "MicrohaplotypesDetected",
       "domain_of": [
         "MicrohaplotypesDetected"
@@ -938,22 +940,6 @@
         "PrimerInfo"
       ],
       "range": "GenomicLocation",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "primers__entries",
-      "description": "a list of primers  ",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/entries",
-      "alias": "entries",
-      "owner": "Primers",
-      "domain_of": [
-        "Primers"
-      ],
-      "range": "PrimerInfo",
-      "required": true,
-      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -1838,7 +1824,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "plate_name",
       "range": "string",
-      "pattern": "^[0-9]$",
+      "pattern": "^[A-z-._0-9 ]$",
       "@type": "SlotDefinition"
     },
     {
@@ -1875,8 +1861,8 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "plate_col",
-      "range": "string",
-      "pattern": "^[A-z-._0-9 ]$",
+      "range": "integer",
+      "pattern": "^[0-9]$",
       "@type": "SlotDefinition"
     },
     {
@@ -1952,16 +1938,20 @@
         },
         {
           "name": "forward_primers",
-          "description": "A holder of forward primers associated with this target",
-          "range": "Primers",
+          "description": "A list of forward primers associated with this target",
+          "range": "PrimerInfo",
           "required": true,
+          "multivalued": true,
+          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "reverse_primers",
-          "description": "A holder of reverse primers associated with this target",
-          "range": "Primers",
+          "description": "A list of reverse primers associated with this target",
+          "range": "PrimerInfo",
           "required": true,
+          "multivalued": true,
+          "inlined": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -2108,12 +2098,12 @@
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
         "tar_amp_bioinformatics_info_id",
-        "microhaplotypesDetected__samples"
+        "microhaplotypesDetected__experiment_samples"
       ],
       "slot_usage": {},
       "attributes": [
         {
-          "name": "samples",
+          "name": "experiment_samples",
           "description": "a list of the microhaplotypes detected for a sample for various targets ",
           "range": "MicrohaplotypesForSample",
           "required": true,
@@ -2324,29 +2314,6 @@
         }
       ],
       "class_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/PrimerInfo",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Primers",
-      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/Primers",
-      "description": "A holder of primer sequences",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slots": [
-        "primers__entries"
-      ],
-      "slot_usage": {},
-      "attributes": [
-        {
-          "name": "entries",
-          "description": "a list of primers  ",
-          "range": "PrimerInfo",
-          "required": true,
-          "multivalued": true,
-          "inlined": true,
-          "@type": "SlotDefinition"
-        }
-      ],
-      "class_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/Primers",
       "@type": "ClassDefinition"
     },
     {
@@ -2952,9 +2919,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2024-07-16T17:35:00",
-  "source_file_size": 24497,
-  "generation_date": "2024-07-16T17:35:09",
+  "source_file_date": "2024-07-16T23:48:26",
+  "source_file_size": 24361,
+  "generation_date": "2024-07-16T23:48:32",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",

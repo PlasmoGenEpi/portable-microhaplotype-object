@@ -81,7 +81,7 @@ linkml:Sparqlpath xsd:string
     (  $<ExperimentInfo_tes> (  <sequencing_info_id> @linkml:String ;
           <plate_name> @linkml:String ? ;
           <plate_row> @linkml:String ? ;
-          <plate_col> @linkml:String ? ;
+          <plate_col> @linkml:Integer ? ;
           <specimen_id> @linkml:String ;
           <panel_id> @linkml:String
        ) ;
@@ -130,7 +130,7 @@ linkml:Sparqlpath xsd:string
 
 <MicrohaplotypesDetected> CLOSED {
     (  $<MicrohaplotypesDetected_tes> (  <tar_amp_bioinformatics_info_id> @linkml:String ;
-          <samples> @<MicrohaplotypesForSample> +
+          <experiment_samples> @<MicrohaplotypesForSample> +
        ) ;
        rdf:type [ <MicrohaplotypesDetected> ] ?
     )
@@ -184,12 +184,6 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<Primers> CLOSED {
-    (  $<Primers_tes> <entries> @<PrimerInfo> + ;
-       rdf:type [ <Primers> ] ?
-    )
-}
-
 <RepresentativeMicrohaplotypeSequence> CLOSED {
     (  $<RepresentativeMicrohaplotypeSequence_tes> (  <seq> @linkml:String ;
           <microhaplotype_id> @linkml:String ;
@@ -230,7 +224,7 @@ linkml:Sparqlpath xsd:string
 <SpecimenInfo> CLOSED {
     (  $<SpecimenInfo_tes> (  <plate_name> @linkml:String ? ;
           <plate_row> @linkml:String ? ;
-          <plate_col> @linkml:String ? ;
+          <plate_col> @linkml:Integer ? ;
           <samp_taxon_id> @linkml:Integer ;
           <individual_id> @linkml:String ? ;
           <host_taxon_id> @linkml:Integer ? ;
@@ -267,8 +261,8 @@ linkml:Sparqlpath xsd:string
     (  $<TargetInfo_tes> (  <target_id> @linkml:String ;
           <gene_id> @linkml:String ? ;
           <insert_location> @<GenomicLocation> ? ;
-          <forward_primers> @<Primers> ;
-          <reverse_primers> @<Primers>
+          <forward_primers> @<PrimerInfo> + ;
+          <reverse_primers> @<PrimerInfo> +
        ) ;
        rdf:type [ <TargetInfo> ] ?
     )

@@ -4,8 +4,6 @@
 --     * Slot: gene_id Description: an identifier of the gene, if any, is being covered with this targeted
 --     * Slot: PanelInfo_id Description: Autocreated FK slot
 --     * Slot: insert_location_id Description: the intended genomic location of the insert of the amplicon (the location between the end of the forward primer and the beginning of the reverse primer)
---     * Slot: forward_primers_id Description: A holder of forward primers associated with this target
---     * Slot: reverse_primers_id Description: A holder of reverse primers associated with this target
 -- # Class: "PanelInfo" Description: "information on a panel of targeted amplicon primer pairs"
 --     * Slot: id Description: 
 --     * Slot: panel_id Description: name of the panel
@@ -54,10 +52,8 @@
 -- # Class: "PrimerInfo" Description: "information on a primer sequence"
 --     * Slot: id Description: 
 --     * Slot: seq Description: the DNA sequence
---     * Slot: Primers_id Description: Autocreated FK slot
+--     * Slot: TargetInfo_id Description: Autocreated FK slot
 --     * Slot: location_id Description: what the intended genomic location of the primer is    
--- # Class: "Primers" Description: "A holder of primer sequences"
---     * Slot: id Description: 
 -- # Class: "MicrohaplotypesForSample" Description: "Microhaplotypes detected for a sample for all targets"
 --     * Slot: id Description: 
 --     * Slot: experiment_sample_id Description: a unique identifier for this sequence/amplification run on a specimen
@@ -139,9 +135,9 @@
 -- # Class: "RepresentativeMicrohaplotypeSequence_alt_annotations" Description: ""
 --     * Slot: RepresentativeMicrohaplotypeSequence_id Description: Autocreated FK slot
 --     * Slot: alt_annotations Description: a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc
--- # Class: "MicrohaplotypesDetected_samples" Description: ""
+-- # Class: "MicrohaplotypesDetected_experiment_samples" Description: ""
 --     * Slot: MicrohaplotypesDetected_id Description: Autocreated FK slot
---     * Slot: samples_id Description: a list of the microhaplotypes detected for a sample for various targets 
+--     * Slot: experiment_samples_id Description: a list of the microhaplotypes detected for a sample for various targets 
 -- # Class: "DemultiplexedExperimentSamples_demultiplexed_experiment_samples" Description: ""
 --     * Slot: DemultiplexedExperimentSamples_id Description: Autocreated FK slot
 --     * Slot: demultiplexed_experiment_samples_id Description: a list of the samples with the number of raw reads extracted 
@@ -211,10 +207,6 @@ CREATE TABLE "GenomicLocation" (
 	ref_seq TEXT, 
 	PRIMARY KEY (id)
 );
-CREATE TABLE "Primers" (
-	id INTEGER NOT NULL, 
-	PRIMARY KEY (id)
-);
 CREATE TABLE "MicrohaplotypesForSample" (
 	id INTEGER NOT NULL, 
 	experiment_sample_id TEXT NOT NULL, 
@@ -276,15 +268,6 @@ CREATE TABLE "RepresentativeMicrohaplotypeSequence" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY("RepresentativeMicrohaplotypeSequences_id") REFERENCES "RepresentativeMicrohaplotypeSequences" (id)
 );
-CREATE TABLE "PrimerInfo" (
-	id INTEGER NOT NULL, 
-	seq TEXT NOT NULL, 
-	"Primers_id" INTEGER, 
-	location_id INTEGER, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY("Primers_id") REFERENCES "Primers" (id), 
-	FOREIGN KEY(location_id) REFERENCES "GenomicLocation" (id)
-);
 CREATE TABLE "MicrohaplotypeForTarget" (
 	id INTEGER NOT NULL, 
 	microhaplotype_id TEXT NOT NULL, 
@@ -294,12 +277,12 @@ CREATE TABLE "MicrohaplotypeForTarget" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY("MicrohaplotypesForTarget_id") REFERENCES "MicrohaplotypesForTarget" (id)
 );
-CREATE TABLE "MicrohaplotypesDetected_samples" (
+CREATE TABLE "MicrohaplotypesDetected_experiment_samples" (
 	"MicrohaplotypesDetected_id" INTEGER, 
-	samples_id INTEGER NOT NULL, 
-	PRIMARY KEY ("MicrohaplotypesDetected_id", samples_id), 
+	experiment_samples_id INTEGER NOT NULL, 
+	PRIMARY KEY ("MicrohaplotypesDetected_id", experiment_samples_id), 
 	FOREIGN KEY("MicrohaplotypesDetected_id") REFERENCES "MicrohaplotypesDetected" (id), 
-	FOREIGN KEY(samples_id) REFERENCES "MicrohaplotypesForSample" (id)
+	FOREIGN KEY(experiment_samples_id) REFERENCES "MicrohaplotypesForSample" (id)
 );
 CREATE TABLE "DemultiplexedExperimentSamples_demultiplexed_experiment_samples" (
 	"DemultiplexedExperimentSamples_id" INTEGER, 
@@ -334,13 +317,9 @@ CREATE TABLE "TargetInfo" (
 	gene_id TEXT, 
 	"PanelInfo_id" INTEGER, 
 	insert_location_id INTEGER, 
-	forward_primers_id INTEGER NOT NULL, 
-	reverse_primers_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("PanelInfo_id") REFERENCES "PanelInfo" (id), 
-	FOREIGN KEY(insert_location_id) REFERENCES "GenomicLocation" (id), 
-	FOREIGN KEY(forward_primers_id) REFERENCES "Primers" (id), 
-	FOREIGN KEY(reverse_primers_id) REFERENCES "Primers" (id)
+	FOREIGN KEY(insert_location_id) REFERENCES "GenomicLocation" (id)
 );
 CREATE TABLE "PortableMicrohaplotypeObject" (
 	analysis_name TEXT NOT NULL, 
@@ -371,11 +350,20 @@ CREATE TABLE "RepresentativeMicrohaplotypeSequence_alt_annotations" (
 	PRIMARY KEY ("RepresentativeMicrohaplotypeSequence_id", alt_annotations), 
 	FOREIGN KEY("RepresentativeMicrohaplotypeSequence_id") REFERENCES "RepresentativeMicrohaplotypeSequence" (id)
 );
+CREATE TABLE "PrimerInfo" (
+	id INTEGER NOT NULL, 
+	seq TEXT NOT NULL, 
+	"TargetInfo_id" INTEGER, 
+	location_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY("TargetInfo_id") REFERENCES "TargetInfo" (id), 
+	FOREIGN KEY(location_id) REFERENCES "GenomicLocation" (id)
+);
 CREATE TABLE "ExperimentInfo" (
 	sequencing_info_id TEXT NOT NULL, 
 	plate_name TEXT, 
 	plate_row TEXT, 
-	plate_col TEXT, 
+	plate_col INTEGER, 
 	specimen_id TEXT NOT NULL, 
 	panel_id TEXT NOT NULL, 
 	experiment_sample_id TEXT NOT NULL, 
@@ -387,7 +375,7 @@ CREATE TABLE "SpecimenInfo" (
 	specimen_id TEXT NOT NULL, 
 	plate_name TEXT, 
 	plate_row TEXT, 
-	plate_col TEXT, 
+	plate_col INTEGER, 
 	samp_taxon_id INTEGER NOT NULL, 
 	individual_id TEXT, 
 	host_taxon_id INTEGER, 

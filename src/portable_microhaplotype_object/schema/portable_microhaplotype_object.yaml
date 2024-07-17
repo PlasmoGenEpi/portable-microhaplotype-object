@@ -72,15 +72,19 @@ classes:
         description: >- 
           the intended genomic location of the insert of the amplicon (the location between the end of the forward primer and the beginning of the reverse primer)
       forward_primers:
-        range: Primers
+        range: PrimerInfo
+        multivalued: true
+        inlined: true
         required: true
         description: >-
-          A holder of forward primers associated with this target
+          A list of forward primers associated with this target
       reverse_primers:
-        range: Primers
+        range: PrimerInfo
+        multivalued: true
+        inlined: true
         required: true
         description: >-
-          A holder of reverse primers associated with this target
+          A list of reverse primers associated with this target
 
   PanelInfo:
     description: >-
@@ -169,7 +173,7 @@ classes:
     slots:
       - tar_amp_bioinformatics_info_id
     attributes:
-      samples:
+      experiment_samples:
         required: true
         range: MicrohaplotypesForSample
         multivalued: true
@@ -300,17 +304,8 @@ classes:
         description: >-
           what the intended genomic location of the primer is  
             
-  Primers:
-    description: >-
-      A holder of primer sequences
-    attributes:
-      entries:
-        range: PrimerInfo
-        multivalued: true
-        inlined: true
-        required: true
-        description: >-
-          a list of primers  
+
+
 
   MicrohaplotypesForSample:
     description: >-
@@ -758,7 +753,7 @@ slots:
       name of the panel
   plate_name:
     range: string
-    pattern: "^[0-9]$"
+    pattern: "^[A-z-._0-9 ]$"
     description: >-
       a name of plate the specimen was in
   plate_row:
@@ -767,8 +762,8 @@ slots:
     description: >-
       the row the specimen was in
   plate_col:
-    range: string
-    pattern: "^[A-z-._0-9 ]$"
+    range: integer
+    pattern: "^[0-9]$"
     description: >-
       the column the specimen was in
   sequencing_info_id:

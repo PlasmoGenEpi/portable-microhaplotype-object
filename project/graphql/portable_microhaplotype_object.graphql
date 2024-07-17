@@ -30,7 +30,7 @@ type ExperimentInfo
     sequencingInfoId: String!
     plateName: String
     plateRow: String
-    plateCol: String
+    plateCol: Integer
     specimenId: String!
     panelId: String!
     experimentSampleId: String!
@@ -70,7 +70,7 @@ type MicrohaplotypeForTarget
 type MicrohaplotypesDetected
   {
     tarAmpBioinformaticsInfoId: String!
-    samples: [MicrohaplotypesForSample]!
+    experimentSamples: [MicrohaplotypesForSample]!
   }
 
 type MicrohaplotypesForSample
@@ -112,11 +112,6 @@ type PrimerInfo
     location: GenomicLocation
   }
 
-type Primers
-  {
-    entries: [PrimerInfo]!
-  }
-
 type RepresentativeMicrohaplotypeSequence
   {
     seq: String!
@@ -154,7 +149,7 @@ type SpecimenInfo
     specimenId: String!
     plateName: String
     plateRow: String
-    plateCol: String
+    plateCol: Integer
     sampTaxonId: Integer!
     individualId: String
     hostTaxonId: Integer
@@ -188,7 +183,7 @@ type TargetInfo
     targetId: String!
     geneId: String
     insertLocation: GenomicLocation
-    forwardPrimers: Primers!
-    reversePrimers: Primers!
+    forwardPrimers: [PrimerInfo]!
+    reversePrimers: [PrimerInfo]!
   }
 

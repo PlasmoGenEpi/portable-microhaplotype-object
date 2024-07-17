@@ -33,7 +33,7 @@ message ExperimentInfo
   string sequencingInfoId = 0
   string plateName = 0
   string plateRow = 0
-  string plateCol = 0
+  integer plateCol = 0
   string specimenId = 0
   string panelId = 0
   string experimentSampleId = 0
@@ -73,7 +73,7 @@ message MicrohaplotypeForTarget
 message MicrohaplotypesDetected
  {
   string tarAmpBioinformaticsInfoId = 0
- repeated  microhaplotypesForSample samples = 0
+ repeated  microhaplotypesForSample experimentSamples = 0
  }
 // Microhaplotypes detected for a sample for all targets
 message MicrohaplotypesForSample
@@ -114,11 +114,6 @@ message PrimerInfo
   string seq = 0
   genomicLocation location = 0
  }
-// A holder of primer sequences
-message Primers
- {
- repeated  primerInfo entries = 0
- }
 // the representative sequence for a microhaplotype, similar to a fast(a/q) format
 message RepresentativeMicrohaplotypeSequence
  {
@@ -157,7 +152,7 @@ message SpecimenInfo
   string specimenId = 0
   string plateName = 0
   string plateRow = 0
-  string plateCol = 0
+  integer plateCol = 0
   integer sampTaxonId = 0
   string individualId = 0
   integer hostTaxonId = 0
@@ -191,6 +186,6 @@ message TargetInfo
   string targetId = 0
   string geneId = 0
   genomicLocation insertLocation = 0
-  primers forwardPrimers = 0
-  primers reversePrimers = 0
+ repeated  primerInfo forwardPrimers = 0
+ repeated  primerInfo reversePrimers = 0
  }

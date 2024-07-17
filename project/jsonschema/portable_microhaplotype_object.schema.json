@@ -121,12 +121,12 @@
                 },
                 "plate_col": {
                     "description": "the column the specimen was in",
-                    "pattern": "^[A-z-._0-9 ]$",
-                    "type": "string"
+                    "pattern": "^[0-9]$",
+                    "type": "integer"
                 },
                 "plate_name": {
                     "description": "a name of plate the specimen was in",
-                    "pattern": "^[0-9]$",
+                    "pattern": "^[A-z-._0-9 ]$",
                     "type": "string"
                 },
                 "plate_row": {
@@ -280,7 +280,7 @@
             "additionalProperties": false,
             "description": "the microhaplotypes detected in a targeted amplicon analysis",
             "properties": {
-                "samples": {
+                "experiment_samples": {
                     "description": "a list of the microhaplotypes detected for a sample for various targets ",
                     "items": {
                         "$ref": "#/$defs/MicrohaplotypesForSample"
@@ -295,7 +295,7 @@
             },
             "required": [
                 "tar_amp_bioinformatics_info_id",
-                "samples"
+                "experiment_samples"
             ],
             "title": "MicrohaplotypesDetected",
             "type": "object"
@@ -462,24 +462,6 @@
                 "seq"
             ],
             "title": "PrimerInfo",
-            "type": "object"
-        },
-        "Primers": {
-            "additionalProperties": false,
-            "description": "A holder of primer sequences",
-            "properties": {
-                "entries": {
-                    "description": "a list of primers  ",
-                    "items": {
-                        "$ref": "#/$defs/PrimerInfo"
-                    },
-                    "type": "array"
-                }
-            },
-            "required": [
-                "entries"
-            ],
-            "title": "Primers",
             "type": "object"
         },
         "RepresentativeMicrohaplotypeSequence": {
@@ -703,12 +685,12 @@
                 },
                 "plate_col": {
                     "description": "the column the specimen was in",
-                    "pattern": "^[A-z-._0-9 ]$",
-                    "type": "string"
+                    "pattern": "^[0-9]$",
+                    "type": "integer"
                 },
                 "plate_name": {
                     "description": "a name of plate the specimen was in",
-                    "pattern": "^[0-9]$",
+                    "pattern": "^[A-z-._0-9 ]$",
                     "type": "string"
                 },
                 "plate_row": {
@@ -803,8 +785,11 @@
             "description": "Information about a specific target within a genome",
             "properties": {
                 "forward_primers": {
-                    "$ref": "#/$defs/Primers",
-                    "description": "A holder of forward primers associated with this target"
+                    "description": "A list of forward primers associated with this target",
+                    "items": {
+                        "$ref": "#/$defs/PrimerInfo"
+                    },
+                    "type": "array"
                 },
                 "gene_id": {
                     "description": "an identifier of the gene, if any, is being covered with this targeted",
@@ -816,8 +801,11 @@
                     "description": "the intended genomic location of the insert of the amplicon (the location between the end of the forward primer and the beginning of the reverse primer)"
                 },
                 "reverse_primers": {
-                    "$ref": "#/$defs/Primers",
-                    "description": "A holder of reverse primers associated with this target"
+                    "description": "A list of reverse primers associated with this target",
+                    "items": {
+                        "$ref": "#/$defs/PrimerInfo"
+                    },
+                    "type": "array"
                 },
                 "target_id": {
                     "description": "name of the target",

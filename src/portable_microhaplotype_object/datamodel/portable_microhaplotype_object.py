@@ -1,5 +1,5 @@
 # Auto generated from portable_microhaplotype_object.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-07-16T17:35:11
+# Generation date: 2024-07-16T23:48:34
 # Schema: portable-microhaplotype-object
 #
 # id: https://plasmogenepi.github.io/portable-microhaplotype-object
@@ -76,8 +76,8 @@ class TargetInfo(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT.TargetInfo
 
     target_id: str = None
-    forward_primers: Union[dict, "Primers"] = None
-    reverse_primers: Union[dict, "Primers"] = None
+    forward_primers: Union[Union[dict, "PrimerInfo"], List[Union[dict, "PrimerInfo"]]] = None
+    reverse_primers: Union[Union[dict, "PrimerInfo"], List[Union[dict, "PrimerInfo"]]] = None
     gene_id: Optional[str] = None
     insert_location: Optional[Union[dict, "GenomicLocation"]] = None
 
@@ -89,13 +89,11 @@ class TargetInfo(YAMLRoot):
 
         if self._is_empty(self.forward_primers):
             self.MissingRequiredField("forward_primers")
-        if not isinstance(self.forward_primers, Primers):
-            self.forward_primers = Primers(**as_dict(self.forward_primers))
+        self._normalize_inlined_as_dict(slot_name="forward_primers", slot_type=PrimerInfo, key_name="seq", keyed=False)
 
         if self._is_empty(self.reverse_primers):
             self.MissingRequiredField("reverse_primers")
-        if not isinstance(self.reverse_primers, Primers):
-            self.reverse_primers = Primers(**as_dict(self.reverse_primers))
+        self._normalize_inlined_as_dict(slot_name="reverse_primers", slot_type=PrimerInfo, key_name="seq", keyed=False)
 
         if self.gene_id is not None and not isinstance(self.gene_id, str):
             self.gene_id = str(self.gene_id)
@@ -257,7 +255,7 @@ class MicrohaplotypesDetected(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT.MicrohaplotypesDetected
 
     tar_amp_bioinformatics_info_id: str = None
-    samples: Union[Union[dict, "MicrohaplotypesForSample"], List[Union[dict, "MicrohaplotypesForSample"]]] = None
+    experiment_samples: Union[Union[dict, "MicrohaplotypesForSample"], List[Union[dict, "MicrohaplotypesForSample"]]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.tar_amp_bioinformatics_info_id):
@@ -265,9 +263,9 @@ class MicrohaplotypesDetected(YAMLRoot):
         if not isinstance(self.tar_amp_bioinformatics_info_id, str):
             self.tar_amp_bioinformatics_info_id = str(self.tar_amp_bioinformatics_info_id)
 
-        if self._is_empty(self.samples):
-            self.MissingRequiredField("samples")
-        self._normalize_inlined_as_dict(slot_name="samples", slot_type=MicrohaplotypesForSample, key_name="experiment_sample_id", keyed=False)
+        if self._is_empty(self.experiment_samples):
+            self.MissingRequiredField("experiment_samples")
+        self._normalize_inlined_as_dict(slot_name="experiment_samples", slot_type=MicrohaplotypesForSample, key_name="experiment_sample_id", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -473,28 +471,6 @@ class PrimerInfo(YAMLRoot):
 
 
 @dataclass
-class Primers(YAMLRoot):
-    """
-    A holder of primer sequences
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT["Primers"]
-    class_class_curie: ClassVar[str] = "portable_microhaplotype_object:Primers"
-    class_name: ClassVar[str] = "Primers"
-    class_model_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT.Primers
-
-    entries: Union[Union[dict, PrimerInfo], List[Union[dict, PrimerInfo]]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.entries):
-            self.MissingRequiredField("entries")
-        self._normalize_inlined_as_dict(slot_name="entries", slot_type=PrimerInfo, key_name="seq", keyed=False)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
 class MicrohaplotypesForSample(YAMLRoot):
     """
     Microhaplotypes detected for a sample for all targets
@@ -689,7 +665,7 @@ class ExperimentInfo(YAMLRoot):
     panel_id: str = None
     plate_name: Optional[str] = None
     plate_row: Optional[str] = None
-    plate_col: Optional[str] = None
+    plate_col: Optional[int] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.experiment_sample_id):
@@ -718,8 +694,8 @@ class ExperimentInfo(YAMLRoot):
         if self.plate_row is not None and not isinstance(self.plate_row, str):
             self.plate_row = str(self.plate_row)
 
-        if self.plate_col is not None and not isinstance(self.plate_col, str):
-            self.plate_col = str(self.plate_col)
+        if self.plate_col is not None and not isinstance(self.plate_col, int):
+            self.plate_col = int(self.plate_col)
 
         super().__post_init__(**kwargs)
 
@@ -835,7 +811,7 @@ class SpecimenInfo(YAMLRoot):
     project_name: str = None
     plate_name: Optional[str] = None
     plate_row: Optional[str] = None
-    plate_col: Optional[str] = None
+    plate_col: Optional[int] = None
     individual_id: Optional[str] = None
     host_taxon_id: Optional[int] = None
     alternate_identifiers: Optional[Union[str, List[str]]] = empty_list()
@@ -894,8 +870,8 @@ class SpecimenInfo(YAMLRoot):
         if self.plate_row is not None and not isinstance(self.plate_row, str):
             self.plate_row = str(self.plate_row)
 
-        if self.plate_col is not None and not isinstance(self.plate_col, str):
-            self.plate_col = str(self.plate_col)
+        if self.plate_col is not None and not isinstance(self.plate_col, int):
+            self.plate_col = int(self.plate_col)
 
         if self.individual_id is not None and not isinstance(self.individual_id, str):
             self.individual_id = str(self.individual_id)
@@ -1034,15 +1010,15 @@ slots.panel_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.panel_id, name="panel_i
 
 slots.plate_name = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_name, name="plate_name", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('plate_name'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_name, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[0-9]$'))
+                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
 
 slots.plate_row = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_row, name="plate_row", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('plate_row'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_row, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[A-z]$'))
 
 slots.plate_col = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_col, name="plate_col", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('plate_col'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_col, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_col, domain=None, range=Optional[int],
+                   pattern=re.compile(r'^[0-9]$'))
 
 slots.sequencing_info_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencing_info_id, name="sequencing_info_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('sequencing_info_id'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencing_info_id, domain=None, range=str,
@@ -1060,10 +1036,10 @@ slots.targetInfo__insert_location = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.inse
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.targetInfo__insert_location, domain=None, range=Optional[Union[dict, GenomicLocation]])
 
 slots.targetInfo__forward_primers = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.forward_primers, name="targetInfo__forward_primers", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('forward_primers'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.targetInfo__forward_primers, domain=None, range=Union[dict, Primers])
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.targetInfo__forward_primers, domain=None, range=Union[Union[dict, PrimerInfo], List[Union[dict, PrimerInfo]]])
 
 slots.targetInfo__reverse_primers = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.reverse_primers, name="targetInfo__reverse_primers", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('reverse_primers'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.targetInfo__reverse_primers, domain=None, range=Union[dict, Primers])
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.targetInfo__reverse_primers, domain=None, range=Union[Union[dict, PrimerInfo], List[Union[dict, PrimerInfo]]])
 
 slots.panelInfo__target_genome = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.target_genome, name="panelInfo__target_genome", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('target_genome'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.panelInfo__target_genome, domain=None, range=Union[dict, GenomeInfo])
@@ -1094,8 +1070,8 @@ slots.maskingInfo__segment_size = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.segmen
 slots.representativeMicrohaplotypeSequences__seqs = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.seqs, name="representativeMicrohaplotypeSequences__seqs", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('seqs'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.representativeMicrohaplotypeSequences__seqs, domain=None, range=Union[Union[dict, RepresentativeMicrohaplotypeSequence], List[Union[dict, RepresentativeMicrohaplotypeSequence]]])
 
-slots.microhaplotypesDetected__samples = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.samples, name="microhaplotypesDetected__samples", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('samples'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.microhaplotypesDetected__samples, domain=None, range=Union[Union[dict, MicrohaplotypesForSample], List[Union[dict, MicrohaplotypesForSample]]])
+slots.microhaplotypesDetected__experiment_samples = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.experiment_samples, name="microhaplotypesDetected__experiment_samples", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('experiment_samples'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.microhaplotypesDetected__experiment_samples, domain=None, range=Union[Union[dict, MicrohaplotypesForSample], List[Union[dict, MicrohaplotypesForSample]]])
 
 slots.demultiplexedExperimentSamples__demultiplexed_experiment_samples = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.demultiplexed_experiment_samples, name="demultiplexedExperimentSamples__demultiplexed_experiment_samples", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('demultiplexed_experiment_samples'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.demultiplexedExperimentSamples__demultiplexed_experiment_samples, domain=None, range=Union[Union[dict, DemultiplexedTargetsForExperimentSample], List[Union[dict, DemultiplexedTargetsForExperimentSample]]])
@@ -1148,9 +1124,6 @@ slots.genomicLocation__ref_seq = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.ref_seq
 
 slots.primerInfo__location = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.location, name="primerInfo__location", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('location'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.primerInfo__location, domain=None, range=Optional[Union[dict, GenomicLocation]])
-
-slots.primers__entries = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.entries, name="primers__entries", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('entries'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.primers__entries, domain=None, range=Union[Union[dict, PrimerInfo], List[Union[dict, PrimerInfo]]])
 
 slots.microhaplotypesForSample__target_results = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.target_results, name="microhaplotypesForSample__target_results", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('target_results'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.microhaplotypesForSample__target_results, domain=None, range=Union[Union[dict, MicrohaplotypesForTarget], List[Union[dict, MicrohaplotypesForTarget]]])
@@ -1352,15 +1325,15 @@ slots.ExperimentInfo_experiment_sample_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJ
 
 slots.ExperimentInfo_plate_name = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_name, name="ExperimentInfo_plate_name", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('plate_name'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.ExperimentInfo_plate_name, domain=ExperimentInfo, range=Optional[str],
-                   pattern=re.compile(r'^[0-9]$'))
+                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
 
 slots.ExperimentInfo_plate_row = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_row, name="ExperimentInfo_plate_row", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('plate_row'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.ExperimentInfo_plate_row, domain=ExperimentInfo, range=Optional[str],
                    pattern=re.compile(r'^[A-z]$'))
 
 slots.ExperimentInfo_plate_col = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_col, name="ExperimentInfo_plate_col", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('plate_col'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.ExperimentInfo_plate_col, domain=ExperimentInfo, range=Optional[str],
-                   pattern=re.compile(r'^[A-z-._0-9 ]$'))
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.ExperimentInfo_plate_col, domain=ExperimentInfo, range=Optional[int],
+                   pattern=re.compile(r'^[0-9]$'))
 
 slots.SequencingInfo_sequencing_info_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencing_info_id, name="SequencingInfo_sequencing_info_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('sequencing_info_id'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.SequencingInfo_sequencing_info_id, domain=SequencingInfo, range=Union[str, SequencingInfoSequencingInfoId],
