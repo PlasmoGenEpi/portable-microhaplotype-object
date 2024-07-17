@@ -207,7 +207,18 @@
     click RepresentativeMicrohaplotypeSequence href "../RepresentativeMicrohaplotypeSequence"
       RepresentativeMicrohaplotypeSequence : alt_annotations
 
+      RepresentativeMicrohaplotypeSequence : masking
+
+
+
+
+    RepresentativeMicrohaplotypeSequence --&gt; "*" MaskingInfo : masking
+    click MaskingInfo href "../MaskingInfo"
+
+
       RepresentativeMicrohaplotypeSequence : microhaplotype_id
+
+      RepresentativeMicrohaplotypeSequence : pseudocigar
 
       RepresentativeMicrohaplotypeSequence : quality
 
@@ -243,6 +254,18 @@
 <td><a href="../quality/">quality</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>the ansi fastq per base quality score for this sequence, this is optional</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../pseudocigar/">pseudocigar</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the pseudocigar of the haplotype</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../masking/">masking</a></td>
+<td>* <br/> <a href="../MaskingInfo/">MaskingInfo</a></td>
+<td>masking info for the sequence</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -319,6 +342,26 @@ attributes:
     range: string
     required: false
     pattern: ^[A-z-._0-9]$
+  pseudocigar:
+    name: pseudocigar
+    description: the pseudocigar of the haplotype
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - RepresentativeMicrohaplotypeSequence
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9]$
+  masking:
+    name: masking
+    description: masking info for the sequence
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - RepresentativeMicrohaplotypeSequence
+    range: MaskingInfo
+    required: false
+    multivalued: true
   alt_annotations:
     name: alt_annotations
     description: a list of additional annotations associated with this microhaplotype,
@@ -355,6 +398,30 @@ attributes:
     range: string
     required: false
     pattern: ^[A-z-._0-9]$
+  pseudocigar:
+    name: pseudocigar
+    description: the pseudocigar of the haplotype
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: pseudocigar
+    owner: RepresentativeMicrohaplotypeSequence
+    domain_of:
+    - RepresentativeMicrohaplotypeSequence
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9]$
+  masking:
+    name: masking
+    description: masking info for the sequence
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: masking
+    owner: RepresentativeMicrohaplotypeSequence
+    domain_of:
+    - RepresentativeMicrohaplotypeSequence
+    range: MaskingInfo
+    required: false
+    multivalued: true
   alt_annotations:
     name: alt_annotations
     description: a list of additional annotations associated with this microhaplotype,

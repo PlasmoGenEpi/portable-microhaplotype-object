@@ -324,7 +324,7 @@
 
 
 <h1 id="slot-raw_read_count">Slot: raw_read_count</h1>
-<p><em>the raw read counts extracted for a target for a sample</em></p>
+<p><em>the raw read counts extracted for a target for a experiment sample</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/raw_read_count">portable_microhaplotype_object:raw_read_count</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -339,8 +339,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../DemultiplexedTargetForSample/">DemultiplexedTargetForSample</a></td>
-<td>the raw read count for a sample for a target</td>
+<td><a href="../DemultiplexedTargetForExperimentSample/">DemultiplexedTargetForExperimentSample</a></td>
+<td>the raw read count for a experiment sample for a target</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -382,13 +382,13 @@
 <details>
 
 <pre><code class="language-yaml">name: raw_read_count
-description: the raw read counts extracted for a target for a sample
+description: the raw read counts extracted for a target for a experiment sample
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: raw_read_count
-owner: DemultiplexedTargetForSample
+owner: DemultiplexedTargetForExperimentSample
 domain_of:
-- DemultiplexedTargetForSample
+- DemultiplexedTargetForExperimentSample
 range: double
 required: true
 

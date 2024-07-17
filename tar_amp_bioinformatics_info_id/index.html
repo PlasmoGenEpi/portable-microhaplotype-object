@@ -324,7 +324,7 @@
 
 
 <h1 id="slot-tar_amp_bioinformatics_info_id">Slot: tar_amp_bioinformatics_info_id</h1>
-<p><em>a unique identifier for this bioinformatics info</em></p>
+<p><em>a unique identifier for this targeted amplicon bioinformatics pipeline run</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/tar_amp_bioinformatics_info_id">portable_microhaplotype_object:tar_amp_bioinformatics_info_id</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -339,8 +339,18 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../DemultiplexedExperimentSamples/">DemultiplexedExperimentSamples</a></td>
+<td>a list of raw reads counts for each experiment sample for all targets within ...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../TarAmpBioinformaticsInfo/">TarAmpBioinformaticsInfo</a></td>
 <td>the targeted amplicon bioinformatics pipeline</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MicrohaplotypesDetected/">MicrohaplotypesDetected</a></td>
+<td>the microhaplotypes detected in a targeted amplicon analysis</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -385,13 +395,14 @@
 <details>
 
 <pre><code class="language-yaml">name: tar_amp_bioinformatics_info_id
-description: a unique identifier for this bioinformatics info
+description: a unique identifier for this targeted amplicon bioinformatics pipeline
+  run
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-identifier: true
 alias: tar_amp_bioinformatics_info_id
-owner: TarAmpBioinformaticsInfo
 domain_of:
+- MicrohaplotypesDetected
+- DemultiplexedExperimentSamples
 - TarAmpBioinformaticsInfo
 range: string
 required: true

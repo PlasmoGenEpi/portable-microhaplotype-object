@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/panel_id/">
+        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/ref_seq/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: panel_id - portable-microhaplotype-object</title>
+        <title>Slot: ref_seq - portable-microhaplotype-object</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-panel_id" class="md-skip">
+        <a href="#slot-ref_seq" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: panel_id
+              Slot: ref_seq
             
           </span>
         </div>
@@ -317,15 +317,15 @@
                 
                   
 
-  <a href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/panel_id.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/ref_seq.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-panel_id">Slot: panel_id</h1>
-<p><em>name of the panel</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/panel_id">portable_microhaplotype_object:panel_id</a></p>
+<h1 id="slot-ref_seq">Slot: ref_seq</h1>
+<p>_the reference sequence of this genomic location _</p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/ref_seq">portable_microhaplotype_object:ref_seq</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -339,14 +339,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../PanelInfo/">PanelInfo</a></td>
-<td>information on a panel of targeted amplicon primer pairs</td>
+<td><a href="../GenomicLocation/">GenomicLocation</a></td>
+<td>information on the genomic location of specific sequence</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../ExperimentInfo/">ExperimentInfo</a></td>
-<td>Information about a specific amplification and sequencing of a specimen</td>
-<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -356,10 +351,7 @@
 <p>Range: <a href="../String/">String</a></p>
 </li>
 <li>
-<p>Required: True</p>
-</li>
-<li>
-<p>Regex pattern: <code>^[A-z-._0-9]$</code></p>
+<p>Regex pattern: <code>^[A-z-]$</code></p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -378,28 +370,28 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:panel_id</td>
+<td>portable_microhaplotype_object:ref_seq</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:panel_id</td>
+<td>portable_microhaplotype_object:ref_seq</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: panel_id
-description: name of the panel
+<pre><code class="language-yaml">name: ref_seq
+description: 'the reference sequence of this genomic location '
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-alias: panel_id
+alias: ref_seq
+owner: GenomicLocation
 domain_of:
-- PanelInfo
-- ExperimentInfo
+- GenomicLocation
 range: string
-required: true
-pattern: ^[A-z-._0-9]$
+required: false
+pattern: ^[A-z-]$
 
 </code></pre>
 

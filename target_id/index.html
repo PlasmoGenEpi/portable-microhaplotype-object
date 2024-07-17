@@ -339,13 +339,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../TargetInfo/">TargetInfo</a></td>
-<td>Information about a specific target within a genome</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RepresentativeMicrohaplotypeSequences/">RepresentativeMicrohaplotypeSequences</a></td>
-<td>a list of the representative sequence for a microhaplotypes, similar to a fas...</td>
+<td><a href="../DemultiplexedTargetForExperimentSample/">DemultiplexedTargetForExperimentSample</a></td>
+<td>the raw read count for a experiment sample for a target</td>
 <td>no</td>
 </tr>
 <tr>
@@ -354,8 +349,13 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DemultiplexedTargetForSample/">DemultiplexedTargetForSample</a></td>
-<td>the raw read count for a sample for a target</td>
+<td><a href="../RepresentativeMicrohaplotypeSequences/">RepresentativeMicrohaplotypeSequences</a></td>
+<td>a list of the representative sequence for a microhaplotypes, similar to a fas...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TargetInfo/">TargetInfo</a></td>
+<td>Information about a specific target within a genome</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -407,7 +407,7 @@ alias: target_id
 domain_of:
 - TargetInfo
 - RepresentativeMicrohaplotypeSequences
-- DemultiplexedTargetForSample
+- DemultiplexedTargetForExperimentSample
 - MicrohaplotypesForTarget
 range: string
 required: true

@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/DemultiplexedTargetForSample/" rel="canonical"/>
+<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/MaskingInfo/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: DemultiplexedTargetForSample - portable-microhaplotype-object</title>
+<title>Class: MaskingInfo - portable-microhaplotype-object</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-demultiplexedtargetforsample">
+<a class="md-skip" href="#class-maskinginfo">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: DemultiplexedTargetForSample
+              Class: MaskingInfo
             
           </span>
 </div>
@@ -196,18 +196,18 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/DemultiplexedTargetForSample.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/MaskingInfo.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-demultiplexedtargetforsample">Class: DemultiplexedTargetForSample</h1>
-<p><em>the raw read count for a sample for a target</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/DemultiplexedTargetForSample">portable_microhaplotype_object:DemultiplexedTargetForSample</a></p>
+<h1 id="class-maskinginfo">Class: MaskingInfo</h1>
+<p><em>information about a subsegment of the sequence that should be masked</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/MaskingInfo">portable_microhaplotype_object:MaskingInfo</a></p>
 <div class="mermaid"> classDiagram
-    class DemultiplexedTargetForSample
-    click DemultiplexedTargetForSample href "../DemultiplexedTargetForSample"
-      DemultiplexedTargetForSample : raw_read_count
+    class MaskingInfo
+    click MaskingInfo href "../MaskingInfo"
+      MaskingInfo : segment_size
 
-      DemultiplexedTargetForSample : target_id
+      MaskingInfo : seq_start
 
 
 </div>
@@ -224,15 +224,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../target_id/">target_id</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>name of the target</td>
+<td><a href="../seq_start/">seq_start</a></td>
+<td>1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the start of the masking</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../raw_read_count/">raw_read_count</a></td>
-<td>1 <br/> <a href="../Double/">Double</a></td>
-<td>the raw read counts extracted for a target for a sample</td>
+<td><a href="../segment_size/">segment_size</a></td>
+<td>1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the size of the masking</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -249,10 +249,10 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../DemultiplexedTargetsForSample/">DemultiplexedTargetsForSample</a></td>
-<td><a href="../demultiplexed_targets/">demultiplexed_targets</a></td>
+<td><a href="../RepresentativeMicrohaplotypeSequence/">RepresentativeMicrohaplotypeSequence</a></td>
+<td><a href="../masking/">masking</a></td>
 <td>range</td>
-<td><a href="./">DemultiplexedTargetForSample</a></td>
+<td><a href="./">MaskingInfo</a></td>
 </tr>
 </tbody>
 </table>
@@ -272,11 +272,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:DemultiplexedTargetForSample</td>
+<td>portable_microhaplotype_object:MaskingInfo</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:DemultiplexedTargetForSample</td>
+<td>portable_microhaplotype_object:MaskingInfo</td>
 </tr>
 </tbody>
 </table>
@@ -284,56 +284,59 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: DemultiplexedTargetForSample
-description: the raw read count for a sample for a target
+<pre><code class="language-yaml">name: MaskingInfo
+description: information about a subsegment of the sequence that should be masked
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-slots:
-- target_id
 attributes:
-  raw_read_count:
-    name: raw_read_count
-    description: the raw read counts extracted for a target for a sample
+  seq_start:
+    name: seq_start
+    description: the start of the masking
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
-    - DemultiplexedTargetForSample
-    range: double
+    - MaskingInfo
+    range: integer
+    required: true
+  segment_size:
+    name: segment_size
+    description: the size of the masking
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - MaskingInfo
+    range: integer
     required: true
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: DemultiplexedTargetForSample
-description: the raw read count for a sample for a target
+<pre><code class="language-yaml">name: MaskingInfo
+description: information about a subsegment of the sequence that should be masked
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  raw_read_count:
-    name: raw_read_count
-    description: the raw read counts extracted for a target for a sample
+  seq_start:
+    name: seq_start
+    description: the start of the masking
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: raw_read_count
-    owner: DemultiplexedTargetForSample
+    alias: seq_start
+    owner: MaskingInfo
     domain_of:
-    - DemultiplexedTargetForSample
-    range: double
+    - MaskingInfo
+    range: integer
     required: true
-  target_id:
-    name: target_id
-    description: name of the target
+  segment_size:
+    name: segment_size
+    description: the size of the masking
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: target_id
-    owner: DemultiplexedTargetForSample
+    alias: segment_size
+    owner: MaskingInfo
     domain_of:
-    - TargetInfo
-    - RepresentativeMicrohaplotypeSequences
-    - DemultiplexedTargetForSample
-    - MicrohaplotypesForTarget
-    range: string
+    - MaskingInfo
+    range: integer
     required: true
-    pattern: ^[A-z-._0-9]$
 
 </code></pre>
 </details>

@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/sequencing_id/">
+        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/demultiplexed_experiment_samples/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: sequencing_id - portable-microhaplotype-object</title>
+        <title>Slot: demultiplexed_experiment_samples - portable-microhaplotype-object</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-sequencing_id" class="md-skip">
+        <a href="#slot-demultiplexed_experiment_samples" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: sequencing_id
+              Slot: demultiplexed_experiment_samples
             
           </span>
         </div>
@@ -317,15 +317,15 @@
                 
                   
 
-  <a href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/sequencing_id.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/demultiplexed_experiment_samples.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-sequencing_id">Slot: sequencing_id</h1>
-<p><em>the name of the sequencing/wet lab processing steps associated with this run</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/sequencing_id">portable_microhaplotype_object:sequencing_id</a></p>
+<h1 id="slot-demultiplexed_experiment_samples">Slot: demultiplexed_experiment_samples</h1>
+<p>_a list of the samples with the number of raw reads extracted _</p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/demultiplexed_experiment_samples">portable_microhaplotype_object:demultiplexed_experiment_samples</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -339,8 +339,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MicrohaplotypesDetected/">MicrohaplotypesDetected</a></td>
-<td>the microhaplotypes detected in a targeted amplicon analysis</td>
+<td><a href="../DemultiplexedExperimentSamples/">DemultiplexedExperimentSamples</a></td>
+<td>a list of raw reads counts for each experiment sample for all targets within ...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -348,13 +348,13 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../String/">String</a></p>
+<p>Range: <a href="../DemultiplexedTargetsForExperimentSample/">DemultiplexedTargetsForExperimentSample</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
 </li>
 <li>
 <p>Required: True</p>
-</li>
-<li>
-<p>Regex pattern: <code>^[A-z-._0-9]$</code></p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -373,29 +373,29 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:sequencing_id</td>
+<td>portable_microhaplotype_object:demultiplexed_experiment_samples</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:sequencing_id</td>
+<td>portable_microhaplotype_object:demultiplexed_experiment_samples</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: sequencing_id
-description: the name of the sequencing/wet lab processing steps associated with this
-  run
+<pre><code class="language-yaml">name: demultiplexed_experiment_samples
+description: 'a list of the samples with the number of raw reads extracted '
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-alias: sequencing_id
-owner: MicrohaplotypesDetected
+alias: demultiplexed_experiment_samples
+owner: DemultiplexedExperimentSamples
 domain_of:
-- MicrohaplotypesDetected
-range: string
+- DemultiplexedExperimentSamples
+range: DemultiplexedTargetsForExperimentSample
 required: true
-pattern: ^[A-z-._0-9]$
+multivalued: true
+inlined_as_list: false
 
 </code></pre>
 

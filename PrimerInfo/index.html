@@ -210,7 +210,7 @@
 
 
 
-    PrimerInfo --&gt; "1" GenomicLocation : location
+    PrimerInfo --&gt; "0..1" GenomicLocation : location
     click GenomicLocation href "../GenomicLocation"
 
 
@@ -238,7 +238,7 @@
 </tr>
 <tr>
 <td><a href="../location/">location</a></td>
-<td>1 <br/> <a href="../GenomicLocation/">GenomicLocation</a></td>
+<td>0..1 <br/> <a href="../GenomicLocation/">GenomicLocation</a></td>
 <td>what the intended genomic location of the primer is</td>
 <td>direct</td>
 </tr>
@@ -305,7 +305,7 @@ attributes:
     domain_of:
     - PrimerInfo
     range: GenomicLocation
-    required: true
+    required: false
 
 </code></pre>
 </details>
@@ -325,7 +325,7 @@ attributes:
     domain_of:
     - PrimerInfo
     range: GenomicLocation
-    required: true
+    required: false
   seq:
     name: seq
     description: the DNA sequence

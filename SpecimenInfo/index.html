@@ -269,19 +269,19 @@
 </tr>
 <tr>
 <td><a href="../plate_name/">plate_name</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>a name of plate the specimen was in</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../plate_row/">plate_row</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>the row the specimen was in</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../plate_col/">plate_col</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>the column the specimen was in</td>
 <td>direct</td>
 </tr>
@@ -903,8 +903,7 @@ attributes:
     - ExperimentInfo
     - SpecimenInfo
     range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
+    pattern: ^[0-9]$
   plate_row:
     name: plate_row
     description: the row the specimen was in
@@ -916,8 +915,7 @@ attributes:
     - ExperimentInfo
     - SpecimenInfo
     range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
+    pattern: ^[A-z]$
   plate_col:
     name: plate_col
     description: the column the specimen was in
@@ -929,7 +927,6 @@ attributes:
     - ExperimentInfo
     - SpecimenInfo
     range: string
-    required: true
     pattern: ^[A-z-._0-9 ]$
 
 </code></pre>

@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/panel_id/">
+        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/experiment_sample_id/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: panel_id - portable-microhaplotype-object</title>
+        <title>Slot: experiment_sample_id - portable-microhaplotype-object</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-panel_id" class="md-skip">
+        <a href="#slot-experiment_sample_id" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: panel_id
+              Slot: experiment_sample_id
             
           </span>
         </div>
@@ -317,15 +317,15 @@
                 
                   
 
-  <a href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/panel_id.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/experiment_sample_id.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-panel_id">Slot: panel_id</h1>
-<p><em>name of the panel</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/panel_id">portable_microhaplotype_object:panel_id</a></p>
+<h1 id="slot-experiment_sample_id">Slot: experiment_sample_id</h1>
+<p><em>a unique identifier for this sequence/amplification run on a specimen</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/experiment_sample_id">portable_microhaplotype_object:experiment_sample_id</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -339,14 +339,19 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../PanelInfo/">PanelInfo</a></td>
-<td>information on a panel of targeted amplicon primer pairs</td>
+<td><a href="../DemultiplexedTargetsForExperimentSample/">DemultiplexedTargetsForExperimentSample</a></td>
+<td>a list of raw reads for a experiment sample for all targets within panel</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../ExperimentInfo/">ExperimentInfo</a></td>
 <td>Information about a specific amplification and sequencing of a specimen</td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../MicrohaplotypesForSample/">MicrohaplotypesForSample</a></td>
+<td>Microhaplotypes detected for a sample for all targets</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
@@ -359,7 +364,7 @@
 <p>Required: True</p>
 </li>
 <li>
-<p>Regex pattern: <code>^[A-z-._0-9]$</code></p>
+<p>Regex pattern: <code>^[A-z-._0-9 ]$</code></p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -378,28 +383,29 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:panel_id</td>
+<td>portable_microhaplotype_object:experiment_sample_id</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:panel_id</td>
+<td>portable_microhaplotype_object:experiment_sample_id</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: panel_id
-description: name of the panel
+<pre><code class="language-yaml">name: experiment_sample_id
+description: a unique identifier for this sequence/amplification run on a specimen
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-alias: panel_id
+alias: experiment_sample_id
 domain_of:
-- PanelInfo
+- DemultiplexedTargetsForExperimentSample
+- MicrohaplotypesForSample
 - ExperimentInfo
 range: string
 required: true
-pattern: ^[A-z-._0-9]$
+pattern: ^[A-z-._0-9 ]$
 
 </code></pre>
 

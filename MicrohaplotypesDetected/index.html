@@ -205,8 +205,6 @@
 <div class="mermaid"> classDiagram
     class MicrohaplotypesDetected
     click MicrohaplotypesDetected href "../MicrohaplotypesDetected"
-      MicrohaplotypesDetected : bioinformatics_id
-
       MicrohaplotypesDetected : samples
 
 
@@ -216,7 +214,7 @@
     click MicrohaplotypesForSample href "../MicrohaplotypesForSample"
 
 
-      MicrohaplotypesDetected : sequencing_id
+      MicrohaplotypesDetected : tar_amp_bioinformatics_info_id
 
 
 </div>
@@ -233,15 +231,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../sequencing_id/">sequencing_id</a></td>
+<td><a href="../tar_amp_bioinformatics_info_id/">tar_amp_bioinformatics_info_id</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>the name of the sequencing/wet lab processing steps associated with this run</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../bioinformatics_id/">bioinformatics_id</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>the name of the bioinformatics processing steps associated with this run</td>
+<td>a unique identifier for this targeted amplicon bioinformatics pipeline run</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -302,29 +294,9 @@
 <pre><code class="language-yaml">name: MicrohaplotypesDetected
 description: the microhaplotypes detected in a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+slots:
+- tar_amp_bioinformatics_info_id
 attributes:
-  sequencing_id:
-    name: sequencing_id
-    description: the name of the sequencing/wet lab processing steps associated with
-      this run
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - MicrohaplotypesDetected
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9]$
-  bioinformatics_id:
-    name: bioinformatics_id
-    description: the name of the bioinformatics processing steps associated with this
-      run
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - MicrohaplotypesDetected
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9]$
   samples:
     name: samples
     description: 'a list of the microhaplotypes detected for a sample for various
@@ -346,32 +318,6 @@ attributes:
 description: the microhaplotypes detected in a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  sequencing_id:
-    name: sequencing_id
-    description: the name of the sequencing/wet lab processing steps associated with
-      this run
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: sequencing_id
-    owner: MicrohaplotypesDetected
-    domain_of:
-    - MicrohaplotypesDetected
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9]$
-  bioinformatics_id:
-    name: bioinformatics_id
-    description: the name of the bioinformatics processing steps associated with this
-      run
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: bioinformatics_id
-    owner: MicrohaplotypesDetected
-    domain_of:
-    - MicrohaplotypesDetected
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9]$
   samples:
     name: samples
     description: 'a list of the microhaplotypes detected for a sample for various
@@ -386,6 +332,21 @@ attributes:
     required: true
     multivalued: true
     inlined_as_list: false
+  tar_amp_bioinformatics_info_id:
+    name: tar_amp_bioinformatics_info_id
+    description: a unique identifier for this targeted amplicon bioinformatics pipeline
+      run
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: tar_amp_bioinformatics_info_id
+    owner: MicrohaplotypesDetected
+    domain_of:
+    - MicrohaplotypesDetected
+    - DemultiplexedExperimentSamples
+    - TarAmpBioinformaticsInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]$
 
 </code></pre>
 </details>

@@ -202,15 +202,6 @@
     click PortableMicrohaplotypeObject href "../PortableMicrohaplotypeObject"
       PortableMicrohaplotypeObject : analysis_name
 
-      PortableMicrohaplotypeObject : bioinformatics_infos
-
-
-
-
-    PortableMicrohaplotypeObject --&gt; "1" TarAmpBioinformaticsInfo : bioinformatics_infos
-    click TarAmpBioinformaticsInfo href "../TarAmpBioinformaticsInfo"
-
-
       PortableMicrohaplotypeObject : experiment_infos
 
 
@@ -238,6 +229,15 @@
     click PanelInfo href "../PanelInfo"
 
 
+      PortableMicrohaplotypeObject : postprocessing_bioinformatics_infos
+
+
+
+
+    PortableMicrohaplotypeObject --&gt; "0..1" BioMethod : postprocessing_bioinformatics_infos
+    click BioMethod href "../BioMethod"
+
+
       PortableMicrohaplotypeObject : representative_microhaplotype_sequences
 
 
@@ -247,12 +247,12 @@
     click RepresentativeMicrohaplotypeSequences href "../RepresentativeMicrohaplotypeSequences"
 
 
-      PortableMicrohaplotypeObject : sequencing_info
+      PortableMicrohaplotypeObject : sequencing_infos
 
 
 
 
-    PortableMicrohaplotypeObject --&gt; "1" SequencingInfo : sequencing_info
+    PortableMicrohaplotypeObject --&gt; "1" SequencingInfo : sequencing_infos
     click SequencingInfo href "../SequencingInfo"
 
 
@@ -265,13 +265,22 @@
     click SpecimenInfo href "../SpecimenInfo"
 
 
-      PortableMicrohaplotypeObject : target_demultiplexed_samples
+      PortableMicrohaplotypeObject : taramp_bioinformatics_infos
 
 
 
 
-    PortableMicrohaplotypeObject --&gt; "1" DemultiplexedSamples : target_demultiplexed_samples
-    click DemultiplexedSamples href "../DemultiplexedSamples"
+    PortableMicrohaplotypeObject --&gt; "1" TarAmpBioinformaticsInfo : taramp_bioinformatics_infos
+    click TarAmpBioinformaticsInfo href "../TarAmpBioinformaticsInfo"
+
+
+      PortableMicrohaplotypeObject : target_demultiplexed_experiment_samples
+
+
+
+
+    PortableMicrohaplotypeObject --&gt; "0..1" DemultiplexedExperimentSamples : target_demultiplexed_experiment_samples
+    click DemultiplexedExperimentSamples href "../DemultiplexedExperimentSamples"
 
 
 
@@ -307,7 +316,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../sequencing_info/">sequencing_info</a></td>
+<td><a href="../sequencing_infos/">sequencing_infos</a></td>
 <td>1 <br/> <a href="../SequencingInfo/">SequencingInfo</a></td>
 <td>the sequencing info for this project</td>
 <td>direct</td>
@@ -331,15 +340,21 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../target_demultiplexed_samples/">target_demultiplexed_samples</a></td>
-<td>1 <br/> <a href="../DemultiplexedSamples/">DemultiplexedSamples</a></td>
+<td><a href="../target_demultiplexed_experiment_samples/">target_demultiplexed_experiment_samples</a></td>
+<td>0..1 <br/> <a href="../DemultiplexedExperimentSamples/">DemultiplexedExperimentSamples</a></td>
 <td>the raw demultiplex target counts for each sample</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../bioinformatics_infos/">bioinformatics_infos</a></td>
+<td><a href="../taramp_bioinformatics_infos/">taramp_bioinformatics_infos</a></td>
 <td>1 <br/> <a href="../TarAmpBioinformaticsInfo/">TarAmpBioinformaticsInfo</a></td>
-<td>the bioinformatics pipeline info for this project</td>
+<td>the bioinformatics pipeline/methods used to generated the amplicon analysis f...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../postprocessing_bioinformatics_infos/">postprocessing_bioinformatics_infos</a></td>
+<td>0..1 <br/> <a href="../BioMethod/">BioMethod</a></td>
+<td>any additional methods that were applied to the processing of this file/analy...</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -411,8 +426,8 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  sequencing_info:
-    name: sequencing_info
+  sequencing_infos:
+    name: sequencing_infos
     description: the sequencing info for this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
@@ -451,24 +466,39 @@ attributes:
     - PortableMicrohaplotypeObject
     range: MicrohaplotypesDetected
     required: true
-  target_demultiplexed_samples:
-    name: target_demultiplexed_samples
+  target_demultiplexed_experiment_samples:
+    name: target_demultiplexed_experiment_samples
     description: the raw demultiplex target counts for each sample
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - PortableMicrohaplotypeObject
-    range: DemultiplexedSamples
-    required: true
-  bioinformatics_infos:
-    name: bioinformatics_infos
-    description: the bioinformatics pipeline info for this project
+    range: DemultiplexedExperimentSamples
+    required: false
+    inlined: true
+    inlined_as_list: true
+  taramp_bioinformatics_infos:
+    name: taramp_bioinformatics_infos
+    description: the bioinformatics pipeline/methods used to generated the amplicon
+      analysis for this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - PortableMicrohaplotypeObject
     range: TarAmpBioinformaticsInfo
     required: true
+    inlined: true
+    inlined_as_list: true
+  postprocessing_bioinformatics_infos:
+    name: postprocessing_bioinformatics_infos
+    description: any additional methods that were applied to the processing of this
+      file/analysis, this can be filtering, adding info etc
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: BioMethod
+    required: false
     inlined: true
     inlined_as_list: true
 tree_root: true
@@ -522,12 +552,12 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  sequencing_info:
-    name: sequencing_info
+  sequencing_infos:
+    name: sequencing_infos
     description: the sequencing info for this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: sequencing_info
+    alias: sequencing_infos
     owner: PortableMicrohaplotypeObject
     domain_of:
     - PortableMicrohaplotypeObject
@@ -570,28 +600,45 @@ attributes:
     - PortableMicrohaplotypeObject
     range: MicrohaplotypesDetected
     required: true
-  target_demultiplexed_samples:
-    name: target_demultiplexed_samples
+  target_demultiplexed_experiment_samples:
+    name: target_demultiplexed_experiment_samples
     description: the raw demultiplex target counts for each sample
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: target_demultiplexed_samples
+    alias: target_demultiplexed_experiment_samples
     owner: PortableMicrohaplotypeObject
     domain_of:
     - PortableMicrohaplotypeObject
-    range: DemultiplexedSamples
-    required: true
-  bioinformatics_infos:
-    name: bioinformatics_infos
-    description: the bioinformatics pipeline info for this project
+    range: DemultiplexedExperimentSamples
+    required: false
+    inlined: true
+    inlined_as_list: true
+  taramp_bioinformatics_infos:
+    name: taramp_bioinformatics_infos
+    description: the bioinformatics pipeline/methods used to generated the amplicon
+      analysis for this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: bioinformatics_infos
+    alias: taramp_bioinformatics_infos
     owner: PortableMicrohaplotypeObject
     domain_of:
     - PortableMicrohaplotypeObject
     range: TarAmpBioinformaticsInfo
     required: true
+    inlined: true
+    inlined_as_list: true
+  postprocessing_bioinformatics_infos:
+    name: postprocessing_bioinformatics_infos
+    description: any additional methods that were applied to the processing of this
+      file/analysis, this can be filtering, adding info etc
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: postprocessing_bioinformatics_infos
+    owner: PortableMicrohaplotypeObject
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: BioMethod
+    required: false
     inlined: true
     inlined_as_list: true
 tree_root: true

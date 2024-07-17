@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/TargetInfo/" rel="canonical"/>
+<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/DemultiplexedExperimentSamples/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: TargetInfo - portable-microhaplotype-object</title>
+<title>Class: DemultiplexedExperimentSamples - portable-microhaplotype-object</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-targetinfo">
+<a class="md-skip" href="#class-demultiplexedexperimentsamples">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: TargetInfo
+              Class: DemultiplexedExperimentSamples
             
           </span>
 </div>
@@ -196,45 +196,25 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/TargetInfo.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/PlasmoGenEpi/portable-microhaplotype-object/edit/master/docs/DemultiplexedExperimentSamples.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-targetinfo">Class: TargetInfo</h1>
-<p><em>Information about a specific target within a genome</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/TargetInfo">portable_microhaplotype_object:TargetInfo</a></p>
+<h1 id="class-demultiplexedexperimentsamples">Class: DemultiplexedExperimentSamples</h1>
+<p><em>a list of raw reads counts for each experiment sample for all targets within panel</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/DemultiplexedExperimentSamples">portable_microhaplotype_object:DemultiplexedExperimentSamples</a></p>
 <div class="mermaid"> classDiagram
-    class TargetInfo
-    click TargetInfo href "../TargetInfo"
-      TargetInfo : forward_primers
+    class DemultiplexedExperimentSamples
+    click DemultiplexedExperimentSamples href "../DemultiplexedExperimentSamples"
+      DemultiplexedExperimentSamples : demultiplexed_experiment_samples
 
 
 
 
-    TargetInfo --&gt; "1" Primers : forward_primers
-    click Primers href "../Primers"
+    DemultiplexedExperimentSamples --&gt; "1..*" DemultiplexedTargetsForExperimentSample : demultiplexed_experiment_samples
+    click DemultiplexedTargetsForExperimentSample href "../DemultiplexedTargetsForExperimentSample"
 
 
-      TargetInfo : gene_id
-
-      TargetInfo : insert_location
-
-
-
-
-    TargetInfo --&gt; "0..1" GenomicLocation : insert_location
-    click GenomicLocation href "../GenomicLocation"
-
-
-      TargetInfo : reverse_primers
-
-
-
-
-    TargetInfo --&gt; "1" Primers : reverse_primers
-    click Primers href "../Primers"
-
-
-      TargetInfo : target_id
+      DemultiplexedExperimentSamples : tar_amp_bioinformatics_info_id
 
 
 </div>
@@ -251,33 +231,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../target_id/">target_id</a></td>
+<td><a href="../tar_amp_bioinformatics_info_id/">tar_amp_bioinformatics_info_id</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>name of the target</td>
+<td>a unique identifier for this targeted amplicon bioinformatics pipeline run</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../gene_id/">gene_id</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>an identifier of the gene, if any, is being covered with this targeted</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../insert_location/">insert_location</a></td>
-<td>0..1 <br/> <a href="../GenomicLocation/">GenomicLocation</a></td>
-<td>the intended genomic location of the insert of the amplicon (the location bet...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../forward_primers/">forward_primers</a></td>
-<td>1 <br/> <a href="../Primers/">Primers</a></td>
-<td>A holder of forward primers associated with this target</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../reverse_primers/">reverse_primers</a></td>
-<td>1 <br/> <a href="../Primers/">Primers</a></td>
-<td>A holder of reverse primers associated with this target</td>
+<td><a href="../demultiplexed_experiment_samples/">demultiplexed_experiment_samples</a></td>
+<td>1..* <br/> <a href="../DemultiplexedTargetsForExperimentSample/">DemultiplexedTargetsForExperimentSample</a></td>
+<td>a list of the samples with the number of raw reads extracted</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -294,10 +256,10 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../PanelInfo/">PanelInfo</a></td>
-<td><a href="../targets/">targets</a></td>
+<td><a href="../PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
+<td><a href="../target_demultiplexed_experiment_samples/">target_demultiplexed_experiment_samples</a></td>
 <td>range</td>
-<td><a href="./">TargetInfo</a></td>
+<td><a href="./">DemultiplexedExperimentSamples</a></td>
 </tr>
 </tbody>
 </table>
@@ -317,11 +279,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:TargetInfo</td>
+<td>portable_microhaplotype_object:DemultiplexedExperimentSamples</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:TargetInfo</td>
+<td>portable_microhaplotype_object:DemultiplexedExperimentSamples</td>
 </tr>
 </tbody>
 </table>
@@ -329,120 +291,62 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: TargetInfo
-description: Information about a specific target within a genome
+<pre><code class="language-yaml">name: DemultiplexedExperimentSamples
+description: a list of raw reads counts for each experiment sample for all targets
+  within panel
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
-- target_id
+- tar_amp_bioinformatics_info_id
 attributes:
-  gene_id:
-    name: gene_id
-    description: an identifier of the gene, if any, is being covered with this targeted
+  demultiplexed_experiment_samples:
+    name: demultiplexed_experiment_samples
+    description: 'a list of the samples with the number of raw reads extracted '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
-    - TargetInfo
-    range: string
-    pattern: ^[A-z-._0-9]$
-  insert_location:
-    name: insert_location
-    description: the intended genomic location of the insert of the amplicon (the
-      location between the end of the forward primer and the beginning of the reverse
-      primer)
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - TargetInfo
-    range: GenomicLocation
-    required: false
-  forward_primers:
-    name: forward_primers
-    description: A holder of forward primers associated with this target
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - TargetInfo
-    range: Primers
+    - DemultiplexedExperimentSamples
+    range: DemultiplexedTargetsForExperimentSample
     required: true
-  reverse_primers:
-    name: reverse_primers
-    description: A holder of reverse primers associated with this target
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - TargetInfo
-    range: Primers
-    required: true
+    multivalued: true
+    inlined_as_list: false
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: TargetInfo
-description: Information about a specific target within a genome
+<pre><code class="language-yaml">name: DemultiplexedExperimentSamples
+description: a list of raw reads counts for each experiment sample for all targets
+  within panel
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  gene_id:
-    name: gene_id
-    description: an identifier of the gene, if any, is being covered with this targeted
+  demultiplexed_experiment_samples:
+    name: demultiplexed_experiment_samples
+    description: 'a list of the samples with the number of raw reads extracted '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: gene_id
-    owner: TargetInfo
+    alias: demultiplexed_experiment_samples
+    owner: DemultiplexedExperimentSamples
     domain_of:
-    - TargetInfo
-    range: string
-    pattern: ^[A-z-._0-9]$
-  insert_location:
-    name: insert_location
-    description: the intended genomic location of the insert of the amplicon (the
-      location between the end of the forward primer and the beginning of the reverse
-      primer)
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: insert_location
-    owner: TargetInfo
-    domain_of:
-    - TargetInfo
-    range: GenomicLocation
-    required: false
-  forward_primers:
-    name: forward_primers
-    description: A holder of forward primers associated with this target
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: forward_primers
-    owner: TargetInfo
-    domain_of:
-    - TargetInfo
-    range: Primers
+    - DemultiplexedExperimentSamples
+    range: DemultiplexedTargetsForExperimentSample
     required: true
-  reverse_primers:
-    name: reverse_primers
-    description: A holder of reverse primers associated with this target
+    multivalued: true
+    inlined_as_list: false
+  tar_amp_bioinformatics_info_id:
+    name: tar_amp_bioinformatics_info_id
+    description: a unique identifier for this targeted amplicon bioinformatics pipeline
+      run
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: reverse_primers
-    owner: TargetInfo
+    alias: tar_amp_bioinformatics_info_id
+    owner: DemultiplexedExperimentSamples
     domain_of:
-    - TargetInfo
-    range: Primers
-    required: true
-  target_id:
-    name: target_id
-    description: name of the target
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: target_id
-    owner: TargetInfo
-    domain_of:
-    - TargetInfo
-    - RepresentativeMicrohaplotypeSequences
-    - DemultiplexedTargetForExperimentSample
-    - MicrohaplotypesForTarget
+    - MicrohaplotypesDetected
+    - DemultiplexedExperimentSamples
+    - TarAmpBioinformaticsInfo
     range: string
     required: true
-    pattern: ^[A-z-._0-9]$
+    pattern: ^[A-z-._0-9 ]$
 
 </code></pre>
 </details>

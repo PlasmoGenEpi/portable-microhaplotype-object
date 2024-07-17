@@ -205,7 +205,7 @@
 <div class="mermaid"> classDiagram
     class MicrohaplotypesForSample
     click MicrohaplotypesForSample href "../MicrohaplotypesForSample"
-      MicrohaplotypesForSample : experiment_id
+      MicrohaplotypesForSample : experiment_sample_id
 
       MicrohaplotypesForSample : target_results
 
@@ -231,7 +231,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../experiment_id/">experiment_id</a></td>
+<td><a href="../experiment_sample_id/">experiment_sample_id</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td>a unique identifier for this sequence/amplification run on a specimen</td>
 <td>direct</td>
@@ -295,7 +295,7 @@
 description: Microhaplotypes detected for a sample for all targets
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
-- experiment_id
+- experiment_sample_id
 attributes:
   target_results:
     name: target_results
@@ -330,15 +330,15 @@ attributes:
     required: true
     multivalued: true
     inlined_as_list: false
-  experiment_id:
-    name: experiment_id
+  experiment_sample_id:
+    name: experiment_sample_id
     description: a unique identifier for this sequence/amplification run on a specimen
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: experiment_id
+    alias: experiment_sample_id
     owner: MicrohaplotypesForSample
     domain_of:
-    - DemultiplexedTargetsForSample
+    - DemultiplexedTargetsForExperimentSample
     - MicrohaplotypesForSample
     - ExperimentInfo
     range: string
