@@ -324,7 +324,7 @@
 
 
 <h1 id="slot-reverse_primers">Slot: reverse_primers</h1>
-<p><em>A holder of reverse primers associated with this target</em></p>
+<p><em>A list of reverse primers associated with this target</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/reverse_primers">portable_microhaplotype_object:reverse_primers</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -348,7 +348,10 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../Primers/">Primers</a></p>
+<p>Range: <a href="../PrimerInfo/">PrimerInfo</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
 </li>
 <li>
 <p>Required: True</p>
@@ -382,15 +385,17 @@
 <details>
 
 <pre><code class="language-yaml">name: reverse_primers
-description: A holder of reverse primers associated with this target
+description: A list of reverse primers associated with this target
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: reverse_primers
 owner: TargetInfo
 domain_of:
 - TargetInfo
-range: Primers
+range: PrimerInfo
 required: true
+multivalued: true
+inlined: true
 
 </code></pre>
 

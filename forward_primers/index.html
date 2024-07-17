@@ -324,7 +324,7 @@
 
 
 <h1 id="slot-forward_primers">Slot: forward_primers</h1>
-<p><em>A holder of forward primers associated with this target</em></p>
+<p><em>A list of forward primers associated with this target</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/forward_primers">portable_microhaplotype_object:forward_primers</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -348,7 +348,10 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../Primers/">Primers</a></p>
+<p>Range: <a href="../PrimerInfo/">PrimerInfo</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
 </li>
 <li>
 <p>Required: True</p>
@@ -382,15 +385,17 @@
 <details>
 
 <pre><code class="language-yaml">name: forward_primers
-description: A holder of forward primers associated with this target
+description: A list of forward primers associated with this target
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: forward_primers
 owner: TargetInfo
 domain_of:
 - TargetInfo
-range: Primers
+range: PrimerInfo
 required: true
+multivalued: true
+inlined: true
 
 </code></pre>
 

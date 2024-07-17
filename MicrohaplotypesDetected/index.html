@@ -205,12 +205,12 @@
 <div class="mermaid"> classDiagram
     class MicrohaplotypesDetected
     click MicrohaplotypesDetected href "../MicrohaplotypesDetected"
-      MicrohaplotypesDetected : samples
+      MicrohaplotypesDetected : experiment_samples
 
 
 
 
-    MicrohaplotypesDetected --&gt; "1..*" MicrohaplotypesForSample : samples
+    MicrohaplotypesDetected --&gt; "1..*" MicrohaplotypesForSample : experiment_samples
     click MicrohaplotypesForSample href "../MicrohaplotypesForSample"
 
 
@@ -237,7 +237,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../samples/">samples</a></td>
+<td><a href="../experiment_samples/">experiment_samples</a></td>
 <td>1..* <br/> <a href="../MicrohaplotypesForSample/">MicrohaplotypesForSample</a></td>
 <td>a list of the microhaplotypes detected for a sample for various targets</td>
 <td>direct</td>
@@ -297,8 +297,8 @@ from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
 - tar_amp_bioinformatics_info_id
 attributes:
-  samples:
-    name: samples
+  experiment_samples:
+    name: experiment_samples
     description: 'a list of the microhaplotypes detected for a sample for various
       targets '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
@@ -318,13 +318,13 @@ attributes:
 description: the microhaplotypes detected in a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  samples:
-    name: samples
+  experiment_samples:
+    name: experiment_samples
     description: 'a list of the microhaplotypes detected for a sample for various
       targets '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: samples
+    alias: experiment_samples
     owner: MicrohaplotypesDetected
     domain_of:
     - MicrohaplotypesDetected

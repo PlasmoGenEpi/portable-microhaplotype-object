@@ -253,7 +253,7 @@
 </tr>
 <tr>
 <td><a href="../plate_col/">plate_col</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>the column the specimen was in</td>
 <td>direct</td>
 </tr>
@@ -445,7 +445,7 @@ attributes:
     - SpecimenInfo
     range: string
     required: false
-    pattern: ^[0-9]$
+    pattern: ^[A-z-._0-9 ]$
   plate_row:
     name: plate_row
     description: the row the specimen was in
@@ -469,9 +469,9 @@ attributes:
     domain_of:
     - ExperimentInfo
     - SpecimenInfo
-    range: string
+    range: integer
     required: false
-    pattern: ^[A-z-._0-9 ]$
+    pattern: ^[0-9]$
   specimen_id:
     name: specimen_id
     description: the name of the specimen of a individual
