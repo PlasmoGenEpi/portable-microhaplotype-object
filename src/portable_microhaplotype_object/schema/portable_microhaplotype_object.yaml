@@ -68,7 +68,7 @@ classes:
           an identifier of the gene, if any, is being covered with this targeted
       insert_location:
         range: GenomicLocation
-        required: true
+        required: false
         description: >- 
           the intended genomic location of the insert of the amplicon (the location between the end of the forward primer and the beginning of the reverse primer)
       forward_primers:
@@ -115,6 +115,18 @@ classes:
         required: false
         description: >-
           the ansi fastq per base quality score for this sequence, this is optional
+      pseudocigar:
+        range: string
+        pattern: "^[A-z-._0-9]$"
+        required: false
+        description: >-
+          the pseudocigar of the haplotype
+      masking:
+        range: MaskingInfo
+        multivalued: true
+        required: false
+        description: >-
+          masking info for the sequence
       alt_annotations:
         required: false
         range: string
@@ -122,7 +134,20 @@ classes:
         inlined_as_list: true
         description: >-
           a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc
-
+  MaskingInfo:
+    description: >- 
+      information about a subsegment of the sequence that should be masked
+    attributes:
+      seq_start:
+        required: true
+        range: integer
+        description: >-
+          the start of the masking
+      segment_size:
+        required: true
+        range: integer
+        description: >-
+          the size of the masking
   RepresentativeMicrohaplotypeSequences:
     description: >-
       a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format
@@ -138,24 +163,12 @@ classes:
           a list of the microhaplotypes detected for a sample for various targets 
       
 
-
-
   MicrohaplotypesDetected:
     description: >-
       the microhaplotypes detected in a targeted amplicon analysis
+    slots:
+      - tar_amp_bioinformatics_info_id
     attributes:
-      sequencing_id:
-        range: string
-        pattern: "^[A-z-._0-9]$"
-        required: true
-        description: >-
-          the name of the sequencing/wet lab processing steps associated with this run
-      bioinformatics_id:
-        range: string
-        pattern: "^[A-z-._0-9]$"
-        required: true
-        description: >-
-          the name of the bioinformatics processing steps associated with this run
       samples:
         required: true
         range: MicrohaplotypesForSample
@@ -164,35 +177,37 @@ classes:
         description: >-
           a list of the microhaplotypes detected for a sample for various targets 
 
-  DemultiplexedSamples:
+  DemultiplexedExperimentSamples:
     description: >-
-      a list of raw reads counts for each sample for all targets within panel 
+      a list of raw reads counts for each experiment sample for all targets within panel
+    slots:
+      - tar_amp_bioinformatics_info_id
     attributes:
-      demultiplexed_samples:
+      demultiplexed_experiment_samples:
         required: true
-        range: DemultiplexedTargetsForSample
+        range: DemultiplexedTargetsForExperimentSample
         multivalued: true
         inlined_as_list: false
         description: >-
           a list of the samples with the number of raw reads extracted 
 
-  DemultiplexedTargetsForSample:
+  DemultiplexedTargetsForExperimentSample:
     description: >-
-      a list of raw reads for a sample for all targets within panel
+      a list of raw reads for a experiment sample for all targets within panel
     slots:
-      - experiment_id
+      - experiment_sample_id
     attributes:
       demultiplexed_targets:
         required: true
-        range: DemultiplexedTargetForSample
+        range: DemultiplexedTargetForExperimentSample
         multivalued: true
         inlined_as_list: false
         description: >-
           a list of the targets extracted for a sample 
 
-  DemultiplexedTargetForSample:
+  DemultiplexedTargetForExperimentSample:
     description: >-
-      the raw read count for a sample for a target
+      the raw read count for a experiment sample for a target
     slots:
       - target_id
     attributes:
@@ -200,7 +215,7 @@ classes:
         required: true
         range: double
         description: >-
-          the raw read counts extracted for a target for a sample
+          the raw read counts extracted for a target for a experiment sample
   
 
   GenomeInfo:
@@ -265,7 +280,13 @@ classes:
         required: false
         pattern: r'[+-]'
         description: >- 
-          which strand the location is, either + for plus strand or - for negative strand 
+          which strand the location is, either + for plus strand or - for negative strand
+      ref_seq:
+        range: string
+        required: false
+        pattern: "^[A-z-]$"
+        description: >-
+          the reference sequence of this genomic location 
 
   PrimerInfo:
     description: >- 
@@ -275,7 +296,7 @@ classes:
     attributes:
       location:
         range: GenomicLocation
-        required: true
+        required: false
         description: >-
           what the intended genomic location of the primer is  
             
@@ -287,6 +308,7 @@ classes:
         range: PrimerInfo
         multivalued: true
         inlined: true
+        required: true
         description: >-
           a list of primers  
 
@@ -294,7 +316,7 @@ classes:
     description: >-
       Microhaplotypes detected for a sample for all targets
     slots:
-      - experiment_id
+      - experiment_sample_id
     attributes:
       target_results:
         required: true
@@ -308,7 +330,6 @@ classes:
     description: >-
       Microhaplotype detected for a specific target
     slots:
-#      - target_id
       - microhaplotype_id
     attributes:
       read_count:
@@ -339,14 +360,12 @@ classes:
   TarAmpBioinformaticsInfo:
     description: >-
       the targeted amplicon bioinformatics pipeline
-    attributes:
+    slots:
+    - tar_amp_bioinformatics_info_id
+    slot_usage:
       tar_amp_bioinformatics_info_id:
-        range: string
-        pattern: "^[A-z-._0-9 ]$"
-        required: true
         identifier: true
-        description: >-
-          a unique identifier for this bioinformatics info
+    attributes:
       demultiplexing_method:
         range: BioMethod
         required: true
@@ -410,14 +429,20 @@ classes:
       - plate_col
       - specimen_id
       - panel_id
-      - experiment_id
+      - experiment_sample_id
     slot_usage:
       specimen_id:
         identifier: false
       panel_id:
         identifier: false
-      experiment_id:
+      experiment_sample_id:
         identifier: true
+      plate_name:
+        required: false
+      plate_row:
+        required: false
+      plate_col:
+        required: false
 
 
 
@@ -652,7 +677,7 @@ classes:
         inlined_as_list: true
         description: >-
           a list of SpecimenInfo of all the samples within this project
-      sequencing_info:
+      sequencing_infos:
         range: SequencingInfo
         required: true
         inlined_as_list: true
@@ -675,17 +700,24 @@ classes:
         required: true
         description: >-
           the microhaplotypes detected in this projects
-      target_demultiplexed_samples:
-        range: DemultiplexedSamples
-        required: true
+      target_demultiplexed_experiment_samples:
+        range: DemultiplexedExperimentSamples
+        required: false
+        inlined_as_list: true
         description: >-
           the raw demultiplex target counts for each sample
-      bioinformatics_infos:
+      taramp_bioinformatics_infos:
         range: TarAmpBioinformaticsInfo
         required: true
         inlined_as_list: true
         description: >-
-          the bioinformatics pipeline info for this project
+          the bioinformatics pipeline/methods used to generated the amplicon analysis for this project
+      postprocessing_bioinformatics_infos:
+        range: BioMethod
+        inlined_as_list: true
+        required: false
+        description: >-
+          any additional methods that were applied to the processing of this file/analysis, this can be filtering, adding info etc
 
 slots:
   seq:
@@ -700,7 +732,7 @@ slots:
     required: true
     description: >-
       the name of the specimen of a individual
-  experiment_id:
+  experiment_sample_id:
     range: string
     pattern: "^[A-z-._0-9 ]$"
     required: true
@@ -726,20 +758,17 @@ slots:
       name of the panel
   plate_name:
     range: string
-    pattern: "^[A-z-._0-9 ]$"
-    required: true
+    pattern: "^[0-9]$"
     description: >-
       a name of plate the specimen was in
   plate_row:
     range: string
-    pattern: "^[A-z-._0-9 ]$"
-    required: true
+    pattern: "^[A-z]$"
     description: >-
       the row the specimen was in
   plate_col:
     range: string
     pattern: "^[A-z-._0-9 ]$"
-    required: true
     description: >-
       the column the specimen was in
   sequencing_info_id:
@@ -748,6 +777,13 @@ slots:
     required: true
     description: >-
       a unique identifier for this sequencing info
+  tar_amp_bioinformatics_info_id:
+    range: string
+    pattern: "^[A-z-._0-9 ]$"
+    required: true
+#    identifier: true
+    description: >-
+      a unique identifier for this targeted amplicon bioinformatics pipeline run
 
 # slots:
 #   id:

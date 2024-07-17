@@ -7,32 +7,33 @@ type BioMethod
     additionalArgument: [String]
   }
 
-type DemultiplexedSamples
+type DemultiplexedExperimentSamples
   {
-    demultiplexedSamples: [DemultiplexedTargetsForSample]!
+    tarAmpBioinformaticsInfoId: String!
+    demultiplexedExperimentSamples: [DemultiplexedTargetsForExperimentSample]!
   }
 
-type DemultiplexedTargetForSample
+type DemultiplexedTargetForExperimentSample
   {
     targetId: String!
     rawReadCount: Double!
   }
 
-type DemultiplexedTargetsForSample
+type DemultiplexedTargetsForExperimentSample
   {
-    experimentId: String!
-    demultiplexedTargets: [DemultiplexedTargetForSample]!
+    experimentSampleId: String!
+    demultiplexedTargets: [DemultiplexedTargetForExperimentSample]!
   }
 
 type ExperimentInfo
   {
     sequencingInfoId: String!
-    plateName: String!
-    plateRow: String!
-    plateCol: String!
+    plateName: String
+    plateRow: String
+    plateCol: String
     specimenId: String!
     panelId: String!
-    experimentId: String!
+    experimentSampleId: String!
   }
 
 type GenomeInfo
@@ -50,6 +51,13 @@ type GenomicLocation
     start: Integer!
     end: Integer!
     strand: String
+    refSeq: String
+  }
+
+type MaskingInfo
+  {
+    seqStart: Integer!
+    segmentSize: Integer!
   }
 
 type MicrohaplotypeForTarget
@@ -61,14 +69,13 @@ type MicrohaplotypeForTarget
 
 type MicrohaplotypesDetected
   {
-    sequencingId: String!
-    bioinformaticsId: String!
+    tarAmpBioinformaticsInfoId: String!
     samples: [MicrohaplotypesForSample]!
   }
 
 type MicrohaplotypesForSample
   {
-    experimentId: String!
+    experimentSampleId: String!
     targetResults: [MicrohaplotypesForTarget]!
   }
 
@@ -90,23 +97,24 @@ type PortableMicrohaplotypeObject
     analysisName: String!
     experimentInfos: [ExperimentInfo]!
     specimenInfos: [SpecimenInfo]!
-    sequencingInfo: SequencingInfo!
+    sequencingInfos: SequencingInfo!
     panelInfo: PanelInfo!
     representativeMicrohaplotypeSequences: [RepresentativeMicrohaplotypeSequences]!
     microhaplotypesDetected: MicrohaplotypesDetected!
-    targetDemultiplexedSamples: DemultiplexedSamples!
-    bioinformaticsInfos: TarAmpBioinformaticsInfo!
+    targetDemultiplexedExperimentSamples: DemultiplexedExperimentSamples
+    tarampBioinformaticsInfos: TarAmpBioinformaticsInfo!
+    postprocessingBioinformaticsInfos: BioMethod
   }
 
 type PrimerInfo
   {
     seq: String!
-    location: GenomicLocation!
+    location: GenomicLocation
   }
 
 type Primers
   {
-    entries: [PrimerInfo]
+    entries: [PrimerInfo]!
   }
 
 type RepresentativeMicrohaplotypeSequence
@@ -114,6 +122,8 @@ type RepresentativeMicrohaplotypeSequence
     seq: String!
     microhaplotypeId: String!
     quality: String
+    pseudocigar: String
+    masking: [MaskingInfo]
     altAnnotations: [String]
   }
 
@@ -142,9 +152,9 @@ type SequencingInfo
 type SpecimenInfo
   {
     specimenId: String!
-    plateName: String!
-    plateRow: String!
-    plateCol: String!
+    plateName: String
+    plateRow: String
+    plateCol: String
     sampTaxonId: Integer!
     individualId: String
     hostTaxonId: Integer
@@ -177,7 +187,7 @@ type TargetInfo
   {
     targetId: String!
     geneId: String
-    insertLocation: GenomicLocation!
+    insertLocation: GenomicLocation
     forwardPrimers: Primers!
     reversePrimers: Primers!
   }

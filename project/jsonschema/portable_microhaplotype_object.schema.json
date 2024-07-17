@@ -36,30 +36,36 @@
             "title": "BioMethod",
             "type": "object"
         },
-        "DemultiplexedSamples": {
+        "DemultiplexedExperimentSamples": {
             "additionalProperties": false,
-            "description": "a list of raw reads counts for each sample for all targets within panel",
+            "description": "a list of raw reads counts for each experiment sample for all targets within panel",
             "properties": {
-                "demultiplexed_samples": {
+                "demultiplexed_experiment_samples": {
                     "description": "a list of the samples with the number of raw reads extracted ",
                     "items": {
-                        "$ref": "#/$defs/DemultiplexedTargetsForSample"
+                        "$ref": "#/$defs/DemultiplexedTargetsForExperimentSample"
                     },
                     "type": "array"
+                },
+                "tar_amp_bioinformatics_info_id": {
+                    "description": "a unique identifier for this targeted amplicon bioinformatics pipeline run",
+                    "pattern": "^[A-z-._0-9 ]$",
+                    "type": "string"
                 }
             },
             "required": [
-                "demultiplexed_samples"
+                "tar_amp_bioinformatics_info_id",
+                "demultiplexed_experiment_samples"
             ],
-            "title": "DemultiplexedSamples",
+            "title": "DemultiplexedExperimentSamples",
             "type": "object"
         },
-        "DemultiplexedTargetForSample": {
+        "DemultiplexedTargetForExperimentSample": {
             "additionalProperties": false,
-            "description": "the raw read count for a sample for a target",
+            "description": "the raw read count for a experiment sample for a target",
             "properties": {
                 "raw_read_count": {
-                    "description": "the raw read counts extracted for a target for a sample",
+                    "description": "the raw read counts extracted for a target for a experiment sample",
                     "type": "number"
                 },
                 "target_id": {
@@ -72,38 +78,38 @@
                 "target_id",
                 "raw_read_count"
             ],
-            "title": "DemultiplexedTargetForSample",
+            "title": "DemultiplexedTargetForExperimentSample",
             "type": "object"
         },
-        "DemultiplexedTargetsForSample": {
+        "DemultiplexedTargetsForExperimentSample": {
             "additionalProperties": false,
-            "description": "a list of raw reads for a sample for all targets within panel",
+            "description": "a list of raw reads for a experiment sample for all targets within panel",
             "properties": {
                 "demultiplexed_targets": {
                     "description": "a list of the targets extracted for a sample ",
                     "items": {
-                        "$ref": "#/$defs/DemultiplexedTargetForSample"
+                        "$ref": "#/$defs/DemultiplexedTargetForExperimentSample"
                     },
                     "type": "array"
                 },
-                "experiment_id": {
+                "experiment_sample_id": {
                     "description": "a unique identifier for this sequence/amplification run on a specimen",
                     "pattern": "^[A-z-._0-9 ]$",
                     "type": "string"
                 }
             },
             "required": [
-                "experiment_id",
+                "experiment_sample_id",
                 "demultiplexed_targets"
             ],
-            "title": "DemultiplexedTargetsForSample",
+            "title": "DemultiplexedTargetsForExperimentSample",
             "type": "object"
         },
         "ExperimentInfo": {
             "additionalProperties": false,
             "description": "Information about a specific amplification and sequencing of a specimen",
             "properties": {
-                "experiment_id": {
+                "experiment_sample_id": {
                     "description": "a unique identifier for this sequence/amplification run on a specimen",
                     "pattern": "^[A-z-._0-9 ]$",
                     "type": "string"
@@ -120,12 +126,12 @@
                 },
                 "plate_name": {
                     "description": "a name of plate the specimen was in",
-                    "pattern": "^[A-z-._0-9 ]$",
+                    "pattern": "^[0-9]$",
                     "type": "string"
                 },
                 "plate_row": {
                     "description": "the row the specimen was in",
-                    "pattern": "^[A-z-._0-9 ]$",
+                    "pattern": "^[A-z]$",
                     "type": "string"
                 },
                 "sequencing_info_id": {
@@ -141,12 +147,9 @@
             },
             "required": [
                 "sequencing_info_id",
-                "plate_name",
-                "plate_row",
-                "plate_col",
                 "specimen_id",
                 "panel_id",
-                "experiment_id"
+                "experiment_sample_id"
             ],
             "title": "ExperimentInfo",
             "type": "object"
@@ -204,13 +207,18 @@
                     "pattern": "^[0-9]$",
                     "type": "integer"
                 },
+                "ref_seq": {
+                    "description": "the reference sequence of this genomic location ",
+                    "pattern": "^[A-z-]$",
+                    "type": "string"
+                },
                 "start": {
                     "description": "the start of the location, 0-based positioning",
                     "pattern": "^[0-9]$",
                     "type": "integer"
                 },
                 "strand": {
-                    "description": "which strand the location is, either + for plus strand or - for negative strand ",
+                    "description": "which strand the location is, either + for plus strand or - for negative strand",
                     "pattern": "r'[+-]'",
                     "type": "string"
                 }
@@ -221,6 +229,26 @@
                 "end"
             ],
             "title": "GenomicLocation",
+            "type": "object"
+        },
+        "MaskingInfo": {
+            "additionalProperties": false,
+            "description": "information about a subsegment of the sequence that should be masked",
+            "properties": {
+                "segment_size": {
+                    "description": "the size of the masking",
+                    "type": "integer"
+                },
+                "seq_start": {
+                    "description": "the start of the masking",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "seq_start",
+                "segment_size"
+            ],
+            "title": "MaskingInfo",
             "type": "object"
         },
         "MicrohaplotypeForTarget": {
@@ -252,11 +280,6 @@
             "additionalProperties": false,
             "description": "the microhaplotypes detected in a targeted amplicon analysis",
             "properties": {
-                "bioinformatics_id": {
-                    "description": "the name of the bioinformatics processing steps associated with this run",
-                    "pattern": "^[A-z-._0-9]$",
-                    "type": "string"
-                },
                 "samples": {
                     "description": "a list of the microhaplotypes detected for a sample for various targets ",
                     "items": {
@@ -264,15 +287,14 @@
                     },
                     "type": "array"
                 },
-                "sequencing_id": {
-                    "description": "the name of the sequencing/wet lab processing steps associated with this run",
-                    "pattern": "^[A-z-._0-9]$",
+                "tar_amp_bioinformatics_info_id": {
+                    "description": "a unique identifier for this targeted amplicon bioinformatics pipeline run",
+                    "pattern": "^[A-z-._0-9 ]$",
                     "type": "string"
                 }
             },
             "required": [
-                "sequencing_id",
-                "bioinformatics_id",
+                "tar_amp_bioinformatics_info_id",
                 "samples"
             ],
             "title": "MicrohaplotypesDetected",
@@ -282,7 +304,7 @@
             "additionalProperties": false,
             "description": "Microhaplotypes detected for a sample for all targets",
             "properties": {
-                "experiment_id": {
+                "experiment_sample_id": {
                     "description": "a unique identifier for this sequence/amplification run on a specimen",
                     "pattern": "^[A-z-._0-9 ]$",
                     "type": "string"
@@ -296,7 +318,7 @@
                 }
             },
             "required": [
-                "experiment_id",
+                "experiment_sample_id",
                 "target_results"
             ],
             "title": "MicrohaplotypesForSample",
@@ -363,10 +385,6 @@
                     "description": "a name for the analysis detailed here in this experiment, can be a concatenation of names if combined more than one PMO",
                     "type": "string"
                 },
-                "bioinformatics_infos": {
-                    "$ref": "#/$defs/TarAmpBioinformaticsInfo",
-                    "description": "the bioinformatics pipeline info for this project"
-                },
                 "experiment_infos": {
                     "description": "a list of experiments of all the seq/amp of samples within this project",
                     "items": {
@@ -382,6 +400,10 @@
                     "$ref": "#/$defs/PanelInfo",
                     "description": "the info on the panel used for this project"
                 },
+                "postprocessing_bioinformatics_infos": {
+                    "$ref": "#/$defs/BioMethod",
+                    "description": "any additional methods that were applied to the processing of this file/analysis, this can be filtering, adding info etc"
+                },
                 "representative_microhaplotype_sequences": {
                     "description": "a list of the representative sequences for the results for this project",
                     "items": {
@@ -389,7 +411,7 @@
                     },
                     "type": "array"
                 },
-                "sequencing_info": {
+                "sequencing_infos": {
                     "$ref": "#/$defs/SequencingInfo",
                     "description": "the sequencing info for this project"
                 },
@@ -400,8 +422,12 @@
                     },
                     "type": "array"
                 },
-                "target_demultiplexed_samples": {
-                    "$ref": "#/$defs/DemultiplexedSamples",
+                "taramp_bioinformatics_infos": {
+                    "$ref": "#/$defs/TarAmpBioinformaticsInfo",
+                    "description": "the bioinformatics pipeline/methods used to generated the amplicon analysis for this project"
+                },
+                "target_demultiplexed_experiment_samples": {
+                    "$ref": "#/$defs/DemultiplexedExperimentSamples",
                     "description": "the raw demultiplex target counts for each sample"
                 }
             },
@@ -409,12 +435,11 @@
                 "analysis_name",
                 "experiment_infos",
                 "specimen_infos",
-                "sequencing_info",
+                "sequencing_infos",
                 "panel_info",
                 "representative_microhaplotype_sequences",
                 "microhaplotypes_detected",
-                "target_demultiplexed_samples",
-                "bioinformatics_infos"
+                "taramp_bioinformatics_infos"
             ],
             "title": "PortableMicrohaplotypeObject",
             "type": "object"
@@ -434,8 +459,7 @@
                 }
             },
             "required": [
-                "seq",
-                "location"
+                "seq"
             ],
             "title": "PrimerInfo",
             "type": "object"
@@ -452,6 +476,9 @@
                     "type": "array"
                 }
             },
+            "required": [
+                "entries"
+            ],
             "title": "Primers",
             "type": "object"
         },
@@ -466,8 +493,20 @@
                     },
                     "type": "array"
                 },
+                "masking": {
+                    "description": "masking info for the sequence",
+                    "items": {
+                        "$ref": "#/$defs/MaskingInfo"
+                    },
+                    "type": "array"
+                },
                 "microhaplotype_id": {
                     "description": "name of the microhaplotype, should be unique to this microhaplotype",
+                    "pattern": "^[A-z-._0-9]$",
+                    "type": "string"
+                },
+                "pseudocigar": {
+                    "description": "the pseudocigar of the haplotype",
                     "pattern": "^[A-z-._0-9]$",
                     "type": "string"
                 },
@@ -669,12 +708,12 @@
                 },
                 "plate_name": {
                     "description": "a name of plate the specimen was in",
-                    "pattern": "^[A-z-._0-9 ]$",
+                    "pattern": "^[0-9]$",
                     "type": "string"
                 },
                 "plate_row": {
                     "description": "the row the specimen was in",
-                    "pattern": "^[A-z-._0-9 ]$",
+                    "pattern": "^[A-z]$",
                     "type": "string"
                 },
                 "project_name": {
@@ -710,9 +749,6 @@
             },
             "required": [
                 "specimen_id",
-                "plate_name",
-                "plate_row",
-                "plate_col",
                 "samp_taxon_id",
                 "collection_date",
                 "collection_country",
@@ -748,7 +784,7 @@
                     "description": "the method used to compare clustered/de-noised reads across samples for a target"
                 },
                 "tar_amp_bioinformatics_info_id": {
-                    "description": "a unique identifier for this bioinformatics info",
+                    "description": "a unique identifier for this targeted amplicon bioinformatics pipeline run",
                     "pattern": "^[A-z-._0-9 ]$",
                     "type": "string"
                 }
@@ -791,7 +827,6 @@
             },
             "required": [
                 "target_id",
-                "insert_location",
                 "forward_primers",
                 "reverse_primers"
             ],
@@ -809,10 +844,6 @@
             "description": "a name for the analysis detailed here in this experiment, can be a concatenation of names if combined more than one PMO",
             "type": "string"
         },
-        "bioinformatics_infos": {
-            "$ref": "#/$defs/TarAmpBioinformaticsInfo",
-            "description": "the bioinformatics pipeline info for this project"
-        },
         "experiment_infos": {
             "description": "a list of experiments of all the seq/amp of samples within this project",
             "items": {
@@ -828,6 +859,10 @@
             "$ref": "#/$defs/PanelInfo",
             "description": "the info on the panel used for this project"
         },
+        "postprocessing_bioinformatics_infos": {
+            "$ref": "#/$defs/BioMethod",
+            "description": "any additional methods that were applied to the processing of this file/analysis, this can be filtering, adding info etc"
+        },
         "representative_microhaplotype_sequences": {
             "description": "a list of the representative sequences for the results for this project",
             "items": {
@@ -835,7 +870,7 @@
             },
             "type": "array"
         },
-        "sequencing_info": {
+        "sequencing_infos": {
             "$ref": "#/$defs/SequencingInfo",
             "description": "the sequencing info for this project"
         },
@@ -846,8 +881,12 @@
             },
             "type": "array"
         },
-        "target_demultiplexed_samples": {
-            "$ref": "#/$defs/DemultiplexedSamples",
+        "taramp_bioinformatics_infos": {
+            "$ref": "#/$defs/TarAmpBioinformaticsInfo",
+            "description": "the bioinformatics pipeline/methods used to generated the amplicon analysis for this project"
+        },
+        "target_demultiplexed_experiment_samples": {
+            "$ref": "#/$defs/DemultiplexedExperimentSamples",
             "description": "the raw demultiplex target counts for each sample"
         }
     },
@@ -855,12 +894,11 @@
         "analysis_name",
         "experiment_infos",
         "specimen_infos",
-        "sequencing_info",
+        "sequencing_infos",
         "panel_info",
         "representative_microhaplotype_sequences",
         "microhaplotypes_detected",
-        "target_demultiplexed_samples",
-        "bioinformatics_infos"
+        "taramp_bioinformatics_infos"
     ],
     "title": "portable-microhaplotype-object",
     "type": "object",

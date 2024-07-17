@@ -9,22 +9,23 @@ message BioMethod
   string programVersion = 0
  repeated  string additionalArgument = 0
  }
-// a list of raw reads counts for each sample for all targets within panel 
-message DemultiplexedSamples
+// a list of raw reads counts for each experiment sample for all targets within panel
+message DemultiplexedExperimentSamples
  {
- repeated  demultiplexedTargetsForSample demultiplexedSamples = 0
+  string tarAmpBioinformaticsInfoId = 0
+ repeated  demultiplexedTargetsForExperimentSample demultiplexedExperimentSamples = 0
  }
-// the raw read count for a sample for a target
-message DemultiplexedTargetForSample
+// the raw read count for a experiment sample for a target
+message DemultiplexedTargetForExperimentSample
  {
   string targetId = 0
   double rawReadCount = 0
  }
-// a list of raw reads for a sample for all targets within panel
-message DemultiplexedTargetsForSample
+// a list of raw reads for a experiment sample for all targets within panel
+message DemultiplexedTargetsForExperimentSample
  {
-  string experimentId = 0
- repeated  demultiplexedTargetForSample demultiplexedTargets = 0
+  string experimentSampleId = 0
+ repeated  demultiplexedTargetForExperimentSample demultiplexedTargets = 0
  }
 // Information about a specific amplification and sequencing of a specimen
 message ExperimentInfo
@@ -35,7 +36,7 @@ message ExperimentInfo
   string plateCol = 0
   string specimenId = 0
   string panelId = 0
-  string experimentId = 0
+  string experimentSampleId = 0
  }
 // information on a genome
 message GenomeInfo
@@ -53,6 +54,13 @@ message GenomicLocation
   integer start = 0
   integer end = 0
   string strand = 0
+  string refSeq = 0
+ }
+// information about a subsegment of the sequence that should be masked
+message MaskingInfo
+ {
+  integer seqStart = 0
+  integer segmentSize = 0
  }
 // Microhaplotype detected for a specific target
 message MicrohaplotypeForTarget
@@ -64,14 +72,13 @@ message MicrohaplotypeForTarget
 // the microhaplotypes detected in a targeted amplicon analysis
 message MicrohaplotypesDetected
  {
-  string sequencingId = 0
-  string bioinformaticsId = 0
+  string tarAmpBioinformaticsInfoId = 0
  repeated  microhaplotypesForSample samples = 0
  }
 // Microhaplotypes detected for a sample for all targets
 message MicrohaplotypesForSample
  {
-  string experimentId = 0
+  string experimentSampleId = 0
  repeated  microhaplotypesForTarget targetResults = 0
  }
 // Microhaplotypes detected for a specific target
@@ -93,12 +100,13 @@ message PortableMicrohaplotypeObject
   string analysisName = 0
  repeated  experimentInfo experimentInfos = 0
  repeated  specimenInfo specimenInfos = 0
-  sequencingInfo sequencingInfo = 0
+  sequencingInfo sequencingInfos = 0
   panelInfo panelInfo = 0
  repeated  representativeMicrohaplotypeSequences representativeMicrohaplotypeSequences = 0
   microhaplotypesDetected microhaplotypesDetected = 0
-  demultiplexedSamples targetDemultiplexedSamples = 0
-  tarAmpBioinformaticsInfo bioinformaticsInfos = 0
+  demultiplexedExperimentSamples targetDemultiplexedExperimentSamples = 0
+  tarAmpBioinformaticsInfo tarampBioinformaticsInfos = 0
+  bioMethod postprocessingBioinformaticsInfos = 0
  }
 // information on a primer sequence
 message PrimerInfo
@@ -117,6 +125,8 @@ message RepresentativeMicrohaplotypeSequence
   string seq = 0
   string microhaplotypeId = 0
   string quality = 0
+  string pseudocigar = 0
+ repeated  maskingInfo masking = 0
  repeated  string altAnnotations = 0
  }
 // a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format
