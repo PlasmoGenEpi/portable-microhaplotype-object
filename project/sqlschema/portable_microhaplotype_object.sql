@@ -18,7 +18,8 @@
 -- # Class: "MaskingInfo" Description: "information about a subsegment of the sequence that should be masked"
 --     * Slot: id Description: 
 --     * Slot: seq_start Description: the start of the masking
---     * Slot: segment_size Description: the size of the masking
+--     * Slot: seq_segment_size Description: the size of the masking
+--     * Slot: replacement_size Description: the size of replacement mask
 -- # Class: "RepresentativeMicrohaplotypeSequences" Description: "a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format"
 --     * Slot: id Description: 
 --     * Slot: target_id Description: name of the target
@@ -160,7 +161,8 @@
 CREATE TABLE "MaskingInfo" (
 	id INTEGER NOT NULL, 
 	seq_start INTEGER NOT NULL, 
-	segment_size INTEGER NOT NULL, 
+	seq_segment_size INTEGER NOT NULL, 
+	replacement_size INTEGER NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "RepresentativeMicrohaplotypeSequences" (

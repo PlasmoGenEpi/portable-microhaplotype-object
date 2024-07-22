@@ -147,11 +147,16 @@ classes:
         range: integer
         description: >-
           the start of the masking
-      segment_size:
+      seq_segment_size:
         required: true
         range: integer
         description: >-
           the size of the masking
+      replacement_size:
+        required: true
+        range: integer
+        description: >-
+          the size of replacement mask
   RepresentativeMicrohaplotypeSequences:
     description: >-
       a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format

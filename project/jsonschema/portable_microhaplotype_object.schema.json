@@ -235,7 +235,11 @@
             "additionalProperties": false,
             "description": "information about a subsegment of the sequence that should be masked",
             "properties": {
-                "segment_size": {
+                "replacement_size": {
+                    "description": "the size of replacement mask",
+                    "type": "integer"
+                },
+                "seq_segment_size": {
                     "description": "the size of the masking",
                     "type": "integer"
                 },
@@ -246,7 +250,8 @@
             },
             "required": [
                 "seq_start",
-                "segment_size"
+                "seq_segment_size",
+                "replacement_size"
             ],
             "title": "MaskingInfo",
             "type": "object"
