@@ -205,7 +205,9 @@
 <div class="mermaid"> classDiagram
     class MaskingInfo
     click MaskingInfo href "../MaskingInfo"
-      MaskingInfo : segment_size
+      MaskingInfo : replacement_size
+
+      MaskingInfo : seq_segment_size
 
       MaskingInfo : seq_start
 
@@ -230,9 +232,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../segment_size/">segment_size</a></td>
+<td><a href="../seq_segment_size/">seq_segment_size</a></td>
 <td>1 <br/> <a href="../Integer/">Integer</a></td>
 <td>the size of the masking</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../replacement_size/">replacement_size</a></td>
+<td>1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the size of replacement mask</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -297,9 +305,18 @@ attributes:
     - MaskingInfo
     range: integer
     required: true
-  segment_size:
-    name: segment_size
+  seq_segment_size:
+    name: seq_segment_size
     description: the size of the masking
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - MaskingInfo
+    range: integer
+    required: true
+  replacement_size:
+    name: replacement_size
+    description: the size of replacement mask
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -326,12 +343,23 @@ attributes:
     - MaskingInfo
     range: integer
     required: true
-  segment_size:
-    name: segment_size
+  seq_segment_size:
+    name: seq_segment_size
     description: the size of the masking
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: segment_size
+    alias: seq_segment_size
+    owner: MaskingInfo
+    domain_of:
+    - MaskingInfo
+    range: integer
+    required: true
+  replacement_size:
+    name: replacement_size
+    description: the size of replacement mask
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: replacement_size
     owner: MaskingInfo
     domain_of:
     - MaskingInfo
