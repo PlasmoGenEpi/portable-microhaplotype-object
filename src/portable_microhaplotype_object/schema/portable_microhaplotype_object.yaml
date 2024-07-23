@@ -97,7 +97,7 @@ classes:
         required: true
         description: >-
           the info on the target reference genome for this panel
-      targets:
+      panel_targets:
         required: true
         range: TargetInfo
         multivalued: true
@@ -157,20 +157,40 @@ classes:
         range: integer
         description: >-
           the size of replacement mask
+
   RepresentativeMicrohaplotypeSequences:
+    description: >-
+      a collection of representative sequences for microhaplotypess for all targets
+    slots:
+      - tar_amp_bioinformatics_info_id
+    slot_usage:
+      tar_amp_bioinformatics_info_id:
+        identifier: true
+    attributes:
+      targets:
+        required: true
+        range: RepresentativeMicrohaplotypesForTarget
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          a list of the targets detected for this analysis 
+
+  RepresentativeMicrohaplotypesForTarget:
     description: >-
       a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format
     slots:
       - target_id
+    slot_usage:
+      target_id:
+        identifier: true
     attributes:
       seqs:
         required: true
         range: RepresentativeMicrohaplotypeSequence
         multivalued: true
-        inlined_as_list: true
+        inlined_as_list: false
         description: >-
-          a list of the microhaplotypes detected for a sample for various targets 
-      
+          a list of the microhaplotypes detected for a target 
 
   MicrohaplotypesDetected:
     description: >-
@@ -418,7 +438,7 @@ classes:
         inlined_as_list: true
         description: >-
           any additional arguments that differ from the default
-  
+
   ExperimentInfo:
     description: >-
       Information about a specific amplification and sequencing of a specimen
@@ -692,7 +712,7 @@ classes:
         range: RepresentativeMicrohaplotypeSequences
         required: true
         multivalued: true
-        inlined_as_list: false
+        inlined_as_list: true
         description: >-
           a list of the representative sequences for the results for this project
       microhaplotypes_detected:
@@ -810,7 +830,7 @@ slots:
 #   vital_status:
 #     range: PersonStatus
 #     description: living or dead status
-# 
+#
 # enums:
 #   PersonStatus:
 #     permissible_values:

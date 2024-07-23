@@ -691,11 +691,25 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "maskingInfo__segment_size",
+      "name": "maskingInfo__seq_segment_size",
       "description": "the size of the masking",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/segment_size",
-      "alias": "segment_size",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/seq_segment_size",
+      "alias": "seq_segment_size",
+      "owner": "MaskingInfo",
+      "domain_of": [
+        "MaskingInfo"
+      ],
+      "range": "integer",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "maskingInfo__replacement_size",
+      "description": "the size of replacement mask",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/replacement_size",
+      "alias": "replacement_size",
       "owner": "MaskingInfo",
       "domain_of": [
         "MaskingInfo"
@@ -2105,7 +2119,8 @@
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
         "maskingInfo__seq_start",
-        "maskingInfo__segment_size"
+        "maskingInfo__seq_segment_size",
+        "maskingInfo__replacement_size"
       ],
       "slot_usage": {},
       "attributes": [
@@ -2117,8 +2132,15 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "segment_size",
+          "name": "seq_segment_size",
           "description": "the size of the masking",
+          "range": "integer",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "replacement_size",
+          "description": "the size of replacement mask",
           "range": "integer",
           "required": true,
           "@type": "SlotDefinition"
@@ -3003,9 +3025,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2024-07-23T01:04:29",
-  "source_file_size": 24923,
-  "generation_date": "2024-07-23T01:04:38",
+  "source_file_date": "2024-07-23T01:42:40",
+  "source_file_size": 25058,
+  "generation_date": "2024-07-23T01:43:14",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",

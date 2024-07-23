@@ -1,5 +1,5 @@
 # Auto generated from portable_microhaplotype_object.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-07-23T01:04:39
+# Generation date: 2024-07-23T01:43:16
 # Schema: portable-microhaplotype-object
 #
 # id: https://plasmogenepi.github.io/portable-microhaplotype-object
@@ -204,7 +204,8 @@ class MaskingInfo(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT.MaskingInfo
 
     seq_start: int = None
-    segment_size: int = None
+    seq_segment_size: int = None
+    replacement_size: int = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.seq_start):
@@ -212,10 +213,15 @@ class MaskingInfo(YAMLRoot):
         if not isinstance(self.seq_start, int):
             self.seq_start = int(self.seq_start)
 
-        if self._is_empty(self.segment_size):
-            self.MissingRequiredField("segment_size")
-        if not isinstance(self.segment_size, int):
-            self.segment_size = int(self.segment_size)
+        if self._is_empty(self.seq_segment_size):
+            self.MissingRequiredField("seq_segment_size")
+        if not isinstance(self.seq_segment_size, int):
+            self.seq_segment_size = int(self.seq_segment_size)
+
+        if self._is_empty(self.replacement_size):
+            self.MissingRequiredField("replacement_size")
+        if not isinstance(self.replacement_size, int):
+            self.replacement_size = int(self.replacement_size)
 
         super().__post_init__(**kwargs)
 
@@ -1098,8 +1104,11 @@ slots.representativeMicrohaplotypeSequence__alt_annotations = Slot(uri=PORTABLE_
 slots.maskingInfo__seq_start = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.seq_start, name="maskingInfo__seq_start", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('seq_start'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.maskingInfo__seq_start, domain=None, range=int)
 
-slots.maskingInfo__segment_size = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.segment_size, name="maskingInfo__segment_size", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('segment_size'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.maskingInfo__segment_size, domain=None, range=int)
+slots.maskingInfo__seq_segment_size = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.seq_segment_size, name="maskingInfo__seq_segment_size", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('seq_segment_size'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.maskingInfo__seq_segment_size, domain=None, range=int)
+
+slots.maskingInfo__replacement_size = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.replacement_size, name="maskingInfo__replacement_size", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('replacement_size'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.maskingInfo__replacement_size, domain=None, range=int)
 
 slots.representativeMicrohaplotypeSequences__targets = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.targets, name="representativeMicrohaplotypeSequences__targets", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('targets'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.representativeMicrohaplotypeSequences__targets, domain=None, range=Union[Dict[Union[str, RepresentativeMicrohaplotypesForTargetTargetId], Union[dict, RepresentativeMicrohaplotypesForTarget]], List[Union[dict, RepresentativeMicrohaplotypesForTarget]]])

@@ -17,7 +17,8 @@
 -- # Class: "MaskingInfo" Description: "information about a subsegment of the sequence that should be masked"
 --     * Slot: id Description: 
 --     * Slot: seq_start Description: the start of the masking
---     * Slot: segment_size Description: the size of the masking
+--     * Slot: seq_segment_size Description: the size of the masking
+--     * Slot: replacement_size Description: the size of replacement mask
 -- # Class: "RepresentativeMicrohaplotypeSequences" Description: "a collection of representative sequences for microhaplotypess for all targets"
 --     * Slot: tar_amp_bioinformatics_info_id Description: a unique identifier for this targeted amplicon bioinformatics pipeline run
 --     * Slot: PortableMicrohaplotypeObject_analysis_name Description: Autocreated FK slot
@@ -170,7 +171,8 @@ CREATE TABLE "RepresentativeMicrohaplotypeSequence" (
 CREATE TABLE "MaskingInfo" (
 	id INTEGER NOT NULL, 
 	seq_start INTEGER NOT NULL, 
-	segment_size INTEGER NOT NULL, 
+	seq_segment_size INTEGER NOT NULL, 
+	replacement_size INTEGER NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "MicrohaplotypesDetected" (
