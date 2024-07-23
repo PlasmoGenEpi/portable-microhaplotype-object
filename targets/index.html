@@ -324,7 +324,7 @@
 
 
 <h1 id="slot-targets">Slot: targets</h1>
-<p>_a list of the target infos for the targets in this panel _</p>
+<p>_a list of the targets detected for this analysis _</p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/targets">portable_microhaplotype_object:targets</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -339,8 +339,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../PanelInfo/">PanelInfo</a></td>
-<td>information on a panel of targeted amplicon primer pairs</td>
+<td><a href="../RepresentativeMicrohaplotypeSequences/">RepresentativeMicrohaplotypeSequences</a></td>
+<td>a collection of representative sequences for microhaplotypess for all targets</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -348,7 +348,7 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../TargetInfo/">TargetInfo</a></p>
+<p>Range: <a href="../RepresentativeMicrohaplotypesForTarget/">RepresentativeMicrohaplotypesForTarget</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -385,18 +385,18 @@
 <details>
 
 <pre><code class="language-yaml">name: targets
-description: 'a list of the target infos for the targets in this panel '
+description: 'a list of the targets detected for this analysis '
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: targets
-owner: PanelInfo
+owner: RepresentativeMicrohaplotypeSequences
 domain_of:
-- PanelInfo
-range: TargetInfo
+- RepresentativeMicrohaplotypeSequences
+range: RepresentativeMicrohaplotypesForTarget
 required: true
 multivalued: true
 inlined: true
-inlined_as_list: false
+inlined_as_list: true
 
 </code></pre>
 

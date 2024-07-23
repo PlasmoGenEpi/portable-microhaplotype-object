@@ -207,6 +207,15 @@
     click PanelInfo href "../PanelInfo"
       PanelInfo : panel_id
 
+      PanelInfo : panel_targets
+
+
+
+
+    PanelInfo --&gt; "1..*" TargetInfo : panel_targets
+    click TargetInfo href "../TargetInfo"
+
+
       PanelInfo : target_genome
 
 
@@ -214,15 +223,6 @@
 
     PanelInfo --&gt; "1" GenomeInfo : target_genome
     click GenomeInfo href "../GenomeInfo"
-
-
-      PanelInfo : targets
-
-
-
-
-    PanelInfo --&gt; "1..*" TargetInfo : targets
-    click TargetInfo href "../TargetInfo"
 
 
 
@@ -252,7 +252,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../targets/">targets</a></td>
+<td><a href="../panel_targets/">panel_targets</a></td>
 <td>1..* <br/> <a href="../TargetInfo/">TargetInfo</a></td>
 <td>a list of the target infos for the targets in this panel</td>
 <td>direct</td>
@@ -321,8 +321,8 @@ attributes:
     - PanelInfo
     range: GenomeInfo
     required: true
-  targets:
-    name: targets
+  panel_targets:
+    name: panel_targets
     description: 'a list of the target infos for the targets in this panel '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
@@ -353,12 +353,12 @@ attributes:
     - PanelInfo
     range: GenomeInfo
     required: true
-  targets:
-    name: targets
+  panel_targets:
+    name: panel_targets
     description: 'a list of the target infos for the targets in this panel '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: targets
+    alias: panel_targets
     owner: PanelInfo
     domain_of:
     - PanelInfo

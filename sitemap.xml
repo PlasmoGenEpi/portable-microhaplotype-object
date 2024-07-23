@@ -161,6 +161,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypesForTarget/</loc>
+         <lastmod>2024-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/SequencingInfo/</loc>
          <lastmod>2024-07-23</lastmod>
          <changefreq>daily</changefreq>
@@ -422,6 +427,11 @@
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/panel_info/</loc>
+         <lastmod>2024-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/panel_targets/</loc>
          <lastmod>2024-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>

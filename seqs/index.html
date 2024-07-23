@@ -324,7 +324,7 @@
 
 
 <h1 id="slot-seqs">Slot: seqs</h1>
-<p>_a list of the microhaplotypes detected for a sample for various targets _</p>
+<p>_a list of the microhaplotypes detected for a target _</p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/seqs">portable_microhaplotype_object:seqs</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -339,7 +339,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../RepresentativeMicrohaplotypeSequences/">RepresentativeMicrohaplotypeSequences</a></td>
+<td><a href="../RepresentativeMicrohaplotypesForTarget/">RepresentativeMicrohaplotypesForTarget</a></td>
 <td>a list of the representative sequence for a microhaplotypes, similar to a fas...</td>
 <td>no</td>
 </tr>
@@ -385,18 +385,17 @@
 <details>
 
 <pre><code class="language-yaml">name: seqs
-description: 'a list of the microhaplotypes detected for a sample for various targets '
+description: 'a list of the microhaplotypes detected for a target '
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: seqs
-owner: RepresentativeMicrohaplotypeSequences
+owner: RepresentativeMicrohaplotypesForTarget
 domain_of:
-- RepresentativeMicrohaplotypeSequences
+- RepresentativeMicrohaplotypesForTarget
 range: RepresentativeMicrohaplotypeSequence
 required: true
 multivalued: true
-inlined: true
-inlined_as_list: true
+inlined_as_list: false
 
 </code></pre>
 

@@ -339,8 +339,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../RepresentativeMicrohaplotypeSequences/">RepresentativeMicrohaplotypeSequences</a></td>
-<td>a list of the representative sequence for a microhaplotypes, similar to a fas...</td>
+<td><a href="../MicrohaplotypesForTarget/">MicrohaplotypesForTarget</a></td>
+<td>Microhaplotypes detected for a specific target</td>
 <td>no</td>
 </tr>
 <tr>
@@ -349,14 +349,14 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MicrohaplotypesForTarget/">MicrohaplotypesForTarget</a></td>
-<td>Microhaplotypes detected for a specific target</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../TargetInfo/">TargetInfo</a></td>
 <td>Information about a specific target within a genome</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../RepresentativeMicrohaplotypesForTarget/">RepresentativeMicrohaplotypesForTarget</a></td>
+<td>a list of the representative sequence for a microhaplotypes, similar to a fas...</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -406,7 +406,7 @@ rank: 1000
 alias: target_id
 domain_of:
 - TargetInfo
-- RepresentativeMicrohaplotypeSequences
+- RepresentativeMicrohaplotypesForTarget
 - DemultiplexedTargetForExperimentSample
 - MicrohaplotypesForTarget
 range: string

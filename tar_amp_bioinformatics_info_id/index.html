@@ -344,13 +344,18 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../MicrohaplotypesDetected/">MicrohaplotypesDetected</a></td>
-<td>the microhaplotypes detected in a targeted amplicon analysis</td>
+<td><a href="../DemultiplexedExperimentSamples/">DemultiplexedExperimentSamples</a></td>
+<td>a list of raw reads counts for each experiment sample for all targets within ...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DemultiplexedExperimentSamples/">DemultiplexedExperimentSamples</a></td>
-<td>a list of raw reads counts for each experiment sample for all targets within ...</td>
+<td><a href="../RepresentativeMicrohaplotypeSequences/">RepresentativeMicrohaplotypeSequences</a></td>
+<td>a collection of representative sequences for microhaplotypess for all targets</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MicrohaplotypesDetected/">MicrohaplotypesDetected</a></td>
+<td>the microhaplotypes detected in a targeted amplicon analysis</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -401,6 +406,7 @@ from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: tar_amp_bioinformatics_info_id
 domain_of:
+- RepresentativeMicrohaplotypeSequences
 - MicrohaplotypesDetected
 - DemultiplexedExperimentSamples
 - TarAmpBioinformaticsInfo
