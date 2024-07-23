@@ -113,7 +113,8 @@ linkml:Sparqlpath xsd:string
 
 <MaskingInfo> CLOSED {
     (  $<MaskingInfo_tes> (  <seq_start> @linkml:Integer ;
-          <segment_size> @linkml:Integer
+          <seq_segment_size> @linkml:Integer ;
+          <replacement_size> @linkml:Integer
        ) ;
        rdf:type [ <MaskingInfo> ] ?
     )

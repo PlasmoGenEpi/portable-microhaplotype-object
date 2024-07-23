@@ -60,7 +60,8 @@ message GenomicLocation
 message MaskingInfo
  {
   integer seqStart = 0
-  integer segmentSize = 0
+  integer seqSegmentSize = 0
+  integer replacementSize = 0
  }
 // Microhaplotype detected for a specific target
 message MicrohaplotypeForTarget

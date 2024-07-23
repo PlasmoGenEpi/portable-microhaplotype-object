@@ -57,7 +57,8 @@ type GenomicLocation
 type MaskingInfo
   {
     seqStart: Integer!
-    segmentSize: Integer!
+    seqSegmentSize: Integer!
+    replacementSize: Integer!
   }
 
 type MicrohaplotypeForTarget
