@@ -407,7 +407,7 @@
       "owner": "MicrohaplotypesForTarget",
       "domain_of": [
         "TargetInfo",
-        "RepresentativeMicrohaplotypeSequences",
+        "RepresentativeMicrohaplotypesForTarget",
         "DemultiplexedTargetForExperimentSample",
         "MicrohaplotypesForTarget"
       ],
@@ -517,6 +517,7 @@
       "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/tar_amp_bioinformatics_info_id",
       "owner": "TarAmpBioinformaticsInfo",
       "domain_of": [
+        "RepresentativeMicrohaplotypeSequences",
         "MicrohaplotypesDetected",
         "DemultiplexedExperimentSamples",
         "TarAmpBioinformaticsInfo"
@@ -602,11 +603,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "panelInfo__targets",
+      "name": "panelInfo__panel_targets",
       "description": "a list of the target infos for the targets in this panel ",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/targets",
-      "alias": "targets",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/panel_targets",
+      "alias": "panel_targets",
       "owner": "PanelInfo",
       "domain_of": [
         "PanelInfo"
@@ -704,20 +705,36 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "representativeMicrohaplotypeSequences__seqs",
-      "description": "a list of the microhaplotypes detected for a sample for various targets ",
+      "name": "representativeMicrohaplotypeSequences__targets",
+      "description": "a list of the targets detected for this analysis ",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/seqs",
-      "alias": "seqs",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/targets",
+      "alias": "targets",
       "owner": "RepresentativeMicrohaplotypeSequences",
       "domain_of": [
         "RepresentativeMicrohaplotypeSequences"
+      ],
+      "range": "RepresentativeMicrohaplotypesForTarget",
+      "required": true,
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "representativeMicrohaplotypesForTarget__seqs",
+      "description": "a list of the microhaplotypes detected for a target ",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/seqs",
+      "alias": "seqs",
+      "owner": "RepresentativeMicrohaplotypesForTarget",
+      "domain_of": [
+        "RepresentativeMicrohaplotypesForTarget"
       ],
       "range": "RepresentativeMicrohaplotypeSequence",
       "required": true,
       "multivalued": true,
       "inlined": true,
-      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1663,6 +1680,7 @@
       "required": true,
       "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1724,6 +1742,48 @@
       "range": "BioMethod",
       "inlined": true,
       "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "RepresentativeMicrohaplotypeSequences_tar_amp_bioinformatics_info_id",
+      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/tar_amp_bioinformatics_info_id",
+      "description": "a unique identifier for this targeted amplicon bioinformatics pipeline run",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "is_a": "tar_amp_bioinformatics_info_id",
+      "domain": "RepresentativeMicrohaplotypeSequences",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/tar_amp_bioinformatics_info_id",
+      "identifier": true,
+      "alias": "tar_amp_bioinformatics_info_id",
+      "owner": "RepresentativeMicrohaplotypeSequences",
+      "domain_of": [
+        "RepresentativeMicrohaplotypeSequences"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "tar_amp_bioinformatics_info_id",
+      "range": "string",
+      "required": true,
+      "pattern": "^[A-z-._0-9 ]$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "RepresentativeMicrohaplotypesForTarget_target_id",
+      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/target_id",
+      "description": "name of the target",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "is_a": "target_id",
+      "domain": "RepresentativeMicrohaplotypesForTarget",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/target_id",
+      "identifier": true,
+      "alias": "target_id",
+      "owner": "RepresentativeMicrohaplotypesForTarget",
+      "domain_of": [
+        "RepresentativeMicrohaplotypesForTarget"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "target_id",
+      "range": "string",
+      "required": true,
+      "pattern": "^[A-z-._0-9]$",
       "@type": "SlotDefinition"
     },
     {
@@ -1966,7 +2026,7 @@
       "slots": [
         "panel_id",
         "panelInfo__target_genome",
-        "panelInfo__targets"
+        "panelInfo__panel_targets"
       ],
       "slot_usage": {},
       "attributes": [
@@ -1978,7 +2038,7 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "targets",
+          "name": "panel_targets",
           "description": "a list of the target infos for the targets in this panel ",
           "range": "TargetInfo",
           "required": true,
@@ -2070,18 +2130,18 @@
     {
       "name": "RepresentativeMicrohaplotypeSequences",
       "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypeSequences",
-      "description": "a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format",
+      "description": "a collection of representative sequences for microhaplotypess for all targets",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
-        "target_id",
-        "representativeMicrohaplotypeSequences__seqs"
+        "RepresentativeMicrohaplotypeSequences_tar_amp_bioinformatics_info_id",
+        "representativeMicrohaplotypeSequences__targets"
       ],
       "slot_usage": {},
       "attributes": [
         {
-          "name": "seqs",
-          "description": "a list of the microhaplotypes detected for a sample for various targets ",
-          "range": "RepresentativeMicrohaplotypeSequence",
+          "name": "targets",
+          "description": "a list of the targets detected for this analysis ",
+          "range": "RepresentativeMicrohaplotypesForTarget",
           "required": true,
           "multivalued": true,
           "inlined_as_list": true,
@@ -2089,6 +2149,29 @@
         }
       ],
       "class_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypeSequences",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "RepresentativeMicrohaplotypesForTarget",
+      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypesForTarget",
+      "description": "a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slots": [
+        "RepresentativeMicrohaplotypesForTarget_target_id",
+        "representativeMicrohaplotypesForTarget__seqs"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "seqs",
+          "description": "a list of the microhaplotypes detected for a target ",
+          "range": "RepresentativeMicrohaplotypeSequence",
+          "required": true,
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypesForTarget",
       "@type": "ClassDefinition"
     },
     {
@@ -2880,6 +2963,7 @@
           "range": "RepresentativeMicrohaplotypeSequences",
           "required": true,
           "multivalued": true,
+          "inlined_as_list": true,
           "@type": "SlotDefinition"
         },
         {
@@ -2919,9 +3003,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2024-07-16T23:48:26",
-  "source_file_size": 24361,
-  "generation_date": "2024-07-16T23:48:32",
+  "source_file_date": "2024-07-23T01:04:29",
+  "source_file_size": 24923,
+  "generation_date": "2024-07-23T01:04:38",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",

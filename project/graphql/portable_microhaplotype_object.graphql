@@ -89,7 +89,7 @@ type PanelInfo
   {
     panelId: String!
     targetGenome: GenomeInfo!
-    targets: [TargetInfo]!
+    panelTargets: [TargetInfo]!
   }
 
 type PortableMicrohaplotypeObject
@@ -123,6 +123,12 @@ type RepresentativeMicrohaplotypeSequence
   }
 
 type RepresentativeMicrohaplotypeSequences
+  {
+    tarAmpBioinformaticsInfoId: String!
+    targets: [RepresentativeMicrohaplotypesForTarget]!
+  }
+
+type RepresentativeMicrohaplotypesForTarget
   {
     targetId: String!
     seqs: [RepresentativeMicrohaplotypeSequence]!

@@ -357,22 +357,22 @@
                     "pattern": "^[A-z-._0-9]$",
                     "type": "string"
                 },
-                "target_genome": {
-                    "$ref": "#/$defs/GenomeInfo",
-                    "description": "the info on the target reference genome for this panel"
-                },
-                "targets": {
+                "panel_targets": {
                     "description": "a list of the target infos for the targets in this panel ",
                     "items": {
                         "$ref": "#/$defs/TargetInfo"
                     },
                     "type": "array"
+                },
+                "target_genome": {
+                    "$ref": "#/$defs/GenomeInfo",
+                    "description": "the info on the target reference genome for this panel"
                 }
             },
             "required": [
                 "panel_id",
                 "target_genome",
-                "targets"
+                "panel_targets"
             ],
             "title": "PanelInfo",
             "type": "object"
@@ -512,10 +512,34 @@
         },
         "RepresentativeMicrohaplotypeSequences": {
             "additionalProperties": false,
+            "description": "a collection of representative sequences for microhaplotypess for all targets",
+            "properties": {
+                "tar_amp_bioinformatics_info_id": {
+                    "description": "a unique identifier for this targeted amplicon bioinformatics pipeline run",
+                    "pattern": "^[A-z-._0-9 ]$",
+                    "type": "string"
+                },
+                "targets": {
+                    "description": "a list of the targets detected for this analysis ",
+                    "items": {
+                        "$ref": "#/$defs/RepresentativeMicrohaplotypesForTarget"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "tar_amp_bioinformatics_info_id",
+                "targets"
+            ],
+            "title": "RepresentativeMicrohaplotypeSequences",
+            "type": "object"
+        },
+        "RepresentativeMicrohaplotypesForTarget": {
+            "additionalProperties": false,
             "description": "a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format",
             "properties": {
                 "seqs": {
-                    "description": "a list of the microhaplotypes detected for a sample for various targets ",
+                    "description": "a list of the microhaplotypes detected for a target ",
                     "items": {
                         "$ref": "#/$defs/RepresentativeMicrohaplotypeSequence"
                     },
@@ -531,7 +555,7 @@
                 "target_id",
                 "seqs"
             ],
-            "title": "RepresentativeMicrohaplotypeSequences",
+            "title": "RepresentativeMicrohaplotypesForTarget",
             "type": "object"
         },
         "SequencingInfo": {

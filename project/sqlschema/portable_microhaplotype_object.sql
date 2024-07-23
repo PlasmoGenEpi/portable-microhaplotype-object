@@ -14,14 +14,16 @@
 --     * Slot: microhaplotype_id Description: name of the microhaplotype, should be unique to this microhaplotype
 --     * Slot: quality Description: the ansi fastq per base quality score for this sequence, this is optional
 --     * Slot: pseudocigar Description: the pseudocigar of the haplotype
---     * Slot: RepresentativeMicrohaplotypeSequences_id Description: Autocreated FK slot
 -- # Class: "MaskingInfo" Description: "information about a subsegment of the sequence that should be masked"
 --     * Slot: id Description: 
 --     * Slot: seq_start Description: the start of the masking
 --     * Slot: segment_size Description: the size of the masking
--- # Class: "RepresentativeMicrohaplotypeSequences" Description: "a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format"
---     * Slot: id Description: 
+-- # Class: "RepresentativeMicrohaplotypeSequences" Description: "a collection of representative sequences for microhaplotypess for all targets"
+--     * Slot: tar_amp_bioinformatics_info_id Description: a unique identifier for this targeted amplicon bioinformatics pipeline run
+--     * Slot: PortableMicrohaplotypeObject_analysis_name Description: Autocreated FK slot
+-- # Class: "RepresentativeMicrohaplotypesForTarget" Description: "a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format"
 --     * Slot: target_id Description: name of the target
+--     * Slot: RepresentativeMicrohaplotypeSequences_tar_amp_bioinformatics_info_id Description: Autocreated FK slot
 -- # Class: "MicrohaplotypesDetected" Description: "the microhaplotypes detected in a targeted amplicon analysis"
 --     * Slot: id Description: 
 --     * Slot: tar_amp_bioinformatics_info_id Description: a unique identifier for this targeted amplicon bioinformatics pipeline run
@@ -135,6 +137,9 @@
 -- # Class: "RepresentativeMicrohaplotypeSequence_alt_annotations" Description: ""
 --     * Slot: RepresentativeMicrohaplotypeSequence_id Description: Autocreated FK slot
 --     * Slot: alt_annotations Description: a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc
+-- # Class: "RepresentativeMicrohaplotypesForTarget_seqs" Description: ""
+--     * Slot: RepresentativeMicrohaplotypesForTarget_target_id Description: Autocreated FK slot
+--     * Slot: seqs_id Description: a list of the microhaplotypes detected for a target 
 -- # Class: "MicrohaplotypesDetected_experiment_samples" Description: ""
 --     * Slot: MicrohaplotypesDetected_id Description: Autocreated FK slot
 --     * Slot: experiment_samples_id Description: a list of the microhaplotypes detected for a sample for various targets 
@@ -153,19 +158,19 @@
 -- # Class: "SpecimenInfo_alternate_identifiers" Description: ""
 --     * Slot: SpecimenInfo_specimen_id Description: Autocreated FK slot
 --     * Slot: alternate_identifiers Description: a list of optional alternative names for the samples
--- # Class: "PortableMicrohaplotypeObject_representative_microhaplotype_sequences" Description: ""
---     * Slot: PortableMicrohaplotypeObject_analysis_name Description: Autocreated FK slot
---     * Slot: representative_microhaplotype_sequences_id Description: a list of the representative sequences for the results for this project
 
+CREATE TABLE "RepresentativeMicrohaplotypeSequence" (
+	id INTEGER NOT NULL, 
+	seq TEXT NOT NULL, 
+	microhaplotype_id TEXT NOT NULL, 
+	quality TEXT, 
+	pseudocigar TEXT, 
+	PRIMARY KEY (id)
+);
 CREATE TABLE "MaskingInfo" (
 	id INTEGER NOT NULL, 
 	seq_start INTEGER NOT NULL, 
 	segment_size INTEGER NOT NULL, 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "RepresentativeMicrohaplotypeSequences" (
-	id INTEGER NOT NULL, 
-	target_id TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "MicrohaplotypesDetected" (
@@ -258,16 +263,6 @@ CREATE TABLE "PanelInfo" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(target_genome_id) REFERENCES "GenomeInfo" (id)
 );
-CREATE TABLE "RepresentativeMicrohaplotypeSequence" (
-	id INTEGER NOT NULL, 
-	seq TEXT NOT NULL, 
-	microhaplotype_id TEXT NOT NULL, 
-	quality TEXT, 
-	pseudocigar TEXT, 
-	"RepresentativeMicrohaplotypeSequences_id" INTEGER, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY("RepresentativeMicrohaplotypeSequences_id") REFERENCES "RepresentativeMicrohaplotypeSequences" (id)
-);
 CREATE TABLE "MicrohaplotypeForTarget" (
 	id INTEGER NOT NULL, 
 	microhaplotype_id TEXT NOT NULL, 
@@ -276,6 +271,19 @@ CREATE TABLE "MicrohaplotypeForTarget" (
 	"MicrohaplotypesForTarget_id" INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("MicrohaplotypesForTarget_id") REFERENCES "MicrohaplotypesForTarget" (id)
+);
+CREATE TABLE "RepresentativeMicrohaplotypeSequence_masking" (
+	"RepresentativeMicrohaplotypeSequence_id" INTEGER, 
+	masking_id INTEGER, 
+	PRIMARY KEY ("RepresentativeMicrohaplotypeSequence_id", masking_id), 
+	FOREIGN KEY("RepresentativeMicrohaplotypeSequence_id") REFERENCES "RepresentativeMicrohaplotypeSequence" (id), 
+	FOREIGN KEY(masking_id) REFERENCES "MaskingInfo" (id)
+);
+CREATE TABLE "RepresentativeMicrohaplotypeSequence_alt_annotations" (
+	"RepresentativeMicrohaplotypeSequence_id" INTEGER, 
+	alt_annotations TEXT, 
+	PRIMARY KEY ("RepresentativeMicrohaplotypeSequence_id", alt_annotations), 
+	FOREIGN KEY("RepresentativeMicrohaplotypeSequence_id") REFERENCES "RepresentativeMicrohaplotypeSequence" (id)
 );
 CREATE TABLE "MicrohaplotypesDetected_experiment_samples" (
 	"MicrohaplotypesDetected_id" INTEGER, 
@@ -337,18 +345,11 @@ CREATE TABLE "PortableMicrohaplotypeObject" (
 	FOREIGN KEY(taramp_bioinformatics_infos_tar_amp_bioinformatics_info_id) REFERENCES "TarAmpBioinformaticsInfo" (tar_amp_bioinformatics_info_id), 
 	FOREIGN KEY(postprocessing_bioinformatics_infos_id) REFERENCES "BioMethod" (id)
 );
-CREATE TABLE "RepresentativeMicrohaplotypeSequence_masking" (
-	"RepresentativeMicrohaplotypeSequence_id" INTEGER, 
-	masking_id INTEGER, 
-	PRIMARY KEY ("RepresentativeMicrohaplotypeSequence_id", masking_id), 
-	FOREIGN KEY("RepresentativeMicrohaplotypeSequence_id") REFERENCES "RepresentativeMicrohaplotypeSequence" (id), 
-	FOREIGN KEY(masking_id) REFERENCES "MaskingInfo" (id)
-);
-CREATE TABLE "RepresentativeMicrohaplotypeSequence_alt_annotations" (
-	"RepresentativeMicrohaplotypeSequence_id" INTEGER, 
-	alt_annotations TEXT, 
-	PRIMARY KEY ("RepresentativeMicrohaplotypeSequence_id", alt_annotations), 
-	FOREIGN KEY("RepresentativeMicrohaplotypeSequence_id") REFERENCES "RepresentativeMicrohaplotypeSequence" (id)
+CREATE TABLE "RepresentativeMicrohaplotypeSequences" (
+	tar_amp_bioinformatics_info_id TEXT NOT NULL, 
+	"PortableMicrohaplotypeObject_analysis_name" TEXT, 
+	PRIMARY KEY (tar_amp_bioinformatics_info_id), 
+	FOREIGN KEY("PortableMicrohaplotypeObject_analysis_name") REFERENCES "PortableMicrohaplotypeObject" (analysis_name)
 );
 CREATE TABLE "PrimerInfo" (
 	id INTEGER NOT NULL, 
@@ -396,16 +397,22 @@ CREATE TABLE "SpecimenInfo" (
 	PRIMARY KEY (specimen_id), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_analysis_name") REFERENCES "PortableMicrohaplotypeObject" (analysis_name)
 );
-CREATE TABLE "PortableMicrohaplotypeObject_representative_microhaplotype_sequences" (
-	"PortableMicrohaplotypeObject_analysis_name" TEXT, 
-	representative_microhaplotype_sequences_id INTEGER NOT NULL, 
-	PRIMARY KEY ("PortableMicrohaplotypeObject_analysis_name", representative_microhaplotype_sequences_id), 
-	FOREIGN KEY("PortableMicrohaplotypeObject_analysis_name") REFERENCES "PortableMicrohaplotypeObject" (analysis_name), 
-	FOREIGN KEY(representative_microhaplotype_sequences_id) REFERENCES "RepresentativeMicrohaplotypeSequences" (id)
+CREATE TABLE "RepresentativeMicrohaplotypesForTarget" (
+	target_id TEXT NOT NULL, 
+	"RepresentativeMicrohaplotypeSequences_tar_amp_bioinformatics_info_id" TEXT, 
+	PRIMARY KEY (target_id), 
+	FOREIGN KEY("RepresentativeMicrohaplotypeSequences_tar_amp_bioinformatics_info_id") REFERENCES "RepresentativeMicrohaplotypeSequences" (tar_amp_bioinformatics_info_id)
 );
 CREATE TABLE "SpecimenInfo_alternate_identifiers" (
 	"SpecimenInfo_specimen_id" TEXT, 
 	alternate_identifiers TEXT, 
 	PRIMARY KEY ("SpecimenInfo_specimen_id", alternate_identifiers), 
 	FOREIGN KEY("SpecimenInfo_specimen_id") REFERENCES "SpecimenInfo" (specimen_id)
+);
+CREATE TABLE "RepresentativeMicrohaplotypesForTarget_seqs" (
+	"RepresentativeMicrohaplotypesForTarget_target_id" TEXT, 
+	seqs_id INTEGER NOT NULL, 
+	PRIMARY KEY ("RepresentativeMicrohaplotypesForTarget_target_id", seqs_id), 
+	FOREIGN KEY("RepresentativeMicrohaplotypesForTarget_target_id") REFERENCES "RepresentativeMicrohaplotypesForTarget" (target_id), 
+	FOREIGN KEY(seqs_id) REFERENCES "RepresentativeMicrohaplotypeSequence" (id)
 );

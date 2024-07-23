@@ -92,7 +92,7 @@ message PanelInfo
  {
   string panelId = 0
   genomeInfo targetGenome = 0
- repeated  targetInfo targets = 0
+ repeated  targetInfo panelTargets = 0
  }
 // Information on final results from a targeted amplicon analysis
 message PortableMicrohaplotypeObject
@@ -124,8 +124,14 @@ message RepresentativeMicrohaplotypeSequence
  repeated  maskingInfo masking = 0
  repeated  string altAnnotations = 0
  }
-// a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format
+// a collection of representative sequences for microhaplotypess for all targets
 message RepresentativeMicrohaplotypeSequences
+ {
+  string tarAmpBioinformaticsInfoId = 0
+ repeated  representativeMicrohaplotypesForTarget targets = 0
+ }
+// a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format
+message RepresentativeMicrohaplotypesForTarget
  {
   string targetId = 0
  repeated  representativeMicrohaplotypeSequence seqs = 0

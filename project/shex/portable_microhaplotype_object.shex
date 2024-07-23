@@ -155,7 +155,7 @@ linkml:Sparqlpath xsd:string
 <PanelInfo> CLOSED {
     (  $<PanelInfo_tes> (  <panel_id> @linkml:String ;
           <target_genome> @<GenomeInfo> ;
-          <targets> @<TargetInfo> +
+          <panel_targets> @<TargetInfo> +
        ) ;
        rdf:type [ <PanelInfo> ] ?
     )
@@ -197,10 +197,14 @@ linkml:Sparqlpath xsd:string
 }
 
 <RepresentativeMicrohaplotypeSequences> CLOSED {
-    (  $<RepresentativeMicrohaplotypeSequences_tes> (  <target_id> @linkml:String ;
-          <seqs> @<RepresentativeMicrohaplotypeSequence> +
-       ) ;
-       rdf:type [ <RepresentativeMicrohaplotypeSequences> ] ?
+    (  $<RepresentativeMicrohaplotypeSequences_tes> <targets> @<RepresentativeMicrohaplotypesForTarget> + ;
+       rdf:type [ <RepresentativeMicrohaplotypeSequences> ]
+    )
+}
+
+<RepresentativeMicrohaplotypesForTarget> CLOSED {
+    (  $<RepresentativeMicrohaplotypesForTarget_tes> <seqs> @<RepresentativeMicrohaplotypeSequence> + ;
+       rdf:type [ <RepresentativeMicrohaplotypesForTarget> ]
     )
 }
 
