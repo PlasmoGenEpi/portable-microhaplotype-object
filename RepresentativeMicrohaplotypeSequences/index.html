@@ -205,7 +205,7 @@
 <div class="mermaid"> classDiagram
     class RepresentativeMicrohaplotypeSequences
     click RepresentativeMicrohaplotypeSequences href "../RepresentativeMicrohaplotypeSequences"
-      RepresentativeMicrohaplotypeSequences : tar_amp_bioinformatics_info_id
+      RepresentativeMicrohaplotypeSequences : representative_microhaplotype_id
 
       RepresentativeMicrohaplotypeSequences : targets
 
@@ -231,9 +231,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../tar_amp_bioinformatics_info_id/">tar_amp_bioinformatics_info_id</a></td>
+<td><a href="../representative_microhaplotype_id/">representative_microhaplotype_id</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>a unique identifier for this targeted amplicon bioinformatics pipeline run</td>
+<td>an identifier for the representative microhaplotype object collection</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -296,16 +296,14 @@ description: a collection of representative sequences for microhaplotypess for a
   targets
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
-- tar_amp_bioinformatics_info_id
+- representative_microhaplotype_id
 slot_usage:
-  tar_amp_bioinformatics_info_id:
-    name: tar_amp_bioinformatics_info_id
+  representative_microhaplotype_id:
+    name: representative_microhaplotype_id
     identifier: true
     domain_of:
     - RepresentativeMicrohaplotypeSequences
     - MicrohaplotypesDetected
-    - DemultiplexedExperimentSamples
-    - TarAmpBioinformaticsInfo
 attributes:
   targets:
     name: targets
@@ -329,14 +327,12 @@ description: a collection of representative sequences for microhaplotypess for a
   targets
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slot_usage:
-  tar_amp_bioinformatics_info_id:
-    name: tar_amp_bioinformatics_info_id
+  representative_microhaplotype_id:
+    name: representative_microhaplotype_id
     identifier: true
     domain_of:
     - RepresentativeMicrohaplotypeSequences
     - MicrohaplotypesDetected
-    - DemultiplexedExperimentSamples
-    - TarAmpBioinformaticsInfo
 attributes:
   targets:
     name: targets
@@ -352,23 +348,20 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  tar_amp_bioinformatics_info_id:
-    name: tar_amp_bioinformatics_info_id
-    description: a unique identifier for this targeted amplicon bioinformatics pipeline
-      run
+  representative_microhaplotype_id:
+    name: representative_microhaplotype_id
+    description: an identifier for the representative microhaplotype object collection
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     identifier: true
-    alias: tar_amp_bioinformatics_info_id
+    alias: representative_microhaplotype_id
     owner: RepresentativeMicrohaplotypeSequences
     domain_of:
     - RepresentativeMicrohaplotypeSequences
     - MicrohaplotypesDetected
-    - DemultiplexedExperimentSamples
-    - TarAmpBioinformaticsInfo
     range: string
     required: true
-    pattern: ^[A-z-._0-9 ]$
+    pattern: ^[A-z-._0-9]$
 
 </code></pre>
 </details>
