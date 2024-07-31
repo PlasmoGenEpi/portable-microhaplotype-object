@@ -162,9 +162,9 @@ classes:
     description: >-
       a collection of representative sequences for microhaplotypess for all targets
     slots:
-      - tar_amp_bioinformatics_info_id
+      - representative_microhaplotype_id
     slot_usage:
-      tar_amp_bioinformatics_info_id:
+      representative_microhaplotype_id:
         identifier: true
     attributes:
       targets:
@@ -197,6 +197,7 @@ classes:
       the microhaplotypes detected in a targeted amplicon analysis
     slots:
       - tar_amp_bioinformatics_info_id
+      - representative_microhaplotype_id
     attributes:
       experiment_samples:
         required: true
@@ -764,6 +765,12 @@ slots:
     required: true
     description: >-
       name of the target
+  representative_microhaplotype_id:
+    range: string
+    pattern: "^[A-z-._0-9]$"
+    required: true
+    description: >-
+      an identifier for the representative microhaplotype object collection
   microhaplotype_id:
     range: string
     pattern: "^[A-z-._0-9]$"
