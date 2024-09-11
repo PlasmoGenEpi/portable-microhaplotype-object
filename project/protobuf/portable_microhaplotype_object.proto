@@ -37,6 +37,7 @@ message ExperimentInfo
   string specimenId = 0
   string panelId = 0
   string experimentSampleId = 0
+  string accession = 0
  }
 // information on a genome
 message GenomeInfo
@@ -98,7 +99,7 @@ message PanelInfo
 // Information on final results from a targeted amplicon analysis
 message PortableMicrohaplotypeObject
  {
-  string analysisName = 0
+  string pmoName = 0
  repeated  experimentInfo experimentInfos = 0
  repeated  specimenInfo specimenInfos = 0
   sequencingInfo sequencingInfos = 0
@@ -114,6 +115,7 @@ message PrimerInfo
  {
   string seq = 0
   genomicLocation location = 0
+ repeated  string targetType = 0
  }
 // the representative sequence for a microhaplotype, similar to a fast(a/q) format
 message RepresentativeMicrohaplotypeSequence
@@ -175,7 +177,6 @@ message SpecimenInfo
   string sampStoreLoc = 0
   string sampCollectDevice = 0
   string projectName = 0
-  string accession = 0
   string sampleComments = 0
  }
 // the targeted amplicon bioinformatics pipeline

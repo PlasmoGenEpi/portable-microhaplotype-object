@@ -327,10 +327,18 @@ classes:
         range: GenomicLocation
         required: false
         description: >-
-          what the intended genomic location of the primer is  
-            
-
-
+          what the intended genomic location of the primer is
+      target_type:
+        range: string
+        multivalued: true
+        inlined_as_list: false
+        required: false
+        description: >-
+          a list of classification type for the primer target
+        examples:
+          - value: "Diversity"
+          - value: "Drug_Resistance"
+          - value: "Diagnostics"
 
   MicrohaplotypesForSample:
     description: >-
@@ -423,7 +431,7 @@ classes:
         pattern: "^[A-z-._0-9 ]$"
         required: true
         description: >-
-          the propose for this method
+          the purpose for this method
       program_version:
         range: string
         pattern: "^[A-z-._0-9 ]$"
@@ -463,8 +471,13 @@ classes:
         required: false
       plate_col:
         required: false
-
-
+    attributes:
+      accession:
+        range: string
+        pattern: "^[A-z-._0-9]$"
+        required: false
+        description: >-
+          ERA/SRA accession number for the sample if it was submitted
 
   SequencingInfo:
     description: >-
@@ -657,12 +670,6 @@ classes:
         required: true
         description: >-
           a name of the project under which the sample is organized
-      accession:
-        range: string
-        pattern: "^[A-z-._0-9]$"
-        required: false
-        description: >-
-          ERA/SRA accession number for the sample if it was submitted
       sample_comments:
         range: string
         pattern: "^[A-z-._0-9 ]$"
@@ -671,13 +678,12 @@ classes:
           any additional comments about the sample
 
 
-
   PortableMicrohaplotypeObject:
     description: >-
       Information on final results from a targeted amplicon analysis
     tree_root: true
     attributes:
-      analysis_name:
+      pmo_name:
         range: string
         identifier: true
         required : true
@@ -707,7 +713,7 @@ classes:
         range: PanelInfo
         required: true
         description: >-
-          the info on the panel used for this project
+          the info on the targeted sequencing panel used for this project
       representative_microhaplotype_sequences:
         range: RepresentativeMicrohaplotypeSequences
         required: true

@@ -23,7 +23,7 @@
                     "type": "string"
                 },
                 "purpose": {
-                    "description": "the propose for this method",
+                    "description": "the purpose for this method",
                     "pattern": "^[A-z-._0-9 ]$",
                     "type": "string"
                 }
@@ -109,6 +109,11 @@
             "additionalProperties": false,
             "description": "Information about a specific amplification and sequencing of a specimen",
             "properties": {
+                "accession": {
+                    "description": "ERA/SRA accession number for the sample if it was submitted",
+                    "pattern": "^[A-z-._0-9]$",
+                    "type": "string"
+                },
                 "experiment_sample_id": {
                     "description": "a unique identifier for this sequence/amplification run on a specimen",
                     "pattern": "^[A-z-._0-9 ]$",
@@ -386,10 +391,6 @@
             "additionalProperties": false,
             "description": "Information on final results from a targeted amplicon analysis",
             "properties": {
-                "analysis_name": {
-                    "description": "a name for the analysis detailed here in this experiment, can be a concatenation of names if combined more than one PMO",
-                    "type": "string"
-                },
                 "experiment_infos": {
                     "description": "a list of experiments of all the seq/amp of samples within this project",
                     "items": {
@@ -403,7 +404,11 @@
                 },
                 "panel_info": {
                     "$ref": "#/$defs/PanelInfo",
-                    "description": "the info on the panel used for this project"
+                    "description": "the info on the targeted sequencing panel used for this project"
+                },
+                "pmo_name": {
+                    "description": "a name for the analysis detailed here in this experiment, can be a concatenation of names if combined more than one PMO",
+                    "type": "string"
                 },
                 "postprocessing_bioinformatics_infos": {
                     "$ref": "#/$defs/BioMethod",
@@ -437,7 +442,7 @@
                 }
             },
             "required": [
-                "analysis_name",
+                "pmo_name",
                 "experiment_infos",
                 "specimen_infos",
                 "sequencing_infos",
@@ -455,12 +460,19 @@
             "properties": {
                 "location": {
                     "$ref": "#/$defs/GenomicLocation",
-                    "description": "what the intended genomic location of the primer is  \n  "
+                    "description": "what the intended genomic location of the primer is"
                 },
                 "seq": {
                     "description": "the DNA sequence",
                     "pattern": "^[A-z]$",
                     "type": "string"
+                },
+                "target_type": {
+                    "description": "a list of classification type for the primer target",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
@@ -649,11 +661,6 @@
             "additionalProperties": false,
             "description": "Information on specimen info",
             "properties": {
-                "accession": {
-                    "description": "ERA/SRA accession number for the sample if it was submitted",
-                    "pattern": "^[A-z-._0-9]$",
-                    "type": "string"
-                },
                 "alternate_identifiers": {
                     "description": "a list of optional alternative names for the samples",
                     "items": {
@@ -857,10 +864,6 @@
     "description": "Information on final results from a targeted amplicon analysis",
     "metamodel_version": "1.7.0",
     "properties": {
-        "analysis_name": {
-            "description": "a name for the analysis detailed here in this experiment, can be a concatenation of names if combined more than one PMO",
-            "type": "string"
-        },
         "experiment_infos": {
             "description": "a list of experiments of all the seq/amp of samples within this project",
             "items": {
@@ -874,7 +877,11 @@
         },
         "panel_info": {
             "$ref": "#/$defs/PanelInfo",
-            "description": "the info on the panel used for this project"
+            "description": "the info on the targeted sequencing panel used for this project"
+        },
+        "pmo_name": {
+            "description": "a name for the analysis detailed here in this experiment, can be a concatenation of names if combined more than one PMO",
+            "type": "string"
         },
         "postprocessing_bioinformatics_infos": {
             "$ref": "#/$defs/BioMethod",
@@ -908,7 +915,7 @@
         }
     },
     "required": [
-        "analysis_name",
+        "pmo_name",
         "experiment_infos",
         "specimen_infos",
         "sequencing_infos",

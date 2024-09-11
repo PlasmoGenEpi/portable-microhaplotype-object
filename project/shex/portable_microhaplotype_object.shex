@@ -83,7 +83,8 @@ linkml:Sparqlpath xsd:string
           <plate_row> @linkml:String ? ;
           <plate_col> @linkml:Integer ? ;
           <specimen_id> @linkml:String ;
-          <panel_id> @linkml:String
+          <panel_id> @linkml:String ;
+          <accession> @linkml:String ?
        ) ;
        rdf:type [ <ExperimentInfo> ]
     )
@@ -179,7 +180,8 @@ linkml:Sparqlpath xsd:string
 
 <PrimerInfo> CLOSED {
     (  $<PrimerInfo_tes> (  <seq> @linkml:String ;
-          <location> @<GenomicLocation> ?
+          <location> @<GenomicLocation> ? ;
+          <target_type> @linkml:String *
        ) ;
        rdf:type [ <PrimerInfo> ] ?
     )
@@ -245,7 +247,6 @@ linkml:Sparqlpath xsd:string
           <samp_store_loc> @linkml:String ;
           <samp_collect_device> @linkml:String ;
           <project_name> @linkml:String ;
-          <accession> @linkml:String ? ;
           <sample_comments> @linkml:String ?
        ) ;
        rdf:type [ <SpecimenInfo> ]

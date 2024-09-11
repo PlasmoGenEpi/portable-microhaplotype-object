@@ -34,6 +34,7 @@ type ExperimentInfo
     specimenId: String!
     panelId: String!
     experimentSampleId: String!
+    accession: String
   }
 
 type GenomeInfo
@@ -95,7 +96,7 @@ type PanelInfo
 
 type PortableMicrohaplotypeObject
   {
-    analysisName: String!
+    pmoName: String!
     experimentInfos: [ExperimentInfo]!
     specimenInfos: [SpecimenInfo]!
     sequencingInfos: SequencingInfo!
@@ -111,6 +112,7 @@ type PrimerInfo
   {
     seq: String!
     location: GenomicLocation
+    targetType: [String]
   }
 
 type RepresentativeMicrohaplotypeSequence
@@ -172,7 +174,6 @@ type SpecimenInfo
     sampStoreLoc: String!
     sampCollectDevice: String!
     projectName: String!
-    accession: String
     sampleComments: String
   }
 
