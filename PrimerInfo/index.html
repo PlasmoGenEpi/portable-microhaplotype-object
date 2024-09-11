@@ -216,8 +216,6 @@
 
       PrimerInfo : seq
 
-      PrimerInfo : target_type
-
 
 </div>
 <!-- no inheritance hierarchy -->
@@ -242,12 +240,6 @@
 <td><a href="../location/">location</a></td>
 <td>0..1 <br/> <a href="../GenomicLocation/">GenomicLocation</a></td>
 <td>what the intended genomic location of the primer is</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../target_type/">target_type</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>a list of classification type for the primer target</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -320,21 +312,6 @@ attributes:
     - PrimerInfo
     range: GenomicLocation
     required: false
-  target_type:
-    name: target_type
-    description: a list of classification type for the primer target
-    examples:
-    - value: Diversity
-    - value: Drug_Resistance
-    - value: Diagnostics
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - PrimerInfo
-    range: string
-    required: false
-    multivalued: true
-    inlined_as_list: false
 
 </code></pre>
 </details>
@@ -355,23 +332,6 @@ attributes:
     - PrimerInfo
     range: GenomicLocation
     required: false
-  target_type:
-    name: target_type
-    description: a list of classification type for the primer target
-    examples:
-    - value: Diversity
-    - value: Drug_Resistance
-    - value: Diagnostics
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: target_type
-    owner: PrimerInfo
-    domain_of:
-    - PrimerInfo
-    range: string
-    required: false
-    multivalued: true
-    inlined_as_list: false
   seq:
     name: seq
     description: the DNA sequence
