@@ -72,6 +72,7 @@ type MicrohaplotypeForTarget
 type MicrohaplotypesDetected
   {
     tarAmpBioinformaticsInfoId: String!
+    representativeMicrohaplotypeId: String!
     experimentSamples: [MicrohaplotypesForSample]!
   }
 
@@ -127,7 +128,7 @@ type RepresentativeMicrohaplotypeSequence
 
 type RepresentativeMicrohaplotypeSequences
   {
-    tarAmpBioinformaticsInfoId: String!
+    representativeMicrohaplotypeId: String!
     targets: [RepresentativeMicrohaplotypesForTarget]!
   }
 

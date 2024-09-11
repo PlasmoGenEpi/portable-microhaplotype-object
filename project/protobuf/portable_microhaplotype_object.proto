@@ -75,6 +75,7 @@ message MicrohaplotypeForTarget
 message MicrohaplotypesDetected
  {
   string tarAmpBioinformaticsInfoId = 0
+  string representativeMicrohaplotypeId = 0
  repeated  microhaplotypesForSample experimentSamples = 0
  }
 // Microhaplotypes detected for a sample for all targets
@@ -130,7 +131,7 @@ message RepresentativeMicrohaplotypeSequence
 // a collection of representative sequences for microhaplotypess for all targets
 message RepresentativeMicrohaplotypeSequences
  {
-  string tarAmpBioinformaticsInfoId = 0
+  string representativeMicrohaplotypeId = 0
  repeated  representativeMicrohaplotypesForTarget targets = 0
  }
 // a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format

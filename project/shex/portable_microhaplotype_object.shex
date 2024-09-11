@@ -132,6 +132,7 @@ linkml:Sparqlpath xsd:string
 
 <MicrohaplotypesDetected> CLOSED {
     (  $<MicrohaplotypesDetected_tes> (  <tar_amp_bioinformatics_info_id> @linkml:String ;
+          <representative_microhaplotype_id> @linkml:String ;
           <experiment_samples> @<MicrohaplotypesForSample> +
        ) ;
        rdf:type [ <MicrohaplotypesDetected> ] ?

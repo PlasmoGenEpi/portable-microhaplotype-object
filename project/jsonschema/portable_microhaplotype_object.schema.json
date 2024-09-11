@@ -297,6 +297,11 @@
                     },
                     "type": "array"
                 },
+                "representative_microhaplotype_id": {
+                    "description": "an identifier for the representative microhaplotype object collection",
+                    "pattern": "^[A-z-._0-9]$",
+                    "type": "string"
+                },
                 "tar_amp_bioinformatics_info_id": {
                     "description": "a unique identifier for this targeted amplicon bioinformatics pipeline run",
                     "pattern": "^[A-z-._0-9 ]$",
@@ -305,6 +310,7 @@
             },
             "required": [
                 "tar_amp_bioinformatics_info_id",
+                "representative_microhaplotype_id",
                 "experiment_samples"
             ],
             "title": "MicrohaplotypesDetected",
@@ -531,9 +537,9 @@
             "additionalProperties": false,
             "description": "a collection of representative sequences for microhaplotypess for all targets",
             "properties": {
-                "tar_amp_bioinformatics_info_id": {
-                    "description": "a unique identifier for this targeted amplicon bioinformatics pipeline run",
-                    "pattern": "^[A-z-._0-9 ]$",
+                "representative_microhaplotype_id": {
+                    "description": "an identifier for the representative microhaplotype object collection",
+                    "pattern": "^[A-z-._0-9]$",
                     "type": "string"
                 },
                 "targets": {
@@ -545,7 +551,7 @@
                 }
             },
             "required": [
-                "tar_amp_bioinformatics_info_id",
+                "representative_microhaplotype_id",
                 "targets"
             ],
             "title": "RepresentativeMicrohaplotypeSequences",
