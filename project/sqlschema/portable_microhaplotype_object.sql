@@ -133,6 +133,9 @@
 --     * Slot: target_demultiplexed_experiment_samples_id Description: the raw demultiplex target counts for each sample
 --     * Slot: taramp_bioinformatics_infos_tar_amp_bioinformatics_info_id Description: the bioinformatics pipeline/methods used to generated the amplicon analysis for this project
 --     * Slot: postprocessing_bioinformatics_infos_id Description: any additional methods that were applied to the processing of this file/analysis, this can be filtering, adding info etc
+-- # Class: "TargetInfo_target_type" Description: ""
+--     * Slot: TargetInfo_id Description: Autocreated FK slot
+--     * Slot: target_type Description: a list of classification type for the primer target
 -- # Class: "RepresentativeMicrohaplotypeSequence_masking" Description: ""
 --     * Slot: RepresentativeMicrohaplotypeSequence_id Description: Autocreated FK slot
 --     * Slot: masking_id Description: masking info for the sequence
@@ -151,9 +154,6 @@
 -- # Class: "DemultiplexedTargetsForExperimentSample_demultiplexed_targets" Description: ""
 --     * Slot: DemultiplexedTargetsForExperimentSample_id Description: Autocreated FK slot
 --     * Slot: demultiplexed_targets_id Description: a list of the targets extracted for a sample 
--- # Class: "PrimerInfo_target_type" Description: ""
---     * Slot: PrimerInfo_id Description: Autocreated FK slot
---     * Slot: target_type Description: a list of classification type for the primer target
 -- # Class: "MicrohaplotypesForSample_target_results" Description: ""
 --     * Slot: MicrohaplotypesForSample_id Description: Autocreated FK slot
 --     * Slot: target_results_id Description: a list of the microhaplotypes detected for a list of targets
@@ -404,17 +404,17 @@ CREATE TABLE "SpecimenInfo" (
 	PRIMARY KEY (specimen_id), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_pmo_name") REFERENCES "PortableMicrohaplotypeObject" (pmo_name)
 );
+CREATE TABLE "TargetInfo_target_type" (
+	"TargetInfo_id" INTEGER, 
+	target_type TEXT, 
+	PRIMARY KEY ("TargetInfo_id", target_type), 
+	FOREIGN KEY("TargetInfo_id") REFERENCES "TargetInfo" (id)
+);
 CREATE TABLE "RepresentativeMicrohaplotypesForTarget" (
 	target_id TEXT NOT NULL, 
 	"RepresentativeMicrohaplotypeSequences_representative_microhaplotype_id" TEXT, 
 	PRIMARY KEY (target_id), 
 	FOREIGN KEY("RepresentativeMicrohaplotypeSequences_representative_microhaplotype_id") REFERENCES "RepresentativeMicrohaplotypeSequences" (representative_microhaplotype_id)
-);
-CREATE TABLE "PrimerInfo_target_type" (
-	"PrimerInfo_id" INTEGER, 
-	target_type TEXT, 
-	PRIMARY KEY ("PrimerInfo_id", target_type), 
-	FOREIGN KEY("PrimerInfo_id") REFERENCES "PrimerInfo" (id)
 );
 CREATE TABLE "SpecimenInfo_alternate_identifiers" (
 	"SpecimenInfo_specimen_id" TEXT, 

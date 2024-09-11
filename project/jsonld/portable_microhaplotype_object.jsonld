@@ -603,6 +603,34 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "targetInfo__target_type",
+      "description": "a list of classification type for the primer target",
+      "examples": [
+        {
+          "value": "Diversity",
+          "@type": "Example"
+        },
+        {
+          "value": "Drug_Resistance",
+          "@type": "Example"
+        },
+        {
+          "value": "Diagnostics",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/target_type",
+      "alias": "target_type",
+      "owner": "TargetInfo",
+      "domain_of": [
+        "TargetInfo"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "panelInfo__target_genome",
       "description": "the info on the target reference genome for this panel",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
@@ -987,34 +1015,6 @@
       ],
       "range": "GenomicLocation",
       "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "primerInfo__target_type",
-      "description": "a list of classification type for the primer target",
-      "examples": [
-        {
-          "value": "Diversity",
-          "@type": "Example"
-        },
-        {
-          "value": "Drug_Resistance",
-          "@type": "Example"
-        },
-        {
-          "value": "Diagnostics",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/target_type",
-      "alias": "target_type",
-      "owner": "PrimerInfo",
-      "domain_of": [
-        "PrimerInfo"
-      ],
-      "range": "string",
-      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2036,7 +2036,8 @@
         "targetInfo__gene_id",
         "targetInfo__insert_location",
         "targetInfo__forward_primers",
-        "targetInfo__reverse_primers"
+        "targetInfo__reverse_primers",
+        "targetInfo__target_type"
       ],
       "slot_usage": {},
       "attributes": [
@@ -2069,6 +2070,27 @@
           "required": true,
           "multivalued": true,
           "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "target_type",
+          "description": "a list of classification type for the primer target",
+          "examples": [
+            {
+              "value": "Diversity",
+              "@type": "Example"
+            },
+            {
+              "value": "Drug_Resistance",
+              "@type": "Example"
+            },
+            {
+              "value": "Diagnostics",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "multivalued": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -2451,8 +2473,7 @@
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
         "seq",
-        "primerInfo__location",
-        "primerInfo__target_type"
+        "primerInfo__location"
       ],
       "slot_usage": {},
       "attributes": [
@@ -2460,27 +2481,6 @@
           "name": "location",
           "description": "what the intended genomic location of the primer is",
           "range": "GenomicLocation",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "target_type",
-          "description": "a list of classification type for the primer target",
-          "examples": [
-            {
-              "value": "Diversity",
-              "@type": "Example"
-            },
-            {
-              "value": "Drug_Resistance",
-              "@type": "Example"
-            },
-            {
-              "value": "Diagnostics",
-              "@type": "Example"
-            }
-          ],
-          "range": "string",
-          "multivalued": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -3093,9 +3093,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2024-09-11T13:28:18",
-  "source_file_size": 25602,
-  "generation_date": "2024-09-11T13:28:21",
+  "source_file_date": "2024-09-11T14:48:02",
+  "source_file_size": 25603,
+  "generation_date": "2024-09-11T14:48:10",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",

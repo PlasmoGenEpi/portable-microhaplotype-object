@@ -472,13 +472,6 @@
                     "description": "the DNA sequence",
                     "pattern": "^[A-z]$",
                     "type": "string"
-                },
-                "target_type": {
-                    "description": "a list of classification type for the primer target",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 }
             },
             "required": [
@@ -853,6 +846,13 @@
                     "description": "name of the target",
                     "pattern": "^[A-z-._0-9]$",
                     "type": "string"
+                },
+                "target_type": {
+                    "description": "a list of classification type for the primer target",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [

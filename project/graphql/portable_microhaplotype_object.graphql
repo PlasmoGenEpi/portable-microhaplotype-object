@@ -113,7 +113,6 @@ type PrimerInfo
   {
     seq: String!
     location: GenomicLocation
-    targetType: [String]
   }
 
 type RepresentativeMicrohaplotypeSequence
@@ -194,5 +193,6 @@ type TargetInfo
     insertLocation: GenomicLocation
     forwardPrimers: [PrimerInfo]!
     reversePrimers: [PrimerInfo]!
+    targetType: [String]
   }
 

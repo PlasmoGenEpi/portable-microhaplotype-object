@@ -181,8 +181,7 @@ linkml:Sparqlpath xsd:string
 
 <PrimerInfo> CLOSED {
     (  $<PrimerInfo_tes> (  <seq> @linkml:String ;
-          <location> @<GenomicLocation> ? ;
-          <target_type> @linkml:String *
+          <location> @<GenomicLocation> ?
        ) ;
        rdf:type [ <PrimerInfo> ] ?
     )
@@ -269,7 +268,8 @@ linkml:Sparqlpath xsd:string
           <gene_id> @linkml:String ? ;
           <insert_location> @<GenomicLocation> ? ;
           <forward_primers> @<PrimerInfo> + ;
-          <reverse_primers> @<PrimerInfo> +
+          <reverse_primers> @<PrimerInfo> + ;
+          <target_type> @linkml:String *
        ) ;
        rdf:type [ <TargetInfo> ] ?
     )

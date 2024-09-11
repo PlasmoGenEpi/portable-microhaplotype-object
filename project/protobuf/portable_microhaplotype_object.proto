@@ -116,7 +116,6 @@ message PrimerInfo
  {
   string seq = 0
   genomicLocation location = 0
- repeated  string targetType = 0
  }
 // the representative sequence for a microhaplotype, similar to a fast(a/q) format
 message RepresentativeMicrohaplotypeSequence
@@ -197,4 +196,5 @@ message TargetInfo
   genomicLocation insertLocation = 0
  repeated  primerInfo forwardPrimers = 0
  repeated  primerInfo reversePrimers = 0
+ repeated  string targetType = 0
  }

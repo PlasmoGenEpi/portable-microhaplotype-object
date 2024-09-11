@@ -1,5 +1,5 @@
 # Auto generated from portable_microhaplotype_object.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-09-11T13:28:23
+# Generation date: 2024-09-11T14:48:12
 # Schema: portable-microhaplotype-object
 #
 # id: https://plasmogenepi.github.io/portable-microhaplotype-object
@@ -88,6 +88,7 @@ class TargetInfo(YAMLRoot):
     reverse_primers: Union[Union[dict, "PrimerInfo"], List[Union[dict, "PrimerInfo"]]] = None
     gene_id: Optional[str] = None
     insert_location: Optional[Union[dict, "GenomicLocation"]] = None
+    target_type: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.target_id):
@@ -108,6 +109,10 @@ class TargetInfo(YAMLRoot):
 
         if self.insert_location is not None and not isinstance(self.insert_location, GenomicLocation):
             self.insert_location = GenomicLocation(**as_dict(self.insert_location))
+
+        if not isinstance(self.target_type, list):
+            self.target_type = [self.target_type] if self.target_type is not None else []
+        self.target_type = [v if isinstance(v, str) else str(v) for v in self.target_type]
 
         super().__post_init__(**kwargs)
 
@@ -503,7 +508,6 @@ class PrimerInfo(YAMLRoot):
 
     seq: str = None
     location: Optional[Union[dict, GenomicLocation]] = None
-    target_type: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.seq):
@@ -513,10 +517,6 @@ class PrimerInfo(YAMLRoot):
 
         if self.location is not None and not isinstance(self.location, GenomicLocation):
             self.location = GenomicLocation(**as_dict(self.location))
-
-        if not isinstance(self.target_type, list):
-            self.target_type = [self.target_type] if self.target_type is not None else []
-        self.target_type = [v if isinstance(v, str) else str(v) for v in self.target_type]
 
         super().__post_init__(**kwargs)
 
@@ -1096,6 +1096,9 @@ slots.targetInfo__forward_primers = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.forw
 slots.targetInfo__reverse_primers = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.reverse_primers, name="targetInfo__reverse_primers", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('reverse_primers'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.targetInfo__reverse_primers, domain=None, range=Union[Union[dict, PrimerInfo], List[Union[dict, PrimerInfo]]])
 
+slots.targetInfo__target_type = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.target_type, name="targetInfo__target_type", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('target_type'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.targetInfo__target_type, domain=None, range=Optional[Union[str, List[str]]])
+
 slots.panelInfo__target_genome = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.target_genome, name="panelInfo__target_genome", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('target_genome'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.panelInfo__target_genome, domain=None, range=Union[dict, GenomeInfo])
 
@@ -1185,9 +1188,6 @@ slots.genomicLocation__ref_seq = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.ref_seq
 
 slots.primerInfo__location = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.location, name="primerInfo__location", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('location'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.primerInfo__location, domain=None, range=Optional[Union[dict, GenomicLocation]])
-
-slots.primerInfo__target_type = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.target_type, name="primerInfo__target_type", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('target_type'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.primerInfo__target_type, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.microhaplotypesForSample__target_results = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.target_results, name="microhaplotypesForSample__target_results", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('target_results'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.microhaplotypesForSample__target_results, domain=None, range=Union[Union[dict, MicrohaplotypesForTarget], List[Union[dict, MicrohaplotypesForTarget]]])

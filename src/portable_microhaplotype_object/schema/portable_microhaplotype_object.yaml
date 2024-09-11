@@ -85,6 +85,17 @@ classes:
         required: true
         description: >-
           A list of reverse primers associated with this target
+      target_type:
+        range: string
+        multivalued: true
+        inlined_as_list: false
+        required: false
+        description: >-
+          a list of classification type for the primer target
+        examples:
+          - value: "Diversity"
+          - value: "Drug_Resistance"
+          - value: "Diagnostics"
 
   PanelInfo:
     description: >-
@@ -329,17 +340,7 @@ classes:
         required: false
         description: >-
           what the intended genomic location of the primer is
-      target_type:
-        range: string
-        multivalued: true
-        inlined_as_list: false
-        required: false
-        description: >-
-          a list of classification type for the primer target
-        examples:
-          - value: "Diversity"
-          - value: "Drug_Resistance"
-          - value: "Diagnostics"
+
 
   MicrohaplotypesForSample:
     description: >-
