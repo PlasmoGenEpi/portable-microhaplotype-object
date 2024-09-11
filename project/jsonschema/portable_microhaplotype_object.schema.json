@@ -413,7 +413,7 @@
                     "description": "the info on the targeted sequencing panel used for this project"
                 },
                 "pmo_name": {
-                    "description": "a name for the analysis detailed here in this experiment, can be a concatenation of names if combined more than one PMO",
+                    "description": "a name for this PMO, can be a concatenation of names if combined more than one PMO",
                     "type": "string"
                 },
                 "postprocessing_bioinformatics_infos": {
@@ -886,7 +886,7 @@
             "description": "the info on the targeted sequencing panel used for this project"
         },
         "pmo_name": {
-            "description": "a name for the analysis detailed here in this experiment, can be a concatenation of names if combined more than one PMO",
+            "description": "a name for this PMO, can be a concatenation of names if combined more than one PMO",
             "type": "string"
         },
         "postprocessing_bioinformatics_infos": {

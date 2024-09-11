@@ -689,7 +689,7 @@ classes:
         identifier: true
         required : true
         description: >-
-          a name for the analysis detailed here in this experiment, can be a concatenation of names if combined more than one PMO
+          a name for this PMO, can be a concatenation of names if combined more than one PMO
       experiment_infos:
         range: ExperimentInfo
         required: true

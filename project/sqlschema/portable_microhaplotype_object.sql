@@ -20,14 +20,15 @@
 --     * Slot: seq_segment_size Description: the size of the masking
 --     * Slot: replacement_size Description: the size of replacement mask
 -- # Class: "RepresentativeMicrohaplotypeSequences" Description: "a collection of representative sequences for microhaplotypess for all targets"
---     * Slot: tar_amp_bioinformatics_info_id Description: a unique identifier for this targeted amplicon bioinformatics pipeline run
+--     * Slot: representative_microhaplotype_id Description: an identifier for the representative microhaplotype object collection
 --     * Slot: PortableMicrohaplotypeObject_pmo_name Description: Autocreated FK slot
 -- # Class: "RepresentativeMicrohaplotypesForTarget" Description: "a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format"
 --     * Slot: target_id Description: name of the target
---     * Slot: RepresentativeMicrohaplotypeSequences_tar_amp_bioinformatics_info_id Description: Autocreated FK slot
+--     * Slot: RepresentativeMicrohaplotypeSequences_representative_microhaplotype_id Description: Autocreated FK slot
 -- # Class: "MicrohaplotypesDetected" Description: "the microhaplotypes detected in a targeted amplicon analysis"
 --     * Slot: id Description: 
 --     * Slot: tar_amp_bioinformatics_info_id Description: a unique identifier for this targeted amplicon bioinformatics pipeline run
+--     * Slot: representative_microhaplotype_id Description: an identifier for the representative microhaplotype object collection
 -- # Class: "DemultiplexedExperimentSamples" Description: "a list of raw reads counts for each experiment sample for all targets within panel"
 --     * Slot: id Description: 
 --     * Slot: tar_amp_bioinformatics_info_id Description: a unique identifier for this targeted amplicon bioinformatics pipeline run
@@ -125,7 +126,7 @@
 --     * Slot: sample_comments Description: any additional comments about the sample
 --     * Slot: PortableMicrohaplotypeObject_pmo_name Description: Autocreated FK slot
 -- # Class: "PortableMicrohaplotypeObject" Description: "Information on final results from a targeted amplicon analysis"
---     * Slot: pmo_name Description: a name for the analysis detailed here in this experiment, can be a concatenation of names if combined more than one PMO
+--     * Slot: pmo_name Description: a name for this PMO, can be a concatenation of names if combined more than one PMO
 --     * Slot: sequencing_infos_sequencing_info_id Description: the sequencing info for this project
 --     * Slot: panel_info_id Description: the info on the targeted sequencing panel used for this project
 --     * Slot: microhaplotypes_detected_id Description: the microhaplotypes detected in this projects
@@ -181,6 +182,7 @@ CREATE TABLE "MaskingInfo" (
 CREATE TABLE "MicrohaplotypesDetected" (
 	id INTEGER NOT NULL, 
 	tar_amp_bioinformatics_info_id TEXT NOT NULL, 
+	representative_microhaplotype_id TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "DemultiplexedExperimentSamples" (
@@ -351,9 +353,9 @@ CREATE TABLE "PortableMicrohaplotypeObject" (
 	FOREIGN KEY(postprocessing_bioinformatics_infos_id) REFERENCES "BioMethod" (id)
 );
 CREATE TABLE "RepresentativeMicrohaplotypeSequences" (
-	tar_amp_bioinformatics_info_id TEXT NOT NULL, 
+	representative_microhaplotype_id TEXT NOT NULL, 
 	"PortableMicrohaplotypeObject_pmo_name" TEXT, 
-	PRIMARY KEY (tar_amp_bioinformatics_info_id), 
+	PRIMARY KEY (representative_microhaplotype_id), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_pmo_name") REFERENCES "PortableMicrohaplotypeObject" (pmo_name)
 );
 CREATE TABLE "PrimerInfo" (
@@ -404,9 +406,9 @@ CREATE TABLE "SpecimenInfo" (
 );
 CREATE TABLE "RepresentativeMicrohaplotypesForTarget" (
 	target_id TEXT NOT NULL, 
-	"RepresentativeMicrohaplotypeSequences_tar_amp_bioinformatics_info_id" TEXT, 
+	"RepresentativeMicrohaplotypeSequences_representative_microhaplotype_id" TEXT, 
 	PRIMARY KEY (target_id), 
-	FOREIGN KEY("RepresentativeMicrohaplotypeSequences_tar_amp_bioinformatics_info_id") REFERENCES "RepresentativeMicrohaplotypeSequences" (tar_amp_bioinformatics_info_id)
+	FOREIGN KEY("RepresentativeMicrohaplotypeSequences_representative_microhaplotype_id") REFERENCES "RepresentativeMicrohaplotypeSequences" (representative_microhaplotype_id)
 );
 CREATE TABLE "PrimerInfo_target_type" (
 	"PrimerInfo_id" INTEGER, 
