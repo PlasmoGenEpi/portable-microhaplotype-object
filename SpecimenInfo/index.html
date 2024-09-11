@@ -205,8 +205,6 @@
 <div class="mermaid"> classDiagram
     class SpecimenInfo
     click SpecimenInfo href "../SpecimenInfo"
-      SpecimenInfo : accession
-
       SpecimenInfo : alternate_identifiers
 
       SpecimenInfo : collection_country
@@ -373,12 +371,6 @@
 <td><a href="../project_name/">project_name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td>a name of the project under which the sample is organized</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../accession/">accession</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>ERA/SRA accession number for the sample if it was submitted</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -620,16 +612,6 @@ attributes:
     range: string
     required: true
     pattern: ^[A-z-._0-9 ]$
-  accession:
-    name: accession
-    description: ERA/SRA accession number for the sample if it was submitted
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9]$
   sample_comments:
     name: sample_comments
     description: any additional comments about the sample
@@ -854,18 +836,6 @@ attributes:
     range: string
     required: true
     pattern: ^[A-z-._0-9 ]$
-  accession:
-    name: accession
-    description: ERA/SRA accession number for the sample if it was submitted
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: accession
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9]$
   sample_comments:
     name: sample_comments
     description: any additional comments about the sample

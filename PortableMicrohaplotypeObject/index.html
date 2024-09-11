@@ -200,8 +200,6 @@
 <div class="mermaid"> classDiagram
     class PortableMicrohaplotypeObject
     click PortableMicrohaplotypeObject href "../PortableMicrohaplotypeObject"
-      PortableMicrohaplotypeObject : analysis_name
-
       PortableMicrohaplotypeObject : experiment_infos
 
 
@@ -228,6 +226,8 @@
     PortableMicrohaplotypeObject --&gt; "1" PanelInfo : panel_info
     click PanelInfo href "../PanelInfo"
 
+
+      PortableMicrohaplotypeObject : pmo_name
 
       PortableMicrohaplotypeObject : postprocessing_bioinformatics_infos
 
@@ -298,7 +298,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../analysis_name/">analysis_name</a></td>
+<td><a href="../pmo_name/">pmo_name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td>a name for the analysis detailed here in this experiment, can be a concatenat...</td>
 <td>direct</td>
@@ -324,7 +324,7 @@
 <tr>
 <td><a href="../panel_info/">panel_info</a></td>
 <td>1 <br/> <a href="../PanelInfo/">PanelInfo</a></td>
-<td>the info on the panel used for this project</td>
+<td>the info on the targeted sequencing panel used for this project</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -391,8 +391,8 @@
 description: Information on final results from a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  analysis_name:
-    name: analysis_name
+  pmo_name:
+    name: pmo_name
     description: a name for the analysis detailed here in this experiment, can be
       a concatenation of names if combined more than one PMO
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
@@ -439,7 +439,7 @@ attributes:
     inlined_as_list: true
   panel_info:
     name: panel_info
-    description: the info on the panel used for this project
+    description: the info on the targeted sequencing panel used for this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -512,14 +512,14 @@ tree_root: true
 description: Information on final results from a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  analysis_name:
-    name: analysis_name
+  pmo_name:
+    name: pmo_name
     description: a name for the analysis detailed here in this experiment, can be
       a concatenation of names if combined more than one PMO
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     identifier: true
-    alias: analysis_name
+    alias: pmo_name
     owner: PortableMicrohaplotypeObject
     domain_of:
     - PortableMicrohaplotypeObject
@@ -568,7 +568,7 @@ attributes:
     inlined_as_list: true
   panel_info:
     name: panel_info
-    description: the info on the panel used for this project
+    description: the info on the targeted sequencing panel used for this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: panel_info

@@ -205,6 +205,8 @@
 <div class="mermaid"> classDiagram
     class ExperimentInfo
     click ExperimentInfo href "../ExperimentInfo"
+      ExperimentInfo : accession
+
       ExperimentInfo : experiment_sample_id
 
       ExperimentInfo : panel_id
@@ -273,6 +275,12 @@
 <td><a href="../experiment_sample_id/">experiment_sample_id</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td>a unique identifier for this sequence/amplification run on a specimen</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../accession/">accession</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>ERA/SRA accession number for the sample if it was submitted</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -373,6 +381,17 @@ slot_usage:
     - ExperimentInfo
     - SpecimenInfo
     required: false
+attributes:
+  accession:
+    name: accession
+    description: ERA/SRA accession number for the sample if it was submitted
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - ExperimentInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9]$
 
 </code></pre>
 </details>
@@ -420,6 +439,18 @@ slot_usage:
     - SpecimenInfo
     required: false
 attributes:
+  accession:
+    name: accession
+    description: ERA/SRA accession number for the sample if it was submitted
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: accession
+    owner: ExperimentInfo
+    domain_of:
+    - ExperimentInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9]$
   sequencing_info_id:
     name: sequencing_info_id
     description: a unique identifier for this sequencing info
