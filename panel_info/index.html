@@ -39,6 +39,12 @@
       
     
     
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -324,7 +330,7 @@
 
 
 <h1 id="slot-panel_info">Slot: panel_info</h1>
-<p><em>the info on the targeted sequencing panel used for this project</em></p>
+<p><em>a list of info on the panels</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/panel_info">portable_microhaplotype_object:panel_info</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -349,6 +355,9 @@
 <ul>
 <li>
 <p>Range: <a href="../PanelInfo/">PanelInfo</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
 </li>
 <li>
 <p>Required: True</p>
@@ -382,7 +391,7 @@
 <details>
 
 <pre><code class="language-yaml">name: panel_info
-description: the info on the targeted sequencing panel used for this project
+description: a list of info on the panels
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: panel_info
@@ -391,6 +400,9 @@ domain_of:
 - PortableMicrohaplotypeObject
 range: PanelInfo
 required: true
+multivalued: true
+inlined: true
+inlined_as_list: true
 
 </code></pre>
 
@@ -438,6 +450,10 @@ required: true
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     

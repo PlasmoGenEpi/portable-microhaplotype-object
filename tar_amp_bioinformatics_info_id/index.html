@@ -39,6 +39,12 @@
       
     
     
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -344,14 +350,14 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DemultiplexedExperimentSamples/">DemultiplexedExperimentSamples</a></td>
-<td>a list of raw reads counts for each experiment sample for all targets within ...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../TarAmpBioinformaticsInfo/">TarAmpBioinformaticsInfo</a></td>
 <td>the targeted amplicon bioinformatics pipeline</td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../DemultiplexedExperimentSamples/">DemultiplexedExperimentSamples</a></td>
+<td>a list of raw reads counts for each experiment sample for all targets within ...</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
@@ -454,6 +460,10 @@ pattern: ^[A-z-._0-9 ]$
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     

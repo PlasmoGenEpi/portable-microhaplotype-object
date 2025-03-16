@@ -39,6 +39,12 @@
       
     
     
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -324,7 +330,7 @@
 
 
 <h1 id="slot-ref_seq">Slot: ref_seq</h1>
-<p>_the reference sequence of this genomic location _</p>
+<p><em>the reference sequence of this genomic location</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/ref_seq">portable_microhaplotype_object:ref_seq</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -351,7 +357,7 @@
 <p>Range: <a href="../String/">String</a></p>
 </li>
 <li>
-<p>Regex pattern: <code>^[A-z-]$</code></p>
+<p>Regex pattern: <code>^[A-z-]+$</code></p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -382,7 +388,7 @@
 <details>
 
 <pre><code class="language-yaml">name: ref_seq
-description: 'the reference sequence of this genomic location '
+description: the reference sequence of this genomic location
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: ref_seq
@@ -391,7 +397,7 @@ domain_of:
 - GenomicLocation
 range: string
 required: false
-pattern: ^[A-z-]$
+pattern: ^[A-z-]+$
 
 </code></pre>
 
@@ -439,6 +445,10 @@ pattern: ^[A-z-]$
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     

@@ -14,6 +14,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../css/ansi-colours.css" rel="stylesheet"/>
+<link href="../css/jupyter-cells.css" rel="stylesheet"/>
+<link href="../css/pandas-dataframe.css" rel="stylesheet"/>
 <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="None" data-md-color-primary="None" data-md-color-scheme="default" dir="ltr">
@@ -200,12 +203,30 @@
 <div class="mermaid"> classDiagram
     class PortableMicrohaplotypeObject
     click PortableMicrohaplotypeObject href "../PortableMicrohaplotypeObject"
-      PortableMicrohaplotypeObject : experiment_infos
+      PortableMicrohaplotypeObject : bioinformatics_methods_info
 
 
 
 
-    PortableMicrohaplotypeObject --&gt; "1..*" ExperimentInfo : experiment_infos
+    PortableMicrohaplotypeObject --&gt; "1..*" BioinformaticsMethodInfo : bioinformatics_methods_info
+    click BioinformaticsMethodInfo href "../BioinformaticsMethodInfo"
+
+
+      PortableMicrohaplotypeObject : bioinformatics_run_info
+
+
+
+
+    PortableMicrohaplotypeObject --&gt; "1..*" BioinformaticsRunInfo : bioinformatics_run_info
+    click BioinformaticsRunInfo href "../BioinformaticsRunInfo"
+
+
+      PortableMicrohaplotypeObject : experiment_info
+
+
+
+
+    PortableMicrohaplotypeObject --&gt; "1..*" ExperimentInfo : experiment_info
     click ExperimentInfo href "../ExperimentInfo"
 
 
@@ -214,8 +235,17 @@
 
 
 
-    PortableMicrohaplotypeObject --&gt; "1" MicrohaplotypesDetected : microhaplotypes_detected
+    PortableMicrohaplotypeObject --&gt; "1..*" MicrohaplotypesDetected : microhaplotypes_detected
     click MicrohaplotypesDetected href "../MicrohaplotypesDetected"
+
+
+      PortableMicrohaplotypeObject : microhaplotypes_info
+
+
+
+
+    PortableMicrohaplotypeObject --&gt; "1" RepresentativeMicrohaplotypes : microhaplotypes_info
+    click RepresentativeMicrohaplotypes href "../RepresentativeMicrohaplotypes"
 
 
       PortableMicrohaplotypeObject : panel_info
@@ -223,64 +253,62 @@
 
 
 
-    PortableMicrohaplotypeObject --&gt; "1" PanelInfo : panel_info
+    PortableMicrohaplotypeObject --&gt; "1..*" PanelInfo : panel_info
     click PanelInfo href "../PanelInfo"
 
 
-      PortableMicrohaplotypeObject : pmo_name
-
-      PortableMicrohaplotypeObject : postprocessing_bioinformatics_infos
+      PortableMicrohaplotypeObject : pmo_header
 
 
 
 
-    PortableMicrohaplotypeObject --&gt; "0..1" BioMethod : postprocessing_bioinformatics_infos
-    click BioMethod href "../BioMethod"
+    PortableMicrohaplotypeObject --&gt; "1" PmoHeader : pmo_header
+    click PmoHeader href "../PmoHeader"
 
 
-      PortableMicrohaplotypeObject : representative_microhaplotype_sequences
-
-
-
-
-    PortableMicrohaplotypeObject --&gt; "1..*" RepresentativeMicrohaplotypeSequences : representative_microhaplotype_sequences
-    click RepresentativeMicrohaplotypeSequences href "../RepresentativeMicrohaplotypeSequences"
-
-
-      PortableMicrohaplotypeObject : sequencing_infos
+      PortableMicrohaplotypeObject : read_counts_by_stage
 
 
 
 
-    PortableMicrohaplotypeObject --&gt; "1" SequencingInfo : sequencing_infos
+    PortableMicrohaplotypeObject --&gt; "*" ReadCountsByStage : read_counts_by_stage
+    click ReadCountsByStage href "../ReadCountsByStage"
+
+
+      PortableMicrohaplotypeObject : sequencing_info
+
+
+
+
+    PortableMicrohaplotypeObject --&gt; "1..*" SequencingInfo : sequencing_info
     click SequencingInfo href "../SequencingInfo"
 
 
-      PortableMicrohaplotypeObject : specimen_infos
+      PortableMicrohaplotypeObject : specimen_info
 
 
 
 
-    PortableMicrohaplotypeObject --&gt; "1..*" SpecimenInfo : specimen_infos
+    PortableMicrohaplotypeObject --&gt; "1..*" SpecimenInfo : specimen_info
     click SpecimenInfo href "../SpecimenInfo"
 
 
-      PortableMicrohaplotypeObject : taramp_bioinformatics_infos
+      PortableMicrohaplotypeObject : target_info
 
 
 
 
-    PortableMicrohaplotypeObject --&gt; "1" TarAmpBioinformaticsInfo : taramp_bioinformatics_infos
-    click TarAmpBioinformaticsInfo href "../TarAmpBioinformaticsInfo"
+    PortableMicrohaplotypeObject --&gt; "1..*" TargetInfo : target_info
+    click TargetInfo href "../TargetInfo"
 
 
-      PortableMicrohaplotypeObject : target_demultiplexed_experiment_samples
+      PortableMicrohaplotypeObject : targeted_genomes
 
 
 
 
-    PortableMicrohaplotypeObject --&gt; "0..1" DemultiplexedExperimentSamples : target_demultiplexed_experiment_samples
-    click DemultiplexedExperimentSamples href "../DemultiplexedExperimentSamples"
+    PortableMicrohaplotypeObject --&gt; "1..*" GenomeInfo : targeted_genomes
+    click GenomeInfo href "../GenomeInfo"
 
 
 
@@ -298,63 +326,75 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../pmo_name/">pmo_name</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>a name for this PMO, can be a concatenation of names if combined more than on...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../experiment_infos/">experiment_infos</a></td>
+<td><a href="../experiment_info/">experiment_info</a></td>
 <td>1..* <br/> <a href="../ExperimentInfo/">ExperimentInfo</a></td>
-<td>a list of experiments of all the seq/amp of samples within this project</td>
+<td>a list of experiments of all the seq/amp of the specimens within this project</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../specimen_infos/">specimen_infos</a></td>
+<td><a href="../specimen_info/">specimen_info</a></td>
 <td>1..* <br/> <a href="../SpecimenInfo/">SpecimenInfo</a></td>
-<td>a list of SpecimenInfo of all the samples within this project</td>
+<td>a list of specimens of all the samples within this project</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../sequencing_infos/">sequencing_infos</a></td>
-<td>1 <br/> <a href="../SequencingInfo/">SequencingInfo</a></td>
-<td>the sequencing info for this project</td>
+<td><a href="../sequencing_info/">sequencing_info</a></td>
+<td>1..* <br/> <a href="../SequencingInfo/">SequencingInfo</a></td>
+<td>a list of sequencing info for this project</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../panel_info/">panel_info</a></td>
-<td>1 <br/> <a href="../PanelInfo/">PanelInfo</a></td>
-<td>the info on the targeted sequencing panel used for this project</td>
+<td>1..* <br/> <a href="../PanelInfo/">PanelInfo</a></td>
+<td>a list of info on the panels</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../representative_microhaplotype_sequences/">representative_microhaplotype_sequences</a></td>
-<td>1..* <br/> <a href="../RepresentativeMicrohaplotypeSequences/">RepresentativeMicrohaplotypeSequences</a></td>
-<td>a list of the representative sequences for the results for this project</td>
+<td><a href="../target_info/">target_info</a></td>
+<td>1..* <br/> <a href="../TargetInfo/">TargetInfo</a></td>
+<td>a list of info on the targets</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../microhaplotypes_detected/">microhaplotypes_detected</a></td>
-<td>1 <br/> <a href="../MicrohaplotypesDetected/">MicrohaplotypesDetected</a></td>
-<td>the microhaplotypes detected in this projects</td>
+<td><a href="../targeted_genomes/">targeted_genomes</a></td>
+<td>1..* <br/> <a href="../GenomeInfo/">GenomeInfo</a></td>
+<td>a list of genomes that the targets in TargetInfo refer to</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../target_demultiplexed_experiment_samples/">target_demultiplexed_experiment_samples</a></td>
-<td>0..1 <br/> <a href="../DemultiplexedExperimentSamples/">DemultiplexedExperimentSamples</a></td>
-<td>the raw demultiplex target counts for each sample</td>
+<td><a href="../microhaplotypes_info/">microhaplotypes_info</a></td>
+<td>1 <br/> <a href="../RepresentativeMicrohaplotypes/">RepresentativeMicrohaplotypes</a></td>
+<td>a list of the information on the representative microhaplotypes</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../taramp_bioinformatics_infos/">taramp_bioinformatics_infos</a></td>
-<td>1 <br/> <a href="../TarAmpBioinformaticsInfo/">TarAmpBioinformaticsInfo</a></td>
+<td><a href="../bioinformatics_methods_info/">bioinformatics_methods_info</a></td>
+<td>1..* <br/> <a href="../BioinformaticsMethodInfo/">BioinformaticsMethodInfo</a></td>
 <td>the bioinformatics pipeline/methods used to generated the amplicon analysis f...</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../postprocessing_bioinformatics_infos/">postprocessing_bioinformatics_infos</a></td>
-<td>0..1 <br/> <a href="../BioMethod/">BioMethod</a></td>
-<td>any additional methods that were applied to the processing of this file/analy...</td>
+<td><a href="../bioinformatics_run_info/">bioinformatics_run_info</a></td>
+<td>1..* <br/> <a href="../BioinformaticsRunInfo/">BioinformaticsRunInfo</a></td>
+<td>the runtime info for the bioinformatics pipeline used to generated the amplic...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../microhaplotypes_detected/">microhaplotypes_detected</a></td>
+<td>1..* <br/> <a href="../MicrohaplotypesDetected/">MicrohaplotypesDetected</a></td>
+<td>the microhaplotypes detected in this projects</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../pmo_header/">pmo_header</a></td>
+<td>1 <br/> <a href="../PmoHeader/">PmoHeader</a></td>
+<td>the PMO information for this file including version etc</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../read_counts_by_stage/">read_counts_by_stage</a></td>
+<td>* <br/> <a href="../ReadCountsByStage/">ReadCountsByStage</a></td>
+<td>the read counts for different stages of the pipeline</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -391,20 +431,10 @@
 description: Information on final results from a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  pmo_name:
-    name: pmo_name
-    description: a name for this PMO, can be a concatenation of names if combined
-      more than one PMO
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    identifier: true
-    domain_of:
-    - PortableMicrohaplotypeObject
-    range: string
-    required: true
-  experiment_infos:
-    name: experiment_infos
-    description: a list of experiments of all the seq/amp of samples within this project
+  experiment_info:
+    name: experiment_info
+    description: a list of experiments of all the seq/amp of the specimens within
+      this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -414,9 +444,9 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  specimen_infos:
-    name: specimen_infos
-    description: a list of SpecimenInfo of all the samples within this project
+  specimen_info:
+    name: specimen_info
+    description: a list of specimens of all the samples within this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -426,34 +456,85 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  sequencing_infos:
-    name: sequencing_infos
-    description: the sequencing info for this project
+  sequencing_info:
+    name: sequencing_info
+    description: a list of sequencing info for this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - PortableMicrohaplotypeObject
     range: SequencingInfo
     required: true
+    multivalued: true
     inlined: true
     inlined_as_list: true
   panel_info:
     name: panel_info
-    description: the info on the targeted sequencing panel used for this project
+    description: a list of info on the panels
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - PortableMicrohaplotypeObject
     range: PanelInfo
     required: true
-  representative_microhaplotype_sequences:
-    name: representative_microhaplotype_sequences
-    description: a list of the representative sequences for the results for this project
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  target_info:
+    name: target_info
+    description: a list of info on the targets
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - PortableMicrohaplotypeObject
-    range: RepresentativeMicrohaplotypeSequences
+    range: TargetInfo
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  targeted_genomes:
+    name: targeted_genomes
+    description: a list of genomes that the targets in TargetInfo refer to
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: GenomeInfo
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  microhaplotypes_info:
+    name: microhaplotypes_info
+    description: a list of the information on the representative microhaplotypes
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: RepresentativeMicrohaplotypes
+    required: true
+  bioinformatics_methods_info:
+    name: bioinformatics_methods_info
+    description: the bioinformatics pipeline/methods used to generated the amplicon
+      analysis for this project
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: BioinformaticsMethodInfo
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  bioinformatics_run_info:
+    name: bioinformatics_run_info
+    description: the runtime info for the bioinformatics pipeline used to generated
+      the amplicon analysis for this project
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: BioinformaticsRunInfo
     required: true
     multivalued: true
     inlined: true
@@ -467,39 +548,28 @@ attributes:
     - PortableMicrohaplotypeObject
     range: MicrohaplotypesDetected
     required: true
-  target_demultiplexed_experiment_samples:
-    name: target_demultiplexed_experiment_samples
-    description: the raw demultiplex target counts for each sample
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - PortableMicrohaplotypeObject
-    range: DemultiplexedExperimentSamples
-    required: false
+    multivalued: true
     inlined: true
     inlined_as_list: true
-  taramp_bioinformatics_infos:
-    name: taramp_bioinformatics_infos
-    description: the bioinformatics pipeline/methods used to generated the amplicon
-      analysis for this project
+  pmo_header:
+    name: pmo_header
+    description: the PMO information for this file including version etc
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - PortableMicrohaplotypeObject
-    range: TarAmpBioinformaticsInfo
+    range: PmoHeader
     required: true
-    inlined: true
-    inlined_as_list: true
-  postprocessing_bioinformatics_infos:
-    name: postprocessing_bioinformatics_infos
-    description: any additional methods that were applied to the processing of this
-      file/analysis, this can be filtering, adding info etc
+  read_counts_by_stage:
+    name: read_counts_by_stage
+    description: the read counts for different stages of the pipeline
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - PortableMicrohaplotypeObject
-    range: BioMethod
+    range: ReadCountsByStage
     required: false
+    multivalued: true
     inlined: true
     inlined_as_list: true
 tree_root: true
@@ -512,25 +582,13 @@ tree_root: true
 description: Information on final results from a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  pmo_name:
-    name: pmo_name
-    description: a name for this PMO, can be a concatenation of names if combined
-      more than one PMO
+  experiment_info:
+    name: experiment_info
+    description: a list of experiments of all the seq/amp of the specimens within
+      this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    identifier: true
-    alias: pmo_name
-    owner: PortableMicrohaplotypeObject
-    domain_of:
-    - PortableMicrohaplotypeObject
-    range: string
-    required: true
-  experiment_infos:
-    name: experiment_infos
-    description: a list of experiments of all the seq/amp of samples within this project
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: experiment_infos
+    alias: experiment_info
     owner: PortableMicrohaplotypeObject
     domain_of:
     - PortableMicrohaplotypeObject
@@ -539,12 +597,12 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  specimen_infos:
-    name: specimen_infos
-    description: a list of SpecimenInfo of all the samples within this project
+  specimen_info:
+    name: specimen_info
+    description: a list of specimens of all the samples within this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: specimen_infos
+    alias: specimen_info
     owner: PortableMicrohaplotypeObject
     domain_of:
     - PortableMicrohaplotypeObject
@@ -553,22 +611,23 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  sequencing_infos:
-    name: sequencing_infos
-    description: the sequencing info for this project
+  sequencing_info:
+    name: sequencing_info
+    description: a list of sequencing info for this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: sequencing_infos
+    alias: sequencing_info
     owner: PortableMicrohaplotypeObject
     domain_of:
     - PortableMicrohaplotypeObject
     range: SequencingInfo
     required: true
+    multivalued: true
     inlined: true
     inlined_as_list: true
   panel_info:
     name: panel_info
-    description: the info on the targeted sequencing panel used for this project
+    description: a list of info on the panels
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: panel_info
@@ -577,16 +636,74 @@ attributes:
     - PortableMicrohaplotypeObject
     range: PanelInfo
     required: true
-  representative_microhaplotype_sequences:
-    name: representative_microhaplotype_sequences
-    description: a list of the representative sequences for the results for this project
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  target_info:
+    name: target_info
+    description: a list of info on the targets
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: representative_microhaplotype_sequences
+    alias: target_info
     owner: PortableMicrohaplotypeObject
     domain_of:
     - PortableMicrohaplotypeObject
-    range: RepresentativeMicrohaplotypeSequences
+    range: TargetInfo
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  targeted_genomes:
+    name: targeted_genomes
+    description: a list of genomes that the targets in TargetInfo refer to
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: targeted_genomes
+    owner: PortableMicrohaplotypeObject
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: GenomeInfo
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  microhaplotypes_info:
+    name: microhaplotypes_info
+    description: a list of the information on the representative microhaplotypes
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: microhaplotypes_info
+    owner: PortableMicrohaplotypeObject
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: RepresentativeMicrohaplotypes
+    required: true
+  bioinformatics_methods_info:
+    name: bioinformatics_methods_info
+    description: the bioinformatics pipeline/methods used to generated the amplicon
+      analysis for this project
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: bioinformatics_methods_info
+    owner: PortableMicrohaplotypeObject
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: BioinformaticsMethodInfo
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  bioinformatics_run_info:
+    name: bioinformatics_run_info
+    description: the runtime info for the bioinformatics pipeline used to generated
+      the amplicon analysis for this project
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: bioinformatics_run_info
+    owner: PortableMicrohaplotypeObject
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: BioinformaticsRunInfo
     required: true
     multivalued: true
     inlined: true
@@ -602,45 +719,32 @@ attributes:
     - PortableMicrohaplotypeObject
     range: MicrohaplotypesDetected
     required: true
-  target_demultiplexed_experiment_samples:
-    name: target_demultiplexed_experiment_samples
-    description: the raw demultiplex target counts for each sample
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: target_demultiplexed_experiment_samples
-    owner: PortableMicrohaplotypeObject
-    domain_of:
-    - PortableMicrohaplotypeObject
-    range: DemultiplexedExperimentSamples
-    required: false
+    multivalued: true
     inlined: true
     inlined_as_list: true
-  taramp_bioinformatics_infos:
-    name: taramp_bioinformatics_infos
-    description: the bioinformatics pipeline/methods used to generated the amplicon
-      analysis for this project
+  pmo_header:
+    name: pmo_header
+    description: the PMO information for this file including version etc
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: taramp_bioinformatics_infos
+    alias: pmo_header
     owner: PortableMicrohaplotypeObject
     domain_of:
     - PortableMicrohaplotypeObject
-    range: TarAmpBioinformaticsInfo
+    range: PmoHeader
     required: true
-    inlined: true
-    inlined_as_list: true
-  postprocessing_bioinformatics_infos:
-    name: postprocessing_bioinformatics_infos
-    description: any additional methods that were applied to the processing of this
-      file/analysis, this can be filtering, adding info etc
+  read_counts_by_stage:
+    name: read_counts_by_stage
+    description: the read counts for different stages of the pipeline
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: postprocessing_bioinformatics_infos
+    alias: read_counts_by_stage
     owner: PortableMicrohaplotypeObject
     domain_of:
     - PortableMicrohaplotypeObject
-    range: BioMethod
+    range: ReadCountsByStage
     required: false
+    multivalued: true
     inlined: true
     inlined_as_list: true
 tree_root: true
@@ -672,6 +776,8 @@ tree_root: true
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
 <script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>

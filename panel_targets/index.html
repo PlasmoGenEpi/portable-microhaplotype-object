@@ -39,6 +39,12 @@
       
     
     
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -324,7 +330,7 @@
 
 
 <h1 id="slot-panel_targets">Slot: panel_targets</h1>
-<p>_a list of the target infos for the targets in this panel _</p>
+<p><em>a list of the target indexes in the target_info list</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/panel_targets">portable_microhaplotype_object:panel_targets</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -339,7 +345,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../PanelInfo/">PanelInfo</a></td>
+<td><a href="../ReactionInfo/">ReactionInfo</a></td>
 <td>information on a panel of targeted amplicon primer pairs</td>
 <td>no</td>
 </tr>
@@ -348,7 +354,7 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../TargetInfo/">TargetInfo</a></p>
+<p>Range: <a href="../Integer/">Integer</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -385,18 +391,18 @@
 <details>
 
 <pre><code class="language-yaml">name: panel_targets
-description: 'a list of the target infos for the targets in this panel '
+description: a list of the target indexes in the target_info list
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: panel_targets
-owner: PanelInfo
+owner: ReactionInfo
 domain_of:
-- PanelInfo
-range: TargetInfo
+- ReactionInfo
+range: integer
 required: true
 multivalued: true
 inlined: true
-inlined_as_list: false
+inlined_as_list: true
 
 </code></pre>
 
@@ -444,6 +450,10 @@ inlined_as_list: false
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     

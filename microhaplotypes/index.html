@@ -39,6 +39,12 @@
       
     
     
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -324,7 +330,7 @@
 
 
 <h1 id="slot-microhaplotypes">Slot: microhaplotypes</h1>
-<p><em>a list of the microhaplotypes detected for this target</em></p>
+<p>_a list of the microhaplotypes detected for a target _</p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/microhaplotypes">portable_microhaplotype_object:microhaplotypes</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -339,8 +345,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MicrohaplotypesForTarget/">MicrohaplotypesForTarget</a></td>
-<td>Microhaplotypes detected for a specific target</td>
+<td><a href="../RepresentativeMicrohaplotypesForTarget/">RepresentativeMicrohaplotypesForTarget</a></td>
+<td>a list of the representative sequence for a microhaplotypes, similar to a fas...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -348,7 +354,7 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../MicrohaplotypeForTarget/">MicrohaplotypeForTarget</a></p>
+<p>Range: <a href="../RepresentativeMicrohaplotype/">RepresentativeMicrohaplotype</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -385,18 +391,17 @@
 <details>
 
 <pre><code class="language-yaml">name: microhaplotypes
-description: a list of the microhaplotypes detected for this target
+description: 'a list of the microhaplotypes detected for a target '
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: microhaplotypes
-owner: MicrohaplotypesForTarget
+owner: RepresentativeMicrohaplotypesForTarget
 domain_of:
-- MicrohaplotypesForTarget
-range: MicrohaplotypeForTarget
+- RepresentativeMicrohaplotypesForTarget
+range: RepresentativeMicrohaplotype
 required: true
 multivalued: true
-inlined: true
-inlined_as_list: true
+inlined_as_list: false
 
 </code></pre>
 
@@ -444,6 +449,10 @@ inlined_as_list: true
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     

@@ -39,6 +39,12 @@
       
     
     
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -324,7 +330,7 @@
 
 
 <h1 id="slot-experiment_sample_id">Slot: experiment_sample_id</h1>
-<p><em>a unique identifier for this sequence/amplification run on a specimen</em></p>
+<p><em>the index into the experiment_info list</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/experiment_sample_id">portable_microhaplotype_object:experiment_sample_id</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -339,18 +345,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MicrohaplotypesForSample/">MicrohaplotypesForSample</a></td>
-<td>Microhaplotypes detected for a sample for all targets</td>
+<td><a href="../ReadCountsByStageForExperimentalSample/">ReadCountsByStageForExperimentalSample</a></td>
+<td>Information on the reads counts at several stages of a pipeline for a experim...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ExperimentInfo/">ExperimentInfo</a></td>
-<td>Information about a specific amplification and sequencing of a specimen</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../DemultiplexedTargetsForExperimentSample/">DemultiplexedTargetsForExperimentSample</a></td>
-<td>a list of raw reads for a experiment sample for all targets within panel</td>
+<td><a href="../MicrohaplotypesForSample/">MicrohaplotypesForSample</a></td>
+<td>Microhaplotypes detected for a sample for all targets</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -358,13 +359,13 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../String/">String</a></p>
+<p>Range: <a href="../Integer/">Integer</a></p>
 </li>
 <li>
 <p>Required: True</p>
 </li>
 <li>
-<p>Regex pattern: <code>^[A-z-._0-9 ]$</code></p>
+<p>Regex pattern: <code>^[0-9]+$</code></p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -395,17 +396,16 @@
 <details>
 
 <pre><code class="language-yaml">name: experiment_sample_id
-description: a unique identifier for this sequence/amplification run on a specimen
+description: the index into the experiment_info list
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: experiment_sample_id
 domain_of:
-- DemultiplexedTargetsForExperimentSample
 - MicrohaplotypesForSample
-- ExperimentInfo
-range: string
+- ReadCountsByStageForExperimentalSample
+range: integer
 required: true
-pattern: ^[A-z-._0-9 ]$
+pattern: ^[0-9]+$
 
 </code></pre>
 
@@ -453,6 +453,10 @@ pattern: ^[A-z-._0-9 ]$
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     

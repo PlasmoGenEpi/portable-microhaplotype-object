@@ -39,6 +39,12 @@
       
     
     
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -354,7 +360,7 @@
 <p>Required: True</p>
 </li>
 <li>
-<p>Regex pattern: <code>^[A-z-._0-9 ]$</code></p>
+<p>Regex pattern: <code>^[A-z-._0-9\(\),\/\ ]+$</code></p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -394,7 +400,7 @@ domain_of:
 - SpecimenInfo
 range: string
 required: true
-pattern: ^[A-z-._0-9 ]$
+pattern: ^[A-z-._0-9\(\),\/\ ]+$
 
 </code></pre>
 
@@ -442,6 +448,10 @@ pattern: ^[A-z-._0-9 ]$
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     

@@ -14,6 +14,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../css/ansi-colours.css" rel="stylesheet"/>
+<link href="../css/jupyter-cells.css" rel="stylesheet"/>
+<link href="../css/pandas-dataframe.css" rel="stylesheet"/>
 <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="None" data-md-color-primary="None" data-md-color-scheme="default" dir="ltr">
@@ -209,9 +212,9 @@
 
       BioMethod : program
 
-      BioMethod : program_version
+      BioMethod : program_description
 
-      BioMethod : purpose
+      BioMethod : program_version
 
 
 </div>
@@ -228,21 +231,21 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../program_version/">program_version</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>the version of generation method, should be in the format of v[MAJOR]</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../program/">program</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td>name of the program used for this portion of the pipeline</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../purpose/">purpose</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>the purpose for this method</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../program_version/">program_version</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>versioning info for the program</td>
+<td><a href="../program_description/">program_description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>a short description of what this method does</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -265,32 +268,20 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../TarAmpBioinformaticsInfo/">TarAmpBioinformaticsInfo</a></td>
+<td><a href="../BioinformaticsMethodInfo/">BioinformaticsMethodInfo</a></td>
 <td><a href="../demultiplexing_method/">demultiplexing_method</a></td>
 <td>range</td>
 <td><a href="./">BioMethod</a></td>
 </tr>
 <tr>
-<td><a href="../TarAmpBioinformaticsInfo/">TarAmpBioinformaticsInfo</a></td>
+<td><a href="../BioinformaticsMethodInfo/">BioinformaticsMethodInfo</a></td>
 <td><a href="../denoising_method/">denoising_method</a></td>
 <td>range</td>
 <td><a href="./">BioMethod</a></td>
 </tr>
 <tr>
-<td><a href="../TarAmpBioinformaticsInfo/">TarAmpBioinformaticsInfo</a></td>
-<td><a href="../population_clustering_method/">population_clustering_method</a></td>
-<td>range</td>
-<td><a href="./">BioMethod</a></td>
-</tr>
-<tr>
-<td><a href="../TarAmpBioinformaticsInfo/">TarAmpBioinformaticsInfo</a></td>
+<td><a href="../BioinformaticsMethodInfo/">BioinformaticsMethodInfo</a></td>
 <td><a href="../additional_methods/">additional_methods</a></td>
-<td>range</td>
-<td><a href="./">BioMethod</a></td>
-</tr>
-<tr>
-<td><a href="../PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
-<td><a href="../postprocessing_bioinformatics_infos/">postprocessing_bioinformatics_infos</a></td>
 <td>range</td>
 <td><a href="./">BioMethod</a></td>
 </tr>
@@ -327,6 +318,8 @@
 <pre><code class="language-yaml">name: BioMethod
 description: methodology description of a portion of a bioinformatics pipeline
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+slots:
+- program_version
 attributes:
   program:
     name: program
@@ -337,27 +330,17 @@ attributes:
     - BioMethod
     range: string
     required: true
-    pattern: ^[A-z-._0-9 ]$
-  purpose:
-    name: purpose
-    description: the purpose for this method
+    pattern: ^[A-z-._0-9 ]+$
+  program_description:
+    name: program_description
+    description: a short description of what this method does
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - BioMethod
     range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
-  program_version:
-    name: program_version
-    description: versioning info for the program
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - BioMethod
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
   additional_argument:
     name: additional_argument
     description: any additional arguments that differ from the default
@@ -370,7 +353,7 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-    pattern: ^[A-z-._0-9 ]$
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
 
 </code></pre>
 </details>
@@ -391,31 +374,19 @@ attributes:
     - BioMethod
     range: string
     required: true
-    pattern: ^[A-z-._0-9 ]$
-  purpose:
-    name: purpose
-    description: the purpose for this method
+    pattern: ^[A-z-._0-9 ]+$
+  program_description:
+    name: program_description
+    description: a short description of what this method does
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: purpose
+    alias: program_description
     owner: BioMethod
     domain_of:
     - BioMethod
     range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
-  program_version:
-    name: program_version
-    description: versioning info for the program
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: program_version
-    owner: BioMethod
-    domain_of:
-    - BioMethod
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
   additional_argument:
     name: additional_argument
     description: any additional arguments that differ from the default
@@ -430,7 +401,20 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-    pattern: ^[A-z-._0-9 ]$
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
+  program_version:
+    name: program_version
+    description: the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: program_version
+    owner: BioMethod
+    domain_of:
+    - BioMethod
+    - PmoGenerationMethod
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]+$
 
 </code></pre>
 </details>
@@ -459,6 +443,8 @@ attributes:
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
 <script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>

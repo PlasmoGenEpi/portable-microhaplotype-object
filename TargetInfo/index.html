@@ -14,6 +14,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../css/ansi-colours.css" rel="stylesheet"/>
+<link href="../css/jupyter-cells.css" rel="stylesheet"/>
+<link href="../css/pandas-dataframe.css" rel="stylesheet"/>
 <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="None" data-md-color-primary="None" data-md-color-scheme="default" dir="ltr">
@@ -214,7 +217,7 @@
     click PrimerInfo href "../PrimerInfo"
 
 
-      TargetInfo : gene_id
+      TargetInfo : gene_name
 
       TargetInfo : insert_location
 
@@ -234,9 +237,9 @@
     click PrimerInfo href "../PrimerInfo"
 
 
-      TargetInfo : target_id
+      TargetInfo : target_attributes
 
-      TargetInfo : target_type
+      TargetInfo : target_name
 
 
 </div>
@@ -253,13 +256,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../target_id/">target_id</a></td>
+<td><a href="../target_name/">target_name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>name of the target</td>
+<td>an identifier for this target</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../gene_id/">gene_id</a></td>
+<td><a href="../gene_name/">gene_name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>an identifier of the gene, if any, is being covered with this targeted</td>
 <td>direct</td>
@@ -283,7 +286,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../target_type/">target_type</a></td>
+<td><a href="../target_attributes/">target_attributes</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
 <td>a list of classification type for the primer target</td>
 <td>direct</td>
@@ -302,8 +305,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../PanelInfo/">PanelInfo</a></td>
-<td><a href="../panel_targets/">panel_targets</a></td>
+<td><a href="../PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
+<td><a href="../target_info/">target_info</a></td>
 <td>range</td>
 <td><a href="./">TargetInfo</a></td>
 </tr>
@@ -340,18 +343,27 @@
 <pre><code class="language-yaml">name: TargetInfo
 description: Information about a specific target within a genome
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-slots:
-- target_id
 attributes:
-  gene_id:
-    name: gene_id
+  target_name:
+    name: target_name
+    description: an identifier for this target
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - TargetInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9]+$
+  gene_name:
+    name: gene_name
     description: an identifier of the gene, if any, is being covered with this targeted
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - TargetInfo
     range: string
-    pattern: ^[A-z-._0-9]$
+    required: false
+    pattern: ^[A-z-._0-9]+$
   insert_location:
     name: insert_location
     description: the intended genomic location of the insert of the amplicon (the
@@ -385,8 +397,8 @@ attributes:
     required: true
     multivalued: true
     inlined: true
-  target_type:
-    name: target_type
+  target_attributes:
+    name: target_attributes
     description: a list of classification type for the primer target
     examples:
     - value: Diversity
@@ -409,17 +421,30 @@ attributes:
 description: Information about a specific target within a genome
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  gene_id:
-    name: gene_id
-    description: an identifier of the gene, if any, is being covered with this targeted
+  target_name:
+    name: target_name
+    description: an identifier for this target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: gene_id
+    alias: target_name
     owner: TargetInfo
     domain_of:
     - TargetInfo
     range: string
-    pattern: ^[A-z-._0-9]$
+    required: true
+    pattern: ^[A-z-._0-9]+$
+  gene_name:
+    name: gene_name
+    description: an identifier of the gene, if any, is being covered with this targeted
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: gene_name
+    owner: TargetInfo
+    domain_of:
+    - TargetInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9]+$
   insert_location:
     name: insert_location
     description: the intended genomic location of the insert of the amplicon (the
@@ -459,8 +484,8 @@ attributes:
     required: true
     multivalued: true
     inlined: true
-  target_type:
-    name: target_type
+  target_attributes:
+    name: target_attributes
     description: a list of classification type for the primer target
     examples:
     - value: Diversity
@@ -468,7 +493,7 @@ attributes:
     - value: Diagnostics
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: target_type
+    alias: target_attributes
     owner: TargetInfo
     domain_of:
     - TargetInfo
@@ -476,21 +501,6 @@ attributes:
     required: false
     multivalued: true
     inlined_as_list: false
-  target_id:
-    name: target_id
-    description: name of the target
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: target_id
-    owner: TargetInfo
-    domain_of:
-    - TargetInfo
-    - RepresentativeMicrohaplotypesForTarget
-    - DemultiplexedTargetForExperimentSample
-    - MicrohaplotypesForTarget
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9]$
 
 </code></pre>
 </details>
@@ -519,6 +529,8 @@ attributes:
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
 <script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>

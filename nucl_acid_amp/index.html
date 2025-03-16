@@ -39,6 +39,12 @@
       
     
     
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -270,6 +276,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     Identifier and Mapping Information
   </a>
@@ -324,7 +337,7 @@
 
 
 <h1 id="slot-nucl_acid_amp">Slot: nucl_acid_amp</h1>
-<p><em>Link to a reference or kit that describes the enzymatic amplification of nucleic acids,</em></p>
+<p><em>Link to a reference or kit that describes the enzymatic amplification of nucleic acids</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/nucl_acid_amp">portable_microhaplotype_object:nucl_acid_amp</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -351,12 +364,22 @@
 <p>Range: <a href="../String/">String</a></p>
 </li>
 <li>
-<p>Required: True</p>
-</li>
-<li>
-<p>Regex pattern: <code>r"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$"</code></p>
+<p>Regex pattern: <code>^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$</code></p>
 </li>
 </ul>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>https://www.paragongenomics.com/targeted-sequencing/amplicon-sequencing/cleanplex-ngs-amplicon-sequencing/</td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -386,7 +409,9 @@
 
 <pre><code class="language-yaml">name: nucl_acid_amp
 description: Link to a reference or kit that describes the enzymatic amplification
-  of nucleic acids,
+  of nucleic acids
+examples:
+- value: https://www.paragongenomics.com/targeted-sequencing/amplicon-sequencing/cleanplex-ngs-amplicon-sequencing/
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: nucl_acid_amp
@@ -394,8 +419,8 @@ owner: SequencingInfo
 domain_of:
 - SequencingInfo
 range: string
-required: true
-pattern: r&quot;^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$&quot;
+required: false
+pattern: ^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$
 
 </code></pre>
 
@@ -443,6 +468,10 @@ pattern: r&quot;^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$&quot;
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     

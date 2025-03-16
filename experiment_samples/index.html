@@ -39,6 +39,12 @@
       
     
     
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -324,7 +330,7 @@
 
 
 <h1 id="slot-experiment_samples">Slot: experiment_samples</h1>
-<p>_a list of the microhaplotypes detected for a sample for various targets _</p>
+<p>_a list of the microhaplotypes detected for a sample by targets _</p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/experiment_samples">portable_microhaplotype_object:experiment_samples</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -385,7 +391,7 @@
 <details>
 
 <pre><code class="language-yaml">name: experiment_samples
-description: 'a list of the microhaplotypes detected for a sample for various targets '
+description: 'a list of the microhaplotypes detected for a sample by targets '
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: experiment_samples
@@ -395,7 +401,8 @@ domain_of:
 range: MicrohaplotypesForSample
 required: true
 multivalued: true
-inlined_as_list: false
+inlined: true
+inlined_as_list: true
 
 </code></pre>
 
@@ -443,6 +450,10 @@ inlined_as_list: false
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     

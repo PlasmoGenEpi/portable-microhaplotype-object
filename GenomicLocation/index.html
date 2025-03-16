@@ -14,6 +14,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../css/ansi-colours.css" rel="stylesheet"/>
+<link href="../css/jupyter-cells.css" rel="stylesheet"/>
+<link href="../css/pandas-dataframe.css" rel="stylesheet"/>
 <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="None" data-md-color-primary="None" data-md-color-scheme="default" dir="ltr">
@@ -209,6 +212,8 @@
 
       GenomicLocation : end
 
+      GenomicLocation : genome_id
+
       GenomicLocation : ref_seq
 
       GenomicLocation : start
@@ -229,6 +234,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../genome_id/">genome_id</a></td>
+<td>1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the index to the genome in the targeted_genomes list that this location refer...</td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../chrom/">chrom</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
@@ -272,6 +283,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../MarkerOfInterest/">MarkerOfInterest</a></td>
+<td><a href="../marker_location/">marker_location</a></td>
+<td>range</td>
+<td><a href="./">GenomicLocation</a></td>
+</tr>
 <tr>
 <td><a href="../TargetInfo/">TargetInfo</a></td>
 <td><a href="../insert_location/">insert_location</a></td>
@@ -317,6 +334,8 @@
 <pre><code class="language-yaml">name: GenomicLocation
 description: information on the genomic location of specific sequence
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+slots:
+- genome_id
 attributes:
   chrom:
     name: chrom
@@ -327,7 +346,7 @@ attributes:
     - GenomicLocation
     range: string
     required: true
-    pattern: ^[A-z-._0-9]$
+    pattern: ^[A-z-._0-9]+$
   start:
     name: start
     description: the start of the location, 0-based positioning
@@ -337,7 +356,7 @@ attributes:
     - GenomicLocation
     range: integer
     required: true
-    pattern: ^[0-9]$
+    pattern: ^[0-9]+$
   end:
     name: end
     description: the end of the location, 0-based positioning
@@ -347,7 +366,7 @@ attributes:
     - GenomicLocation
     range: integer
     required: true
-    pattern: ^[0-9]$
+    pattern: ^[0-9]+$
   strand:
     name: strand
     description: which strand the location is, either + for plus strand or - for negative
@@ -358,17 +377,17 @@ attributes:
     - GenomicLocation
     range: string
     required: false
-    pattern: r'[+-]'
+    pattern: '[+-]'
   ref_seq:
     name: ref_seq
-    description: 'the reference sequence of this genomic location '
+    description: the reference sequence of this genomic location
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - GenomicLocation
     range: string
     required: false
-    pattern: ^[A-z-]$
+    pattern: ^[A-z-]+$
 
 </code></pre>
 </details>
@@ -389,7 +408,7 @@ attributes:
     - GenomicLocation
     range: string
     required: true
-    pattern: ^[A-z-._0-9]$
+    pattern: ^[A-z-._0-9]+$
   start:
     name: start
     description: the start of the location, 0-based positioning
@@ -401,7 +420,7 @@ attributes:
     - GenomicLocation
     range: integer
     required: true
-    pattern: ^[0-9]$
+    pattern: ^[0-9]+$
   end:
     name: end
     description: the end of the location, 0-based positioning
@@ -413,7 +432,7 @@ attributes:
     - GenomicLocation
     range: integer
     required: true
-    pattern: ^[0-9]$
+    pattern: ^[0-9]+$
   strand:
     name: strand
     description: which strand the location is, either + for plus strand or - for negative
@@ -426,10 +445,10 @@ attributes:
     - GenomicLocation
     range: string
     required: false
-    pattern: r'[+-]'
+    pattern: '[+-]'
   ref_seq:
     name: ref_seq
-    description: 'the reference sequence of this genomic location '
+    description: the reference sequence of this genomic location
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: ref_seq
@@ -438,7 +457,20 @@ attributes:
     - GenomicLocation
     range: string
     required: false
-    pattern: ^[A-z-]$
+    pattern: ^[A-z-]+$
+  genome_id:
+    name: genome_id
+    description: 'the index to the genome in the targeted_genomes list that this location
+      refers to '
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: genome_id
+    owner: GenomicLocation
+    domain_of:
+    - GenomicLocation
+    range: integer
+    required: true
+    pattern: ^[0-9]+$
 
 </code></pre>
 </details>
@@ -467,6 +499,8 @@ attributes:
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
 <script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>

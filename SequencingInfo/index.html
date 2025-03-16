@@ -14,6 +14,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../css/ansi-colours.css" rel="stylesheet"/>
+<link href="../css/jupyter-cells.css" rel="stylesheet"/>
+<link href="../css/pandas-dataframe.css" rel="stylesheet"/>
 <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="None" data-md-color-primary="None" data-md-color-scheme="default" dir="ltr">
@@ -227,7 +230,7 @@
 
       SequencingInfo : seq_instrument
 
-      SequencingInfo : sequencing_info_id
+      SequencingInfo : sequencing_info_name
 
 
 </div>
@@ -244,9 +247,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../sequencing_info_id/">sequencing_info_id</a></td>
+<td><a href="../sequencing_info_name/">sequencing_info_name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>a unique identifier for this sequencing info</td>
+<td>a name of for the sequencing done, e</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -263,55 +266,55 @@
 </tr>
 <tr>
 <td><a href="../nucl_acid_ext/">nucl_acid_ext</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Link to a reference or kit that describes the recovery of nucleic acids from ...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../nucl_acid_amp/">nucl_acid_amp</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Link to a reference or kit that describes the enzymatic amplification of nucl...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../nucl_acid_ext_date/">nucl_acid_ext_date</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>the date of the nucleoacide extraction</td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the date of the nucleoacid extraction</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../nucl_acid_amp_date/">nucl_acid_amp_date</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>the date of the nucleoacide amplification</td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the date of the nucleoacid amplification</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../pcr_cond/">pcr_cond</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>the method/conditions for PCR, List PCR cycles used to amplify the target</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../lib_screen/">lib_screen</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Describe enrichment, screening, or normalization methods applied during ampli...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../lib_layout/">lib_layout</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Specify the configuration of reads, e</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../lib_kit/">lib_kit</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Name, version, and applicable cell or cycle numbers for the kit used to prepa...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../seq_center/">seq_center</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Name of facility where sequencing was performed (lab, core facility, or compa...</td>
 <td>direct</td>
 </tr>
@@ -330,7 +333,7 @@
 <tbody>
 <tr>
 <td><a href="../PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
-<td><a href="../sequencing_infos/">sequencing_infos</a></td>
+<td><a href="../sequencing_info/">sequencing_info</a></td>
 <td>range</td>
 <td><a href="./">SequencingInfo</a></td>
 </tr>
@@ -367,79 +370,96 @@
 <pre><code class="language-yaml">name: SequencingInfo
 description: Information on sequencing info
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-slots:
-- sequencing_info_id
-slot_usage:
-  sequencing_info_id:
-    name: sequencing_info_id
-    identifier: true
-    domain_of:
-    - ExperimentInfo
-    - SequencingInfo
 attributes:
+  sequencing_info_name:
+    name: sequencing_info_name
+    description: a name of for the sequencing done, e.g. batch1
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SequencingInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]+$
   seq_instrument:
     name: seq_instrument
     description: the sequencing instrument used to sequence the run, e.g. ILLUMINA,
       Illumina MiSeq
+    examples:
+    - value: ILLUMINA
+    - value: Illumina MiSeq
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - SequencingInfo
     range: string
     required: true
-    pattern: ^[A-z-._0-9 ]$
+    pattern: ^[A-z-._0-9 ]+$
   seq_date:
     name: seq_date
     description: the date of sequencing, should be YYYY-MM or YYYY-MM-DD
+    examples:
+    - value: '2024-03-10'
+    - value: 2024-03
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - SequencingInfo
     range: string
     required: true
-    pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+    pattern: \d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?
   nucl_acid_ext:
     name: nucl_acid_ext
     description: Link to a reference or kit that describes the recovery of nucleic
       acids from the sample
+    examples:
+    - value: https://www.paragongenomics.com/targeted-sequencing/amplicon-sequencing/cleanplex-ngs-amplicon-sequencing/
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: r"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$"
+    required: false
+    pattern: ^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$
   nucl_acid_amp:
     name: nucl_acid_amp
     description: Link to a reference or kit that describes the enzymatic amplification
-      of nucleic acids,
+      of nucleic acids
+    examples:
+    - value: https://www.paragongenomics.com/targeted-sequencing/amplicon-sequencing/cleanplex-ngs-amplicon-sequencing/
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: r"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$"
+    required: false
+    pattern: ^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$
   nucl_acid_ext_date:
     name: nucl_acid_ext_date
-    description: the date of the nucleoacide extraction
+    description: the date of the nucleoacid extraction
+    examples:
+    - value: '2024-03-10'
+    - value: 2024-03
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+    required: false
+    pattern: \d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?
   nucl_acid_amp_date:
     name: nucl_acid_amp_date
-    description: the date of the nucleoacide amplification
+    description: the date of the nucleoacid amplification
+    examples:
+    - value: '2024-03-10'
+    - value: 2024-03
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+    required: false
+    pattern: \d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?
   pcr_cond:
     name: pcr_cond
     description: the method/conditions for PCR, List PCR cycles used to amplify the
@@ -449,53 +469,61 @@ attributes:
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
   lib_screen:
     name: lib_screen
     description: Describe enrichment, screening, or normalization methods applied
       during amplification or library preparation, e.g. size selection 390bp, diluted
       to 1 ng DNA/sample
+    examples:
+    - value: size selection 390bp, diluted to 1 ng DNA/sample
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
   lib_layout:
     name: lib_layout
     description: Specify the configuration of reads, e.g. paired-end
+    examples:
+    - value: paired-end
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
+    required: false
+    pattern: ^[A-z-._0-9 ]+$
   lib_kit:
     name: lib_kit
     description: Name, version, and applicable cell or cycle numbers for the kit used
       to prepare libraries and load cells or chips for sequencing. If possible, include
       a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001
+    examples:
+    - value: MiSeq Reagent Kit v3 (150-cycle), MS-102-3001
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
   seq_center:
     name: seq_center
     description: Name of facility where sequencing was performed (lab, core facility,
       or company)
+    examples:
+    - value: UCSF sequencing core
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
 
 </code></pre>
 </details>
@@ -504,18 +532,26 @@ attributes:
 <pre><code class="language-yaml">name: SequencingInfo
 description: Information on sequencing info
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-slot_usage:
-  sequencing_info_id:
-    name: sequencing_info_id
-    identifier: true
-    domain_of:
-    - ExperimentInfo
-    - SequencingInfo
 attributes:
+  sequencing_info_name:
+    name: sequencing_info_name
+    description: a name of for the sequencing done, e.g. batch1
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: sequencing_info_name
+    owner: SequencingInfo
+    domain_of:
+    - SequencingInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]+$
   seq_instrument:
     name: seq_instrument
     description: the sequencing instrument used to sequence the run, e.g. ILLUMINA,
       Illumina MiSeq
+    examples:
+    - value: ILLUMINA
+    - value: Illumina MiSeq
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: seq_instrument
@@ -524,10 +560,13 @@ attributes:
     - SequencingInfo
     range: string
     required: true
-    pattern: ^[A-z-._0-9 ]$
+    pattern: ^[A-z-._0-9 ]+$
   seq_date:
     name: seq_date
     description: the date of sequencing, should be YYYY-MM or YYYY-MM-DD
+    examples:
+    - value: '2024-03-10'
+    - value: 2024-03
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: seq_date
@@ -536,11 +575,13 @@ attributes:
     - SequencingInfo
     range: string
     required: true
-    pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+    pattern: \d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?
   nucl_acid_ext:
     name: nucl_acid_ext
     description: Link to a reference or kit that describes the recovery of nucleic
       acids from the sample
+    examples:
+    - value: https://www.paragongenomics.com/targeted-sequencing/amplicon-sequencing/cleanplex-ngs-amplicon-sequencing/
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: nucl_acid_ext
@@ -548,12 +589,14 @@ attributes:
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: r"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$"
+    required: false
+    pattern: ^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$
   nucl_acid_amp:
     name: nucl_acid_amp
     description: Link to a reference or kit that describes the enzymatic amplification
-      of nucleic acids,
+      of nucleic acids
+    examples:
+    - value: https://www.paragongenomics.com/targeted-sequencing/amplicon-sequencing/cleanplex-ngs-amplicon-sequencing/
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: nucl_acid_amp
@@ -561,11 +604,14 @@ attributes:
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: r"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$"
+    required: false
+    pattern: ^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$
   nucl_acid_ext_date:
     name: nucl_acid_ext_date
-    description: the date of the nucleoacide extraction
+    description: the date of the nucleoacid extraction
+    examples:
+    - value: '2024-03-10'
+    - value: 2024-03
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: nucl_acid_ext_date
@@ -573,11 +619,14 @@ attributes:
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+    required: false
+    pattern: \d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?
   nucl_acid_amp_date:
     name: nucl_acid_amp_date
-    description: the date of the nucleoacide amplification
+    description: the date of the nucleoacid amplification
+    examples:
+    - value: '2024-03-10'
+    - value: 2024-03
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: nucl_acid_amp_date
@@ -585,8 +634,8 @@ attributes:
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+    required: false
+    pattern: \d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?
   pcr_cond:
     name: pcr_cond
     description: the method/conditions for PCR, List PCR cycles used to amplify the
@@ -598,13 +647,15 @@ attributes:
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
   lib_screen:
     name: lib_screen
     description: Describe enrichment, screening, or normalization methods applied
       during amplification or library preparation, e.g. size selection 390bp, diluted
       to 1 ng DNA/sample
+    examples:
+    - value: size selection 390bp, diluted to 1 ng DNA/sample
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: lib_screen
@@ -612,11 +663,13 @@ attributes:
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
   lib_layout:
     name: lib_layout
     description: Specify the configuration of reads, e.g. paired-end
+    examples:
+    - value: paired-end
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: lib_layout
@@ -624,13 +677,15 @@ attributes:
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
+    required: false
+    pattern: ^[A-z-._0-9 ]+$
   lib_kit:
     name: lib_kit
     description: Name, version, and applicable cell or cycle numbers for the kit used
       to prepare libraries and load cells or chips for sequencing. If possible, include
       a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001
+    examples:
+    - value: MiSeq Reagent Kit v3 (150-cycle), MS-102-3001
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: lib_kit
@@ -638,12 +693,14 @@ attributes:
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
   seq_center:
     name: seq_center
     description: Name of facility where sequencing was performed (lab, core facility,
       or company)
+    examples:
+    - value: UCSF sequencing core
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: seq_center
@@ -651,22 +708,8 @@ attributes:
     domain_of:
     - SequencingInfo
     range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
-  sequencing_info_id:
-    name: sequencing_info_id
-    description: a unique identifier for this sequencing info
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    identifier: true
-    alias: sequencing_info_id
-    owner: SequencingInfo
-    domain_of:
-    - ExperimentInfo
-    - SequencingInfo
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
 
 </code></pre>
 </details>
@@ -695,6 +738,8 @@ attributes:
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
 <script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>

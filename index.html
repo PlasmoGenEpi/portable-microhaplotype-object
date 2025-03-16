@@ -39,6 +39,12 @@
       
     
     
+      <link rel="stylesheet" href="css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -393,20 +399,16 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="BioinformaticsMethodInfo/">BioinformaticsMethodInfo</a></td>
+<td>the targeted amplicon bioinformatics pipeline</td>
+</tr>
+<tr>
+<td><a href="BioinformaticsRunInfo/">BioinformaticsRunInfo</a></td>
+<td>Information about the pipeline run that generated some of the microhaplotype detected and reads_by_stage</td>
+</tr>
+<tr>
 <td><a href="BioMethod/">BioMethod</a></td>
 <td>methodology description of a portion of a bioinformatics pipeline</td>
-</tr>
-<tr>
-<td><a href="DemultiplexedExperimentSamples/">DemultiplexedExperimentSamples</a></td>
-<td>a list of raw reads counts for each experiment sample for all targets within panel</td>
-</tr>
-<tr>
-<td><a href="DemultiplexedTargetForExperimentSample/">DemultiplexedTargetForExperimentSample</a></td>
-<td>the raw read count for a experiment sample for a target</td>
-</tr>
-<tr>
-<td><a href="DemultiplexedTargetsForExperimentSample/">DemultiplexedTargetsForExperimentSample</a></td>
-<td>a list of raw reads for a experiment sample for all targets within panel</td>
 </tr>
 <tr>
 <td><a href="ExperimentInfo/">ExperimentInfo</a></td>
@@ -419,6 +421,10 @@
 <tr>
 <td><a href="GenomicLocation/">GenomicLocation</a></td>
 <td>information on the genomic location of specific sequence</td>
+</tr>
+<tr>
+<td><a href="MarkerOfInterest/">MarkerOfInterest</a></td>
+<td>A specific genomic location of interest, e.g. drug resistance, or other phenotypical marker</td>
 </tr>
 <tr>
 <td><a href="MaskingInfo/">MaskingInfo</a></td>
@@ -445,6 +451,18 @@
 <td>information on a panel of targeted amplicon primer pairs</td>
 </tr>
 <tr>
+<td><a href="ParasiteDensity/">ParasiteDensity</a></td>
+<td>method and value of determined parasite density</td>
+</tr>
+<tr>
+<td><a href="PmoGenerationMethod/">PmoGenerationMethod</a></td>
+<td>Information about how a PMO was generated</td>
+</tr>
+<tr>
+<td><a href="PmoHeader/">PmoHeader</a></td>
+<td>Information on the PMO file</td>
+</tr>
+<tr>
 <td><a href="PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
 <td>Information on final results from a targeted amplicon analysis</td>
 </tr>
@@ -453,12 +471,28 @@
 <td>information on a primer sequence</td>
 </tr>
 <tr>
-<td><a href="RepresentativeMicrohaplotypeSequence/">RepresentativeMicrohaplotypeSequence</a></td>
+<td><a href="ReactionInfo/">ReactionInfo</a></td>
+<td>information on a panel of targeted amplicon primer pairs</td>
+</tr>
+<tr>
+<td><a href="ReadCountsByStage/">ReadCountsByStage</a></td>
+<td>Information on the reads counts at several stages of a pipeline</td>
+</tr>
+<tr>
+<td><a href="ReadCountsByStageForExperimentalSample/">ReadCountsByStageForExperimentalSample</a></td>
+<td>Information on the reads counts at several stages of a pipeline for a experimental_sample</td>
+</tr>
+<tr>
+<td><a href="ReadCountsByStageForTarget/">ReadCountsByStageForTarget</a></td>
+<td>Information on the reads counts at several stages of a pipeline for a target</td>
+</tr>
+<tr>
+<td><a href="RepresentativeMicrohaplotype/">RepresentativeMicrohaplotype</a></td>
 <td>the representative sequence for a microhaplotype, similar to a fast(a/q) format</td>
 </tr>
 <tr>
-<td><a href="RepresentativeMicrohaplotypeSequences/">RepresentativeMicrohaplotypeSequences</a></td>
-<td>a collection of representative sequences for microhaplotypess for all targets</td>
+<td><a href="RepresentativeMicrohaplotypes/">RepresentativeMicrohaplotypes</a></td>
+<td>a collection of representative sequences for microhaplotypes for all targets</td>
 </tr>
 <tr>
 <td><a href="RepresentativeMicrohaplotypesForTarget/">RepresentativeMicrohaplotypesForTarget</a></td>
@@ -473,8 +507,8 @@
 <td>Information on specimen info</td>
 </tr>
 <tr>
-<td><a href="TarAmpBioinformaticsInfo/">TarAmpBioinformaticsInfo</a></td>
-<td>the targeted amplicon bioinformatics pipeline</td>
+<td><a href="StageReadCounts/">StageReadCounts</a></td>
+<td>Information on the reads counts at several stages</td>
 </tr>
 <tr>
 <td><a href="TargetInfo/">TargetInfo</a></td>
@@ -512,8 +546,40 @@
 <td>a list of optional alternative names for the samples</td>
 </tr>
 <tr>
+<td><a href="associations/">associations</a></td>
+<td>a list of associations with this marker, e</td>
+</tr>
+<tr>
+<td><a href="bioinformatics_method_name/">bioinformatics_method_name</a></td>
+<td>name of the collection of methods is called, e</td>
+</tr>
+<tr>
+<td><a href="bioinformatics_methods_id/">bioinformatics_methods_id</a></td>
+<td>the index into the bioinformatics_methods_info list</td>
+</tr>
+<tr>
+<td><a href="bioinformatics_methods_info/">bioinformatics_methods_info</a></td>
+<td>the bioinformatics pipeline/methods used to generated the amplicon analysis f...</td>
+</tr>
+<tr>
+<td><a href="bioinformatics_run_id/">bioinformatics_run_id</a></td>
+<td>the index into bioinformatics_run_info list</td>
+</tr>
+<tr>
+<td><a href="bioinformatics_run_info/">bioinformatics_run_info</a></td>
+<td>the runtime info for the bioinformatics pipeline used to generated the amplic...</td>
+</tr>
+<tr>
+<td><a href="bioinformatics_run_name/">bioinformatics_run_name</a></td>
+<td>a name to for this run</td>
+</tr>
+<tr>
 <td><a href="chrom/">chrom</a></td>
 <td>the chromosome name</td>
+</tr>
+<tr>
+<td><a href="chromosomes/">chromosomes</a></td>
+<td>a list of chromosomes found within this genome</td>
 </tr>
 <tr>
 <td><a href="collection_country/">collection_country</a></td>
@@ -528,12 +594,12 @@
 <td>the name of the primary person managing the specimen</td>
 </tr>
 <tr>
-<td><a href="demultiplexed_experiment_samples/">demultiplexed_experiment_samples</a></td>
-<td>a list of the samples with the number of raw reads extracted</td>
+<td><a href="creation_date/">creation_date</a></td>
+<td>the date of when the PMO file was created or modified, should be YYYY-MM-DD</td>
 </tr>
 <tr>
-<td><a href="demultiplexed_targets/">demultiplexed_targets</a></td>
-<td>a list of the targets extracted for a sample</td>
+<td><a href="date_of_birth/">date_of_birth</a></td>
+<td>if specimen is from a person, the date of birth of that person</td>
 </tr>
 <tr>
 <td><a href="demultiplexing_method/">demultiplexing_method</a></td>
@@ -544,28 +610,48 @@
 <td>the method used to de-noise and/or cluster the raw reads</td>
 </tr>
 <tr>
+<td><a href="density/">density</a></td>
+<td>the density in microliters</td>
+</tr>
+<tr>
 <td><a href="end/">end</a></td>
 <td>the end of the location, 0-based positioning</td>
 </tr>
 <tr>
-<td><a href="experiment_infos/">experiment_infos</a></td>
-<td>a list of experiments of all the seq/amp of samples within this project</td>
+<td><a href="experiment_info/">experiment_info</a></td>
+<td>a list of experiments of all the seq/amp of the specimens within this project</td>
 </tr>
 <tr>
 <td><a href="experiment_sample_id/">experiment_sample_id</a></td>
-<td>a unique identifier for this sequence/amplification run on a specimen</td>
+<td>the index into the experiment_info list</td>
+</tr>
+<tr>
+<td><a href="experiment_sample_name/">experiment_sample_name</a></td>
+<td>a unique identifier for this sequence/amplification run on a specimen_name</td>
 </tr>
 <tr>
 <td><a href="experiment_samples/">experiment_samples</a></td>
-<td>a list of the microhaplotypes detected for a sample for various targets</td>
+<td>a list of the microhaplotypes detected for a sample by targets</td>
 </tr>
 <tr>
 <td><a href="forward_primers/">forward_primers</a></td>
 <td>A list of forward primers associated with this target</td>
 </tr>
 <tr>
-<td><a href="gene_id/">gene_id</a></td>
+<td><a href="gene_name/">gene_name</a></td>
 <td>an identifier of the gene, if any, is being covered with this targeted</td>
+</tr>
+<tr>
+<td><a href="generation_method/">generation_method</a></td>
+<td>the generation method to create this PMO</td>
+</tr>
+<tr>
+<td><a href="genome_id/">genome_id</a></td>
+<td>the index to the genome in the targeted_genomes list that this location refer...</td>
+</tr>
+<tr>
+<td><a href="genome_version/">genome_version</a></td>
+<td>the genome version</td>
 </tr>
 <tr>
 <td><a href="geo_admin1/">geo_admin1</a></td>
@@ -582,6 +668,10 @@
 <tr>
 <td><a href="gff_url/">gff_url</a></td>
 <td>a link to the where this genome's annotation file could be downloaded</td>
+</tr>
+<tr>
+<td><a href="haps/">haps</a></td>
+<td>a list of the microhaplotypes detected for this target</td>
 </tr>
 <tr>
 <td><a href="host_taxon_id/">host_taxon_id</a></td>
@@ -616,20 +706,40 @@
 <td>what the intended genomic location of the primer is</td>
 </tr>
 <tr>
+<td><a href="marker_location/">marker_location</a></td>
+<td>the genomic location</td>
+</tr>
+<tr>
 <td><a href="masking/">masking</a></td>
 <td>masking info for the sequence</td>
 </tr>
 <tr>
-<td><a href="microhaplotype_id/">microhaplotype_id</a></td>
-<td>name of the microhaplotype, should be unique to this microhaplotype</td>
+<td><a href="method/">method</a></td>
+<td>the method of how this density was obtained</td>
+</tr>
+<tr>
+<td><a href="mhap_id/">mhap_id</a></td>
+<td>the index for a microhaplotype for a target in the microhaplotypes_info list,...</td>
+</tr>
+<tr>
+<td><a href="mhaps_target_id/">mhaps_target_id</a></td>
+<td>the index for a target in the microhaplotypes_info list</td>
+</tr>
+<tr>
+<td><a href="microhaplotype_name/">microhaplotype_name</a></td>
+<td>an optional name for this microhaplotype</td>
 </tr>
 <tr>
 <td><a href="microhaplotypes/">microhaplotypes</a></td>
-<td>a list of the microhaplotypes detected for this target</td>
+<td>a list of the microhaplotypes detected for a target</td>
 </tr>
 <tr>
 <td><a href="microhaplotypes_detected/">microhaplotypes_detected</a></td>
 <td>the microhaplotypes detected in this projects</td>
+</tr>
+<tr>
+<td><a href="microhaplotypes_info/">microhaplotypes_info</a></td>
+<td>a list of the information on the representative microhaplotypes</td>
 </tr>
 <tr>
 <td><a href="name/">name</a></td>
@@ -641,7 +751,7 @@
 </tr>
 <tr>
 <td><a href="nucl_acid_amp_date/">nucl_acid_amp_date</a></td>
-<td>the date of the nucleoacide amplification</td>
+<td>the date of the nucleoacid amplification</td>
 </tr>
 <tr>
 <td><a href="nucl_acid_ext/">nucl_acid_ext</a></td>
@@ -649,23 +759,27 @@
 </tr>
 <tr>
 <td><a href="nucl_acid_ext_date/">nucl_acid_ext_date</a></td>
-<td>the date of the nucleoacide extraction</td>
+<td>the date of the nucleoacid extraction</td>
 </tr>
 <tr>
 <td><a href="panel_id/">panel_id</a></td>
-<td>name of the panel</td>
+<td>the index into the panel_info list</td>
 </tr>
 <tr>
 <td><a href="panel_info/">panel_info</a></td>
-<td>the info on the targeted sequencing panel used for this project</td>
+<td>a list of info on the panels</td>
+</tr>
+<tr>
+<td><a href="panel_name/">panel_name</a></td>
+<td>a name for the panel</td>
 </tr>
 <tr>
 <td><a href="panel_targets/">panel_targets</a></td>
-<td>a list of the target infos for the targets in this panel</td>
+<td>a list of the target indexes in the target_info list</td>
 </tr>
 <tr>
-<td><a href="parasite_density/">parasite_density</a></td>
-<td>the parasite density in microliters</td>
+<td><a href="parasite_density_info/">parasite_density_info</a></td>
+<td>one or more parasite densities in microliters for this specimen</td>
 </tr>
 <tr>
 <td><a href="pcr_cond/">pcr_cond</a></td>
@@ -684,24 +798,28 @@
 <td>the row the specimen was in</td>
 </tr>
 <tr>
-<td><a href="pmo_name/">pmo_name</a></td>
-<td>a name for this PMO, can be a concatenation of names if combined more than on...</td>
+<td><a href="pmo_header/">pmo_header</a></td>
+<td>the PMO information for this file including version etc</td>
 </tr>
 <tr>
-<td><a href="population_clustering_method/">population_clustering_method</a></td>
-<td>the method used to compare clustered/de-noised reads across samples for a tar...</td>
-</tr>
-<tr>
-<td><a href="postprocessing_bioinformatics_infos/">postprocessing_bioinformatics_infos</a></td>
-<td>any additional methods that were applied to the processing of this file/analy...</td>
+<td><a href="pmo_version/">pmo_version</a></td>
+<td>the version of the PMO file, should be in the format of v[MAJOR]</td>
 </tr>
 <tr>
 <td><a href="program/">program</a></td>
 <td>name of the program used for this portion of the pipeline</td>
 </tr>
 <tr>
+<td><a href="program_description/">program_description</a></td>
+<td>a short description of what this method does</td>
+</tr>
+<tr>
+<td><a href="program_name/">program_name</a></td>
+<td>the name of the program</td>
+</tr>
+<tr>
 <td><a href="program_version/">program_version</a></td>
-<td>versioning info for the program</td>
+<td>the version of generation method, should be in the format of v[MAJOR]</td>
 </tr>
 <tr>
 <td><a href="project_name/">project_name</a></td>
@@ -712,19 +830,35 @@
 <td>the pseudocigar of the haplotype</td>
 </tr>
 <tr>
-<td><a href="purpose/">purpose</a></td>
-<td>the purpose for this method</td>
-</tr>
-<tr>
 <td><a href="quality/">quality</a></td>
 <td>the ansi fastq per base quality score for this sequence, this is optional</td>
 </tr>
 <tr>
-<td><a href="raw_read_count/">raw_read_count</a></td>
-<td>the raw read counts extracted for a target for a experiment sample</td>
+<td><a href="reaction_name/">reaction_name</a></td>
+<td>a name for this reaction</td>
+</tr>
+<tr>
+<td><a href="reactions/">reactions</a></td>
+<td>a list of 1 or more reactions that this panel contains, each reactions list t...</td>
 </tr>
 <tr>
 <td><a href="read_count/">read_count</a></td>
+<td>the read counts</td>
+</tr>
+<tr>
+<td><a href="read_counts_by_experimental_sample_by_stage/">read_counts_by_experimental_sample_by_stage</a></td>
+<td>a list by experiment_sample for the counts at each stage</td>
+</tr>
+<tr>
+<td><a href="read_counts_by_stage/">read_counts_by_stage</a></td>
+<td>the read counts for different stages of the pipeline</td>
+</tr>
+<tr>
+<td><a href="read_counts_for_targets/">read_counts_for_targets</a></td>
+<td>a list of counts by stage for a target</td>
+</tr>
+<tr>
+<td><a href="reads/">reads</a></td>
 <td>the read count associated with this microhaplotype</td>
 </tr>
 <tr>
@@ -736,16 +870,12 @@
 <td>the size of replacement mask</td>
 </tr>
 <tr>
-<td><a href="representative_microhaplotype_id/">representative_microhaplotype_id</a></td>
-<td>an identifier for the representative microhaplotype object collection</td>
-</tr>
-<tr>
-<td><a href="representative_microhaplotype_sequences/">representative_microhaplotype_sequences</a></td>
-<td>a list of the representative sequences for the results for this project</td>
-</tr>
-<tr>
 <td><a href="reverse_primers/">reverse_primers</a></td>
 <td>A list of reverse primers associated with this target</td>
+</tr>
+<tr>
+<td><a href="run_date/">run_date</a></td>
+<td>the date when the run was done, should be YYYY-MM-DD</td>
 </tr>
 <tr>
 <td><a href="samp_collect_device/">samp_collect_device</a></td>
@@ -788,24 +918,40 @@
 <td>the start of the masking</td>
 </tr>
 <tr>
-<td><a href="seqs/">seqs</a></td>
-<td>a list of the microhaplotypes detected for a target</td>
+<td><a href="sequencing_info/">sequencing_info</a></td>
+<td>a list of sequencing info for this project</td>
 </tr>
 <tr>
 <td><a href="sequencing_info_id/">sequencing_info_id</a></td>
-<td>a unique identifier for this sequencing info</td>
+<td>the index into the sequencing_info list</td>
 </tr>
 <tr>
-<td><a href="sequencing_infos/">sequencing_infos</a></td>
-<td>the sequencing info for this project</td>
+<td><a href="sequencing_info_name/">sequencing_info_name</a></td>
+<td>a name of for the sequencing done, e</td>
 </tr>
 <tr>
 <td><a href="specimen_id/">specimen_id</a></td>
-<td>the name of the specimen of a individual</td>
+<td>the index into the specimen_info list</td>
 </tr>
 <tr>
-<td><a href="specimen_infos/">specimen_infos</a></td>
-<td>a list of SpecimenInfo of all the samples within this project</td>
+<td><a href="specimen_info/">specimen_info</a></td>
+<td>a list of specimens of all the samples within this project</td>
+</tr>
+<tr>
+<td><a href="specimen_name/">specimen_name</a></td>
+<td>an identifier for the specimen</td>
+</tr>
+<tr>
+<td><a href="specimen_sex/">specimen_sex</a></td>
+<td>if specimen is from a person, the sex listed for that person</td>
+</tr>
+<tr>
+<td><a href="stage/">stage</a></td>
+<td>the stage of the pipeline, e</td>
+</tr>
+<tr>
+<td><a href="stages/">stages</a></td>
+<td>the read counts by each stage</td>
 </tr>
 <tr>
 <td><a href="start/">start</a></td>
@@ -816,52 +962,48 @@
 <td>which strand the location is, either + for plus strand or - for negative stra...</td>
 </tr>
 <tr>
-<td><a href="tar_amp_bioinformatics_info_id/">tar_amp_bioinformatics_info_id</a></td>
-<td>a unique identifier for this targeted amplicon bioinformatics pipeline run</td>
-</tr>
-<tr>
-<td><a href="taramp_bioinformatics_infos/">taramp_bioinformatics_infos</a></td>
-<td>the bioinformatics pipeline/methods used to generated the amplicon analysis f...</td>
-</tr>
-<tr>
-<td><a href="target_demultiplexed_experiment_samples/">target_demultiplexed_experiment_samples</a></td>
-<td>the raw demultiplex target counts for each sample</td>
-</tr>
-<tr>
-<td><a href="target_genome/">target_genome</a></td>
-<td>the info on the target reference genome for this panel</td>
+<td><a href="target_attributes/">target_attributes</a></td>
+<td>a list of classification type for the primer target</td>
 </tr>
 <tr>
 <td><a href="target_id/">target_id</a></td>
-<td>name of the target</td>
+<td>the index into the target_info list</td>
+</tr>
+<tr>
+<td><a href="target_info/">target_info</a></td>
+<td>a list of info on the targets</td>
+</tr>
+<tr>
+<td><a href="target_name/">target_name</a></td>
+<td>an identifier for this target</td>
 </tr>
 <tr>
 <td><a href="target_results/">target_results</a></td>
 <td>a list of the microhaplotypes detected for a list of targets</td>
 </tr>
 <tr>
-<td><a href="target_type/">target_type</a></td>
-<td>a list of classification type for the primer target</td>
+<td><a href="targeted_genomes/">targeted_genomes</a></td>
+<td>a list of genomes that the targets in TargetInfo refer to</td>
 </tr>
 <tr>
 <td><a href="targets/">targets</a></td>
-<td>a list of the targets detected for this analysis</td>
+<td>a list of the microhaplotype for each targets</td>
 </tr>
 <tr>
 <td><a href="taxon_id/">taxon_id</a></td>
 <td>the NCBI taxonomy number</td>
 </tr>
 <tr>
-<td><a href="umi_count/">umi_count</a></td>
+<td><a href="total_raw_count/">total_raw_count</a></td>
+<td>the raw counts off the sequencing machine that a sample began with</td>
+</tr>
+<tr>
+<td><a href="umis/">umis</a></td>
 <td>the unique molecular identifier (umi) count associated with this microhaploty...</td>
 </tr>
 <tr>
 <td><a href="url/">url</a></td>
 <td>a link to the where this genome file could be downloaded</td>
-</tr>
-<tr>
-<td><a href="version/">version</a></td>
-<td>the genome version</td>
 </tr>
 </tbody>
 </table>
@@ -1046,6 +1188,10 @@
     
     
       <script src="assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="javascripts/tablesort.js"></script>
       
     
     

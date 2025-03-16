@@ -14,6 +14,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../css/ansi-colours.css" rel="stylesheet"/>
+<link href="../css/jupyter-cells.css" rel="stylesheet"/>
+<link href="../css/pandas-dataframe.css" rel="stylesheet"/>
 <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="None" data-md-color-primary="None" data-md-color-scheme="default" dir="ltr">
@@ -205,11 +208,11 @@
 <div class="mermaid"> classDiagram
     class MicrohaplotypeForTarget
     click MicrohaplotypeForTarget href "../MicrohaplotypeForTarget"
-      MicrohaplotypeForTarget : microhaplotype_id
+      MicrohaplotypeForTarget : mhap_id
 
-      MicrohaplotypeForTarget : read_count
+      MicrohaplotypeForTarget : reads
 
-      MicrohaplotypeForTarget : umi_count
+      MicrohaplotypeForTarget : umis
 
 
 </div>
@@ -226,20 +229,20 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../microhaplotype_id/">microhaplotype_id</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>name of the microhaplotype, should be unique to this microhaplotype</td>
+<td><a href="../mhap_id/">mhap_id</a></td>
+<td>1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the index for a microhaplotype for a target in the microhaplotypes_info list,...</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../read_count/">read_count</a></td>
-<td>1 <br/> <a href="../Double/">Double</a></td>
+<td><a href="../reads/">reads</a></td>
+<td>1 <br/> <a href="../Integer/">Integer</a></td>
 <td>the read count associated with this microhaplotype</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../umi_count/">umi_count</a></td>
-<td>0..1 <br/> <a href="../Double/">Double</a></td>
+<td><a href="../umis/">umis</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>the unique molecular identifier (umi) count associated with this microhaploty...</td>
 <td>direct</td>
 </tr>
@@ -258,7 +261,7 @@
 <tbody>
 <tr>
 <td><a href="../MicrohaplotypesForTarget/">MicrohaplotypesForTarget</a></td>
-<td><a href="../microhaplotypes/">microhaplotypes</a></td>
+<td><a href="../haps/">haps</a></td>
 <td>range</td>
 <td><a href="./">MicrohaplotypeForTarget</a></td>
 </tr>
@@ -296,26 +299,26 @@
 description: Microhaplotype detected for a specific target
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
-- microhaplotype_id
+- mhap_id
 attributes:
-  read_count:
-    name: read_count
+  reads:
+    name: reads
     description: the read count associated with this microhaplotype
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - MicrohaplotypeForTarget
-    range: double
+    range: integer
     required: true
-  umi_count:
-    name: umi_count
+  umis:
+    name: umis
     description: the unique molecular identifier (umi) count associated with this
       microhaplotype
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - MicrohaplotypeForTarget
-    range: double
+    range: integer
     required: false
 
 </code></pre>
@@ -326,42 +329,42 @@ attributes:
 description: Microhaplotype detected for a specific target
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  read_count:
-    name: read_count
+  reads:
+    name: reads
     description: the read count associated with this microhaplotype
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: read_count
+    alias: reads
     owner: MicrohaplotypeForTarget
     domain_of:
     - MicrohaplotypeForTarget
-    range: double
+    range: integer
     required: true
-  umi_count:
-    name: umi_count
+  umis:
+    name: umis
     description: the unique molecular identifier (umi) count associated with this
       microhaplotype
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: umi_count
+    alias: umis
     owner: MicrohaplotypeForTarget
     domain_of:
     - MicrohaplotypeForTarget
-    range: double
+    range: integer
     required: false
-  microhaplotype_id:
-    name: microhaplotype_id
-    description: name of the microhaplotype, should be unique to this microhaplotype
+  mhap_id:
+    name: mhap_id
+    description: the index for a microhaplotype for a target in the microhaplotypes_info
+      list, e.g. microhaplotypes_info[mhaps_target_id][mhap_id]
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: microhaplotype_id
+    alias: mhap_id
     owner: MicrohaplotypeForTarget
     domain_of:
-    - RepresentativeMicrohaplotypeSequence
     - MicrohaplotypeForTarget
-    range: string
+    range: integer
     required: true
-    pattern: ^[A-z-._0-9]$
+    pattern: ^[0-9]+$
 
 </code></pre>
 </details>
@@ -390,6 +393,8 @@ attributes:
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
 <script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>

@@ -39,6 +39,12 @@
       
     
     
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -324,7 +330,7 @@
 
 
 <h1 id="slot-program_version">Slot: program_version</h1>
-<p><em>versioning info for the program</em></p>
+<p><em>the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/program_version">portable_microhaplotype_object:program_version</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -338,6 +344,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../PmoGenerationMethod/">PmoGenerationMethod</a></td>
+<td>Information about how a PMO was generated</td>
+<td>no</td>
+</tr>
 <tr>
 <td><a href="../BioMethod/">BioMethod</a></td>
 <td>methodology description of a portion of a bioinformatics pipeline</td>
@@ -354,7 +365,7 @@
 <p>Required: True</p>
 </li>
 <li>
-<p>Regex pattern: <code>^[A-z-._0-9 ]$</code></p>
+<p>Regex pattern: <code>^[A-z-._0-9 ]+$</code></p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -385,16 +396,16 @@
 <details>
 
 <pre><code class="language-yaml">name: program_version
-description: versioning info for the program
+description: the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: program_version
-owner: BioMethod
 domain_of:
 - BioMethod
+- PmoGenerationMethod
 range: string
 required: true
-pattern: ^[A-z-._0-9 ]$
+pattern: ^[A-z-._0-9 ]+$
 
 </code></pre>
 
@@ -442,6 +453,10 @@ pattern: ^[A-z-._0-9 ]$
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     

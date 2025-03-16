@@ -14,6 +14,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../css/ansi-colours.css" rel="stylesheet"/>
+<link href="../css/jupyter-cells.css" rel="stylesheet"/>
+<link href="../css/pandas-dataframe.css" rel="stylesheet"/>
 <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="None" data-md-color-primary="None" data-md-color-scheme="default" dir="ltr">
@@ -207,7 +210,7 @@
     click ExperimentInfo href "../ExperimentInfo"
       ExperimentInfo : accession
 
-      ExperimentInfo : experiment_sample_id
+      ExperimentInfo : experiment_sample_name
 
       ExperimentInfo : panel_id
 
@@ -237,8 +240,8 @@
 <tbody>
 <tr>
 <td><a href="../sequencing_info_id/">sequencing_info_id</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>a unique identifier for this sequencing info</td>
+<td>1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the index into the sequencing_info list</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -261,26 +264,26 @@
 </tr>
 <tr>
 <td><a href="../specimen_id/">specimen_id</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>the name of the specimen of a individual</td>
+<td>1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the index into the specimen_info list</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../panel_id/">panel_id</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>name of the panel</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../experiment_sample_id/">experiment_sample_id</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>a unique identifier for this sequence/amplification run on a specimen</td>
+<td>1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the index into the panel_info list</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../accession/">accession</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>ERA/SRA accession number for the sample if it was submitted</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../experiment_sample_name/">experiment_sample_name</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>a unique identifier for this sequence/amplification run on a specimen_name</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -298,7 +301,7 @@
 <tbody>
 <tr>
 <td><a href="../PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
-<td><a href="../experiment_infos/">experiment_infos</a></td>
+<td><a href="../experiment_info/">experiment_info</a></td>
 <td>range</td>
 <td><a href="./">ExperimentInfo</a></td>
 </tr>
@@ -342,26 +345,11 @@ slots:
 - plate_col
 - specimen_id
 - panel_id
-- experiment_sample_id
 slot_usage:
   specimen_id:
     name: specimen_id
     identifier: false
     domain_of:
-    - ExperimentInfo
-    - SpecimenInfo
-  panel_id:
-    name: panel_id
-    identifier: false
-    domain_of:
-    - PanelInfo
-    - ExperimentInfo
-  experiment_sample_id:
-    name: experiment_sample_id
-    identifier: true
-    domain_of:
-    - DemultiplexedTargetsForExperimentSample
-    - MicrohaplotypesForSample
     - ExperimentInfo
   plate_name:
     name: plate_name
@@ -391,7 +379,18 @@ attributes:
     - ExperimentInfo
     range: string
     required: false
-    pattern: ^[A-z-._0-9]$
+    pattern: ^[A-z-._0-9]+$
+  experiment_sample_name:
+    name: experiment_sample_name
+    description: a unique identifier for this sequence/amplification run on a specimen_name
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    identifier: true
+    domain_of:
+    - ExperimentInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]+$
 
 </code></pre>
 </details>
@@ -405,20 +404,6 @@ slot_usage:
     name: specimen_id
     identifier: false
     domain_of:
-    - ExperimentInfo
-    - SpecimenInfo
-  panel_id:
-    name: panel_id
-    identifier: false
-    domain_of:
-    - PanelInfo
-    - ExperimentInfo
-  experiment_sample_id:
-    name: experiment_sample_id
-    identifier: true
-    domain_of:
-    - DemultiplexedTargetsForExperimentSample
-    - MicrohaplotypesForSample
     - ExperimentInfo
   plate_name:
     name: plate_name
@@ -450,20 +435,32 @@ attributes:
     - ExperimentInfo
     range: string
     required: false
-    pattern: ^[A-z-._0-9]$
+    pattern: ^[A-z-._0-9]+$
+  experiment_sample_name:
+    name: experiment_sample_name
+    description: a unique identifier for this sequence/amplification run on a specimen_name
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    identifier: true
+    alias: experiment_sample_name
+    owner: ExperimentInfo
+    domain_of:
+    - ExperimentInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]+$
   sequencing_info_id:
     name: sequencing_info_id
-    description: a unique identifier for this sequencing info
+    description: the index into the sequencing_info list
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: sequencing_info_id
     owner: ExperimentInfo
     domain_of:
     - ExperimentInfo
-    - SequencingInfo
-    range: string
+    range: integer
     required: true
-    pattern: ^[A-z-._0-9 ]$
+    pattern: ^[0-9]+$
   plate_name:
     name: plate_name
     description: a name of plate the specimen was in
@@ -476,7 +473,7 @@ attributes:
     - SpecimenInfo
     range: string
     required: false
-    pattern: ^[A-z-._0-9 ]$
+    pattern: ^[A-z-._0-9 ]+$
   plate_row:
     name: plate_row
     description: the row the specimen was in
@@ -502,10 +499,10 @@ attributes:
     - SpecimenInfo
     range: integer
     required: false
-    pattern: ^[0-9]$
+    pattern: ^[0-9]+$
   specimen_id:
     name: specimen_id
-    description: the name of the specimen of a individual
+    description: the index into the specimen_info list
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     identifier: false
@@ -513,39 +510,21 @@ attributes:
     owner: ExperimentInfo
     domain_of:
     - ExperimentInfo
-    - SpecimenInfo
-    range: string
+    range: integer
     required: true
-    pattern: ^[A-z-._0-9]$
+    pattern: ^[0-9]+$
   panel_id:
     name: panel_id
-    description: name of the panel
+    description: the index into the panel_info list
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    identifier: false
     alias: panel_id
     owner: ExperimentInfo
     domain_of:
-    - PanelInfo
     - ExperimentInfo
-    range: string
+    range: integer
     required: true
-    pattern: ^[A-z-._0-9]$
-  experiment_sample_id:
-    name: experiment_sample_id
-    description: a unique identifier for this sequence/amplification run on a specimen
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    identifier: true
-    alias: experiment_sample_id
-    owner: ExperimentInfo
-    domain_of:
-    - DemultiplexedTargetsForExperimentSample
-    - MicrohaplotypesForSample
-    - ExperimentInfo
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9 ]$
+    pattern: ^[0-9]+$
 
 </code></pre>
 </details>
@@ -574,6 +553,8 @@ attributes:
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
 <script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>

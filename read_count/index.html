@@ -39,6 +39,12 @@
       
     
     
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -324,7 +330,7 @@
 
 
 <h1 id="slot-read_count">Slot: read_count</h1>
-<p><em>the read count associated with this microhaplotype</em></p>
+<p><em>the read counts</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/read_count">portable_microhaplotype_object:read_count</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -339,8 +345,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MicrohaplotypeForTarget/">MicrohaplotypeForTarget</a></td>
-<td>Microhaplotype detected for a specific target</td>
+<td><a href="../StageReadCounts/">StageReadCounts</a></td>
+<td>Information on the reads counts at several stages</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -348,10 +354,13 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../Double/">Double</a></p>
+<p>Range: <a href="../Integer/">Integer</a></p>
 </li>
 <li>
 <p>Required: True</p>
+</li>
+<li>
+<p>Regex pattern: <code>^[0-9]+$</code></p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -382,15 +391,16 @@
 <details>
 
 <pre><code class="language-yaml">name: read_count
-description: the read count associated with this microhaplotype
+description: the read counts
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: read_count
-owner: MicrohaplotypeForTarget
+owner: StageReadCounts
 domain_of:
-- MicrohaplotypeForTarget
-range: double
+- StageReadCounts
+range: integer
 required: true
+pattern: ^[0-9]+$
 
 </code></pre>
 
@@ -438,6 +448,10 @@ required: true
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     
