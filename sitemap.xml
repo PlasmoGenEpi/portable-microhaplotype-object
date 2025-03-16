@@ -51,36 +51,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/DemultiplexedExperimentSamples/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/DemultiplexedSamples/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/DemultiplexedTargetForExperimentSample/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/DemultiplexedTargetForSample/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/DemultiplexedTargetsForExperimentSample/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/DemultiplexedTargetsForSample/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Double/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
@@ -102,26 +72,6 @@
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/GenomicLocation/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/HaplotypeForTarget/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/HaplotypesDetected/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/HaplotypesForSample/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/HaplotypesForTarget/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -171,11 +121,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/NamedThing/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Ncname/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
@@ -201,16 +146,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/PersonStatus/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/PlateWellInfo/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/PmoGenerationMethod/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
@@ -226,17 +161,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/PortableMicrohaplotypeObjectCollection/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/PrimerInfo/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Primers/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -261,27 +186,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/RepresentativeHaplotypeSequence/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/RepresentativeHaplotypeSequences/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotype/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypeSequence/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypeSequences/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -321,17 +226,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/TarAmpBioinformaticsInfo/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/TargetInfo/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/TargetedGenomes/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -371,11 +266,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/age_in_years/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/alt_annotations/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
@@ -386,27 +276,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/analysis_name/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/associations/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/bioinformatics_id/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/bioinformatics_info/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/bioinformatics_infos/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -426,11 +296,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/bioinformatics_methods_name/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/bioinformatics_run_id/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
@@ -446,22 +311,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/birth_date/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/chrom/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/chromosomes/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/col/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -491,21 +346,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/demultiplexed_experiment_samples/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/demultiplexed_samples/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/demultiplexed_targets/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/demultiplexing_method/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
@@ -521,32 +361,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/description/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/end/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/entries/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/experiment_id/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/experiment_info/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/experiment_infos/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -571,11 +391,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/gene_id/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/gene_name/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
@@ -592,11 +407,6 @@
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/genome_version/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/genomes/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -621,32 +431,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/haplotype_id/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/haplotypes/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/haplotypes_detected/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/haps/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/host_taxon_id/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/id/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -711,11 +501,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/microhaplotype_id/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/microhaplotype_name/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
@@ -751,11 +536,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/nucl_acid_date/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/nucl_acid_ext/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
@@ -786,11 +566,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/parasite_density/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/parasite_density_info/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
@@ -802,11 +577,6 @@
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/plate_col/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/plate_info/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -826,32 +596,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/pmo_name/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/pmo_version/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/population_clustering_method/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/portable-microhaplotype-object/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/postprocessing_bioinformatics_infos/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/primary_email/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -886,17 +636,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/purpose/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/quality/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/raw_read_count/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -946,32 +686,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/representative_haplotype_sequences/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/representative_microhaplotype_id/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/representative_microhaplotype_sequences/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/reverse_primers/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/row/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/run_bioinformatics_infos/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -997,21 +712,6 @@
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/sample_comments/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/sample_id/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/samples/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/segment_size/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1046,16 +746,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/seqs/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/sequencing_id/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/sequencing_info/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
@@ -1071,22 +761,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/sequencing_infos/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/specimen_id/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/specimen_info/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/specimen_infos/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1121,32 +801,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/tar_amp_bioinformatics_info_id/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/taramp_bioinformatics_infos/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/target_attributes/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/target_demultiplexed_experiment_samples/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/target_demultiplexed_samples/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/target_genome/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1171,11 +826,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/target_type/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/targeted_genomes/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
@@ -1196,27 +846,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/umi_count/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/umis/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/url/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/version/</loc>
-         <lastmod>2025-03-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/vital_status/</loc>
          <lastmod>2025-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
