@@ -411,6 +411,7 @@
             "properties": {
                 "density": {
                     "description": "the density in microliters",
+                    "minimum": 0,
                     "pattern": "^[-+]?\\\\d*\\\\.?\\\\d+(?:[eE][-+]?\\\\d+)?$",
                     "type": "number"
                 },

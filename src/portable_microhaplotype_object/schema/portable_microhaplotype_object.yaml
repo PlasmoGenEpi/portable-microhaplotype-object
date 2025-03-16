@@ -610,6 +610,7 @@ classes:
       density:
         range: double
         pattern: '^[-+]?\\d*\\.?\\d+(?:[eE][-+]?\\d+)?$'
+        minimum_value: 0
         required: true
         description: >-
           the density in microliters
