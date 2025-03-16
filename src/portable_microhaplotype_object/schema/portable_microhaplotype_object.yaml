@@ -54,16 +54,38 @@ classes:
   #       range: Project
   #       multivalued: true
   #       inlined: true
-  
+
+
+  MarkerOfInterest:
+    description: >-
+      A specific genomic location of interest, e.g. drug resistance, or other phenotypical marker
+    attributes:
+      marker_location:
+        range: GenomicLocation
+        description: >-
+          the genomic location
+      associations:
+        range: string
+        required: false
+        multivalued: true
+        pattern: "^[A-z-._0-9]+$"
+        description: >-
+          a list of associations with this marker, e.g. SP resistance, etc
+
   TargetInfo:
     description: >-
       Information about a specific target within a genome
-    slots:
-      - target_id
     attributes:
-      gene_id:
+      target_name:
         range: string
-        pattern: "^[A-z-._0-9]$"
+        required: true
+        pattern: "^[A-z-._0-9]+$"
+        description: >-
+          an identifier for this target
+      gene_name:
+        range: string
+        required: false
+        pattern: "^[A-z-._0-9]+$"
         description: >-
           an identifier of the gene, if any, is being covered with this targeted
       insert_location:
@@ -85,7 +107,7 @@ classes:
         required: true
         description: >-
           A list of reverse primers associated with this target
-      target_type:
+      target_attributes:
         range: string
         multivalued: true
         inlined_as_list: false
@@ -97,42 +119,64 @@ classes:
           - value: "Drug_Resistance"
           - value: "Diagnostics"
 
+
+  ReactionInfo:
+    description: >-
+      information on a panel of targeted amplicon primer pairs
+    attributes:
+      panel_targets:
+        required: true
+        range: integer
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          a list of the target indexes in the target_info list
+      reaction_name:
+        range: string
+        pattern: "^[A-z-._0-9]+$"
+        required: true
+        description: >-
+          a name for this reaction
+
   PanelInfo:
     description: >-
       information on a panel of targeted amplicon primer pairs
-    slots:
-      - panel_id
     attributes:
-      target_genome:
-        range: GenomeInfo
+      reactions:
         required: true
-        description: >-
-          the info on the target reference genome for this panel
-      panel_targets:
-        required: true
-        range: TargetInfo
+        range: ReactionInfo
         multivalued: true
-        inlined: true
         inlined_as_list: false
         description: >-
-          a list of the target infos for the targets in this panel 
+          a list of 1 or more reactions that this panel contains, each reactions list the targets that were amplified in that reaction, e.g. pool1, pool2
+      panel_name:
+        range: string
+        pattern: "^[A-z-._0-9]+$"
+        required: true
+        description: >-
+          a name for the panel
 
-  RepresentativeMicrohaplotypeSequence:
+  RepresentativeMicrohaplotype:
     description: >-
       the representative sequence for a microhaplotype, similar to a fast(a/q) format
     slots:
       - seq
-      - microhaplotype_id
     attributes:
+      microhaplotype_name:
+        range: string
+        pattern: "^[A-z-._0-9]+$"
+        required: false
+        description: >-
+          an optional name for this microhaplotype
       quality:
         range: string
-        pattern: "^[A-z-._0-9]$"
+        pattern: "^[A-z-._0-9]+$"
         required: false
         description: >-
           the ansi fastq per base quality score for this sequence, this is optional
       pseudocigar:
         range: string
-        pattern: "^[A-z-._0-9]$"
+        pattern: "^[A-z-._0-9]+$"
         required: false
         description: >-
           the pseudocigar of the haplotype
@@ -149,6 +193,7 @@ classes:
         inlined_as_list: true
         description: >-
           a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc
+
   MaskingInfo:
     description: >- 
       information about a subsegment of the sequence that should be masked
@@ -169,14 +214,9 @@ classes:
         description: >-
           the size of replacement mask
 
-  RepresentativeMicrohaplotypeSequences:
+  RepresentativeMicrohaplotypes:
     description: >-
-      a collection of representative sequences for microhaplotypess for all targets
-    slots:
-      - representative_microhaplotype_id
-    slot_usage:
-      representative_microhaplotype_id:
-        identifier: true
+      a collection of representative sequences for microhaplotypes for all targets
     attributes:
       targets:
         required: true
@@ -184,7 +224,7 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of the targets detected for this analysis 
+          a list of the microhaplotype for each targets 
 
   RepresentativeMicrohaplotypesForTarget:
     description: >-
@@ -195,9 +235,9 @@ classes:
       target_id:
         identifier: true
     attributes:
-      seqs:
+      microhaplotypes:
         required: true
-        range: RepresentativeMicrohaplotypeSequence
+        range: RepresentativeMicrohaplotype
         multivalued: true
         inlined_as_list: false
         description: >-
@@ -207,57 +247,17 @@ classes:
     description: >-
       the microhaplotypes detected in a targeted amplicon analysis
     slots:
-      - tar_amp_bioinformatics_info_id
-      - representative_microhaplotype_id
+      - bioinformatics_run_id
     attributes:
       experiment_samples:
         required: true
         range: MicrohaplotypesForSample
         multivalued: true
-        inlined_as_list: false
+        inlined_as_list: true
         description: >-
-          a list of the microhaplotypes detected for a sample for various targets 
+          a list of the microhaplotypes detected for a sample by targets 
 
-  DemultiplexedExperimentSamples:
-    description: >-
-      a list of raw reads counts for each experiment sample for all targets within panel
-    slots:
-      - tar_amp_bioinformatics_info_id
-    attributes:
-      demultiplexed_experiment_samples:
-        required: true
-        range: DemultiplexedTargetsForExperimentSample
-        multivalued: true
-        inlined_as_list: false
-        description: >-
-          a list of the samples with the number of raw reads extracted 
 
-  DemultiplexedTargetsForExperimentSample:
-    description: >-
-      a list of raw reads for a experiment sample for all targets within panel
-    slots:
-      - experiment_sample_id
-    attributes:
-      demultiplexed_targets:
-        required: true
-        range: DemultiplexedTargetForExperimentSample
-        multivalued: true
-        inlined_as_list: false
-        description: >-
-          a list of the targets extracted for a sample 
-
-  DemultiplexedTargetForExperimentSample:
-    description: >-
-      the raw read count for a experiment sample for a target
-    slots:
-      - target_id
-    attributes:
-      raw_read_count:
-        required: true
-        range: double
-        description: >-
-          the raw read counts extracted for a target for a experiment sample
-  
 
   GenomeInfo:
     description: >-
@@ -265,13 +265,13 @@ classes:
     attributes:
       name:
         range: string
-        pattern: "^[A-z-._0-9]$"
+        pattern: "^[A-z-._0-9]+$"
         required: true
         description: >-
           name of the genome
-      version:
+      genome_version:
         range: string
-        pattern: "^[A-z-._0-9]$"
+        pattern: "^[A-z-._0-9]+$"
         required: true
         description: >-
           the genome version
@@ -283,51 +283,66 @@ classes:
           the NCBI taxonomy number
       url:
         range: string
-        pattern: r"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$"
+        pattern: "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$"
         required: true
         description: >-
           a link to the where this genome file could be downloaded
+        examples:
+          - value: "https://plasmodb.org/common/downloads/release-65/Pfalciparum3D7/fasta/data/PlasmoDB-65_Pfalciparum3D7_Genome.fasta"
+      chromosomes:
+        range: string
+        pattern: "^[A-z-._0-9]+$"
+        required: false
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          a list of chromosomes found within this genome
       gff_url:
         range: string
-        pattern: r"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$"
+        pattern: "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$"
         required: false
         description: >-
           a link to the where this genome's annotation file could be downloaded
+        examples:
+          - value: "https://plasmodb.org/common/downloads/release-65/Pfalciparum3D7/fasta/data/PlasmoDB-65_Pfalciparum3D7.gff"
 
   GenomicLocation:
     description: >- 
       information on the genomic location of specific sequence
+    slots:
+      - genome_id
     attributes:
       chrom:
         range: string
-        pattern: "^[A-z-._0-9]$"
+        pattern: "^[A-z-._0-9]+$"
         required: true
         description: >-
           the chromosome name
       start:
         range: integer
-        pattern: "^[0-9]$"
+        pattern: "^[0-9]+$"
         required: true
         description: >-
           the start of the location, 0-based positioning
       end:
         range: integer
-        pattern: "^[0-9]$"
+        pattern: "^[0-9]+$"
         required: true
         description: >-
           the end of the location, 0-based positioning
       strand:
         range: string
         required: false
-        pattern: r'[+-]'
+        pattern: '[+-]'
         description: >- 
           which strand the location is, either + for plus strand or - for negative strand
       ref_seq:
         range: string
         required: false
-        pattern: "^[A-z-]$"
+        pattern: "^[A-z-]+$"
         description: >-
-          the reference sequence of this genomic location 
+          the reference sequence of this genomic location
+
 
   PrimerInfo:
     description: >- 
@@ -352,7 +367,7 @@ classes:
         required: true
         range: MicrohaplotypesForTarget
         multivalued: true
-        inlined_as_list: false
+        inlined_as_list: true
         description: >-
           a list of the microhaplotypes detected for a list of targets
 
@@ -360,16 +375,16 @@ classes:
     description: >-
       Microhaplotype detected for a specific target
     slots:
-      - microhaplotype_id
+      - mhap_id
     attributes:
-      read_count:
+      reads:
         required: true
-        range: double
+        range: integer
         description: >-
           the read count associated with this microhaplotype
-      umi_count:
+      umis:
         required: false
-        range: double
+        range: integer
         description: >-
           the unique molecular identifier (umi) count associated with this microhaplotype
 
@@ -377,9 +392,9 @@ classes:
     description: >-
       Microhaplotypes detected for a specific target
     slots:
-      - target_id
+      - mhaps_target_id
     attributes:
-      microhaplotypes:
+      haps:
         required: true
         range: MicrohaplotypeForTarget
         multivalued: true
@@ -387,14 +402,9 @@ classes:
         description: >-
           a list of the microhaplotypes detected for this target
 
-  TarAmpBioinformaticsInfo:
+  BioinformaticsMethodInfo:
     description: >-
       the targeted amplicon bioinformatics pipeline
-    slots:
-    - tar_amp_bioinformatics_info_id
-    slot_usage:
-      tar_amp_bioinformatics_info_id:
-        identifier: true
     attributes:
       demultiplexing_method:
         range: BioMethod
@@ -406,11 +416,6 @@ classes:
         required: true
         description: >-
           the method used to de-noise and/or cluster the raw reads
-      population_clustering_method:
-        range: BioMethod
-        required: true
-        description: >-
-          the method used to compare clustered/de-noised reads across samples for a target
       additional_methods:
         range: BioMethod
         required: false
@@ -418,31 +423,35 @@ classes:
         inlined_as_list: true
         description: >-
           any additional methods used to analyze the data
+      bioinformatics_method_name:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: false
+        description: >-
+          name of the collection of methods is called, e.g. pipeline 
+          
+  
   BioMethod:
     description: >-
       methodology description of a portion of a bioinformatics pipeline
+    slots:
+      - program_version
     attributes:
       program:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
+        pattern: "^[A-z-._0-9 ]+$"
         required: true
         description: >-
           name of the program used for this portion of the pipeline
-      purpose:
+      program_description:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
-        required: true
+        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
+        required: false
         description: >-
-          the purpose for this method
-      program_version:
-        range: string
-        pattern: "^[A-z-._0-9 ]$"
-        required: true
-        description: >-
-          versioning info for the program
+          a short description of what this method does
       additional_argument:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
+        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
         required: false
         multivalued: true
         inlined_as_list: true
@@ -459,14 +468,9 @@ classes:
       - plate_col
       - specimen_id
       - panel_id
-      - experiment_sample_id
     slot_usage:
       specimen_id:
         identifier: false
-      panel_id:
-        identifier: false
-      experiment_sample_id:
-        identifier: true
       plate_name:
         required: false
       plate_row:
@@ -476,140 +480,212 @@ classes:
     attributes:
       accession:
         range: string
-        pattern: "^[A-z-._0-9]$"
+        pattern: "^[A-z-._0-9]+$"
         required: false
         description: >-
           ERA/SRA accession number for the sample if it was submitted
+      experiment_sample_name:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: true
+        identifier: true
+        description: >-
+          a unique identifier for this sequence/amplification run on a specimen_name
 
   SequencingInfo:
     description: >-
       Information on sequencing info
-    slots:
-      - sequencing_info_id
-    slot_usage:
-      sequencing_info_id:
-        identifier: true
+
     attributes:
+      sequencing_info_name:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: true
+        description: >-
+          a name of for the sequencing done, e.g. batch1
       seq_instrument:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
+        pattern: "^[A-z-._0-9 ]+$"
         required: true
         description: >-
           the sequencing instrument used to sequence the run, e.g. ILLUMINA, Illumina MiSeq
+        examples:
+          - value: 'ILLUMINA'
+          - value: 'Illumina MiSeq'
       seq_date:
         range: string
-        pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+        pattern: "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
         required: true
         description: >-
           the date of sequencing, should be YYYY-MM or YYYY-MM-DD
+        examples:
+          - value: '2024-03-10'
+          - value: '2024-03'
       nucl_acid_ext:
         range: string
-        pattern: r"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$"
-        required: true
+        pattern: "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$"
+        required: false
         description: >-
           Link to a reference or kit that describes the recovery of nucleic acids from the sample
+        examples:
+          - value: 'https://www.paragongenomics.com/targeted-sequencing/amplicon-sequencing/cleanplex-ngs-amplicon-sequencing/'
       nucl_acid_amp:
         range: string
-        pattern: r"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$"
-        required: true
+        pattern: "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$"
+        required: false
         description: >-
-          Link to a reference or kit that describes the enzymatic amplification of nucleic acids,
+          Link to a reference or kit that describes the enzymatic amplification of nucleic acids
+        examples:
+          - value: 'https://www.paragongenomics.com/targeted-sequencing/amplicon-sequencing/cleanplex-ngs-amplicon-sequencing/'
       nucl_acid_ext_date:
         range: string
-        pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
-        required: true
+        pattern: "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+        required: false
         description: >-
-          the date of the nucleoacide extraction
+          the date of the nucleoacid extraction
+        examples:
+          - value: '2024-03-10'
+          - value: '2024-03'
       nucl_acid_amp_date:
         range: string
-        pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
-        required: true
+        pattern: "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+        required: false
         description: >-
-          the date of the nucleoacide amplification
+          the date of the nucleoacid amplification
+        examples:
+          - value: '2024-03-10'
+          - value: '2024-03'
       pcr_cond:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
-        required: true
+        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
+        required: false
         description: >-
           the method/conditions for PCR, List PCR cycles used to amplify the target
       lib_screen:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
-        required: true
+        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
+        required: false
         description: >-
           Describe enrichment, screening, or normalization methods applied during amplification or library preparation, e.g. size selection 390bp, diluted to 1 ng DNA/sample
+        examples:
+          - value: 'size selection 390bp, diluted to 1 ng DNA/sample'
       lib_layout:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
-        required: true
+        pattern: "^[A-z-._0-9 ]+$"
+        required: false
         description: >-
           Specify the configuration of reads, e.g. paired-end
+        examples:
+          - value: 'paired-end'
       lib_kit:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
-        required: true
+        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
+        required: false
         description: >-
           Name, version, and applicable cell or cycle numbers for the kit used to prepare libraries and load cells or chips for sequencing. If possible, include a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001
+        examples:
+          - value: 'MiSeq Reagent Kit v3 (150-cycle), MS-102-3001'
       seq_center:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
-        required: true
+        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
+        required: false
         description: >-
           Name of facility where sequencing was performed (lab, core facility, or company)
+        examples:
+          - value: 'UCSF sequencing core'
+
+  ParasiteDensity:
+    description: >- 
+      method and value of determined parasite density
+    attributes:
+      method:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: true
+        description: >-
+          the method of how this density was obtained
+        examples:
+          - value: 'qpcr'
+          - value: 'microscopy'
+      density:
+        range: double
+        pattern: '^[-+]?\\d*\\.?\\d+(?:[eE][-+]?\\d+)?$'
+        required: true
+        description: >-
+          the density in microliters
+        examples:
+          - value: '25.0'
+          - value: '10e5'
 
   SpecimenInfo:
     description: >-
       Information on specimen info
     slots:
-      - specimen_id
       - plate_name
       - plate_row
       - plate_col
-    slot_usage:
-      specimen_id:
-        identifier: true
     attributes:
+      specimen_name:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: true
+        identifier: true
+        description: >-
+          an identifier for the specimen
       samp_taxon_id:
         range: integer
-        pattern: "^[0-9]$"
+        pattern: "^[0-9]+$"
         required: true
         description: >-
           the NCBI taxonomy number of the organism of interest
       individual_id:
-        range: string
-        pattern: "^[A-z-._0-9 ]$"
+        range: integer
+        pattern: "^[0-9]+$"
         required: false
         description: >-
           an identifier for the individual a specimen was collected from
       host_taxon_id:
         range: integer
-        pattern: "^[0-9]$"
+        pattern: "^[0-9]+$"
         required: false
         description: >-
           optional the NCBI taxonomy number of the host of the organism
       alternate_identifiers:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
+        pattern: "^[A-z-._0-9 ]+$"
         required: false
         multivalued: true
         inlined_as_list: true
         description: >-
           a list of optional alternative names for the samples
-      parasite_density:
-        range: integer
-        pattern: r'^[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?$'
+      specimen_sex:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
         required: false
         description: >-
-          the parasite density in microliters
+          if specimen is from a person, the sex listed for that person
+      parasite_density_info:
+        range: ParasiteDensity
+        required: false
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          one or more parasite densities in microliters for this specimen
       collection_date:
         range: string
-        pattern: r"\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+        pattern: "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA"
         required: true
         description: >-
           the date of the sample collection
+      date_of_birth:
+        range: string
+        pattern: "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA"
+        required: false
+        description: >-
+          if specimen is from a person, the date of birth of that person
       collection_country:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
+        pattern: "^[A-z-._0-9 ]+$"
         required: true
         description: >-
           the name of country collected in, would be the same as admin level 0
@@ -619,7 +695,7 @@ classes:
           - value: "Japan"
       geo_admin1:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
+        pattern: "^[A-z-._0-9 ]+$"
         required: false
         description: >-
           geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)
@@ -627,7 +703,7 @@ classes:
           - value: 'State/Province'
       geo_admin2:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
+        pattern: "^[A-z-._0-9 ]+$"
         required: false
         description: >-
           geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)
@@ -635,7 +711,7 @@ classes:
           - value: 'city'
       geo_admin3:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
+        pattern: "^[A-z-._0-9 ]+$"
         required: false
         description: >-
           geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)
@@ -643,156 +719,316 @@ classes:
           - value: 'district of a city'
       lat_lon:
         range: string
-        pattern: r'^[-+]?\d{1,2}(?:\.\d+)?,[-+]?\d{1,3}(?:\.\d+)?$'
+        pattern: "^[-+]?\\d{1,2}(?:\\.\\d+)?,[-+]?\\d{1,3}(?:\\.\\d+)?$"
+        #        pattern: "^-?(90(?:\\.0{1,6})?|[0-8]?\\d(?:\\.\\d{1,6})?),-?(180(?:\\.0{1,6})?|1[0-7]\\d(?:\\.\\d{1,6})?|[0-9]?\\d(?:\\.\\d{1,6})?)$"
         required: false
         description: >-
           the latitude and longitude of the collection site of the specimen
-
       collector:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
+        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
         required: true
         description: >-
           the name of the primary person managing the specimen
       samp_store_loc:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
+        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
         required: true
         description: >-
           the sample store site, address or facility name
       samp_collect_device:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
+        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
         required: true
         description: >-
           the way the sample was collected, e.g. whole blood, dried blood spot, etc
       project_name:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
+        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
         required: true
         description: >-
           a name of the project under which the sample is organized
       sample_comments:
         range: string
-        pattern: "^[A-z-._0-9 ]$"
+        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
         required: false
         description: >-
           any additional comments about the sample
 
+
+  BioinformaticsRunInfo:
+    description: >-
+      Information about the pipeline run that generated some of the microhaplotype detected and reads_by_stage
+    slots:
+      - bioinformatics_methods_id
+    attributes:
+      run_date:
+        range: string
+        pattern: "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+        required: true
+        description: >-
+          the date when the run was done, should be YYYY-MM-DD
+      bioinformatics_run_name:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: false
+        description: >-
+          a name to for this run
+  
+  
+
+  PmoGenerationMethod:
+    description: >-
+      Information about how a PMO was generated
+    slots:
+      - program_version
+    attributes:
+      program_name:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: true
+        description: >-
+          the name of the program
+
+  PmoHeader:
+    description: >-
+      Information on the PMO file
+    attributes:
+      pmo_version:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: true
+        description: >-
+          the version of the PMO file, should be in the format of v[MAJOR].[MINOR].[PATCH]
+      creation_date:
+        range: string
+        pattern: "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+        required: false
+        description: >-
+          the date of when the PMO file was created or modified, should be YYYY-MM-DD
+      generation_method:
+        range: PmoGenerationMethod
+        required: false
+        description: >-
+          the generation method to create this PMO 
+
+  StageReadCounts:
+    description: >-
+      Information on the reads counts at several stages
+    attributes:
+      read_count:
+        range: integer
+        pattern: "^[0-9]+$"
+        required: true
+        description: >-
+          the read counts
+      stage:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: true
+        description: >-
+          the stage of the pipeline, e.g. demultiplexed, denoised, etc
+
+
+  ReadCountsByStageForTarget:
+    description: >-
+      Information on the reads counts at several stages of a pipeline for a target
+    slots:
+      - target_id
+    attributes:
+      stages:
+        range: StageReadCounts
+        required: true
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          the read counts by each stage
+
+  ReadCountsByStageForExperimentalSample:
+    description: >-
+      Information on the reads counts at several stages of a pipeline for a experimental_sample
+    slots:
+      - experiment_sample_id
+    attributes:
+      total_raw_count:
+        range: integer
+        pattern: "^[0-9]+$"
+        required: true
+        description: >-
+          the raw counts off the sequencing machine that a sample began with
+      read_counts_for_targets:
+        range: ReadCountsByStageForTarget
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          a list of counts by stage for a target
+
+  ReadCountsByStage:
+    description: >-
+      Information on the reads counts at several stages of a pipeline
+    slots:
+      - bioinformatics_run_id
+    attributes:
+      read_counts_by_experimental_sample_by_stage:
+        range: ReadCountsByStageForExperimentalSample
+        required: true
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          a list by experiment_sample for the counts at each stage
 
   PortableMicrohaplotypeObject:
     description: >-
       Information on final results from a targeted amplicon analysis
     tree_root: true
     attributes:
-      pmo_name:
-        range: string
-        identifier: true
-        required : true
-        description: >-
-          a name for this PMO, can be a concatenation of names if combined more than one PMO
-      experiment_infos:
+      experiment_info:
         range: ExperimentInfo
         required: true
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of experiments of all the seq/amp of samples within this project
-      specimen_infos:
+          a list of experiments of all the seq/amp of the specimens within this project
+      specimen_info:
         range: SpecimenInfo
         required: true
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of SpecimenInfo of all the samples within this project
-      sequencing_infos:
+          a list of specimens of all the samples within this project
+      sequencing_info:
         range: SequencingInfo
-        required: true
-        inlined_as_list: true
-        description: >-
-          the sequencing info for this project
-      panel_info:
-        range: PanelInfo
-        required: true
-        description: >-
-          the info on the targeted sequencing panel used for this project
-      representative_microhaplotype_sequences:
-        range: RepresentativeMicrohaplotypeSequences
         required: true
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of the representative sequences for the results for this project
-      microhaplotypes_detected:
-        range: MicrohaplotypesDetected
+          a list of sequencing info for this project
+      panel_info:
+        range: PanelInfo
         required: true
-        description: >-
-          the microhaplotypes detected in this projects
-      target_demultiplexed_experiment_samples:
-        range: DemultiplexedExperimentSamples
-        required: false
+        multivalued: true
         inlined_as_list: true
         description: >-
-          the raw demultiplex target counts for each sample
-      taramp_bioinformatics_infos:
-        range: TarAmpBioinformaticsInfo
+          a list of info on the panels
+      target_info:
+        range: TargetInfo
         required: true
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          a list of info on the targets
+      targeted_genomes:
+        range: GenomeInfo
+        required: true
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          a list of genomes that the targets in TargetInfo refer to
+      microhaplotypes_info:
+        range: RepresentativeMicrohaplotypes
+        required: true
+        description: >-
+          a list of the information on the representative microhaplotypes
+      bioinformatics_methods_info:
+        range: BioinformaticsMethodInfo
+        required: true
+        multivalued: true
         inlined_as_list: true
         description: >-
           the bioinformatics pipeline/methods used to generated the amplicon analysis for this project
-      postprocessing_bioinformatics_infos:
-        range: BioMethod
+      bioinformatics_run_info:
+        range: BioinformaticsRunInfo
+        required: true
+        multivalued: true
         inlined_as_list: true
-        required: false
         description: >-
-          any additional methods that were applied to the processing of this file/analysis, this can be filtering, adding info etc
+          the runtime info for the bioinformatics pipeline used to generated the amplicon analysis for this project
+      microhaplotypes_detected:
+        range: MicrohaplotypesDetected
+        required: true
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          the microhaplotypes detected in this projects
+      pmo_header:
+        range: PmoHeader
+        required: true
+        description: >-
+          the PMO information for this file including version etc
+      read_counts_by_stage:
+        range: ReadCountsByStage
+        required: false
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          the read counts for different stages of the pipeline
+
 
 slots:
-  seq:
-    range: string
-    pattern: "^[A-z]$"
-    required: true
-    description: >-
-      the DNA sequence
-  specimen_id:
-    range: string
-    pattern: "^[A-z-._0-9]$"
-    required: true
-    description: >-
-      the name of the specimen of a individual
   experiment_sample_id:
-    range: string
-    pattern: "^[A-z-._0-9 ]$"
+    range: integer
+    pattern: "^[0-9]+$"
     required: true
     description: >-
-      a unique identifier for this sequence/amplification run on a specimen
+      the index into the experiment_info list
+  specimen_id:
+    range: integer
+    pattern: "^[0-9]+$"
+    required: true
+    description: >-
+      the index into the specimen_info list
+  sequencing_info_id:
+    range: integer
+    pattern: "^[0-9]+$"
+    required: true
+    description: >-
+      the index into the sequencing_info list
   target_id:
-    range: string
-    pattern: "^[A-z-._0-9]$"
+    range: integer
+    pattern: "^[0-9]+$"
     required: true
     description: >-
-      name of the target
-  representative_microhaplotype_id:
-    range: string
-    pattern: "^[A-z-._0-9]$"
-    required: true
-    description: >-
-      an identifier for the representative microhaplotype object collection
-  microhaplotype_id:
-    range: string
-    pattern: "^[A-z-._0-9]$"
-    required: true
-    description: >-
-      name of the microhaplotype, should be unique to this microhaplotype
+      the index into the target_info list
   panel_id:
-    range: string
-    pattern: "^[A-z-._0-9]$"
+    range: integer
+    pattern: "^[0-9]+$"
     required: true
     description: >-
-      name of the panel
+      the index into the panel_info list
+  mhaps_target_id:
+    range: integer
+    pattern: "^[0-9]+$"
+    required: true
+    description: >-
+      the index for a target in the microhaplotypes_info list
+  mhap_id:
+    range: integer
+    pattern: "^[0-9]+$"
+    required: true
+    description: >-
+      the index for a microhaplotype for a target in the microhaplotypes_info list, e.g. microhaplotypes_info[mhaps_target_id][mhap_id]
+  bioinformatics_methods_id:
+    range: integer
+    pattern: "^[0-9]+$"
+    required: true
+    description: >-
+      the index into the bioinformatics_methods_info list
+  bioinformatics_run_id:
+    range: integer
+    pattern: "^[0-9]+$"
+    required: true
+    description: >-
+      the index into bioinformatics_run_info list
+  genome_id:
+    range: integer
+    required: true
+    pattern: "^[0-9]+$"
+    description: >-
+      the index to the genome in the targeted_genomes list that this location refers to 
+
   plate_name:
     range: string
-    pattern: "^[A-z-._0-9 ]$"
+    pattern: "^[A-z-._0-9 ]+$"
     description: >-
       a name of plate the specimen was in
   plate_row:
@@ -802,22 +1038,21 @@ slots:
       the row the specimen was in
   plate_col:
     range: integer
-    pattern: "^[0-9]$"
+    pattern: "^[0-9]+$"
     description: >-
       the column the specimen was in
-  sequencing_info_id:
+  seq:
     range: string
-    pattern: "^[A-z-._0-9 ]$"
+    pattern: "^[A-z]+$"
     required: true
     description: >-
-      a unique identifier for this sequencing info
-  tar_amp_bioinformatics_info_id:
+      the DNA sequence
+  program_version:
     range: string
-    pattern: "^[A-z-._0-9 ]$"
+    pattern: "^[A-z-._0-9 ]+$"
     required: true
-#    identifier: true
     description: >-
-      a unique identifier for this targeted amplicon bioinformatics pipeline run
+      the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]
 
 # slots:
 #   id:

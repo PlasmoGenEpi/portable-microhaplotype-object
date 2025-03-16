@@ -1,58 +1,63 @@
 # metamodel_version: 1.7.0
+type BioinformaticsMethodInfo
+  {
+    demultiplexingMethod: BioMethod!
+    denoisingMethod: BioMethod!
+    additionalMethods: [BioMethod]
+    bioinformaticsMethodName: String
+  }
+
+type BioinformaticsRunInfo
+  {
+    bioinformaticsMethodsId: Integer!
+    runDate: String!
+    bioinformaticsRunName: String
+  }
+
 type BioMethod
   {
-    program: String!
-    purpose: String!
     programVersion: String!
+    program: String!
+    programDescription: String
     additionalArgument: [String]
-  }
-
-type DemultiplexedExperimentSamples
-  {
-    tarAmpBioinformaticsInfoId: String!
-    demultiplexedExperimentSamples: [DemultiplexedTargetsForExperimentSample]!
-  }
-
-type DemultiplexedTargetForExperimentSample
-  {
-    targetId: String!
-    rawReadCount: Double!
-  }
-
-type DemultiplexedTargetsForExperimentSample
-  {
-    experimentSampleId: String!
-    demultiplexedTargets: [DemultiplexedTargetForExperimentSample]!
   }
 
 type ExperimentInfo
   {
-    sequencingInfoId: String!
+    sequencingInfoId: Integer!
     plateName: String
     plateRow: String
     plateCol: Integer
-    specimenId: String!
-    panelId: String!
-    experimentSampleId: String!
+    specimenId: Integer!
+    panelId: Integer!
     accession: String
+    experimentSampleName: String!
   }
 
 type GenomeInfo
   {
     name: String!
-    version: String!
+    genomeVersion: String!
     taxonId: Integer!
     url: String!
+    chromosomes: [String]
     gffUrl: String
   }
 
 type GenomicLocation
   {
+    genomeId: Integer!
     chrom: String!
     start: Integer!
     end: Integer!
     strand: String
     refSeq: String
+  }
+
+type MarkerOfInterest
+  {
+    markerLocation: GenomicLocation
+    associations: [String]
   }
 
 type MaskingInfo
@@ -64,49 +69,68 @@ type MaskingInfo
 
 type MicrohaplotypeForTarget
   {
-    microhaplotypeId: String!
-    readCount: Double!
-    umiCount: Double
+    mhapId: Integer!
+    reads: Integer!
+    umis: Integer
   }
 
 type MicrohaplotypesDetected
   {
-    tarAmpBioinformaticsInfoId: String!
-    representativeMicrohaplotypeId: String!
+    bioinformaticsRunId: Integer!
     experimentSamples: [MicrohaplotypesForSample]!
   }
 
 type MicrohaplotypesForSample
   {
-    experimentSampleId: String!
+    experimentSampleId: Integer!
     targetResults: [MicrohaplotypesForTarget]!
   }
 
 type MicrohaplotypesForTarget
   {
-    targetId: String!
-    microhaplotypes: [MicrohaplotypeForTarget]!
+    mhapsTargetId: Integer!
+    haps: [MicrohaplotypeForTarget]!
   }
 
 type PanelInfo
   {
-    panelId: String!
-    targetGenome: GenomeInfo!
-    panelTargets: [TargetInfo]!
+    reactions: [ReactionInfo]!
+    panelName: String!
+  }
+
+type ParasiteDensity
+  {
+    method: String!
+    density: Double!
+  }
+
+type PmoGenerationMethod
+  {
+    programVersion: String!
+    programName: String!
+  }
+
+type PmoHeader
+  {
+    pmoVersion: String!
+    creationDate: String
+    generationMethod: PmoGenerationMethod
   }
 
 type PortableMicrohaplotypeObject
   {
-    pmoName: String!
-    experimentInfos: [ExperimentInfo]!
-    specimenInfos: [SpecimenInfo]!
-    sequencingInfos: SequencingInfo!
-    panelInfo: PanelInfo!
-    representativeMicrohaplotypeSequences: [RepresentativeMicrohaplotypeSequences]!
-    microhaplotypesDetected: MicrohaplotypesDetected!
-    targetDemultiplexedExperimentSamples: DemultiplexedExperimentSamples
-    tarampBioinformaticsInfos: TarAmpBioinformaticsInfo!
-    postprocessingBioinformaticsInfos: BioMethod
+    experimentInfo: [ExperimentInfo]!
+    specimenInfo: [SpecimenInfo]!
+    sequencingInfo: [SequencingInfo]!
+    panelInfo: [PanelInfo]!
+    targetInfo: [TargetInfo]!
+    targetedGenomes: [GenomeInfo]!
+    microhaplotypesInfo: RepresentativeMicrohaplotypes!
+    bioinformaticsMethodsInfo: [BioinformaticsMethodInfo]!
+    bioinformaticsRunInfo: [BioinformaticsRunInfo]!
+    microhaplotypesDetected: [MicrohaplotypesDetected]!
+    pmoHeader: PmoHeader!
+    readCountsByStage: [ReadCountsByStage]
   }
 
 type PrimerInfo
@@ -115,56 +139,82 @@ type PrimerInfo
     location: GenomicLocation
   }
 
-type RepresentativeMicrohaplotypeSequence
+type ReactionInfo
+  {
+    panelTargets: [Integer]!
+    reactionName: String!
+  }
+
+type ReadCountsByStage
+  {
+    bioinformaticsRunId: Integer!
+    readCountsByExperimentalSampleByStage: [ReadCountsByStageForExperimentalSample]!
+  }
+
+type ReadCountsByStageForExperimentalSample
+  {
+    experimentSampleId: Integer!
+    totalRawCount: Integer!
+    readCountsForTargets: [ReadCountsByStageForTarget]
+  }
+
+type ReadCountsByStageForTarget
+  {
+    targetId: Integer!
+    stages: [StageReadCounts]!
+  }
+
+type RepresentativeMicrohaplotype
   {
     seq: String!
-    microhaplotypeId: String!
+    microhaplotypeName: String
     quality: String
     pseudocigar: String
     masking: [MaskingInfo]
     altAnnotations: [String]
   }
 
-type RepresentativeMicrohaplotypeSequences
+type RepresentativeMicrohaplotypes
   {
-    representativeMicrohaplotypeId: String!
     targets: [RepresentativeMicrohaplotypesForTarget]!
   }
 
 type RepresentativeMicrohaplotypesForTarget
   {
-    targetId: String!
-    seqs: [RepresentativeMicrohaplotypeSequence]!
+    targetId: Integer!
+    microhaplotypes: [RepresentativeMicrohaplotype]!
   }
 
 type SequencingInfo
   {
-    sequencingInfoId: String!
+    sequencingInfoName: String!
     seqInstrument: String!
     seqDate: String!
-    nuclAcidExt: String!
-    nuclAcidAmp: String!
-    nuclAcidExtDate: String!
-    nuclAcidAmpDate: String!
-    pcrCond: String!
-    libScreen: String!
-    libLayout: String!
-    libKit: String!
-    seqCenter: String!
+    nuclAcidExt: String
+    nuclAcidAmp: String
+    nuclAcidExtDate: String
+    nuclAcidAmpDate: String
+    pcrCond: String
+    libScreen: String
+    libLayout: String
+    libKit: String
+    seqCenter: String
   }
 
 type SpecimenInfo
   {
-    specimenId: String!
     plateName: String
     plateRow: String
     plateCol: Integer
+    specimenName: String!
     sampTaxonId: Integer!
-    individualId: String
+    individualId: Integer
     hostTaxonId: Integer
     alternateIdentifiers: [String]
-    parasiteDensity: Integer
+    specimenSex: String
+    parasiteDensityInfo: [ParasiteDensity]
     collectionDate: String!
+    dateOfBirth: String
     collectionCountry: String!
     geoAdmin1: String
     geoAdmin2: String
@@ -177,22 +227,19 @@ type SpecimenInfo
     sampleComments: String
   }
 
-type TarAmpBioinformaticsInfo
+type StageReadCounts
   {
-    tarAmpBioinformaticsInfoId: String!
-    demultiplexingMethod: BioMethod!
-    denoisingMethod: BioMethod!
-    populationClusteringMethod: BioMethod!
-    additionalMethods: [BioMethod]
+    readCount: Integer!
+    stage: String!
   }
 
 type TargetInfo
   {
-    targetId: String!
-    geneId: String
+    targetName: String!
+    geneName: String
     insertLocation: GenomicLocation
     forwardPrimers: [PrimerInfo]!
     reversePrimers: [PrimerInfo]!
-    targetType: [String]
+    targetAttributes: [String]
   }
 

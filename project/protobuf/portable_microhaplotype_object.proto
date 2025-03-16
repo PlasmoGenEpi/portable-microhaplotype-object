@@ -1,61 +1,66 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
+// the targeted amplicon bioinformatics pipeline
+message BioinformaticsMethodInfo
+ {
+  bioMethod demultiplexingMethod = 0
+  bioMethod denoisingMethod = 0
+ repeated  bioMethod additionalMethods = 0
+  string bioinformaticsMethodName = 0
+ }
+// Information about the pipeline run that generated some of the microhaplotype detected and reads_by_stage
+message BioinformaticsRunInfo
+ {
+  integer bioinformaticsMethodsId = 0
+  string runDate = 0
+  string bioinformaticsRunName = 0
+ }
 // methodology description of a portion of a bioinformatics pipeline
 message BioMethod
  {
-  string program = 0
-  string purpose = 0
   string programVersion = 0
+  string program = 0
+  string programDescription = 0
  repeated  string additionalArgument = 0
- }
-// a list of raw reads counts for each experiment sample for all targets within panel
-message DemultiplexedExperimentSamples
- {
-  string tarAmpBioinformaticsInfoId = 0
- repeated  demultiplexedTargetsForExperimentSample demultiplexedExperimentSamples = 0
- }
-// the raw read count for a experiment sample for a target
-message DemultiplexedTargetForExperimentSample
- {
-  string targetId = 0
-  double rawReadCount = 0
- }
-// a list of raw reads for a experiment sample for all targets within panel
-message DemultiplexedTargetsForExperimentSample
- {
-  string experimentSampleId = 0
- repeated  demultiplexedTargetForExperimentSample demultiplexedTargets = 0
  }
 // Information about a specific amplification and sequencing of a specimen
 message ExperimentInfo
  {
-  string sequencingInfoId = 0
+  integer sequencingInfoId = 0
   string plateName = 0
   string plateRow = 0
   integer plateCol = 0
-  string specimenId = 0
-  string panelId = 0
-  string experimentSampleId = 0
+  integer specimenId = 0
+  integer panelId = 0
   string accession = 0
+  string experimentSampleName = 0
  }
 // information on a genome
 message GenomeInfo
  {
   string name = 0
-  string version = 0
+  string genomeVersion = 0
   integer taxonId = 0
   string url = 0
+ repeated  string chromosomes = 0
   string gffUrl = 0
  }
 // information on the genomic location of specific sequence
 message GenomicLocation
  {
+  integer genomeId = 0
   string chrom = 0
   integer start = 0
   integer end = 0
   string strand = 0
   string refSeq = 0
+ }
+// A specific genomic location of interest, e.g. drug resistance, or other phenotypical marker
+message MarkerOfInterest
+ {
+  genomicLocation markerLocation = 0
+ repeated  string associations = 0
  }
 // information about a subsegment of the sequence that should be masked
 message MaskingInfo
@@ -67,49 +72,68 @@ message MaskingInfo
 // Microhaplotype detected for a specific target
 message MicrohaplotypeForTarget
  {
-  string microhaplotypeId = 0
-  double readCount = 0
-  double umiCount = 0
+  integer mhapId = 0
+  integer reads = 0
+  integer umis = 0
  }
 // the microhaplotypes detected in a targeted amplicon analysis
 message MicrohaplotypesDetected
  {
-  string tarAmpBioinformaticsInfoId = 0
-  string representativeMicrohaplotypeId = 0
+  integer bioinformaticsRunId = 0
  repeated  microhaplotypesForSample experimentSamples = 0
  }
 // Microhaplotypes detected for a sample for all targets
 message MicrohaplotypesForSample
  {
-  string experimentSampleId = 0
+  integer experimentSampleId = 0
  repeated  microhaplotypesForTarget targetResults = 0
  }
 // Microhaplotypes detected for a specific target
 message MicrohaplotypesForTarget
  {
-  string targetId = 0
- repeated  microhaplotypeForTarget microhaplotypes = 0
+  integer mhapsTargetId = 0
+ repeated  microhaplotypeForTarget haps = 0
  }
 // information on a panel of targeted amplicon primer pairs
 message PanelInfo
  {
-  string panelId = 0
-  genomeInfo targetGenome = 0
- repeated  targetInfo panelTargets = 0
+ repeated  reactionInfo reactions = 0
+  string panelName = 0
+ }
+// method and value of determined parasite density
+message ParasiteDensity
+ {
+  string method = 0
+  double density = 0
+ }
+// Information about how a PMO was generated
+message PmoGenerationMethod
+ {
+  string programVersion = 0
+  string programName = 0
+ }
+// Information on the PMO file
+message PmoHeader
+ {
+  string pmoVersion = 0
+  string creationDate = 0
+  pmoGenerationMethod generationMethod = 0
  }
 // Information on final results from a targeted amplicon analysis
 message PortableMicrohaplotypeObject
  {
-  string pmoName = 0
- repeated  experimentInfo experimentInfos = 0
- repeated  specimenInfo specimenInfos = 0
-  sequencingInfo sequencingInfos = 0
-  panelInfo panelInfo = 0
- repeated  representativeMicrohaplotypeSequences representativeMicrohaplotypeSequences = 0
-  microhaplotypesDetected microhaplotypesDetected = 0
-  demultiplexedExperimentSamples targetDemultiplexedExperimentSamples = 0
-  tarAmpBioinformaticsInfo tarampBioinformaticsInfos = 0
-  bioMethod postprocessingBioinformaticsInfos = 0
+ repeated  experimentInfo experimentInfo = 0
+ repeated  specimenInfo specimenInfo = 0
+ repeated  sequencingInfo sequencingInfo = 0
+ repeated  panelInfo panelInfo = 0
+ repeated  targetInfo targetInfo = 0
+ repeated  genomeInfo targetedGenomes = 0
+  representativeMicrohaplotypes microhaplotypesInfo = 0
+ repeated  bioinformaticsMethodInfo bioinformaticsMethodsInfo = 0
+ repeated  bioinformaticsRunInfo bioinformaticsRunInfo = 0
+ repeated  microhaplotypesDetected microhaplotypesDetected = 0
+  pmoHeader pmoHeader = 0
+ repeated  readCountsByStage readCountsByStage = 0
  }
 // information on a primer sequence
 message PrimerInfo
@@ -117,32 +141,56 @@ message PrimerInfo
   string seq = 0
   genomicLocation location = 0
  }
+// information on a panel of targeted amplicon primer pairs
+message ReactionInfo
+ {
+ repeated  integer panelTargets = 0
+  string reactionName = 0
+ }
+// Information on the reads counts at several stages of a pipeline
+message ReadCountsByStage
+ {
+  integer bioinformaticsRunId = 0
+ repeated  readCountsByStageForExperimentalSample readCountsByExperimentalSampleByStage = 0
+ }
+// Information on the reads counts at several stages of a pipeline for a experimental_sample
+message ReadCountsByStageForExperimentalSample
+ {
+  integer experimentSampleId = 0
+  integer totalRawCount = 0
+ repeated  readCountsByStageForTarget readCountsForTargets = 0
+ }
+// Information on the reads counts at several stages of a pipeline for a target
+message ReadCountsByStageForTarget
+ {
+  integer targetId = 0
+ repeated  stageReadCounts stages = 0
+ }
 // the representative sequence for a microhaplotype, similar to a fast(a/q) format
-message RepresentativeMicrohaplotypeSequence
+message RepresentativeMicrohaplotype
  {
   string seq = 0
-  string microhaplotypeId = 0
+  string microhaplotypeName = 0
   string quality = 0
   string pseudocigar = 0
  repeated  maskingInfo masking = 0
  repeated  string altAnnotations = 0
  }
-// a collection of representative sequences for microhaplotypess for all targets
-message RepresentativeMicrohaplotypeSequences
+// a collection of representative sequences for microhaplotypes for all targets
+message RepresentativeMicrohaplotypes
  {
-  string representativeMicrohaplotypeId = 0
  repeated  representativeMicrohaplotypesForTarget targets = 0
  }
 // a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format
 message RepresentativeMicrohaplotypesForTarget
  {
-  string targetId = 0
- repeated  representativeMicrohaplotypeSequence seqs = 0
+  integer targetId = 0
+ repeated  representativeMicrohaplotype microhaplotypes = 0
  }
 // Information on sequencing info
 message SequencingInfo
  {
-  string sequencingInfoId = 0
+  string sequencingInfoName = 0
   string seqInstrument = 0
   string seqDate = 0
   string nuclAcidExt = 0
@@ -158,16 +206,18 @@ message SequencingInfo
 // Information on specimen info
 message SpecimenInfo
  {
-  string specimenId = 0
   string plateName = 0
   string plateRow = 0
   integer plateCol = 0
+  string specimenName = 0
   integer sampTaxonId = 0
-  string individualId = 0
+  integer individualId = 0
   integer hostTaxonId = 0
  repeated  string alternateIdentifiers = 0
-  integer parasiteDensity = 0
+  string specimenSex = 0
+ repeated  parasiteDensity parasiteDensityInfo = 0
   string collectionDate = 0
+  string dateOfBirth = 0
   string collectionCountry = 0
   string geoAdmin1 = 0
   string geoAdmin2 = 0
@@ -179,22 +229,19 @@ message SpecimenInfo
   string projectName = 0
   string sampleComments = 0
  }
-// the targeted amplicon bioinformatics pipeline
-message TarAmpBioinformaticsInfo
+// Information on the reads counts at several stages
+message StageReadCounts
  {
-  string tarAmpBioinformaticsInfoId = 0
-  bioMethod demultiplexingMethod = 0
-  bioMethod denoisingMethod = 0
-  bioMethod populationClusteringMethod = 0
- repeated  bioMethod additionalMethods = 0
+  integer readCount = 0
+  string stage = 0
  }
 // Information about a specific target within a genome
 message TargetInfo
  {
-  string targetId = 0
-  string geneId = 0
+  string targetName = 0
+  string geneName = 0
   genomicLocation insertLocation = 0
  repeated  primerInfo forwardPrimers = 0
  repeated  primerInfo reversePrimers = 0
- repeated  string targetType = 0
+ repeated  string targetAttributes = 0
  }
