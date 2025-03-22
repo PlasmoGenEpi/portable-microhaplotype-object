@@ -216,13 +216,15 @@
 
       SpecimenInfo : collector
 
-      SpecimenInfo : date_of_birth
-
       SpecimenInfo : geo_admin1
 
       SpecimenInfo : geo_admin2
 
       SpecimenInfo : geo_admin3
+
+      SpecimenInfo : host_date_of_birth
+
+      SpecimenInfo : host_sex
 
       SpecimenInfo : host_taxon_id
 
@@ -256,8 +258,6 @@
       SpecimenInfo : sample_comments
 
       SpecimenInfo : specimen_name
-
-      SpecimenInfo : specimen_sex
 
 
 </div>
@@ -322,7 +322,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../specimen_sex/">specimen_sex</a></td>
+<td><a href="../host_sex/">host_sex</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>if specimen is from a person, the sex listed for that person</td>
 <td>direct</td>
@@ -336,13 +336,13 @@
 <tr>
 <td><a href="../collection_date/">collection_date</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>the date of the sample collection</td>
+<td>the date of the sample collection, can be YYYY, YYYY-MM, or YYYY-MM-DD</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../date_of_birth/">date_of_birth</a></td>
+<td><a href="../host_date_of_birth/">host_date_of_birth</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>if specimen is from a person, the date of birth of that person</td>
+<td>if specimen is from a person, the date of birth of that person, can be YYYY, ...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -516,8 +516,8 @@ attributes:
     inlined: true
     inlined_as_list: true
     pattern: ^[A-z-._0-9 ]+$
-  specimen_sex:
-    name: specimen_sex
+  host_sex:
+    name: host_sex
     description: if specimen is from a person, the sex listed for that person
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
@@ -540,7 +540,11 @@ attributes:
     inlined_as_list: true
   collection_date:
     name: collection_date
-    description: the date of the sample collection
+    description: the date of the sample collection, can be YYYY, YYYY-MM, or YYYY-MM-DD
+    examples:
+    - value: '1988'
+    - value: 1988-06
+    - value: '1988-06-26'
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -548,9 +552,14 @@ attributes:
     range: string
     required: true
     pattern: \d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA
-  date_of_birth:
-    name: date_of_birth
-    description: if specimen is from a person, the date of birth of that person
+  host_date_of_birth:
+    name: host_date_of_birth
+    description: if specimen is from a person, the date of birth of that person, can
+      be YYYY, YYYY-MM, or YYYY-MM-DD
+    examples:
+    - value: '1988'
+    - value: 1988-06
+    - value: '1988-06-26'
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -746,12 +755,12 @@ attributes:
     inlined: true
     inlined_as_list: true
     pattern: ^[A-z-._0-9 ]+$
-  specimen_sex:
-    name: specimen_sex
+  host_sex:
+    name: host_sex
     description: if specimen is from a person, the sex listed for that person
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: specimen_sex
+    alias: host_sex
     owner: SpecimenInfo
     domain_of:
     - SpecimenInfo
@@ -774,7 +783,11 @@ attributes:
     inlined_as_list: true
   collection_date:
     name: collection_date
-    description: the date of the sample collection
+    description: the date of the sample collection, can be YYYY, YYYY-MM, or YYYY-MM-DD
+    examples:
+    - value: '1988'
+    - value: 1988-06
+    - value: '1988-06-26'
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: collection_date
@@ -784,12 +797,17 @@ attributes:
     range: string
     required: true
     pattern: \d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA
-  date_of_birth:
-    name: date_of_birth
-    description: if specimen is from a person, the date of birth of that person
+  host_date_of_birth:
+    name: host_date_of_birth
+    description: if specimen is from a person, the date of birth of that person, can
+      be YYYY, YYYY-MM, or YYYY-MM-DD
+    examples:
+    - value: '1988'
+    - value: 1988-06
+    - value: '1988-06-26'
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: date_of_birth
+    alias: host_date_of_birth
     owner: SpecimenInfo
     domain_of:
     - SpecimenInfo
