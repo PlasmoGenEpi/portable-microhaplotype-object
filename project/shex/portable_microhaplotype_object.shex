@@ -301,10 +301,10 @@ linkml:Sparqlpath xsd:string
           <individual_id> @linkml:Integer ? ;
           <host_taxon_id> @linkml:Integer ? ;
           <alternate_identifiers> @linkml:String * ;
-          <specimen_sex> @linkml:String ? ;
+          <host_sex> @linkml:String ? ;
           <parasite_density_info> @<ParasiteDensity> * ;
           <collection_date> @linkml:String ;
-          <date_of_birth> @linkml:String ? ;
+          <host_date_of_birth> @linkml:String ? ;
           <collection_country> @linkml:String ;
           <geo_admin1> @linkml:String ? ;
           <geo_admin2> @linkml:String ? ;

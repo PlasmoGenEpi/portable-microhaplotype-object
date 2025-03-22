@@ -1,5 +1,5 @@
 # Auto generated from portable_microhaplotype_object.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-03-16T16:45:07
+# Generation date: 2025-03-21T20:48:21
 # Schema: portable-microhaplotype-object
 #
 # id: https://plasmogenepi.github.io/portable-microhaplotype-object
@@ -8,20 +8,55 @@
 
 import dataclasses
 import re
-from jsonasobj2 import JsonObj, as_dict
-from typing import Optional, List, Union, Dict, ClassVar, Any
 from dataclasses import dataclass
-from datetime import date, datetime
-from linkml_runtime.linkml_model.meta import EnumDefinition, PermissibleValue, PvFormulaOptions
+from datetime import (
+    date,
+    datetime,
+    time
+)
+from typing import (
+    Any,
+    ClassVar,
+    Dict,
+    List,
+    Optional,
+    Union
+)
 
-from linkml_runtime.utils.slot import Slot
-from linkml_runtime.utils.metamodelcore import empty_list, empty_dict, bnode
-from linkml_runtime.utils.yamlutils import YAMLRoot, extended_str, extended_float, extended_int
-from linkml_runtime.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
-from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
-from linkml_runtime.utils.enumerations import EnumDefinitionImpl
-from rdflib import Namespace, URIRef
+from jsonasobj2 import (
+    JsonObj,
+    as_dict
+)
+from linkml_runtime.linkml_model.meta import (
+    EnumDefinition,
+    PermissibleValue,
+    PvFormulaOptions
+)
 from linkml_runtime.utils.curienamespace import CurieNamespace
+from linkml_runtime.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
+from linkml_runtime.utils.enumerations import EnumDefinitionImpl
+from linkml_runtime.utils.formatutils import (
+    camelcase,
+    sfx,
+    underscore
+)
+from linkml_runtime.utils.metamodelcore import (
+    bnode,
+    empty_dict,
+    empty_list
+)
+from linkml_runtime.utils.slot import Slot
+from linkml_runtime.utils.yamlutils import (
+    YAMLRoot,
+    extended_float,
+    extended_int,
+    extended_str
+)
+from rdflib import (
+    Namespace,
+    URIRef
+)
+
 from linkml_runtime.linkml_model.types import Double, Integer, String
 
 metamodel_version = "1.7.0"
@@ -55,7 +90,7 @@ class SpecimenInfoSpecimenName(extended_str):
     pass
 
 
-@dataclass
+@dataclass(repr=False)
 class MarkerOfInterest(YAMLRoot):
     """
     A specific genomic location of interest, e.g. drug resistance, or other phenotypical marker
@@ -81,7 +116,7 @@ class MarkerOfInterest(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class TargetInfo(YAMLRoot):
     """
     Information about a specific target within a genome
@@ -127,7 +162,7 @@ class TargetInfo(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class ReactionInfo(YAMLRoot):
     """
     information on a panel of targeted amplicon primer pairs
@@ -157,7 +192,7 @@ class ReactionInfo(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class PanelInfo(YAMLRoot):
     """
     information on a panel of targeted amplicon primer pairs
@@ -185,7 +220,7 @@ class PanelInfo(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class RepresentativeMicrohaplotype(YAMLRoot):
     """
     the representative sequence for a microhaplotype, similar to a fast(a/q) format
@@ -228,7 +263,7 @@ class RepresentativeMicrohaplotype(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class MaskingInfo(YAMLRoot):
     """
     information about a subsegment of the sequence that should be masked
@@ -263,7 +298,7 @@ class MaskingInfo(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class RepresentativeMicrohaplotypes(YAMLRoot):
     """
     a collection of representative sequences for microhaplotypes for all targets
@@ -285,7 +320,7 @@ class RepresentativeMicrohaplotypes(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class RepresentativeMicrohaplotypesForTarget(YAMLRoot):
     """
     a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format
@@ -313,7 +348,7 @@ class RepresentativeMicrohaplotypesForTarget(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class MicrohaplotypesDetected(YAMLRoot):
     """
     the microhaplotypes detected in a targeted amplicon analysis
@@ -343,7 +378,7 @@ class MicrohaplotypesDetected(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class GenomeInfo(YAMLRoot):
     """
     information on a genome
@@ -393,7 +428,7 @@ class GenomeInfo(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class GenomicLocation(YAMLRoot):
     """
     information on the genomic location of specific sequence
@@ -442,7 +477,7 @@ class GenomicLocation(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class PrimerInfo(YAMLRoot):
     """
     information on a primer sequence
@@ -469,7 +504,7 @@ class PrimerInfo(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class MicrohaplotypesForSample(YAMLRoot):
     """
     Microhaplotypes detected for a sample for all targets
@@ -499,7 +534,7 @@ class MicrohaplotypesForSample(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class MicrohaplotypeForTarget(YAMLRoot):
     """
     Microhaplotype detected for a specific target
@@ -532,7 +567,7 @@ class MicrohaplotypeForTarget(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class MicrohaplotypesForTarget(YAMLRoot):
     """
     Microhaplotypes detected for a specific target
@@ -562,7 +597,7 @@ class MicrohaplotypesForTarget(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class BioinformaticsMethodInfo(YAMLRoot):
     """
     the targeted amplicon bioinformatics pipeline
@@ -600,7 +635,7 @@ class BioinformaticsMethodInfo(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class BioMethod(YAMLRoot):
     """
     methodology description of a portion of a bioinformatics pipeline
@@ -638,7 +673,7 @@ class BioMethod(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class ExperimentInfo(YAMLRoot):
     """
     Information about a specific amplification and sequencing of a specimen
@@ -695,7 +730,7 @@ class ExperimentInfo(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class SequencingInfo(YAMLRoot):
     """
     Information on sequencing info
@@ -766,7 +801,7 @@ class SequencingInfo(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class ParasiteDensity(YAMLRoot):
     """
     method and value of determined parasite density
@@ -795,7 +830,7 @@ class ParasiteDensity(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class SpecimenInfo(YAMLRoot):
     """
     Information on specimen info
@@ -821,9 +856,9 @@ class SpecimenInfo(YAMLRoot):
     individual_id: Optional[int] = None
     host_taxon_id: Optional[int] = None
     alternate_identifiers: Optional[Union[str, List[str]]] = empty_list()
-    specimen_sex: Optional[str] = None
+    host_sex: Optional[str] = None
     parasite_density_info: Optional[Union[Union[dict, ParasiteDensity], List[Union[dict, ParasiteDensity]]]] = empty_list()
-    date_of_birth: Optional[str] = None
+    host_date_of_birth: Optional[str] = None
     geo_admin1: Optional[str] = None
     geo_admin2: Optional[str] = None
     geo_admin3: Optional[str] = None
@@ -890,15 +925,15 @@ class SpecimenInfo(YAMLRoot):
             self.alternate_identifiers = [self.alternate_identifiers] if self.alternate_identifiers is not None else []
         self.alternate_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternate_identifiers]
 
-        if self.specimen_sex is not None and not isinstance(self.specimen_sex, str):
-            self.specimen_sex = str(self.specimen_sex)
+        if self.host_sex is not None and not isinstance(self.host_sex, str):
+            self.host_sex = str(self.host_sex)
 
         if not isinstance(self.parasite_density_info, list):
             self.parasite_density_info = [self.parasite_density_info] if self.parasite_density_info is not None else []
         self.parasite_density_info = [v if isinstance(v, ParasiteDensity) else ParasiteDensity(**as_dict(v)) for v in self.parasite_density_info]
 
-        if self.date_of_birth is not None and not isinstance(self.date_of_birth, str):
-            self.date_of_birth = str(self.date_of_birth)
+        if self.host_date_of_birth is not None and not isinstance(self.host_date_of_birth, str):
+            self.host_date_of_birth = str(self.host_date_of_birth)
 
         if self.geo_admin1 is not None and not isinstance(self.geo_admin1, str):
             self.geo_admin1 = str(self.geo_admin1)
@@ -918,7 +953,7 @@ class SpecimenInfo(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class BioinformaticsRunInfo(YAMLRoot):
     """
     Information about the pipeline run that generated some of the microhaplotype detected and reads_by_stage
@@ -951,7 +986,7 @@ class BioinformaticsRunInfo(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class PmoGenerationMethod(YAMLRoot):
     """
     Information about how a PMO was generated
@@ -980,7 +1015,7 @@ class PmoGenerationMethod(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class PmoHeader(YAMLRoot):
     """
     Information on the PMO file
@@ -1011,7 +1046,7 @@ class PmoHeader(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class StageReadCounts(YAMLRoot):
     """
     Information on the reads counts at several stages
@@ -1040,7 +1075,7 @@ class StageReadCounts(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class ReadCountsByStageForTarget(YAMLRoot):
     """
     Information on the reads counts at several stages of a pipeline for a target
@@ -1070,7 +1105,7 @@ class ReadCountsByStageForTarget(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class ReadCountsByStageForExperimentalSample(YAMLRoot):
     """
     Information on the reads counts at several stages of a pipeline for a experimental_sample
@@ -1104,7 +1139,7 @@ class ReadCountsByStageForExperimentalSample(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class ReadCountsByStage(YAMLRoot):
     """
     Information on the reads counts at several stages of a pipeline
@@ -1134,7 +1169,7 @@ class ReadCountsByStage(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class PortableMicrohaplotypeObject(YAMLRoot):
     """
     Information on final results from a targeted amplicon analysis
@@ -1539,8 +1574,8 @@ slots.specimenInfo__alternate_identifiers = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJ
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__alternate_identifiers, domain=None, range=Optional[Union[str, List[str]]],
                    pattern=re.compile(r'^[A-z-._0-9 ]+$'))
 
-slots.specimenInfo__specimen_sex = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimen_sex, name="specimenInfo__specimen_sex", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('specimen_sex'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__specimen_sex, domain=None, range=Optional[str],
+slots.specimenInfo__host_sex = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.host_sex, name="specimenInfo__host_sex", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('host_sex'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__host_sex, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[A-z-._0-9 ]+$'))
 
 slots.specimenInfo__parasite_density_info = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.parasite_density_info, name="specimenInfo__parasite_density_info", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('parasite_density_info'),
@@ -1550,8 +1585,8 @@ slots.specimenInfo__collection_date = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.co
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__collection_date, domain=None, range=str,
                    pattern=re.compile(r'\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA'))
 
-slots.specimenInfo__date_of_birth = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.date_of_birth, name="specimenInfo__date_of_birth", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('date_of_birth'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__date_of_birth, domain=None, range=Optional[str],
+slots.specimenInfo__host_date_of_birth = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.host_date_of_birth, name="specimenInfo__host_date_of_birth", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('host_date_of_birth'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__host_date_of_birth, domain=None, range=Optional[str],
                    pattern=re.compile(r'\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA'))
 
 slots.specimenInfo__collection_country = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.collection_country, name="specimenInfo__collection_country", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('collection_country'),

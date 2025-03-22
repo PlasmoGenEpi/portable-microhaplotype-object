@@ -214,10 +214,10 @@ message SpecimenInfo
   integer individualId = 0
   integer hostTaxonId = 0
  repeated  string alternateIdentifiers = 0
-  string specimenSex = 0
+  string hostSex = 0
  repeated  parasiteDensity parasiteDensityInfo = 0
   string collectionDate = 0
-  string dateOfBirth = 0
+  string hostDateOfBirth = 0
   string collectionCountry = 0
   string geoAdmin1 = 0
   string geoAdmin2 = 0

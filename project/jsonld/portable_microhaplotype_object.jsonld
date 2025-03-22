@@ -1696,11 +1696,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "specimenInfo__specimen_sex",
+      "name": "specimenInfo__host_sex",
       "description": "if specimen is from a person, the sex listed for that person",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/specimen_sex",
-      "alias": "specimen_sex",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/host_sex",
+      "alias": "host_sex",
       "owner": "SpecimenInfo",
       "domain_of": [
         "SpecimenInfo"
@@ -1727,7 +1727,21 @@
     },
     {
       "name": "specimenInfo__collection_date",
-      "description": "the date of the sample collection",
+      "description": "the date of the sample collection, can be YYYY, YYYY-MM, or YYYY-MM-DD",
+      "examples": [
+        {
+          "value": "1988",
+          "@type": "Example"
+        },
+        {
+          "value": "1988-06",
+          "@type": "Example"
+        },
+        {
+          "value": "1988-06-26",
+          "@type": "Example"
+        }
+      ],
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/collection_date",
       "alias": "collection_date",
@@ -1741,11 +1755,25 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "specimenInfo__date_of_birth",
-      "description": "if specimen is from a person, the date of birth of that person",
+      "name": "specimenInfo__host_date_of_birth",
+      "description": "if specimen is from a person, the date of birth of that person, can be YYYY, YYYY-MM, or YYYY-MM-DD",
+      "examples": [
+        {
+          "value": "1988",
+          "@type": "Example"
+        },
+        {
+          "value": "1988-06",
+          "@type": "Example"
+        },
+        {
+          "value": "1988-06-26",
+          "@type": "Example"
+        }
+      ],
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/date_of_birth",
-      "alias": "date_of_birth",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/host_date_of_birth",
+      "alias": "host_date_of_birth",
       "owner": "SpecimenInfo",
       "domain_of": [
         "SpecimenInfo"
@@ -3357,10 +3385,10 @@
         "specimenInfo__individual_id",
         "specimenInfo__host_taxon_id",
         "specimenInfo__alternate_identifiers",
-        "specimenInfo__specimen_sex",
+        "specimenInfo__host_sex",
         "specimenInfo__parasite_density_info",
         "specimenInfo__collection_date",
-        "specimenInfo__date_of_birth",
+        "specimenInfo__host_date_of_birth",
         "specimenInfo__collection_country",
         "specimenInfo__geo_admin1",
         "specimenInfo__geo_admin2",
@@ -3415,7 +3443,7 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "specimen_sex",
+          "name": "host_sex",
           "description": "if specimen is from a person, the sex listed for that person",
           "range": "string",
           "pattern": "^[A-z-._0-9 ]+$",
@@ -3431,15 +3459,43 @@
         },
         {
           "name": "collection_date",
-          "description": "the date of the sample collection",
+          "description": "the date of the sample collection, can be YYYY, YYYY-MM, or YYYY-MM-DD",
+          "examples": [
+            {
+              "value": "1988",
+              "@type": "Example"
+            },
+            {
+              "value": "1988-06",
+              "@type": "Example"
+            },
+            {
+              "value": "1988-06-26",
+              "@type": "Example"
+            }
+          ],
           "range": "string",
           "required": true,
           "pattern": "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA",
           "@type": "SlotDefinition"
         },
         {
-          "name": "date_of_birth",
-          "description": "if specimen is from a person, the date of birth of that person",
+          "name": "host_date_of_birth",
+          "description": "if specimen is from a person, the date of birth of that person, can be YYYY, YYYY-MM, or YYYY-MM-DD",
+          "examples": [
+            {
+              "value": "1988",
+              "@type": "Example"
+            },
+            {
+              "value": "1988-06",
+              "@type": "Example"
+            },
+            {
+              "value": "1988-06-26",
+              "@type": "Example"
+            }
+          ],
           "range": "string",
           "pattern": "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA",
           "@type": "SlotDefinition"
@@ -3889,9 +3945,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2025-03-16T16:45:00",
-  "source_file_size": 32852,
-  "generation_date": "2025-03-16T16:45:06",
+  "source_file_date": "2025-03-21T20:46:40",
+  "source_file_size": 33137,
+  "generation_date": "2025-03-21T20:48:20",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",

@@ -211,10 +211,10 @@ type SpecimenInfo
     individualId: Integer
     hostTaxonId: Integer
     alternateIdentifiers: [String]
-    specimenSex: String
+    hostSex: String
     parasiteDensityInfo: [ParasiteDensity]
     collectionDate: String!
-    dateOfBirth: String
+    hostDateOfBirth: String
     collectionCountry: String!
     geoAdmin1: String
     geoAdmin2: String

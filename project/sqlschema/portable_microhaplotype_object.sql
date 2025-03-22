@@ -119,9 +119,9 @@
 --     * Slot: samp_taxon_id Description: the NCBI taxonomy number of the organism of interest
 --     * Slot: individual_id Description: an identifier for the individual a specimen was collected from
 --     * Slot: host_taxon_id Description: optional the NCBI taxonomy number of the host of the organism
---     * Slot: specimen_sex Description: if specimen is from a person, the sex listed for that person
---     * Slot: collection_date Description: the date of the sample collection
---     * Slot: date_of_birth Description: if specimen is from a person, the date of birth of that person
+--     * Slot: host_sex Description: if specimen is from a person, the sex listed for that person
+--     * Slot: collection_date Description: the date of the sample collection, can be YYYY, YYYY-MM, or YYYY-MM-DD
+--     * Slot: host_date_of_birth Description: if specimen is from a person, the date of birth of that person, can be YYYY, YYYY-MM, or YYYY-MM-DD
 --     * Slot: collection_country Description: the name of country collected in, would be the same as admin level 0
 --     * Slot: geo_admin1 Description: geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)
 --     * Slot: geo_admin2 Description: geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)
@@ -401,9 +401,9 @@ CREATE TABLE "SpecimenInfo" (
 	samp_taxon_id INTEGER NOT NULL, 
 	individual_id INTEGER, 
 	host_taxon_id INTEGER, 
-	specimen_sex TEXT, 
+	host_sex TEXT, 
 	collection_date TEXT NOT NULL, 
-	date_of_birth TEXT, 
+	host_date_of_birth TEXT, 
 	collection_country TEXT NOT NULL, 
 	geo_admin1 TEXT, 
 	geo_admin2 TEXT, 
