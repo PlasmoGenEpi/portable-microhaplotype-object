@@ -104,7 +104,7 @@ update-template:
 
 # todo: consider pinning to template
 update-linkml:
-	poetry add -D linkml@latest
+	poetry add -D linkml@^1.9.0
 
 # EXPERIMENTAL
 create-data-harmonizer:
