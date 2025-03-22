@@ -659,7 +659,7 @@ classes:
         inlined_as_list: true
         description: >-
           a list of optional alternative names for the samples
-      specimen_sex:
+      host_sex:
         range: string
         pattern: "^[A-z-._0-9 ]+$"
         required: false
@@ -677,13 +677,21 @@ classes:
         pattern: "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA"
         required: true
         description: >-
-          the date of the sample collection
-      date_of_birth:
+          the date of the sample collection, can be YYYY, YYYY-MM, or YYYY-MM-DD
+        examples:
+          - value: "1988"
+          - value: "1988-06"
+          - value: "1988-06-26"
+      host_date_of_birth:
         range: string
         pattern: "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA"
         required: false
         description: >-
-          if specimen is from a person, the date of birth of that person
+          if specimen is from a person, the date of birth of that person, can be YYYY, YYYY-MM, or YYYY-MM-DD
+        examples:
+          - value: "1988"
+          - value: "1988-06"
+          - value: "1988-06-26"
       collection_country:
         range: string
         pattern: "^[A-z-._0-9 ]+$"
