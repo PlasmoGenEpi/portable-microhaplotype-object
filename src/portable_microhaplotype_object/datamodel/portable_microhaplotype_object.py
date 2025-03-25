@@ -1,5 +1,5 @@
 # Auto generated from portable_microhaplotype_object.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-03-21T20:48:21
+# Generation date: 2025-03-22T23:01:15
 # Schema: portable-microhaplotype-object
 #
 # id: https://plasmogenepi.github.io/portable-microhaplotype-object
@@ -1488,7 +1488,7 @@ slots.bioMethod__program_description = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.p
 
 slots.bioMethod__additional_argument = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.additional_argument, name="bioMethod__additional_argument", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('additional_argument'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.bioMethod__additional_argument, domain=None, range=Optional[Union[str, List[str]]],
-                   pattern=re.compile(r'^[A-z-._0-9\(\),\/\ ]+$'))
+                   pattern=re.compile(r'^[A-z-._0-9{}\(\),\/\ ]+$'))
 
 slots.experimentInfo__accession = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.accession, name="experimentInfo__accession", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('accession'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.experimentInfo__accession, domain=None, range=Optional[str],
@@ -1583,27 +1583,24 @@ slots.specimenInfo__parasite_density_info = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJ
 
 slots.specimenInfo__collection_date = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.collection_date, name="specimenInfo__collection_date", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('collection_date'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__collection_date, domain=None, range=str,
-                   pattern=re.compile(r'\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA'))
+                   pattern=re.compile(r'(?:\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)'))
 
 slots.specimenInfo__host_date_of_birth = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.host_date_of_birth, name="specimenInfo__host_date_of_birth", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('host_date_of_birth'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__host_date_of_birth, domain=None, range=Optional[str],
-                   pattern=re.compile(r'\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA'))
+                   pattern=re.compile(r'(?:\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)'))
 
 slots.specimenInfo__collection_country = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.collection_country, name="specimenInfo__collection_country", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('collection_country'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__collection_country, domain=None, range=str,
-                   pattern=re.compile(r'^[A-z-._0-9 ]+$'))
+                   pattern=re.compile(r'^[A-Za-z0-9 ,._:'–-]+$'))
 
 slots.specimenInfo__geo_admin1 = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.geo_admin1, name="specimenInfo__geo_admin1", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('geo_admin1'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__geo_admin1, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[A-z-._0-9 ]+$'))
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__geo_admin1, domain=None, range=Optional[str])
 
 slots.specimenInfo__geo_admin2 = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.geo_admin2, name="specimenInfo__geo_admin2", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('geo_admin2'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__geo_admin2, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[A-z-._0-9 ]+$'))
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__geo_admin2, domain=None, range=Optional[str])
 
 slots.specimenInfo__geo_admin3 = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.geo_admin3, name="specimenInfo__geo_admin3", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('geo_admin3'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__geo_admin3, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[A-z-._0-9 ]+$'))
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__geo_admin3, domain=None, range=Optional[str])
 
 slots.specimenInfo__lat_lon = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.lat_lon, name="specimenInfo__lat_lon", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('lat_lon'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__lat_lon, domain=None, range=Optional[str],

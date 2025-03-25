@@ -451,7 +451,7 @@ classes:
           a short description of what this method does
       additional_argument:
         range: string
-        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
+        pattern: "^[A-z-._0-9{}\\(\\),\\/\\\ ]+$"
         required: false
         multivalued: true
         inlined_as_list: true
@@ -619,6 +619,12 @@ classes:
           - value: '10e5'
 
   SpecimenInfo:
+#    the below is implement in future version 1.9.0, will allow for the automatic setting of allowing extra unexpected fields
+#    extra_slots:
+#      slot_expression:
+#        any_of:
+#          - range: string
+#          - range: integer
     description: >-
       Information on specimen info
     slots:
@@ -674,7 +680,7 @@ classes:
           one or more parasite densities in microliters for this specimen
       collection_date:
         range: string
-        pattern: "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA"
+        pattern: "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)"
         required: true
         description: >-
           the date of the sample collection, can be YYYY, YYYY-MM, or YYYY-MM-DD
@@ -684,7 +690,7 @@ classes:
           - value: "1988-06-26"
       host_date_of_birth:
         range: string
-        pattern: "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA"
+        pattern: "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)"
         required: false
         description: >-
           if specimen is from a person, the date of birth of that person, can be YYYY, YYYY-MM, or YYYY-MM-DD
@@ -694,7 +700,7 @@ classes:
           - value: "1988-06-26"
       collection_country:
         range: string
-        pattern: "^[A-z-._0-9 ]+$"
+        pattern: "^[A-Za-z0-9 ,._:'–-]+$"
         required: true
         description: >-
           the name of country collected in, would be the same as admin level 0
@@ -704,7 +710,8 @@ classes:
           - value: "Japan"
       geo_admin1:
         range: string
-        pattern: "^[A-z-._0-9 ]+$"
+#        pattern: "^.*$"
+#        pattern: "^[A-Za-z0-9 ,._:'–-]+$"
         required: false
         description: >-
           geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)
@@ -712,7 +719,8 @@ classes:
           - value: 'State/Province'
       geo_admin2:
         range: string
-        pattern: "^[A-z-._0-9 ]+$"
+#        pattern: "^.*$"
+#        pattern: "^[A-Za-z0-9 ,._:'–-]+$"
         required: false
         description: >-
           geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)
@@ -720,7 +728,8 @@ classes:
           - value: 'city'
       geo_admin3:
         range: string
-        pattern: "^[A-z-._0-9 ]+$"
+#        pattern: "^.*$"
+#        pattern: "^[A-Za-z0-9 ,._:'–-]+$"
         required: false
         description: >-
           geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)

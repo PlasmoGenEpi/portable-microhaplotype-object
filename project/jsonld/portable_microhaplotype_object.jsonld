@@ -1289,7 +1289,7 @@
       "range": "string",
       "multivalued": true,
       "inlined_as_list": true,
-      "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+      "pattern": "^[A-z-._0-9{}\\(\\),\\/\\ ]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -1751,7 +1751,7 @@
       ],
       "range": "string",
       "required": true,
-      "pattern": "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA",
+      "pattern": "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)",
       "@type": "SlotDefinition"
     },
     {
@@ -1779,7 +1779,7 @@
         "SpecimenInfo"
       ],
       "range": "string",
-      "pattern": "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA",
+      "pattern": "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)",
       "@type": "SlotDefinition"
     },
     {
@@ -1808,7 +1808,7 @@
       ],
       "range": "string",
       "required": true,
-      "pattern": "^[A-z-._0-9 ]+$",
+      "pattern": "^[A-Za-z0-9 ,._:'\u2013-]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -1828,7 +1828,6 @@
         "SpecimenInfo"
       ],
       "range": "string",
-      "pattern": "^[A-z-._0-9 ]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -1848,7 +1847,6 @@
         "SpecimenInfo"
       ],
       "range": "string",
-      "pattern": "^[A-z-._0-9 ]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -1868,7 +1866,6 @@
         "SpecimenInfo"
       ],
       "range": "string",
-      "pattern": "^[A-z-._0-9 ]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -3087,7 +3084,7 @@
           "range": "string",
           "multivalued": true,
           "inlined_as_list": true,
-          "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+          "pattern": "^[A-z-._0-9{}\\(\\),\\/\\ ]+$",
           "@type": "SlotDefinition"
         }
       ],
@@ -3476,7 +3473,7 @@
           ],
           "range": "string",
           "required": true,
-          "pattern": "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA",
+          "pattern": "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)",
           "@type": "SlotDefinition"
         },
         {
@@ -3497,7 +3494,7 @@
             }
           ],
           "range": "string",
-          "pattern": "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA",
+          "pattern": "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)",
           "@type": "SlotDefinition"
         },
         {
@@ -3519,7 +3516,7 @@
           ],
           "range": "string",
           "required": true,
-          "pattern": "^[A-z-._0-9 ]+$",
+          "pattern": "^[A-Za-z0-9 ,._:'\u2013-]+$",
           "@type": "SlotDefinition"
         },
         {
@@ -3532,7 +3529,6 @@
             }
           ],
           "range": "string",
-          "pattern": "^[A-z-._0-9 ]+$",
           "@type": "SlotDefinition"
         },
         {
@@ -3545,7 +3541,6 @@
             }
           ],
           "range": "string",
-          "pattern": "^[A-z-._0-9 ]+$",
           "@type": "SlotDefinition"
         },
         {
@@ -3558,7 +3553,6 @@
             }
           ],
           "range": "string",
-          "pattern": "^[A-z-._0-9 ]+$",
           "@type": "SlotDefinition"
         },
         {
@@ -3945,9 +3939,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2025-03-21T20:46:40",
-  "source_file_size": 33137,
-  "generation_date": "2025-03-21T20:48:20",
+  "source_file_date": "2025-03-21T22:32:45",
+  "source_file_size": 33511,
+  "generation_date": "2025-03-22T23:01:14",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",
