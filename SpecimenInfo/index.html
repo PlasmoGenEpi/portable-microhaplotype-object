@@ -551,7 +551,7 @@ attributes:
     - SpecimenInfo
     range: string
     required: true
-    pattern: \d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA
+    pattern: (?:\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)
   host_date_of_birth:
     name: host_date_of_birth
     description: if specimen is from a person, the date of birth of that person, can
@@ -566,7 +566,7 @@ attributes:
     - SpecimenInfo
     range: string
     required: false
-    pattern: \d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA
+    pattern: (?:\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)
   collection_country:
     name: collection_country
     description: the name of country collected in, would be the same as admin level
@@ -581,7 +581,7 @@ attributes:
     - SpecimenInfo
     range: string
     required: true
-    pattern: ^[A-z-._0-9 ]+$
+    pattern: ^[A-Za-z0-9 ,._:'–-]+$
   geo_admin1:
     name: geo_admin1
     description: geographical admin level 1, the secondary large demarcation of a
@@ -594,7 +594,6 @@ attributes:
     - SpecimenInfo
     range: string
     required: false
-    pattern: ^[A-z-._0-9 ]+$
   geo_admin2:
     name: geo_admin2
     description: geographical admin level 2, the third large demarcation of a nation
@@ -607,7 +606,6 @@ attributes:
     - SpecimenInfo
     range: string
     required: false
-    pattern: ^[A-z-._0-9 ]+$
   geo_admin3:
     name: geo_admin3
     description: geographical admin level 3, the third large demarcation of a nation
@@ -620,7 +618,6 @@ attributes:
     - SpecimenInfo
     range: string
     required: false
-    pattern: ^[A-z-._0-9 ]+$
   lat_lon:
     name: lat_lon
     description: the latitude and longitude of the collection site of the specimen
@@ -796,7 +793,7 @@ attributes:
     - SpecimenInfo
     range: string
     required: true
-    pattern: \d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA
+    pattern: (?:\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)
   host_date_of_birth:
     name: host_date_of_birth
     description: if specimen is from a person, the date of birth of that person, can
@@ -813,7 +810,7 @@ attributes:
     - SpecimenInfo
     range: string
     required: false
-    pattern: \d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?|NA
+    pattern: (?:\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)
   collection_country:
     name: collection_country
     description: the name of country collected in, would be the same as admin level
@@ -830,7 +827,7 @@ attributes:
     - SpecimenInfo
     range: string
     required: true
-    pattern: ^[A-z-._0-9 ]+$
+    pattern: ^[A-Za-z0-9 ,._:'–-]+$
   geo_admin1:
     name: geo_admin1
     description: geographical admin level 1, the secondary large demarcation of a
@@ -845,7 +842,6 @@ attributes:
     - SpecimenInfo
     range: string
     required: false
-    pattern: ^[A-z-._0-9 ]+$
   geo_admin2:
     name: geo_admin2
     description: geographical admin level 2, the third large demarcation of a nation
@@ -860,7 +856,6 @@ attributes:
     - SpecimenInfo
     range: string
     required: false
-    pattern: ^[A-z-._0-9 ]+$
   geo_admin3:
     name: geo_admin3
     description: geographical admin level 3, the third large demarcation of a nation
@@ -875,7 +870,6 @@ attributes:
     - SpecimenInfo
     range: string
     required: false
-    pattern: ^[A-z-._0-9 ]+$
   lat_lon:
     name: lat_lon
     description: the latitude and longitude of the collection site of the specimen
