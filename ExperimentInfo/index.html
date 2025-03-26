@@ -212,15 +212,27 @@
 
       ExperimentInfo : experiment_sample_name
 
+      ExperimentInfo : extraction_plate_info
+
+
+
+
+    ExperimentInfo --&gt; "0..1" PlateInfo : extraction_plate_info
+    click PlateInfo href "../PlateInfo"
+
+
       ExperimentInfo : panel_id
 
-      ExperimentInfo : plate_col
-
-      ExperimentInfo : plate_name
-
-      ExperimentInfo : plate_row
-
       ExperimentInfo : sequencing_info_id
+
+      ExperimentInfo : sequencing_prep_plate_info
+
+
+
+
+    ExperimentInfo --&gt; "0..1" PlateInfo : sequencing_prep_plate_info
+    click PlateInfo href "../PlateInfo"
+
 
       ExperimentInfo : specimen_id
 
@@ -245,24 +257,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../plate_name/">plate_name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>a name of plate the specimen was in</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../plate_row/">plate_row</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the row the specimen was in</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../plate_col/">plate_col</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the column the specimen was in</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../specimen_id/">specimen_id</a></td>
 <td>1 <br/> <a href="../Integer/">Integer</a></td>
 <td>the index into the specimen_info list</td>
@@ -284,6 +278,18 @@
 <td><a href="../experiment_sample_name/">experiment_sample_name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td>a unique identifier for this sequence/amplification run on a specimen_name</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../extraction_plate_info/">extraction_plate_info</a></td>
+<td>0..1 <br/> <a href="../PlateInfo/">PlateInfo</a></td>
+<td>plate location of where experiment was extracted</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sequencing_prep_plate_info/">sequencing_prep_plate_info</a></td>
+<td>0..1 <br/> <a href="../PlateInfo/">PlateInfo</a></td>
+<td>plate location of where experiment was prepared for sequencing</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -340,24 +346,12 @@ description: Information about a specific amplification and sequencing of a spec
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
 - sequencing_info_id
-- plate_name
-- plate_row
-- plate_col
 - specimen_id
 - panel_id
 slot_usage:
   specimen_id:
     name: specimen_id
     identifier: false
-  plate_name:
-    name: plate_name
-    required: false
-  plate_row:
-    name: plate_row
-    required: false
-  plate_col:
-    name: plate_col
-    required: false
 attributes:
   accession:
     name: accession
@@ -380,6 +374,24 @@ attributes:
     range: string
     required: true
     pattern: ^[A-z-._0-9 ]+$
+  extraction_plate_info:
+    name: extraction_plate_info
+    description: plate location of where experiment was extracted
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - ExperimentInfo
+    range: PlateInfo
+    required: false
+  sequencing_prep_plate_info:
+    name: sequencing_prep_plate_info
+    description: 'plate location of where experiment was prepared for sequencing '
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - ExperimentInfo
+    range: PlateInfo
+    required: false
 
 </code></pre>
 </details>
@@ -392,15 +404,6 @@ slot_usage:
   specimen_id:
     name: specimen_id
     identifier: false
-  plate_name:
-    name: plate_name
-    required: false
-  plate_row:
-    name: plate_row
-    required: false
-  plate_col:
-    name: plate_col
-    required: false
 attributes:
   accession:
     name: accession
@@ -427,6 +430,28 @@ attributes:
     range: string
     required: true
     pattern: ^[A-z-._0-9 ]+$
+  extraction_plate_info:
+    name: extraction_plate_info
+    description: plate location of where experiment was extracted
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: extraction_plate_info
+    owner: ExperimentInfo
+    domain_of:
+    - ExperimentInfo
+    range: PlateInfo
+    required: false
+  sequencing_prep_plate_info:
+    name: sequencing_prep_plate_info
+    description: 'plate location of where experiment was prepared for sequencing '
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: sequencing_prep_plate_info
+    owner: ExperimentInfo
+    domain_of:
+    - ExperimentInfo
+    range: PlateInfo
+    required: false
   sequencing_info_id:
     name: sequencing_info_id
     description: the index into the sequencing_info list
@@ -438,45 +463,6 @@ attributes:
     - ExperimentInfo
     range: integer
     required: true
-    pattern: ^[0-9]+$
-  plate_name:
-    name: plate_name
-    description: a name of plate the specimen was in
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: plate_name
-    owner: ExperimentInfo
-    domain_of:
-    - ExperimentInfo
-    - SpecimenInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9 ]+$
-  plate_row:
-    name: plate_row
-    description: the row the specimen was in
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: plate_row
-    owner: ExperimentInfo
-    domain_of:
-    - ExperimentInfo
-    - SpecimenInfo
-    range: string
-    required: false
-    pattern: ^[A-z]$
-  plate_col:
-    name: plate_col
-    description: the column the specimen was in
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: plate_col
-    owner: ExperimentInfo
-    domain_of:
-    - ExperimentInfo
-    - SpecimenInfo
-    range: integer
-    required: false
     pattern: ^[0-9]+$
   specimen_id:
     name: specimen_id

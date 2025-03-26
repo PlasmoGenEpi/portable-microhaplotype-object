@@ -330,7 +330,7 @@
 
 
 <h1 id="slot-host_taxon_id">Slot: host_taxon_id</h1>
-<p><em>optional the NCBI taxonomy number of the host of the organism</em></p>
+<p><em>the NCBI taxonomy number of the host that the specimen was collected from</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/host_taxon_id">portable_microhaplotype_object:host_taxon_id</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -355,6 +355,9 @@
 <ul>
 <li>
 <p>Range: <a href="../Integer/">Integer</a></p>
+</li>
+<li>
+<p>Required: True</p>
 </li>
 <li>
 <p>Regex pattern: <code>^[0-9]+$</code></p>
@@ -388,7 +391,8 @@
 <details>
 
 <pre><code class="language-yaml">name: host_taxon_id
-description: optional the NCBI taxonomy number of the host of the organism
+description: the NCBI taxonomy number of the host that the specimen was collected
+  from
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: host_taxon_id
@@ -396,7 +400,7 @@ owner: SpecimenInfo
 domain_of:
 - SpecimenInfo
 range: integer
-required: false
+required: true
 pattern: ^[0-9]+$
 
 </code></pre>

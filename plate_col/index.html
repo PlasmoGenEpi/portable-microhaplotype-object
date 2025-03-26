@@ -345,14 +345,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../SpecimenInfo/">SpecimenInfo</a></td>
-<td>Information on specimen info</td>
+<td><a href="../PlateInfo/">PlateInfo</a></td>
+<td>Information about a plate location in a standard 96 well plate</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../ExperimentInfo/">ExperimentInfo</a></td>
-<td>Information about a specific amplification and sequencing of a specimen</td>
-<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -397,9 +392,9 @@ description: the column the specimen was in
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: plate_col
+owner: PlateInfo
 domain_of:
-- ExperimentInfo
-- SpecimenInfo
+- PlateInfo
 range: integer
 pattern: ^[0-9]+$
 

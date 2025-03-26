@@ -214,7 +214,15 @@
 
       SpecimenInfo : collection_date
 
-      SpecimenInfo : collector
+      SpecimenInfo : collector_chief_scientist
+
+      SpecimenInfo : drug_usage
+
+      SpecimenInfo : env_broad_scale
+
+      SpecimenInfo : env_local_scale
+
+      SpecimenInfo : env_medium
 
       SpecimenInfo : geo_admin1
 
@@ -222,13 +230,13 @@
 
       SpecimenInfo : geo_admin3
 
-      SpecimenInfo : host_date_of_birth
+      SpecimenInfo : host_age
 
       SpecimenInfo : host_sex
 
-      SpecimenInfo : host_taxon_id
+      SpecimenInfo : host_subject_id
 
-      SpecimenInfo : individual_id
+      SpecimenInfo : host_taxon_id
 
       SpecimenInfo : lat_lon
 
@@ -241,23 +249,30 @@
     click ParasiteDensity href "../ParasiteDensity"
 
 
-      SpecimenInfo : plate_col
+      SpecimenInfo : plate_info
 
-      SpecimenInfo : plate_name
 
-      SpecimenInfo : plate_row
+
+
+    SpecimenInfo --&gt; "0..1" PlateInfo : plate_info
+    click PlateInfo href "../PlateInfo"
+
 
       SpecimenInfo : project_name
 
-      SpecimenInfo : samp_collect_device
+      SpecimenInfo : specimen_collect_device
 
-      SpecimenInfo : samp_store_loc
-
-      SpecimenInfo : samp_taxon_id
-
-      SpecimenInfo : sample_comments
+      SpecimenInfo : specimen_comments
 
       SpecimenInfo : specimen_name
+
+      SpecimenInfo : specimen_store_loc
+
+      SpecimenInfo : specimen_taxon_id
+
+      SpecimenInfo : specimen_type
+
+      SpecimenInfo : travel_out_six_month
 
 
 </div>
@@ -274,51 +289,33 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../plate_name/">plate_name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>a name of plate the specimen was in</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../plate_row/">plate_row</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the row the specimen was in</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../plate_col/">plate_col</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the column the specimen was in</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../specimen_name/">specimen_name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>an identifier for the specimen</td>
+<td>an identifier for the specimen, should be unique within this sample set</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../samp_taxon_id/">samp_taxon_id</a></td>
-<td>1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the NCBI taxonomy number of the organism of interest</td>
+<td><a href="../specimen_taxon_id/">specimen_taxon_id</a></td>
+<td>1..* <br/> <a href="../Integer/">Integer</a></td>
+<td>the NCBI taxonomy number of the organism in specimen, can list multiple if a ...</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../individual_id/">individual_id</a></td>
+<td><a href="../host_subject_id/">host_subject_id</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>an identifier for the individual a specimen was collected from</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../host_taxon_id/">host_taxon_id</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>optional the NCBI taxonomy number of the host of the organism</td>
+<td>1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the NCBI taxonomy number of the host that the specimen was collected from</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../alternate_identifiers/">alternate_identifiers</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
-<td>a list of optional alternative names for the samples</td>
+<td>a list of optional alternative names for the specimens</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -336,13 +333,13 @@
 <tr>
 <td><a href="../collection_date/">collection_date</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>the date of the sample collection, can be YYYY, YYYY-MM, or YYYY-MM-DD</td>
+<td>the date of the specimen collection, can be YYYY, YYYY-MM, or YYYY-MM-DD</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../host_date_of_birth/">host_date_of_birth</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>if specimen is from a person, the date of birth of that person, can be YYYY, ...</td>
+<td><a href="../host_age/">host_age</a></td>
+<td>0..1 <br/> <a href="../Double/">Double</a></td>
+<td>if specimen is from a person, the age in years of the person, can be float va...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -376,33 +373,75 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../collector/">collector</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>the name of the primary person managing the specimen</td>
+<td><a href="../collector_chief_scientist/">collector_chief_scientist</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>can be collection of names separated by a semicolon if multiple people involv...</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../samp_store_loc/">samp_store_loc</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>the sample store site, address or facility name</td>
+<td><a href="../specimen_store_loc/">specimen_store_loc</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the specimen store site, address or facility name</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../samp_collect_device/">samp_collect_device</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>the way the sample was collected, e</td>
+<td><a href="../specimen_collect_device/">specimen_collect_device</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the way the specimen was collected, e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../specimen_type/">specimen_type</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>what type of specimen this is, e</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../project_name/">project_name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>a name of the project under which the sample is organized</td>
+<td>a name of the project under which the specimen is organized</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../sample_comments/">sample_comments</a></td>
+<td><a href="../specimen_comments/">specimen_comments</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>any additional comments about the specimen</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../travel_out_six_month/">travel_out_six_month</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>Specification of the countries travelled in the last six months; can include ...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../plate_info/">plate_info</a></td>
+<td>0..1 <br/> <a href="../PlateInfo/">PlateInfo</a></td>
+<td>plate location of where specimen is stored if stored in a plate</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../env_medium/">env_medium</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>any additional comments about the sample</td>
+<td>the environment medium from which the specimen was collected from</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../env_local_scale/">env_local_scale</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the local environment from which the specimen was collected, e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../env_broad_scale/">env_broad_scale</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the broad environment from which the specimen was collected, e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../drug_usage/">drug_usage</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>Any drug used by subject and the frequency of usage; can include multiple dru...</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -457,14 +496,11 @@
 <pre><code class="language-yaml">name: SpecimenInfo
 description: Information on specimen info
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-slots:
-- plate_name
-- plate_row
-- plate_col
 attributes:
   specimen_name:
     name: specimen_name
-    description: an identifier for the specimen
+    description: an identifier for the specimen, should be unique within this sample
+      set
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     identifier: true
@@ -473,18 +509,22 @@ attributes:
     range: string
     required: true
     pattern: ^[A-z-._0-9 ]+$
-  samp_taxon_id:
-    name: samp_taxon_id
-    description: the NCBI taxonomy number of the organism of interest
+  specimen_taxon_id:
+    name: specimen_taxon_id
+    description: the NCBI taxonomy number of the organism in specimen, can list multiple
+      if a mixed sample
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - SpecimenInfo
     range: integer
     required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
     pattern: ^[0-9]+$
-  individual_id:
-    name: individual_id
+  host_subject_id:
+    name: host_subject_id
     description: an identifier for the individual a specimen was collected from
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
@@ -495,17 +535,18 @@ attributes:
     pattern: ^[0-9]+$
   host_taxon_id:
     name: host_taxon_id
-    description: optional the NCBI taxonomy number of the host of the organism
+    description: the NCBI taxonomy number of the host that the specimen was collected
+      from
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - SpecimenInfo
     range: integer
-    required: false
+    required: true
     pattern: ^[0-9]+$
   alternate_identifiers:
     name: alternate_identifiers
-    description: a list of optional alternative names for the samples
+    description: a list of optional alternative names for the specimens
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -540,7 +581,7 @@ attributes:
     inlined_as_list: true
   collection_date:
     name: collection_date
-    description: the date of the sample collection, can be YYYY, YYYY-MM, or YYYY-MM-DD
+    description: the date of the specimen collection, can be YYYY, YYYY-MM, or YYYY-MM-DD
     examples:
     - value: '1988'
     - value: 1988-06
@@ -552,21 +593,21 @@ attributes:
     range: string
     required: true
     pattern: (?:\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)
-  host_date_of_birth:
-    name: host_date_of_birth
-    description: if specimen is from a person, the date of birth of that person, can
-      be YYYY, YYYY-MM, or YYYY-MM-DD
+  host_age:
+    name: host_age
+    description: if specimen is from a person, the age in years of the person, can
+      be float value so for 3 month old put 0.25
     examples:
-    - value: '1988'
-    - value: 1988-06
-    - value: '1988-06-26'
+    - value: '0.1'
+    - value: '1'
+    - value: '7'
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - SpecimenInfo
-    range: string
+    range: double
     required: false
-    pattern: (?:\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)
+    pattern: ^\d*\.?\d+$
   collection_country:
     name: collection_country
     description: the name of country collected in, would be the same as admin level
@@ -628,50 +669,20 @@ attributes:
     range: string
     required: false
     pattern: ^[-+]?\d{1,2}(?:\.\d+)?,[-+]?\d{1,3}(?:\.\d+)?$
-  collector:
-    name: collector
-    description: the name of the primary person managing the specimen
+  collector_chief_scientist:
+    name: collector_chief_scientist
+    description: can be collection of names separated by a semicolon if multiple people
+      involved or can just be the name of the primary person managing the specimen
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - SpecimenInfo
     range: string
-    required: true
-    pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  samp_store_loc:
-    name: samp_store_loc
-    description: the sample store site, address or facility name
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  samp_collect_device:
-    name: samp_collect_device
-    description: the way the sample was collected, e.g. whole blood, dried blood spot,
-      etc
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  project_name:
-    name: project_name
-    description: a name of the project under which the sample is organized
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: true
-    pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  sample_comments:
-    name: sample_comments
-    description: any additional comments about the sample
+    required: false
+    pattern: ^[A-z-._0-9;|\(\),\/\ ]+$
+  specimen_store_loc:
+    name: specimen_store_loc
+    description: the specimen store site, address or facility name
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -679,6 +690,134 @@ attributes:
     range: string
     required: false
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
+  specimen_collect_device:
+    name: specimen_collect_device
+    description: the way the specimen was collected, e.g. whole blood, dried blood
+      spot
+    examples:
+    - value: whole blood
+    - value: dried blood spot
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
+  specimen_type:
+    name: specimen_type
+    description: what type of specimen this is, e.g. negative_control, positive_control,
+      field_sample
+    examples:
+    - value: negative_control
+    - value: positive_control
+    - value: field_sample
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
+  project_name:
+    name: project_name
+    description: a name of the project under which the specimen is organized
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
+  specimen_comments:
+    name: specimen_comments
+    description: any additional comments about the specimen
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    multivalued: true
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
+  travel_out_six_month:
+    name: travel_out_six_month
+    description: Specification of the countries travelled in the last six months;
+      can include multiple travels
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    multivalued: true
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
+  plate_info:
+    name: plate_info
+    description: 'plate location of where specimen is stored if stored in a plate '
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: PlateInfo
+    required: false
+  env_medium:
+    name: env_medium
+    description: the environment medium from which the specimen was collected from
+    examples:
+    - value: blood
+    - value: midgut
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9;|\(\),\/\ ]+$
+  env_local_scale:
+    name: env_local_scale
+    description: the local environment from which the specimen was collected, e.g.
+      jungle, urban, rural
+    examples:
+    - value: jungle
+    - value: urban
+    - value: rural
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9;|\(\),\/\ ]+$
+  env_broad_scale:
+    name: env_broad_scale
+    description: the broad environment from which the specimen was collected, e.g.
+      highlands, lowlands, mountainous region
+    examples:
+    - value: highlands
+    - value: lowlands
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9;|\(\),\/\ ]+$
+  drug_usage:
+    name: drug_usage
+    description: Any drug used by subject and the frequency of usage; can include
+      multiple drugs used
+    examples:
+    - value: Coartem;2/day
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    string_serialization: '{text};{integer}/[year|month|week|day|hour]'
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    multivalued: true
+    pattern: ^[A-z-._0-9;|\(\),\/\ ]+$
 
 </code></pre>
 </details>
@@ -690,7 +829,8 @@ from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
   specimen_name:
     name: specimen_name
-    description: an identifier for the specimen
+    description: an identifier for the specimen, should be unique within this sample
+      set
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     identifier: true
@@ -701,24 +841,28 @@ attributes:
     range: string
     required: true
     pattern: ^[A-z-._0-9 ]+$
-  samp_taxon_id:
-    name: samp_taxon_id
-    description: the NCBI taxonomy number of the organism of interest
+  specimen_taxon_id:
+    name: specimen_taxon_id
+    description: the NCBI taxonomy number of the organism in specimen, can list multiple
+      if a mixed sample
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: samp_taxon_id
+    alias: specimen_taxon_id
     owner: SpecimenInfo
     domain_of:
     - SpecimenInfo
     range: integer
     required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
     pattern: ^[0-9]+$
-  individual_id:
-    name: individual_id
+  host_subject_id:
+    name: host_subject_id
     description: an identifier for the individual a specimen was collected from
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: individual_id
+    alias: host_subject_id
     owner: SpecimenInfo
     domain_of:
     - SpecimenInfo
@@ -727,7 +871,8 @@ attributes:
     pattern: ^[0-9]+$
   host_taxon_id:
     name: host_taxon_id
-    description: optional the NCBI taxonomy number of the host of the organism
+    description: the NCBI taxonomy number of the host that the specimen was collected
+      from
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: host_taxon_id
@@ -735,11 +880,11 @@ attributes:
     domain_of:
     - SpecimenInfo
     range: integer
-    required: false
+    required: true
     pattern: ^[0-9]+$
   alternate_identifiers:
     name: alternate_identifiers
-    description: a list of optional alternative names for the samples
+    description: a list of optional alternative names for the specimens
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: alternate_identifiers
@@ -780,7 +925,7 @@ attributes:
     inlined_as_list: true
   collection_date:
     name: collection_date
-    description: the date of the sample collection, can be YYYY, YYYY-MM, or YYYY-MM-DD
+    description: the date of the specimen collection, can be YYYY, YYYY-MM, or YYYY-MM-DD
     examples:
     - value: '1988'
     - value: 1988-06
@@ -794,23 +939,23 @@ attributes:
     range: string
     required: true
     pattern: (?:\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)
-  host_date_of_birth:
-    name: host_date_of_birth
-    description: if specimen is from a person, the date of birth of that person, can
-      be YYYY, YYYY-MM, or YYYY-MM-DD
+  host_age:
+    name: host_age
+    description: if specimen is from a person, the age in years of the person, can
+      be float value so for 3 month old put 0.25
     examples:
-    - value: '1988'
-    - value: 1988-06
-    - value: '1988-06-26'
+    - value: '0.1'
+    - value: '1'
+    - value: '7'
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: host_date_of_birth
+    alias: host_age
     owner: SpecimenInfo
     domain_of:
     - SpecimenInfo
-    range: string
+    range: double
     required: false
-    pattern: (?:\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)
+    pattern: ^\d*\.?\d+$
   collection_country:
     name: collection_country
     description: the name of country collected in, would be the same as admin level
@@ -882,46 +1027,67 @@ attributes:
     range: string
     required: false
     pattern: ^[-+]?\d{1,2}(?:\.\d+)?,[-+]?\d{1,3}(?:\.\d+)?$
-  collector:
-    name: collector
-    description: the name of the primary person managing the specimen
+  collector_chief_scientist:
+    name: collector_chief_scientist
+    description: can be collection of names separated by a semicolon if multiple people
+      involved or can just be the name of the primary person managing the specimen
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: collector
+    alias: collector_chief_scientist
     owner: SpecimenInfo
     domain_of:
     - SpecimenInfo
     range: string
-    required: true
+    required: false
+    pattern: ^[A-z-._0-9;|\(\),\/\ ]+$
+  specimen_store_loc:
+    name: specimen_store_loc
+    description: the specimen store site, address or facility name
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: specimen_store_loc
+    owner: SpecimenInfo
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  samp_store_loc:
-    name: samp_store_loc
-    description: the sample store site, address or facility name
+  specimen_collect_device:
+    name: specimen_collect_device
+    description: the way the specimen was collected, e.g. whole blood, dried blood
+      spot
+    examples:
+    - value: whole blood
+    - value: dried blood spot
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: samp_store_loc
+    alias: specimen_collect_device
     owner: SpecimenInfo
     domain_of:
     - SpecimenInfo
     range: string
-    required: true
+    required: false
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  samp_collect_device:
-    name: samp_collect_device
-    description: the way the sample was collected, e.g. whole blood, dried blood spot,
-      etc
+  specimen_type:
+    name: specimen_type
+    description: what type of specimen this is, e.g. negative_control, positive_control,
+      field_sample
+    examples:
+    - value: negative_control
+    - value: positive_control
+    - value: field_sample
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: samp_collect_device
+    alias: specimen_type
     owner: SpecimenInfo
     domain_of:
     - SpecimenInfo
     range: string
-    required: true
+    required: false
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
   project_name:
     name: project_name
-    description: a name of the project under which the sample is organized
+    description: a name of the project under which the specimen is organized
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: project_name
@@ -931,54 +1097,109 @@ attributes:
     range: string
     required: true
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  sample_comments:
-    name: sample_comments
-    description: any additional comments about the sample
+  specimen_comments:
+    name: specimen_comments
+    description: any additional comments about the specimen
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: sample_comments
+    alias: specimen_comments
     owner: SpecimenInfo
     domain_of:
     - SpecimenInfo
     range: string
     required: false
+    multivalued: true
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  plate_name:
-    name: plate_name
-    description: a name of plate the specimen was in
+  travel_out_six_month:
+    name: travel_out_six_month
+    description: Specification of the countries travelled in the last six months;
+      can include multiple travels
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: plate_name
+    alias: travel_out_six_month
     owner: SpecimenInfo
     domain_of:
-    - ExperimentInfo
     - SpecimenInfo
     range: string
-    pattern: ^[A-z-._0-9 ]+$
-  plate_row:
-    name: plate_row
-    description: the row the specimen was in
+    required: false
+    multivalued: true
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
+  plate_info:
+    name: plate_info
+    description: 'plate location of where specimen is stored if stored in a plate '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: plate_row
+    alias: plate_info
     owner: SpecimenInfo
     domain_of:
-    - ExperimentInfo
+    - SpecimenInfo
+    range: PlateInfo
+    required: false
+  env_medium:
+    name: env_medium
+    description: the environment medium from which the specimen was collected from
+    examples:
+    - value: blood
+    - value: midgut
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: env_medium
+    owner: SpecimenInfo
+    domain_of:
     - SpecimenInfo
     range: string
-    pattern: ^[A-z]$
-  plate_col:
-    name: plate_col
-    description: the column the specimen was in
+    required: false
+    pattern: ^[A-z-._0-9;|\(\),\/\ ]+$
+  env_local_scale:
+    name: env_local_scale
+    description: the local environment from which the specimen was collected, e.g.
+      jungle, urban, rural
+    examples:
+    - value: jungle
+    - value: urban
+    - value: rural
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: plate_col
+    alias: env_local_scale
     owner: SpecimenInfo
     domain_of:
-    - ExperimentInfo
     - SpecimenInfo
-    range: integer
-    pattern: ^[0-9]+$
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9;|\(\),\/\ ]+$
+  env_broad_scale:
+    name: env_broad_scale
+    description: the broad environment from which the specimen was collected, e.g.
+      highlands, lowlands, mountainous region
+    examples:
+    - value: highlands
+    - value: lowlands
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: env_broad_scale
+    owner: SpecimenInfo
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9;|\(\),\/\ ]+$
+  drug_usage:
+    name: drug_usage
+    description: Any drug used by subject and the frequency of usage; can include
+      multiple drugs used
+    examples:
+    - value: Coartem;2/day
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    string_serialization: '{text};{integer}/[year|month|week|day|hour]'
+    alias: drug_usage
+    owner: SpecimenInfo
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    multivalued: true
+    pattern: ^[A-z-._0-9;|\(\),\/\ ]+$
 
 </code></pre>
 </details>

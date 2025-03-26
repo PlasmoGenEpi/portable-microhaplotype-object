@@ -228,6 +228,15 @@
     click GenomicLocation href "../GenomicLocation"
 
 
+      TargetInfo : markers_of_interest
+
+
+
+
+    TargetInfo --&gt; "*" MarkerOfInterest : markers_of_interest
+    click MarkerOfInterest href "../MarkerOfInterest"
+
+
       TargetInfo : reverse_primers
 
 
@@ -283,6 +292,12 @@
 <td><a href="../reverse_primers/">reverse_primers</a></td>
 <td>1..* <br/> <a href="../PrimerInfo/">PrimerInfo</a></td>
 <td>A list of reverse primers associated with this target</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../markers_of_interest/">markers_of_interest</a></td>
+<td>* <br/> <a href="../MarkerOfInterest/">MarkerOfInterest</a></td>
+<td>a list of covered markers of interest</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -397,6 +412,17 @@ attributes:
     required: true
     multivalued: true
     inlined: true
+  markers_of_interest:
+    name: markers_of_interest
+    description: a list of covered markers of interest
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - TargetInfo
+    range: MarkerOfInterest
+    required: false
+    multivalued: true
+    inlined_as_list: false
   target_attributes:
     name: target_attributes
     description: a list of classification type for the primer target
@@ -484,6 +510,19 @@ attributes:
     required: true
     multivalued: true
     inlined: true
+  markers_of_interest:
+    name: markers_of_interest
+    description: a list of covered markers of interest
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: markers_of_interest
+    owner: TargetInfo
+    domain_of:
+    - TargetInfo
+    range: MarkerOfInterest
+    required: false
+    multivalued: true
+    inlined_as_list: false
   target_attributes:
     name: target_attributes
     description: a list of classification type for the primer target

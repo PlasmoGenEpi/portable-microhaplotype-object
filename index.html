@@ -455,6 +455,10 @@
 <td>method and value of determined parasite density</td>
 </tr>
 <tr>
+<td><a href="PlateInfo/">PlateInfo</a></td>
+<td>Information about a plate location in a standard 96 well plate</td>
+</tr>
+<tr>
 <td><a href="PmoGenerationMethod/">PmoGenerationMethod</a></td>
 <td>Information about how a PMO was generated</td>
 </tr>
@@ -543,7 +547,7 @@
 </tr>
 <tr>
 <td><a href="alternate_identifiers/">alternate_identifiers</a></td>
-<td>a list of optional alternative names for the samples</td>
+<td>a list of optional alternative names for the specimens</td>
 </tr>
 <tr>
 <td><a href="associations/">associations</a></td>
@@ -587,11 +591,11 @@
 </tr>
 <tr>
 <td><a href="collection_date/">collection_date</a></td>
-<td>the date of the sample collection, can be YYYY, YYYY-MM, or YYYY-MM-DD</td>
+<td>the date of the specimen collection, can be YYYY, YYYY-MM, or YYYY-MM-DD</td>
 </tr>
 <tr>
-<td><a href="collector/">collector</a></td>
-<td>the name of the primary person managing the specimen</td>
+<td><a href="collector_chief_scientist/">collector_chief_scientist</a></td>
+<td>can be collection of names separated by a semicolon if multiple people involv...</td>
 </tr>
 <tr>
 <td><a href="creation_date/">creation_date</a></td>
@@ -610,8 +614,24 @@
 <td>the density in microliters</td>
 </tr>
 <tr>
+<td><a href="drug_usage/">drug_usage</a></td>
+<td>Any drug used by subject and the frequency of usage; can include multiple dru...</td>
+</tr>
+<tr>
 <td><a href="end/">end</a></td>
 <td>the end of the location, 0-based positioning</td>
+</tr>
+<tr>
+<td><a href="env_broad_scale/">env_broad_scale</a></td>
+<td>the broad environment from which the specimen was collected, e</td>
+</tr>
+<tr>
+<td><a href="env_local_scale/">env_local_scale</a></td>
+<td>the local environment from which the specimen was collected, e</td>
+</tr>
+<tr>
+<td><a href="env_medium/">env_medium</a></td>
+<td>the environment medium from which the specimen was collected from</td>
 </tr>
 <tr>
 <td><a href="experiment_info/">experiment_info</a></td>
@@ -628,6 +648,10 @@
 <tr>
 <td><a href="experiment_samples/">experiment_samples</a></td>
 <td>a list of the microhaplotypes detected for a sample by targets</td>
+</tr>
+<tr>
+<td><a href="extraction_plate_info/">extraction_plate_info</a></td>
+<td>plate location of where experiment was extracted</td>
 </tr>
 <tr>
 <td><a href="forward_primers/">forward_primers</a></td>
@@ -670,20 +694,20 @@
 <td>a list of the microhaplotypes detected for this target</td>
 </tr>
 <tr>
-<td><a href="host_date_of_birth/">host_date_of_birth</a></td>
-<td>if specimen is from a person, the date of birth of that person, can be YYYY, ...</td>
+<td><a href="host_age/">host_age</a></td>
+<td>if specimen is from a person, the age in years of the person, can be float va...</td>
 </tr>
 <tr>
 <td><a href="host_sex/">host_sex</a></td>
 <td>if specimen is from a person, the sex listed for that person</td>
 </tr>
 <tr>
-<td><a href="host_taxon_id/">host_taxon_id</a></td>
-<td>optional the NCBI taxonomy number of the host of the organism</td>
+<td><a href="host_subject_id/">host_subject_id</a></td>
+<td>an identifier for the individual a specimen was collected from</td>
 </tr>
 <tr>
-<td><a href="individual_id/">individual_id</a></td>
-<td>an identifier for the individual a specimen was collected from</td>
+<td><a href="host_taxon_id/">host_taxon_id</a></td>
+<td>the NCBI taxonomy number of the host that the specimen was collected from</td>
 </tr>
 <tr>
 <td><a href="insert_location/">insert_location</a></td>
@@ -694,16 +718,28 @@
 <td>the latitude and longitude of the collection site of the specimen</td>
 </tr>
 <tr>
-<td><a href="lib_kit/">lib_kit</a></td>
+<td><a href="library_kit/">library_kit</a></td>
 <td>Name, version, and applicable cell or cycle numbers for the kit used to prepa...</td>
 </tr>
 <tr>
-<td><a href="lib_layout/">lib_layout</a></td>
+<td><a href="library_layout/">library_layout</a></td>
 <td>Specify the configuration of reads, e</td>
 </tr>
 <tr>
-<td><a href="lib_screen/">lib_screen</a></td>
+<td><a href="library_screen/">library_screen</a></td>
 <td>Describe enrichment, screening, or normalization methods applied during ampli...</td>
+</tr>
+<tr>
+<td><a href="library_selection/">library_selection</a></td>
+<td>how amplification was done (common are PCR=Source material was selected by de...</td>
+</tr>
+<tr>
+<td><a href="library_source/">library_source</a></td>
+<td>Source of amplification material (common names GENOMIC, TRANSCRIPTOMIC)</td>
+</tr>
+<tr>
+<td><a href="library_strategy/">library_strategy</a></td>
+<td>what the nuceloacid sequencing/amplification strategy was (common names are A...</td>
 </tr>
 <tr>
 <td><a href="location/">location</a></td>
@@ -712,6 +748,10 @@
 <tr>
 <td><a href="marker_location/">marker_location</a></td>
 <td>the genomic location</td>
+</tr>
+<tr>
+<td><a href="markers_of_interest/">markers_of_interest</a></td>
+<td>a list of covered markers of interest</td>
 </tr>
 <tr>
 <td><a href="masking/">masking</a></td>
@@ -794,6 +834,10 @@
 <td>the column the specimen was in</td>
 </tr>
 <tr>
+<td><a href="plate_info/">plate_info</a></td>
+<td>plate location of where specimen is stored if stored in a plate</td>
+</tr>
+<tr>
 <td><a href="plate_name/">plate_name</a></td>
 <td>a name of plate the specimen was in</td>
 </tr>
@@ -827,7 +871,7 @@
 </tr>
 <tr>
 <td><a href="project_name/">project_name</a></td>
-<td>a name of the project under which the sample is organized</td>
+<td>a name of the project under which the specimen is organized</td>
 </tr>
 <tr>
 <td><a href="pseudocigar/">pseudocigar</a></td>
@@ -882,22 +926,6 @@
 <td>the date when the run was done, should be YYYY-MM-DD</td>
 </tr>
 <tr>
-<td><a href="samp_collect_device/">samp_collect_device</a></td>
-<td>the way the sample was collected, e</td>
-</tr>
-<tr>
-<td><a href="samp_store_loc/">samp_store_loc</a></td>
-<td>the sample store site, address or facility name</td>
-</tr>
-<tr>
-<td><a href="samp_taxon_id/">samp_taxon_id</a></td>
-<td>the NCBI taxonomy number of the organism of interest</td>
-</tr>
-<tr>
-<td><a href="sample_comments/">sample_comments</a></td>
-<td>any additional comments about the sample</td>
-</tr>
-<tr>
 <td><a href="seq/">seq</a></td>
 <td>the DNA sequence</td>
 </tr>
@@ -910,8 +938,12 @@
 <td>the date of sequencing, should be YYYY-MM or YYYY-MM-DD</td>
 </tr>
 <tr>
-<td><a href="seq_instrument/">seq_instrument</a></td>
-<td>the sequencing instrument used to sequence the run, e</td>
+<td><a href="seq_instrument_model/">seq_instrument_model</a></td>
+<td>the sequencing instrument model used to sequence the run, e</td>
+</tr>
+<tr>
+<td><a href="seq_platform/">seq_platform</a></td>
+<td>the sequencing technology used to sequence the run, e</td>
 </tr>
 <tr>
 <td><a href="seq_segment_size/">seq_segment_size</a></td>
@@ -934,16 +966,40 @@
 <td>a name of for the sequencing done, e</td>
 </tr>
 <tr>
+<td><a href="sequencing_prep_plate_info/">sequencing_prep_plate_info</a></td>
+<td>plate location of where experiment was prepared for sequencing</td>
+</tr>
+<tr>
+<td><a href="specimen_collect_device/">specimen_collect_device</a></td>
+<td>the way the specimen was collected, e</td>
+</tr>
+<tr>
+<td><a href="specimen_comments/">specimen_comments</a></td>
+<td>any additional comments about the specimen</td>
+</tr>
+<tr>
 <td><a href="specimen_id/">specimen_id</a></td>
 <td>the index into the specimen_info list</td>
 </tr>
 <tr>
 <td><a href="specimen_info/">specimen_info</a></td>
-<td>a list of specimens of all the samples within this project</td>
+<td>a list of all the specimens within this project</td>
 </tr>
 <tr>
 <td><a href="specimen_name/">specimen_name</a></td>
-<td>an identifier for the specimen</td>
+<td>an identifier for the specimen, should be unique within this sample set</td>
+</tr>
+<tr>
+<td><a href="specimen_store_loc/">specimen_store_loc</a></td>
+<td>the specimen store site, address or facility name</td>
+</tr>
+<tr>
+<td><a href="specimen_taxon_id/">specimen_taxon_id</a></td>
+<td>the NCBI taxonomy number of the organism in specimen, can list multiple if a ...</td>
+</tr>
+<tr>
+<td><a href="specimen_type/">specimen_type</a></td>
+<td>what type of specimen this is, e</td>
 </tr>
 <tr>
 <td><a href="stage/">stage</a></td>
@@ -996,6 +1052,10 @@
 <tr>
 <td><a href="total_raw_count/">total_raw_count</a></td>
 <td>the raw counts off the sequencing machine that a sample began with</td>
+</tr>
+<tr>
+<td><a href="travel_out_six_month/">travel_out_six_month</a></td>
+<td>Specification of the countries travelled in the last six months; can include ...</td>
 </tr>
 <tr>
 <td><a href="umis/">umis</a></td>

@@ -208,11 +208,17 @@
 <div class="mermaid"> classDiagram
     class SequencingInfo
     click SequencingInfo href "../SequencingInfo"
-      SequencingInfo : lib_kit
+      SequencingInfo : library_kit
 
-      SequencingInfo : lib_layout
+      SequencingInfo : library_layout
 
-      SequencingInfo : lib_screen
+      SequencingInfo : library_screen
+
+      SequencingInfo : library_selection
+
+      SequencingInfo : library_source
+
+      SequencingInfo : library_strategy
 
       SequencingInfo : nucl_acid_amp
 
@@ -228,7 +234,9 @@
 
       SequencingInfo : seq_date
 
-      SequencingInfo : seq_instrument
+      SequencingInfo : seq_instrument_model
+
+      SequencingInfo : seq_platform
 
       SequencingInfo : sequencing_info_name
 
@@ -253,9 +261,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../seq_instrument/">seq_instrument</a></td>
+<td><a href="../seq_platform/">seq_platform</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>the sequencing instrument used to sequence the run, e</td>
+<td>the sequencing technology used to sequence the run, e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../seq_instrument_model/">seq_instrument_model</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>the sequencing instrument model used to sequence the run, e</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -295,21 +309,39 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../lib_screen/">lib_screen</a></td>
+<td><a href="../library_screen/">library_screen</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Describe enrichment, screening, or normalization methods applied during ampli...</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../lib_layout/">lib_layout</a></td>
+<td><a href="../library_kit/">library_kit</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Name, version, and applicable cell or cycle numbers for the kit used to prepa...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../library_layout/">library_layout</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
 <td>Specify the configuration of reads, e</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../lib_kit/">lib_kit</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Name, version, and applicable cell or cycle numbers for the kit used to prepa...</td>
+<td><a href="../library_strategy/">library_strategy</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>what the nuceloacid sequencing/amplification strategy was (common names are A...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../library_source/">library_source</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>Source of amplification material (common names GENOMIC, TRANSCRIPTOMIC)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../library_selection/">library_selection</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>how amplification was done (common are PCR=Source material was selected by de...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -381,13 +413,29 @@ attributes:
     range: string
     required: true
     pattern: ^[A-z-._0-9 ]+$
-  seq_instrument:
-    name: seq_instrument
-    description: the sequencing instrument used to sequence the run, e.g. ILLUMINA,
-      Illumina MiSeq
+  seq_platform:
+    name: seq_platform
+    description: the sequencing technology used to sequence the run, e.g. ILLUMINA,
+      NANOPORE, PACBIO
     examples:
     - value: ILLUMINA
-    - value: Illumina MiSeq
+    - value: PACBIO
+    - value: NANOPORE
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SequencingInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]+$
+  seq_instrument_model:
+    name: seq_instrument_model
+    description: the sequencing instrument model used to sequence the run, e.g. NextSeq
+      2000, MinION, Revio
+    examples:
+    - value: NextSeq 2000
+    - value: MinION
+    - value: Revio
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -471,8 +519,8 @@ attributes:
     range: string
     required: false
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  lib_screen:
-    name: lib_screen
+  library_screen:
+    name: library_screen
     description: Describe enrichment, screening, or normalization methods applied
       during amplification or library preparation, e.g. size selection 390bp, diluted
       to 1 ng DNA/sample
@@ -485,20 +533,8 @@ attributes:
     range: string
     required: false
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  lib_layout:
-    name: lib_layout
-    description: Specify the configuration of reads, e.g. paired-end
-    examples:
-    - value: paired-end
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SequencingInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9 ]+$
-  lib_kit:
-    name: lib_kit
+  library_kit:
+    name: library_kit
     description: Name, version, and applicable cell or cycle numbers for the kit used
       to prepare libraries and load cells or chips for sequencing. If possible, include
       a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001
@@ -511,6 +547,60 @@ attributes:
     range: string
     required: false
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
+  library_layout:
+    name: library_layout
+    description: Specify the configuration of reads, e.g. paired-end, single
+    examples:
+    - value: paired-end
+    - value: single
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SequencingInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]+$
+  library_strategy:
+    name: library_strategy
+    description: what the nuceloacid sequencing/amplification strategy was (common
+      names are AMPLICON, WGS)
+    examples:
+    - value: AMPLICON
+    - value: WGS
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SequencingInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]+$
+  library_source:
+    name: library_source
+    description: Source of amplification material (common names GENOMIC, TRANSCRIPTOMIC)
+    examples:
+    - value: GENOMIC
+    - value: TRANSCRIPTOMIC
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SequencingInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]+$
+  library_selection:
+    name: library_selection
+    description: how amplification was done (common are PCR=Source material was selected
+      by designed primers, RANDOM =Random selection by shearing or other method)
+    examples:
+    - value: PCR
+    - value: RANDOM
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SequencingInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]+$
   seq_center:
     name: seq_center
     description: Name of facility where sequencing was performed (lab, core facility,
@@ -545,16 +635,34 @@ attributes:
     range: string
     required: true
     pattern: ^[A-z-._0-9 ]+$
-  seq_instrument:
-    name: seq_instrument
-    description: the sequencing instrument used to sequence the run, e.g. ILLUMINA,
-      Illumina MiSeq
+  seq_platform:
+    name: seq_platform
+    description: the sequencing technology used to sequence the run, e.g. ILLUMINA,
+      NANOPORE, PACBIO
     examples:
     - value: ILLUMINA
-    - value: Illumina MiSeq
+    - value: PACBIO
+    - value: NANOPORE
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: seq_instrument
+    alias: seq_platform
+    owner: SequencingInfo
+    domain_of:
+    - SequencingInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]+$
+  seq_instrument_model:
+    name: seq_instrument_model
+    description: the sequencing instrument model used to sequence the run, e.g. NextSeq
+      2000, MinION, Revio
+    examples:
+    - value: NextSeq 2000
+    - value: MinION
+    - value: Revio
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: seq_instrument_model
     owner: SequencingInfo
     domain_of:
     - SequencingInfo
@@ -649,8 +757,8 @@ attributes:
     range: string
     required: false
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  lib_screen:
-    name: lib_screen
+  library_screen:
+    name: library_screen
     description: Describe enrichment, screening, or normalization methods applied
       during amplification or library preparation, e.g. size selection 390bp, diluted
       to 1 ng DNA/sample
@@ -658,29 +766,15 @@ attributes:
     - value: size selection 390bp, diluted to 1 ng DNA/sample
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: lib_screen
+    alias: library_screen
     owner: SequencingInfo
     domain_of:
     - SequencingInfo
     range: string
     required: false
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  lib_layout:
-    name: lib_layout
-    description: Specify the configuration of reads, e.g. paired-end
-    examples:
-    - value: paired-end
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: lib_layout
-    owner: SequencingInfo
-    domain_of:
-    - SequencingInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9 ]+$
-  lib_kit:
-    name: lib_kit
+  library_kit:
+    name: library_kit
     description: Name, version, and applicable cell or cycle numbers for the kit used
       to prepare libraries and load cells or chips for sequencing. If possible, include
       a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001
@@ -688,13 +782,75 @@ attributes:
     - value: MiSeq Reagent Kit v3 (150-cycle), MS-102-3001
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: lib_kit
+    alias: library_kit
     owner: SequencingInfo
     domain_of:
     - SequencingInfo
     range: string
     required: false
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
+  library_layout:
+    name: library_layout
+    description: Specify the configuration of reads, e.g. paired-end, single
+    examples:
+    - value: paired-end
+    - value: single
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: library_layout
+    owner: SequencingInfo
+    domain_of:
+    - SequencingInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]+$
+  library_strategy:
+    name: library_strategy
+    description: what the nuceloacid sequencing/amplification strategy was (common
+      names are AMPLICON, WGS)
+    examples:
+    - value: AMPLICON
+    - value: WGS
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: library_strategy
+    owner: SequencingInfo
+    domain_of:
+    - SequencingInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]+$
+  library_source:
+    name: library_source
+    description: Source of amplification material (common names GENOMIC, TRANSCRIPTOMIC)
+    examples:
+    - value: GENOMIC
+    - value: TRANSCRIPTOMIC
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: library_source
+    owner: SequencingInfo
+    domain_of:
+    - SequencingInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]+$
+  library_selection:
+    name: library_selection
+    description: how amplification was done (common are PCR=Source material was selected
+      by designed primers, RANDOM =Random selection by shearing or other method)
+    examples:
+    - value: PCR
+    - value: RANDOM
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: library_selection
+    owner: SequencingInfo
+    domain_of:
+    - SequencingInfo
+    range: string
+    required: true
+    pattern: ^[A-z-._0-9 ]+$
   seq_center:
     name: seq_center
     description: Name of facility where sequencing was performed (lab, core facility,
