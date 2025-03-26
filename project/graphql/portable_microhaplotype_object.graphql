@@ -25,13 +25,12 @@ type BioMethod
 type ExperimentInfo
   {
     sequencingInfoId: Integer!
-    plateName: String
-    plateRow: String
-    plateCol: Integer
     specimenId: Integer!
     panelId: Integer!
     accession: String
     experimentSampleName: String!
+    extractionPlateInfo: PlateInfo
+    sequencingPrepPlateInfo: PlateInfo
   }
 
 type GenomeInfo
@@ -56,7 +55,7 @@ type GenomicLocation
 
 type MarkerOfInterest
   {
-    markerLocation: GenomicLocation
+    markerLocation: GenomicLocation!
     associations: [String]
   }
 
@@ -102,6 +101,13 @@ type ParasiteDensity
   {
     method: String!
     density: Double!
+  }
+
+type PlateInfo
+  {
+    plateName: String
+    plateRow: String
+    plateCol: Integer
   }
 
 type PmoGenerationMethod
@@ -188,43 +194,51 @@ type RepresentativeMicrohaplotypesForTarget
 type SequencingInfo
   {
     sequencingInfoName: String!
-    seqInstrument: String!
+    seqPlatform: String!
+    seqInstrumentModel: String!
     seqDate: String!
     nuclAcidExt: String
     nuclAcidAmp: String
     nuclAcidExtDate: String
     nuclAcidAmpDate: String
     pcrCond: String
-    libScreen: String
-    libLayout: String
-    libKit: String
+    libraryScreen: String
+    libraryKit: String
+    libraryLayout: String!
+    libraryStrategy: String!
+    librarySource: String!
+    librarySelection: String!
     seqCenter: String
   }
 
 type SpecimenInfo
   {
-    plateName: String
-    plateRow: String
-    plateCol: Integer
     specimenName: String!
-    sampTaxonId: Integer!
-    individualId: Integer
-    hostTaxonId: Integer
+    specimenTaxonId: [Integer]!
+    hostSubjectId: Integer
+    hostTaxonId: Integer!
     alternateIdentifiers: [String]
     hostSex: String
     parasiteDensityInfo: [ParasiteDensity]
     collectionDate: String!
-    hostDateOfBirth: String
+    hostAge: Double
     collectionCountry: String!
     geoAdmin1: String
     geoAdmin2: String
     geoAdmin3: String
     latLon: String
-    collector: String!
-    sampStoreLoc: String!
-    sampCollectDevice: String!
+    collectorChiefScientist: String
+    specimenStoreLoc: String
+    specimenCollectDevice: String
+    specimenType: String
     projectName: String!
-    sampleComments: String
+    specimenComments: [String]
+    travelOutSixMonth: [String]
+    plateInfo: PlateInfo
+    envMedium: String
+    envLocalScale: String
+    envBroadScale: String
+    drugUsage: [String]
   }
 
 type StageReadCounts
@@ -240,6 +254,7 @@ type TargetInfo
     insertLocation: GenomicLocation
     forwardPrimers: [PrimerInfo]!
     reversePrimers: [PrimerInfo]!
+    markersOfInterest: [MarkerOfInterest]
     targetAttributes: [String]
   }
 

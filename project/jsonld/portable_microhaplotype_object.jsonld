@@ -490,7 +490,7 @@
     {
       "name": "genome_id",
       "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/genome_id",
-      "description": "the index to the genome in the targeted_genomes list that this location refers to ",
+      "description": "the index to the genome in the targeted_genomes list that this location refers to",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/genome_id",
       "owner": "GenomicLocation",
@@ -499,51 +499,6 @@
       ],
       "range": "integer",
       "required": true,
-      "pattern": "^[0-9]+$",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "plate_name",
-      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/plate_name",
-      "description": "a name of plate the specimen was in",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/plate_name",
-      "owner": "SpecimenInfo",
-      "domain_of": [
-        "ExperimentInfo",
-        "SpecimenInfo"
-      ],
-      "range": "string",
-      "pattern": "^[A-z-._0-9 ]+$",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "plate_row",
-      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/plate_row",
-      "description": "the row the specimen was in",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/plate_row",
-      "owner": "SpecimenInfo",
-      "domain_of": [
-        "ExperimentInfo",
-        "SpecimenInfo"
-      ],
-      "range": "string",
-      "pattern": "^[A-z]$",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "plate_col",
-      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/plate_col",
-      "description": "the column the specimen was in",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/plate_col",
-      "owner": "SpecimenInfo",
-      "domain_of": [
-        "ExperimentInfo",
-        "SpecimenInfo"
-      ],
-      "range": "integer",
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -590,6 +545,7 @@
         "MarkerOfInterest"
       ],
       "range": "GenomicLocation",
+      "required": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -679,6 +635,21 @@
       ],
       "range": "PrimerInfo",
       "required": true,
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "targetInfo__markers_of_interest",
+      "description": "a list of covered markers of interest",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/markers_of_interest",
+      "alias": "markers_of_interest",
+      "owner": "TargetInfo",
+      "domain_of": [
+        "TargetInfo"
+      ],
+      "range": "MarkerOfInterest",
       "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
@@ -1293,6 +1264,48 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "plateInfo__plate_name",
+      "description": "a name of plate the specimen was in",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/plate_name",
+      "alias": "plate_name",
+      "owner": "PlateInfo",
+      "domain_of": [
+        "PlateInfo"
+      ],
+      "range": "string",
+      "pattern": "^[A-z-._0-9 ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "plateInfo__plate_row",
+      "description": "the row the specimen was in",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/plate_row",
+      "alias": "plate_row",
+      "owner": "PlateInfo",
+      "domain_of": [
+        "PlateInfo"
+      ],
+      "range": "string",
+      "pattern": "^[A-z]$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "plateInfo__plate_col",
+      "description": "the column the specimen was in",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/plate_col",
+      "alias": "plate_col",
+      "owner": "PlateInfo",
+      "domain_of": [
+        "PlateInfo"
+      ],
+      "range": "integer",
+      "pattern": "^[0-9]+$",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "experimentInfo__accession",
       "description": "ERA/SRA accession number for the sample if it was submitted",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
@@ -1323,6 +1336,34 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "experimentInfo__extraction_plate_info",
+      "description": "plate location of where experiment was extracted",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/extraction_plate_info",
+      "alias": "extraction_plate_info",
+      "owner": "ExperimentInfo",
+      "domain_of": [
+        "ExperimentInfo"
+      ],
+      "range": "PlateInfo",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimentInfo__sequencing_prep_plate_info",
+      "description": "plate location of where experiment was prepared for sequencing ",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/sequencing_prep_plate_info",
+      "alias": "sequencing_prep_plate_info",
+      "owner": "ExperimentInfo",
+      "domain_of": [
+        "ExperimentInfo"
+      ],
+      "range": "PlateInfo",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "sequencingInfo__sequencing_info_name",
       "description": "a name of for the sequencing done, e.g. batch1",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
@@ -1338,21 +1379,54 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "sequencingInfo__seq_instrument",
-      "description": "the sequencing instrument used to sequence the run, e.g. ILLUMINA, Illumina MiSeq",
+      "name": "sequencingInfo__seq_platform",
+      "description": "the sequencing technology used to sequence the run, e.g. ILLUMINA, NANOPORE, PACBIO",
       "examples": [
         {
           "value": "ILLUMINA",
           "@type": "Example"
         },
         {
-          "value": "Illumina MiSeq",
+          "value": "PACBIO",
+          "@type": "Example"
+        },
+        {
+          "value": "NANOPORE",
           "@type": "Example"
         }
       ],
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/seq_instrument",
-      "alias": "seq_instrument",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/seq_platform",
+      "alias": "seq_platform",
+      "owner": "SequencingInfo",
+      "domain_of": [
+        "SequencingInfo"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^[A-z-._0-9 ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sequencingInfo__seq_instrument_model",
+      "description": "the sequencing instrument model used to sequence the run, e.g. NextSeq 2000, MinION, Revio",
+      "examples": [
+        {
+          "value": "NextSeq 2000",
+          "@type": "Example"
+        },
+        {
+          "value": "MinION",
+          "@type": "Example"
+        },
+        {
+          "value": "Revio",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/seq_instrument_model",
+      "alias": "seq_instrument_model",
       "owner": "SequencingInfo",
       "domain_of": [
         "SequencingInfo"
@@ -1490,7 +1564,7 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "sequencingInfo__lib_screen",
+      "name": "sequencingInfo__library_screen",
       "description": "Describe enrichment, screening, or normalization methods applied during amplification or library preparation, e.g. size selection 390bp, diluted to 1 ng DNA/sample",
       "examples": [
         {
@@ -1499,8 +1573,8 @@
         }
       ],
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/lib_screen",
-      "alias": "lib_screen",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/library_screen",
+      "alias": "library_screen",
       "owner": "SequencingInfo",
       "domain_of": [
         "SequencingInfo"
@@ -1510,27 +1584,7 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "sequencingInfo__lib_layout",
-      "description": "Specify the configuration of reads, e.g. paired-end",
-      "examples": [
-        {
-          "value": "paired-end",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/lib_layout",
-      "alias": "lib_layout",
-      "owner": "SequencingInfo",
-      "domain_of": [
-        "SequencingInfo"
-      ],
-      "range": "string",
-      "pattern": "^[A-z-._0-9 ]+$",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "sequencingInfo__lib_kit",
+      "name": "sequencingInfo__library_kit",
       "description": "Name, version, and applicable cell or cycle numbers for the kit used to prepare libraries and load cells or chips for sequencing. If possible, include a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001",
       "examples": [
         {
@@ -1539,14 +1593,114 @@
         }
       ],
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/lib_kit",
-      "alias": "lib_kit",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/library_kit",
+      "alias": "library_kit",
       "owner": "SequencingInfo",
       "domain_of": [
         "SequencingInfo"
       ],
       "range": "string",
       "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sequencingInfo__library_layout",
+      "description": "Specify the configuration of reads, e.g. paired-end, single",
+      "examples": [
+        {
+          "value": "paired-end",
+          "@type": "Example"
+        },
+        {
+          "value": "single",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/library_layout",
+      "alias": "library_layout",
+      "owner": "SequencingInfo",
+      "domain_of": [
+        "SequencingInfo"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^[A-z-._0-9 ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sequencingInfo__library_strategy",
+      "description": "what the nuceloacid sequencing/amplification strategy was (common names are AMPLICON, WGS)",
+      "examples": [
+        {
+          "value": "AMPLICON",
+          "@type": "Example"
+        },
+        {
+          "value": "WGS",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/library_strategy",
+      "alias": "library_strategy",
+      "owner": "SequencingInfo",
+      "domain_of": [
+        "SequencingInfo"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^[A-z-._0-9 ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sequencingInfo__library_source",
+      "description": "Source of amplification material (common names GENOMIC, TRANSCRIPTOMIC)",
+      "examples": [
+        {
+          "value": "GENOMIC",
+          "@type": "Example"
+        },
+        {
+          "value": "TRANSCRIPTOMIC",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/library_source",
+      "alias": "library_source",
+      "owner": "SequencingInfo",
+      "domain_of": [
+        "SequencingInfo"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^[A-z-._0-9 ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sequencingInfo__library_selection",
+      "description": "how amplification was done (common are PCR=Source material was selected by designed primers, RANDOM =Random selection by shearing or other method)",
+      "examples": [
+        {
+          "value": "PCR",
+          "@type": "Example"
+        },
+        {
+          "value": "RANDOM",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/library_selection",
+      "alias": "library_selection",
+      "owner": "SequencingInfo",
+      "domain_of": [
+        "SequencingInfo"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^[A-z-._0-9 ]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -1622,7 +1776,7 @@
     },
     {
       "name": "specimenInfo__specimen_name",
-      "description": "an identifier for the specimen",
+      "description": "an identifier for the specimen, should be unique within this sample set",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/specimen_name",
       "identifier": true,
@@ -1637,26 +1791,28 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "specimenInfo__samp_taxon_id",
-      "description": "the NCBI taxonomy number of the organism of interest",
+      "name": "specimenInfo__specimen_taxon_id",
+      "description": "the NCBI taxonomy number of the organism in specimen, can list multiple if a mixed sample",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/samp_taxon_id",
-      "alias": "samp_taxon_id",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/specimen_taxon_id",
+      "alias": "specimen_taxon_id",
       "owner": "SpecimenInfo",
       "domain_of": [
         "SpecimenInfo"
       ],
       "range": "integer",
       "required": true,
+      "multivalued": true,
+      "inlined_as_list": true,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
     {
-      "name": "specimenInfo__individual_id",
+      "name": "specimenInfo__host_subject_id",
       "description": "an identifier for the individual a specimen was collected from",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/individual_id",
-      "alias": "individual_id",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/host_subject_id",
+      "alias": "host_subject_id",
       "owner": "SpecimenInfo",
       "domain_of": [
         "SpecimenInfo"
@@ -1667,7 +1823,7 @@
     },
     {
       "name": "specimenInfo__host_taxon_id",
-      "description": "optional the NCBI taxonomy number of the host of the organism",
+      "description": "the NCBI taxonomy number of the host that the specimen was collected from",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/host_taxon_id",
       "alias": "host_taxon_id",
@@ -1676,12 +1832,13 @@
         "SpecimenInfo"
       ],
       "range": "integer",
+      "required": true,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
     {
       "name": "specimenInfo__alternate_identifiers",
-      "description": "a list of optional alternative names for the samples",
+      "description": "a list of optional alternative names for the specimens",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/alternate_identifiers",
       "alias": "alternate_identifiers",
@@ -1727,7 +1884,7 @@
     },
     {
       "name": "specimenInfo__collection_date",
-      "description": "the date of the sample collection, can be YYYY, YYYY-MM, or YYYY-MM-DD",
+      "description": "the date of the specimen collection, can be YYYY, YYYY-MM, or YYYY-MM-DD",
       "examples": [
         {
           "value": "1988",
@@ -1755,31 +1912,31 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "specimenInfo__host_date_of_birth",
-      "description": "if specimen is from a person, the date of birth of that person, can be YYYY, YYYY-MM, or YYYY-MM-DD",
+      "name": "specimenInfo__host_age",
+      "description": "if specimen is from a person, the age in years of the person, can be float value so for 3 month old put 0.25",
       "examples": [
         {
-          "value": "1988",
+          "value": "0.1",
           "@type": "Example"
         },
         {
-          "value": "1988-06",
+          "value": "1",
           "@type": "Example"
         },
         {
-          "value": "1988-06-26",
+          "value": "7",
           "@type": "Example"
         }
       ],
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/host_date_of_birth",
-      "alias": "host_date_of_birth",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/host_age",
+      "alias": "host_age",
       "owner": "SpecimenInfo",
       "domain_of": [
         "SpecimenInfo"
       ],
-      "range": "string",
-      "pattern": "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)",
+      "range": "double",
+      "pattern": "^\\d*\\.?\\d+$",
       "@type": "SlotDefinition"
     },
     {
@@ -1883,53 +2040,88 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "specimenInfo__collector",
-      "description": "the name of the primary person managing the specimen",
+      "name": "specimenInfo__collector_chief_scientist",
+      "description": "can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/collector",
-      "alias": "collector",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/collector_chief_scientist",
+      "alias": "collector_chief_scientist",
       "owner": "SpecimenInfo",
       "domain_of": [
         "SpecimenInfo"
       ],
       "range": "string",
-      "required": true,
+      "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "specimenInfo__specimen_store_loc",
+      "description": "the specimen store site, address or facility name",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/specimen_store_loc",
+      "alias": "specimen_store_loc",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "SpecimenInfo"
+      ],
+      "range": "string",
       "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
       "@type": "SlotDefinition"
     },
     {
-      "name": "specimenInfo__samp_store_loc",
-      "description": "the sample store site, address or facility name",
+      "name": "specimenInfo__specimen_collect_device",
+      "description": "the way the specimen was collected, e.g. whole blood, dried blood spot",
+      "examples": [
+        {
+          "value": "whole blood",
+          "@type": "Example"
+        },
+        {
+          "value": "dried blood spot",
+          "@type": "Example"
+        }
+      ],
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/samp_store_loc",
-      "alias": "samp_store_loc",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/specimen_collect_device",
+      "alias": "specimen_collect_device",
       "owner": "SpecimenInfo",
       "domain_of": [
         "SpecimenInfo"
       ],
       "range": "string",
-      "required": true,
       "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
       "@type": "SlotDefinition"
     },
     {
-      "name": "specimenInfo__samp_collect_device",
-      "description": "the way the sample was collected, e.g. whole blood, dried blood spot, etc",
+      "name": "specimenInfo__specimen_type",
+      "description": "what type of specimen this is, e.g. negative_control, positive_control, field_sample",
+      "examples": [
+        {
+          "value": "negative_control",
+          "@type": "Example"
+        },
+        {
+          "value": "positive_control",
+          "@type": "Example"
+        },
+        {
+          "value": "field_sample",
+          "@type": "Example"
+        }
+      ],
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/samp_collect_device",
-      "alias": "samp_collect_device",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/specimen_type",
+      "alias": "specimen_type",
       "owner": "SpecimenInfo",
       "domain_of": [
         "SpecimenInfo"
       ],
       "range": "string",
-      "required": true,
       "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
       "@type": "SlotDefinition"
     },
     {
       "name": "specimenInfo__project_name",
-      "description": "a name of the project under which the sample is organized",
+      "description": "a name of the project under which the specimen is organized",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/project_name",
       "alias": "project_name",
@@ -1943,17 +2135,145 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "specimenInfo__sample_comments",
-      "description": "any additional comments about the sample",
+      "name": "specimenInfo__specimen_comments",
+      "description": "any additional comments about the specimen",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/sample_comments",
-      "alias": "sample_comments",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/specimen_comments",
+      "alias": "specimen_comments",
       "owner": "SpecimenInfo",
       "domain_of": [
         "SpecimenInfo"
       ],
       "range": "string",
+      "multivalued": true,
       "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "specimenInfo__travel_out_six_month",
+      "description": "Specification of the countries travelled in the last six months; can include multiple travels",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/travel_out_six_month",
+      "alias": "travel_out_six_month",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "SpecimenInfo"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "specimenInfo__plate_info",
+      "description": "plate location of where specimen is stored if stored in a plate ",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/plate_info",
+      "alias": "plate_info",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "SpecimenInfo"
+      ],
+      "range": "PlateInfo",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "specimenInfo__env_medium",
+      "description": "the environment medium from which the specimen was collected from",
+      "examples": [
+        {
+          "value": "blood",
+          "@type": "Example"
+        },
+        {
+          "value": "midgut",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/env_medium",
+      "alias": "env_medium",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "SpecimenInfo"
+      ],
+      "range": "string",
+      "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "specimenInfo__env_local_scale",
+      "description": "the local environment from which the specimen was collected, e.g. jungle, urban, rural",
+      "examples": [
+        {
+          "value": "jungle",
+          "@type": "Example"
+        },
+        {
+          "value": "urban",
+          "@type": "Example"
+        },
+        {
+          "value": "rural",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/env_local_scale",
+      "alias": "env_local_scale",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "SpecimenInfo"
+      ],
+      "range": "string",
+      "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "specimenInfo__env_broad_scale",
+      "description": "the broad environment from which the specimen was collected, e.g. highlands, lowlands, mountainous region",
+      "examples": [
+        {
+          "value": "highlands",
+          "@type": "Example"
+        },
+        {
+          "value": "lowlands",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/env_broad_scale",
+      "alias": "env_broad_scale",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "SpecimenInfo"
+      ],
+      "range": "string",
+      "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "specimenInfo__drug_usage",
+      "description": "Any drug used by subject and the frequency of usage; can include multiple drugs used",
+      "examples": [
+        {
+          "value": "Coartem;2/day",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "string_serialization": "{text};{integer}/[year|month|week|day|hour]",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/drug_usage",
+      "alias": "drug_usage",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "SpecimenInfo"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -2157,7 +2477,7 @@
     },
     {
       "name": "portableMicrohaplotypeObject__specimen_info",
-      "description": "a list of specimens of all the samples within this project",
+      "description": "a list of all the specimens within this project",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/specimen_info",
       "alias": "specimen_info",
@@ -2377,63 +2697,6 @@
       "required": true,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
-    },
-    {
-      "name": "ExperimentInfo_plate_name",
-      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/plate_name",
-      "description": "a name of plate the specimen was in",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "is_a": "plate_name",
-      "domain": "ExperimentInfo",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/plate_name",
-      "alias": "plate_name",
-      "owner": "ExperimentInfo",
-      "domain_of": [
-        "ExperimentInfo"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "plate_name",
-      "range": "string",
-      "pattern": "^[A-z-._0-9 ]+$",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "ExperimentInfo_plate_row",
-      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/plate_row",
-      "description": "the row the specimen was in",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "is_a": "plate_row",
-      "domain": "ExperimentInfo",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/plate_row",
-      "alias": "plate_row",
-      "owner": "ExperimentInfo",
-      "domain_of": [
-        "ExperimentInfo"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "plate_row",
-      "range": "string",
-      "pattern": "^[A-z]$",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "ExperimentInfo_plate_col",
-      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/plate_col",
-      "description": "the column the specimen was in",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "is_a": "plate_col",
-      "domain": "ExperimentInfo",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/plate_col",
-      "alias": "plate_col",
-      "owner": "ExperimentInfo",
-      "domain_of": [
-        "ExperimentInfo"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "plate_col",
-      "range": "integer",
-      "pattern": "^[0-9]+$",
-      "@type": "SlotDefinition"
     }
   ],
   "classes": [
@@ -2452,6 +2715,7 @@
           "name": "marker_location",
           "description": "the genomic location",
           "range": "GenomicLocation",
+          "required": true,
           "@type": "SlotDefinition"
         },
         {
@@ -2477,6 +2741,7 @@
         "targetInfo__insert_location",
         "targetInfo__forward_primers",
         "targetInfo__reverse_primers",
+        "targetInfo__markers_of_interest",
         "targetInfo__target_attributes"
       ],
       "slot_usage": {},
@@ -2518,6 +2783,13 @@
           "required": true,
           "multivalued": true,
           "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "markers_of_interest",
+          "description": "a list of covered markers of interest",
+          "range": "MarkerOfInterest",
+          "multivalued": true,
           "@type": "SlotDefinition"
         },
         {
@@ -3092,19 +3364,55 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "PlateInfo",
+      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/PlateInfo",
+      "description": "Information about a plate location in a standard 96 well plate",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slots": [
+        "plateInfo__plate_name",
+        "plateInfo__plate_row",
+        "plateInfo__plate_col"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "plate_name",
+          "description": "a name of plate the specimen was in",
+          "range": "string",
+          "pattern": "^[A-z-._0-9 ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "plate_row",
+          "description": "the row the specimen was in",
+          "range": "string",
+          "pattern": "^[A-z]$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "plate_col",
+          "description": "the column the specimen was in",
+          "range": "integer",
+          "pattern": "^[0-9]+$",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/PlateInfo",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "ExperimentInfo",
       "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/ExperimentInfo",
       "description": "Information about a specific amplification and sequencing of a specimen",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
         "sequencing_info_id",
-        "ExperimentInfo_plate_name",
-        "ExperimentInfo_plate_row",
-        "ExperimentInfo_plate_col",
         "ExperimentInfo_specimen_id",
         "panel_id",
         "experimentInfo__accession",
-        "experimentInfo__experiment_sample_name"
+        "experimentInfo__experiment_sample_name",
+        "experimentInfo__extraction_plate_info",
+        "experimentInfo__sequencing_prep_plate_info"
       ],
       "slot_usage": {},
       "attributes": [
@@ -3123,6 +3431,18 @@
           "required": true,
           "pattern": "^[A-z-._0-9 ]+$",
           "@type": "SlotDefinition"
+        },
+        {
+          "name": "extraction_plate_info",
+          "description": "plate location of where experiment was extracted",
+          "range": "PlateInfo",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sequencing_prep_plate_info",
+          "description": "plate location of where experiment was prepared for sequencing ",
+          "range": "PlateInfo",
+          "@type": "SlotDefinition"
         }
       ],
       "class_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/ExperimentInfo",
@@ -3135,16 +3455,20 @@
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
         "sequencingInfo__sequencing_info_name",
-        "sequencingInfo__seq_instrument",
+        "sequencingInfo__seq_platform",
+        "sequencingInfo__seq_instrument_model",
         "sequencingInfo__seq_date",
         "sequencingInfo__nucl_acid_ext",
         "sequencingInfo__nucl_acid_amp",
         "sequencingInfo__nucl_acid_ext_date",
         "sequencingInfo__nucl_acid_amp_date",
         "sequencingInfo__pcr_cond",
-        "sequencingInfo__lib_screen",
-        "sequencingInfo__lib_layout",
-        "sequencingInfo__lib_kit",
+        "sequencingInfo__library_screen",
+        "sequencingInfo__library_kit",
+        "sequencingInfo__library_layout",
+        "sequencingInfo__library_strategy",
+        "sequencingInfo__library_source",
+        "sequencingInfo__library_selection",
         "sequencingInfo__seq_center"
       ],
       "slot_usage": {},
@@ -3158,15 +3482,41 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "seq_instrument",
-          "description": "the sequencing instrument used to sequence the run, e.g. ILLUMINA, Illumina MiSeq",
+          "name": "seq_platform",
+          "description": "the sequencing technology used to sequence the run, e.g. ILLUMINA, NANOPORE, PACBIO",
           "examples": [
             {
               "value": "ILLUMINA",
               "@type": "Example"
             },
             {
-              "value": "Illumina MiSeq",
+              "value": "PACBIO",
+              "@type": "Example"
+            },
+            {
+              "value": "NANOPORE",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-z-._0-9 ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "seq_instrument_model",
+          "description": "the sequencing instrument model used to sequence the run, e.g. NextSeq 2000, MinION, Revio",
+          "examples": [
+            {
+              "value": "NextSeq 2000",
+              "@type": "Example"
+            },
+            {
+              "value": "MinION",
+              "@type": "Example"
+            },
+            {
+              "value": "Revio",
               "@type": "Example"
             }
           ],
@@ -3261,7 +3611,7 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "lib_screen",
+          "name": "library_screen",
           "description": "Describe enrichment, screening, or normalization methods applied during amplification or library preparation, e.g. size selection 390bp, diluted to 1 ng DNA/sample",
           "examples": [
             {
@@ -3274,20 +3624,7 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "lib_layout",
-          "description": "Specify the configuration of reads, e.g. paired-end",
-          "examples": [
-            {
-              "value": "paired-end",
-              "@type": "Example"
-            }
-          ],
-          "range": "string",
-          "pattern": "^[A-z-._0-9 ]+$",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "lib_kit",
+          "name": "library_kit",
           "description": "Name, version, and applicable cell or cycle numbers for the kit used to prepare libraries and load cells or chips for sequencing. If possible, include a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001",
           "examples": [
             {
@@ -3297,6 +3634,78 @@
           ],
           "range": "string",
           "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "library_layout",
+          "description": "Specify the configuration of reads, e.g. paired-end, single",
+          "examples": [
+            {
+              "value": "paired-end",
+              "@type": "Example"
+            },
+            {
+              "value": "single",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-z-._0-9 ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "library_strategy",
+          "description": "what the nuceloacid sequencing/amplification strategy was (common names are AMPLICON, WGS)",
+          "examples": [
+            {
+              "value": "AMPLICON",
+              "@type": "Example"
+            },
+            {
+              "value": "WGS",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-z-._0-9 ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "library_source",
+          "description": "Source of amplification material (common names GENOMIC, TRANSCRIPTOMIC)",
+          "examples": [
+            {
+              "value": "GENOMIC",
+              "@type": "Example"
+            },
+            {
+              "value": "TRANSCRIPTOMIC",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-z-._0-9 ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "library_selection",
+          "description": "how amplification was done (common are PCR=Source material was selected by designed primers, RANDOM =Random selection by shearing or other method)",
+          "examples": [
+            {
+              "value": "PCR",
+              "@type": "Example"
+            },
+            {
+              "value": "RANDOM",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-z-._0-9 ]+$",
           "@type": "SlotDefinition"
         },
         {
@@ -3374,34 +3783,38 @@
       "description": "Information on specimen info",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
-        "plate_name",
-        "plate_row",
-        "plate_col",
         "specimenInfo__specimen_name",
-        "specimenInfo__samp_taxon_id",
-        "specimenInfo__individual_id",
+        "specimenInfo__specimen_taxon_id",
+        "specimenInfo__host_subject_id",
         "specimenInfo__host_taxon_id",
         "specimenInfo__alternate_identifiers",
         "specimenInfo__host_sex",
         "specimenInfo__parasite_density_info",
         "specimenInfo__collection_date",
-        "specimenInfo__host_date_of_birth",
+        "specimenInfo__host_age",
         "specimenInfo__collection_country",
         "specimenInfo__geo_admin1",
         "specimenInfo__geo_admin2",
         "specimenInfo__geo_admin3",
         "specimenInfo__lat_lon",
-        "specimenInfo__collector",
-        "specimenInfo__samp_store_loc",
-        "specimenInfo__samp_collect_device",
+        "specimenInfo__collector_chief_scientist",
+        "specimenInfo__specimen_store_loc",
+        "specimenInfo__specimen_collect_device",
+        "specimenInfo__specimen_type",
         "specimenInfo__project_name",
-        "specimenInfo__sample_comments"
+        "specimenInfo__specimen_comments",
+        "specimenInfo__travel_out_six_month",
+        "specimenInfo__plate_info",
+        "specimenInfo__env_medium",
+        "specimenInfo__env_local_scale",
+        "specimenInfo__env_broad_scale",
+        "specimenInfo__drug_usage"
       ],
       "slot_usage": {},
       "attributes": [
         {
           "name": "specimen_name",
-          "description": "an identifier for the specimen",
+          "description": "an identifier for the specimen, should be unique within this sample set",
           "identifier": true,
           "range": "string",
           "required": true,
@@ -3409,15 +3822,17 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "samp_taxon_id",
-          "description": "the NCBI taxonomy number of the organism of interest",
+          "name": "specimen_taxon_id",
+          "description": "the NCBI taxonomy number of the organism in specimen, can list multiple if a mixed sample",
           "range": "integer",
           "required": true,
+          "multivalued": true,
+          "inlined_as_list": true,
           "pattern": "^[0-9]+$",
           "@type": "SlotDefinition"
         },
         {
-          "name": "individual_id",
+          "name": "host_subject_id",
           "description": "an identifier for the individual a specimen was collected from",
           "range": "integer",
           "pattern": "^[0-9]+$",
@@ -3425,14 +3840,15 @@
         },
         {
           "name": "host_taxon_id",
-          "description": "optional the NCBI taxonomy number of the host of the organism",
+          "description": "the NCBI taxonomy number of the host that the specimen was collected from",
           "range": "integer",
+          "required": true,
           "pattern": "^[0-9]+$",
           "@type": "SlotDefinition"
         },
         {
           "name": "alternate_identifiers",
-          "description": "a list of optional alternative names for the samples",
+          "description": "a list of optional alternative names for the specimens",
           "range": "string",
           "multivalued": true,
           "inlined_as_list": true,
@@ -3456,7 +3872,7 @@
         },
         {
           "name": "collection_date",
-          "description": "the date of the sample collection, can be YYYY, YYYY-MM, or YYYY-MM-DD",
+          "description": "the date of the specimen collection, can be YYYY, YYYY-MM, or YYYY-MM-DD",
           "examples": [
             {
               "value": "1988",
@@ -3477,24 +3893,24 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "host_date_of_birth",
-          "description": "if specimen is from a person, the date of birth of that person, can be YYYY, YYYY-MM, or YYYY-MM-DD",
+          "name": "host_age",
+          "description": "if specimen is from a person, the age in years of the person, can be float value so for 3 month old put 0.25",
           "examples": [
             {
-              "value": "1988",
+              "value": "0.1",
               "@type": "Example"
             },
             {
-              "value": "1988-06",
+              "value": "1",
               "@type": "Example"
             },
             {
-              "value": "1988-06-26",
+              "value": "7",
               "@type": "Example"
             }
           ],
-          "range": "string",
-          "pattern": "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)",
+          "range": "double",
+          "pattern": "^\\d*\\.?\\d+$",
           "@type": "SlotDefinition"
         },
         {
@@ -3563,42 +3979,155 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "collector",
-          "description": "the name of the primary person managing the specimen",
+          "name": "collector_chief_scientist",
+          "description": "can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen",
           "range": "string",
-          "required": true,
+          "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "specimen_store_loc",
+          "description": "the specimen store site, address or facility name",
+          "range": "string",
           "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
           "@type": "SlotDefinition"
         },
         {
-          "name": "samp_store_loc",
-          "description": "the sample store site, address or facility name",
+          "name": "specimen_collect_device",
+          "description": "the way the specimen was collected, e.g. whole blood, dried blood spot",
+          "examples": [
+            {
+              "value": "whole blood",
+              "@type": "Example"
+            },
+            {
+              "value": "dried blood spot",
+              "@type": "Example"
+            }
+          ],
           "range": "string",
-          "required": true,
           "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
           "@type": "SlotDefinition"
         },
         {
-          "name": "samp_collect_device",
-          "description": "the way the sample was collected, e.g. whole blood, dried blood spot, etc",
+          "name": "specimen_type",
+          "description": "what type of specimen this is, e.g. negative_control, positive_control, field_sample",
+          "examples": [
+            {
+              "value": "negative_control",
+              "@type": "Example"
+            },
+            {
+              "value": "positive_control",
+              "@type": "Example"
+            },
+            {
+              "value": "field_sample",
+              "@type": "Example"
+            }
+          ],
           "range": "string",
-          "required": true,
           "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
           "@type": "SlotDefinition"
         },
         {
           "name": "project_name",
-          "description": "a name of the project under which the sample is organized",
+          "description": "a name of the project under which the specimen is organized",
           "range": "string",
           "required": true,
           "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
           "@type": "SlotDefinition"
         },
         {
-          "name": "sample_comments",
-          "description": "any additional comments about the sample",
+          "name": "specimen_comments",
+          "description": "any additional comments about the specimen",
           "range": "string",
+          "multivalued": true,
           "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "travel_out_six_month",
+          "description": "Specification of the countries travelled in the last six months; can include multiple travels",
+          "range": "string",
+          "multivalued": true,
+          "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "plate_info",
+          "description": "plate location of where specimen is stored if stored in a plate ",
+          "range": "PlateInfo",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "env_medium",
+          "description": "the environment medium from which the specimen was collected from",
+          "examples": [
+            {
+              "value": "blood",
+              "@type": "Example"
+            },
+            {
+              "value": "midgut",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "env_local_scale",
+          "description": "the local environment from which the specimen was collected, e.g. jungle, urban, rural",
+          "examples": [
+            {
+              "value": "jungle",
+              "@type": "Example"
+            },
+            {
+              "value": "urban",
+              "@type": "Example"
+            },
+            {
+              "value": "rural",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "env_broad_scale",
+          "description": "the broad environment from which the specimen was collected, e.g. highlands, lowlands, mountainous region",
+          "examples": [
+            {
+              "value": "highlands",
+              "@type": "Example"
+            },
+            {
+              "value": "lowlands",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "drug_usage",
+          "description": "Any drug used by subject and the frequency of usage; can include multiple drugs used",
+          "examples": [
+            {
+              "value": "Coartem;2/day",
+              "@type": "Example"
+            }
+          ],
+          "string_serialization": "{text};{integer}/[year|month|week|day|hour]",
+          "range": "string",
+          "multivalued": true,
+          "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
           "@type": "SlotDefinition"
         }
       ],
@@ -3839,7 +4368,7 @@
         },
         {
           "name": "specimen_info",
-          "description": "a list of specimens of all the samples within this project",
+          "description": "a list of all the specimens within this project",
           "range": "SpecimenInfo",
           "required": true,
           "multivalued": true,
@@ -3939,9 +4468,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2025-03-21T22:32:45",
-  "source_file_size": 33511,
-  "generation_date": "2025-03-22T23:01:14",
+  "source_file_date": "2025-03-26T10:43:16",
+  "source_file_size": 38304,
+  "generation_date": "2025-03-26T11:20:00",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",

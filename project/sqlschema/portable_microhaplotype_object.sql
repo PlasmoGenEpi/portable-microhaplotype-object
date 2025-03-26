@@ -44,7 +44,7 @@
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
 -- # Class: "GenomicLocation" Description: "information on the genomic location of specific sequence"
 --     * Slot: id Description: 
---     * Slot: genome_id Description: the index to the genome in the targeted_genomes list that this location refers to 
+--     * Slot: genome_id Description: the index to the genome in the targeted_genomes list that this location refers to
 --     * Slot: chrom Description: the chromosome name
 --     * Slot: start Description: the start of the location, 0-based positioning
 --     * Slot: end Description: the end of the location, 0-based positioning
@@ -81,29 +81,37 @@
 --     * Slot: program Description: name of the program used for this portion of the pipeline
 --     * Slot: program_description Description: a short description of what this method does
 --     * Slot: BioinformaticsMethodInfo_id Description: Autocreated FK slot
--- # Class: "ExperimentInfo" Description: "Information about a specific amplification and sequencing of a specimen"
---     * Slot: sequencing_info_id Description: the index into the sequencing_info list
+-- # Class: "PlateInfo" Description: "Information about a plate location in a standard 96 well plate"
+--     * Slot: id Description: 
 --     * Slot: plate_name Description: a name of plate the specimen was in
 --     * Slot: plate_row Description: the row the specimen was in
 --     * Slot: plate_col Description: the column the specimen was in
+-- # Class: "ExperimentInfo" Description: "Information about a specific amplification and sequencing of a specimen"
+--     * Slot: sequencing_info_id Description: the index into the sequencing_info list
 --     * Slot: specimen_id Description: the index into the specimen_info list
 --     * Slot: panel_id Description: the index into the panel_info list
 --     * Slot: accession Description: ERA/SRA accession number for the sample if it was submitted
 --     * Slot: experiment_sample_name Description: a unique identifier for this sequence/amplification run on a specimen_name
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
+--     * Slot: extraction_plate_info_id Description: plate location of where experiment was extracted
+--     * Slot: sequencing_prep_plate_info_id Description: plate location of where experiment was prepared for sequencing 
 -- # Class: "SequencingInfo" Description: "Information on sequencing info"
 --     * Slot: id Description: 
 --     * Slot: sequencing_info_name Description: a name of for the sequencing done, e.g. batch1
---     * Slot: seq_instrument Description: the sequencing instrument used to sequence the run, e.g. ILLUMINA, Illumina MiSeq
+--     * Slot: seq_platform Description: the sequencing technology used to sequence the run, e.g. ILLUMINA, NANOPORE, PACBIO
+--     * Slot: seq_instrument_model Description: the sequencing instrument model used to sequence the run, e.g. NextSeq 2000, MinION, Revio
 --     * Slot: seq_date Description: the date of sequencing, should be YYYY-MM or YYYY-MM-DD
 --     * Slot: nucl_acid_ext Description: Link to a reference or kit that describes the recovery of nucleic acids from the sample
 --     * Slot: nucl_acid_amp Description: Link to a reference or kit that describes the enzymatic amplification of nucleic acids
 --     * Slot: nucl_acid_ext_date Description: the date of the nucleoacid extraction
 --     * Slot: nucl_acid_amp_date Description: the date of the nucleoacid amplification
 --     * Slot: pcr_cond Description: the method/conditions for PCR, List PCR cycles used to amplify the target
---     * Slot: lib_screen Description: Describe enrichment, screening, or normalization methods applied during amplification or library preparation, e.g. size selection 390bp, diluted to 1 ng DNA/sample
---     * Slot: lib_layout Description: Specify the configuration of reads, e.g. paired-end
---     * Slot: lib_kit Description: Name, version, and applicable cell or cycle numbers for the kit used to prepare libraries and load cells or chips for sequencing. If possible, include a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001
+--     * Slot: library_screen Description: Describe enrichment, screening, or normalization methods applied during amplification or library preparation, e.g. size selection 390bp, diluted to 1 ng DNA/sample
+--     * Slot: library_kit Description: Name, version, and applicable cell or cycle numbers for the kit used to prepare libraries and load cells or chips for sequencing. If possible, include a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001
+--     * Slot: library_layout Description: Specify the configuration of reads, e.g. paired-end, single
+--     * Slot: library_strategy Description: what the nuceloacid sequencing/amplification strategy was (common names are AMPLICON, WGS)
+--     * Slot: library_source Description: Source of amplification material (common names GENOMIC, TRANSCRIPTOMIC)
+--     * Slot: library_selection Description: how amplification was done (common are PCR=Source material was selected by designed primers, RANDOM =Random selection by shearing or other method)
 --     * Slot: seq_center Description: Name of facility where sequencing was performed (lab, core facility, or company)
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
 -- # Class: "ParasiteDensity" Description: "method and value of determined parasite density"
@@ -112,27 +120,27 @@
 --     * Slot: density Description: the density in microliters
 --     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
 -- # Class: "SpecimenInfo" Description: "Information on specimen info"
---     * Slot: plate_name Description: a name of plate the specimen was in
---     * Slot: plate_row Description: the row the specimen was in
---     * Slot: plate_col Description: the column the specimen was in
---     * Slot: specimen_name Description: an identifier for the specimen
---     * Slot: samp_taxon_id Description: the NCBI taxonomy number of the organism of interest
---     * Slot: individual_id Description: an identifier for the individual a specimen was collected from
---     * Slot: host_taxon_id Description: optional the NCBI taxonomy number of the host of the organism
+--     * Slot: specimen_name Description: an identifier for the specimen, should be unique within this sample set
+--     * Slot: host_subject_id Description: an identifier for the individual a specimen was collected from
+--     * Slot: host_taxon_id Description: the NCBI taxonomy number of the host that the specimen was collected from
 --     * Slot: host_sex Description: if specimen is from a person, the sex listed for that person
---     * Slot: collection_date Description: the date of the sample collection, can be YYYY, YYYY-MM, or YYYY-MM-DD
---     * Slot: host_date_of_birth Description: if specimen is from a person, the date of birth of that person, can be YYYY, YYYY-MM, or YYYY-MM-DD
+--     * Slot: collection_date Description: the date of the specimen collection, can be YYYY, YYYY-MM, or YYYY-MM-DD
+--     * Slot: host_age Description: if specimen is from a person, the age in years of the person, can be float value so for 3 month old put 0.25
 --     * Slot: collection_country Description: the name of country collected in, would be the same as admin level 0
 --     * Slot: geo_admin1 Description: geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)
 --     * Slot: geo_admin2 Description: geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)
 --     * Slot: geo_admin3 Description: geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)
 --     * Slot: lat_lon Description: the latitude and longitude of the collection site of the specimen
---     * Slot: collector Description: the name of the primary person managing the specimen
---     * Slot: samp_store_loc Description: the sample store site, address or facility name
---     * Slot: samp_collect_device Description: the way the sample was collected, e.g. whole blood, dried blood spot, etc
---     * Slot: project_name Description: a name of the project under which the sample is organized
---     * Slot: sample_comments Description: any additional comments about the sample
+--     * Slot: collector_chief_scientist Description: can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen
+--     * Slot: specimen_store_loc Description: the specimen store site, address or facility name
+--     * Slot: specimen_collect_device Description: the way the specimen was collected, e.g. whole blood, dried blood spot
+--     * Slot: specimen_type Description: what type of specimen this is, e.g. negative_control, positive_control, field_sample
+--     * Slot: project_name Description: a name of the project under which the specimen is organized
+--     * Slot: env_medium Description: the environment medium from which the specimen was collected from
+--     * Slot: env_local_scale Description: the local environment from which the specimen was collected, e.g. jungle, urban, rural
+--     * Slot: env_broad_scale Description: the broad environment from which the specimen was collected, e.g. highlands, lowlands, mountainous region
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
+--     * Slot: plate_info_id Description: plate location of where specimen is stored if stored in a plate 
 -- # Class: "BioinformaticsRunInfo" Description: "Information about the pipeline run that generated some of the microhaplotype detected and reads_by_stage"
 --     * Slot: id Description: 
 --     * Slot: bioinformatics_methods_id Description: the index into the bioinformatics_methods_info list
@@ -173,6 +181,9 @@
 -- # Class: "MarkerOfInterest_associations" Description: ""
 --     * Slot: MarkerOfInterest_id Description: Autocreated FK slot
 --     * Slot: associations Description: a list of associations with this marker, e.g. SP resistance, etc
+-- # Class: "TargetInfo_markers_of_interest" Description: ""
+--     * Slot: TargetInfo_id Description: Autocreated FK slot
+--     * Slot: markers_of_interest_id Description: a list of covered markers of interest
 -- # Class: "TargetInfo_target_attributes" Description: ""
 --     * Slot: TargetInfo_id Description: Autocreated FK slot
 --     * Slot: target_attributes Description: a list of classification type for the primer target
@@ -197,9 +208,21 @@
 -- # Class: "BioMethod_additional_argument" Description: ""
 --     * Slot: BioMethod_id Description: Autocreated FK slot
 --     * Slot: additional_argument Description: any additional arguments that differ from the default
+-- # Class: "SpecimenInfo_specimen_taxon_id" Description: ""
+--     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
+--     * Slot: specimen_taxon_id Description: the NCBI taxonomy number of the organism in specimen, can list multiple if a mixed sample
 -- # Class: "SpecimenInfo_alternate_identifiers" Description: ""
 --     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
---     * Slot: alternate_identifiers Description: a list of optional alternative names for the samples
+--     * Slot: alternate_identifiers Description: a list of optional alternative names for the specimens
+-- # Class: "SpecimenInfo_specimen_comments" Description: ""
+--     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
+--     * Slot: specimen_comments Description: any additional comments about the specimen
+-- # Class: "SpecimenInfo_travel_out_six_month" Description: ""
+--     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
+--     * Slot: travel_out_six_month Description: Specification of the countries travelled in the last six months; can include multiple travels
+-- # Class: "SpecimenInfo_drug_usage" Description: ""
+--     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
+--     * Slot: drug_usage Description: Any drug used by subject and the frequency of usage; can include multiple drugs used
 
 CREATE TABLE "ReactionInfo" (
 	id INTEGER NOT NULL, 
@@ -255,6 +278,13 @@ CREATE TABLE "BioMethod" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY("BioinformaticsMethodInfo_id") REFERENCES "BioinformaticsMethodInfo" (id)
 );
+CREATE TABLE "PlateInfo" (
+	id INTEGER NOT NULL, 
+	plate_name TEXT, 
+	plate_row TEXT, 
+	plate_col INTEGER, 
+	PRIMARY KEY (id)
+);
 CREATE TABLE "PmoGenerationMethod" (
 	id INTEGER NOT NULL, 
 	program_version TEXT NOT NULL, 
@@ -263,7 +293,7 @@ CREATE TABLE "PmoGenerationMethod" (
 );
 CREATE TABLE "MarkerOfInterest" (
 	id INTEGER NOT NULL, 
-	marker_location_id INTEGER, 
+	marker_location_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(marker_location_id) REFERENCES "GenomicLocation" (id)
 );
@@ -364,59 +394,65 @@ CREATE TABLE "GenomeInfo" (
 );
 CREATE TABLE "ExperimentInfo" (
 	sequencing_info_id INTEGER NOT NULL, 
-	plate_name TEXT, 
-	plate_row TEXT, 
-	plate_col INTEGER, 
 	specimen_id INTEGER NOT NULL, 
 	panel_id INTEGER NOT NULL, 
 	accession TEXT, 
 	experiment_sample_name TEXT NOT NULL, 
 	"PortableMicrohaplotypeObject_id" INTEGER, 
+	extraction_plate_info_id INTEGER, 
+	sequencing_prep_plate_info_id INTEGER, 
 	PRIMARY KEY (experiment_sample_name), 
-	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
+	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id), 
+	FOREIGN KEY(extraction_plate_info_id) REFERENCES "PlateInfo" (id), 
+	FOREIGN KEY(sequencing_prep_plate_info_id) REFERENCES "PlateInfo" (id)
 );
 CREATE TABLE "SequencingInfo" (
 	id INTEGER NOT NULL, 
 	sequencing_info_name TEXT NOT NULL, 
-	seq_instrument TEXT NOT NULL, 
+	seq_platform TEXT NOT NULL, 
+	seq_instrument_model TEXT NOT NULL, 
 	seq_date TEXT NOT NULL, 
 	nucl_acid_ext TEXT, 
 	nucl_acid_amp TEXT, 
 	nucl_acid_ext_date TEXT, 
 	nucl_acid_amp_date TEXT, 
 	pcr_cond TEXT, 
-	lib_screen TEXT, 
-	lib_layout TEXT, 
-	lib_kit TEXT, 
+	library_screen TEXT, 
+	library_kit TEXT, 
+	library_layout TEXT NOT NULL, 
+	library_strategy TEXT NOT NULL, 
+	library_source TEXT NOT NULL, 
+	library_selection TEXT NOT NULL, 
 	seq_center TEXT, 
 	"PortableMicrohaplotypeObject_id" INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
 );
 CREATE TABLE "SpecimenInfo" (
-	plate_name TEXT, 
-	plate_row TEXT, 
-	plate_col INTEGER, 
 	specimen_name TEXT NOT NULL, 
-	samp_taxon_id INTEGER NOT NULL, 
-	individual_id INTEGER, 
-	host_taxon_id INTEGER, 
+	host_subject_id INTEGER, 
+	host_taxon_id INTEGER NOT NULL, 
 	host_sex TEXT, 
 	collection_date TEXT NOT NULL, 
-	host_date_of_birth TEXT, 
+	host_age FLOAT, 
 	collection_country TEXT NOT NULL, 
 	geo_admin1 TEXT, 
 	geo_admin2 TEXT, 
 	geo_admin3 TEXT, 
 	lat_lon TEXT, 
-	collector TEXT NOT NULL, 
-	samp_store_loc TEXT NOT NULL, 
-	samp_collect_device TEXT NOT NULL, 
+	collector_chief_scientist TEXT, 
+	specimen_store_loc TEXT, 
+	specimen_collect_device TEXT, 
+	specimen_type TEXT, 
 	project_name TEXT NOT NULL, 
-	sample_comments TEXT, 
+	env_medium TEXT, 
+	env_local_scale TEXT, 
+	env_broad_scale TEXT, 
 	"PortableMicrohaplotypeObject_id" INTEGER, 
+	plate_info_id INTEGER, 
 	PRIMARY KEY (specimen_name), 
-	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
+	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id), 
+	FOREIGN KEY(plate_info_id) REFERENCES "PlateInfo" (id)
 );
 CREATE TABLE "BioinformaticsRunInfo" (
 	id INTEGER NOT NULL, 
@@ -466,6 +502,13 @@ CREATE TABLE "ReadCountsByStageForExperimentalSample" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY("ReadCountsByStage_id") REFERENCES "ReadCountsByStage" (id)
 );
+CREATE TABLE "TargetInfo_markers_of_interest" (
+	"TargetInfo_id" INTEGER, 
+	markers_of_interest_id INTEGER, 
+	PRIMARY KEY ("TargetInfo_id", markers_of_interest_id), 
+	FOREIGN KEY("TargetInfo_id") REFERENCES "TargetInfo" (id), 
+	FOREIGN KEY(markers_of_interest_id) REFERENCES "MarkerOfInterest" (id)
+);
 CREATE TABLE "TargetInfo_target_attributes" (
 	"TargetInfo_id" INTEGER, 
 	target_attributes TEXT, 
@@ -485,10 +528,34 @@ CREATE TABLE "GenomeInfo_chromosomes" (
 	PRIMARY KEY ("GenomeInfo_id", chromosomes), 
 	FOREIGN KEY("GenomeInfo_id") REFERENCES "GenomeInfo" (id)
 );
+CREATE TABLE "SpecimenInfo_specimen_taxon_id" (
+	"SpecimenInfo_specimen_name" TEXT, 
+	specimen_taxon_id INTEGER NOT NULL, 
+	PRIMARY KEY ("SpecimenInfo_specimen_name", specimen_taxon_id), 
+	FOREIGN KEY("SpecimenInfo_specimen_name") REFERENCES "SpecimenInfo" (specimen_name)
+);
 CREATE TABLE "SpecimenInfo_alternate_identifiers" (
 	"SpecimenInfo_specimen_name" TEXT, 
 	alternate_identifiers TEXT, 
 	PRIMARY KEY ("SpecimenInfo_specimen_name", alternate_identifiers), 
+	FOREIGN KEY("SpecimenInfo_specimen_name") REFERENCES "SpecimenInfo" (specimen_name)
+);
+CREATE TABLE "SpecimenInfo_specimen_comments" (
+	"SpecimenInfo_specimen_name" TEXT, 
+	specimen_comments TEXT, 
+	PRIMARY KEY ("SpecimenInfo_specimen_name", specimen_comments), 
+	FOREIGN KEY("SpecimenInfo_specimen_name") REFERENCES "SpecimenInfo" (specimen_name)
+);
+CREATE TABLE "SpecimenInfo_travel_out_six_month" (
+	"SpecimenInfo_specimen_name" TEXT, 
+	travel_out_six_month TEXT, 
+	PRIMARY KEY ("SpecimenInfo_specimen_name", travel_out_six_month), 
+	FOREIGN KEY("SpecimenInfo_specimen_name") REFERENCES "SpecimenInfo" (specimen_name)
+);
+CREATE TABLE "SpecimenInfo_drug_usage" (
+	"SpecimenInfo_specimen_name" TEXT, 
+	drug_usage TEXT, 
+	PRIMARY KEY ("SpecimenInfo_specimen_name", drug_usage), 
 	FOREIGN KEY("SpecimenInfo_specimen_name") REFERENCES "SpecimenInfo" (specimen_name)
 );
 CREATE TABLE "MicrohaplotypesForTarget" (

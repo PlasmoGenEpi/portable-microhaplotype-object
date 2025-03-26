@@ -74,12 +74,11 @@ linkml:Sparqlpath xsd:string
 
 <ExperimentInfo> CLOSED {
     (  $<ExperimentInfo_tes> (  <sequencing_info_id> @linkml:Integer ;
-          <plate_name> @linkml:String ? ;
-          <plate_row> @linkml:String ? ;
-          <plate_col> @linkml:Integer ? ;
           <specimen_id> @linkml:Integer ;
           <panel_id> @linkml:Integer ;
-          <accession> @linkml:String ?
+          <accession> @linkml:String ? ;
+          <extraction_plate_info> @<PlateInfo> ? ;
+          <sequencing_prep_plate_info> @<PlateInfo> ?
        ) ;
        rdf:type [ <ExperimentInfo> ]
     )
@@ -110,7 +109,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <MarkerOfInterest> CLOSED {
-    (  $<MarkerOfInterest_tes> (  <marker_location> @<GenomicLocation> ? ;
+    (  $<MarkerOfInterest_tes> (  <marker_location> @<GenomicLocation> ;
           <associations> @linkml:String *
        ) ;
        rdf:type [ <MarkerOfInterest> ] ?
@@ -172,6 +171,15 @@ linkml:Sparqlpath xsd:string
           <density> @linkml:Double
        ) ;
        rdf:type [ <ParasiteDensity> ] ?
+    )
+}
+
+<PlateInfo> CLOSED {
+    (  $<PlateInfo_tes> (  <plate_name> @linkml:String ? ;
+          <plate_row> @linkml:String ? ;
+          <plate_col> @linkml:Integer ?
+       ) ;
+       rdf:type [ <PlateInfo> ] ?
     )
 }
 
@@ -277,16 +285,20 @@ linkml:Sparqlpath xsd:string
 
 <SequencingInfo> CLOSED {
     (  $<SequencingInfo_tes> (  <sequencing_info_name> @linkml:String ;
-          <seq_instrument> @linkml:String ;
+          <seq_platform> @linkml:String ;
+          <seq_instrument_model> @linkml:String ;
           <seq_date> @linkml:String ;
           <nucl_acid_ext> @linkml:String ? ;
           <nucl_acid_amp> @linkml:String ? ;
           <nucl_acid_ext_date> @linkml:String ? ;
           <nucl_acid_amp_date> @linkml:String ? ;
           <pcr_cond> @linkml:String ? ;
-          <lib_screen> @linkml:String ? ;
-          <lib_layout> @linkml:String ? ;
-          <lib_kit> @linkml:String ? ;
+          <library_screen> @linkml:String ? ;
+          <library_kit> @linkml:String ? ;
+          <library_layout> @linkml:String ;
+          <library_strategy> @linkml:String ;
+          <library_source> @linkml:String ;
+          <library_selection> @linkml:String ;
           <seq_center> @linkml:String ?
        ) ;
        rdf:type [ <SequencingInfo> ] ?
@@ -294,27 +306,31 @@ linkml:Sparqlpath xsd:string
 }
 
 <SpecimenInfo> CLOSED {
-    (  $<SpecimenInfo_tes> (  <plate_name> @linkml:String ? ;
-          <plate_row> @linkml:String ? ;
-          <plate_col> @linkml:Integer ? ;
-          <samp_taxon_id> @linkml:Integer ;
-          <individual_id> @linkml:Integer ? ;
-          <host_taxon_id> @linkml:Integer ? ;
+    (  $<SpecimenInfo_tes> (  <specimen_taxon_id> @linkml:Integer + ;
+          <host_subject_id> @linkml:Integer ? ;
+          <host_taxon_id> @linkml:Integer ;
           <alternate_identifiers> @linkml:String * ;
           <host_sex> @linkml:String ? ;
           <parasite_density_info> @<ParasiteDensity> * ;
           <collection_date> @linkml:String ;
-          <host_date_of_birth> @linkml:String ? ;
+          <host_age> @linkml:Double ? ;
           <collection_country> @linkml:String ;
           <geo_admin1> @linkml:String ? ;
           <geo_admin2> @linkml:String ? ;
           <geo_admin3> @linkml:String ? ;
           <lat_lon> @linkml:String ? ;
-          <collector> @linkml:String ;
-          <samp_store_loc> @linkml:String ;
-          <samp_collect_device> @linkml:String ;
+          <collector_chief_scientist> @linkml:String ? ;
+          <specimen_store_loc> @linkml:String ? ;
+          <specimen_collect_device> @linkml:String ? ;
+          <specimen_type> @linkml:String ? ;
           <project_name> @linkml:String ;
-          <sample_comments> @linkml:String ?
+          <specimen_comments> @linkml:String * ;
+          <travel_out_six_month> @linkml:String * ;
+          <plate_info> @<PlateInfo> ? ;
+          <env_medium> @linkml:String ? ;
+          <env_local_scale> @linkml:String ? ;
+          <env_broad_scale> @linkml:String ? ;
+          <drug_usage> @linkml:String *
        ) ;
        rdf:type [ <SpecimenInfo> ]
     )
@@ -334,6 +350,7 @@ linkml:Sparqlpath xsd:string
           <insert_location> @<GenomicLocation> ? ;
           <forward_primers> @<PrimerInfo> + ;
           <reverse_primers> @<PrimerInfo> + ;
+          <markers_of_interest> @<MarkerOfInterest> * ;
           <target_attributes> @linkml:String *
        ) ;
        rdf:type [ <TargetInfo> ] ?

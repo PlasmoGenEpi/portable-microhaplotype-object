@@ -28,13 +28,12 @@ message BioMethod
 message ExperimentInfo
  {
   integer sequencingInfoId = 0
-  string plateName = 0
-  string plateRow = 0
-  integer plateCol = 0
   integer specimenId = 0
   integer panelId = 0
   string accession = 0
   string experimentSampleName = 0
+  plateInfo extractionPlateInfo = 0
+  plateInfo sequencingPrepPlateInfo = 0
  }
 // information on a genome
 message GenomeInfo
@@ -105,6 +104,13 @@ message ParasiteDensity
  {
   string method = 0
   double density = 0
+ }
+// Information about a plate location in a standard 96 well plate
+message PlateInfo
+ {
+  string plateName = 0
+  string plateRow = 0
+  integer plateCol = 0
  }
 // Information about how a PMO was generated
 message PmoGenerationMethod
@@ -191,43 +197,51 @@ message RepresentativeMicrohaplotypesForTarget
 message SequencingInfo
  {
   string sequencingInfoName = 0
-  string seqInstrument = 0
+  string seqPlatform = 0
+  string seqInstrumentModel = 0
   string seqDate = 0
   string nuclAcidExt = 0
   string nuclAcidAmp = 0
   string nuclAcidExtDate = 0
   string nuclAcidAmpDate = 0
   string pcrCond = 0
-  string libScreen = 0
-  string libLayout = 0
-  string libKit = 0
+  string libraryScreen = 0
+  string libraryKit = 0
+  string libraryLayout = 0
+  string libraryStrategy = 0
+  string librarySource = 0
+  string librarySelection = 0
   string seqCenter = 0
  }
 // Information on specimen info
 message SpecimenInfo
  {
-  string plateName = 0
-  string plateRow = 0
-  integer plateCol = 0
   string specimenName = 0
-  integer sampTaxonId = 0
-  integer individualId = 0
+ repeated  integer specimenTaxonId = 0
+  integer hostSubjectId = 0
   integer hostTaxonId = 0
  repeated  string alternateIdentifiers = 0
   string hostSex = 0
  repeated  parasiteDensity parasiteDensityInfo = 0
   string collectionDate = 0
-  string hostDateOfBirth = 0
+  double hostAge = 0
   string collectionCountry = 0
   string geoAdmin1 = 0
   string geoAdmin2 = 0
   string geoAdmin3 = 0
   string latLon = 0
-  string collector = 0
-  string sampStoreLoc = 0
-  string sampCollectDevice = 0
+  string collectorChiefScientist = 0
+  string specimenStoreLoc = 0
+  string specimenCollectDevice = 0
+  string specimenType = 0
   string projectName = 0
-  string sampleComments = 0
+ repeated  string specimenComments = 0
+ repeated  string travelOutSixMonth = 0
+  plateInfo plateInfo = 0
+  string envMedium = 0
+  string envLocalScale = 0
+  string envBroadScale = 0
+ repeated  string drugUsage = 0
  }
 // Information on the reads counts at several stages
 message StageReadCounts
@@ -243,5 +257,6 @@ message TargetInfo
   genomicLocation insertLocation = 0
  repeated  primerInfo forwardPrimers = 0
  repeated  primerInfo reversePrimers = 0
+ repeated  markerOfInterest markersOfInterest = 0
  repeated  string targetAttributes = 0
  }

@@ -62,6 +62,8 @@ classes:
     attributes:
       marker_location:
         range: GenomicLocation
+        multivalued: false
+        required: true
         description: >-
           the genomic location
       associations:
@@ -107,6 +109,13 @@ classes:
         required: true
         description: >-
           A list of reverse primers associated with this target
+      markers_of_interest:
+        range: MarkerOfInterest
+        multivalued: true
+        inlined_as_list: false
+        required: false
+        description: >-
+          a list of covered markers of interest
       target_attributes:
         range: string
         multivalued: true
@@ -458,25 +467,36 @@ classes:
         description: >-
           any additional arguments that differ from the default
 
+  PlateInfo:
+    description: >-
+      Information about a plate location in a standard 96 well plate
+    attributes:
+      plate_name:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        description: >-
+          a name of plate the specimen was in
+      plate_row:
+        range: string
+        pattern: "^[A-z]$"
+        description: >-
+          the row the specimen was in
+      plate_col:
+        range: integer
+        pattern: "^[0-9]+$"
+        description: >-
+          the column the specimen was in
+
   ExperimentInfo:
     description: >-
       Information about a specific amplification and sequencing of a specimen
     slots:
       - sequencing_info_id
-      - plate_name
-      - plate_row
-      - plate_col
       - specimen_id
       - panel_id
     slot_usage:
       specimen_id:
         identifier: false
-      plate_name:
-        required: false
-      plate_row:
-        required: false
-      plate_col:
-        required: false
     attributes:
       accession:
         range: string
@@ -491,6 +511,18 @@ classes:
         identifier: true
         description: >-
           a unique identifier for this sequence/amplification run on a specimen_name
+      extraction_plate_info:
+        range: PlateInfo
+        required: false
+        description: >-
+          plate location of where experiment was extracted
+      sequencing_prep_plate_info:
+        range: PlateInfo
+        required: false
+        description: >-
+          plate location of where experiment was prepared for sequencing 
+          
+          
 
   SequencingInfo:
     description: >-
@@ -503,15 +535,26 @@ classes:
         required: true
         description: >-
           a name of for the sequencing done, e.g. batch1
-      seq_instrument:
+      seq_platform:
         range: string
         pattern: "^[A-z-._0-9 ]+$"
         required: true
         description: >-
-          the sequencing instrument used to sequence the run, e.g. ILLUMINA, Illumina MiSeq
+          the sequencing technology used to sequence the run, e.g. ILLUMINA, NANOPORE, PACBIO
         examples:
           - value: 'ILLUMINA'
-          - value: 'Illumina MiSeq'
+          - value: 'PACBIO'
+          - value: 'NANOPORE'
+      seq_instrument_model:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: true
+        description: >-
+          the sequencing instrument model used to sequence the run, e.g. NextSeq 2000, MinION, Revio
+        examples:
+          - value: 'NextSeq 2000'
+          - value: 'MinION'
+          - value: 'Revio'
       seq_date:
         range: string
         pattern: "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
@@ -561,7 +604,7 @@ classes:
         required: false
         description: >-
           the method/conditions for PCR, List PCR cycles used to amplify the target
-      lib_screen:
+      library_screen:
         range: string
         pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
         required: false
@@ -569,15 +612,7 @@ classes:
           Describe enrichment, screening, or normalization methods applied during amplification or library preparation, e.g. size selection 390bp, diluted to 1 ng DNA/sample
         examples:
           - value: 'size selection 390bp, diluted to 1 ng DNA/sample'
-      lib_layout:
-        range: string
-        pattern: "^[A-z-._0-9 ]+$"
-        required: false
-        description: >-
-          Specify the configuration of reads, e.g. paired-end
-        examples:
-          - value: 'paired-end'
-      lib_kit:
+      library_kit:
         range: string
         pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
         required: false
@@ -585,6 +620,42 @@ classes:
           Name, version, and applicable cell or cycle numbers for the kit used to prepare libraries and load cells or chips for sequencing. If possible, include a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001
         examples:
           - value: 'MiSeq Reagent Kit v3 (150-cycle), MS-102-3001'
+      library_layout:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: true
+        description: >-
+          Specify the configuration of reads, e.g. paired-end, single
+        examples:
+          - value: 'paired-end'
+          - value: 'single'
+      library_strategy:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: true
+        description: >-
+          what the nuceloacid sequencing/amplification strategy was (common names are AMPLICON, WGS)
+        examples:
+          - value: 'AMPLICON'
+          - value: 'WGS'
+      library_source:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: true
+        description: >-
+          Source of amplification material (common names GENOMIC, TRANSCRIPTOMIC)
+        examples:
+          - value: 'GENOMIC'
+          - value: 'TRANSCRIPTOMIC'
+      library_selection:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: true
+        description: >-
+          how amplification was done (common are PCR=Source material was selected by designed primers, RANDOM =Random selection by shearing or other method)
+        examples:
+          - value: 'PCR'
+          - value: 'RANDOM'
       seq_center:
         range: string
         pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
@@ -627,10 +698,6 @@ classes:
 #          - range: integer
     description: >-
       Information on specimen info
-    slots:
-      - plate_name
-      - plate_row
-      - plate_col
     attributes:
       specimen_name:
         range: string
@@ -638,14 +705,16 @@ classes:
         required: true
         identifier: true
         description: >-
-          an identifier for the specimen
-      samp_taxon_id:
+          an identifier for the specimen, should be unique within this sample set
+      specimen_taxon_id:
         range: integer
         pattern: "^[0-9]+$"
         required: true
+        multivalued: true
+        inlined_as_list: true
         description: >-
-          the NCBI taxonomy number of the organism of interest
-      individual_id:
+          the NCBI taxonomy number of the organism in specimen, can list multiple if a mixed sample
+      host_subject_id:
         range: integer
         pattern: "^[0-9]+$"
         required: false
@@ -654,9 +723,9 @@ classes:
       host_taxon_id:
         range: integer
         pattern: "^[0-9]+$"
-        required: false
+        required: true
         description: >-
-          optional the NCBI taxonomy number of the host of the organism
+          the NCBI taxonomy number of the host that the specimen was collected from
       alternate_identifiers:
         range: string
         pattern: "^[A-z-._0-9 ]+$"
@@ -664,7 +733,7 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of optional alternative names for the samples
+          a list of optional alternative names for the specimens
       host_sex:
         range: string
         pattern: "^[A-z-._0-9 ]+$"
@@ -683,21 +752,31 @@ classes:
         pattern: "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)"
         required: true
         description: >-
-          the date of the sample collection, can be YYYY, YYYY-MM, or YYYY-MM-DD
+          the date of the specimen collection, can be YYYY, YYYY-MM, or YYYY-MM-DD
         examples:
           - value: "1988"
           - value: "1988-06"
           - value: "1988-06-26"
-      host_date_of_birth:
-        range: string
-        pattern: "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)"
+#      host_date_of_birth:
+#        range: string
+#        pattern: "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)"
+#        required: false
+#        description: >-
+#          if specimen is from a person, the date of birth of that person, can be YYYY, YYYY-MM, or YYYY-MM-DD
+#        examples:
+#          - value: "1988"
+#          - value: "1988-06"
+#          - value: "1988-06-26"
+      host_age:
+        range: double
+        pattern: "^\\d*\\.?\\d+$"
         required: false
         description: >-
-          if specimen is from a person, the date of birth of that person, can be YYYY, YYYY-MM, or YYYY-MM-DD
+          if specimen is from a person, the age in years of the person, can be float value so for 3 month old put 0.25
         examples:
-          - value: "1988"
-          - value: "1988-06"
-          - value: "1988-06-26"
+          - value: "0.1"
+          - value: "1"
+          - value: "7"
       collection_country:
         range: string
         pattern: "^[A-Za-z0-9 ,._:'–-]+$"
@@ -742,37 +821,100 @@ classes:
         required: false
         description: >-
           the latitude and longitude of the collection site of the specimen
-      collector:
+      collector_chief_scientist:
+        range: string
+        pattern: "^[A-z-._0-9;|\\(\\),\\/\\\ ]+$"
+        required: false
+        description: >-
+          can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen
+      specimen_store_loc:
         range: string
         pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
-        required: true
+        required: false
         description: >-
-          the name of the primary person managing the specimen
-      samp_store_loc:
+          the specimen store site, address or facility name
+      specimen_collect_device:
         range: string
         pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
-        required: true
+        required: false
         description: >-
-          the sample store site, address or facility name
-      samp_collect_device:
+          the way the specimen was collected, e.g. whole blood, dried blood spot
+        examples:
+          - value: "whole blood"
+          - value: "dried blood spot"
+      specimen_type:
         range: string
         pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
-        required: true
+        required: false
         description: >-
-          the way the sample was collected, e.g. whole blood, dried blood spot, etc
+          what type of specimen this is, e.g. negative_control, positive_control, field_sample
+        examples:
+          - value: "negative_control"
+          - value: "positive_control"
+          - value: "field_sample"
       project_name:
         range: string
         pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
         required: true
         description: >-
-          a name of the project under which the sample is organized
-      sample_comments:
+          a name of the project under which the specimen is organized
+      specimen_comments:
         range: string
         pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
         required: false
+        multivalued: true
         description: >-
-          any additional comments about the sample
-
+          any additional comments about the specimen
+      travel_out_six_month:
+        range: string
+        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
+        required: false
+        multivalued: true
+        description: >-
+          Specification of the countries travelled in the last six months; can include multiple travels
+      plate_info:
+        range: PlateInfo
+        required: false
+        description: >-
+          plate location of where specimen is stored if stored in a plate 
+      env_medium:
+        range: string
+        pattern: "^[A-z-._0-9;|\\(\\),\\/\\\ ]+$"
+        required: false
+        description: >-
+          the environment medium from which the specimen was collected from
+        examples:
+          - value: "blood"
+          - value: "midgut"
+      env_local_scale:
+        range: string
+        pattern: "^[A-z-._0-9;|\\(\\),\\/\\\ ]+$"
+        required: false
+        description: >-
+          the local environment from which the specimen was collected, e.g. jungle, urban, rural
+        examples:
+          - value: "jungle"
+          - value: "urban"
+          - value: "rural"
+      env_broad_scale:
+        range: string
+        pattern: "^[A-z-._0-9;|\\(\\),\\/\\\ ]+$"
+        required: false
+        description: >-
+          the broad environment from which the specimen was collected, e.g. highlands, lowlands, mountainous region
+        examples:
+          - value: "highlands"
+          - value: "lowlands"
+      drug_usage:
+        range: string
+        required: false
+        description: >-
+          Any drug used by subject and the frequency of usage; can include multiple drugs used
+        string_serialization: '{text};{integer}/[year|month|week|day|hour]'
+        pattern: "^[A-z-._0-9;|\\(\\),\\/\\\ ]+$"
+        multivalued: true
+        examples:
+          - value: "Coartem;2/day"
 
   BioinformaticsRunInfo:
     description: >-
@@ -792,8 +934,6 @@ classes:
         required: false
         description: >-
           a name to for this run
-  
-  
 
   PmoGenerationMethod:
     description: >-
@@ -913,7 +1053,7 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of specimens of all the samples within this project
+          a list of all the specimens within this project
       sequencing_info:
         range: SequencingInfo
         required: true
@@ -1042,23 +1182,7 @@ slots:
     required: true
     pattern: "^[0-9]+$"
     description: >-
-      the index to the genome in the targeted_genomes list that this location refers to 
-
-  plate_name:
-    range: string
-    pattern: "^[A-z-._0-9 ]+$"
-    description: >-
-      a name of plate the specimen was in
-  plate_row:
-    range: string
-    pattern: "^[A-z]$"
-    description: >-
-      the row the specimen was in
-  plate_col:
-    range: integer
-    pattern: "^[0-9]+$"
-    description: >-
-      the column the specimen was in
+      the index to the genome in the targeted_genomes list that this location refers to
   seq:
     range: string
     pattern: "^[A-z]+$"
