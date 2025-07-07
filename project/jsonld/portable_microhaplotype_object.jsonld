@@ -4470,7 +4470,7 @@
   "source_file": "portable_microhaplotype_object.yaml",
   "source_file_date": "2025-03-26T10:43:16",
   "source_file_size": 38304,
-  "generation_date": "2025-03-26T11:20:00",
+  "generation_date": "2025-03-26T11:33:52",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",
