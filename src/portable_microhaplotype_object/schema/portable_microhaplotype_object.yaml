@@ -20,42 +20,10 @@ default_range: string
 
 imports:
   - linkml:types
+#extra_slots:
+#  allowed: true
 
 classes:
-
-  # NamedThing:
-  #   description: >-
-  #     A generic grouping for any identifiable entity
-  #   slots:
-  #     - id
-  #     - name
-  #     - description
-  #   class_uri: schema:Thing
-
-  # Project:
-  #   is_a: NamedThing
-  #   description: >-
-  #     Represents a Project
-  #   slots:
-  #     - primary_email
-  #     - birth_date
-  #     - age_in_years
-  #     - vital_status
-  #   slot_usage:
-  #     primary_email:
-  #       pattern: "^\\S+@[\\S+\\.]+\\S+"
-  # 
-  # ProjectCollection:
-  #   tree_root: true
-  #   description: >-
-  #     A holder for Project objects
-  #   attributes:
-  #     entries:
-  #       range: Project
-  #       multivalued: true
-  #       inlined: true
-
-
   MarkerOfInterest:
     description: >-
       A specific genomic location of interest, e.g. drug resistance, or other phenotypical marker
@@ -692,6 +660,7 @@ classes:
   SpecimenInfo:
 #    the below is implement in future version 1.9.0, will allow for the automatic setting of allowing extra unexpected fields
 #    extra_slots:
+#      allowed: true
 #      slot_expression:
 #        any_of:
 #          - range: string
@@ -1039,6 +1008,9 @@ classes:
     description: >-
       Information on final results from a targeted amplicon analysis
     tree_root: true
+#    slots:
+#      extra_slots:
+#        allowed: true
     attributes:
       experiment_info:
         range: ExperimentInfo
@@ -1123,6 +1095,8 @@ classes:
 
 
 slots:
+#  extra_slots:
+#    allowed: true
   experiment_sample_id:
     range: integer
     pattern: "^[0-9]+$"
@@ -1195,43 +1169,3 @@ slots:
     required: true
     description: >-
       the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]
-
-# slots:
-#   id:
-#     identifier: true
-#     slot_uri: schema:identifier
-#     range: uriorcurie
-#     description: A unique identifier for a thing
-#   name:
-#     slot_uri: schema:name
-#     description: A human-readable name for a thing
-#   description:
-#     slot_uri: schema:description
-#     description: A human-readable description for a thing
-#   primary_email:
-#     slot_uri: schema:email
-#     description: The main email address of a person
-#   birth_date:
-#     slot_uri: schema:birthDate
-#     range: date
-#     description: Date on which a person is born
-#   age_in_years:
-#     range: integer
-#     description: Number of years since birth
-#   vital_status:
-#     range: PersonStatus
-#     description: living or dead status
-#
-# enums:
-#   PersonStatus:
-#     permissible_values:
-#       ALIVE:
-#         description: the person is living
-#         meaning: PATO:0001421
-#       DEAD:
-#         description: the person is deceased
-#         meaning: PATO:0001422
-#       UNKNOWN:
-#         description: the vital status is not known
-#         todos:
-#           - map this to an ontology
