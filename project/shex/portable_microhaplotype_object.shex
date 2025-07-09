@@ -77,8 +77,8 @@ linkml:Sparqlpath xsd:string
           <specimen_id> @linkml:Integer ;
           <panel_id> @linkml:Integer ;
           <accession> @linkml:String ? ;
-          <extraction_plate_info> @<PlateInfo> ? ;
-          <sequencing_prep_plate_info> @<PlateInfo> ?
+          <library_prep_plate_info> @<PlateInfo> ? ;
+          <qpcr_parasite_density_info> @<ParasiteDensity> *
        ) ;
        rdf:type [ <ExperimentInfo> ]
     )
@@ -167,8 +167,10 @@ linkml:Sparqlpath xsd:string
 }
 
 <ParasiteDensity> CLOSED {
-    (  $<ParasiteDensity_tes> (  <method> @linkml:String ;
-          <density> @linkml:Double
+    (  $<ParasiteDensity_tes> (  <density_method> @linkml:String ;
+          <parasite_density> @linkml:Double ;
+          <date_measured> @linkml:String ? ;
+          <density_method_comments> @linkml:String ?
        ) ;
        rdf:type [ <ParasiteDensity> ] ?
     )
@@ -211,6 +213,7 @@ linkml:Sparqlpath xsd:string
           <bioinformatics_methods_info> @<BioinformaticsMethodInfo> + ;
           <bioinformatics_run_info> @<BioinformaticsRunInfo> + ;
           <microhaplotypes_detected> @<MicrohaplotypesDetected> + ;
+          <project_info> @<ProjectInfo> + ;
           <pmo_header> @<PmoHeader> ;
           <read_counts_by_stage> @<ReadCountsByStage> *
        ) ;
@@ -223,6 +226,17 @@ linkml:Sparqlpath xsd:string
           <location> @<GenomicLocation> ?
        ) ;
        rdf:type [ <PrimerInfo> ] ?
+    )
+}
+
+<ProjectInfo> CLOSED {
+    (  $<ProjectInfo_tes> (  <project_description> @linkml:String ;
+          <project_type> @linkml:String ? ;
+          <project_contributors> @linkml:String * ;
+          <project_collector_chief_scientist> @linkml:String ? ;
+          <BioProject_accession> @linkml:String ?
+       ) ;
+       rdf:type [ <ProjectInfo> ]
     )
 }
 
@@ -278,7 +292,9 @@ linkml:Sparqlpath xsd:string
 }
 
 <RepresentativeMicrohaplotypesForTarget> CLOSED {
-    (  $<RepresentativeMicrohaplotypesForTarget_tes> <microhaplotypes> @<RepresentativeMicrohaplotype> + ;
+    (  $<RepresentativeMicrohaplotypesForTarget_tes> (  <microhaplotypes> @<RepresentativeMicrohaplotype> + ;
+          <mhap_location> @<GenomicLocation> ?
+       ) ;
        rdf:type [ <RepresentativeMicrohaplotypesForTarget> ]
     )
 }
@@ -311,7 +327,7 @@ linkml:Sparqlpath xsd:string
           <host_taxon_id> @linkml:Integer ;
           <alternate_identifiers> @linkml:String * ;
           <host_sex> @linkml:String ? ;
-          <parasite_density_info> @<ParasiteDensity> * ;
+          <microscopy_parasite_density_info> @<ParasiteDensity> * ;
           <collection_date> @linkml:String ;
           <host_age> @linkml:Double ? ;
           <collection_country> @linkml:String ;
@@ -319,14 +335,13 @@ linkml:Sparqlpath xsd:string
           <geo_admin2> @linkml:String ? ;
           <geo_admin3> @linkml:String ? ;
           <lat_lon> @linkml:String ? ;
-          <collector_chief_scientist> @linkml:String ? ;
           <specimen_store_loc> @linkml:String ? ;
           <specimen_collect_device> @linkml:String ? ;
           <specimen_type> @linkml:String ? ;
-          <project_name> @linkml:String ;
+          <project_id> @linkml:Integer ;
           <specimen_comments> @linkml:String * ;
           <travel_out_six_month> @linkml:String * ;
-          <plate_info> @<PlateInfo> ? ;
+          <storage_plate_info> @<PlateInfo> ? ;
           <env_medium> @linkml:String ? ;
           <env_local_scale> @linkml:String ? ;
           <env_broad_scale> @linkml:String ? ;
@@ -348,8 +363,8 @@ linkml:Sparqlpath xsd:string
     (  $<TargetInfo_tes> (  <target_name> @linkml:String ;
           <gene_name> @linkml:String ? ;
           <insert_location> @<GenomicLocation> ? ;
-          <forward_primers> @<PrimerInfo> + ;
-          <reverse_primers> @<PrimerInfo> + ;
+          <forward_primer> @<PrimerInfo> ;
+          <reverse_primer> @<PrimerInfo> ;
           <markers_of_interest> @<MarkerOfInterest> * ;
           <target_attributes> @linkml:String *
        ) ;

@@ -608,34 +608,32 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "targetInfo__forward_primers",
-      "description": "A list of forward primers associated with this target",
+      "name": "targetInfo__forward_primer",
+      "description": "the forward primer associated with this target",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/forward_primers",
-      "alias": "forward_primers",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/forward_primer",
+      "alias": "forward_primer",
       "owner": "TargetInfo",
       "domain_of": [
         "TargetInfo"
       ],
       "range": "PrimerInfo",
       "required": true,
-      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "targetInfo__reverse_primers",
-      "description": "A list of reverse primers associated with this target",
+      "name": "targetInfo__reverse_primer",
+      "description": "the reverse primer associated with this target",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/reverse_primers",
-      "alias": "reverse_primers",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/reverse_primer",
+      "alias": "reverse_primer",
       "owner": "TargetInfo",
       "domain_of": [
         "TargetInfo"
       ],
       "range": "PrimerInfo",
       "required": true,
-      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -877,7 +875,7 @@
     },
     {
       "name": "representativeMicrohaplotypesForTarget__microhaplotypes",
-      "description": "a list of the microhaplotypes detected for a target ",
+      "description": "a list of the microhaplotypes detected for a target",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/microhaplotypes",
       "alias": "microhaplotypes",
@@ -888,6 +886,20 @@
       "range": "RepresentativeMicrohaplotype",
       "required": true,
       "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "representativeMicrohaplotypesForTarget__mhap_location",
+      "description": "a genomic location that was analyzed for this target info, this allows listing location that may be different from the full target location (e.g 1 base in from the full) ",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/mhap_location",
+      "alias": "mhap_location",
+      "owner": "RepresentativeMicrohaplotypesForTarget",
+      "domain_of": [
+        "RepresentativeMicrohaplotypesForTarget"
+      ],
+      "range": "GenomicLocation",
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -1336,11 +1348,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "experimentInfo__extraction_plate_info",
-      "description": "plate location of where experiment was extracted",
+      "name": "experimentInfo__library_prep_plate_info",
+      "description": "plate location of where experiment was prepared for sequencing ",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/extraction_plate_info",
-      "alias": "extraction_plate_info",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/library_prep_plate_info",
+      "alias": "library_prep_plate_info",
       "owner": "ExperimentInfo",
       "domain_of": [
         "ExperimentInfo"
@@ -1350,17 +1362,19 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "experimentInfo__sequencing_prep_plate_info",
-      "description": "plate location of where experiment was prepared for sequencing ",
+      "name": "experimentInfo__qpcr_parasite_density_info",
+      "description": "qpcr parasite density measurement ",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/sequencing_prep_plate_info",
-      "alias": "sequencing_prep_plate_info",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/qpcr_parasite_density_info",
+      "alias": "qpcr_parasite_density_info",
       "owner": "ExperimentInfo",
       "domain_of": [
         "ExperimentInfo"
       ],
-      "range": "PlateInfo",
+      "range": "ParasiteDensity",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1724,7 +1738,7 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "parasiteDensity__method",
+      "name": "parasiteDensity__density_method",
       "description": "the method of how this density was obtained",
       "examples": [
         {
@@ -1737,8 +1751,8 @@
         }
       ],
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/method",
-      "alias": "method",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/density_method",
+      "alias": "density_method",
       "owner": "ParasiteDensity",
       "domain_of": [
         "ParasiteDensity"
@@ -1749,7 +1763,7 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "parasiteDensity__density",
+      "name": "parasiteDensity__parasite_density",
       "description": "the density in microliters",
       "examples": [
         {
@@ -1762,8 +1776,8 @@
         }
       ],
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/density",
-      "alias": "density",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/parasite_density",
+      "alias": "parasite_density",
       "owner": "ParasiteDensity",
       "domain_of": [
         "ParasiteDensity"
@@ -1772,6 +1786,152 @@
       "required": true,
       "minimum_value": 0,
       "pattern": "^[-+]?\\\\d*\\\\.?\\\\d+(?:[eE][-+]?\\\\d+)?$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "parasiteDensity__date_measured",
+      "description": "the date the qpcr was performed, can be YYYY, YYYY-MM, or YYYY-MM-DD",
+      "examples": [
+        {
+          "value": "1988",
+          "@type": "Example"
+        },
+        {
+          "value": "1988-06",
+          "@type": "Example"
+        },
+        {
+          "value": "1988-06-26",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/date_measured",
+      "alias": "date_measured",
+      "owner": "ParasiteDensity",
+      "domain_of": [
+        "ParasiteDensity"
+      ],
+      "range": "string",
+      "pattern": "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "parasiteDensity__density_method_comments",
+      "description": "additional comments about how the density was performed",
+      "examples": [
+        {
+          "value": "var-ATS primers used",
+          "@type": "Example"
+        },
+        {
+          "value": "John Smith performed microscopy",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/density_method_comments",
+      "alias": "density_method_comments",
+      "owner": "ParasiteDensity",
+      "domain_of": [
+        "ParasiteDensity"
+      ],
+      "range": "string",
+      "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "projectInfo__project_name",
+      "description": "a name for the project, should be unique if multiple projects listed",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/project_name",
+      "identifier": true,
+      "alias": "project_name",
+      "owner": "ProjectInfo",
+      "domain_of": [
+        "ProjectInfo"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^[A-z-._0-9 ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "projectInfo__project_description",
+      "description": "a short description of the project",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/project_description",
+      "alias": "project_description",
+      "owner": "ProjectInfo",
+      "domain_of": [
+        "ProjectInfo"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "projectInfo__project_type",
+      "description": "the type of project conducted, e.g. TES vs surveillance vs transmission",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/project_type",
+      "alias": "project_type",
+      "owner": "ProjectInfo",
+      "domain_of": [
+        "ProjectInfo"
+      ],
+      "range": "string",
+      "pattern": "^[A-z-._0-9 ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "projectInfo__project_contributors",
+      "description": "a list of collaborators who contributed to this project",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/project_contributors",
+      "alias": "project_contributors",
+      "owner": "ProjectInfo",
+      "domain_of": [
+        "ProjectInfo"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "inlined_as_list": true,
+      "pattern": "^[A-z-._0-9 ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "projectInfo__project_collector_chief_scientist",
+      "description": "can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/project_collector_chief_scientist",
+      "alias": "project_collector_chief_scientist",
+      "owner": "ProjectInfo",
+      "domain_of": [
+        "ProjectInfo"
+      ],
+      "range": "string",
+      "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "projectInfo__BioProject_accession",
+      "description": "an SRA bioproject accession e.g. PRJNA33823",
+      "examples": [
+        {
+          "value": "PRJNA33823",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/BioProject_accession",
+      "alias": "BioProject_accession",
+      "owner": "ProjectInfo",
+      "domain_of": [
+        "ProjectInfo"
+      ],
+      "range": "string",
+      "pattern": "^[A-z-._0-9 ]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -1867,11 +2027,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "specimenInfo__parasite_density_info",
+      "name": "specimenInfo__microscopy_parasite_density_info",
       "description": "one or more parasite densities in microliters for this specimen",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/parasite_density_info",
-      "alias": "parasite_density_info",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/microscopy_parasite_density_info",
+      "alias": "microscopy_parasite_density_info",
       "owner": "SpecimenInfo",
       "domain_of": [
         "SpecimenInfo"
@@ -2040,20 +2200,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "specimenInfo__collector_chief_scientist",
-      "description": "can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/collector_chief_scientist",
-      "alias": "collector_chief_scientist",
-      "owner": "SpecimenInfo",
-      "domain_of": [
-        "SpecimenInfo"
-      ],
-      "range": "string",
-      "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "specimenInfo__specimen_store_loc",
       "description": "the specimen store site, address or facility name",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
@@ -2120,18 +2266,18 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "specimenInfo__project_name",
-      "description": "a name of the project under which the specimen is organized",
+      "name": "specimenInfo__project_id",
+      "description": "the index into the project_info list",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/project_name",
-      "alias": "project_name",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/project_id",
+      "alias": "project_id",
       "owner": "SpecimenInfo",
       "domain_of": [
         "SpecimenInfo"
       ],
-      "range": "string",
+      "range": "integer",
       "required": true,
-      "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+      "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -2165,11 +2311,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "specimenInfo__plate_info",
+      "name": "specimenInfo__storage_plate_info",
       "description": "plate location of where specimen is stored if stored in a plate ",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/plate_info",
-      "alias": "plate_info",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/storage_plate_info",
+      "alias": "storage_plate_info",
       "owner": "SpecimenInfo",
       "domain_of": [
         "SpecimenInfo"
@@ -2627,6 +2773,23 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "portableMicrohaplotypeObject__project_info",
+      "description": "the information about the projects stored in this PMO",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/project_info",
+      "alias": "project_info",
+      "owner": "PortableMicrohaplotypeObject",
+      "domain_of": [
+        "PortableMicrohaplotypeObject"
+      ],
+      "range": "ProjectInfo",
+      "required": true,
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "portableMicrohaplotypeObject__pmo_header",
       "description": "the PMO information for this file including version etc",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
@@ -2739,8 +2902,8 @@
         "targetInfo__target_name",
         "targetInfo__gene_name",
         "targetInfo__insert_location",
-        "targetInfo__forward_primers",
-        "targetInfo__reverse_primers",
+        "targetInfo__forward_primer",
+        "targetInfo__reverse_primer",
         "targetInfo__markers_of_interest",
         "targetInfo__target_attributes"
       ],
@@ -2768,21 +2931,17 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "forward_primers",
-          "description": "A list of forward primers associated with this target",
+          "name": "forward_primer",
+          "description": "the forward primer associated with this target",
           "range": "PrimerInfo",
           "required": true,
-          "multivalued": true,
-          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
-          "name": "reverse_primers",
-          "description": "A list of reverse primers associated with this target",
+          "name": "reverse_primer",
+          "description": "the reverse primer associated with this target",
           "range": "PrimerInfo",
           "required": true,
-          "multivalued": true,
-          "inlined": true,
           "@type": "SlotDefinition"
         },
         {
@@ -3002,16 +3161,23 @@
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
         "RepresentativeMicrohaplotypesForTarget_target_id",
-        "representativeMicrohaplotypesForTarget__microhaplotypes"
+        "representativeMicrohaplotypesForTarget__microhaplotypes",
+        "representativeMicrohaplotypesForTarget__mhap_location"
       ],
       "slot_usage": {},
       "attributes": [
         {
           "name": "microhaplotypes",
-          "description": "a list of the microhaplotypes detected for a target ",
+          "description": "a list of the microhaplotypes detected for a target",
           "range": "RepresentativeMicrohaplotype",
           "required": true,
           "multivalued": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "mhap_location",
+          "description": "a genomic location that was analyzed for this target info, this allows listing location that may be different from the full target location (e.g 1 base in from the full) ",
+          "range": "GenomicLocation",
           "@type": "SlotDefinition"
         }
       ],
@@ -3411,8 +3577,8 @@
         "panel_id",
         "experimentInfo__accession",
         "experimentInfo__experiment_sample_name",
-        "experimentInfo__extraction_plate_info",
-        "experimentInfo__sequencing_prep_plate_info"
+        "experimentInfo__library_prep_plate_info",
+        "experimentInfo__qpcr_parasite_density_info"
       ],
       "slot_usage": {},
       "attributes": [
@@ -3433,15 +3599,17 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "extraction_plate_info",
-          "description": "plate location of where experiment was extracted",
+          "name": "library_prep_plate_info",
+          "description": "plate location of where experiment was prepared for sequencing ",
           "range": "PlateInfo",
           "@type": "SlotDefinition"
         },
         {
-          "name": "sequencing_prep_plate_info",
-          "description": "plate location of where experiment was prepared for sequencing ",
-          "range": "PlateInfo",
+          "name": "qpcr_parasite_density_info",
+          "description": "qpcr parasite density measurement ",
+          "range": "ParasiteDensity",
+          "multivalued": true,
+          "inlined_as_list": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -3731,13 +3899,15 @@
       "description": "method and value of determined parasite density",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
-        "parasiteDensity__method",
-        "parasiteDensity__density"
+        "parasiteDensity__density_method",
+        "parasiteDensity__parasite_density",
+        "parasiteDensity__date_measured",
+        "parasiteDensity__density_method_comments"
       ],
       "slot_usage": {},
       "attributes": [
         {
-          "name": "method",
+          "name": "density_method",
           "description": "the method of how this density was obtained",
           "examples": [
             {
@@ -3755,7 +3925,7 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "density",
+          "name": "parasite_density",
           "description": "the density in microliters",
           "examples": [
             {
@@ -3772,9 +3942,118 @@
           "minimum_value": 0,
           "pattern": "^[-+]?\\\\d*\\\\.?\\\\d+(?:[eE][-+]?\\\\d+)?$",
           "@type": "SlotDefinition"
+        },
+        {
+          "name": "date_measured",
+          "description": "the date the qpcr was performed, can be YYYY, YYYY-MM, or YYYY-MM-DD",
+          "examples": [
+            {
+              "value": "1988",
+              "@type": "Example"
+            },
+            {
+              "value": "1988-06",
+              "@type": "Example"
+            },
+            {
+              "value": "1988-06-26",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "pattern": "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "density_method_comments",
+          "description": "additional comments about how the density was performed",
+          "examples": [
+            {
+              "value": "var-ATS primers used",
+              "@type": "Example"
+            },
+            {
+              "value": "John Smith performed microscopy",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+          "@type": "SlotDefinition"
         }
       ],
       "class_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/ParasiteDensity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ProjectInfo",
+      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/ProjectInfo",
+      "description": "Information on project info",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slots": [
+        "projectInfo__project_name",
+        "projectInfo__project_description",
+        "projectInfo__project_type",
+        "projectInfo__project_contributors",
+        "projectInfo__project_collector_chief_scientist",
+        "projectInfo__BioProject_accession"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "project_name",
+          "description": "a name for the project, should be unique if multiple projects listed",
+          "identifier": true,
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-z-._0-9 ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "project_description",
+          "description": "a short description of the project",
+          "range": "string",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "project_type",
+          "description": "the type of project conducted, e.g. TES vs surveillance vs transmission",
+          "range": "string",
+          "pattern": "^[A-z-._0-9 ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "project_contributors",
+          "description": "a list of collaborators who contributed to this project",
+          "range": "string",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "pattern": "^[A-z-._0-9 ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "project_collector_chief_scientist",
+          "description": "can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen",
+          "range": "string",
+          "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "BioProject_accession",
+          "description": "an SRA bioproject accession e.g. PRJNA33823",
+          "examples": [
+            {
+              "value": "PRJNA33823",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "pattern": "^[A-z-._0-9 ]+$",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/ProjectInfo",
       "@type": "ClassDefinition"
     },
     {
@@ -3789,7 +4068,7 @@
         "specimenInfo__host_taxon_id",
         "specimenInfo__alternate_identifiers",
         "specimenInfo__host_sex",
-        "specimenInfo__parasite_density_info",
+        "specimenInfo__microscopy_parasite_density_info",
         "specimenInfo__collection_date",
         "specimenInfo__host_age",
         "specimenInfo__collection_country",
@@ -3797,14 +4076,13 @@
         "specimenInfo__geo_admin2",
         "specimenInfo__geo_admin3",
         "specimenInfo__lat_lon",
-        "specimenInfo__collector_chief_scientist",
         "specimenInfo__specimen_store_loc",
         "specimenInfo__specimen_collect_device",
         "specimenInfo__specimen_type",
-        "specimenInfo__project_name",
+        "specimenInfo__project_id",
         "specimenInfo__specimen_comments",
         "specimenInfo__travel_out_six_month",
-        "specimenInfo__plate_info",
+        "specimenInfo__storage_plate_info",
         "specimenInfo__env_medium",
         "specimenInfo__env_local_scale",
         "specimenInfo__env_broad_scale",
@@ -3863,7 +4141,7 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "parasite_density_info",
+          "name": "microscopy_parasite_density_info",
           "description": "one or more parasite densities in microliters for this specimen",
           "range": "ParasiteDensity",
           "multivalued": true,
@@ -3979,13 +4257,6 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "collector_chief_scientist",
-          "description": "can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen",
-          "range": "string",
-          "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
-          "@type": "SlotDefinition"
-        },
-        {
           "name": "specimen_store_loc",
           "description": "the specimen store site, address or facility name",
           "range": "string",
@@ -4031,11 +4302,11 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "project_name",
-          "description": "a name of the project under which the specimen is organized",
-          "range": "string",
+          "name": "project_id",
+          "description": "the index into the project_info list",
+          "range": "integer",
           "required": true,
-          "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+          "pattern": "^[0-9]+$",
           "@type": "SlotDefinition"
         },
         {
@@ -4055,7 +4326,7 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "plate_info",
+          "name": "storage_plate_info",
           "description": "plate location of where specimen is stored if stored in a plate ",
           "range": "PlateInfo",
           "@type": "SlotDefinition"
@@ -4352,6 +4623,7 @@
         "portableMicrohaplotypeObject__bioinformatics_methods_info",
         "portableMicrohaplotypeObject__bioinformatics_run_info",
         "portableMicrohaplotypeObject__microhaplotypes_detected",
+        "portableMicrohaplotypeObject__project_info",
         "portableMicrohaplotypeObject__pmo_header",
         "portableMicrohaplotypeObject__read_counts_by_stage"
       ],
@@ -4446,6 +4718,15 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "project_info",
+          "description": "the information about the projects stored in this PMO",
+          "range": "ProjectInfo",
+          "required": true,
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "pmo_header",
           "description": "the PMO information for this file including version etc",
           "range": "PmoHeader",
@@ -4468,9 +4749,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2025-07-07T18:08:33",
-  "source_file_size": 36655,
-  "generation_date": "2025-07-07T18:08:58",
+  "source_file_date": "2025-07-09T09:08:40",
+  "source_file_size": 38911,
+  "generation_date": "2025-07-09T10:30:02",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",

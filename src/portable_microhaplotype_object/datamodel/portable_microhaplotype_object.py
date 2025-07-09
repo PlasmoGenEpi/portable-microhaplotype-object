@@ -1,5 +1,5 @@
 # Auto generated from portable_microhaplotype_object.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-07-07T18:09:00
+# Generation date: 2025-07-09T10:30:03
 # Schema: portable-microhaplotype-object
 #
 # id: https://plasmogenepi.github.io/portable-microhaplotype-object
@@ -82,6 +82,10 @@ class ExperimentInfoExperimentSampleName(extended_str):
     pass
 
 
+class ProjectInfoProjectName(extended_str):
+    pass
+
+
 class SpecimenInfoSpecimenName(extended_str):
     pass
 
@@ -127,8 +131,8 @@ class TargetInfo(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT.TargetInfo
 
     target_name: str = None
-    forward_primers: Union[Union[dict, "PrimerInfo"], list[Union[dict, "PrimerInfo"]]] = None
-    reverse_primers: Union[Union[dict, "PrimerInfo"], list[Union[dict, "PrimerInfo"]]] = None
+    forward_primer: Union[dict, "PrimerInfo"] = None
+    reverse_primer: Union[dict, "PrimerInfo"] = None
     gene_name: Optional[str] = None
     insert_location: Optional[Union[dict, "GenomicLocation"]] = None
     markers_of_interest: Optional[Union[Union[dict, MarkerOfInterest], list[Union[dict, MarkerOfInterest]]]] = empty_list()
@@ -140,13 +144,15 @@ class TargetInfo(YAMLRoot):
         if not isinstance(self.target_name, str):
             self.target_name = str(self.target_name)
 
-        if self._is_empty(self.forward_primers):
-            self.MissingRequiredField("forward_primers")
-        self._normalize_inlined_as_dict(slot_name="forward_primers", slot_type=PrimerInfo, key_name="seq", keyed=False)
+        if self._is_empty(self.forward_primer):
+            self.MissingRequiredField("forward_primer")
+        if not isinstance(self.forward_primer, PrimerInfo):
+            self.forward_primer = PrimerInfo(**as_dict(self.forward_primer))
 
-        if self._is_empty(self.reverse_primers):
-            self.MissingRequiredField("reverse_primers")
-        self._normalize_inlined_as_dict(slot_name="reverse_primers", slot_type=PrimerInfo, key_name="seq", keyed=False)
+        if self._is_empty(self.reverse_primer):
+            self.MissingRequiredField("reverse_primer")
+        if not isinstance(self.reverse_primer, PrimerInfo):
+            self.reverse_primer = PrimerInfo(**as_dict(self.reverse_primer))
 
         if self.gene_name is not None and not isinstance(self.gene_name, str):
             self.gene_name = str(self.gene_name)
@@ -335,6 +341,7 @@ class RepresentativeMicrohaplotypesForTarget(YAMLRoot):
 
     target_id: Union[int, RepresentativeMicrohaplotypesForTargetTargetId] = None
     microhaplotypes: Union[Union[dict, RepresentativeMicrohaplotype], list[Union[dict, RepresentativeMicrohaplotype]]] = None
+    mhap_location: Optional[Union[dict, "GenomicLocation"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.target_id):
@@ -345,6 +352,9 @@ class RepresentativeMicrohaplotypesForTarget(YAMLRoot):
         if self._is_empty(self.microhaplotypes):
             self.MissingRequiredField("microhaplotypes")
         self._normalize_inlined_as_dict(slot_name="microhaplotypes", slot_type=RepresentativeMicrohaplotype, key_name="seq", keyed=False)
+
+        if self.mhap_location is not None and not isinstance(self.mhap_location, GenomicLocation):
+            self.mhap_location = GenomicLocation(**as_dict(self.mhap_location))
 
         super().__post_init__(**kwargs)
 
@@ -720,8 +730,8 @@ class ExperimentInfo(YAMLRoot):
     specimen_id: int = None
     panel_id: int = None
     accession: Optional[str] = None
-    extraction_plate_info: Optional[Union[dict, PlateInfo]] = None
-    sequencing_prep_plate_info: Optional[Union[dict, PlateInfo]] = None
+    library_prep_plate_info: Optional[Union[dict, PlateInfo]] = None
+    qpcr_parasite_density_info: Optional[Union[Union[dict, "ParasiteDensity"], list[Union[dict, "ParasiteDensity"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.experiment_sample_name):
@@ -747,11 +757,12 @@ class ExperimentInfo(YAMLRoot):
         if self.accession is not None and not isinstance(self.accession, str):
             self.accession = str(self.accession)
 
-        if self.extraction_plate_info is not None and not isinstance(self.extraction_plate_info, PlateInfo):
-            self.extraction_plate_info = PlateInfo(**as_dict(self.extraction_plate_info))
+        if self.library_prep_plate_info is not None and not isinstance(self.library_prep_plate_info, PlateInfo):
+            self.library_prep_plate_info = PlateInfo(**as_dict(self.library_prep_plate_info))
 
-        if self.sequencing_prep_plate_info is not None and not isinstance(self.sequencing_prep_plate_info, PlateInfo):
-            self.sequencing_prep_plate_info = PlateInfo(**as_dict(self.sequencing_prep_plate_info))
+        if not isinstance(self.qpcr_parasite_density_info, list):
+            self.qpcr_parasite_density_info = [self.qpcr_parasite_density_info] if self.qpcr_parasite_density_info is not None else []
+        self.qpcr_parasite_density_info = [v if isinstance(v, ParasiteDensity) else ParasiteDensity(**as_dict(v)) for v in self.qpcr_parasite_density_info]
 
         super().__post_init__(**kwargs)
 
@@ -865,19 +876,73 @@ class ParasiteDensity(YAMLRoot):
     class_name: ClassVar[str] = "ParasiteDensity"
     class_model_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT.ParasiteDensity
 
-    method: str = None
-    density: float = None
+    density_method: str = None
+    parasite_density: float = None
+    date_measured: Optional[str] = None
+    density_method_comments: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.method):
-            self.MissingRequiredField("method")
-        if not isinstance(self.method, str):
-            self.method = str(self.method)
+        if self._is_empty(self.density_method):
+            self.MissingRequiredField("density_method")
+        if not isinstance(self.density_method, str):
+            self.density_method = str(self.density_method)
 
-        if self._is_empty(self.density):
-            self.MissingRequiredField("density")
-        if not isinstance(self.density, float):
-            self.density = float(self.density)
+        if self._is_empty(self.parasite_density):
+            self.MissingRequiredField("parasite_density")
+        if not isinstance(self.parasite_density, float):
+            self.parasite_density = float(self.parasite_density)
+
+        if self.date_measured is not None and not isinstance(self.date_measured, str):
+            self.date_measured = str(self.date_measured)
+
+        if self.density_method_comments is not None and not isinstance(self.density_method_comments, str):
+            self.density_method_comments = str(self.density_method_comments)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ProjectInfo(YAMLRoot):
+    """
+    Information on project info
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT["ProjectInfo"]
+    class_class_curie: ClassVar[str] = "portable_microhaplotype_object:ProjectInfo"
+    class_name: ClassVar[str] = "ProjectInfo"
+    class_model_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT.ProjectInfo
+
+    project_name: Union[str, ProjectInfoProjectName] = None
+    project_description: str = None
+    project_type: Optional[str] = None
+    project_contributors: Optional[Union[str, list[str]]] = empty_list()
+    project_collector_chief_scientist: Optional[str] = None
+    BioProject_accession: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.project_name):
+            self.MissingRequiredField("project_name")
+        if not isinstance(self.project_name, ProjectInfoProjectName):
+            self.project_name = ProjectInfoProjectName(self.project_name)
+
+        if self._is_empty(self.project_description):
+            self.MissingRequiredField("project_description")
+        if not isinstance(self.project_description, str):
+            self.project_description = str(self.project_description)
+
+        if self.project_type is not None and not isinstance(self.project_type, str):
+            self.project_type = str(self.project_type)
+
+        if not isinstance(self.project_contributors, list):
+            self.project_contributors = [self.project_contributors] if self.project_contributors is not None else []
+        self.project_contributors = [v if isinstance(v, str) else str(v) for v in self.project_contributors]
+
+        if self.project_collector_chief_scientist is not None and not isinstance(self.project_collector_chief_scientist, str):
+            self.project_collector_chief_scientist = str(self.project_collector_chief_scientist)
+
+        if self.BioProject_accession is not None and not isinstance(self.BioProject_accession, str):
+            self.BioProject_accession = str(self.BioProject_accession)
 
         super().__post_init__(**kwargs)
 
@@ -899,23 +964,22 @@ class SpecimenInfo(YAMLRoot):
     host_taxon_id: int = None
     collection_date: str = None
     collection_country: str = None
-    project_name: str = None
+    project_id: int = None
     host_subject_id: Optional[int] = None
     alternate_identifiers: Optional[Union[str, list[str]]] = empty_list()
     host_sex: Optional[str] = None
-    parasite_density_info: Optional[Union[Union[dict, ParasiteDensity], list[Union[dict, ParasiteDensity]]]] = empty_list()
+    microscopy_parasite_density_info: Optional[Union[Union[dict, ParasiteDensity], list[Union[dict, ParasiteDensity]]]] = empty_list()
     host_age: Optional[float] = None
     geo_admin1: Optional[str] = None
     geo_admin2: Optional[str] = None
     geo_admin3: Optional[str] = None
     lat_lon: Optional[str] = None
-    collector_chief_scientist: Optional[str] = None
     specimen_store_loc: Optional[str] = None
     specimen_collect_device: Optional[str] = None
     specimen_type: Optional[str] = None
     specimen_comments: Optional[Union[str, list[str]]] = empty_list()
     travel_out_six_month: Optional[Union[str, list[str]]] = empty_list()
-    plate_info: Optional[Union[dict, PlateInfo]] = None
+    storage_plate_info: Optional[Union[dict, PlateInfo]] = None
     env_medium: Optional[str] = None
     env_local_scale: Optional[str] = None
     env_broad_scale: Optional[str] = None
@@ -948,10 +1012,10 @@ class SpecimenInfo(YAMLRoot):
         if not isinstance(self.collection_country, str):
             self.collection_country = str(self.collection_country)
 
-        if self._is_empty(self.project_name):
-            self.MissingRequiredField("project_name")
-        if not isinstance(self.project_name, str):
-            self.project_name = str(self.project_name)
+        if self._is_empty(self.project_id):
+            self.MissingRequiredField("project_id")
+        if not isinstance(self.project_id, int):
+            self.project_id = int(self.project_id)
 
         if self.host_subject_id is not None and not isinstance(self.host_subject_id, int):
             self.host_subject_id = int(self.host_subject_id)
@@ -963,9 +1027,9 @@ class SpecimenInfo(YAMLRoot):
         if self.host_sex is not None and not isinstance(self.host_sex, str):
             self.host_sex = str(self.host_sex)
 
-        if not isinstance(self.parasite_density_info, list):
-            self.parasite_density_info = [self.parasite_density_info] if self.parasite_density_info is not None else []
-        self.parasite_density_info = [v if isinstance(v, ParasiteDensity) else ParasiteDensity(**as_dict(v)) for v in self.parasite_density_info]
+        if not isinstance(self.microscopy_parasite_density_info, list):
+            self.microscopy_parasite_density_info = [self.microscopy_parasite_density_info] if self.microscopy_parasite_density_info is not None else []
+        self.microscopy_parasite_density_info = [v if isinstance(v, ParasiteDensity) else ParasiteDensity(**as_dict(v)) for v in self.microscopy_parasite_density_info]
 
         if self.host_age is not None and not isinstance(self.host_age, float):
             self.host_age = float(self.host_age)
@@ -981,9 +1045,6 @@ class SpecimenInfo(YAMLRoot):
 
         if self.lat_lon is not None and not isinstance(self.lat_lon, str):
             self.lat_lon = str(self.lat_lon)
-
-        if self.collector_chief_scientist is not None and not isinstance(self.collector_chief_scientist, str):
-            self.collector_chief_scientist = str(self.collector_chief_scientist)
 
         if self.specimen_store_loc is not None and not isinstance(self.specimen_store_loc, str):
             self.specimen_store_loc = str(self.specimen_store_loc)
@@ -1002,8 +1063,8 @@ class SpecimenInfo(YAMLRoot):
             self.travel_out_six_month = [self.travel_out_six_month] if self.travel_out_six_month is not None else []
         self.travel_out_six_month = [v if isinstance(v, str) else str(v) for v in self.travel_out_six_month]
 
-        if self.plate_info is not None and not isinstance(self.plate_info, PlateInfo):
-            self.plate_info = PlateInfo(**as_dict(self.plate_info))
+        if self.storage_plate_info is not None and not isinstance(self.storage_plate_info, PlateInfo):
+            self.storage_plate_info = PlateInfo(**as_dict(self.storage_plate_info))
 
         if self.env_medium is not None and not isinstance(self.env_medium, str):
             self.env_medium = str(self.env_medium)
@@ -1259,6 +1320,7 @@ class PortableMicrohaplotypeObject(YAMLRoot):
     bioinformatics_methods_info: Union[Union[dict, BioinformaticsMethodInfo], list[Union[dict, BioinformaticsMethodInfo]]] = None
     bioinformatics_run_info: Union[Union[dict, BioinformaticsRunInfo], list[Union[dict, BioinformaticsRunInfo]]] = None
     microhaplotypes_detected: Union[Union[dict, MicrohaplotypesDetected], list[Union[dict, MicrohaplotypesDetected]]] = None
+    project_info: Union[dict[Union[str, ProjectInfoProjectName], Union[dict, ProjectInfo]], list[Union[dict, ProjectInfo]]] = empty_dict()
     pmo_header: Union[dict, PmoHeader] = None
     read_counts_by_stage: Optional[Union[Union[dict, ReadCountsByStage], list[Union[dict, ReadCountsByStage]]]] = empty_list()
 
@@ -1317,6 +1379,10 @@ class PortableMicrohaplotypeObject(YAMLRoot):
         if not isinstance(self.microhaplotypes_detected, list):
             self.microhaplotypes_detected = [self.microhaplotypes_detected] if self.microhaplotypes_detected is not None else []
         self.microhaplotypes_detected = [v if isinstance(v, MicrohaplotypesDetected) else MicrohaplotypesDetected(**as_dict(v)) for v in self.microhaplotypes_detected]
+
+        if self._is_empty(self.project_info):
+            self.MissingRequiredField("project_info")
+        self._normalize_inlined_as_list(slot_name="project_info", slot_type=ProjectInfo, key_name="project_name", keyed=True)
 
         if self._is_empty(self.pmo_header):
             self.MissingRequiredField("pmo_header")
@@ -1403,11 +1469,11 @@ slots.targetInfo__gene_name = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.gene_name,
 slots.targetInfo__insert_location = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.insert_location, name="targetInfo__insert_location", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('insert_location'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.targetInfo__insert_location, domain=None, range=Optional[Union[dict, GenomicLocation]])
 
-slots.targetInfo__forward_primers = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.forward_primers, name="targetInfo__forward_primers", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('forward_primers'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.targetInfo__forward_primers, domain=None, range=Union[Union[dict, PrimerInfo], list[Union[dict, PrimerInfo]]])
+slots.targetInfo__forward_primer = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.forward_primer, name="targetInfo__forward_primer", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('forward_primer'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.targetInfo__forward_primer, domain=None, range=Union[dict, PrimerInfo])
 
-slots.targetInfo__reverse_primers = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.reverse_primers, name="targetInfo__reverse_primers", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('reverse_primers'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.targetInfo__reverse_primers, domain=None, range=Union[Union[dict, PrimerInfo], list[Union[dict, PrimerInfo]]])
+slots.targetInfo__reverse_primer = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.reverse_primer, name="targetInfo__reverse_primer", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('reverse_primer'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.targetInfo__reverse_primer, domain=None, range=Union[dict, PrimerInfo])
 
 slots.targetInfo__markers_of_interest = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.markers_of_interest, name="targetInfo__markers_of_interest", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('markers_of_interest'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.targetInfo__markers_of_interest, domain=None, range=Optional[Union[Union[dict, MarkerOfInterest], list[Union[dict, MarkerOfInterest]]]])
@@ -1461,6 +1527,9 @@ slots.representativeMicrohaplotypes__targets = Slot(uri=PORTABLE_MICROHAPLOTYPE_
 
 slots.representativeMicrohaplotypesForTarget__microhaplotypes = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.microhaplotypes, name="representativeMicrohaplotypesForTarget__microhaplotypes", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('microhaplotypes'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.representativeMicrohaplotypesForTarget__microhaplotypes, domain=None, range=Union[Union[dict, RepresentativeMicrohaplotype], list[Union[dict, RepresentativeMicrohaplotype]]])
+
+slots.representativeMicrohaplotypesForTarget__mhap_location = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.mhap_location, name="representativeMicrohaplotypesForTarget__mhap_location", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('mhap_location'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.representativeMicrohaplotypesForTarget__mhap_location, domain=None, range=Optional[Union[dict, GenomicLocation]])
 
 slots.microhaplotypesDetected__experiment_samples = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.experiment_samples, name="microhaplotypesDetected__experiment_samples", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('experiment_samples'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.microhaplotypesDetected__experiment_samples, domain=None, range=Union[Union[dict, MicrohaplotypesForSample], list[Union[dict, MicrohaplotypesForSample]]])
@@ -1569,11 +1638,11 @@ slots.experimentInfo__experiment_sample_name = Slot(uri=PORTABLE_MICROHAPLOTYPE_
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.experimentInfo__experiment_sample_name, domain=None, range=URIRef,
                    pattern=re.compile(r'^[A-z-._0-9 ]+$'))
 
-slots.experimentInfo__extraction_plate_info = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.extraction_plate_info, name="experimentInfo__extraction_plate_info", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('extraction_plate_info'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.experimentInfo__extraction_plate_info, domain=None, range=Optional[Union[dict, PlateInfo]])
+slots.experimentInfo__library_prep_plate_info = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.library_prep_plate_info, name="experimentInfo__library_prep_plate_info", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('library_prep_plate_info'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.experimentInfo__library_prep_plate_info, domain=None, range=Optional[Union[dict, PlateInfo]])
 
-slots.experimentInfo__sequencing_prep_plate_info = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencing_prep_plate_info, name="experimentInfo__sequencing_prep_plate_info", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('sequencing_prep_plate_info'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.experimentInfo__sequencing_prep_plate_info, domain=None, range=Optional[Union[dict, PlateInfo]])
+slots.experimentInfo__qpcr_parasite_density_info = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.qpcr_parasite_density_info, name="experimentInfo__qpcr_parasite_density_info", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('qpcr_parasite_density_info'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.experimentInfo__qpcr_parasite_density_info, domain=None, range=Optional[Union[Union[dict, ParasiteDensity], list[Union[dict, ParasiteDensity]]]])
 
 slots.sequencingInfo__sequencing_info_name = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencing_info_name, name="sequencingInfo__sequencing_info_name", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('sequencing_info_name'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencingInfo__sequencing_info_name, domain=None, range=str,
@@ -1639,13 +1708,44 @@ slots.sequencingInfo__seq_center = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.seq_c
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.sequencingInfo__seq_center, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[A-z-._0-9\(\),\/\ ]+$'))
 
-slots.parasiteDensity__method = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.method, name="parasiteDensity__method", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('method'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.parasiteDensity__method, domain=None, range=str,
+slots.parasiteDensity__density_method = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.density_method, name="parasiteDensity__density_method", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('density_method'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.parasiteDensity__density_method, domain=None, range=str,
                    pattern=re.compile(r'^[A-z-._0-9 ]+$'))
 
-slots.parasiteDensity__density = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.density, name="parasiteDensity__density", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('density'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.parasiteDensity__density, domain=None, range=float,
+slots.parasiteDensity__parasite_density = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.parasite_density, name="parasiteDensity__parasite_density", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('parasite_density'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.parasiteDensity__parasite_density, domain=None, range=float,
                    pattern=re.compile(r'^[-+]?\\d*\\.?\\d+(?:[eE][-+]?\\d+)?$'))
+
+slots.parasiteDensity__date_measured = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.date_measured, name="parasiteDensity__date_measured", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('date_measured'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.parasiteDensity__date_measured, domain=None, range=Optional[str],
+                   pattern=re.compile(r'(?:\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)'))
+
+slots.parasiteDensity__density_method_comments = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.density_method_comments, name="parasiteDensity__density_method_comments", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('density_method_comments'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.parasiteDensity__density_method_comments, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[A-z-._0-9\(\),\/\ ]+$'))
+
+slots.projectInfo__project_name = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.project_name, name="projectInfo__project_name", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('project_name'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.projectInfo__project_name, domain=None, range=URIRef,
+                   pattern=re.compile(r'^[A-z-._0-9 ]+$'))
+
+slots.projectInfo__project_description = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.project_description, name="projectInfo__project_description", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('project_description'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.projectInfo__project_description, domain=None, range=str)
+
+slots.projectInfo__project_type = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.project_type, name="projectInfo__project_type", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('project_type'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.projectInfo__project_type, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[A-z-._0-9 ]+$'))
+
+slots.projectInfo__project_contributors = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.project_contributors, name="projectInfo__project_contributors", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('project_contributors'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.projectInfo__project_contributors, domain=None, range=Optional[Union[str, list[str]]],
+                   pattern=re.compile(r'^[A-z-._0-9 ]+$'))
+
+slots.projectInfo__project_collector_chief_scientist = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.project_collector_chief_scientist, name="projectInfo__project_collector_chief_scientist", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('project_collector_chief_scientist'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.projectInfo__project_collector_chief_scientist, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[A-z-._0-9;|\(\),\/\ ]+$'))
+
+slots.projectInfo__BioProject_accession = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.BioProject_accession, name="projectInfo__BioProject_accession", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('BioProject_accession'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.projectInfo__BioProject_accession, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[A-z-._0-9 ]+$'))
 
 slots.specimenInfo__specimen_name = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimen_name, name="specimenInfo__specimen_name", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('specimen_name'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__specimen_name, domain=None, range=URIRef,
@@ -1671,8 +1771,8 @@ slots.specimenInfo__host_sex = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.host_sex,
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__host_sex, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[A-z-._0-9 ]+$'))
 
-slots.specimenInfo__parasite_density_info = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.parasite_density_info, name="specimenInfo__parasite_density_info", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('parasite_density_info'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__parasite_density_info, domain=None, range=Optional[Union[Union[dict, ParasiteDensity], list[Union[dict, ParasiteDensity]]]])
+slots.specimenInfo__microscopy_parasite_density_info = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.microscopy_parasite_density_info, name="specimenInfo__microscopy_parasite_density_info", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('microscopy_parasite_density_info'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__microscopy_parasite_density_info, domain=None, range=Optional[Union[Union[dict, ParasiteDensity], list[Union[dict, ParasiteDensity]]]])
 
 slots.specimenInfo__collection_date = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.collection_date, name="specimenInfo__collection_date", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('collection_date'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__collection_date, domain=None, range=str,
@@ -1699,10 +1799,6 @@ slots.specimenInfo__lat_lon = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.lat_lon, n
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__lat_lon, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[-+]?\d{1,2}(?:\.\d+)?,[-+]?\d{1,3}(?:\.\d+)?$'))
 
-slots.specimenInfo__collector_chief_scientist = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.collector_chief_scientist, name="specimenInfo__collector_chief_scientist", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('collector_chief_scientist'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__collector_chief_scientist, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[A-z-._0-9;|\(\),\/\ ]+$'))
-
 slots.specimenInfo__specimen_store_loc = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimen_store_loc, name="specimenInfo__specimen_store_loc", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('specimen_store_loc'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__specimen_store_loc, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[A-z-._0-9\(\),\/\ ]+$'))
@@ -1715,9 +1811,9 @@ slots.specimenInfo__specimen_type = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.spec
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__specimen_type, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[A-z-._0-9\(\),\/\ ]+$'))
 
-slots.specimenInfo__project_name = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.project_name, name="specimenInfo__project_name", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('project_name'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__project_name, domain=None, range=str,
-                   pattern=re.compile(r'^[A-z-._0-9\(\),\/\ ]+$'))
+slots.specimenInfo__project_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.project_id, name="specimenInfo__project_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('project_id'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__project_id, domain=None, range=int,
+                   pattern=re.compile(r'^[0-9]+$'))
 
 slots.specimenInfo__specimen_comments = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimen_comments, name="specimenInfo__specimen_comments", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('specimen_comments'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__specimen_comments, domain=None, range=Optional[Union[str, list[str]]],
@@ -1727,8 +1823,8 @@ slots.specimenInfo__travel_out_six_month = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJE
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__travel_out_six_month, domain=None, range=Optional[Union[str, list[str]]],
                    pattern=re.compile(r'^[A-z-._0-9\(\),\/\ ]+$'))
 
-slots.specimenInfo__plate_info = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_info, name="specimenInfo__plate_info", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('plate_info'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__plate_info, domain=None, range=Optional[Union[dict, PlateInfo]])
+slots.specimenInfo__storage_plate_info = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.storage_plate_info, name="specimenInfo__storage_plate_info", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('storage_plate_info'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__storage_plate_info, domain=None, range=Optional[Union[dict, PlateInfo]])
 
 slots.specimenInfo__env_medium = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.env_medium, name="specimenInfo__env_medium", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('env_medium'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__env_medium, domain=None, range=Optional[str],
@@ -1819,6 +1915,9 @@ slots.portableMicrohaplotypeObject__bioinformatics_run_info = Slot(uri=PORTABLE_
 
 slots.portableMicrohaplotypeObject__microhaplotypes_detected = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.microhaplotypes_detected, name="portableMicrohaplotypeObject__microhaplotypes_detected", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('microhaplotypes_detected'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.portableMicrohaplotypeObject__microhaplotypes_detected, domain=None, range=Union[Union[dict, MicrohaplotypesDetected], list[Union[dict, MicrohaplotypesDetected]]])
+
+slots.portableMicrohaplotypeObject__project_info = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.project_info, name="portableMicrohaplotypeObject__project_info", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('project_info'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.portableMicrohaplotypeObject__project_info, domain=None, range=Union[dict[Union[str, ProjectInfoProjectName], Union[dict, ProjectInfo]], list[Union[dict, ProjectInfo]]])
 
 slots.portableMicrohaplotypeObject__pmo_header = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.pmo_header, name="portableMicrohaplotypeObject__pmo_header", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('pmo_header'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.portableMicrohaplotypeObject__pmo_header, domain=None, range=Union[dict, PmoHeader])

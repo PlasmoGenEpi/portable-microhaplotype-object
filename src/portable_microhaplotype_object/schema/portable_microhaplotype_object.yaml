@@ -63,20 +63,16 @@ classes:
         required: false
         description: >- 
           the intended genomic location of the insert of the amplicon (the location between the end of the forward primer and the beginning of the reverse primer)
-      forward_primers:
+      forward_primer:
         range: PrimerInfo
-        multivalued: true
-        inlined: true
         required: true
         description: >-
-          A list of forward primers associated with this target
-      reverse_primers:
+          the forward primer associated with this target
+      reverse_primer:
         range: PrimerInfo
-        multivalued: true
-        inlined: true
         required: true
         description: >-
-          A list of reverse primers associated with this target
+          the reverse primer associated with this target
       markers_of_interest:
         range: MarkerOfInterest
         multivalued: true
@@ -95,7 +91,6 @@ classes:
           - value: "Diversity"
           - value: "Drug_Resistance"
           - value: "Diagnostics"
-
 
   ReactionInfo:
     description: >-
@@ -218,7 +213,12 @@ classes:
         multivalued: true
         inlined_as_list: false
         description: >-
-          a list of the microhaplotypes detected for a target 
+          a list of the microhaplotypes detected for a target
+      mhap_location:
+        required: false
+        range: GenomicLocation
+        description: >-
+          a genomic location that was analyzed for this target info, this allows listing location that may be different from the full target location (e.g 1 base in from the full) 
 
   MicrohaplotypesDetected:
     description: >-
@@ -479,18 +479,18 @@ classes:
         identifier: true
         description: >-
           a unique identifier for this sequence/amplification run on a specimen_name
-      extraction_plate_info:
-        range: PlateInfo
-        required: false
-        description: >-
-          plate location of where experiment was extracted
-      sequencing_prep_plate_info:
+      library_prep_plate_info:
         range: PlateInfo
         required: false
         description: >-
           plate location of where experiment was prepared for sequencing 
-          
-          
+      qpcr_parasite_density_info:
+        range: ParasiteDensity
+        required: false
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          qpcr parasite density measurement 
 
   SequencingInfo:
     description: >-
@@ -637,7 +637,7 @@ classes:
     description: >- 
       method and value of determined parasite density
     attributes:
-      method:
+      density_method:
         range: string
         pattern: "^[A-z-._0-9 ]+$"
         required: true
@@ -646,7 +646,7 @@ classes:
         examples:
           - value: 'qpcr'
           - value: 'microscopy'
-      density:
+      parasite_density:
         range: double
         pattern: '^[-+]?\\d*\\.?\\d+(?:[eE][-+]?\\d+)?$'
         minimum_value: 0
@@ -656,6 +656,71 @@ classes:
         examples:
           - value: '25.0'
           - value: '10e5'
+      date_measured:
+        range: string
+        pattern: "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)"
+        required: false
+        description: >-
+          the date the qpcr was performed, can be YYYY, YYYY-MM, or YYYY-MM-DD
+        examples:
+          - value: "1988"
+          - value: "1988-06"
+          - value: "1988-06-26"
+      density_method_comments:
+        range: string
+        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
+        required: false
+        description: >-
+           additional comments about how the density was performed
+        examples:
+          - value: 'var-ATS primers used'
+          - value: 'John Smith performed microscopy'
+
+
+  ProjectInfo:
+    description: >-
+      Information on project info
+    attributes:
+      project_name:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: true
+        identifier: true
+        description: >-
+          a name for the project, should be unique if multiple projects listed
+      project_description:
+        range: string
+        required: true
+        description: >-
+          a short description of the project
+      project_type:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: false
+        description: >-
+          the type of project conducted, e.g. TES vs surveillance vs transmission
+      project_contributors:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        multivalued: true
+        inlined_as_list: true
+        required: false
+        description: >-
+          a list of collaborators who contributed to this project
+      project_collector_chief_scientist:
+        range: string
+        pattern: "^[A-z-._0-9;|\\(\\),\\/\\\ ]+$"
+        required: false
+        description: >-
+          can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen
+      BioProject_accession:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: false
+        description: >-
+          an SRA bioproject accession e.g. PRJNA33823
+        examples:
+          - value: "PRJNA33823"
 
   SpecimenInfo:
 #    the below is implement in future version 1.9.0, will allow for the automatic setting of allowing extra unexpected fields
@@ -709,7 +774,7 @@ classes:
         required: false
         description: >-
           if specimen is from a person, the sex listed for that person
-      parasite_density_info:
+      microscopy_parasite_density_info:
         range: ParasiteDensity
         required: false
         multivalued: true
@@ -790,12 +855,6 @@ classes:
         required: false
         description: >-
           the latitude and longitude of the collection site of the specimen
-      collector_chief_scientist:
-        range: string
-        pattern: "^[A-z-._0-9;|\\(\\),\\/\\\ ]+$"
-        required: false
-        description: >-
-          can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen
       specimen_store_loc:
         range: string
         pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
@@ -821,12 +880,12 @@ classes:
           - value: "negative_control"
           - value: "positive_control"
           - value: "field_sample"
-      project_name:
-        range: string
-        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
+      project_id:
+        range: integer
+        pattern: "^[0-9]+$"
         required: true
         description: >-
-          a name of the project under which the specimen is organized
+          the index into the project_info list
       specimen_comments:
         range: string
         pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
@@ -841,7 +900,7 @@ classes:
         multivalued: true
         description: >-
           Specification of the countries travelled in the last six months; can include multiple travels
-      plate_info:
+      storage_plate_info:
         range: PlateInfo
         required: false
         description: >-
@@ -1080,6 +1139,13 @@ classes:
         inlined_as_list: true
         description: >-
           the microhaplotypes detected in this projects
+      project_info:
+        range: ProjectInfo
+        required: true
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          the information about the projects stored in this PMO
       pmo_header:
         range: PmoHeader
         required: true

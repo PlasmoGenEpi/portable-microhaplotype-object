@@ -32,8 +32,8 @@ message ExperimentInfo
   integer panelId = 0
   string accession = 0
   string experimentSampleName = 0
-  plateInfo extractionPlateInfo = 0
-  plateInfo sequencingPrepPlateInfo = 0
+  plateInfo libraryPrepPlateInfo = 0
+ repeated  parasiteDensity qpcrParasiteDensityInfo = 0
  }
 // information on a genome
 message GenomeInfo
@@ -102,8 +102,10 @@ message PanelInfo
 // method and value of determined parasite density
 message ParasiteDensity
  {
-  string method = 0
-  double density = 0
+  string densityMethod = 0
+  double parasiteDensity = 0
+  string dateMeasured = 0
+  string densityMethodComments = 0
  }
 // Information about a plate location in a standard 96 well plate
 message PlateInfo
@@ -138,6 +140,7 @@ message PortableMicrohaplotypeObject
  repeated  bioinformaticsMethodInfo bioinformaticsMethodsInfo = 0
  repeated  bioinformaticsRunInfo bioinformaticsRunInfo = 0
  repeated  microhaplotypesDetected microhaplotypesDetected = 0
+ repeated  projectInfo projectInfo = 0
   pmoHeader pmoHeader = 0
  repeated  readCountsByStage readCountsByStage = 0
  }
@@ -146,6 +149,16 @@ message PrimerInfo
  {
   string seq = 0
   genomicLocation location = 0
+ }
+// Information on project info
+message ProjectInfo
+ {
+  string projectName = 0
+  string projectDescription = 0
+  string projectType = 0
+ repeated  string projectContributors = 0
+  string projectCollectorChiefScientist = 0
+  string bioProjectAccession = 0
  }
 // information on a panel of targeted amplicon primer pairs
 message ReactionInfo
@@ -192,6 +205,7 @@ message RepresentativeMicrohaplotypesForTarget
  {
   integer targetId = 0
  repeated  representativeMicrohaplotype microhaplotypes = 0
+  genomicLocation mhapLocation = 0
  }
 // Information on sequencing info
 message SequencingInfo
@@ -222,7 +236,7 @@ message SpecimenInfo
   integer hostTaxonId = 0
  repeated  string alternateIdentifiers = 0
   string hostSex = 0
- repeated  parasiteDensity parasiteDensityInfo = 0
+ repeated  parasiteDensity microscopyParasiteDensityInfo = 0
   string collectionDate = 0
   double hostAge = 0
   string collectionCountry = 0
@@ -230,14 +244,13 @@ message SpecimenInfo
   string geoAdmin2 = 0
   string geoAdmin3 = 0
   string latLon = 0
-  string collectorChiefScientist = 0
   string specimenStoreLoc = 0
   string specimenCollectDevice = 0
   string specimenType = 0
-  string projectName = 0
+  integer projectId = 0
  repeated  string specimenComments = 0
  repeated  string travelOutSixMonth = 0
-  plateInfo plateInfo = 0
+  plateInfo storagePlateInfo = 0
   string envMedium = 0
   string envLocalScale = 0
   string envBroadScale = 0
@@ -255,8 +268,8 @@ message TargetInfo
   string targetName = 0
   string geneName = 0
   genomicLocation insertLocation = 0
- repeated  primerInfo forwardPrimers = 0
- repeated  primerInfo reversePrimers = 0
+  primerInfo forwardPrimer = 0
+  primerInfo reversePrimer = 0
  repeated  markerOfInterest markersOfInterest = 0
  repeated  string targetAttributes = 0
  }

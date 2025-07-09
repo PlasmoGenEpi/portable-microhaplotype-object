@@ -29,8 +29,8 @@ type ExperimentInfo
     panelId: Integer!
     accession: String
     experimentSampleName: String!
-    extractionPlateInfo: PlateInfo
-    sequencingPrepPlateInfo: PlateInfo
+    libraryPrepPlateInfo: PlateInfo
+    qpcrParasiteDensityInfo: [ParasiteDensity]
   }
 
 type GenomeInfo
@@ -99,8 +99,10 @@ type PanelInfo
 
 type ParasiteDensity
   {
-    method: String!
-    density: Double!
+    densityMethod: String!
+    parasiteDensity: Double!
+    dateMeasured: String
+    densityMethodComments: String
   }
 
 type PlateInfo
@@ -135,6 +137,7 @@ type PortableMicrohaplotypeObject
     bioinformaticsMethodsInfo: [BioinformaticsMethodInfo]!
     bioinformaticsRunInfo: [BioinformaticsRunInfo]!
     microhaplotypesDetected: [MicrohaplotypesDetected]!
+    projectInfo: [ProjectInfo]!
     pmoHeader: PmoHeader!
     readCountsByStage: [ReadCountsByStage]
   }
@@ -143,6 +146,16 @@ type PrimerInfo
   {
     seq: String!
     location: GenomicLocation
+  }
+
+type ProjectInfo
+  {
+    projectName: String!
+    projectDescription: String!
+    projectType: String
+    projectContributors: [String]
+    projectCollectorChiefScientist: String
+    bioProjectAccession: String
   }
 
 type ReactionInfo
@@ -189,6 +202,7 @@ type RepresentativeMicrohaplotypesForTarget
   {
     targetId: Integer!
     microhaplotypes: [RepresentativeMicrohaplotype]!
+    mhapLocation: GenomicLocation
   }
 
 type SequencingInfo
@@ -219,7 +233,7 @@ type SpecimenInfo
     hostTaxonId: Integer!
     alternateIdentifiers: [String]
     hostSex: String
-    parasiteDensityInfo: [ParasiteDensity]
+    microscopyParasiteDensityInfo: [ParasiteDensity]
     collectionDate: String!
     hostAge: Double
     collectionCountry: String!
@@ -227,14 +241,13 @@ type SpecimenInfo
     geoAdmin2: String
     geoAdmin3: String
     latLon: String
-    collectorChiefScientist: String
     specimenStoreLoc: String
     specimenCollectDevice: String
     specimenType: String
-    projectName: String!
+    projectId: Integer!
     specimenComments: [String]
     travelOutSixMonth: [String]
-    plateInfo: PlateInfo
+    storagePlateInfo: PlateInfo
     envMedium: String
     envLocalScale: String
     envBroadScale: String
@@ -252,8 +265,8 @@ type TargetInfo
     targetName: String!
     geneName: String
     insertLocation: GenomicLocation
-    forwardPrimers: [PrimerInfo]!
-    reversePrimers: [PrimerInfo]!
+    forwardPrimer: PrimerInfo!
+    reversePrimer: PrimerInfo!
     markersOfInterest: [MarkerOfInterest]
     targetAttributes: [String]
   }

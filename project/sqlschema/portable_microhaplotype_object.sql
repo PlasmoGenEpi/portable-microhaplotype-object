@@ -7,6 +7,8 @@
 --     * Slot: gene_name Description: an identifier of the gene, if any, is being covered with this targeted
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
 --     * Slot: insert_location_id Description: the intended genomic location of the insert of the amplicon (the location between the end of the forward primer and the beginning of the reverse primer)
+--     * Slot: forward_primer_id Description: the forward primer associated with this target
+--     * Slot: reverse_primer_id Description: the reverse primer associated with this target
 -- # Class: "ReactionInfo" Description: "information on a panel of targeted amplicon primer pairs"
 --     * Slot: id Description: 
 --     * Slot: reaction_name Description: a name for this reaction
@@ -30,6 +32,7 @@
 -- # Class: "RepresentativeMicrohaplotypesForTarget" Description: "a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format"
 --     * Slot: target_id Description: the index into the target_info list
 --     * Slot: RepresentativeMicrohaplotypes_id Description: Autocreated FK slot
+--     * Slot: mhap_location_id Description: a genomic location that was analyzed for this target info, this allows listing location that may be different from the full target location (e.g 1 base in from the full) 
 -- # Class: "MicrohaplotypesDetected" Description: "the microhaplotypes detected in a targeted amplicon analysis"
 --     * Slot: id Description: 
 --     * Slot: bioinformatics_run_id Description: the index into bioinformatics_run_info list
@@ -53,7 +56,6 @@
 -- # Class: "PrimerInfo" Description: "information on a primer sequence"
 --     * Slot: id Description: 
 --     * Slot: seq Description: the DNA sequence
---     * Slot: TargetInfo_id Description: Autocreated FK slot
 --     * Slot: location_id Description: what the intended genomic location of the primer is
 -- # Class: "MicrohaplotypesForSample" Description: "Microhaplotypes detected for a sample for all targets"
 --     * Slot: id Description: 
@@ -93,8 +95,7 @@
 --     * Slot: accession Description: ERA/SRA accession number for the sample if it was submitted
 --     * Slot: experiment_sample_name Description: a unique identifier for this sequence/amplification run on a specimen_name
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
---     * Slot: extraction_plate_info_id Description: plate location of where experiment was extracted
---     * Slot: sequencing_prep_plate_info_id Description: plate location of where experiment was prepared for sequencing 
+--     * Slot: library_prep_plate_info_id Description: plate location of where experiment was prepared for sequencing 
 -- # Class: "SequencingInfo" Description: "Information on sequencing info"
 --     * Slot: id Description: 
 --     * Slot: sequencing_info_name Description: a name of for the sequencing done, e.g. batch1
@@ -116,9 +117,19 @@
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
 -- # Class: "ParasiteDensity" Description: "method and value of determined parasite density"
 --     * Slot: id Description: 
---     * Slot: method Description: the method of how this density was obtained
---     * Slot: density Description: the density in microliters
+--     * Slot: density_method Description: the method of how this density was obtained
+--     * Slot: parasite_density Description: the density in microliters
+--     * Slot: date_measured Description: the date the qpcr was performed, can be YYYY, YYYY-MM, or YYYY-MM-DD
+--     * Slot: density_method_comments Description: additional comments about how the density was performed
+--     * Slot: ExperimentInfo_experiment_sample_name Description: Autocreated FK slot
 --     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
+-- # Class: "ProjectInfo" Description: "Information on project info"
+--     * Slot: project_name Description: a name for the project, should be unique if multiple projects listed
+--     * Slot: project_description Description: a short description of the project
+--     * Slot: project_type Description: the type of project conducted, e.g. TES vs surveillance vs transmission
+--     * Slot: project_collector_chief_scientist Description: can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen
+--     * Slot: BioProject_accession Description: an SRA bioproject accession e.g. PRJNA33823
+--     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
 -- # Class: "SpecimenInfo" Description: "Information on specimen info"
 --     * Slot: specimen_name Description: an identifier for the specimen, should be unique within this sample set
 --     * Slot: host_subject_id Description: an identifier for the individual a specimen was collected from
@@ -131,16 +142,15 @@
 --     * Slot: geo_admin2 Description: geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)
 --     * Slot: geo_admin3 Description: geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)
 --     * Slot: lat_lon Description: the latitude and longitude of the collection site of the specimen
---     * Slot: collector_chief_scientist Description: can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen
 --     * Slot: specimen_store_loc Description: the specimen store site, address or facility name
 --     * Slot: specimen_collect_device Description: the way the specimen was collected, e.g. whole blood, dried blood spot
 --     * Slot: specimen_type Description: what type of specimen this is, e.g. negative_control, positive_control, field_sample
---     * Slot: project_name Description: a name of the project under which the specimen is organized
+--     * Slot: project_id Description: the index into the project_info list
 --     * Slot: env_medium Description: the environment medium from which the specimen was collected from
 --     * Slot: env_local_scale Description: the local environment from which the specimen was collected, e.g. jungle, urban, rural
 --     * Slot: env_broad_scale Description: the broad environment from which the specimen was collected, e.g. highlands, lowlands, mountainous region
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
---     * Slot: plate_info_id Description: plate location of where specimen is stored if stored in a plate 
+--     * Slot: storage_plate_info_id Description: plate location of where specimen is stored if stored in a plate 
 -- # Class: "BioinformaticsRunInfo" Description: "Information about the pipeline run that generated some of the microhaplotype detected and reads_by_stage"
 --     * Slot: id Description: 
 --     * Slot: bioinformatics_methods_id Description: the index into the bioinformatics_methods_info list
@@ -201,13 +211,16 @@
 --     * Slot: alt_annotations Description: a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc
 -- # Class: "RepresentativeMicrohaplotypesForTarget_microhaplotypes" Description: ""
 --     * Slot: RepresentativeMicrohaplotypesForTarget_target_id Description: Autocreated FK slot
---     * Slot: microhaplotypes_id Description: a list of the microhaplotypes detected for a target 
+--     * Slot: microhaplotypes_id Description: a list of the microhaplotypes detected for a target
 -- # Class: "GenomeInfo_chromosomes" Description: ""
 --     * Slot: GenomeInfo_id Description: Autocreated FK slot
 --     * Slot: chromosomes Description: a list of chromosomes found within this genome
 -- # Class: "BioMethod_additional_argument" Description: ""
 --     * Slot: BioMethod_id Description: Autocreated FK slot
 --     * Slot: additional_argument Description: any additional arguments that differ from the default
+-- # Class: "ProjectInfo_project_contributors" Description: ""
+--     * Slot: ProjectInfo_project_name Description: Autocreated FK slot
+--     * Slot: project_contributors Description: a list of collaborators who contributed to this project
 -- # Class: "SpecimenInfo_specimen_taxon_id" Description: ""
 --     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
 --     * Slot: specimen_taxon_id Description: the NCBI taxonomy number of the organism in specimen, can list multiple if a mixed sample
@@ -300,8 +313,17 @@ CREATE TABLE "MarkerOfInterest" (
 CREATE TABLE "RepresentativeMicrohaplotypesForTarget" (
 	target_id INTEGER NOT NULL, 
 	"RepresentativeMicrohaplotypes_id" INTEGER, 
+	mhap_location_id INTEGER, 
 	PRIMARY KEY (target_id), 
-	FOREIGN KEY("RepresentativeMicrohaplotypes_id") REFERENCES "RepresentativeMicrohaplotypes" (id)
+	FOREIGN KEY("RepresentativeMicrohaplotypes_id") REFERENCES "RepresentativeMicrohaplotypes" (id), 
+	FOREIGN KEY(mhap_location_id) REFERENCES "GenomicLocation" (id)
+);
+CREATE TABLE "PrimerInfo" (
+	id INTEGER NOT NULL, 
+	seq TEXT NOT NULL, 
+	location_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(location_id) REFERENCES "GenomicLocation" (id)
 );
 CREATE TABLE "PmoHeader" (
 	id INTEGER NOT NULL, 
@@ -363,9 +385,13 @@ CREATE TABLE "TargetInfo" (
 	gene_name TEXT, 
 	"PortableMicrohaplotypeObject_id" INTEGER, 
 	insert_location_id INTEGER, 
+	forward_primer_id INTEGER NOT NULL, 
+	reverse_primer_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id), 
-	FOREIGN KEY(insert_location_id) REFERENCES "GenomicLocation" (id)
+	FOREIGN KEY(insert_location_id) REFERENCES "GenomicLocation" (id), 
+	FOREIGN KEY(forward_primer_id) REFERENCES "PrimerInfo" (id), 
+	FOREIGN KEY(reverse_primer_id) REFERENCES "PrimerInfo" (id)
 );
 CREATE TABLE "PanelInfo" (
 	id INTEGER NOT NULL, 
@@ -399,12 +425,10 @@ CREATE TABLE "ExperimentInfo" (
 	accession TEXT, 
 	experiment_sample_name TEXT NOT NULL, 
 	"PortableMicrohaplotypeObject_id" INTEGER, 
-	extraction_plate_info_id INTEGER, 
-	sequencing_prep_plate_info_id INTEGER, 
+	library_prep_plate_info_id INTEGER, 
 	PRIMARY KEY (experiment_sample_name), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id), 
-	FOREIGN KEY(extraction_plate_info_id) REFERENCES "PlateInfo" (id), 
-	FOREIGN KEY(sequencing_prep_plate_info_id) REFERENCES "PlateInfo" (id)
+	FOREIGN KEY(library_prep_plate_info_id) REFERENCES "PlateInfo" (id)
 );
 CREATE TABLE "SequencingInfo" (
 	id INTEGER NOT NULL, 
@@ -428,6 +452,16 @@ CREATE TABLE "SequencingInfo" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
 );
+CREATE TABLE "ProjectInfo" (
+	project_name TEXT NOT NULL, 
+	project_description TEXT NOT NULL, 
+	project_type TEXT, 
+	project_collector_chief_scientist TEXT, 
+	"BioProject_accession" TEXT, 
+	"PortableMicrohaplotypeObject_id" INTEGER, 
+	PRIMARY KEY (project_name), 
+	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
+);
 CREATE TABLE "SpecimenInfo" (
 	specimen_name TEXT NOT NULL, 
 	host_subject_id INTEGER, 
@@ -440,19 +474,18 @@ CREATE TABLE "SpecimenInfo" (
 	geo_admin2 TEXT, 
 	geo_admin3 TEXT, 
 	lat_lon TEXT, 
-	collector_chief_scientist TEXT, 
 	specimen_store_loc TEXT, 
 	specimen_collect_device TEXT, 
 	specimen_type TEXT, 
-	project_name TEXT NOT NULL, 
+	project_id INTEGER NOT NULL, 
 	env_medium TEXT, 
 	env_local_scale TEXT, 
 	env_broad_scale TEXT, 
 	"PortableMicrohaplotypeObject_id" INTEGER, 
-	plate_info_id INTEGER, 
+	storage_plate_info_id INTEGER, 
 	PRIMARY KEY (specimen_name), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id), 
-	FOREIGN KEY(plate_info_id) REFERENCES "PlateInfo" (id)
+	FOREIGN KEY(storage_plate_info_id) REFERENCES "PlateInfo" (id)
 );
 CREATE TABLE "BioinformaticsRunInfo" (
 	id INTEGER NOT NULL, 
@@ -470,15 +503,6 @@ CREATE TABLE "ReadCountsByStage" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
 );
-CREATE TABLE "PrimerInfo" (
-	id INTEGER NOT NULL, 
-	seq TEXT NOT NULL, 
-	"TargetInfo_id" INTEGER, 
-	location_id INTEGER, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY("TargetInfo_id") REFERENCES "TargetInfo" (id), 
-	FOREIGN KEY(location_id) REFERENCES "GenomicLocation" (id)
-);
 CREATE TABLE "MicrohaplotypesForSample" (
 	id INTEGER NOT NULL, 
 	experiment_sample_id INTEGER NOT NULL, 
@@ -488,10 +512,14 @@ CREATE TABLE "MicrohaplotypesForSample" (
 );
 CREATE TABLE "ParasiteDensity" (
 	id INTEGER NOT NULL, 
-	method TEXT NOT NULL, 
-	density FLOAT NOT NULL, 
+	density_method TEXT NOT NULL, 
+	parasite_density FLOAT NOT NULL, 
+	date_measured TEXT, 
+	density_method_comments TEXT, 
+	"ExperimentInfo_experiment_sample_name" TEXT, 
 	"SpecimenInfo_specimen_name" TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY("ExperimentInfo_experiment_sample_name") REFERENCES "ExperimentInfo" (experiment_sample_name), 
 	FOREIGN KEY("SpecimenInfo_specimen_name") REFERENCES "SpecimenInfo" (specimen_name)
 );
 CREATE TABLE "ReadCountsByStageForExperimentalSample" (
@@ -527,6 +555,12 @@ CREATE TABLE "GenomeInfo_chromosomes" (
 	chromosomes TEXT, 
 	PRIMARY KEY ("GenomeInfo_id", chromosomes), 
 	FOREIGN KEY("GenomeInfo_id") REFERENCES "GenomeInfo" (id)
+);
+CREATE TABLE "ProjectInfo_project_contributors" (
+	"ProjectInfo_project_name" TEXT, 
+	project_contributors TEXT, 
+	PRIMARY KEY ("ProjectInfo_project_name", project_contributors), 
+	FOREIGN KEY("ProjectInfo_project_name") REFERENCES "ProjectInfo" (project_name)
 );
 CREATE TABLE "SpecimenInfo_specimen_taxon_id" (
 	"SpecimenInfo_specimen_name" TEXT, 
