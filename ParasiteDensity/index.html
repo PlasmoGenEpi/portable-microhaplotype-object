@@ -227,9 +227,13 @@
 <div class="mermaid"> classDiagram
     class ParasiteDensity
     click ParasiteDensity href "../ParasiteDensity"
-      ParasiteDensity : density
+      ParasiteDensity : date_measured
 
-      ParasiteDensity : method
+      ParasiteDensity : density_method
+
+      ParasiteDensity : density_method_comments
+
+      ParasiteDensity : parasite_density
 
 
 </div>
@@ -246,15 +250,27 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../method/">method</a></td>
+<td><a href="../density_method/">density_method</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td>the method of how this density was obtained</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../density/">density</a></td>
+<td><a href="../parasite_density/">parasite_density</a></td>
 <td>1 <br/> <a href="../Double/">Double</a></td>
 <td>the density in microliters</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../date_measured/">date_measured</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the date the qpcr was performed, can be YYYY, YYYY-MM, or YYYY-MM-DD</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../density_method_comments/">density_method_comments</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>additional comments about how the density was performed</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -271,8 +287,14 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../ExperimentInfo/">ExperimentInfo</a></td>
+<td><a href="../qpcr_parasite_density_info/">qpcr_parasite_density_info</a></td>
+<td>range</td>
+<td><a href="./">ParasiteDensity</a></td>
+</tr>
+<tr>
 <td><a href="../SpecimenInfo/">SpecimenInfo</a></td>
-<td><a href="../parasite_density_info/">parasite_density_info</a></td>
+<td><a href="../microscopy_parasite_density_info/">microscopy_parasite_density_info</a></td>
 <td>range</td>
 <td><a href="./">ParasiteDensity</a></td>
 </tr>
@@ -310,8 +332,8 @@
 description: method and value of determined parasite density
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  method:
-    name: method
+  density_method:
+    name: density_method
     description: the method of how this density was obtained
     examples:
     - value: qpcr
@@ -323,8 +345,8 @@ attributes:
     range: string
     required: true
     pattern: ^[A-z-._0-9 ]+$
-  density:
-    name: density
+  parasite_density:
+    name: parasite_density
     description: the density in microliters
     examples:
     - value: '25.0'
@@ -337,6 +359,33 @@ attributes:
     required: true
     minimum_value: 0
     pattern: ^[-+]?\\d*\\.?\\d+(?:[eE][-+]?\\d+)?$
+  date_measured:
+    name: date_measured
+    description: the date the qpcr was performed, can be YYYY, YYYY-MM, or YYYY-MM-DD
+    examples:
+    - value: '1988'
+    - value: 1988-06
+    - value: '1988-06-26'
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - ParasiteDensity
+    range: string
+    required: false
+    pattern: (?:\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)
+  density_method_comments:
+    name: density_method_comments
+    description: additional comments about how the density was performed
+    examples:
+    - value: var-ATS primers used
+    - value: John Smith performed microscopy
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - ParasiteDensity
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
 
 </code></pre>
 </details>
@@ -346,30 +395,30 @@ attributes:
 description: method and value of determined parasite density
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  method:
-    name: method
+  density_method:
+    name: density_method
     description: the method of how this density was obtained
     examples:
     - value: qpcr
     - value: microscopy
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: method
+    alias: density_method
     owner: ParasiteDensity
     domain_of:
     - ParasiteDensity
     range: string
     required: true
     pattern: ^[A-z-._0-9 ]+$
-  density:
-    name: density
+  parasite_density:
+    name: parasite_density
     description: the density in microliters
     examples:
     - value: '25.0'
     - value: 10e5
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: density
+    alias: parasite_density
     owner: ParasiteDensity
     domain_of:
     - ParasiteDensity
@@ -377,6 +426,37 @@ attributes:
     required: true
     minimum_value: 0
     pattern: ^[-+]?\\d*\\.?\\d+(?:[eE][-+]?\\d+)?$
+  date_measured:
+    name: date_measured
+    description: the date the qpcr was performed, can be YYYY, YYYY-MM, or YYYY-MM-DD
+    examples:
+    - value: '1988'
+    - value: 1988-06
+    - value: '1988-06-26'
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: date_measured
+    owner: ParasiteDensity
+    domain_of:
+    - ParasiteDensity
+    range: string
+    required: false
+    pattern: (?:\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)
+  density_method_comments:
+    name: density_method_comments
+    description: additional comments about how the density was performed
+    examples:
+    - value: var-ATS primers used
+    - value: John Smith performed microscopy
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: density_method_comments
+    owner: ParasiteDensity
+    domain_of:
+    - ParasiteDensity
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
 
 </code></pre>
 </details>

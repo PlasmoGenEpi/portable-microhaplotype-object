@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/sequencing_prep_plate_info/">
+        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/project_description/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: sequencing_prep_plate_info - portable-microhaplotype-object</title>
+        <title>Slot: project_description - portable-microhaplotype-object</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-sequencing_prep_plate_info" class="md-skip">
+        <a href="#slot-project_description" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: sequencing_prep_plate_info
+              Slot: project_description
             
           </span>
         </div>
@@ -364,10 +364,10 @@
   
 
 
-<h1 id="slot-sequencing_prep_plate_info">Slot: sequencing_prep_plate_info</h1>
-<p>_plate location of where experiment was prepared for sequencing _</p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/sequencing_prep_plate_info">portable_microhaplotype_object:sequencing_prep_plate_info</a>
-Alias: sequencing_prep_plate_info</p>
+<h1 id="slot-project_description">Slot: project_description</h1>
+<p><em>a short description of the project</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/project_description">portable_microhaplotype_object:project_description</a>
+Alias: project_description</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -381,15 +381,20 @@ Alias: sequencing_prep_plate_info</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ExperimentInfo/">ExperimentInfo</a></td>
-<td>Information about a specific amplification and sequencing of a specimen</td>
+<td><a href="../ProjectInfo/">ProjectInfo</a></td>
+<td>Information on project info</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../PlateInfo/">PlateInfo</a></li>
+<li>
+<p>Range: <a href="../String/">String</a></p>
+</li>
+<li>
+<p>Required: True</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -407,27 +412,27 @@ Alias: sequencing_prep_plate_info</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:sequencing_prep_plate_info</td>
+<td>portable_microhaplotype_object:project_description</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:sequencing_prep_plate_info</td>
+<td>portable_microhaplotype_object:project_description</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: sequencing_prep_plate_info
-description: 'plate location of where experiment was prepared for sequencing '
+<pre><code class="language-yaml">name: project_description
+description: a short description of the project
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-alias: sequencing_prep_plate_info
-owner: ExperimentInfo
+alias: project_description
+owner: ProjectInfo
 domain_of:
-- ExperimentInfo
-range: PlateInfo
-required: false
+- ProjectInfo
+range: string
+required: true
 
 </code></pre>
 

@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/project_name/">
+        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/project_info/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: project_name - portable-microhaplotype-object</title>
+        <title>Slot: project_info - portable-microhaplotype-object</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-project_name" class="md-skip">
+        <a href="#slot-project_info" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: project_name
+              Slot: project_info
             
           </span>
         </div>
@@ -364,10 +364,10 @@
   
 
 
-<h1 id="slot-project_name">Slot: project_name</h1>
-<p><em>a name for the project, should be unique if multiple projects listed</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/project_name">portable_microhaplotype_object:project_name</a>
-Alias: project_name</p>
+<h1 id="slot-project_info">Slot: project_info</h1>
+<p><em>the information about the projects stored in this PMO</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/project_info">portable_microhaplotype_object:project_info</a>
+Alias: project_info</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -381,8 +381,8 @@ Alias: project_name</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ProjectInfo/">ProjectInfo</a></td>
-<td>Information on project info</td>
+<td><a href="../PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
+<td>Information on final results from a targeted amplicon analysis</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -390,13 +390,13 @@ Alias: project_name</p>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../String/">String</a></p>
+<p>Range: <a href="../ProjectInfo/">ProjectInfo</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
 </li>
 <li>
 <p>Required: True</p>
-</li>
-<li>
-<p>Regex pattern: <code>^[A-z-._0-9 ]+$</code></p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -415,29 +415,30 @@ Alias: project_name</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:project_name</td>
+<td>portable_microhaplotype_object:project_info</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:project_name</td>
+<td>portable_microhaplotype_object:project_info</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: project_name
-description: a name for the project, should be unique if multiple projects listed
+<pre><code class="language-yaml">name: project_info
+description: the information about the projects stored in this PMO
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-identifier: true
-alias: project_name
-owner: ProjectInfo
+alias: project_info
+owner: PortableMicrohaplotypeObject
 domain_of:
-- ProjectInfo
-range: string
+- PortableMicrohaplotypeObject
+range: ProjectInfo
 required: true
-pattern: ^[A-z-._0-9 ]+$
+multivalued: true
+inlined: true
+inlined_as_list: true
 
 </code></pre>
 

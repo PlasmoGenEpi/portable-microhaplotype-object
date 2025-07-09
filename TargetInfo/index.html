@@ -227,13 +227,13 @@
 <div class="mermaid"> classDiagram
     class TargetInfo
     click TargetInfo href "../TargetInfo"
-      TargetInfo : forward_primers
+      TargetInfo : forward_primer
 
 
 
 
 
-        TargetInfo --&gt; "1..*" PrimerInfo : forward_primers
+        TargetInfo --&gt; "1" PrimerInfo : forward_primer
         click PrimerInfo href "../PrimerInfo"
 
 
@@ -262,13 +262,13 @@
 
 
 
-      TargetInfo : reverse_primers
+      TargetInfo : reverse_primer
 
 
 
 
 
-        TargetInfo --&gt; "1..*" PrimerInfo : reverse_primers
+        TargetInfo --&gt; "1" PrimerInfo : reverse_primer
         click PrimerInfo href "../PrimerInfo"
 
 
@@ -310,15 +310,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../forward_primers/">forward_primers</a></td>
-<td>1..* <br/> <a href="../PrimerInfo/">PrimerInfo</a></td>
-<td>A list of forward primers associated with this target</td>
+<td><a href="../forward_primer/">forward_primer</a></td>
+<td>1 <br/> <a href="../PrimerInfo/">PrimerInfo</a></td>
+<td>the forward primer associated with this target</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../reverse_primers/">reverse_primers</a></td>
-<td>1..* <br/> <a href="../PrimerInfo/">PrimerInfo</a></td>
-<td>A list of reverse primers associated with this target</td>
+<td><a href="../reverse_primer/">reverse_primer</a></td>
+<td>1 <br/> <a href="../PrimerInfo/">PrimerInfo</a></td>
+<td>the reverse primer associated with this target</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -417,28 +417,24 @@ attributes:
     - TargetInfo
     range: GenomicLocation
     required: false
-  forward_primers:
-    name: forward_primers
-    description: A list of forward primers associated with this target
+  forward_primer:
+    name: forward_primer
+    description: the forward primer associated with this target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - TargetInfo
     range: PrimerInfo
     required: true
-    multivalued: true
-    inlined: true
-  reverse_primers:
-    name: reverse_primers
-    description: A list of reverse primers associated with this target
+  reverse_primer:
+    name: reverse_primer
+    description: the reverse primer associated with this target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - TargetInfo
     range: PrimerInfo
     required: true
-    multivalued: true
-    inlined: true
   markers_of_interest:
     name: markers_of_interest
     description: a list of covered markers of interest
@@ -511,32 +507,28 @@ attributes:
     - TargetInfo
     range: GenomicLocation
     required: false
-  forward_primers:
-    name: forward_primers
-    description: A list of forward primers associated with this target
+  forward_primer:
+    name: forward_primer
+    description: the forward primer associated with this target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: forward_primers
+    alias: forward_primer
     owner: TargetInfo
     domain_of:
     - TargetInfo
     range: PrimerInfo
     required: true
-    multivalued: true
-    inlined: true
-  reverse_primers:
-    name: reverse_primers
-    description: A list of reverse primers associated with this target
+  reverse_primer:
+    name: reverse_primer
+    description: the reverse primer associated with this target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: reverse_primers
+    alias: reverse_primer
     owner: TargetInfo
     domain_of:
     - TargetInfo
     range: PrimerInfo
     required: true
-    multivalued: true
-    inlined: true
   markers_of_interest:
     name: markers_of_interest
     description: a list of covered markers of interest

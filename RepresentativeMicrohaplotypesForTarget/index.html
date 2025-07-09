@@ -227,6 +227,17 @@
 <div class="mermaid"> classDiagram
     class RepresentativeMicrohaplotypesForTarget
     click RepresentativeMicrohaplotypesForTarget href "../RepresentativeMicrohaplotypesForTarget"
+      RepresentativeMicrohaplotypesForTarget : mhap_location
+
+
+
+
+
+        RepresentativeMicrohaplotypesForTarget --&gt; "0..1" GenomicLocation : mhap_location
+        click GenomicLocation href "../GenomicLocation"
+
+
+
       RepresentativeMicrohaplotypesForTarget : microhaplotypes
 
 
@@ -264,6 +275,12 @@
 <td><a href="../microhaplotypes/">microhaplotypes</a></td>
 <td>1..* <br/> <a href="../RepresentativeMicrohaplotype/">RepresentativeMicrohaplotype</a></td>
 <td>a list of the microhaplotypes detected for a target</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../mhap_location/">mhap_location</a></td>
+<td>0..1 <br/> <a href="../GenomicLocation/">GenomicLocation</a></td>
+<td>a genomic location that was analyzed for this target info, this allows listin...</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -328,7 +345,7 @@ slot_usage:
 attributes:
   microhaplotypes:
     name: microhaplotypes
-    description: 'a list of the microhaplotypes detected for a target '
+    description: a list of the microhaplotypes detected for a target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -337,6 +354,17 @@ attributes:
     required: true
     multivalued: true
     inlined_as_list: false
+  mhap_location:
+    name: mhap_location
+    description: 'a genomic location that was analyzed for this target info, this
+      allows listing location that may be different from the full target location
+      (e.g 1 base in from the full) '
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - RepresentativeMicrohaplotypesForTarget
+    range: GenomicLocation
+    required: false
 
 </code></pre>
 </details>
@@ -353,7 +381,7 @@ slot_usage:
 attributes:
   microhaplotypes:
     name: microhaplotypes
-    description: 'a list of the microhaplotypes detected for a target '
+    description: a list of the microhaplotypes detected for a target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: microhaplotypes
@@ -364,6 +392,19 @@ attributes:
     required: true
     multivalued: true
     inlined_as_list: false
+  mhap_location:
+    name: mhap_location
+    description: 'a genomic location that was analyzed for this target info, this
+      allows listing location that may be different from the full target location
+      (e.g 1 base in from the full) '
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: mhap_location
+    owner: RepresentativeMicrohaplotypesForTarget
+    domain_of:
+    - RepresentativeMicrohaplotypesForTarget
+    range: GenomicLocation
+    required: false
   target_id:
     name: target_id
     description: the index into the target_info list

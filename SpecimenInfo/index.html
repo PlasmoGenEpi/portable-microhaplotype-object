@@ -233,8 +233,6 @@
 
       SpecimenInfo : collection_date
 
-      SpecimenInfo : collector_chief_scientist
-
       SpecimenInfo : drug_usage
 
       SpecimenInfo : env_broad_scale
@@ -259,29 +257,18 @@
 
       SpecimenInfo : lat_lon
 
-      SpecimenInfo : parasite_density_info
+      SpecimenInfo : microscopy_parasite_density_info
 
 
 
 
 
-        SpecimenInfo --&gt; "*" ParasiteDensity : parasite_density_info
+        SpecimenInfo --&gt; "*" ParasiteDensity : microscopy_parasite_density_info
         click ParasiteDensity href "../ParasiteDensity"
 
 
 
-      SpecimenInfo : plate_info
-
-
-
-
-
-        SpecimenInfo --&gt; "0..1" PlateInfo : plate_info
-        click PlateInfo href "../PlateInfo"
-
-
-
-      SpecimenInfo : project_name
+      SpecimenInfo : project_id
 
       SpecimenInfo : specimen_collect_device
 
@@ -294,6 +281,17 @@
       SpecimenInfo : specimen_taxon_id
 
       SpecimenInfo : specimen_type
+
+      SpecimenInfo : storage_plate_info
+
+
+
+
+
+        SpecimenInfo --&gt; "0..1" PlateInfo : storage_plate_info
+        click PlateInfo href "../PlateInfo"
+
+
 
       SpecimenInfo : travel_out_six_month
 
@@ -348,7 +346,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../parasite_density_info/">parasite_density_info</a></td>
+<td><a href="../microscopy_parasite_density_info/">microscopy_parasite_density_info</a></td>
 <td>* <br/> <a href="../ParasiteDensity/">ParasiteDensity</a></td>
 <td>one or more parasite densities in microliters for this specimen</td>
 <td>direct</td>
@@ -396,12 +394,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../collector_chief_scientist/">collector_chief_scientist</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>can be collection of names separated by a semicolon if multiple people involv...</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../specimen_store_loc/">specimen_store_loc</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>the specimen store site, address or facility name</td>
@@ -420,9 +412,9 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../project_name/">project_name</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>a name of the project under which the specimen is organized</td>
+<td><a href="../project_id/">project_id</a></td>
+<td>1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the index into the project_info list</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -438,7 +430,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../plate_info/">plate_info</a></td>
+<td><a href="../storage_plate_info/">storage_plate_info</a></td>
 <td>0..1 <br/> <a href="../PlateInfo/">PlateInfo</a></td>
 <td>plate location of where specimen is stored if stored in a plate</td>
 <td>direct</td>
@@ -590,8 +582,8 @@ attributes:
     range: string
     required: false
     pattern: ^[A-z-._0-9 ]+$
-  parasite_density_info:
-    name: parasite_density_info
+  microscopy_parasite_density_info:
+    name: microscopy_parasite_density_info
     description: one or more parasite densities in microliters for this specimen
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
@@ -692,17 +684,6 @@ attributes:
     range: string
     required: false
     pattern: ^[-+]?\d{1,2}(?:\.\d+)?,[-+]?\d{1,3}(?:\.\d+)?$
-  collector_chief_scientist:
-    name: collector_chief_scientist
-    description: can be collection of names separated by a semicolon if multiple people
-      involved or can just be the name of the primary person managing the specimen
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9;|\(\),\/\ ]+$
   specimen_store_loc:
     name: specimen_store_loc
     description: the specimen store site, address or facility name
@@ -742,16 +723,16 @@ attributes:
     range: string
     required: false
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  project_name:
-    name: project_name
-    description: a name of the project under which the specimen is organized
+  project_id:
+    name: project_id
+    description: the index into the project_info list
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - SpecimenInfo
-    range: string
+    range: integer
     required: true
-    pattern: ^[A-z-._0-9\(\),\/\ ]+$
+    pattern: ^[0-9]+$
   specimen_comments:
     name: specimen_comments
     description: any additional comments about the specimen
@@ -775,8 +756,8 @@ attributes:
     required: false
     multivalued: true
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  plate_info:
-    name: plate_info
+  storage_plate_info:
+    name: storage_plate_info
     description: 'plate location of where specimen is stored if stored in a plate '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
@@ -932,12 +913,12 @@ attributes:
     range: string
     required: false
     pattern: ^[A-z-._0-9 ]+$
-  parasite_density_info:
-    name: parasite_density_info
+  microscopy_parasite_density_info:
+    name: microscopy_parasite_density_info
     description: one or more parasite densities in microliters for this specimen
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: parasite_density_info
+    alias: microscopy_parasite_density_info
     owner: SpecimenInfo
     domain_of:
     - SpecimenInfo
@@ -1050,19 +1031,6 @@ attributes:
     range: string
     required: false
     pattern: ^[-+]?\d{1,2}(?:\.\d+)?,[-+]?\d{1,3}(?:\.\d+)?$
-  collector_chief_scientist:
-    name: collector_chief_scientist
-    description: can be collection of names separated by a semicolon if multiple people
-      involved or can just be the name of the primary person managing the specimen
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: collector_chief_scientist
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9;|\(\),\/\ ]+$
   specimen_store_loc:
     name: specimen_store_loc
     description: the specimen store site, address or facility name
@@ -1108,18 +1076,18 @@ attributes:
     range: string
     required: false
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  project_name:
-    name: project_name
-    description: a name of the project under which the specimen is organized
+  project_id:
+    name: project_id
+    description: the index into the project_info list
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: project_name
+    alias: project_id
     owner: SpecimenInfo
     domain_of:
     - SpecimenInfo
-    range: string
+    range: integer
     required: true
-    pattern: ^[A-z-._0-9\(\),\/\ ]+$
+    pattern: ^[0-9]+$
   specimen_comments:
     name: specimen_comments
     description: any additional comments about the specimen
@@ -1147,12 +1115,12 @@ attributes:
     required: false
     multivalued: true
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  plate_info:
-    name: plate_info
+  storage_plate_info:
+    name: storage_plate_info
     description: 'plate location of where specimen is stored if stored in a plate '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: plate_info
+    alias: storage_plate_info
     owner: SpecimenInfo
     domain_of:
     - SpecimenInfo

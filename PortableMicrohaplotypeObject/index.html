@@ -297,6 +297,17 @@
 
 
 
+      PortableMicrohaplotypeObject : project_info
+
+
+
+
+
+        PortableMicrohaplotypeObject --&gt; "1..*" ProjectInfo : project_info
+        click ProjectInfo href "../ProjectInfo"
+
+
+
       PortableMicrohaplotypeObject : read_counts_by_stage
 
 
@@ -424,6 +435,12 @@
 <td><a href="../microhaplotypes_detected/">microhaplotypes_detected</a></td>
 <td>1..* <br/> <a href="../MicrohaplotypesDetected/">MicrohaplotypesDetected</a></td>
 <td>the microhaplotypes detected in this projects</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../project_info/">project_info</a></td>
+<td>1..* <br/> <a href="../ProjectInfo/">ProjectInfo</a></td>
+<td>the information about the projects stored in this PMO</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -588,6 +605,18 @@ attributes:
     domain_of:
     - PortableMicrohaplotypeObject
     range: MicrohaplotypesDetected
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  project_info:
+    name: project_info
+    description: the information about the projects stored in this PMO
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: ProjectInfo
     required: true
     multivalued: true
     inlined: true
@@ -759,6 +788,20 @@ attributes:
     domain_of:
     - PortableMicrohaplotypeObject
     range: MicrohaplotypesDetected
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  project_info:
+    name: project_info
+    description: the information about the projects stored in this PMO
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: project_info
+    owner: PortableMicrohaplotypeObject
+    domain_of:
+    - PortableMicrohaplotypeObject
+    range: ProjectInfo
     required: true
     multivalued: true
     inlined: true

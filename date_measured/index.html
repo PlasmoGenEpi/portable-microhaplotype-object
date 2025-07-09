@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/density/">
+        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/date_measured/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: density - portable-microhaplotype-object</title>
+        <title>Slot: date_measured - portable-microhaplotype-object</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-density" class="md-skip">
+        <a href="#slot-date_measured" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: density
+              Slot: date_measured
             
           </span>
         </div>
@@ -373,10 +373,10 @@
   
 
 
-<h1 id="slot-density">Slot: density</h1>
-<p><em>the density in microliters</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/density">portable_microhaplotype_object:density</a>
-Alias: density</p>
+<h1 id="slot-date_measured">Slot: date_measured</h1>
+<p><em>the date the qpcr was performed, can be YYYY, YYYY-MM, or YYYY-MM-DD</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/date_measured">portable_microhaplotype_object:date_measured</a>
+Alias: date_measured</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -399,16 +399,10 @@ Alias: density</p>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../Double/">Double</a></p>
+<p>Range: <a href="../String/">String</a></p>
 </li>
 <li>
-<p>Required: True</p>
-</li>
-<li>
-<p>Minimum Value: 0</p>
-</li>
-<li>
-<p>Regex pattern: <code>^[-+]?\\d*\\.?\\d+(?:[eE][-+]?\\d+)?$</code></p>
+<p>Regex pattern: <code>(?:\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)</code></p>
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
@@ -420,10 +414,13 @@ Alias: density</p>
 </thead>
 <tbody>
 <tr>
-<td>25.0</td>
+<td>1988</td>
 </tr>
 <tr>
-<td>10e5</td>
+<td>1988-06</td>
+</tr>
+<tr>
+<td>1988-06-26</td>
 </tr>
 </tbody>
 </table>
@@ -443,32 +440,32 @@ Alias: density</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:density</td>
+<td>portable_microhaplotype_object:date_measured</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:density</td>
+<td>portable_microhaplotype_object:date_measured</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: density
-description: the density in microliters
+<pre><code class="language-yaml">name: date_measured
+description: the date the qpcr was performed, can be YYYY, YYYY-MM, or YYYY-MM-DD
 examples:
-- value: '25.0'
-- value: 10e5
+- value: '1988'
+- value: 1988-06
+- value: '1988-06-26'
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-alias: density
+alias: date_measured
 owner: ParasiteDensity
 domain_of:
 - ParasiteDensity
-range: double
-required: true
-minimum_value: 0
-pattern: ^[-+]?\\d*\\.?\\d+(?:[eE][-+]?\\d+)?$
+range: string
+required: false
+pattern: (?:\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)
 
 </code></pre>
 

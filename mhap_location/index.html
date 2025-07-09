@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/project_name/">
+        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/mhap_location/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: project_name - portable-microhaplotype-object</title>
+        <title>Slot: mhap_location - portable-microhaplotype-object</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-project_name" class="md-skip">
+        <a href="#slot-mhap_location" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: project_name
+              Slot: mhap_location
             
           </span>
         </div>
@@ -364,10 +364,10 @@
   
 
 
-<h1 id="slot-project_name">Slot: project_name</h1>
-<p><em>a name for the project, should be unique if multiple projects listed</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/project_name">portable_microhaplotype_object:project_name</a>
-Alias: project_name</p>
+<h1 id="slot-mhap_location">Slot: mhap_location</h1>
+<p>_a genomic location that was analyzed for this target info, this allows listing location that may be different from the full target location (e.g 1 base in from the full) _</p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/mhap_location">portable_microhaplotype_object:mhap_location</a>
+Alias: mhap_location</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -381,23 +381,15 @@ Alias: project_name</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ProjectInfo/">ProjectInfo</a></td>
-<td>Information on project info</td>
+<td><a href="../RepresentativeMicrohaplotypesForTarget/">RepresentativeMicrohaplotypesForTarget</a></td>
+<td>a list of the representative sequence for a microhaplotypes, similar to a fas...</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../String/">String</a></p>
-</li>
-<li>
-<p>Required: True</p>
-</li>
-<li>
-<p>Regex pattern: <code>^[A-z-._0-9 ]+$</code></p>
-</li>
+<li>Range: <a href="../GenomicLocation/">GenomicLocation</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -415,29 +407,29 @@ Alias: project_name</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:project_name</td>
+<td>portable_microhaplotype_object:mhap_location</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:project_name</td>
+<td>portable_microhaplotype_object:mhap_location</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: project_name
-description: a name for the project, should be unique if multiple projects listed
+<pre><code class="language-yaml">name: mhap_location
+description: 'a genomic location that was analyzed for this target info, this allows
+  listing location that may be different from the full target location (e.g 1 base
+  in from the full) '
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-identifier: true
-alias: project_name
-owner: ProjectInfo
+alias: mhap_location
+owner: RepresentativeMicrohaplotypesForTarget
 domain_of:
-- ProjectInfo
-range: string
-required: true
-pattern: ^[A-z-._0-9 ]+$
+- RepresentativeMicrohaplotypesForTarget
+range: GenomicLocation
+required: false
 
 </code></pre>
 
