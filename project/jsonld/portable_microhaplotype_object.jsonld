@@ -4751,7 +4751,7 @@
   "source_file": "portable_microhaplotype_object.yaml",
   "source_file_date": "2025-07-09T09:08:40",
   "source_file_size": 38911,
-  "generation_date": "2025-07-09T10:30:02",
+  "generation_date": "2025-07-09T10:37:40",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",
