@@ -33,7 +33,7 @@
 --     * Slot: target_id Description: the index into the target_info list
 --     * Slot: RepresentativeMicrohaplotypes_id Description: Autocreated FK slot
 --     * Slot: mhap_location_id Description: a genomic location that was analyzed for this target info, this allows listing location that may be different from the full target location (e.g 1 base in from the full) 
--- # Class: "MicrohaplotypesDetected" Description: "the microhaplotypes detected in a targeted amplicon analysis"
+-- # Class: "DetectedMicrohaplotypes" Description: "the microhaplotypes detected in a targeted amplicon analysis"
 --     * Slot: id Description: 
 --     * Slot: bioinformatics_run_id Description: the index into bioinformatics_run_info list
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
@@ -57,20 +57,20 @@
 --     * Slot: id Description: 
 --     * Slot: seq Description: the DNA sequence
 --     * Slot: location_id Description: what the intended genomic location of the primer is
--- # Class: "MicrohaplotypesForSample" Description: "Microhaplotypes detected for a sample for all targets"
+-- # Class: "DetectedMicrohaplotypesForSample" Description: "Microhaplotypes detected for a sample for all targets"
 --     * Slot: id Description: 
 --     * Slot: experiment_sample_id Description: the index into the experiment_info list
---     * Slot: MicrohaplotypesDetected_id Description: Autocreated FK slot
+--     * Slot: DetectedMicrohaplotypes_id Description: Autocreated FK slot
 -- # Class: "MicrohaplotypeForTarget" Description: "Microhaplotype detected for a specific target"
 --     * Slot: id Description: 
---     * Slot: mhap_id Description: the index for a microhaplotype for a target in the microhaplotypes_info list, e.g. microhaplotypes_info[mhaps_target_id][mhap_id]
+--     * Slot: mhap_id Description: the index for a microhaplotype for a target in the representative_microhaplotypes list, e.g. representative_microhaplotypes[mhaps_target_id][mhap_id]
 --     * Slot: reads Description: the read count associated with this microhaplotype
 --     * Slot: umis Description: the unique molecular identifier (umi) count associated with this microhaplotype
---     * Slot: MicrohaplotypesForTarget_id Description: Autocreated FK slot
--- # Class: "MicrohaplotypesForTarget" Description: "Microhaplotypes detected for a specific target"
+--     * Slot: DetectedMicrohaplotypesForTarget_id Description: Autocreated FK slot
+-- # Class: "DetectedMicrohaplotypesForTarget" Description: "Microhaplotypes detected for a specific target"
 --     * Slot: id Description: 
---     * Slot: mhaps_target_id Description: the index for a target in the microhaplotypes_info list
---     * Slot: MicrohaplotypesForSample_id Description: Autocreated FK slot
+--     * Slot: mhaps_target_id Description: the index for a target in the representative_microhaplotypes list
+--     * Slot: DetectedMicrohaplotypesForSample_id Description: Autocreated FK slot
 -- # Class: "BioinformaticsMethodInfo" Description: "the targeted amplicon bioinformatics pipeline"
 --     * Slot: id Description: 
 --     * Slot: bioinformatics_method_name Description: name of the collection of methods is called, e.g. pipeline 
@@ -155,7 +155,7 @@
 --     * Slot: id Description: 
 --     * Slot: bioinformatics_methods_id Description: the index into the bioinformatics_methods_info list
 --     * Slot: run_date Description: the date when the run was done, should be YYYY-MM-DD
---     * Slot: bioinformatics_run_name Description: a name to for this run
+--     * Slot: bioinformatics_run_name Description: a name to for this run, needs to be unique to each run 
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
 -- # Class: "PmoGenerationMethod" Description: "Information about how a PMO was generated"
 --     * Slot: id Description: 
@@ -186,7 +186,7 @@
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
 -- # Class: "PortableMicrohaplotypeObject" Description: "Information on final results from a targeted amplicon analysis"
 --     * Slot: id Description: 
---     * Slot: microhaplotypes_info_id Description: a list of the information on the representative microhaplotypes
+--     * Slot: representative_microhaplotypes_id Description: a list of the information on the representative microhaplotypes
 --     * Slot: pmo_header_id Description: the PMO information for this file including version etc
 -- # Class: "MarkerOfInterest_associations" Description: ""
 --     * Slot: MarkerOfInterest_id Description: Autocreated FK slot
@@ -360,10 +360,10 @@ CREATE TABLE "BioMethod_additional_argument" (
 );
 CREATE TABLE "PortableMicrohaplotypeObject" (
 	id INTEGER NOT NULL, 
-	microhaplotypes_info_id INTEGER NOT NULL, 
+	representative_microhaplotypes_id INTEGER NOT NULL, 
 	pmo_header_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(microhaplotypes_info_id) REFERENCES "RepresentativeMicrohaplotypes" (id), 
+	FOREIGN KEY(representative_microhaplotypes_id) REFERENCES "RepresentativeMicrohaplotypes" (id), 
 	FOREIGN KEY(pmo_header_id) REFERENCES "PmoHeader" (id)
 );
 CREATE TABLE "MarkerOfInterest_associations" (
@@ -400,7 +400,7 @@ CREATE TABLE "PanelInfo" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
 );
-CREATE TABLE "MicrohaplotypesDetected" (
+CREATE TABLE "DetectedMicrohaplotypes" (
 	id INTEGER NOT NULL, 
 	bioinformatics_run_id INTEGER NOT NULL, 
 	"PortableMicrohaplotypeObject_id" INTEGER, 
@@ -435,7 +435,7 @@ CREATE TABLE "SequencingInfo" (
 	sequencing_info_name TEXT NOT NULL, 
 	seq_platform TEXT NOT NULL, 
 	seq_instrument_model TEXT NOT NULL, 
-	seq_date TEXT NOT NULL, 
+	seq_date TEXT, 
 	nucl_acid_ext TEXT, 
 	nucl_acid_amp TEXT, 
 	nucl_acid_ext_date TEXT, 
@@ -490,8 +490,8 @@ CREATE TABLE "SpecimenInfo" (
 CREATE TABLE "BioinformaticsRunInfo" (
 	id INTEGER NOT NULL, 
 	bioinformatics_methods_id INTEGER NOT NULL, 
-	run_date TEXT NOT NULL, 
-	bioinformatics_run_name TEXT, 
+	run_date TEXT, 
+	bioinformatics_run_name TEXT NOT NULL, 
 	"PortableMicrohaplotypeObject_id" INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
@@ -503,12 +503,12 @@ CREATE TABLE "ReadCountsByStage" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
 );
-CREATE TABLE "MicrohaplotypesForSample" (
+CREATE TABLE "DetectedMicrohaplotypesForSample" (
 	id INTEGER NOT NULL, 
 	experiment_sample_id INTEGER NOT NULL, 
-	"MicrohaplotypesDetected_id" INTEGER, 
+	"DetectedMicrohaplotypes_id" INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY("MicrohaplotypesDetected_id") REFERENCES "MicrohaplotypesDetected" (id)
+	FOREIGN KEY("DetectedMicrohaplotypes_id") REFERENCES "DetectedMicrohaplotypes" (id)
 );
 CREATE TABLE "ParasiteDensity" (
 	id INTEGER NOT NULL, 
@@ -592,12 +592,12 @@ CREATE TABLE "SpecimenInfo_drug_usage" (
 	PRIMARY KEY ("SpecimenInfo_specimen_name", drug_usage), 
 	FOREIGN KEY("SpecimenInfo_specimen_name") REFERENCES "SpecimenInfo" (specimen_name)
 );
-CREATE TABLE "MicrohaplotypesForTarget" (
+CREATE TABLE "DetectedMicrohaplotypesForTarget" (
 	id INTEGER NOT NULL, 
 	mhaps_target_id INTEGER NOT NULL, 
-	"MicrohaplotypesForSample_id" INTEGER, 
+	"DetectedMicrohaplotypesForSample_id" INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY("MicrohaplotypesForSample_id") REFERENCES "MicrohaplotypesForSample" (id)
+	FOREIGN KEY("DetectedMicrohaplotypesForSample_id") REFERENCES "DetectedMicrohaplotypesForSample" (id)
 );
 CREATE TABLE "ReadCountsByStageForTarget" (
 	id INTEGER NOT NULL, 
@@ -611,9 +611,9 @@ CREATE TABLE "MicrohaplotypeForTarget" (
 	mhap_id INTEGER NOT NULL, 
 	reads INTEGER NOT NULL, 
 	umis INTEGER, 
-	"MicrohaplotypesForTarget_id" INTEGER, 
+	"DetectedMicrohaplotypesForTarget_id" INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY("MicrohaplotypesForTarget_id") REFERENCES "MicrohaplotypesForTarget" (id)
+	FOREIGN KEY("DetectedMicrohaplotypesForTarget_id") REFERENCES "DetectedMicrohaplotypesForTarget" (id)
 );
 CREATE TABLE "StageReadCounts" (
 	id INTEGER NOT NULL, 

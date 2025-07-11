@@ -10,8 +10,8 @@ type BioinformaticsMethodInfo
 type BioinformaticsRunInfo
   {
     bioinformaticsMethodsId: Integer!
-    runDate: String!
-    bioinformaticsRunName: String
+    runDate: String
+    bioinformaticsRunName: String!
   }
 
 type BioMethod
@@ -20,6 +20,24 @@ type BioMethod
     program: String!
     programDescription: String
     additionalArgument: [String]
+  }
+
+type DetectedMicrohaplotypes
+  {
+    bioinformaticsRunId: Integer!
+    experimentSamples: [DetectedMicrohaplotypesForSample]!
+  }
+
+type DetectedMicrohaplotypesForSample
+  {
+    experimentSampleId: Integer!
+    targetResults: [DetectedMicrohaplotypesForTarget]!
+  }
+
+type DetectedMicrohaplotypesForTarget
+  {
+    mhapsTargetId: Integer!
+    mhaps: [MicrohaplotypeForTarget]!
   }
 
 type ExperimentInfo
@@ -73,24 +91,6 @@ type MicrohaplotypeForTarget
     umis: Integer
   }
 
-type MicrohaplotypesDetected
-  {
-    bioinformaticsRunId: Integer!
-    experimentSamples: [MicrohaplotypesForSample]!
-  }
-
-type MicrohaplotypesForSample
-  {
-    experimentSampleId: Integer!
-    targetResults: [MicrohaplotypesForTarget]!
-  }
-
-type MicrohaplotypesForTarget
-  {
-    mhapsTargetId: Integer!
-    haps: [MicrohaplotypeForTarget]!
-  }
-
 type PanelInfo
   {
     reactions: [ReactionInfo]!
@@ -133,10 +133,10 @@ type PortableMicrohaplotypeObject
     panelInfo: [PanelInfo]!
     targetInfo: [TargetInfo]!
     targetedGenomes: [GenomeInfo]!
-    microhaplotypesInfo: RepresentativeMicrohaplotypes!
+    representativeMicrohaplotypes: RepresentativeMicrohaplotypes!
     bioinformaticsMethodsInfo: [BioinformaticsMethodInfo]!
     bioinformaticsRunInfo: [BioinformaticsRunInfo]!
-    microhaplotypesDetected: [MicrohaplotypesDetected]!
+    detectedMicrohaplotypes: [DetectedMicrohaplotypes]!
     projectInfo: [ProjectInfo]!
     pmoHeader: PmoHeader!
     readCountsByStage: [ReadCountsByStage]
@@ -210,7 +210,7 @@ type SequencingInfo
     sequencingInfoName: String!
     seqPlatform: String!
     seqInstrumentModel: String!
-    seqDate: String!
+    seqDate: String
     nuclAcidExt: String
     nuclAcidAmp: String
     nuclAcidExtDate: String

@@ -220,7 +220,7 @@ classes:
         description: >-
           a genomic location that was analyzed for this target info, this allows listing location that may be different from the full target location (e.g 1 base in from the full) 
 
-  MicrohaplotypesDetected:
+  DetectedMicrohaplotypes:
     description: >-
       the microhaplotypes detected in a targeted amplicon analysis
     slots:
@@ -228,7 +228,7 @@ classes:
     attributes:
       experiment_samples:
         required: true
-        range: MicrohaplotypesForSample
+        range: DetectedMicrohaplotypesForSample
         multivalued: true
         inlined_as_list: true
         description: >-
@@ -334,7 +334,7 @@ classes:
           what the intended genomic location of the primer is
 
 
-  MicrohaplotypesForSample:
+  DetectedMicrohaplotypesForSample:
     description: >-
       Microhaplotypes detected for a sample for all targets
     slots:
@@ -342,7 +342,7 @@ classes:
     attributes:
       target_results:
         required: true
-        range: MicrohaplotypesForTarget
+        range: DetectedMicrohaplotypesForTarget
         multivalued: true
         inlined_as_list: true
         description: >-
@@ -365,13 +365,13 @@ classes:
         description: >-
           the unique molecular identifier (umi) count associated with this microhaplotype
 
-  MicrohaplotypesForTarget:
+  DetectedMicrohaplotypesForTarget:
     description: >-
       Microhaplotypes detected for a specific target
     slots:
       - mhaps_target_id
     attributes:
-      haps:
+      mhaps:
         required: true
         range: MicrohaplotypeForTarget
         multivalued: true
@@ -495,7 +495,6 @@ classes:
   SequencingInfo:
     description: >-
       Information on sequencing info
-
     attributes:
       sequencing_info_name:
         range: string
@@ -526,7 +525,7 @@ classes:
       seq_date:
         range: string
         pattern: "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
-        required: true
+        required: false
         description: >-
           the date of sequencing, should be YYYY-MM or YYYY-MM-DD
         examples:
@@ -953,15 +952,15 @@ classes:
       run_date:
         range: string
         pattern: "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
-        required: true
+        required: false
         description: >-
           the date when the run was done, should be YYYY-MM-DD
       bioinformatics_run_name:
         range: string
         pattern: "^[A-z-._0-9 ]+$"
-        required: false
+        required: true
         description: >-
-          a name to for this run
+          a name to for this run, needs to be unique to each run 
 
   PmoGenerationMethod:
     description: >-
@@ -1113,7 +1112,7 @@ classes:
         inlined_as_list: true
         description: >-
           a list of genomes that the targets in TargetInfo refer to
-      microhaplotypes_info:
+      representative_microhaplotypes:
         range: RepresentativeMicrohaplotypes
         required: true
         description: >-
@@ -1132,8 +1131,8 @@ classes:
         inlined_as_list: true
         description: >-
           the runtime info for the bioinformatics pipeline used to generated the amplicon analysis for this project
-      microhaplotypes_detected:
-        range: MicrohaplotypesDetected
+      detected_microhaplotypes:
+        range: DetectedMicrohaplotypes
         required: true
         multivalued: true
         inlined_as_list: true
@@ -1198,13 +1197,13 @@ slots:
     pattern: "^[0-9]+$"
     required: true
     description: >-
-      the index for a target in the microhaplotypes_info list
+      the index for a target in the representative_microhaplotypes list
   mhap_id:
     range: integer
     pattern: "^[0-9]+$"
     required: true
     description: >-
-      the index for a microhaplotype for a target in the microhaplotypes_info list, e.g. microhaplotypes_info[mhaps_target_id][mhap_id]
+      the index for a microhaplotype for a target in the representative_microhaplotypes list, e.g. representative_microhaplotypes[mhaps_target_id][mhap_id]
   bioinformatics_methods_id:
     range: integer
     pattern: "^[0-9]+$"

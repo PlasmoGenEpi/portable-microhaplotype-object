@@ -55,8 +55,8 @@ linkml:Sparqlpath xsd:string
 
 <BioinformaticsRunInfo> CLOSED {
     (  $<BioinformaticsRunInfo_tes> (  <bioinformatics_methods_id> @linkml:Integer ;
-          <run_date> @linkml:String ;
-          <bioinformatics_run_name> @linkml:String ?
+          <run_date> @linkml:String ? ;
+          <bioinformatics_run_name> @linkml:String
        ) ;
        rdf:type [ <BioinformaticsRunInfo> ] ?
     )
@@ -69,6 +69,30 @@ linkml:Sparqlpath xsd:string
           <additional_argument> @linkml:String *
        ) ;
        rdf:type [ <BioMethod> ] ?
+    )
+}
+
+<DetectedMicrohaplotypes> CLOSED {
+    (  $<DetectedMicrohaplotypes_tes> (  <bioinformatics_run_id> @linkml:Integer ;
+          <experiment_samples> @<DetectedMicrohaplotypesForSample> +
+       ) ;
+       rdf:type [ <DetectedMicrohaplotypes> ] ?
+    )
+}
+
+<DetectedMicrohaplotypesForSample> CLOSED {
+    (  $<DetectedMicrohaplotypesForSample_tes> (  <experiment_sample_id> @linkml:Integer ;
+          <target_results> @<DetectedMicrohaplotypesForTarget> +
+       ) ;
+       rdf:type [ <DetectedMicrohaplotypesForSample> ] ?
+    )
+}
+
+<DetectedMicrohaplotypesForTarget> CLOSED {
+    (  $<DetectedMicrohaplotypesForTarget_tes> (  <mhaps_target_id> @linkml:Integer ;
+          <mhaps> @<MicrohaplotypeForTarget> +
+       ) ;
+       rdf:type [ <DetectedMicrohaplotypesForTarget> ] ?
     )
 }
 
@@ -134,30 +158,6 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<MicrohaplotypesDetected> CLOSED {
-    (  $<MicrohaplotypesDetected_tes> (  <bioinformatics_run_id> @linkml:Integer ;
-          <experiment_samples> @<MicrohaplotypesForSample> +
-       ) ;
-       rdf:type [ <MicrohaplotypesDetected> ] ?
-    )
-}
-
-<MicrohaplotypesForSample> CLOSED {
-    (  $<MicrohaplotypesForSample_tes> (  <experiment_sample_id> @linkml:Integer ;
-          <target_results> @<MicrohaplotypesForTarget> +
-       ) ;
-       rdf:type [ <MicrohaplotypesForSample> ] ?
-    )
-}
-
-<MicrohaplotypesForTarget> CLOSED {
-    (  $<MicrohaplotypesForTarget_tes> (  <mhaps_target_id> @linkml:Integer ;
-          <haps> @<MicrohaplotypeForTarget> +
-       ) ;
-       rdf:type [ <MicrohaplotypesForTarget> ] ?
-    )
-}
-
 <PanelInfo> CLOSED {
     (  $<PanelInfo_tes> (  <reactions> @<ReactionInfo> + ;
           <panel_name> @linkml:String
@@ -209,10 +209,10 @@ linkml:Sparqlpath xsd:string
           <panel_info> @<PanelInfo> + ;
           <target_info> @<TargetInfo> + ;
           <targeted_genomes> @<GenomeInfo> + ;
-          <microhaplotypes_info> @<RepresentativeMicrohaplotypes> ;
+          <representative_microhaplotypes> @<RepresentativeMicrohaplotypes> ;
           <bioinformatics_methods_info> @<BioinformaticsMethodInfo> + ;
           <bioinformatics_run_info> @<BioinformaticsRunInfo> + ;
-          <microhaplotypes_detected> @<MicrohaplotypesDetected> + ;
+          <detected_microhaplotypes> @<DetectedMicrohaplotypes> + ;
           <project_info> @<ProjectInfo> + ;
           <pmo_header> @<PmoHeader> ;
           <read_counts_by_stage> @<ReadCountsByStage> *
@@ -303,7 +303,7 @@ linkml:Sparqlpath xsd:string
     (  $<SequencingInfo_tes> (  <sequencing_info_name> @linkml:String ;
           <seq_platform> @linkml:String ;
           <seq_instrument_model> @linkml:String ;
-          <seq_date> @linkml:String ;
+          <seq_date> @linkml:String ? ;
           <nucl_acid_ext> @linkml:String ? ;
           <nucl_acid_amp> @linkml:String ? ;
           <nucl_acid_ext_date> @linkml:String ? ;

@@ -24,6 +24,24 @@ message BioMethod
   string programDescription = 0
  repeated  string additionalArgument = 0
  }
+// the microhaplotypes detected in a targeted amplicon analysis
+message DetectedMicrohaplotypes
+ {
+  integer bioinformaticsRunId = 0
+ repeated  detectedMicrohaplotypesForSample experimentSamples = 0
+ }
+// Microhaplotypes detected for a sample for all targets
+message DetectedMicrohaplotypesForSample
+ {
+  integer experimentSampleId = 0
+ repeated  detectedMicrohaplotypesForTarget targetResults = 0
+ }
+// Microhaplotypes detected for a specific target
+message DetectedMicrohaplotypesForTarget
+ {
+  integer mhapsTargetId = 0
+ repeated  microhaplotypeForTarget mhaps = 0
+ }
 // Information about a specific amplification and sequencing of a specimen
 message ExperimentInfo
  {
@@ -75,24 +93,6 @@ message MicrohaplotypeForTarget
   integer reads = 0
   integer umis = 0
  }
-// the microhaplotypes detected in a targeted amplicon analysis
-message MicrohaplotypesDetected
- {
-  integer bioinformaticsRunId = 0
- repeated  microhaplotypesForSample experimentSamples = 0
- }
-// Microhaplotypes detected for a sample for all targets
-message MicrohaplotypesForSample
- {
-  integer experimentSampleId = 0
- repeated  microhaplotypesForTarget targetResults = 0
- }
-// Microhaplotypes detected for a specific target
-message MicrohaplotypesForTarget
- {
-  integer mhapsTargetId = 0
- repeated  microhaplotypeForTarget haps = 0
- }
 // information on a panel of targeted amplicon primer pairs
 message PanelInfo
  {
@@ -136,10 +136,10 @@ message PortableMicrohaplotypeObject
  repeated  panelInfo panelInfo = 0
  repeated  targetInfo targetInfo = 0
  repeated  genomeInfo targetedGenomes = 0
-  representativeMicrohaplotypes microhaplotypesInfo = 0
+  representativeMicrohaplotypes representativeMicrohaplotypes = 0
  repeated  bioinformaticsMethodInfo bioinformaticsMethodsInfo = 0
  repeated  bioinformaticsRunInfo bioinformaticsRunInfo = 0
- repeated  microhaplotypesDetected microhaplotypesDetected = 0
+ repeated  detectedMicrohaplotypes detectedMicrohaplotypes = 0
  repeated  projectInfo projectInfo = 0
   pmoHeader pmoHeader = 0
  repeated  readCountsByStage readCountsByStage = 0
