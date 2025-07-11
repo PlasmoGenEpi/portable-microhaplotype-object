@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/target_id/">
+        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/alt_seq/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: target_id - portable-microhaplotype-object</title>
+        <title>Slot: alt_seq - portable-microhaplotype-object</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-target_id" class="md-skip">
+        <a href="#slot-alt_seq" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: target_id
+              Slot: alt_seq
             
           </span>
         </div>
@@ -364,10 +364,10 @@
   
 
 
-<h1 id="slot-target_id">Slot: target_id</h1>
-<p><em>the index into the target_info list</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/target_id">portable_microhaplotype_object:target_id</a>
-Alias: target_id</p>
+<h1 id="slot-alt_seq">Slot: alt_seq</h1>
+<p><em>a possible alternative sequence of this genomic location</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/alt_seq">portable_microhaplotype_object:alt_seq</a>
+Alias: alt_seq</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -381,27 +381,19 @@ Alias: target_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ReadCountsByStageForTarget/">ReadCountsByStageForTarget</a></td>
-<td>Information on the reads counts at several stages of a pipeline for a target</td>
+<td><a href="../GenomicLocation/">GenomicLocation</a></td>
+<td>information on the genomic location of specific sequence</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../RepresentativeMicrohaplotypesForTarget/">RepresentativeMicrohaplotypesForTarget</a></td>
-<td>a list of the representative sequence for a microhaplotypes, similar to a fas...</td>
-<td>yes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../Integer/">Integer</a></p>
+<p>Range: <a href="../String/">String</a></p>
 </li>
 <li>
-<p>Required: True</p>
-</li>
-<li>
-<p>Regex pattern: <code>^[0-9]+$</code></p>
+<p>Regex pattern: <code>^[A-z-]+$</code></p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -420,28 +412,28 @@ Alias: target_id</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:target_id</td>
+<td>portable_microhaplotype_object:alt_seq</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:target_id</td>
+<td>portable_microhaplotype_object:alt_seq</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: target_id
-description: the index into the target_info list
+<pre><code class="language-yaml">name: alt_seq
+description: a possible alternative sequence of this genomic location
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-alias: target_id
+alias: alt_seq
+owner: GenomicLocation
 domain_of:
-- RepresentativeMicrohaplotypesForTarget
-- ReadCountsByStageForTarget
-range: integer
-required: true
-pattern: ^[0-9]+$
+- GenomicLocation
+range: string
+required: false
+pattern: ^[A-z-]+$
 
 </code></pre>
 
