@@ -72,6 +72,7 @@ message GenomicLocation
   integer end = 0
   string strand = 0
   string refSeq = 0
+  string altSeq = 0
  }
 // A specific genomic location of interest, e.g. drug resistance, or other phenotypical marker
 message MarkerOfInterest

@@ -53,6 +53,7 @@
 --     * Slot: end Description: the end of the location, 0-based positioning
 --     * Slot: strand Description: which strand the location is, either + for plus strand or - for negative strand
 --     * Slot: ref_seq Description: the reference sequence of this genomic location
+--     * Slot: alt_seq Description: a possible alternative sequence of this genomic location
 -- # Class: "PrimerInfo" Description: "information on a primer sequence"
 --     * Slot: id Description: 
 --     * Slot: seq Description: the DNA sequence
@@ -269,6 +270,7 @@ CREATE TABLE "GenomicLocation" (
 	"end" INTEGER NOT NULL, 
 	strand TEXT, 
 	ref_seq TEXT, 
+	alt_seq TEXT, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "BioinformaticsMethodInfo" (

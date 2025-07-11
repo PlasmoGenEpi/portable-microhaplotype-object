@@ -1,5 +1,5 @@
 # Auto generated from portable_microhaplotype_object.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-07-11T14:56:13
+# Generation date: 2025-07-11T15:11:08
 # Schema: portable-microhaplotype-object
 #
 # id: https://plasmogenepi.github.io/portable-microhaplotype-object
@@ -457,6 +457,7 @@ class GenomicLocation(YAMLRoot):
     end: int = None
     strand: Optional[str] = None
     ref_seq: Optional[str] = None
+    alt_seq: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.genome_id):
@@ -484,6 +485,9 @@ class GenomicLocation(YAMLRoot):
 
         if self.ref_seq is not None and not isinstance(self.ref_seq, str):
             self.ref_seq = str(self.ref_seq)
+
+        if self.alt_seq is not None and not isinstance(self.alt_seq, str):
+            self.alt_seq = str(self.alt_seq)
 
         super().__post_init__(**kwargs)
 
@@ -1574,6 +1578,10 @@ slots.genomicLocation__strand = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.strand, 
 
 slots.genomicLocation__ref_seq = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.ref_seq, name="genomicLocation__ref_seq", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('ref_seq'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.genomicLocation__ref_seq, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^[A-z-]+$'))
+
+slots.genomicLocation__alt_seq = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.alt_seq, name="genomicLocation__alt_seq", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('alt_seq'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.genomicLocation__alt_seq, domain=None, range=Optional[str],
                    pattern=re.compile(r'^[A-z-]+$'))
 
 slots.primerInfo__location = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.location, name="primerInfo__location", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('location'),

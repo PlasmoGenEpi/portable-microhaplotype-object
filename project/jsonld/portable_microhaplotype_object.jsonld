@@ -1096,6 +1096,20 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "genomicLocation__alt_seq",
+      "description": "a possible alternative sequence of this genomic location",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/alt_seq",
+      "alias": "alt_seq",
+      "owner": "GenomicLocation",
+      "domain_of": [
+        "GenomicLocation"
+      ],
+      "range": "string",
+      "pattern": "^[A-z-]+$",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "primerInfo__location",
       "description": "what the intended genomic location of the primer is",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
@@ -3297,7 +3311,8 @@
         "genomicLocation__start",
         "genomicLocation__end",
         "genomicLocation__strand",
-        "genomicLocation__ref_seq"
+        "genomicLocation__ref_seq",
+        "genomicLocation__alt_seq"
       ],
       "slot_usage": {},
       "attributes": [
@@ -3335,6 +3350,13 @@
         {
           "name": "ref_seq",
           "description": "the reference sequence of this genomic location",
+          "range": "string",
+          "pattern": "^[A-z-]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "alt_seq",
+          "description": "a possible alternative sequence of this genomic location",
           "range": "string",
           "pattern": "^[A-z-]+$",
           "@type": "SlotDefinition"
@@ -4747,9 +4769,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2025-07-11T14:55:11",
-  "source_file_size": 39017,
-  "generation_date": "2025-07-11T14:56:12",
+  "source_file_date": "2025-07-11T15:10:41",
+  "source_file_size": 39198,
+  "generation_date": "2025-07-11T15:11:06",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",

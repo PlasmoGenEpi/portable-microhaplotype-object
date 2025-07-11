@@ -126,7 +126,8 @@ linkml:Sparqlpath xsd:string
           <start> @linkml:Integer ;
           <end> @linkml:Integer ;
           <strand> @linkml:String ? ;
-          <ref_seq> @linkml:String ?
+          <ref_seq> @linkml:String ? ;
+          <alt_seq> @linkml:String ?
        ) ;
        rdf:type [ <GenomicLocation> ] ?
     )

@@ -69,6 +69,7 @@ type GenomicLocation
     end: Integer!
     strand: String
     refSeq: String
+    altSeq: String
   }
 
 type MarkerOfInterest

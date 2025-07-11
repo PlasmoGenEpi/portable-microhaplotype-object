@@ -319,6 +319,12 @@ classes:
         pattern: "^[A-z-]+$"
         description: >-
           the reference sequence of this genomic location
+      alt_seq:
+        range: string
+        required: false
+        pattern: "^[A-z-]+$"
+        description: >-
+          a possible alternative sequence of this genomic location
 
 
   PrimerInfo:

@@ -301,6 +301,14 @@
             "additionalProperties": true,
             "description": "information on the genomic location of specific sequence",
             "properties": {
+                "alt_seq": {
+                    "description": "a possible alternative sequence of this genomic location",
+                    "pattern": "^[A-z-]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "chrom": {
                     "description": "the chromosome name",
                     "pattern": "^[A-z-._0-9]+$",
