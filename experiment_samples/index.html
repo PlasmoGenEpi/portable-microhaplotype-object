@@ -381,7 +381,7 @@ Alias: experiment_samples</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../MicrohaplotypesDetected/">MicrohaplotypesDetected</a></td>
+<td><a href="../DetectedMicrohaplotypes/">DetectedMicrohaplotypes</a></td>
 <td>the microhaplotypes detected in a targeted amplicon analysis</td>
 <td>no</td>
 </tr>
@@ -390,7 +390,7 @@ Alias: experiment_samples</p>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../MicrohaplotypesForSample/">MicrohaplotypesForSample</a></p>
+<p>Range: <a href="../DetectedMicrohaplotypesForSample/">DetectedMicrohaplotypesForSample</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -431,10 +431,10 @@ description: 'a list of the microhaplotypes detected for a sample by targets '
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: experiment_samples
-owner: MicrohaplotypesDetected
+owner: DetectedMicrohaplotypes
 domain_of:
-- MicrohaplotypesDetected
-range: MicrohaplotypesForSample
+- DetectedMicrohaplotypes
+range: DetectedMicrohaplotypesForSample
 required: true
 multivalued: true
 inlined: true

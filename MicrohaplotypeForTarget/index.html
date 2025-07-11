@@ -250,7 +250,7 @@
 <tr>
 <td><a href="../mhap_id/">mhap_id</a></td>
 <td>1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the index for a microhaplotype for a target in the microhaplotypes_info list,...</td>
+<td>the index for a microhaplotype for a target in the representative_microhaplot...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -279,8 +279,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MicrohaplotypesForTarget/">MicrohaplotypesForTarget</a></td>
-<td><a href="../haps/">haps</a></td>
+<td><a href="../DetectedMicrohaplotypesForTarget/">DetectedMicrohaplotypesForTarget</a></td>
+<td><a href="../mhaps/">mhaps</a></td>
 <td>range</td>
 <td><a href="./">MicrohaplotypeForTarget</a></td>
 </tr>
@@ -373,8 +373,8 @@ attributes:
     required: false
   mhap_id:
     name: mhap_id
-    description: the index for a microhaplotype for a target in the microhaplotypes_info
-      list, e.g. microhaplotypes_info[mhaps_target_id][mhap_id]
+    description: the index for a microhaplotype for a target in the representative_microhaplotypes
+      list, e.g. representative_microhaplotypes[mhaps_target_id][mhap_id]
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: mhap_id

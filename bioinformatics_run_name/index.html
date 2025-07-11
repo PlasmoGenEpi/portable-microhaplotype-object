@@ -365,7 +365,7 @@
 
 
 <h1 id="slot-bioinformatics_run_name">Slot: bioinformatics_run_name</h1>
-<p><em>a name to for this run</em></p>
+<p>_a name to for this run, needs to be unique to each run _</p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/bioinformatics_run_name">portable_microhaplotype_object:bioinformatics_run_name</a>
 Alias: bioinformatics_run_name</p>
 <!-- no inheritance hierarchy -->
@@ -391,6 +391,9 @@ Alias: bioinformatics_run_name</p>
 <ul>
 <li>
 <p>Range: <a href="../String/">String</a></p>
+</li>
+<li>
+<p>Required: True</p>
 </li>
 <li>
 <p>Regex pattern: <code>^[A-z-._0-9 ]+$</code></p>
@@ -424,7 +427,7 @@ Alias: bioinformatics_run_name</p>
 <details>
 
 <pre><code class="language-yaml">name: bioinformatics_run_name
-description: a name to for this run
+description: 'a name to for this run, needs to be unique to each run '
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: bioinformatics_run_name
@@ -432,7 +435,7 @@ owner: BioinformaticsRunInfo
 domain_of:
 - BioinformaticsRunInfo
 range: string
-required: false
+required: true
 pattern: ^[A-z-._0-9 ]+$
 
 </code></pre>

@@ -293,7 +293,7 @@
 </tr>
 <tr>
 <td><a href="../seq_date/">seq_date</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>the date of sequencing, should be YYYY-MM or YYYY-MM-DD</td>
 <td>direct</td>
 </tr>
@@ -473,7 +473,7 @@ attributes:
     domain_of:
     - SequencingInfo
     range: string
-    required: true
+    required: false
     pattern: \d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?
   nucl_acid_ext:
     name: nucl_acid_ext
@@ -701,7 +701,7 @@ attributes:
     domain_of:
     - SequencingInfo
     range: string
-    required: true
+    required: false
     pattern: \d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?
   nucl_acid_ext:
     name: nucl_acid_ext

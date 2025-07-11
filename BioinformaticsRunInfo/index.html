@@ -255,14 +255,14 @@
 </tr>
 <tr>
 <td><a href="../run_date/">run_date</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>the date when the run was done, should be YYYY-MM-DD</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../bioinformatics_run_name/">bioinformatics_run_name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>a name to for this run</td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>a name to for this run, needs to be unique to each run</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -329,17 +329,17 @@ attributes:
     domain_of:
     - BioinformaticsRunInfo
     range: string
-    required: true
+    required: false
     pattern: \d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?
   bioinformatics_run_name:
     name: bioinformatics_run_name
-    description: a name to for this run
+    description: 'a name to for this run, needs to be unique to each run '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - BioinformaticsRunInfo
     range: string
-    required: false
+    required: true
     pattern: ^[A-z-._0-9 ]+$
 
 </code></pre>
@@ -361,11 +361,11 @@ attributes:
     domain_of:
     - BioinformaticsRunInfo
     range: string
-    required: true
+    required: false
     pattern: \d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?
   bioinformatics_run_name:
     name: bioinformatics_run_name
-    description: a name to for this run
+    description: 'a name to for this run, needs to be unique to each run '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: bioinformatics_run_name
@@ -373,7 +373,7 @@ attributes:
     domain_of:
     - BioinformaticsRunInfo
     range: string
-    required: false
+    required: true
     pattern: ^[A-z-._0-9 ]+$
   bioinformatics_methods_id:
     name: bioinformatics_methods_id

@@ -242,6 +242,17 @@
 
 
 
+      PortableMicrohaplotypeObject : detected_microhaplotypes
+
+
+
+
+
+        PortableMicrohaplotypeObject --&gt; "1..*" DetectedMicrohaplotypes : detected_microhaplotypes
+        click DetectedMicrohaplotypes href "../DetectedMicrohaplotypes"
+
+
+
       PortableMicrohaplotypeObject : experiment_info
 
 
@@ -250,28 +261,6 @@
 
         PortableMicrohaplotypeObject --&gt; "1..*" ExperimentInfo : experiment_info
         click ExperimentInfo href "../ExperimentInfo"
-
-
-
-      PortableMicrohaplotypeObject : microhaplotypes_detected
-
-
-
-
-
-        PortableMicrohaplotypeObject --&gt; "1..*" MicrohaplotypesDetected : microhaplotypes_detected
-        click MicrohaplotypesDetected href "../MicrohaplotypesDetected"
-
-
-
-      PortableMicrohaplotypeObject : microhaplotypes_info
-
-
-
-
-
-        PortableMicrohaplotypeObject --&gt; "1" RepresentativeMicrohaplotypes : microhaplotypes_info
-        click RepresentativeMicrohaplotypes href "../RepresentativeMicrohaplotypes"
 
 
 
@@ -316,6 +305,17 @@
 
         PortableMicrohaplotypeObject --&gt; "*" ReadCountsByStage : read_counts_by_stage
         click ReadCountsByStage href "../ReadCountsByStage"
+
+
+
+      PortableMicrohaplotypeObject : representative_microhaplotypes
+
+
+
+
+
+        PortableMicrohaplotypeObject --&gt; "1" RepresentativeMicrohaplotypes : representative_microhaplotypes
+        click RepresentativeMicrohaplotypes href "../RepresentativeMicrohaplotypes"
 
 
 
@@ -414,7 +414,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../microhaplotypes_info/">microhaplotypes_info</a></td>
+<td><a href="../representative_microhaplotypes/">representative_microhaplotypes</a></td>
 <td>1 <br/> <a href="../RepresentativeMicrohaplotypes/">RepresentativeMicrohaplotypes</a></td>
 <td>a list of the information on the representative microhaplotypes</td>
 <td>direct</td>
@@ -432,8 +432,8 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../microhaplotypes_detected/">microhaplotypes_detected</a></td>
-<td>1..* <br/> <a href="../MicrohaplotypesDetected/">MicrohaplotypesDetected</a></td>
+<td><a href="../detected_microhaplotypes/">detected_microhaplotypes</a></td>
+<td>1..* <br/> <a href="../DetectedMicrohaplotypes/">DetectedMicrohaplotypes</a></td>
 <td>the microhaplotypes detected in this projects</td>
 <td>direct</td>
 </tr>
@@ -562,8 +562,8 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  microhaplotypes_info:
-    name: microhaplotypes_info
+  representative_microhaplotypes:
+    name: representative_microhaplotypes
     description: a list of the information on the representative microhaplotypes
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
@@ -597,14 +597,14 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  microhaplotypes_detected:
-    name: microhaplotypes_detected
+  detected_microhaplotypes:
+    name: detected_microhaplotypes
     description: the microhaplotypes detected in this projects
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - PortableMicrohaplotypeObject
-    range: MicrohaplotypesDetected
+    range: DetectedMicrohaplotypes
     required: true
     multivalued: true
     inlined: true
@@ -737,12 +737,12 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  microhaplotypes_info:
-    name: microhaplotypes_info
+  representative_microhaplotypes:
+    name: representative_microhaplotypes
     description: a list of the information on the representative microhaplotypes
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: microhaplotypes_info
+    alias: representative_microhaplotypes
     owner: PortableMicrohaplotypeObject
     domain_of:
     - PortableMicrohaplotypeObject
@@ -778,16 +778,16 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  microhaplotypes_detected:
-    name: microhaplotypes_detected
+  detected_microhaplotypes:
+    name: detected_microhaplotypes
     description: the microhaplotypes detected in this projects
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: microhaplotypes_detected
+    alias: detected_microhaplotypes
     owner: PortableMicrohaplotypeObject
     domain_of:
     - PortableMicrohaplotypeObject
-    range: MicrohaplotypesDetected
+    range: DetectedMicrohaplotypes
     required: true
     multivalued: true
     inlined: true

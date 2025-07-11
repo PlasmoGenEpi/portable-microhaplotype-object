@@ -381,13 +381,13 @@ Alias: bioinformatics_run_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../MicrohaplotypesDetected/">MicrohaplotypesDetected</a></td>
-<td>the microhaplotypes detected in a targeted amplicon analysis</td>
+<td><a href="../ReadCountsByStage/">ReadCountsByStage</a></td>
+<td>Information on the reads counts at several stages of a pipeline</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ReadCountsByStage/">ReadCountsByStage</a></td>
-<td>Information on the reads counts at several stages of a pipeline</td>
+<td><a href="../DetectedMicrohaplotypes/">DetectedMicrohaplotypes</a></td>
+<td>the microhaplotypes detected in a targeted amplicon analysis</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -437,7 +437,7 @@ from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: bioinformatics_run_id
 domain_of:
-- MicrohaplotypesDetected
+- DetectedMicrohaplotypes
 - ReadCountsByStage
 range: integer
 required: true

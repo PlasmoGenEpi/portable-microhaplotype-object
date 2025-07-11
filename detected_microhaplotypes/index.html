@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/haps/">
+        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/detected_microhaplotypes/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: haps - portable-microhaplotype-object</title>
+        <title>Slot: detected_microhaplotypes - portable-microhaplotype-object</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-haps" class="md-skip">
+        <a href="#slot-detected_microhaplotypes" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: haps
+              Slot: detected_microhaplotypes
             
           </span>
         </div>
@@ -364,10 +364,10 @@
   
 
 
-<h1 id="slot-haps">Slot: haps</h1>
-<p><em>a list of the microhaplotypes detected for this target</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/haps">portable_microhaplotype_object:haps</a>
-Alias: haps</p>
+<h1 id="slot-detected_microhaplotypes">Slot: detected_microhaplotypes</h1>
+<p><em>the microhaplotypes detected in this projects</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/detected_microhaplotypes">portable_microhaplotype_object:detected_microhaplotypes</a>
+Alias: detected_microhaplotypes</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -381,8 +381,8 @@ Alias: haps</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../MicrohaplotypesForTarget/">MicrohaplotypesForTarget</a></td>
-<td>Microhaplotypes detected for a specific target</td>
+<td><a href="../PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
+<td>Information on final results from a targeted amplicon analysis</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -390,7 +390,7 @@ Alias: haps</p>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../MicrohaplotypeForTarget/">MicrohaplotypeForTarget</a></p>
+<p>Range: <a href="../DetectedMicrohaplotypes/">DetectedMicrohaplotypes</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -415,26 +415,26 @@ Alias: haps</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:haps</td>
+<td>portable_microhaplotype_object:detected_microhaplotypes</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:haps</td>
+<td>portable_microhaplotype_object:detected_microhaplotypes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: haps
-description: a list of the microhaplotypes detected for this target
+<pre><code class="language-yaml">name: detected_microhaplotypes
+description: the microhaplotypes detected in this projects
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-alias: haps
-owner: MicrohaplotypesForTarget
+alias: detected_microhaplotypes
+owner: PortableMicrohaplotypeObject
 domain_of:
-- MicrohaplotypesForTarget
-range: MicrohaplotypeForTarget
+- PortableMicrohaplotypeObject
+range: DetectedMicrohaplotypes
 required: true
 multivalued: true
 inlined: true

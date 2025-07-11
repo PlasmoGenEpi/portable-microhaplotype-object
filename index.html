@@ -464,6 +464,18 @@
 <td>methodology description of a portion of a bioinformatics pipeline</td>
 </tr>
 <tr>
+<td><a href="DetectedMicrohaplotypes/">DetectedMicrohaplotypes</a></td>
+<td>the microhaplotypes detected in a targeted amplicon analysis</td>
+</tr>
+<tr>
+<td><a href="DetectedMicrohaplotypesForSample/">DetectedMicrohaplotypesForSample</a></td>
+<td>Microhaplotypes detected for a sample for all targets</td>
+</tr>
+<tr>
+<td><a href="DetectedMicrohaplotypesForTarget/">DetectedMicrohaplotypesForTarget</a></td>
+<td>Microhaplotypes detected for a specific target</td>
+</tr>
+<tr>
 <td><a href="ExperimentInfo/">ExperimentInfo</a></td>
 <td>Information about a specific amplification and sequencing of a specimen</td>
 </tr>
@@ -486,18 +498,6 @@
 <tr>
 <td><a href="MicrohaplotypeForTarget/">MicrohaplotypeForTarget</a></td>
 <td>Microhaplotype detected for a specific target</td>
-</tr>
-<tr>
-<td><a href="MicrohaplotypesDetected/">MicrohaplotypesDetected</a></td>
-<td>the microhaplotypes detected in a targeted amplicon analysis</td>
-</tr>
-<tr>
-<td><a href="MicrohaplotypesForSample/">MicrohaplotypesForSample</a></td>
-<td>Microhaplotypes detected for a sample for all targets</td>
-</tr>
-<tr>
-<td><a href="MicrohaplotypesForTarget/">MicrohaplotypesForTarget</a></td>
-<td>Microhaplotypes detected for a specific target</td>
 </tr>
 <tr>
 <td><a href="PanelInfo/">PanelInfo</a></td>
@@ -632,7 +632,7 @@
 </tr>
 <tr>
 <td><a href="bioinformatics_run_name/">bioinformatics_run_name</a></td>
-<td>a name to for this run</td>
+<td>a name to for this run, needs to be unique to each run</td>
 </tr>
 <tr>
 <td><a href="BioProject_accession/">BioProject_accession</a></td>
@@ -677,6 +677,10 @@
 <tr>
 <td><a href="density_method_comments/">density_method_comments</a></td>
 <td>additional comments about how the density was performed</td>
+</tr>
+<tr>
+<td><a href="detected_microhaplotypes/">detected_microhaplotypes</a></td>
+<td>the microhaplotypes detected in this projects</td>
 </tr>
 <tr>
 <td><a href="drug_usage/">drug_usage</a></td>
@@ -751,10 +755,6 @@
 <td>a link to the where this genome's annotation file could be downloaded</td>
 </tr>
 <tr>
-<td><a href="haps/">haps</a></td>
-<td>a list of the microhaplotypes detected for this target</td>
-</tr>
-<tr>
 <td><a href="host_age/">host_age</a></td>
 <td>if specimen is from a person, the age in years of the person, can be float va...</td>
 </tr>
@@ -824,15 +824,19 @@
 </tr>
 <tr>
 <td><a href="mhap_id/">mhap_id</a></td>
-<td>the index for a microhaplotype for a target in the microhaplotypes_info list,...</td>
+<td>the index for a microhaplotype for a target in the representative_microhaplot...</td>
 </tr>
 <tr>
 <td><a href="mhap_location/">mhap_location</a></td>
 <td>a genomic location that was analyzed for this target info, this allows listin...</td>
 </tr>
 <tr>
+<td><a href="mhaps/">mhaps</a></td>
+<td>a list of the microhaplotypes detected for this target</td>
+</tr>
+<tr>
 <td><a href="mhaps_target_id/">mhaps_target_id</a></td>
-<td>the index for a target in the microhaplotypes_info list</td>
+<td>the index for a target in the representative_microhaplotypes list</td>
 </tr>
 <tr>
 <td><a href="microhaplotype_name/">microhaplotype_name</a></td>
@@ -841,14 +845,6 @@
 <tr>
 <td><a href="microhaplotypes/">microhaplotypes</a></td>
 <td>a list of the microhaplotypes detected for a target</td>
-</tr>
-<tr>
-<td><a href="microhaplotypes_detected/">microhaplotypes_detected</a></td>
-<td>the microhaplotypes detected in this projects</td>
-</tr>
-<tr>
-<td><a href="microhaplotypes_info/">microhaplotypes_info</a></td>
-<td>a list of the information on the representative microhaplotypes</td>
 </tr>
 <tr>
 <td><a href="microscopy_parasite_density_info/">microscopy_parasite_density_info</a></td>
@@ -1009,6 +1005,10 @@
 <tr>
 <td><a href="replacement_size/">replacement_size</a></td>
 <td>the size of replacement mask</td>
+</tr>
+<tr>
+<td><a href="representative_microhaplotypes/">representative_microhaplotypes</a></td>
+<td>a list of the information on the representative microhaplotypes</td>
 </tr>
 <tr>
 <td><a href="reverse_primer/">reverse_primer</a></td>

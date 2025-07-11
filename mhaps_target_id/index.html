@@ -365,7 +365,7 @@
 
 
 <h1 id="slot-mhaps_target_id">Slot: mhaps_target_id</h1>
-<p><em>the index for a target in the microhaplotypes_info list</em></p>
+<p><em>the index for a target in the representative_microhaplotypes list</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/mhaps_target_id">portable_microhaplotype_object:mhaps_target_id</a>
 Alias: mhaps_target_id</p>
 <!-- no inheritance hierarchy -->
@@ -381,7 +381,7 @@ Alias: mhaps_target_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../MicrohaplotypesForTarget/">MicrohaplotypesForTarget</a></td>
+<td><a href="../DetectedMicrohaplotypesForTarget/">DetectedMicrohaplotypesForTarget</a></td>
 <td>Microhaplotypes detected for a specific target</td>
 <td>no</td>
 </tr>
@@ -427,12 +427,12 @@ Alias: mhaps_target_id</p>
 <details>
 
 <pre><code class="language-yaml">name: mhaps_target_id
-description: the index for a target in the microhaplotypes_info list
+description: the index for a target in the representative_microhaplotypes list
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: mhaps_target_id
 domain_of:
-- MicrohaplotypesForTarget
+- DetectedMicrohaplotypesForTarget
 range: integer
 required: true
 pattern: ^[0-9]+$

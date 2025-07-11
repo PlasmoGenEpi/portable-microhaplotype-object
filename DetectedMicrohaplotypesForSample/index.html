@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/MicrohaplotypesDetected/" rel="canonical"/>
+<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/DetectedMicrohaplotypesForSample/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.15" name="generator"/>
-<title>Class: MicrohaplotypesDetected - portable-microhaplotype-object</title>
+<title>Class: DetectedMicrohaplotypesForSample - portable-microhaplotype-object</title>
 <link href="../assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -23,7 +23,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-microhaplotypesdetected">
+<a class="md-skip" href="#class-detectedmicrohaplotypesforsample">
           Skip to content
         </a>
 </div>
@@ -47,7 +47,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: MicrohaplotypesDetected
+              Class: DetectedMicrohaplotypesForSample
             
           </span>
 </div>
@@ -221,22 +221,22 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-microhaplotypesdetected">Class: MicrohaplotypesDetected</h1>
-<p><em>the microhaplotypes detected in a targeted amplicon analysis</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/MicrohaplotypesDetected">portable_microhaplotype_object:MicrohaplotypesDetected</a></p>
+<h1 id="class-detectedmicrohaplotypesforsample">Class: DetectedMicrohaplotypesForSample</h1>
+<p><em>Microhaplotypes detected for a sample for all targets</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/DetectedMicrohaplotypesForSample">portable_microhaplotype_object:DetectedMicrohaplotypesForSample</a></p>
 <div class="mermaid"> classDiagram
-    class MicrohaplotypesDetected
-    click MicrohaplotypesDetected href "../MicrohaplotypesDetected"
-      MicrohaplotypesDetected : bioinformatics_run_id
+    class DetectedMicrohaplotypesForSample
+    click DetectedMicrohaplotypesForSample href "../DetectedMicrohaplotypesForSample"
+      DetectedMicrohaplotypesForSample : experiment_sample_id
 
-      MicrohaplotypesDetected : experiment_samples
-
-
+      DetectedMicrohaplotypesForSample : target_results
 
 
 
-        MicrohaplotypesDetected --&gt; "1..*" MicrohaplotypesForSample : experiment_samples
-        click MicrohaplotypesForSample href "../MicrohaplotypesForSample"
+
+
+        DetectedMicrohaplotypesForSample --&gt; "1..*" DetectedMicrohaplotypesForTarget : target_results
+        click DetectedMicrohaplotypesForTarget href "../DetectedMicrohaplotypesForTarget"
 
 
 
@@ -255,15 +255,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../bioinformatics_run_id/">bioinformatics_run_id</a></td>
+<td><a href="../experiment_sample_id/">experiment_sample_id</a></td>
 <td>1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the index into bioinformatics_run_info list</td>
+<td>the index into the experiment_info list</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../experiment_samples/">experiment_samples</a></td>
-<td>1..* <br/> <a href="../MicrohaplotypesForSample/">MicrohaplotypesForSample</a></td>
-<td>a list of the microhaplotypes detected for a sample by targets</td>
+<td><a href="../target_results/">target_results</a></td>
+<td>1..* <br/> <a href="../DetectedMicrohaplotypesForTarget/">DetectedMicrohaplotypesForTarget</a></td>
+<td>a list of the microhaplotypes detected for a list of targets</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -280,10 +280,10 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
-<td><a href="../microhaplotypes_detected/">microhaplotypes_detected</a></td>
+<td><a href="../DetectedMicrohaplotypes/">DetectedMicrohaplotypes</a></td>
+<td><a href="../experiment_samples/">experiment_samples</a></td>
 <td>range</td>
-<td><a href="./">MicrohaplotypesDetected</a></td>
+<td><a href="./">DetectedMicrohaplotypesForSample</a></td>
 </tr>
 </tbody>
 </table>
@@ -303,11 +303,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:MicrohaplotypesDetected</td>
+<td>portable_microhaplotype_object:DetectedMicrohaplotypesForSample</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:MicrohaplotypesDetected</td>
+<td>portable_microhaplotype_object:DetectedMicrohaplotypesForSample</td>
 </tr>
 </tbody>
 </table>
@@ -315,20 +315,20 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: MicrohaplotypesDetected
-description: the microhaplotypes detected in a targeted amplicon analysis
+<pre><code class="language-yaml">name: DetectedMicrohaplotypesForSample
+description: Microhaplotypes detected for a sample for all targets
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
-- bioinformatics_run_id
+- experiment_sample_id
 attributes:
-  experiment_samples:
-    name: experiment_samples
-    description: 'a list of the microhaplotypes detected for a sample by targets '
+  target_results:
+    name: target_results
+    description: a list of the microhaplotypes detected for a list of targets
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
-    - MicrohaplotypesDetected
-    range: MicrohaplotypesForSample
+    - DetectedMicrohaplotypesForSample
+    range: DetectedMicrohaplotypesForTarget
     required: true
     multivalued: true
     inlined: true
@@ -338,34 +338,34 @@ attributes:
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: MicrohaplotypesDetected
-description: the microhaplotypes detected in a targeted amplicon analysis
+<pre><code class="language-yaml">name: DetectedMicrohaplotypesForSample
+description: Microhaplotypes detected for a sample for all targets
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  experiment_samples:
-    name: experiment_samples
-    description: 'a list of the microhaplotypes detected for a sample by targets '
+  target_results:
+    name: target_results
+    description: a list of the microhaplotypes detected for a list of targets
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: experiment_samples
-    owner: MicrohaplotypesDetected
+    alias: target_results
+    owner: DetectedMicrohaplotypesForSample
     domain_of:
-    - MicrohaplotypesDetected
-    range: MicrohaplotypesForSample
+    - DetectedMicrohaplotypesForSample
+    range: DetectedMicrohaplotypesForTarget
     required: true
     multivalued: true
     inlined: true
     inlined_as_list: true
-  bioinformatics_run_id:
-    name: bioinformatics_run_id
-    description: the index into bioinformatics_run_info list
+  experiment_sample_id:
+    name: experiment_sample_id
+    description: the index into the experiment_info list
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: bioinformatics_run_id
-    owner: MicrohaplotypesDetected
+    alias: experiment_sample_id
+    owner: DetectedMicrohaplotypesForSample
     domain_of:
-    - MicrohaplotypesDetected
-    - ReadCountsByStage
+    - DetectedMicrohaplotypesForSample
+    - ReadCountsByStageForExperimentalSample
     range: integer
     required: true
     pattern: ^[0-9]+$
