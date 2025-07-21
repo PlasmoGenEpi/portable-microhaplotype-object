@@ -244,6 +244,15 @@
 
       RepresentativeMicrohaplotype : pseudocigar
 
+
+
+
+
+        RepresentativeMicrohaplotype --&gt; "0..1" Pseudocigar : pseudocigar
+        click Pseudocigar href "../Pseudocigar"
+
+
+
       RepresentativeMicrohaplotype : quality
 
       RepresentativeMicrohaplotype : seq
@@ -282,7 +291,7 @@
 </tr>
 <tr>
 <td><a href="../pseudocigar/">pseudocigar</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../Pseudocigar/">Pseudocigar</a></td>
 <td>the pseudocigar of the haplotype</td>
 <td>direct</td>
 </tr>
@@ -382,7 +391,7 @@ attributes:
     rank: 1000
     domain_of:
     - RepresentativeMicrohaplotype
-    range: string
+    range: Pseudocigar
     required: false
     pattern: ^[A-z-._0-9]+$
   masking:
@@ -452,7 +461,7 @@ attributes:
     owner: RepresentativeMicrohaplotype
     domain_of:
     - RepresentativeMicrohaplotype
-    range: string
+    range: Pseudocigar
     required: false
     pattern: ^[A-z-._0-9]+$
   masking:

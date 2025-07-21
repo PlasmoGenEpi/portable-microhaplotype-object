@@ -227,7 +227,7 @@
 <div class="mermaid"> classDiagram
     class DetectedMicrohaplotypesForSample
     click DetectedMicrohaplotypesForSample href "../DetectedMicrohaplotypesForSample"
-      DetectedMicrohaplotypesForSample : experiment_sample_id
+      DetectedMicrohaplotypesForSample : library_sample_id
 
       DetectedMicrohaplotypesForSample : target_results
 
@@ -255,9 +255,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../experiment_sample_id/">experiment_sample_id</a></td>
+<td><a href="../library_sample_id/">library_sample_id</a></td>
 <td>1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the index into the experiment_info list</td>
+<td>the index into the library_info list</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -281,7 +281,7 @@
 <tbody>
 <tr>
 <td><a href="../DetectedMicrohaplotypes/">DetectedMicrohaplotypes</a></td>
-<td><a href="../experiment_samples/">experiment_samples</a></td>
+<td><a href="../library_samples/">library_samples</a></td>
 <td>range</td>
 <td><a href="./">DetectedMicrohaplotypesForSample</a></td>
 </tr>
@@ -319,7 +319,7 @@
 description: Microhaplotypes detected for a sample for all targets
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
-- experiment_sample_id
+- library_sample_id
 attributes:
   target_results:
     name: target_results
@@ -356,16 +356,16 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  experiment_sample_id:
-    name: experiment_sample_id
-    description: the index into the experiment_info list
+  library_sample_id:
+    name: library_sample_id
+    description: the index into the library_info list
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: experiment_sample_id
+    alias: library_sample_id
     owner: DetectedMicrohaplotypesForSample
     domain_of:
     - DetectedMicrohaplotypesForSample
-    - ReadCountsByStageForExperimentalSample
+    - ReadCountsByStageForLibrarySample
     range: integer
     required: true
     pattern: ^[0-9]+$

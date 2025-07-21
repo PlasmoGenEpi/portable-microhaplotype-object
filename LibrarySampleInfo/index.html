@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/BioMethod/" rel="canonical"/>
+<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/LibrarySampleInfo/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.15" name="generator"/>
-<title>Class: BioMethod - portable-microhaplotype-object</title>
+<title>Class: LibrarySampleInfo - portable-microhaplotype-object</title>
 <link href="../assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -23,7 +23,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-biomethod">
+<a class="md-skip" href="#class-librarysampleinfo">
           Skip to content
         </a>
 </div>
@@ -47,7 +47,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: BioMethod
+              Class: LibrarySampleInfo
             
           </span>
 </div>
@@ -221,21 +221,45 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-biomethod">Class: BioMethod</h1>
-<p><em>methodology description of a portion of a bioinformatics pipeline</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/BioMethod">portable_microhaplotype_object:BioMethod</a></p>
+<h1 id="class-librarysampleinfo">Class: LibrarySampleInfo</h1>
+<p><em>Information about a specific amplification and sequencing of a specimen</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/LibrarySampleInfo">portable_microhaplotype_object:LibrarySampleInfo</a></p>
 <div class="mermaid"> classDiagram
-    class BioMethod
-    click BioMethod href "../BioMethod"
-      BioMethod : additional_argument
+    class LibrarySampleInfo
+    click LibrarySampleInfo href "../LibrarySampleInfo"
+      LibrarySampleInfo : fastqs_loc
 
-      BioMethod : program
+      LibrarySampleInfo : library_prep_plate_info
 
-      BioMethod : program_description
 
-      BioMethod : program_url
 
-      BioMethod : program_version
+
+
+        LibrarySampleInfo --&gt; "0..1" PlateInfo : library_prep_plate_info
+        click PlateInfo href "../PlateInfo"
+
+
+
+      LibrarySampleInfo : library_sample_name
+
+      LibrarySampleInfo : panel_id
+
+      LibrarySampleInfo : qpcr_parasite_density_info
+
+
+
+
+
+        LibrarySampleInfo --&gt; "*" ParasiteDensity : qpcr_parasite_density_info
+        click ParasiteDensity href "../ParasiteDensity"
+
+
+
+      LibrarySampleInfo : run_accession
+
+      LibrarySampleInfo : sequencing_info_id
+
+      LibrarySampleInfo : specimen_id
 
 
 </div>
@@ -252,33 +276,51 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../program_version/">program_version</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>the version of generation method, should be in the format of v[MAJOR]</td>
+<td><a href="../sequencing_info_id/">sequencing_info_id</a></td>
+<td>1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the index into the sequencing_info list</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../program/">program</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>name of the program used for this portion of the pipeline</td>
+<td><a href="../specimen_id/">specimen_id</a></td>
+<td>1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the index into the specimen_info list</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../program_description/">program_description</a></td>
+<td><a href="../panel_id/">panel_id</a></td>
+<td>1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the index into the panel_info list</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../fastqs_loc/">fastqs_loc</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>a short description of what this method does</td>
+<td>the location (url or filename path) of the fastqs for a library run</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../program_url/">program_url</a></td>
+<td><a href="../run_accession/">run_accession</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>a url pointing to code base of a program, e</td>
+<td>ERA/SRA run accession number for the sample if it was submitted</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../additional_argument/">additional_argument</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>any additional arguments that differ from the default</td>
+<td><a href="../library_sample_name/">library_sample_name</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>a unique identifier for this sequence/amplification run on a specimen_name</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../library_prep_plate_info/">library_prep_plate_info</a></td>
+<td>0..1 <br/> <a href="../PlateInfo/">PlateInfo</a></td>
+<td>plate location of where library was prepared for sequencing</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../qpcr_parasite_density_info/">qpcr_parasite_density_info</a></td>
+<td>* <br/> <a href="../ParasiteDensity/">ParasiteDensity</a></td>
+<td>qpcr parasite density measurement</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -295,22 +337,10 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../BioinformaticsMethodInfo/">BioinformaticsMethodInfo</a></td>
-<td><a href="../demultiplexing_method/">demultiplexing_method</a></td>
+<td><a href="../PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
+<td><a href="../library_info/">library_info</a></td>
 <td>range</td>
-<td><a href="./">BioMethod</a></td>
-</tr>
-<tr>
-<td><a href="../BioinformaticsMethodInfo/">BioinformaticsMethodInfo</a></td>
-<td><a href="../denoising_method/">denoising_method</a></td>
-<td>range</td>
-<td><a href="./">BioMethod</a></td>
-</tr>
-<tr>
-<td><a href="../BioinformaticsMethodInfo/">BioinformaticsMethodInfo</a></td>
-<td><a href="../additional_methods/">additional_methods</a></td>
-<td>range</td>
-<td><a href="./">BioMethod</a></td>
+<td><a href="./">LibrarySampleInfo</a></td>
 </tr>
 </tbody>
 </table>
@@ -330,11 +360,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:BioMethod</td>
+<td>portable_microhaplotype_object:LibrarySampleInfo</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:BioMethod</td>
+<td>portable_microhaplotype_object:LibrarySampleInfo</td>
 </tr>
 </tbody>
 </table>
@@ -342,128 +372,188 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: BioMethod
-description: methodology description of a portion of a bioinformatics pipeline
+<pre><code class="language-yaml">name: LibrarySampleInfo
+description: Information about a specific amplification and sequencing of a specimen
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
-- program_version
+- sequencing_info_id
+- specimen_id
+- panel_id
+slot_usage:
+  specimen_id:
+    name: specimen_id
+    identifier: false
 attributes:
-  program:
-    name: program
-    description: name of the program used for this portion of the pipeline
+  fastqs_loc:
+    name: fastqs_loc
+    description: the location (url or filename path) of the fastqs for a library run
+    examples:
+    - value: ftp.sra.ebi.ac.uk/vol1/fastq/SRR332/035/SRR33216235/SRR33216235_1.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/SRR332/035/SRR33216235/SRR33216235_2.fastq.gz
+    - value: MACHINE@/path/to/SRR33216235_1.fastq.gz;MACHINE@/path/to/SRR33216235_2.fastq.gz
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
-    - BioMethod
+    - LibrarySampleInfo
+    range: string
+    required: false
+    pattern: ^[A-z-.;,_0-9\(\),\/\ ]+$
+  run_accession:
+    name: run_accession
+    description: ERA/SRA run accession number for the sample if it was submitted
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - LibrarySampleInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9]+$
+  library_sample_name:
+    name: library_sample_name
+    description: a unique identifier for this sequence/amplification run on a specimen_name
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    identifier: true
+    domain_of:
+    - LibrarySampleInfo
     range: string
     required: true
     pattern: ^[A-z-._0-9 ]+$
-  program_description:
-    name: program_description
-    description: a short description of what this method does
+  library_prep_plate_info:
+    name: library_prep_plate_info
+    description: 'plate location of where library was prepared for sequencing '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
-    - BioMethod
-    range: string
+    - LibrarySampleInfo
+    range: PlateInfo
     required: false
-    pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  program_url:
-    name: program_url
-    description: a url pointing to code base of a program, e.g. a github link
+  qpcr_parasite_density_info:
+    name: qpcr_parasite_density_info
+    description: 'qpcr parasite density measurement '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
-    - BioMethod
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  additional_argument:
-    name: additional_argument
-    description: any additional arguments that differ from the default
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - BioMethod
-    range: string
+    - LibrarySampleInfo
+    range: ParasiteDensity
     required: false
     multivalued: true
     inlined: true
     inlined_as_list: true
-    pattern: ^[A-z-._0-9{}\(\),\/\ ]+$
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: BioMethod
-description: methodology description of a portion of a bioinformatics pipeline
+<pre><code class="language-yaml">name: LibrarySampleInfo
+description: Information about a specific amplification and sequencing of a specimen
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+slot_usage:
+  specimen_id:
+    name: specimen_id
+    identifier: false
 attributes:
-  program:
-    name: program
-    description: name of the program used for this portion of the pipeline
+  fastqs_loc:
+    name: fastqs_loc
+    description: the location (url or filename path) of the fastqs for a library run
+    examples:
+    - value: ftp.sra.ebi.ac.uk/vol1/fastq/SRR332/035/SRR33216235/SRR33216235_1.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/SRR332/035/SRR33216235/SRR33216235_2.fastq.gz
+    - value: MACHINE@/path/to/SRR33216235_1.fastq.gz;MACHINE@/path/to/SRR33216235_2.fastq.gz
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: program
-    owner: BioMethod
+    alias: fastqs_loc
+    owner: LibrarySampleInfo
     domain_of:
-    - BioMethod
+    - LibrarySampleInfo
+    range: string
+    required: false
+    pattern: ^[A-z-.;,_0-9\(\),\/\ ]+$
+  run_accession:
+    name: run_accession
+    description: ERA/SRA run accession number for the sample if it was submitted
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: run_accession
+    owner: LibrarySampleInfo
+    domain_of:
+    - LibrarySampleInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9]+$
+  library_sample_name:
+    name: library_sample_name
+    description: a unique identifier for this sequence/amplification run on a specimen_name
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    identifier: true
+    alias: library_sample_name
+    owner: LibrarySampleInfo
+    domain_of:
+    - LibrarySampleInfo
     range: string
     required: true
     pattern: ^[A-z-._0-9 ]+$
-  program_description:
-    name: program_description
-    description: a short description of what this method does
+  library_prep_plate_info:
+    name: library_prep_plate_info
+    description: 'plate location of where library was prepared for sequencing '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: program_description
-    owner: BioMethod
+    alias: library_prep_plate_info
+    owner: LibrarySampleInfo
     domain_of:
-    - BioMethod
-    range: string
+    - LibrarySampleInfo
+    range: PlateInfo
     required: false
-    pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  program_url:
-    name: program_url
-    description: a url pointing to code base of a program, e.g. a github link
+  qpcr_parasite_density_info:
+    name: qpcr_parasite_density_info
+    description: 'qpcr parasite density measurement '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: program_url
-    owner: BioMethod
+    alias: qpcr_parasite_density_info
+    owner: LibrarySampleInfo
     domain_of:
-    - BioMethod
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9\(\),\/\ ]+$
-  additional_argument:
-    name: additional_argument
-    description: any additional arguments that differ from the default
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: additional_argument
-    owner: BioMethod
-    domain_of:
-    - BioMethod
-    range: string
+    - LibrarySampleInfo
+    range: ParasiteDensity
     required: false
     multivalued: true
     inlined: true
     inlined_as_list: true
-    pattern: ^[A-z-._0-9{}\(\),\/\ ]+$
-  program_version:
-    name: program_version
-    description: the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]
+  sequencing_info_id:
+    name: sequencing_info_id
+    description: the index into the sequencing_info list
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: program_version
-    owner: BioMethod
+    alias: sequencing_info_id
+    owner: LibrarySampleInfo
     domain_of:
-    - BioMethod
-    - PmoGenerationMethod
-    range: string
+    - LibrarySampleInfo
+    range: integer
     required: true
-    pattern: ^[A-z-._0-9 ]+$
+    pattern: ^[0-9]+$
+  specimen_id:
+    name: specimen_id
+    description: the index into the specimen_info list
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    identifier: false
+    alias: specimen_id
+    owner: LibrarySampleInfo
+    domain_of:
+    - LibrarySampleInfo
+    range: integer
+    required: true
+    pattern: ^[0-9]+$
+  panel_id:
+    name: panel_id
+    description: the index into the panel_info list
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: panel_id
+    owner: LibrarySampleInfo
+    domain_of:
+    - LibrarySampleInfo
+    range: integer
+    required: true
+    pattern: ^[0-9]+$
 
 </code></pre>
 </details>

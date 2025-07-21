@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/experiment_samples/">
+        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/run_accession/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: experiment_samples - portable-microhaplotype-object</title>
+        <title>Slot: run_accession - portable-microhaplotype-object</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-experiment_samples" class="md-skip">
+        <a href="#slot-run_accession" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: experiment_samples
+              Slot: run_accession
             
           </span>
         </div>
@@ -364,10 +364,10 @@
   
 
 
-<h1 id="slot-experiment_samples">Slot: experiment_samples</h1>
-<p>_a list of the microhaplotypes detected for a sample by targets _</p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/experiment_samples">portable_microhaplotype_object:experiment_samples</a>
-Alias: experiment_samples</p>
+<h1 id="slot-run_accession">Slot: run_accession</h1>
+<p><em>ERA/SRA run accession number for the sample if it was submitted</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/run_accession">portable_microhaplotype_object:run_accession</a>
+Alias: run_accession</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -381,8 +381,8 @@ Alias: experiment_samples</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../DetectedMicrohaplotypes/">DetectedMicrohaplotypes</a></td>
-<td>the microhaplotypes detected in a targeted amplicon analysis</td>
+<td><a href="../LibrarySampleInfo/">LibrarySampleInfo</a></td>
+<td>Information about a specific amplification and sequencing of a specimen</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -390,13 +390,10 @@ Alias: experiment_samples</p>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../DetectedMicrohaplotypesForSample/">DetectedMicrohaplotypesForSample</a></p>
+<p>Range: <a href="../String/">String</a></p>
 </li>
 <li>
-<p>Multivalued: True</p>
-</li>
-<li>
-<p>Required: True</p>
+<p>Regex pattern: <code>^[A-z-._0-9]+$</code></p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -415,30 +412,28 @@ Alias: experiment_samples</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:experiment_samples</td>
+<td>portable_microhaplotype_object:run_accession</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:experiment_samples</td>
+<td>portable_microhaplotype_object:run_accession</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: experiment_samples
-description: 'a list of the microhaplotypes detected for a sample by targets '
+<pre><code class="language-yaml">name: run_accession
+description: ERA/SRA run accession number for the sample if it was submitted
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-alias: experiment_samples
-owner: DetectedMicrohaplotypes
+alias: run_accession
+owner: LibrarySampleInfo
 domain_of:
-- DetectedMicrohaplotypes
-range: DetectedMicrohaplotypesForSample
-required: true
-multivalued: true
-inlined: true
-inlined_as_list: true
+- LibrarySampleInfo
+range: string
+required: false
+pattern: ^[A-z-._0-9]+$
 
 </code></pre>
 

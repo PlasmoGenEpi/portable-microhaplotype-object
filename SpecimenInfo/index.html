@@ -229,6 +229,8 @@
     click SpecimenInfo href "../SpecimenInfo"
       SpecimenInfo : alternate_identifiers
 
+      SpecimenInfo : blood_meal
+
       SpecimenInfo : collection_country
 
       SpecimenInfo : collection_date
@@ -246,6 +248,10 @@
       SpecimenInfo : geo_admin2
 
       SpecimenInfo : geo_admin3
+
+      SpecimenInfo : gravid
+
+      SpecimenInfo : gravidity
 
       SpecimenInfo : host_age
 
@@ -269,6 +275,8 @@
 
 
       SpecimenInfo : project_id
+
+      SpecimenInfo : specimen_accession
 
       SpecimenInfo : specimen_collect_device
 
@@ -343,6 +351,30 @@
 <td><a href="../host_sex/">host_sex</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>if specimen is from a person, the sex listed for that person</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../specimen_accession/">specimen_accession</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>if specimen is deposited in a database, what accession is it associated with</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../gravid/">gravid</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>whether host specimen is currently pregnant</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../blood_meal/">blood_meal</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>whether host specimen has had a recent blood meal</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../gravidity/">gravidity</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the gravidity of the specimen host (number of previous pregnancies)</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -582,6 +614,45 @@ attributes:
     range: string
     required: false
     pattern: ^[A-z-._0-9 ]+$
+  specimen_accession:
+    name: specimen_accession
+    description: if specimen is deposited in a database, what accession is it associated
+      with
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9 ]+$
+  gravid:
+    name: gravid
+    description: whether host specimen is currently pregnant
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: boolean
+    required: false
+  blood_meal:
+    name: blood_meal
+    description: 'whether host specimen has had a recent blood meal  '
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: boolean
+    required: false
+  gravidity:
+    name: gravidity
+    description: the gravidity of the specimen host (number of previous pregnancies)
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: integer
+    required: false
+    pattern: ^[0-9]+$
   microscopy_parasite_density_info:
     name: microscopy_parasite_density_info
     description: one or more parasite densities in microliters for this specimen
@@ -913,6 +984,53 @@ attributes:
     range: string
     required: false
     pattern: ^[A-z-._0-9 ]+$
+  specimen_accession:
+    name: specimen_accession
+    description: if specimen is deposited in a database, what accession is it associated
+      with
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: specimen_accession
+    owner: SpecimenInfo
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9 ]+$
+  gravid:
+    name: gravid
+    description: whether host specimen is currently pregnant
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: gravid
+    owner: SpecimenInfo
+    domain_of:
+    - SpecimenInfo
+    range: boolean
+    required: false
+  blood_meal:
+    name: blood_meal
+    description: 'whether host specimen has had a recent blood meal  '
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: blood_meal
+    owner: SpecimenInfo
+    domain_of:
+    - SpecimenInfo
+    range: boolean
+    required: false
+  gravidity:
+    name: gravidity
+    description: the gravidity of the specimen host (number of previous pregnancies)
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: gravidity
+    owner: SpecimenInfo
+    domain_of:
+    - SpecimenInfo
+    range: integer
+    required: false
+    pattern: ^[0-9]+$
   microscopy_parasite_density_info:
     name: microscopy_parasite_density_info
     description: one or more parasite densities in microliters for this specimen

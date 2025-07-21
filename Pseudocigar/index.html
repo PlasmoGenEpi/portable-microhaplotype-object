@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/ReadCountsByStageForExperimentalSample/" rel="canonical"/>
+<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Pseudocigar/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.15" name="generator"/>
-<title>Class: ReadCountsByStageForExperimentalSample - portable-microhaplotype-object</title>
+<title>Class: Pseudocigar - portable-microhaplotype-object</title>
 <link href="../assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -23,7 +23,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-readcountsbystageforexperimentalsample">
+<a class="md-skip" href="#class-pseudocigar">
           Skip to content
         </a>
 </div>
@@ -47,7 +47,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: ReadCountsByStageForExperimentalSample
+              Class: Pseudocigar
             
           </span>
 </div>
@@ -221,26 +221,26 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-readcountsbystageforexperimentalsample">Class: ReadCountsByStageForExperimentalSample</h1>
-<p><em>Information on the reads counts at several stages of a pipeline for a experimental_sample</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/ReadCountsByStageForExperimentalSample">portable_microhaplotype_object:ReadCountsByStageForExperimentalSample</a></p>
+<h1 id="class-pseudocigar">Class: Pseudocigar</h1>
+<p><em>information on pseudocigar for a sequence</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/Pseudocigar">portable_microhaplotype_object:Pseudocigar</a></p>
 <div class="mermaid"> classDiagram
-    class ReadCountsByStageForExperimentalSample
-    click ReadCountsByStageForExperimentalSample href "../ReadCountsByStageForExperimentalSample"
-      ReadCountsByStageForExperimentalSample : experiment_sample_id
+    class Pseudocigar
+    click Pseudocigar href "../Pseudocigar"
+      Pseudocigar : pseudocigar_generation_description
 
-      ReadCountsByStageForExperimentalSample : read_counts_for_targets
+      Pseudocigar : pseudocigar_seq
 
-
-
-
-
-        ReadCountsByStageForExperimentalSample --&gt; "*" ReadCountsByStageForTarget : read_counts_for_targets
-        click ReadCountsByStageForTarget href "../ReadCountsByStageForTarget"
+      Pseudocigar : ref_loc
 
 
 
-      ReadCountsByStageForExperimentalSample : total_raw_count
+
+
+        Pseudocigar --&gt; "1" GenomicLocation : ref_loc
+        click GenomicLocation href "../GenomicLocation"
+
+
 
 
 </div>
@@ -257,21 +257,21 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../experiment_sample_id/">experiment_sample_id</a></td>
-<td>1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the index into the experiment_info list</td>
+<td><a href="../pseudocigar_seq/">pseudocigar_seq</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>the pseudocigar itself</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../total_raw_count/">total_raw_count</a></td>
-<td>1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the raw counts off the sequencing machine that a sample began with</td>
+<td><a href="../ref_loc/">ref_loc</a></td>
+<td>1 <br/> <a href="../GenomicLocation/">GenomicLocation</a></td>
+<td>the genomic location the pseudocigar is in reference to</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../read_counts_for_targets/">read_counts_for_targets</a></td>
-<td>* <br/> <a href="../ReadCountsByStageForTarget/">ReadCountsByStageForTarget</a></td>
-<td>a list of counts by stage for a target</td>
+<td><a href="../pseudocigar_generation_description/">pseudocigar_generation_description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>a description of how the pseudocigar information was generated</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -288,10 +288,10 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../ReadCountsByStage/">ReadCountsByStage</a></td>
-<td><a href="../read_counts_by_experimental_sample_by_stage/">read_counts_by_experimental_sample_by_stage</a></td>
+<td><a href="../RepresentativeMicrohaplotype/">RepresentativeMicrohaplotype</a></td>
+<td><a href="../pseudocigar/">pseudocigar</a></td>
 <td>range</td>
-<td><a href="./">ReadCountsByStageForExperimentalSample</a></td>
+<td><a href="./">Pseudocigar</a></td>
 </tr>
 </tbody>
 </table>
@@ -311,11 +311,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:ReadCountsByStageForExperimentalSample</td>
+<td>portable_microhaplotype_object:Pseudocigar</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:ReadCountsByStageForExperimentalSample</td>
+<td>portable_microhaplotype_object:Pseudocigar</td>
 </tr>
 </tbody>
 </table>
@@ -323,82 +323,83 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: ReadCountsByStageForExperimentalSample
-description: Information on the reads counts at several stages of a pipeline for a
-  experimental_sample
+<pre><code class="language-yaml">name: Pseudocigar
+description: information on pseudocigar for a sequence
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-slots:
-- experiment_sample_id
 attributes:
-  total_raw_count:
-    name: total_raw_count
-    description: the raw counts off the sequencing machine that a sample began with
+  pseudocigar_seq:
+    name: pseudocigar_seq
+    description: the pseudocigar itself
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
-    - ReadCountsByStageForExperimentalSample
-    range: integer
+    - Pseudocigar
+    range: string
     required: true
-    pattern: ^[0-9]+$
-  read_counts_for_targets:
-    name: read_counts_for_targets
-    description: a list of counts by stage for a target
+    pattern: ^[A-z-._0-9]+$
+  ref_loc:
+    name: ref_loc
+    description: the genomic location the pseudocigar is in reference to
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
-    - ReadCountsByStageForExperimentalSample
-    range: ReadCountsByStageForTarget
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
+    - Pseudocigar
+    range: GenomicLocation
+    required: true
+  pseudocigar_generation_description:
+    name: pseudocigar_generation_description
+    description: 'a description of how the pseudocigar information was generated '
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - Pseudocigar
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: ReadCountsByStageForExperimentalSample
-description: Information on the reads counts at several stages of a pipeline for a
-  experimental_sample
+<pre><code class="language-yaml">name: Pseudocigar
+description: information on pseudocigar for a sequence
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  total_raw_count:
-    name: total_raw_count
-    description: the raw counts off the sequencing machine that a sample began with
+  pseudocigar_seq:
+    name: pseudocigar_seq
+    description: the pseudocigar itself
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: total_raw_count
-    owner: ReadCountsByStageForExperimentalSample
+    alias: pseudocigar_seq
+    owner: Pseudocigar
     domain_of:
-    - ReadCountsByStageForExperimentalSample
-    range: integer
+    - Pseudocigar
+    range: string
     required: true
-    pattern: ^[0-9]+$
-  read_counts_for_targets:
-    name: read_counts_for_targets
-    description: a list of counts by stage for a target
+    pattern: ^[A-z-._0-9]+$
+  ref_loc:
+    name: ref_loc
+    description: the genomic location the pseudocigar is in reference to
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: read_counts_for_targets
-    owner: ReadCountsByStageForExperimentalSample
+    alias: ref_loc
+    owner: Pseudocigar
     domain_of:
-    - ReadCountsByStageForExperimentalSample
-    range: ReadCountsByStageForTarget
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  experiment_sample_id:
-    name: experiment_sample_id
-    description: the index into the experiment_info list
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: experiment_sample_id
-    owner: ReadCountsByStageForExperimentalSample
-    domain_of:
-    - DetectedMicrohaplotypesForSample
-    - ReadCountsByStageForExperimentalSample
-    range: integer
+    - Pseudocigar
+    range: GenomicLocation
     required: true
-    pattern: ^[0-9]+$
+  pseudocigar_generation_description:
+    name: pseudocigar_generation_description
+    description: 'a description of how the pseudocigar information was generated '
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: pseudocigar_generation_description
+    owner: Pseudocigar
+    domain_of:
+    - Pseudocigar
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
 
 </code></pre>
 </details>

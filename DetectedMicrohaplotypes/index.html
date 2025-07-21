@@ -229,13 +229,13 @@
     click DetectedMicrohaplotypes href "../DetectedMicrohaplotypes"
       DetectedMicrohaplotypes : bioinformatics_run_id
 
-      DetectedMicrohaplotypes : experiment_samples
+      DetectedMicrohaplotypes : library_samples
 
 
 
 
 
-        DetectedMicrohaplotypes --&gt; "1..*" DetectedMicrohaplotypesForSample : experiment_samples
+        DetectedMicrohaplotypes --&gt; "1..*" DetectedMicrohaplotypesForSample : library_samples
         click DetectedMicrohaplotypesForSample href "../DetectedMicrohaplotypesForSample"
 
 
@@ -261,7 +261,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../experiment_samples/">experiment_samples</a></td>
+<td><a href="../library_samples/">library_samples</a></td>
 <td>1..* <br/> <a href="../DetectedMicrohaplotypesForSample/">DetectedMicrohaplotypesForSample</a></td>
 <td>a list of the microhaplotypes detected for a sample by targets</td>
 <td>direct</td>
@@ -321,8 +321,8 @@ from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
 - bioinformatics_run_id
 attributes:
-  experiment_samples:
-    name: experiment_samples
+  library_samples:
+    name: library_samples
     description: 'a list of the microhaplotypes detected for a sample by targets '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
@@ -342,12 +342,12 @@ attributes:
 description: the microhaplotypes detected in a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  experiment_samples:
-    name: experiment_samples
+  library_samples:
+    name: library_samples
     description: 'a list of the microhaplotypes detected for a sample by targets '
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: experiment_samples
+    alias: library_samples
     owner: DetectedMicrohaplotypes
     domain_of:
     - DetectedMicrohaplotypes

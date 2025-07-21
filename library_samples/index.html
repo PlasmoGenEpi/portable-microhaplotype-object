@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/library_prep_plate_info/">
+        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/library_samples/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: library_prep_plate_info - portable-microhaplotype-object</title>
+        <title>Slot: library_samples - portable-microhaplotype-object</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-library_prep_plate_info" class="md-skip">
+        <a href="#slot-library_samples" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: library_prep_plate_info
+              Slot: library_samples
             
           </span>
         </div>
@@ -364,10 +364,10 @@
   
 
 
-<h1 id="slot-library_prep_plate_info">Slot: library_prep_plate_info</h1>
-<p>_plate location of where library was prepared for sequencing _</p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/library_prep_plate_info">portable_microhaplotype_object:library_prep_plate_info</a>
-Alias: library_prep_plate_info</p>
+<h1 id="slot-library_samples">Slot: library_samples</h1>
+<p>_a list of the microhaplotypes detected for a sample by targets _</p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/library_samples">portable_microhaplotype_object:library_samples</a>
+Alias: library_samples</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -381,15 +381,23 @@ Alias: library_prep_plate_info</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../LibrarySampleInfo/">LibrarySampleInfo</a></td>
-<td>Information about a specific amplification and sequencing of a specimen</td>
+<td><a href="../DetectedMicrohaplotypes/">DetectedMicrohaplotypes</a></td>
+<td>the microhaplotypes detected in a targeted amplicon analysis</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../PlateInfo/">PlateInfo</a></li>
+<li>
+<p>Range: <a href="../DetectedMicrohaplotypesForSample/">DetectedMicrohaplotypesForSample</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
+</li>
+<li>
+<p>Required: True</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -407,27 +415,30 @@ Alias: library_prep_plate_info</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:library_prep_plate_info</td>
+<td>portable_microhaplotype_object:library_samples</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:library_prep_plate_info</td>
+<td>portable_microhaplotype_object:library_samples</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: library_prep_plate_info
-description: 'plate location of where library was prepared for sequencing '
+<pre><code class="language-yaml">name: library_samples
+description: 'a list of the microhaplotypes detected for a sample by targets '
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-alias: library_prep_plate_info
-owner: LibrarySampleInfo
+alias: library_samples
+owner: DetectedMicrohaplotypes
 domain_of:
-- LibrarySampleInfo
-range: PlateInfo
-required: false
+- DetectedMicrohaplotypes
+range: DetectedMicrohaplotypesForSample
+required: true
+multivalued: true
+inlined: true
+inlined_as_list: true
 
 </code></pre>
 

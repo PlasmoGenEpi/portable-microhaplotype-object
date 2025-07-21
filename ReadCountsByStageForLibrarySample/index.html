@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/ExperimentInfo/" rel="canonical"/>
+<link href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/ReadCountsByStageForLibrarySample/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.15" name="generator"/>
-<title>Class: ExperimentInfo - portable-microhaplotype-object</title>
+<title>Class: ReadCountsByStageForLibrarySample - portable-microhaplotype-object</title>
 <link href="../assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -23,7 +23,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-experimentinfo">
+<a class="md-skip" href="#class-readcountsbystageforlibrarysample">
           Skip to content
         </a>
 </div>
@@ -47,7 +47,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: ExperimentInfo
+              Class: ReadCountsByStageForLibrarySample
             
           </span>
 </div>
@@ -221,43 +221,26 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-experimentinfo">Class: ExperimentInfo</h1>
-<p><em>Information about a specific amplification and sequencing of a specimen</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/ExperimentInfo">portable_microhaplotype_object:ExperimentInfo</a></p>
+<h1 id="class-readcountsbystageforlibrarysample">Class: ReadCountsByStageForLibrarySample</h1>
+<p><em>Information on the reads counts at several stages of a pipeline for a library_sample</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/ReadCountsByStageForLibrarySample">portable_microhaplotype_object:ReadCountsByStageForLibrarySample</a></p>
 <div class="mermaid"> classDiagram
-    class ExperimentInfo
-    click ExperimentInfo href "../ExperimentInfo"
-      ExperimentInfo : accession
+    class ReadCountsByStageForLibrarySample
+    click ReadCountsByStageForLibrarySample href "../ReadCountsByStageForLibrarySample"
+      ReadCountsByStageForLibrarySample : library_sample_id
 
-      ExperimentInfo : experiment_sample_name
-
-      ExperimentInfo : library_prep_plate_info
+      ReadCountsByStageForLibrarySample : read_counts_for_targets
 
 
 
 
 
-        ExperimentInfo --&gt; "0..1" PlateInfo : library_prep_plate_info
-        click PlateInfo href "../PlateInfo"
+        ReadCountsByStageForLibrarySample --&gt; "*" ReadCountsByStageForTarget : read_counts_for_targets
+        click ReadCountsByStageForTarget href "../ReadCountsByStageForTarget"
 
 
 
-      ExperimentInfo : panel_id
-
-      ExperimentInfo : qpcr_parasite_density_info
-
-
-
-
-
-        ExperimentInfo --&gt; "*" ParasiteDensity : qpcr_parasite_density_info
-        click ParasiteDensity href "../ParasiteDensity"
-
-
-
-      ExperimentInfo : sequencing_info_id
-
-      ExperimentInfo : specimen_id
+      ReadCountsByStageForLibrarySample : total_raw_count
 
 
 </div>
@@ -274,45 +257,21 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../sequencing_info_id/">sequencing_info_id</a></td>
+<td><a href="../library_sample_id/">library_sample_id</a></td>
 <td>1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the index into the sequencing_info list</td>
+<td>the index into the library_info list</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../specimen_id/">specimen_id</a></td>
+<td><a href="../total_raw_count/">total_raw_count</a></td>
 <td>1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the index into the specimen_info list</td>
+<td>the raw counts off the sequencing machine that a sample began with</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../panel_id/">panel_id</a></td>
-<td>1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the index into the panel_info list</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../accession/">accession</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>ERA/SRA accession number for the sample if it was submitted</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../experiment_sample_name/">experiment_sample_name</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>a unique identifier for this sequence/amplification run on a specimen_name</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../library_prep_plate_info/">library_prep_plate_info</a></td>
-<td>0..1 <br/> <a href="../PlateInfo/">PlateInfo</a></td>
-<td>plate location of where experiment was prepared for sequencing</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../qpcr_parasite_density_info/">qpcr_parasite_density_info</a></td>
-<td>* <br/> <a href="../ParasiteDensity/">ParasiteDensity</a></td>
-<td>qpcr parasite density measurement</td>
+<td><a href="../read_counts_for_targets/">read_counts_for_targets</a></td>
+<td>* <br/> <a href="../ReadCountsByStageForTarget/">ReadCountsByStageForTarget</a></td>
+<td>a list of counts by stage for a target</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -329,10 +288,10 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
-<td><a href="../experiment_info/">experiment_info</a></td>
+<td><a href="../ReadCountsByStage/">ReadCountsByStage</a></td>
+<td><a href="../read_counts_by_library_sample_by_stage/">read_counts_by_library_sample_by_stage</a></td>
 <td>range</td>
-<td><a href="./">ExperimentInfo</a></td>
+<td><a href="./">ReadCountsByStageForLibrarySample</a></td>
 </tr>
 </tbody>
 </table>
@@ -352,11 +311,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:ExperimentInfo</td>
+<td>portable_microhaplotype_object:ReadCountsByStageForLibrarySample</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:ExperimentInfo</td>
+<td>portable_microhaplotype_object:ReadCountsByStageForLibrarySample</td>
 </tr>
 </tbody>
 </table>
@@ -364,57 +323,31 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: ExperimentInfo
-description: Information about a specific amplification and sequencing of a specimen
+<pre><code class="language-yaml">name: ReadCountsByStageForLibrarySample
+description: Information on the reads counts at several stages of a pipeline for a
+  library_sample
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
-- sequencing_info_id
-- specimen_id
-- panel_id
-slot_usage:
-  specimen_id:
-    name: specimen_id
-    identifier: false
+- library_sample_id
 attributes:
-  accession:
-    name: accession
-    description: ERA/SRA accession number for the sample if it was submitted
+  total_raw_count:
+    name: total_raw_count
+    description: the raw counts off the sequencing machine that a sample began with
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
-    - ExperimentInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9]+$
-  experiment_sample_name:
-    name: experiment_sample_name
-    description: a unique identifier for this sequence/amplification run on a specimen_name
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    identifier: true
-    domain_of:
-    - ExperimentInfo
-    range: string
+    - ReadCountsByStageForLibrarySample
+    range: integer
     required: true
-    pattern: ^[A-z-._0-9 ]+$
-  library_prep_plate_info:
-    name: library_prep_plate_info
-    description: 'plate location of where experiment was prepared for sequencing '
+    pattern: ^[0-9]+$
+  read_counts_for_targets:
+    name: read_counts_for_targets
+    description: a list of counts by stage for a target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
-    - ExperimentInfo
-    range: PlateInfo
-    required: false
-  qpcr_parasite_density_info:
-    name: qpcr_parasite_density_info
-    description: 'qpcr parasite density measurement '
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - ExperimentInfo
-    range: ParasiteDensity
-    required: false
+    - ReadCountsByStageForLibrarySample
+    range: ReadCountsByStageForTarget
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -423,98 +356,46 @@ attributes:
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: ExperimentInfo
-description: Information about a specific amplification and sequencing of a specimen
+<pre><code class="language-yaml">name: ReadCountsByStageForLibrarySample
+description: Information on the reads counts at several stages of a pipeline for a
+  library_sample
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-slot_usage:
-  specimen_id:
-    name: specimen_id
-    identifier: false
 attributes:
-  accession:
-    name: accession
-    description: ERA/SRA accession number for the sample if it was submitted
+  total_raw_count:
+    name: total_raw_count
+    description: the raw counts off the sequencing machine that a sample began with
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: accession
-    owner: ExperimentInfo
+    alias: total_raw_count
+    owner: ReadCountsByStageForLibrarySample
     domain_of:
-    - ExperimentInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9]+$
-  experiment_sample_name:
-    name: experiment_sample_name
-    description: a unique identifier for this sequence/amplification run on a specimen_name
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    identifier: true
-    alias: experiment_sample_name
-    owner: ExperimentInfo
-    domain_of:
-    - ExperimentInfo
-    range: string
+    - ReadCountsByStageForLibrarySample
+    range: integer
     required: true
-    pattern: ^[A-z-._0-9 ]+$
-  library_prep_plate_info:
-    name: library_prep_plate_info
-    description: 'plate location of where experiment was prepared for sequencing '
+    pattern: ^[0-9]+$
+  read_counts_for_targets:
+    name: read_counts_for_targets
+    description: a list of counts by stage for a target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: library_prep_plate_info
-    owner: ExperimentInfo
+    alias: read_counts_for_targets
+    owner: ReadCountsByStageForLibrarySample
     domain_of:
-    - ExperimentInfo
-    range: PlateInfo
-    required: false
-  qpcr_parasite_density_info:
-    name: qpcr_parasite_density_info
-    description: 'qpcr parasite density measurement '
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: qpcr_parasite_density_info
-    owner: ExperimentInfo
-    domain_of:
-    - ExperimentInfo
-    range: ParasiteDensity
-    required: false
+    - ReadCountsByStageForLibrarySample
+    range: ReadCountsByStageForTarget
     multivalued: true
     inlined: true
     inlined_as_list: true
-  sequencing_info_id:
-    name: sequencing_info_id
-    description: the index into the sequencing_info list
+  library_sample_id:
+    name: library_sample_id
+    description: the index into the library_info list
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: sequencing_info_id
-    owner: ExperimentInfo
+    alias: library_sample_id
+    owner: ReadCountsByStageForLibrarySample
     domain_of:
-    - ExperimentInfo
-    range: integer
-    required: true
-    pattern: ^[0-9]+$
-  specimen_id:
-    name: specimen_id
-    description: the index into the specimen_info list
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    identifier: false
-    alias: specimen_id
-    owner: ExperimentInfo
-    domain_of:
-    - ExperimentInfo
-    range: integer
-    required: true
-    pattern: ^[0-9]+$
-  panel_id:
-    name: panel_id
-    description: the index into the panel_info list
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: panel_id
-    owner: ExperimentInfo
-    domain_of:
-    - ExperimentInfo
+    - DetectedMicrohaplotypesForSample
+    - ReadCountsByStageForLibrarySample
     range: integer
     required: true
     pattern: ^[0-9]+$

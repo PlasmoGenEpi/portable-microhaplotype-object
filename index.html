@@ -476,16 +476,16 @@
 <td>Microhaplotypes detected for a specific target</td>
 </tr>
 <tr>
-<td><a href="ExperimentInfo/">ExperimentInfo</a></td>
-<td>Information about a specific amplification and sequencing of a specimen</td>
-</tr>
-<tr>
 <td><a href="GenomeInfo/">GenomeInfo</a></td>
 <td>information on a genome</td>
 </tr>
 <tr>
 <td><a href="GenomicLocation/">GenomicLocation</a></td>
 <td>information on the genomic location of specific sequence</td>
+</tr>
+<tr>
+<td><a href="LibrarySampleInfo/">LibrarySampleInfo</a></td>
+<td>Information about a specific amplification and sequencing of a specimen</td>
 </tr>
 <tr>
 <td><a href="MarkerOfInterest/">MarkerOfInterest</a></td>
@@ -532,6 +532,10 @@
 <td>Information on project info</td>
 </tr>
 <tr>
+<td><a href="Pseudocigar/">Pseudocigar</a></td>
+<td>information on pseudocigar for a sequence</td>
+</tr>
+<tr>
 <td><a href="ReactionInfo/">ReactionInfo</a></td>
 <td>information on a panel of targeted amplicon primer pairs</td>
 </tr>
@@ -540,8 +544,8 @@
 <td>Information on the reads counts at several stages of a pipeline</td>
 </tr>
 <tr>
-<td><a href="ReadCountsByStageForExperimentalSample/">ReadCountsByStageForExperimentalSample</a></td>
-<td>Information on the reads counts at several stages of a pipeline for a experim...</td>
+<td><a href="ReadCountsByStageForLibrarySample/">ReadCountsByStageForLibrarySample</a></td>
+<td>Information on the reads counts at several stages of a pipeline for a library...</td>
 </tr>
 <tr>
 <td><a href="ReadCountsByStageForTarget/">ReadCountsByStageForTarget</a></td>
@@ -586,10 +590,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="accession/">accession</a></td>
-<td>ERA/SRA accession number for the sample if it was submitted</td>
-</tr>
 <tr>
 <td><a href="additional_argument/">additional_argument</a></td>
 <td>any additional arguments that differ from the default</td>
@@ -641,6 +641,10 @@
 <tr>
 <td><a href="BioProject_accession/">BioProject_accession</a></td>
 <td>an SRA bioproject accession e</td>
+</tr>
+<tr>
+<td><a href="blood_meal/">blood_meal</a></td>
+<td>whether host specimen has had a recent blood meal</td>
 </tr>
 <tr>
 <td><a href="chrom/">chrom</a></td>
@@ -707,20 +711,8 @@
 <td>the environment medium from which the specimen was collected from</td>
 </tr>
 <tr>
-<td><a href="experiment_info/">experiment_info</a></td>
-<td>a list of experiments of all the seq/amp of the specimens within this project</td>
-</tr>
-<tr>
-<td><a href="experiment_sample_id/">experiment_sample_id</a></td>
-<td>the index into the experiment_info list</td>
-</tr>
-<tr>
-<td><a href="experiment_sample_name/">experiment_sample_name</a></td>
-<td>a unique identifier for this sequence/amplification run on a specimen_name</td>
-</tr>
-<tr>
-<td><a href="experiment_samples/">experiment_samples</a></td>
-<td>a list of the microhaplotypes detected for a sample by targets</td>
+<td><a href="fastqs_loc/">fastqs_loc</a></td>
+<td>the location (url or filename path) of the fastqs for a library run</td>
 </tr>
 <tr>
 <td><a href="forward_primer/">forward_primer</a></td>
@@ -759,6 +751,14 @@
 <td>a link to the where this genome's annotation file could be downloaded</td>
 </tr>
 <tr>
+<td><a href="gravid/">gravid</a></td>
+<td>whether host specimen is currently pregnant</td>
+</tr>
+<tr>
+<td><a href="gravidity/">gravidity</a></td>
+<td>the gravidity of the specimen host (number of previous pregnancies)</td>
+</tr>
+<tr>
 <td><a href="host_age/">host_age</a></td>
 <td>if specimen is from a person, the age in years of the person, can be float va...</td>
 </tr>
@@ -783,6 +783,10 @@
 <td>the latitude and longitude of the collection site of the specimen</td>
 </tr>
 <tr>
+<td><a href="library_info/">library_info</a></td>
+<td>a list of librarys of all the seq/amp of the specimens within this project</td>
+</tr>
+<tr>
 <td><a href="library_kit/">library_kit</a></td>
 <td>Name, version, and applicable cell or cycle numbers for the kit used to prepa...</td>
 </tr>
@@ -792,7 +796,19 @@
 </tr>
 <tr>
 <td><a href="library_prep_plate_info/">library_prep_plate_info</a></td>
-<td>plate location of where experiment was prepared for sequencing</td>
+<td>plate location of where library was prepared for sequencing</td>
+</tr>
+<tr>
+<td><a href="library_sample_id/">library_sample_id</a></td>
+<td>the index into the library_info list</td>
+</tr>
+<tr>
+<td><a href="library_sample_name/">library_sample_name</a></td>
+<td>a unique identifier for this sequence/amplification run on a specimen_name</td>
+</tr>
+<tr>
+<td><a href="library_samples/">library_samples</a></td>
+<td>a list of the microhaplotypes detected for a sample by targets</td>
 </tr>
 <tr>
 <td><a href="library_screen/">library_screen</a></td>
@@ -825,6 +841,10 @@
 <tr>
 <td><a href="masking/">masking</a></td>
 <td>masking info for the sequence</td>
+</tr>
+<tr>
+<td><a href="masking_generation_description/">masking_generation_description</a></td>
+<td>a description of how the masking information was generated</td>
 </tr>
 <tr>
 <td><a href="mhap_id/">mhap_id</a></td>
@@ -931,6 +951,10 @@
 <td>the name of the program</td>
 </tr>
 <tr>
+<td><a href="program_url/">program_url</a></td>
+<td>a url pointing to code base of a program, e</td>
+</tr>
+<tr>
 <td><a href="program_version/">program_version</a></td>
 <td>the version of generation method, should be in the format of v[MAJOR]</td>
 </tr>
@@ -967,6 +991,14 @@
 <td>the pseudocigar of the haplotype</td>
 </tr>
 <tr>
+<td><a href="pseudocigar_generation_description/">pseudocigar_generation_description</a></td>
+<td>a description of how the pseudocigar information was generated</td>
+</tr>
+<tr>
+<td><a href="pseudocigar_seq/">pseudocigar_seq</a></td>
+<td>the pseudocigar itself</td>
+</tr>
+<tr>
 <td><a href="qpcr_parasite_density_info/">qpcr_parasite_density_info</a></td>
 <td>qpcr parasite density measurement</td>
 </tr>
@@ -987,8 +1019,8 @@
 <td>the read counts</td>
 </tr>
 <tr>
-<td><a href="read_counts_by_experimental_sample_by_stage/">read_counts_by_experimental_sample_by_stage</a></td>
-<td>a list by experiment_sample for the counts at each stage</td>
+<td><a href="read_counts_by_library_sample_by_stage/">read_counts_by_library_sample_by_stage</a></td>
+<td>a list by library_sample for the counts at each stage</td>
 </tr>
 <tr>
 <td><a href="read_counts_by_stage/">read_counts_by_stage</a></td>
@@ -1001,6 +1033,10 @@
 <tr>
 <td><a href="reads/">reads</a></td>
 <td>the read count associated with this microhaplotype</td>
+</tr>
+<tr>
+<td><a href="ref_loc/">ref_loc</a></td>
+<td>the genomic location the pseudocigar is in reference to</td>
 </tr>
 <tr>
 <td><a href="ref_seq/">ref_seq</a></td>
@@ -1017,6 +1053,10 @@
 <tr>
 <td><a href="reverse_primer/">reverse_primer</a></td>
 <td>the reverse primer associated with this target</td>
+</tr>
+<tr>
+<td><a href="run_accession/">run_accession</a></td>
+<td>ERA/SRA run accession number for the sample if it was submitted</td>
 </tr>
 <tr>
 <td><a href="run_date/">run_date</a></td>
@@ -1061,6 +1101,10 @@
 <tr>
 <td><a href="sequencing_info_name/">sequencing_info_name</a></td>
 <td>a name of for the sequencing done, e</td>
+</tr>
+<tr>
+<td><a href="specimen_accession/">specimen_accession</a></td>
+<td>if specimen is deposited in a database, what accession is it associated with</td>
 </tr>
 <tr>
 <td><a href="specimen_collect_device/">specimen_collect_device</a></td>
@@ -1144,7 +1188,7 @@
 </tr>
 <tr>
 <td><a href="taxon_id/">taxon_id</a></td>
-<td>the NCBI taxonomy number</td>
+<td>the NCBI taxonomy number, can be a list of values</td>
 </tr>
 <tr>
 <td><a href="total_raw_count/">total_raw_count</a></td>

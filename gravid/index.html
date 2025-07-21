@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/experiment_sample_name/">
+        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/gravid/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: experiment_sample_name - portable-microhaplotype-object</title>
+        <title>Slot: gravid - portable-microhaplotype-object</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-experiment_sample_name" class="md-skip">
+        <a href="#slot-gravid" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: experiment_sample_name
+              Slot: gravid
             
           </span>
         </div>
@@ -364,10 +364,10 @@
   
 
 
-<h1 id="slot-experiment_sample_name">Slot: experiment_sample_name</h1>
-<p><em>a unique identifier for this sequence/amplification run on a specimen_name</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/experiment_sample_name">portable_microhaplotype_object:experiment_sample_name</a>
-Alias: experiment_sample_name</p>
+<h1 id="slot-gravid">Slot: gravid</h1>
+<p><em>whether host specimen is currently pregnant</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/gravid">portable_microhaplotype_object:gravid</a>
+Alias: gravid</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -381,23 +381,15 @@ Alias: experiment_sample_name</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ExperimentInfo/">ExperimentInfo</a></td>
-<td>Information about a specific amplification and sequencing of a specimen</td>
+<td><a href="../SpecimenInfo/">SpecimenInfo</a></td>
+<td>Information on specimen info</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../String/">String</a></p>
-</li>
-<li>
-<p>Required: True</p>
-</li>
-<li>
-<p>Regex pattern: <code>^[A-z-._0-9 ]+$</code></p>
-</li>
+<li>Range: <a href="../Boolean/">Boolean</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -415,29 +407,27 @@ Alias: experiment_sample_name</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:experiment_sample_name</td>
+<td>portable_microhaplotype_object:gravid</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:experiment_sample_name</td>
+<td>portable_microhaplotype_object:gravid</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: experiment_sample_name
-description: a unique identifier for this sequence/amplification run on a specimen_name
+<pre><code class="language-yaml">name: gravid
+description: whether host specimen is currently pregnant
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-identifier: true
-alias: experiment_sample_name
-owner: ExperimentInfo
+alias: gravid
+owner: SpecimenInfo
 domain_of:
-- ExperimentInfo
-range: string
-required: true
-pattern: ^[A-z-._0-9 ]+$
+- SpecimenInfo
+range: boolean
+required: false
 
 </code></pre>
 

@@ -229,14 +229,14 @@
     click ReadCountsByStage href "../ReadCountsByStage"
       ReadCountsByStage : bioinformatics_run_id
 
-      ReadCountsByStage : read_counts_by_experimental_sample_by_stage
+      ReadCountsByStage : read_counts_by_library_sample_by_stage
 
 
 
 
 
-        ReadCountsByStage --&gt; "1..*" ReadCountsByStageForExperimentalSample : read_counts_by_experimental_sample_by_stage
-        click ReadCountsByStageForExperimentalSample href "../ReadCountsByStageForExperimentalSample"
+        ReadCountsByStage --&gt; "1..*" ReadCountsByStageForLibrarySample : read_counts_by_library_sample_by_stage
+        click ReadCountsByStageForLibrarySample href "../ReadCountsByStageForLibrarySample"
 
 
 
@@ -261,9 +261,9 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../read_counts_by_experimental_sample_by_stage/">read_counts_by_experimental_sample_by_stage</a></td>
-<td>1..* <br/> <a href="../ReadCountsByStageForExperimentalSample/">ReadCountsByStageForExperimentalSample</a></td>
-<td>a list by experiment_sample for the counts at each stage</td>
+<td><a href="../read_counts_by_library_sample_by_stage/">read_counts_by_library_sample_by_stage</a></td>
+<td>1..* <br/> <a href="../ReadCountsByStageForLibrarySample/">ReadCountsByStageForLibrarySample</a></td>
+<td>a list by library_sample for the counts at each stage</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -321,14 +321,14 @@ from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
 - bioinformatics_run_id
 attributes:
-  read_counts_by_experimental_sample_by_stage:
-    name: read_counts_by_experimental_sample_by_stage
-    description: a list by experiment_sample for the counts at each stage
+  read_counts_by_library_sample_by_stage:
+    name: read_counts_by_library_sample_by_stage
+    description: a list by library_sample for the counts at each stage
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - ReadCountsByStage
-    range: ReadCountsByStageForExperimentalSample
+    range: ReadCountsByStageForLibrarySample
     required: true
     multivalued: true
     inlined: true
@@ -342,16 +342,16 @@ attributes:
 description: Information on the reads counts at several stages of a pipeline
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  read_counts_by_experimental_sample_by_stage:
-    name: read_counts_by_experimental_sample_by_stage
-    description: a list by experiment_sample for the counts at each stage
+  read_counts_by_library_sample_by_stage:
+    name: read_counts_by_library_sample_by_stage
+    description: a list by library_sample for the counts at each stage
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: read_counts_by_experimental_sample_by_stage
+    alias: read_counts_by_library_sample_by_stage
     owner: ReadCountsByStage
     domain_of:
     - ReadCountsByStage
-    range: ReadCountsByStageForExperimentalSample
+    range: ReadCountsByStageForLibrarySample
     required: true
     multivalued: true
     inlined: true

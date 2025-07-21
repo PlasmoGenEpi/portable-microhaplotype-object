@@ -267,8 +267,8 @@
 </tr>
 <tr>
 <td><a href="../taxon_id/">taxon_id</a></td>
-<td>1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the NCBI taxonomy number</td>
+<td>1..* <br/> <a href="../Integer/">Integer</a></td>
+<td>the NCBI taxonomy number, can be a list of values</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -364,13 +364,16 @@ attributes:
     pattern: ^[A-z-._0-9]+$
   taxon_id:
     name: taxon_id
-    description: the NCBI taxonomy number
+    description: the NCBI taxonomy number, can be a list of values
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - GenomeInfo
     range: integer
     required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
     pattern: ^[0-9]$
   url:
     name: url
@@ -444,7 +447,7 @@ attributes:
     pattern: ^[A-z-._0-9]+$
   taxon_id:
     name: taxon_id
-    description: the NCBI taxonomy number
+    description: the NCBI taxonomy number, can be a list of values
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: taxon_id
@@ -453,6 +456,9 @@ attributes:
     - GenomeInfo
     range: integer
     required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
     pattern: ^[0-9]$
   url:
     name: url

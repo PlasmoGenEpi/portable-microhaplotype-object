@@ -365,7 +365,7 @@
 
 
 <h1 id="slot-taxon_id">Slot: taxon_id</h1>
-<p><em>the NCBI taxonomy number</em></p>
+<p><em>the NCBI taxonomy number, can be a list of values</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/taxon_id">portable_microhaplotype_object:taxon_id</a>
 Alias: taxon_id</p>
 <!-- no inheritance hierarchy -->
@@ -391,6 +391,9 @@ Alias: taxon_id</p>
 <ul>
 <li>
 <p>Range: <a href="../Integer/">Integer</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
 </li>
 <li>
 <p>Required: True</p>
@@ -427,7 +430,7 @@ Alias: taxon_id</p>
 <details>
 
 <pre><code class="language-yaml">name: taxon_id
-description: the NCBI taxonomy number
+description: the NCBI taxonomy number, can be a list of values
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: taxon_id
@@ -436,6 +439,9 @@ domain_of:
 - GenomeInfo
 range: integer
 required: true
+multivalued: true
+inlined: true
+inlined_as_list: true
 pattern: ^[0-9]$
 
 </code></pre>

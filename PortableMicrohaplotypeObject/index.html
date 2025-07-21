@@ -253,14 +253,14 @@
 
 
 
-      PortableMicrohaplotypeObject : experiment_info
+      PortableMicrohaplotypeObject : library_info
 
 
 
 
 
-        PortableMicrohaplotypeObject --&gt; "1..*" ExperimentInfo : experiment_info
-        click ExperimentInfo href "../ExperimentInfo"
+        PortableMicrohaplotypeObject --&gt; "1..*" LibrarySampleInfo : library_info
+        click LibrarySampleInfo href "../LibrarySampleInfo"
 
 
 
@@ -378,9 +378,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../experiment_info/">experiment_info</a></td>
-<td>1..* <br/> <a href="../ExperimentInfo/">ExperimentInfo</a></td>
-<td>a list of experiments of all the seq/amp of the specimens within this project</td>
+<td><a href="../library_info/">library_info</a></td>
+<td>1..* <br/> <a href="../LibrarySampleInfo/">LibrarySampleInfo</a></td>
+<td>a list of librarys of all the seq/amp of the specimens within this project</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -489,15 +489,15 @@
 description: Information on final results from a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  experiment_info:
-    name: experiment_info
-    description: a list of experiments of all the seq/amp of the specimens within
-      this project
+  library_info:
+    name: library_info
+    description: a list of librarys of all the seq/amp of the specimens within this
+      project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - PortableMicrohaplotypeObject
-    range: ExperimentInfo
+    range: LibrarySampleInfo
     required: true
     multivalued: true
     inlined: true
@@ -652,17 +652,17 @@ tree_root: true
 description: Information on final results from a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  experiment_info:
-    name: experiment_info
-    description: a list of experiments of all the seq/amp of the specimens within
-      this project
+  library_info:
+    name: library_info
+    description: a list of librarys of all the seq/amp of the specimens within this
+      project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: experiment_info
+    alias: library_info
     owner: PortableMicrohaplotypeObject
     domain_of:
     - PortableMicrohaplotypeObject
-    range: ExperimentInfo
+    range: LibrarySampleInfo
     required: true
     multivalued: true
     inlined: true

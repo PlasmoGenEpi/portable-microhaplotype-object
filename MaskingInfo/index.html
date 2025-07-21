@@ -227,6 +227,8 @@
 <div class="mermaid"> classDiagram
     class MaskingInfo
     click MaskingInfo href "../MaskingInfo"
+      MaskingInfo : masking_generation_description
+
       MaskingInfo : replacement_size
 
       MaskingInfo : seq_segment_size
@@ -263,6 +265,12 @@
 <td><a href="../replacement_size/">replacement_size</a></td>
 <td>1 <br/> <a href="../Integer/">Integer</a></td>
 <td>the size of replacement mask</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../masking_generation_description/">masking_generation_description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>a description of how the masking information was generated</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -345,6 +353,16 @@ attributes:
     - MaskingInfo
     range: integer
     required: true
+  masking_generation_description:
+    name: masking_generation_description
+    description: 'a description of how the masking information was generated '
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - MaskingInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
 
 </code></pre>
 </details>
@@ -387,6 +405,18 @@ attributes:
     - MaskingInfo
     range: integer
     required: true
+  masking_generation_description:
+    name: masking_generation_description
+    description: 'a description of how the masking information was generated '
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: masking_generation_description
+    owner: MaskingInfo
+    domain_of:
+    - MaskingInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
 
 </code></pre>
 </details>
