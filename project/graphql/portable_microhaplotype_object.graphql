@@ -19,18 +19,19 @@ type BioMethod
     programVersion: String!
     program: String!
     programDescription: String
+    programUrl: String
     additionalArgument: [String]
   }
 
 type DetectedMicrohaplotypes
   {
     bioinformaticsRunId: Integer!
-    experimentSamples: [DetectedMicrohaplotypesForSample]!
+    librarySamples: [DetectedMicrohaplotypesForSample]!
   }
 
 type DetectedMicrohaplotypesForSample
   {
-    experimentSampleId: Integer!
+    librarySampleId: Integer!
     targetResults: [DetectedMicrohaplotypesForTarget]!
   }
 
@@ -40,22 +41,11 @@ type DetectedMicrohaplotypesForTarget
     mhaps: [MicrohaplotypeForTarget]!
   }
 
-type ExperimentInfo
-  {
-    sequencingInfoId: Integer!
-    specimenId: Integer!
-    panelId: Integer!
-    accession: String
-    experimentSampleName: String!
-    libraryPrepPlateInfo: PlateInfo
-    qpcrParasiteDensityInfo: [ParasiteDensity]
-  }
-
 type GenomeInfo
   {
     name: String!
     genomeVersion: String!
-    taxonId: Integer!
+    taxonId: [Integer]!
     url: String!
     chromosomes: [String]
     gffUrl: String
@@ -72,6 +62,18 @@ type GenomicLocation
     altSeq: String
   }
 
+type LibrarySampleInfo
+  {
+    sequencingInfoId: Integer!
+    specimenId: Integer!
+    panelId: Integer!
+    fastqsLoc: String
+    runAccession: String
+    librarySampleName: String!
+    libraryPrepPlateInfo: PlateInfo
+    qpcrParasiteDensityInfo: [ParasiteDensity]
+  }
+
 type MarkerOfInterest
   {
     markerLocation: GenomicLocation!
@@ -83,6 +85,7 @@ type MaskingInfo
     seqStart: Integer!
     seqSegmentSize: Integer!
     replacementSize: Integer!
+    maskingGenerationDescription: String
   }
 
 type MicrohaplotypeForTarget
@@ -128,7 +131,7 @@ type PmoHeader
 
 type PortableMicrohaplotypeObject
   {
-    experimentInfo: [ExperimentInfo]!
+    libraryInfo: [LibrarySampleInfo]!
     specimenInfo: [SpecimenInfo]!
     sequencingInfo: [SequencingInfo]!
     panelInfo: [PanelInfo]!
@@ -159,6 +162,13 @@ type ProjectInfo
     bioProjectAccession: String
   }
 
+type Pseudocigar
+  {
+    pseudocigarSeq: String!
+    refLoc: GenomicLocation!
+    pseudocigarGenerationDescription: String
+  }
+
 type ReactionInfo
   {
     panelTargets: [Integer]!
@@ -168,12 +178,12 @@ type ReactionInfo
 type ReadCountsByStage
   {
     bioinformaticsRunId: Integer!
-    readCountsByExperimentalSampleByStage: [ReadCountsByStageForExperimentalSample]!
+    readCountsByLibrarySampleByStage: [ReadCountsByStageForLibrarySample]!
   }
 
-type ReadCountsByStageForExperimentalSample
+type ReadCountsByStageForLibrarySample
   {
-    experimentSampleId: Integer!
+    librarySampleId: Integer!
     totalRawCount: Integer!
     readCountsForTargets: [ReadCountsByStageForTarget]
   }
@@ -189,7 +199,7 @@ type RepresentativeMicrohaplotype
     seq: String!
     microhaplotypeName: String
     quality: String
-    pseudocigar: String
+    pseudocigar: Pseudocigar
     masking: [MaskingInfo]
     altAnnotations: [String]
   }
@@ -234,6 +244,10 @@ type SpecimenInfo
     hostTaxonId: Integer!
     alternateIdentifiers: [String]
     hostSex: String
+    specimenAccession: String
+    gravid: Boolean
+    bloodMeal: Boolean
+    gravidity: Integer
     microscopyParasiteDensityInfo: [ParasiteDensity]
     collectionDate: String!
     hostAge: Double

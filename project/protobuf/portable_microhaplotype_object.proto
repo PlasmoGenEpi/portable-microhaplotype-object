@@ -22,18 +22,19 @@ message BioMethod
   string programVersion = 0
   string program = 0
   string programDescription = 0
+  string programUrl = 0
  repeated  string additionalArgument = 0
  }
 // the microhaplotypes detected in a targeted amplicon analysis
 message DetectedMicrohaplotypes
  {
   integer bioinformaticsRunId = 0
- repeated  detectedMicrohaplotypesForSample experimentSamples = 0
+ repeated  detectedMicrohaplotypesForSample librarySamples = 0
  }
 // Microhaplotypes detected for a sample for all targets
 message DetectedMicrohaplotypesForSample
  {
-  integer experimentSampleId = 0
+  integer librarySampleId = 0
  repeated  detectedMicrohaplotypesForTarget targetResults = 0
  }
 // Microhaplotypes detected for a specific target
@@ -42,23 +43,12 @@ message DetectedMicrohaplotypesForTarget
   integer mhapsTargetId = 0
  repeated  microhaplotypeForTarget mhaps = 0
  }
-// Information about a specific amplification and sequencing of a specimen
-message ExperimentInfo
- {
-  integer sequencingInfoId = 0
-  integer specimenId = 0
-  integer panelId = 0
-  string accession = 0
-  string experimentSampleName = 0
-  plateInfo libraryPrepPlateInfo = 0
- repeated  parasiteDensity qpcrParasiteDensityInfo = 0
- }
 // information on a genome
 message GenomeInfo
  {
   string name = 0
   string genomeVersion = 0
-  integer taxonId = 0
+ repeated  integer taxonId = 0
   string url = 0
  repeated  string chromosomes = 0
   string gffUrl = 0
@@ -74,6 +64,18 @@ message GenomicLocation
   string refSeq = 0
   string altSeq = 0
  }
+// Information about a specific amplification and sequencing of a specimen
+message LibrarySampleInfo
+ {
+  integer sequencingInfoId = 0
+  integer specimenId = 0
+  integer panelId = 0
+  string fastqsLoc = 0
+  string runAccession = 0
+  string librarySampleName = 0
+  plateInfo libraryPrepPlateInfo = 0
+ repeated  parasiteDensity qpcrParasiteDensityInfo = 0
+ }
 // A specific genomic location of interest, e.g. drug resistance, or other phenotypical marker
 message MarkerOfInterest
  {
@@ -86,6 +88,7 @@ message MaskingInfo
   integer seqStart = 0
   integer seqSegmentSize = 0
   integer replacementSize = 0
+  string maskingGenerationDescription = 0
  }
 // Microhaplotype detected for a specific target
 message MicrohaplotypeForTarget
@@ -131,7 +134,7 @@ message PmoHeader
 // Information on final results from a targeted amplicon analysis
 message PortableMicrohaplotypeObject
  {
- repeated  experimentInfo experimentInfo = 0
+ repeated  librarySampleInfo libraryInfo = 0
  repeated  specimenInfo specimenInfo = 0
  repeated  sequencingInfo sequencingInfo = 0
  repeated  panelInfo panelInfo = 0
@@ -161,6 +164,13 @@ message ProjectInfo
   string projectCollectorChiefScientist = 0
   string bioProjectAccession = 0
  }
+// information on pseudocigar for a sequence
+message Pseudocigar
+ {
+  string pseudocigarSeq = 0
+  genomicLocation refLoc = 0
+  string pseudocigarGenerationDescription = 0
+ }
 // information on a panel of targeted amplicon primer pairs
 message ReactionInfo
  {
@@ -171,12 +181,12 @@ message ReactionInfo
 message ReadCountsByStage
  {
   integer bioinformaticsRunId = 0
- repeated  readCountsByStageForExperimentalSample readCountsByExperimentalSampleByStage = 0
+ repeated  readCountsByStageForLibrarySample readCountsByLibrarySampleByStage = 0
  }
-// Information on the reads counts at several stages of a pipeline for a experimental_sample
-message ReadCountsByStageForExperimentalSample
+// Information on the reads counts at several stages of a pipeline for a library_sample
+message ReadCountsByStageForLibrarySample
  {
-  integer experimentSampleId = 0
+  integer librarySampleId = 0
   integer totalRawCount = 0
  repeated  readCountsByStageForTarget readCountsForTargets = 0
  }
@@ -192,7 +202,7 @@ message RepresentativeMicrohaplotype
   string seq = 0
   string microhaplotypeName = 0
   string quality = 0
-  string pseudocigar = 0
+  pseudocigar pseudocigar = 0
  repeated  maskingInfo masking = 0
  repeated  string altAnnotations = 0
  }
@@ -237,6 +247,10 @@ message SpecimenInfo
   integer hostTaxonId = 0
  repeated  string alternateIdentifiers = 0
   string hostSex = 0
+  string specimenAccession = 0
+  boolean gravid = 0
+  boolean bloodMeal = 0
+  integer gravidity = 0
  repeated  parasiteDensity microscopyParasiteDensityInfo = 0
   string collectionDate = 0
   double hostAge = 0

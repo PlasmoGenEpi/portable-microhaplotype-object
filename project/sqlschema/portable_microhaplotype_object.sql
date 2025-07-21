@@ -16,17 +16,23 @@
 --     * Slot: id Description: 
 --     * Slot: panel_name Description: a name for the panel
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
+-- # Class: "Pseudocigar" Description: "information on pseudocigar for a sequence"
+--     * Slot: id Description: 
+--     * Slot: pseudocigar_seq Description: the pseudocigar itself
+--     * Slot: pseudocigar_generation_description Description: a description of how the pseudocigar information was generated 
+--     * Slot: ref_loc_id Description: the genomic location the pseudocigar is in reference to
 -- # Class: "RepresentativeMicrohaplotype" Description: "the representative sequence for a microhaplotype, similar to a fast(a/q) format"
 --     * Slot: id Description: 
 --     * Slot: seq Description: the DNA sequence
 --     * Slot: microhaplotype_name Description: an optional name for this microhaplotype
 --     * Slot: quality Description: the ansi fastq per base quality score for this sequence, this is optional
---     * Slot: pseudocigar Description: the pseudocigar of the haplotype
+--     * Slot: pseudocigar_id Description: the pseudocigar of the haplotype
 -- # Class: "MaskingInfo" Description: "information about a subsegment of the sequence that should be masked"
 --     * Slot: id Description: 
 --     * Slot: seq_start Description: the start of the masking
 --     * Slot: seq_segment_size Description: the size of the masking
 --     * Slot: replacement_size Description: the size of replacement mask
+--     * Slot: masking_generation_description Description: a description of how the masking information was generated 
 -- # Class: "RepresentativeMicrohaplotypes" Description: "a collection of representative sequences for microhaplotypes for all targets"
 --     * Slot: id Description: 
 -- # Class: "RepresentativeMicrohaplotypesForTarget" Description: "a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format"
@@ -41,7 +47,6 @@
 --     * Slot: id Description: 
 --     * Slot: name Description: name of the genome
 --     * Slot: genome_version Description: the genome version
---     * Slot: taxon_id Description: the NCBI taxonomy number
 --     * Slot: url Description: a link to the where this genome file could be downloaded
 --     * Slot: gff_url Description: a link to the where this genome's annotation file could be downloaded
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
@@ -60,7 +65,7 @@
 --     * Slot: location_id Description: what the intended genomic location of the primer is
 -- # Class: "DetectedMicrohaplotypesForSample" Description: "Microhaplotypes detected for a sample for all targets"
 --     * Slot: id Description: 
---     * Slot: experiment_sample_id Description: the index into the experiment_info list
+--     * Slot: library_sample_id Description: the index into the library_info list
 --     * Slot: DetectedMicrohaplotypes_id Description: Autocreated FK slot
 -- # Class: "MicrohaplotypeForTarget" Description: "Microhaplotype detected for a specific target"
 --     * Slot: id Description: 
@@ -83,20 +88,22 @@
 --     * Slot: program_version Description: the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]
 --     * Slot: program Description: name of the program used for this portion of the pipeline
 --     * Slot: program_description Description: a short description of what this method does
+--     * Slot: program_url Description: a url pointing to code base of a program, e.g. a github link
 --     * Slot: BioinformaticsMethodInfo_id Description: Autocreated FK slot
 -- # Class: "PlateInfo" Description: "Information about a plate location in a standard 96 well plate"
 --     * Slot: id Description: 
 --     * Slot: plate_name Description: a name of plate the specimen was in
 --     * Slot: plate_row Description: the row the specimen was in
 --     * Slot: plate_col Description: the column the specimen was in
--- # Class: "ExperimentInfo" Description: "Information about a specific amplification and sequencing of a specimen"
+-- # Class: "LibrarySampleInfo" Description: "Information about a specific amplification and sequencing of a specimen"
 --     * Slot: sequencing_info_id Description: the index into the sequencing_info list
 --     * Slot: specimen_id Description: the index into the specimen_info list
 --     * Slot: panel_id Description: the index into the panel_info list
---     * Slot: accession Description: ERA/SRA accession number for the sample if it was submitted
---     * Slot: experiment_sample_name Description: a unique identifier for this sequence/amplification run on a specimen_name
+--     * Slot: fastqs_loc Description: the location (url or filename path) of the fastqs for a library run
+--     * Slot: run_accession Description: ERA/SRA run accession number for the sample if it was submitted
+--     * Slot: library_sample_name Description: a unique identifier for this sequence/amplification run on a specimen_name
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
---     * Slot: library_prep_plate_info_id Description: plate location of where experiment was prepared for sequencing 
+--     * Slot: library_prep_plate_info_id Description: plate location of where library was prepared for sequencing 
 -- # Class: "SequencingInfo" Description: "Information on sequencing info"
 --     * Slot: id Description: 
 --     * Slot: sequencing_info_name Description: a name of for the sequencing done, e.g. batch1
@@ -122,7 +129,7 @@
 --     * Slot: parasite_density Description: the density in microliters
 --     * Slot: date_measured Description: the date the qpcr was performed, can be YYYY, YYYY-MM, or YYYY-MM-DD
 --     * Slot: density_method_comments Description: additional comments about how the density was performed
---     * Slot: ExperimentInfo_experiment_sample_name Description: Autocreated FK slot
+--     * Slot: LibrarySampleInfo_library_sample_name Description: Autocreated FK slot
 --     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
 -- # Class: "ProjectInfo" Description: "Information on project info"
 --     * Slot: project_name Description: a name for the project, should be unique if multiple projects listed
@@ -136,6 +143,10 @@
 --     * Slot: host_subject_id Description: an identifier for the individual a specimen was collected from
 --     * Slot: host_taxon_id Description: the NCBI taxonomy number of the host that the specimen was collected from
 --     * Slot: host_sex Description: if specimen is from a person, the sex listed for that person
+--     * Slot: specimen_accession Description: if specimen is deposited in a database, what accession is it associated with
+--     * Slot: gravid Description: whether host specimen is currently pregnant
+--     * Slot: blood_meal Description: whether host specimen has had a recent blood meal  
+--     * Slot: gravidity Description: the gravidity of the specimen host (number of previous pregnancies)
 --     * Slot: collection_date Description: the date of the specimen collection, can be YYYY, YYYY-MM, or YYYY-MM-DD
 --     * Slot: host_age Description: if specimen is from a person, the age in years of the person, can be float value so for 3 month old put 0.25
 --     * Slot: collection_country Description: the name of country collected in, would be the same as admin level 0
@@ -175,10 +186,10 @@
 -- # Class: "ReadCountsByStageForTarget" Description: "Information on the reads counts at several stages of a pipeline for a target"
 --     * Slot: id Description: 
 --     * Slot: target_id Description: the index into the target_info list
---     * Slot: ReadCountsByStageForExperimentalSample_id Description: Autocreated FK slot
--- # Class: "ReadCountsByStageForExperimentalSample" Description: "Information on the reads counts at several stages of a pipeline for a experimental_sample"
+--     * Slot: ReadCountsByStageForLibrarySample_id Description: Autocreated FK slot
+-- # Class: "ReadCountsByStageForLibrarySample" Description: "Information on the reads counts at several stages of a pipeline for a library_sample"
 --     * Slot: id Description: 
---     * Slot: experiment_sample_id Description: the index into the experiment_info list
+--     * Slot: library_sample_id Description: the index into the library_info list
 --     * Slot: total_raw_count Description: the raw counts off the sequencing machine that a sample began with
 --     * Slot: ReadCountsByStage_id Description: Autocreated FK slot
 -- # Class: "ReadCountsByStage" Description: "Information on the reads counts at several stages of a pipeline"
@@ -213,6 +224,9 @@
 -- # Class: "RepresentativeMicrohaplotypesForTarget_microhaplotypes" Description: ""
 --     * Slot: RepresentativeMicrohaplotypesForTarget_target_id Description: Autocreated FK slot
 --     * Slot: microhaplotypes_id Description: a list of the microhaplotypes detected for a target
+-- # Class: "GenomeInfo_taxon_id" Description: ""
+--     * Slot: GenomeInfo_id Description: Autocreated FK slot
+--     * Slot: taxon_id Description: the NCBI taxonomy number, can be a list of values
 -- # Class: "GenomeInfo_chromosomes" Description: ""
 --     * Slot: GenomeInfo_id Description: Autocreated FK slot
 --     * Slot: chromosomes Description: a list of chromosomes found within this genome
@@ -243,19 +257,12 @@ CREATE TABLE "ReactionInfo" (
 	reaction_name TEXT NOT NULL, 
 	PRIMARY KEY (id)
 );
-CREATE TABLE "RepresentativeMicrohaplotype" (
-	id INTEGER NOT NULL, 
-	seq TEXT NOT NULL, 
-	microhaplotype_name TEXT, 
-	quality TEXT, 
-	pseudocigar TEXT, 
-	PRIMARY KEY (id)
-);
 CREATE TABLE "MaskingInfo" (
 	id INTEGER NOT NULL, 
 	seq_start INTEGER NOT NULL, 
 	seq_segment_size INTEGER NOT NULL, 
 	replacement_size INTEGER NOT NULL, 
+	masking_generation_description TEXT, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "RepresentativeMicrohaplotypes" (
@@ -289,6 +296,7 @@ CREATE TABLE "BioMethod" (
 	program_version TEXT NOT NULL, 
 	program TEXT NOT NULL, 
 	program_description TEXT, 
+	program_url TEXT, 
 	"BioinformaticsMethodInfo_id" INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("BioinformaticsMethodInfo_id") REFERENCES "BioinformaticsMethodInfo" (id)
@@ -311,6 +319,14 @@ CREATE TABLE "MarkerOfInterest" (
 	marker_location_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(marker_location_id) REFERENCES "GenomicLocation" (id)
+);
+CREATE TABLE "Pseudocigar" (
+	id INTEGER NOT NULL, 
+	pseudocigar_seq TEXT NOT NULL, 
+	pseudocigar_generation_description TEXT, 
+	ref_loc_id INTEGER NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(ref_loc_id) REFERENCES "GenomicLocation" (id)
 );
 CREATE TABLE "RepresentativeMicrohaplotypesForTarget" (
 	target_id INTEGER NOT NULL, 
@@ -341,24 +357,20 @@ CREATE TABLE "ReactionInfo_panel_targets" (
 	PRIMARY KEY ("ReactionInfo_id", panel_targets), 
 	FOREIGN KEY("ReactionInfo_id") REFERENCES "ReactionInfo" (id)
 );
-CREATE TABLE "RepresentativeMicrohaplotype_masking" (
-	"RepresentativeMicrohaplotype_id" INTEGER, 
-	masking_id INTEGER, 
-	PRIMARY KEY ("RepresentativeMicrohaplotype_id", masking_id), 
-	FOREIGN KEY("RepresentativeMicrohaplotype_id") REFERENCES "RepresentativeMicrohaplotype" (id), 
-	FOREIGN KEY(masking_id) REFERENCES "MaskingInfo" (id)
-);
-CREATE TABLE "RepresentativeMicrohaplotype_alt_annotations" (
-	"RepresentativeMicrohaplotype_id" INTEGER, 
-	alt_annotations TEXT, 
-	PRIMARY KEY ("RepresentativeMicrohaplotype_id", alt_annotations), 
-	FOREIGN KEY("RepresentativeMicrohaplotype_id") REFERENCES "RepresentativeMicrohaplotype" (id)
-);
 CREATE TABLE "BioMethod_additional_argument" (
 	"BioMethod_id" INTEGER, 
 	additional_argument TEXT, 
 	PRIMARY KEY ("BioMethod_id", additional_argument), 
 	FOREIGN KEY("BioMethod_id") REFERENCES "BioMethod" (id)
+);
+CREATE TABLE "RepresentativeMicrohaplotype" (
+	id INTEGER NOT NULL, 
+	seq TEXT NOT NULL, 
+	microhaplotype_name TEXT, 
+	quality TEXT, 
+	pseudocigar_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(pseudocigar_id) REFERENCES "Pseudocigar" (id)
 );
 CREATE TABLE "PortableMicrohaplotypeObject" (
 	id INTEGER NOT NULL, 
@@ -373,13 +385,6 @@ CREATE TABLE "MarkerOfInterest_associations" (
 	associations TEXT, 
 	PRIMARY KEY ("MarkerOfInterest_id", associations), 
 	FOREIGN KEY("MarkerOfInterest_id") REFERENCES "MarkerOfInterest" (id)
-);
-CREATE TABLE "RepresentativeMicrohaplotypesForTarget_microhaplotypes" (
-	"RepresentativeMicrohaplotypesForTarget_target_id" INTEGER, 
-	microhaplotypes_id INTEGER NOT NULL, 
-	PRIMARY KEY ("RepresentativeMicrohaplotypesForTarget_target_id", microhaplotypes_id), 
-	FOREIGN KEY("RepresentativeMicrohaplotypesForTarget_target_id") REFERENCES "RepresentativeMicrohaplotypesForTarget" (target_id), 
-	FOREIGN KEY(microhaplotypes_id) REFERENCES "RepresentativeMicrohaplotype" (id)
 );
 CREATE TABLE "TargetInfo" (
 	id INTEGER NOT NULL, 
@@ -413,22 +418,22 @@ CREATE TABLE "GenomeInfo" (
 	id INTEGER NOT NULL, 
 	name TEXT NOT NULL, 
 	genome_version TEXT NOT NULL, 
-	taxon_id INTEGER NOT NULL, 
 	url TEXT NOT NULL, 
 	gff_url TEXT, 
 	"PortableMicrohaplotypeObject_id" INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
 );
-CREATE TABLE "ExperimentInfo" (
+CREATE TABLE "LibrarySampleInfo" (
 	sequencing_info_id INTEGER NOT NULL, 
 	specimen_id INTEGER NOT NULL, 
 	panel_id INTEGER NOT NULL, 
-	accession TEXT, 
-	experiment_sample_name TEXT NOT NULL, 
+	fastqs_loc TEXT, 
+	run_accession TEXT, 
+	library_sample_name TEXT NOT NULL, 
 	"PortableMicrohaplotypeObject_id" INTEGER, 
 	library_prep_plate_info_id INTEGER, 
-	PRIMARY KEY (experiment_sample_name), 
+	PRIMARY KEY (library_sample_name), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id), 
 	FOREIGN KEY(library_prep_plate_info_id) REFERENCES "PlateInfo" (id)
 );
@@ -469,6 +474,10 @@ CREATE TABLE "SpecimenInfo" (
 	host_subject_id INTEGER, 
 	host_taxon_id INTEGER NOT NULL, 
 	host_sex TEXT, 
+	specimen_accession TEXT, 
+	gravid BOOLEAN, 
+	blood_meal BOOLEAN, 
+	gravidity INTEGER, 
 	collection_date TEXT NOT NULL, 
 	host_age FLOAT, 
 	collection_country TEXT NOT NULL, 
@@ -505,9 +514,29 @@ CREATE TABLE "ReadCountsByStage" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
 );
+CREATE TABLE "RepresentativeMicrohaplotype_masking" (
+	"RepresentativeMicrohaplotype_id" INTEGER, 
+	masking_id INTEGER, 
+	PRIMARY KEY ("RepresentativeMicrohaplotype_id", masking_id), 
+	FOREIGN KEY("RepresentativeMicrohaplotype_id") REFERENCES "RepresentativeMicrohaplotype" (id), 
+	FOREIGN KEY(masking_id) REFERENCES "MaskingInfo" (id)
+);
+CREATE TABLE "RepresentativeMicrohaplotype_alt_annotations" (
+	"RepresentativeMicrohaplotype_id" INTEGER, 
+	alt_annotations TEXT, 
+	PRIMARY KEY ("RepresentativeMicrohaplotype_id", alt_annotations), 
+	FOREIGN KEY("RepresentativeMicrohaplotype_id") REFERENCES "RepresentativeMicrohaplotype" (id)
+);
+CREATE TABLE "RepresentativeMicrohaplotypesForTarget_microhaplotypes" (
+	"RepresentativeMicrohaplotypesForTarget_target_id" INTEGER, 
+	microhaplotypes_id INTEGER NOT NULL, 
+	PRIMARY KEY ("RepresentativeMicrohaplotypesForTarget_target_id", microhaplotypes_id), 
+	FOREIGN KEY("RepresentativeMicrohaplotypesForTarget_target_id") REFERENCES "RepresentativeMicrohaplotypesForTarget" (target_id), 
+	FOREIGN KEY(microhaplotypes_id) REFERENCES "RepresentativeMicrohaplotype" (id)
+);
 CREATE TABLE "DetectedMicrohaplotypesForSample" (
 	id INTEGER NOT NULL, 
-	experiment_sample_id INTEGER NOT NULL, 
+	library_sample_id INTEGER NOT NULL, 
 	"DetectedMicrohaplotypes_id" INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("DetectedMicrohaplotypes_id") REFERENCES "DetectedMicrohaplotypes" (id)
@@ -518,15 +547,15 @@ CREATE TABLE "ParasiteDensity" (
 	parasite_density FLOAT NOT NULL, 
 	date_measured TEXT, 
 	density_method_comments TEXT, 
-	"ExperimentInfo_experiment_sample_name" TEXT, 
+	"LibrarySampleInfo_library_sample_name" TEXT, 
 	"SpecimenInfo_specimen_name" TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY("ExperimentInfo_experiment_sample_name") REFERENCES "ExperimentInfo" (experiment_sample_name), 
+	FOREIGN KEY("LibrarySampleInfo_library_sample_name") REFERENCES "LibrarySampleInfo" (library_sample_name), 
 	FOREIGN KEY("SpecimenInfo_specimen_name") REFERENCES "SpecimenInfo" (specimen_name)
 );
-CREATE TABLE "ReadCountsByStageForExperimentalSample" (
+CREATE TABLE "ReadCountsByStageForLibrarySample" (
 	id INTEGER NOT NULL, 
-	experiment_sample_id INTEGER NOT NULL, 
+	library_sample_id INTEGER NOT NULL, 
 	total_raw_count INTEGER NOT NULL, 
 	"ReadCountsByStage_id" INTEGER, 
 	PRIMARY KEY (id), 
@@ -551,6 +580,12 @@ CREATE TABLE "PanelInfo_reactions" (
 	PRIMARY KEY ("PanelInfo_id", reactions_id), 
 	FOREIGN KEY("PanelInfo_id") REFERENCES "PanelInfo" (id), 
 	FOREIGN KEY(reactions_id) REFERENCES "ReactionInfo" (id)
+);
+CREATE TABLE "GenomeInfo_taxon_id" (
+	"GenomeInfo_id" INTEGER, 
+	taxon_id INTEGER NOT NULL, 
+	PRIMARY KEY ("GenomeInfo_id", taxon_id), 
+	FOREIGN KEY("GenomeInfo_id") REFERENCES "GenomeInfo" (id)
 );
 CREATE TABLE "GenomeInfo_chromosomes" (
 	"GenomeInfo_id" INTEGER, 
@@ -604,9 +639,9 @@ CREATE TABLE "DetectedMicrohaplotypesForTarget" (
 CREATE TABLE "ReadCountsByStageForTarget" (
 	id INTEGER NOT NULL, 
 	target_id INTEGER NOT NULL, 
-	"ReadCountsByStageForExperimentalSample_id" INTEGER, 
+	"ReadCountsByStageForLibrarySample_id" INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY("ReadCountsByStageForExperimentalSample_id") REFERENCES "ReadCountsByStageForExperimentalSample" (id)
+	FOREIGN KEY("ReadCountsByStageForLibrarySample_id") REFERENCES "ReadCountsByStageForLibrarySample" (id)
 );
 CREATE TABLE "MicrohaplotypeForTarget" (
 	id INTEGER NOT NULL, 

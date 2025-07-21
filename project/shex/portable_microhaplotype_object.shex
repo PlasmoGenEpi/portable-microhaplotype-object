@@ -66,6 +66,7 @@ linkml:Sparqlpath xsd:string
     (  $<BioMethod_tes> (  <program_version> @linkml:String ;
           <program> @linkml:String ;
           <program_description> @linkml:String ? ;
+          <program_url> @linkml:String ? ;
           <additional_argument> @linkml:String *
        ) ;
        rdf:type [ <BioMethod> ] ?
@@ -74,14 +75,14 @@ linkml:Sparqlpath xsd:string
 
 <DetectedMicrohaplotypes> CLOSED {
     (  $<DetectedMicrohaplotypes_tes> (  <bioinformatics_run_id> @linkml:Integer ;
-          <experiment_samples> @<DetectedMicrohaplotypesForSample> +
+          <library_samples> @<DetectedMicrohaplotypesForSample> +
        ) ;
        rdf:type [ <DetectedMicrohaplotypes> ] ?
     )
 }
 
 <DetectedMicrohaplotypesForSample> CLOSED {
-    (  $<DetectedMicrohaplotypesForSample_tes> (  <experiment_sample_id> @linkml:Integer ;
+    (  $<DetectedMicrohaplotypesForSample_tes> (  <library_sample_id> @linkml:Integer ;
           <target_results> @<DetectedMicrohaplotypesForTarget> +
        ) ;
        rdf:type [ <DetectedMicrohaplotypesForSample> ] ?
@@ -96,22 +97,10 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<ExperimentInfo> CLOSED {
-    (  $<ExperimentInfo_tes> (  <sequencing_info_id> @linkml:Integer ;
-          <specimen_id> @linkml:Integer ;
-          <panel_id> @linkml:Integer ;
-          <accession> @linkml:String ? ;
-          <library_prep_plate_info> @<PlateInfo> ? ;
-          <qpcr_parasite_density_info> @<ParasiteDensity> *
-       ) ;
-       rdf:type [ <ExperimentInfo> ]
-    )
-}
-
 <GenomeInfo> CLOSED {
     (  $<GenomeInfo_tes> (  <name> @linkml:String ;
           <genome_version> @linkml:String ;
-          <taxon_id> @linkml:Integer ;
+          <taxon_id> @linkml:Integer + ;
           <url> @linkml:String ;
           <chromosomes> @linkml:String * ;
           <gff_url> @linkml:String ?
@@ -133,6 +122,19 @@ linkml:Sparqlpath xsd:string
     )
 }
 
+<LibrarySampleInfo> CLOSED {
+    (  $<LibrarySampleInfo_tes> (  <sequencing_info_id> @linkml:Integer ;
+          <specimen_id> @linkml:Integer ;
+          <panel_id> @linkml:Integer ;
+          <fastqs_loc> @linkml:String ? ;
+          <run_accession> @linkml:String ? ;
+          <library_prep_plate_info> @<PlateInfo> ? ;
+          <qpcr_parasite_density_info> @<ParasiteDensity> *
+       ) ;
+       rdf:type [ <LibrarySampleInfo> ]
+    )
+}
+
 <MarkerOfInterest> CLOSED {
     (  $<MarkerOfInterest_tes> (  <marker_location> @<GenomicLocation> ;
           <associations> @linkml:String *
@@ -144,7 +146,8 @@ linkml:Sparqlpath xsd:string
 <MaskingInfo> CLOSED {
     (  $<MaskingInfo_tes> (  <seq_start> @linkml:Integer ;
           <seq_segment_size> @linkml:Integer ;
-          <replacement_size> @linkml:Integer
+          <replacement_size> @linkml:Integer ;
+          <masking_generation_description> @linkml:String ?
        ) ;
        rdf:type [ <MaskingInfo> ] ?
     )
@@ -204,7 +207,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <PortableMicrohaplotypeObject> CLOSED {
-    (  $<PortableMicrohaplotypeObject_tes> (  <experiment_info> @<ExperimentInfo> + ;
+    (  $<PortableMicrohaplotypeObject_tes> (  <library_info> @<LibrarySampleInfo> + ;
           <specimen_info> @<SpecimenInfo> + ;
           <sequencing_info> @<SequencingInfo> + ;
           <panel_info> @<PanelInfo> + ;
@@ -241,6 +244,15 @@ linkml:Sparqlpath xsd:string
     )
 }
 
+<Pseudocigar> CLOSED {
+    (  $<Pseudocigar_tes> (  <pseudocigar_seq> @linkml:String ;
+          <ref_loc> @<GenomicLocation> ;
+          <pseudocigar_generation_description> @linkml:String ?
+       ) ;
+       rdf:type [ <Pseudocigar> ] ?
+    )
+}
+
 <ReactionInfo> CLOSED {
     (  $<ReactionInfo_tes> (  <panel_targets> @linkml:Integer + ;
           <reaction_name> @linkml:String
@@ -251,18 +263,18 @@ linkml:Sparqlpath xsd:string
 
 <ReadCountsByStage> CLOSED {
     (  $<ReadCountsByStage_tes> (  <bioinformatics_run_id> @linkml:Integer ;
-          <read_counts_by_experimental_sample_by_stage> @<ReadCountsByStageForExperimentalSample> +
+          <read_counts_by_library_sample_by_stage> @<ReadCountsByStageForLibrarySample> +
        ) ;
        rdf:type [ <ReadCountsByStage> ] ?
     )
 }
 
-<ReadCountsByStageForExperimentalSample> CLOSED {
-    (  $<ReadCountsByStageForExperimentalSample_tes> (  <experiment_sample_id> @linkml:Integer ;
+<ReadCountsByStageForLibrarySample> CLOSED {
+    (  $<ReadCountsByStageForLibrarySample_tes> (  <library_sample_id> @linkml:Integer ;
           <total_raw_count> @linkml:Integer ;
           <read_counts_for_targets> @<ReadCountsByStageForTarget> *
        ) ;
-       rdf:type [ <ReadCountsByStageForExperimentalSample> ] ?
+       rdf:type [ <ReadCountsByStageForLibrarySample> ] ?
     )
 }
 
@@ -278,7 +290,7 @@ linkml:Sparqlpath xsd:string
     (  $<RepresentativeMicrohaplotype_tes> (  <seq> @linkml:String ;
           <microhaplotype_name> @linkml:String ? ;
           <quality> @linkml:String ? ;
-          <pseudocigar> @linkml:String ? ;
+          <pseudocigar> @<Pseudocigar> ? ;
           <masking> @<MaskingInfo> * ;
           <alt_annotations> @linkml:String *
        ) ;
@@ -328,6 +340,10 @@ linkml:Sparqlpath xsd:string
           <host_taxon_id> @linkml:Integer ;
           <alternate_identifiers> @linkml:String * ;
           <host_sex> @linkml:String ? ;
+          <specimen_accession> @linkml:String ? ;
+          <gravid> @linkml:Boolean ? ;
+          <blood_meal> @linkml:Boolean ? ;
+          <gravidity> @linkml:Integer ? ;
           <microscopy_parasite_density_info> @<ParasiteDensity> * ;
           <collection_date> @linkml:String ;
           <host_age> @linkml:Double ? ;

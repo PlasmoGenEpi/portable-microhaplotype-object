@@ -128,6 +128,29 @@ classes:
         description: >-
           a name for the panel
 
+
+  Pseudocigar:
+    description: >- 
+      information on pseudocigar for a sequence
+    attributes:
+      pseudocigar_seq:
+        required: true
+        range: string
+        pattern: "^[A-z-._0-9]+$"
+        description: >-
+          the pseudocigar itself
+      ref_loc:
+        required: true
+        range: GenomicLocation
+        description: >-
+          the genomic location the pseudocigar is in reference to
+      pseudocigar_generation_description:
+        range: string
+        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
+        required: false
+        description: >-
+          a description of how the pseudocigar information was generated 
+
   RepresentativeMicrohaplotype:
     description: >-
       the representative sequence for a microhaplotype, similar to a fast(a/q) format
@@ -147,7 +170,7 @@ classes:
         description: >-
           the ansi fastq per base quality score for this sequence, this is optional
       pseudocigar:
-        range: string
+        range: Pseudocigar
         pattern: "^[A-z-._0-9]+$"
         required: false
         description: >-
@@ -185,6 +208,12 @@ classes:
         range: integer
         description: >-
           the size of replacement mask
+      masking_generation_description:
+        range: string
+        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
+        required: false
+        description: >-
+          a description of how the masking information was generated 
 
   RepresentativeMicrohaplotypes:
     description: >-
@@ -226,7 +255,7 @@ classes:
     slots:
       - bioinformatics_run_id
     attributes:
-      experiment_samples:
+      library_samples:
         required: true
         range: DetectedMicrohaplotypesForSample
         multivalued: true
@@ -255,9 +284,11 @@ classes:
       taxon_id:
         range: integer
         pattern: "^[0-9]$"
+        multivalued: true
+        inlined_as_list: true
         required: true
         description: >-
-          the NCBI taxonomy number
+          the NCBI taxonomy number, can be a list of values
       url:
         range: string
         pattern: "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$"
@@ -344,7 +375,7 @@ classes:
     description: >-
       Microhaplotypes detected for a sample for all targets
     slots:
-      - experiment_sample_id
+      - library_sample_id
     attributes:
       target_results:
         required: true
@@ -432,6 +463,12 @@ classes:
         required: false
         description: >-
           a short description of what this method does
+      program_url:
+        range: string
+        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
+        required: false
+        description: >-
+          a url pointing to code base of a program, e.g. a github link
       additional_argument:
         range: string
         pattern: "^[A-z-._0-9{}\\(\\),\\/\\\ ]+$"
@@ -440,6 +477,8 @@ classes:
         inlined_as_list: true
         description: >-
           any additional arguments that differ from the default
+          
+          
 
   PlateInfo:
     description: >-
@@ -461,7 +500,7 @@ classes:
         description: >-
           the column the specimen was in
 
-  ExperimentInfo:
+  LibrarySampleInfo:
     description: >-
       Information about a specific amplification and sequencing of a specimen
     slots:
@@ -472,13 +511,22 @@ classes:
       specimen_id:
         identifier: false
     attributes:
-      accession:
+      fastqs_loc:
+        range: string
+        pattern: "^[A-z-.;,_0-9\\(\\),\\/\\\ ]+$"
+        required: false
+        description: >-
+          the location (url or filename path) of the fastqs for a library run
+        examples:
+          - value: "ftp.sra.ebi.ac.uk/vol1/fastq/SRR332/035/SRR33216235/SRR33216235_1.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/SRR332/035/SRR33216235/SRR33216235_2.fastq.gz"
+          - value: "MACHINE@/path/to/SRR33216235_1.fastq.gz;MACHINE@/path/to/SRR33216235_2.fastq.gz"
+      run_accession:
         range: string
         pattern: "^[A-z-._0-9]+$"
         required: false
         description: >-
-          ERA/SRA accession number for the sample if it was submitted
-      experiment_sample_name:
+          ERA/SRA run accession number for the sample if it was submitted
+      library_sample_name:
         range: string
         pattern: "^[A-z-._0-9 ]+$"
         required: true
@@ -489,7 +537,7 @@ classes:
         range: PlateInfo
         required: false
         description: >-
-          plate location of where experiment was prepared for sequencing 
+          plate location of where library was prepared for sequencing 
       qpcr_parasite_density_info:
         range: ParasiteDensity
         required: false
@@ -779,6 +827,28 @@ classes:
         required: false
         description: >-
           if specimen is from a person, the sex listed for that person
+      specimen_accession:
+        range: string
+        pattern: "^[A-z-._0-9 ]+$"
+        required: false
+        description: >-
+          if specimen is deposited in a database, what accession is it associated with
+      gravid:
+        range: boolean
+        required: false
+        description: >-
+          whether host specimen is currently pregnant
+      blood_meal:
+        range: boolean
+        required: false
+        description: >-
+          whether host specimen has had a recent blood meal  
+      gravidity:
+        range: integer
+        pattern: "^[0-9]+$"
+        required: false
+        description: >-
+          the gravidity of the specimen host (number of previous pregnancies)
       microscopy_parasite_density_info:
         range: ParasiteDensity
         required: false
@@ -949,6 +1019,7 @@ classes:
         examples:
           - value: "Coartem;2/day"
 
+
   BioinformaticsRunInfo:
     description: >-
       Information about the pipeline run that generated some of the microhaplotype detected and reads_by_stage
@@ -1035,11 +1106,11 @@ classes:
         description: >-
           the read counts by each stage
 
-  ReadCountsByStageForExperimentalSample:
+  ReadCountsByStageForLibrarySample:
     description: >-
-      Information on the reads counts at several stages of a pipeline for a experimental_sample
+      Information on the reads counts at several stages of a pipeline for a library_sample
     slots:
-      - experiment_sample_id
+      - library_sample_id
     attributes:
       total_raw_count:
         range: integer
@@ -1060,13 +1131,13 @@ classes:
     slots:
       - bioinformatics_run_id
     attributes:
-      read_counts_by_experimental_sample_by_stage:
-        range: ReadCountsByStageForExperimentalSample
+      read_counts_by_library_sample_by_stage:
+        range: ReadCountsByStageForLibrarySample
         required: true
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list by experiment_sample for the counts at each stage
+          a list by library_sample for the counts at each stage
 
   PortableMicrohaplotypeObject:
     description: >-
@@ -1076,13 +1147,13 @@ classes:
 #      extra_slots:
 #        allowed: true
     attributes:
-      experiment_info:
-        range: ExperimentInfo
+      library_info:
+        range: LibrarySampleInfo
         required: true
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of experiments of all the seq/amp of the specimens within this project
+          a list of librarys of all the seq/amp of the specimens within this project
       specimen_info:
         range: SpecimenInfo
         required: true
@@ -1168,12 +1239,12 @@ classes:
 slots:
 #  extra_slots:
 #    allowed: true
-  experiment_sample_id:
+  library_sample_id:
     range: integer
     pattern: "^[0-9]+$"
     required: true
     description: >-
-      the index into the experiment_info list
+      the index into the library_info list
   specimen_id:
     range: integer
     pattern: "^[0-9]+$"
