@@ -229,11 +229,11 @@
     click ParasiteDensity href "../ParasiteDensity"
       ParasiteDensity : date_measured
 
-      ParasiteDensity : density_method
-
       ParasiteDensity : density_method_comments
 
       ParasiteDensity : parasite_density
+
+      ParasiteDensity : parasite_density_method
 
 
 </div>
@@ -250,7 +250,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../density_method/">density_method</a></td>
+<td><a href="../parasite_density_method/">parasite_density_method</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td>the method of how this density was obtained</td>
 <td>direct</td>
@@ -294,7 +294,7 @@
 </tr>
 <tr>
 <td><a href="../SpecimenInfo/">SpecimenInfo</a></td>
-<td><a href="../microscopy_parasite_density_info/">microscopy_parasite_density_info</a></td>
+<td><a href="../parasite_density_info/">parasite_density_info</a></td>
 <td>range</td>
 <td><a href="./">ParasiteDensity</a></td>
 </tr>
@@ -332,8 +332,8 @@
 description: method and value of determined parasite density
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  density_method:
-    name: density_method
+  parasite_density_method:
+    name: parasite_density_method
     description: the method of how this density was obtained
     examples:
     - value: qpcr
@@ -395,15 +395,15 @@ attributes:
 description: method and value of determined parasite density
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  density_method:
-    name: density_method
+  parasite_density_method:
+    name: parasite_density_method
     description: the method of how this density was obtained
     examples:
     - value: qpcr
     - value: microscopy
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: density_method
+    alias: parasite_density_method
     owner: ParasiteDensity
     domain_of:
     - ParasiteDensity

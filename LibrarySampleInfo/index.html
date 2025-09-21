@@ -227,6 +227,8 @@
 <div class="mermaid"> classDiagram
     class LibrarySampleInfo
     click LibrarySampleInfo href "../LibrarySampleInfo"
+      LibrarySampleInfo : experiment_accession
+
       LibrarySampleInfo : fastqs_loc
 
       LibrarySampleInfo : library_prep_plate_info
@@ -306,6 +308,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../experiment_accession/">experiment_accession</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>ERA/SRA experiment accession number for the sample if it was submitted</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../library_sample_name/">library_sample_name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td>a unique identifier for this sequence/amplification run on a specimen_name</td>
@@ -320,7 +328,7 @@
 <tr>
 <td><a href="../qpcr_parasite_density_info/">qpcr_parasite_density_info</a></td>
 <td>* <br/> <a href="../ParasiteDensity/">ParasiteDensity</a></td>
-<td>qpcr parasite density measurement</td>
+<td>qpcr parasite density measurement for this extracted sample</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -338,7 +346,7 @@
 <tbody>
 <tr>
 <td><a href="../PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
-<td><a href="../library_info/">library_info</a></td>
+<td><a href="../library_sample_info/">library_sample_info</a></td>
 <td>range</td>
 <td><a href="./">LibrarySampleInfo</a></td>
 </tr>
@@ -407,6 +415,16 @@ attributes:
     range: string
     required: false
     pattern: ^[A-z-._0-9]+$
+  experiment_accession:
+    name: experiment_accession
+    description: ERA/SRA experiment accession number for the sample if it was submitted
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - LibrarySampleInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9]+$
   library_sample_name:
     name: library_sample_name
     description: a unique identifier for this sequence/amplification run on a specimen_name
@@ -429,7 +447,7 @@ attributes:
     required: false
   qpcr_parasite_density_info:
     name: qpcr_parasite_density_info
-    description: 'qpcr parasite density measurement '
+    description: qpcr parasite density measurement for this extracted sample
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -479,6 +497,18 @@ attributes:
     range: string
     required: false
     pattern: ^[A-z-._0-9]+$
+  experiment_accession:
+    name: experiment_accession
+    description: ERA/SRA experiment accession number for the sample if it was submitted
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: experiment_accession
+    owner: LibrarySampleInfo
+    domain_of:
+    - LibrarySampleInfo
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9]+$
   library_sample_name:
     name: library_sample_name
     description: a unique identifier for this sequence/amplification run on a specimen_name
@@ -505,7 +535,7 @@ attributes:
     required: false
   qpcr_parasite_density_info:
     name: qpcr_parasite_density_info
-    description: 'qpcr parasite density measurement '
+    description: qpcr parasite density measurement for this extracted sample
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: qpcr_parasite_density_info

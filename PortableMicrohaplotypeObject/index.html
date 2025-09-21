@@ -253,13 +253,13 @@
 
 
 
-      PortableMicrohaplotypeObject : library_info
+      PortableMicrohaplotypeObject : library_sample_info
 
 
 
 
 
-        PortableMicrohaplotypeObject --&gt; "1..*" LibrarySampleInfo : library_info
+        PortableMicrohaplotypeObject --&gt; "1..*" LibrarySampleInfo : library_sample_info
         click LibrarySampleInfo href "../LibrarySampleInfo"
 
 
@@ -378,9 +378,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../library_info/">library_info</a></td>
+<td><a href="../library_sample_info/">library_sample_info</a></td>
 <td>1..* <br/> <a href="../LibrarySampleInfo/">LibrarySampleInfo</a></td>
-<td>a list of librarys of all the seq/amp of the specimens within this project</td>
+<td>a list of libraries of all the seq/amp of the specimens within this project</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -489,9 +489,9 @@
 description: Information on final results from a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  library_info:
-    name: library_info
-    description: a list of librarys of all the seq/amp of the specimens within this
+  library_sample_info:
+    name: library_sample_info
+    description: a list of libraries of all the seq/amp of the specimens within this
       project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
@@ -652,13 +652,13 @@ tree_root: true
 description: Information on final results from a targeted amplicon analysis
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  library_info:
-    name: library_info
-    description: a list of librarys of all the seq/amp of the specimens within this
+  library_sample_info:
+    name: library_sample_info
+    description: a list of libraries of all the seq/amp of the specimens within this
       project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: library_info
+    alias: library_sample_info
     owner: PortableMicrohaplotypeObject
     domain_of:
     - PortableMicrohaplotypeObject

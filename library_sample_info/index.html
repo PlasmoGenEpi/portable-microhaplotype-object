@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/density_method/">
+        <link rel="canonical" href="https://PlasmoGenEpi.github.io/portable-microhaplotype-object/library_sample_info/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: density_method - portable-microhaplotype-object</title>
+        <title>Slot: library_sample_info - portable-microhaplotype-object</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-density_method" class="md-skip">
+        <a href="#slot-library_sample_info" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: density_method
+              Slot: library_sample_info
             
           </span>
         </div>
@@ -304,15 +304,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -373,10 +364,10 @@
   
 
 
-<h1 id="slot-density_method">Slot: density_method</h1>
-<p><em>the method of how this density was obtained</em></p>
-<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/density_method">portable_microhaplotype_object:density_method</a>
-Alias: density_method</p>
+<h1 id="slot-library_sample_info">Slot: library_sample_info</h1>
+<p><em>a list of libraries of all the seq/amp of the specimens within this project</em></p>
+<p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/library_sample_info">portable_microhaplotype_object:library_sample_info</a>
+Alias: library_sample_info</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -390,8 +381,8 @@ Alias: density_method</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ParasiteDensity/">ParasiteDensity</a></td>
-<td>method and value of determined parasite density</td>
+<td><a href="../PortableMicrohaplotypeObject/">PortableMicrohaplotypeObject</a></td>
+<td>Information on final results from a targeted amplicon analysis</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -399,31 +390,15 @@ Alias: density_method</p>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../String/">String</a></p>
+<p>Range: <a href="../LibrarySampleInfo/">LibrarySampleInfo</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
 </li>
 <li>
 <p>Required: True</p>
 </li>
-<li>
-<p>Regex pattern: <code>^[A-z-._0-9 ]+$</code></p>
-</li>
 </ul>
-<h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>qpcr</td>
-</tr>
-<tr>
-<td>microscopy</td>
-</tr>
-</tbody>
-</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -440,31 +415,30 @@ Alias: density_method</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>portable_microhaplotype_object:density_method</td>
+<td>portable_microhaplotype_object:library_sample_info</td>
 </tr>
 <tr>
 <td>native</td>
-<td>portable_microhaplotype_object:density_method</td>
+<td>portable_microhaplotype_object:library_sample_info</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: density_method
-description: the method of how this density was obtained
-examples:
-- value: qpcr
-- value: microscopy
+<pre><code class="language-yaml">name: library_sample_info
+description: a list of libraries of all the seq/amp of the specimens within this project
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
-alias: density_method
-owner: ParasiteDensity
+alias: library_sample_info
+owner: PortableMicrohaplotypeObject
 domain_of:
-- ParasiteDensity
-range: string
+- PortableMicrohaplotypeObject
+range: LibrarySampleInfo
 required: true
-pattern: ^[A-z-._0-9 ]+$
+multivalued: true
+inlined: true
+inlined_as_list: true
 
 </code></pre>
 

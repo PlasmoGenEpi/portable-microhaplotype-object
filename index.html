@@ -679,10 +679,6 @@
 <td>the method used to de-noise and/or cluster the raw reads</td>
 </tr>
 <tr>
-<td><a href="density_method/">density_method</a></td>
-<td>the method of how this density was obtained</td>
-</tr>
-<tr>
 <td><a href="density_method_comments/">density_method_comments</a></td>
 <td>additional comments about how the density was performed</td>
 </tr>
@@ -709,6 +705,10 @@
 <tr>
 <td><a href="env_medium/">env_medium</a></td>
 <td>the environment medium from which the specimen was collected from</td>
+</tr>
+<tr>
+<td><a href="experiment_accession/">experiment_accession</a></td>
+<td>ERA/SRA experiment accession number for the sample if it was submitted</td>
 </tr>
 <tr>
 <td><a href="fastqs_loc/">fastqs_loc</a></td>
@@ -783,10 +783,6 @@
 <td>the latitude and longitude of the collection site of the specimen</td>
 </tr>
 <tr>
-<td><a href="library_info/">library_info</a></td>
-<td>a list of librarys of all the seq/amp of the specimens within this project</td>
-</tr>
-<tr>
 <td><a href="library_kit/">library_kit</a></td>
 <td>Name, version, and applicable cell or cycle numbers for the kit used to prepa...</td>
 </tr>
@@ -800,7 +796,11 @@
 </tr>
 <tr>
 <td><a href="library_sample_id/">library_sample_id</a></td>
-<td>the index into the library_info list</td>
+<td>the index into the library_sample_info list</td>
+</tr>
+<tr>
+<td><a href="library_sample_info/">library_sample_info</a></td>
+<td>a list of libraries of all the seq/amp of the specimens within this project</td>
 </tr>
 <tr>
 <td><a href="library_sample_name/">library_sample_name</a></td>
@@ -871,10 +871,6 @@
 <td>a list of the microhaplotypes detected for a target</td>
 </tr>
 <tr>
-<td><a href="microscopy_parasite_density_info/">microscopy_parasite_density_info</a></td>
-<td>one or more parasite densities in microliters for this specimen</td>
-</tr>
-<tr>
 <td><a href="name/">name</a></td>
 <td>name of the genome</td>
 </tr>
@@ -913,6 +909,14 @@
 <tr>
 <td><a href="parasite_density/">parasite_density</a></td>
 <td>the density in microliters</td>
+</tr>
+<tr>
+<td><a href="parasite_density_info/">parasite_density_info</a></td>
+<td>one or more parasite densities in microliters for this specimen</td>
+</tr>
+<tr>
+<td><a href="parasite_density_method/">parasite_density_method</a></td>
+<td>the method of how this density was obtained</td>
 </tr>
 <tr>
 <td><a href="pcr_cond/">pcr_cond</a></td>
@@ -1000,7 +1004,7 @@
 </tr>
 <tr>
 <td><a href="qpcr_parasite_density_info/">qpcr_parasite_density_info</a></td>
-<td>qpcr parasite density measurement</td>
+<td>qpcr parasite density measurement for this extracted sample</td>
 </tr>
 <tr>
 <td><a href="quality/">quality</a></td>

@@ -263,13 +263,13 @@
 
       SpecimenInfo : lat_lon
 
-      SpecimenInfo : microscopy_parasite_density_info
+      SpecimenInfo : parasite_density_info
 
 
 
 
 
-        SpecimenInfo --&gt; "*" ParasiteDensity : microscopy_parasite_density_info
+        SpecimenInfo --&gt; "*" ParasiteDensity : parasite_density_info
         click ParasiteDensity href "../ParasiteDensity"
 
 
@@ -378,7 +378,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../microscopy_parasite_density_info/">microscopy_parasite_density_info</a></td>
+<td><a href="../parasite_density_info/">parasite_density_info</a></td>
 <td>* <br/> <a href="../ParasiteDensity/">ParasiteDensity</a></td>
 <td>one or more parasite densities in microliters for this specimen</td>
 <td>direct</td>
@@ -653,8 +653,8 @@ attributes:
     range: integer
     required: false
     pattern: ^[0-9]+$
-  microscopy_parasite_density_info:
-    name: microscopy_parasite_density_info
+  parasite_density_info:
+    name: parasite_density_info
     description: one or more parasite densities in microliters for this specimen
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
@@ -1031,12 +1031,12 @@ attributes:
     range: integer
     required: false
     pattern: ^[0-9]+$
-  microscopy_parasite_density_info:
-    name: microscopy_parasite_density_info
+  parasite_density_info:
+    name: parasite_density_info
     description: one or more parasite densities in microliters for this specimen
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: microscopy_parasite_density_info
+    alias: parasite_density_info
     owner: SpecimenInfo
     domain_of:
     - SpecimenInfo
