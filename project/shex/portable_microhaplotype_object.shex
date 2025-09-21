@@ -128,6 +128,7 @@ linkml:Sparqlpath xsd:string
           <panel_id> @linkml:Integer ;
           <fastqs_loc> @linkml:String ? ;
           <run_accession> @linkml:String ? ;
+          <experiment_accession> @linkml:String ? ;
           <library_prep_plate_info> @<PlateInfo> ? ;
           <qpcr_parasite_density_info> @<ParasiteDensity> *
        ) ;
@@ -171,7 +172,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <ParasiteDensity> CLOSED {
-    (  $<ParasiteDensity_tes> (  <density_method> @linkml:String ;
+    (  $<ParasiteDensity_tes> (  <parasite_density_method> @linkml:String ;
           <parasite_density> @linkml:Double ;
           <date_measured> @linkml:String ? ;
           <density_method_comments> @linkml:String ?
@@ -207,7 +208,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <PortableMicrohaplotypeObject> CLOSED {
-    (  $<PortableMicrohaplotypeObject_tes> (  <library_info> @<LibrarySampleInfo> + ;
+    (  $<PortableMicrohaplotypeObject_tes> (  <library_sample_info> @<LibrarySampleInfo> + ;
           <specimen_info> @<SpecimenInfo> + ;
           <sequencing_info> @<SequencingInfo> + ;
           <panel_info> @<PanelInfo> + ;
@@ -344,7 +345,7 @@ linkml:Sparqlpath xsd:string
           <gravid> @linkml:Boolean ? ;
           <blood_meal> @linkml:Boolean ? ;
           <gravidity> @linkml:Integer ? ;
-          <microscopy_parasite_density_info> @<ParasiteDensity> * ;
+          <parasite_density_info> @<ParasiteDensity> * ;
           <collection_date> @linkml:String ;
           <host_age> @linkml:Double ? ;
           <collection_country> @linkml:String ;

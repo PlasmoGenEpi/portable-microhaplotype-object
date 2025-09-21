@@ -72,6 +72,7 @@ message LibrarySampleInfo
   integer panelId = 0
   string fastqsLoc = 0
   string runAccession = 0
+  string experimentAccession = 0
   string librarySampleName = 0
   plateInfo libraryPrepPlateInfo = 0
  repeated  parasiteDensity qpcrParasiteDensityInfo = 0
@@ -106,7 +107,7 @@ message PanelInfo
 // method and value of determined parasite density
 message ParasiteDensity
  {
-  string densityMethod = 0
+  string parasiteDensityMethod = 0
   double parasiteDensity = 0
   string dateMeasured = 0
   string densityMethodComments = 0
@@ -134,7 +135,7 @@ message PmoHeader
 // Information on final results from a targeted amplicon analysis
 message PortableMicrohaplotypeObject
  {
- repeated  librarySampleInfo libraryInfo = 0
+ repeated  librarySampleInfo librarySampleInfo = 0
  repeated  specimenInfo specimenInfo = 0
  repeated  sequencingInfo sequencingInfo = 0
  repeated  panelInfo panelInfo = 0
@@ -251,7 +252,7 @@ message SpecimenInfo
   boolean gravid = 0
   boolean bloodMeal = 0
   integer gravidity = 0
- repeated  parasiteDensity microscopyParasiteDensityInfo = 0
+ repeated  parasiteDensity parasiteDensityInfo = 0
   string collectionDate = 0
   double hostAge = 0
   string collectionCountry = 0

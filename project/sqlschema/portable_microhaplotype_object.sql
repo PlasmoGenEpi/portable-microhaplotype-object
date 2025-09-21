@@ -65,7 +65,7 @@
 --     * Slot: location_id Description: what the intended genomic location of the primer is
 -- # Class: "DetectedMicrohaplotypesForSample" Description: "Microhaplotypes detected for a sample for all targets"
 --     * Slot: id Description: 
---     * Slot: library_sample_id Description: the index into the library_info list
+--     * Slot: library_sample_id Description: the index into the library_sample_info list
 --     * Slot: DetectedMicrohaplotypes_id Description: Autocreated FK slot
 -- # Class: "MicrohaplotypeForTarget" Description: "Microhaplotype detected for a specific target"
 --     * Slot: id Description: 
@@ -101,6 +101,7 @@
 --     * Slot: panel_id Description: the index into the panel_info list
 --     * Slot: fastqs_loc Description: the location (url or filename path) of the fastqs for a library run
 --     * Slot: run_accession Description: ERA/SRA run accession number for the sample if it was submitted
+--     * Slot: experiment_accession Description: ERA/SRA experiment accession number for the sample if it was submitted
 --     * Slot: library_sample_name Description: a unique identifier for this sequence/amplification run on a specimen_name
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
 --     * Slot: library_prep_plate_info_id Description: plate location of where library was prepared for sequencing 
@@ -125,7 +126,7 @@
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
 -- # Class: "ParasiteDensity" Description: "method and value of determined parasite density"
 --     * Slot: id Description: 
---     * Slot: density_method Description: the method of how this density was obtained
+--     * Slot: parasite_density_method Description: the method of how this density was obtained
 --     * Slot: parasite_density Description: the density in microliters
 --     * Slot: date_measured Description: the date the qpcr was performed, can be YYYY, YYYY-MM, or YYYY-MM-DD
 --     * Slot: density_method_comments Description: additional comments about how the density was performed
@@ -189,7 +190,7 @@
 --     * Slot: ReadCountsByStageForLibrarySample_id Description: Autocreated FK slot
 -- # Class: "ReadCountsByStageForLibrarySample" Description: "Information on the reads counts at several stages of a pipeline for a library_sample"
 --     * Slot: id Description: 
---     * Slot: library_sample_id Description: the index into the library_info list
+--     * Slot: library_sample_id Description: the index into the library_sample_info list
 --     * Slot: total_raw_count Description: the raw counts off the sequencing machine that a sample began with
 --     * Slot: ReadCountsByStage_id Description: Autocreated FK slot
 -- # Class: "ReadCountsByStage" Description: "Information on the reads counts at several stages of a pipeline"
@@ -430,6 +431,7 @@ CREATE TABLE "LibrarySampleInfo" (
 	panel_id INTEGER NOT NULL, 
 	fastqs_loc TEXT, 
 	run_accession TEXT, 
+	experiment_accession TEXT, 
 	library_sample_name TEXT NOT NULL, 
 	"PortableMicrohaplotypeObject_id" INTEGER, 
 	library_prep_plate_info_id INTEGER, 
@@ -543,7 +545,7 @@ CREATE TABLE "DetectedMicrohaplotypesForSample" (
 );
 CREATE TABLE "ParasiteDensity" (
 	id INTEGER NOT NULL, 
-	density_method TEXT NOT NULL, 
+	parasite_density_method TEXT NOT NULL, 
 	parasite_density FLOAT NOT NULL, 
 	date_measured TEXT, 
 	density_method_comments TEXT, 

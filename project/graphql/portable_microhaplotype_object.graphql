@@ -69,6 +69,7 @@ type LibrarySampleInfo
     panelId: Integer!
     fastqsLoc: String
     runAccession: String
+    experimentAccession: String
     librarySampleName: String!
     libraryPrepPlateInfo: PlateInfo
     qpcrParasiteDensityInfo: [ParasiteDensity]
@@ -103,7 +104,7 @@ type PanelInfo
 
 type ParasiteDensity
   {
-    densityMethod: String!
+    parasiteDensityMethod: String!
     parasiteDensity: Double!
     dateMeasured: String
     densityMethodComments: String
@@ -131,7 +132,7 @@ type PmoHeader
 
 type PortableMicrohaplotypeObject
   {
-    libraryInfo: [LibrarySampleInfo]!
+    librarySampleInfo: [LibrarySampleInfo]!
     specimenInfo: [SpecimenInfo]!
     sequencingInfo: [SequencingInfo]!
     panelInfo: [PanelInfo]!
@@ -248,7 +249,7 @@ type SpecimenInfo
     gravid: Boolean
     bloodMeal: Boolean
     gravidity: Integer
-    microscopyParasiteDensityInfo: [ParasiteDensity]
+    parasiteDensityInfo: [ParasiteDensity]
     collectionDate: String!
     hostAge: Double
     collectionCountry: String!

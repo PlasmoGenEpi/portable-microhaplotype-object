@@ -11,77 +11,68 @@ portable_microhaplotype_object:PortableMicrohaplotypeObject a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "PortableMicrohaplotypeObject" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:targeted_genomes ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:DetectedMicrohaplotypes ;
-            owl:onProperty portable_microhaplotype_object:detected_microhaplotypes ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:PmoHeader ;
-            owl:onProperty portable_microhaplotype_object:pmo_header ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:detected_microhaplotypes ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:representative_microhaplotypes ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:BioinformaticsMethodInfo ;
-            owl:onProperty portable_microhaplotype_object:bioinformatics_methods_info ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:PanelInfo ;
-            owl:onProperty portable_microhaplotype_object:panel_info ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:GenomeInfo ;
-            owl:onProperty portable_microhaplotype_object:targeted_genomes ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:project_info ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:SequencingInfo ;
-            owl:onProperty portable_microhaplotype_object:sequencing_info ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:LibrarySampleInfo ;
-            owl:onProperty portable_microhaplotype_object:library_info ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:pmo_header ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:panel_info ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:BioinformaticsRunInfo ;
-            owl:onProperty portable_microhaplotype_object:bioinformatics_run_info ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:library_info ],
+            owl:allValuesFrom portable_microhaplotype_object:SpecimenInfo ;
+            owl:onProperty portable_microhaplotype_object:specimen_info ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:representative_microhaplotypes ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:read_counts_by_stage ],
+            owl:allValuesFrom portable_microhaplotype_object:BioinformaticsRunInfo ;
+            owl:onProperty portable_microhaplotype_object:bioinformatics_run_info ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:GenomeInfo ;
+            owl:onProperty portable_microhaplotype_object:targeted_genomes ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:BioinformaticsMethodInfo ;
+            owl:onProperty portable_microhaplotype_object:bioinformatics_methods_info ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:pmo_header ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:bioinformatics_run_info ],
+            owl:onProperty portable_microhaplotype_object:bioinformatics_methods_info ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:ReadCountsByStage ;
+            owl:onProperty portable_microhaplotype_object:read_counts_by_stage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:SequencingInfo ;
+            owl:onProperty portable_microhaplotype_object:sequencing_info ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:pmo_header ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:representative_microhaplotypes ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:RepresentativeMicrohaplotypes ;
+            owl:onProperty portable_microhaplotype_object:representative_microhaplotypes ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:LibrarySampleInfo ;
+            owl:onProperty portable_microhaplotype_object:library_sample_info ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:detected_microhaplotypes ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:ProjectInfo ;
+            owl:onProperty portable_microhaplotype_object:project_info ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:library_sample_info ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:PanelInfo ;
+            owl:onProperty portable_microhaplotype_object:panel_info ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:sequencing_info ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:specimen_info ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:ReadCountsByStage ;
-            owl:onProperty portable_microhaplotype_object:read_counts_by_stage ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:ProjectInfo ;
-            owl:onProperty portable_microhaplotype_object:project_info ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:SpecimenInfo ;
-            owl:onProperty portable_microhaplotype_object:specimen_info ],
+            owl:onProperty portable_microhaplotype_object:targeted_genomes ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:bioinformatics_methods_info ],
+            owl:onProperty portable_microhaplotype_object:specimen_info ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:DetectedMicrohaplotypes ;
+            owl:onProperty portable_microhaplotype_object:detected_microhaplotypes ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:target_info ],
@@ -89,11 +80,20 @@ portable_microhaplotype_object:PortableMicrohaplotypeObject a owl:Class,
             owl:allValuesFrom portable_microhaplotype_object:TargetInfo ;
             owl:onProperty portable_microhaplotype_object:target_info ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom portable_microhaplotype_object:PmoHeader ;
             owl:onProperty portable_microhaplotype_object:pmo_header ],
         [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:RepresentativeMicrohaplotypes ;
-            owl:onProperty portable_microhaplotype_object:representative_microhaplotypes ] ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:bioinformatics_run_info ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:panel_info ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:project_info ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:read_counts_by_stage ] ;
     skos:definition "Information on final results from a targeted amplicon analysis" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -101,29 +101,11 @@ portable_microhaplotype_object:BioinformaticsMethodInfo a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "BioinformaticsMethodInfo" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:bioinformatics_method_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:BioMethod ;
-            owl:onProperty portable_microhaplotype_object:additional_methods ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:BioMethod ;
-            owl:onProperty portable_microhaplotype_object:demultiplexing_method ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty portable_microhaplotype_object:additional_methods ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:denoising_method ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:bioinformatics_method_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:BioMethod ;
-            owl:onProperty portable_microhaplotype_object:denoising_method ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:denoising_method ],
+            owl:onProperty portable_microhaplotype_object:demultiplexing_method ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -131,11 +113,29 @@ portable_microhaplotype_object:BioinformaticsMethodInfo a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:bioinformatics_method_name ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:bioinformatics_method_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:bioinformatics_method_name ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:demultiplexing_method ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:denoising_method ],
+        [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:demultiplexing_method ] ;
+            owl:onProperty portable_microhaplotype_object:denoising_method ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:BioMethod ;
+            owl:onProperty portable_microhaplotype_object:additional_methods ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:BioMethod ;
+            owl:onProperty portable_microhaplotype_object:demultiplexing_method ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:BioMethod ;
+            owl:onProperty portable_microhaplotype_object:denoising_method ] ;
     skos:definition "the targeted amplicon bioinformatics pipeline" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -143,20 +143,11 @@ portable_microhaplotype_object:BioinformaticsRunInfo a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "BioinformaticsRunInfo" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:bioinformatics_methods_id ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:bioinformatics_run_name ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:run_date ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:bioinformatics_methods_id ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:bioinformatics_run_name ],
+            owl:onProperty portable_microhaplotype_object:bioinformatics_methods_id ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -165,19 +156,28 @@ portable_microhaplotype_object:BioinformaticsRunInfo a owl:Class,
             owl:onProperty portable_microhaplotype_object:run_date ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:bioinformatics_methods_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:bioinformatics_run_name ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:run_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:bioinformatics_methods_id ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:run_date ] ;
+            owl:onProperty portable_microhaplotype_object:bioinformatics_run_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:run_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:bioinformatics_methods_id ] ;
     skos:definition "Information about the pipeline run that generated some of the microhaplotype detected and reads_by_stage" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -189,6 +189,9 @@ portable_microhaplotype_object:DetectedMicrohaplotypes a owl:Class,
             owl:onProperty portable_microhaplotype_object:bioinformatics_run_id ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:bioinformatics_run_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:DetectedMicrohaplotypesForSample ;
             owl:onProperty portable_microhaplotype_object:library_samples ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
@@ -197,11 +200,8 @@ portable_microhaplotype_object:DetectedMicrohaplotypes a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:bioinformatics_run_id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:DetectedMicrohaplotypesForSample ;
-            owl:onProperty portable_microhaplotype_object:library_samples ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:bioinformatics_run_id ] ;
+            owl:onProperty portable_microhaplotype_object:library_samples ] ;
     skos:definition "the microhaplotypes detected in a targeted amplicon analysis" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -215,16 +215,16 @@ portable_microhaplotype_object:DetectedMicrohaplotypesForSample a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:library_sample_id ],
         [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:DetectedMicrohaplotypesForTarget ;
+            owl:onProperty portable_microhaplotype_object:target_results ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:library_sample_id ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:library_sample_id ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:library_sample_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:target_results ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:DetectedMicrohaplotypesForTarget ;
             owl:onProperty portable_microhaplotype_object:target_results ] ;
     skos:definition "Microhaplotypes detected for a sample for all targets" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
@@ -233,7 +233,10 @@ portable_microhaplotype_object:DetectedMicrohaplotypesForTarget a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "DetectedMicrohaplotypesForTarget" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:allValuesFrom portable_microhaplotype_object:MicrohaplotypeForTarget ;
+            owl:onProperty portable_microhaplotype_object:mhaps ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:mhaps_target_id ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
@@ -242,13 +245,10 @@ portable_microhaplotype_object:DetectedMicrohaplotypesForTarget a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:mhaps_target_id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:MicrohaplotypeForTarget ;
-            owl:onProperty portable_microhaplotype_object:mhaps ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:mhaps ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:mhaps_target_id ] ;
     skos:definition "Microhaplotypes detected for a specific target" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
@@ -257,62 +257,47 @@ portable_microhaplotype_object:GenomeInfo a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "GenomeInfo" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:genome_version ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:url ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:name ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty portable_microhaplotype_object:gff_url ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:gff_url ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:taxon_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:url ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:gff_url ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[0-9]$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:taxon_id ],
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:genome_version ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:gff_url ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:url ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:chromosomes ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:url ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:genome_version ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:genome_version ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:gff_url ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:genome_version ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty portable_microhaplotype_object:chromosomes ],
@@ -320,8 +305,23 @@ portable_microhaplotype_object:GenomeInfo a owl:Class,
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:chromosomes ] ;
+                                owl:withRestrictions ( [ xsd:pattern "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:url ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:genome_version ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:taxon_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[0-9]$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:taxon_id ] ;
     skos:definition "information on a genome" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -329,23 +329,41 @@ portable_microhaplotype_object:LibrarySampleInfo a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "LibrarySampleInfo" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:run_accession ],
+            owl:allValuesFrom portable_microhaplotype_object:ParasiteDensity ;
+            owl:onProperty portable_microhaplotype_object:qpcr_parasite_density_info ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:sequencing_info_id ],
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:experiment_accession ],
         [ a owl:Restriction ;
             owl:allValuesFrom portable_microhaplotype_object:PlateInfo ;
             owl:onProperty portable_microhaplotype_object:library_prep_plate_info ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:run_accession ],
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:sequencing_info_id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:fastqs_loc ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:fastqs_loc ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:specimen_id ],
+            owl:onProperty portable_microhaplotype_object:run_accession ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:sequencing_info_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:run_accession ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:panel_id ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:library_sample_name ],
@@ -354,19 +372,7 @@ portable_microhaplotype_object:LibrarySampleInfo a owl:Class,
                     owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:specimen_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:sequencing_info_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:run_accession ],
+            owl:onProperty portable_microhaplotype_object:panel_id ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -375,7 +381,19 @@ portable_microhaplotype_object:LibrarySampleInfo a owl:Class,
             owl:onProperty portable_microhaplotype_object:fastqs_loc ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:fastqs_loc ],
+            owl:onProperty portable_microhaplotype_object:library_prep_plate_info ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:qpcr_parasite_density_info ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:panel_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:experiment_accession ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:library_prep_plate_info ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -384,37 +402,31 @@ portable_microhaplotype_object:LibrarySampleInfo a owl:Class,
             owl:onProperty portable_microhaplotype_object:library_sample_name ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:library_prep_plate_info ],
+            owl:onProperty portable_microhaplotype_object:experiment_accession ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:run_accession ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:specimen_id ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:specimen_id ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:library_sample_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:sequencing_info_id ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:panel_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:panel_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:ParasiteDensity ;
-            owl:onProperty portable_microhaplotype_object:qpcr_parasite_density_info ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:qpcr_parasite_density_info ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:library_prep_plate_info ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:panel_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:library_sample_name ] ;
+            owl:onProperty portable_microhaplotype_object:specimen_id ] ;
     skos:definition "Information about a specific amplification and sequencing of a specimen" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -422,7 +434,7 @@ portable_microhaplotype_object:MarkerOfInterest a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "MarkerOfInterest" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom portable_microhaplotype_object:GenomicLocation ;
             owl:onProperty portable_microhaplotype_object:marker_location ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -431,7 +443,7 @@ portable_microhaplotype_object:MarkerOfInterest a owl:Class,
             owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:marker_location ],
         [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:GenomicLocation ;
+            owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:marker_location ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
@@ -446,9 +458,6 @@ portable_microhaplotype_object:MaskingInfo a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "MaskingInfo" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty portable_microhaplotype_object:replacement_size ],
-        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
@@ -456,16 +465,13 @@ portable_microhaplotype_object:MaskingInfo a owl:Class,
             owl:onProperty portable_microhaplotype_object:masking_generation_description ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:seq_start ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:seq_start ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:seq_segment_size ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:replacement_size ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:masking_generation_description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:seq_start ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty portable_microhaplotype_object:masking_generation_description ],
@@ -474,16 +480,22 @@ portable_microhaplotype_object:MaskingInfo a owl:Class,
             owl:onProperty portable_microhaplotype_object:seq_segment_size ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:replacement_size ],
+            owl:onProperty portable_microhaplotype_object:seq_start ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:masking_generation_description ],
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty portable_microhaplotype_object:seq_start ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty portable_microhaplotype_object:replacement_size ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:seq_segment_size ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty portable_microhaplotype_object:seq_start ] ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:seq_segment_size ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:replacement_size ] ;
     skos:definition "information about a subsegment of the sequence that should be masked" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -491,34 +503,34 @@ portable_microhaplotype_object:MicrohaplotypeForTarget a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "MicrohaplotypeForTarget" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:umis ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty portable_microhaplotype_object:umis ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:mhap_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:reads ],
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:umis ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:reads ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Integer ;
+            owl:onProperty portable_microhaplotype_object:umis ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:reads ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:mhap_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty portable_microhaplotype_object:reads ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:mhap_id ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:mhap_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty portable_microhaplotype_object:umis ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:mhap_id ] ;
     skos:definition "Microhaplotype detected for a specific target" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
@@ -551,11 +563,14 @@ portable_microhaplotype_object:PmoGenerationMethod a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "PmoGenerationMethod" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:program_name ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:program_version ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:program_name ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -563,16 +578,13 @@ portable_microhaplotype_object:PmoGenerationMethod a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:program_version ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:program_name ],
-        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:program_name ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:program_version ] ;
     skos:definition "Information about how a PMO was generated" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
@@ -581,19 +593,10 @@ portable_microhaplotype_object:PmoHeader a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "PmoHeader" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:PmoGenerationMethod ;
-            owl:onProperty portable_microhaplotype_object:generation_method ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:generation_method ],
+            owl:onProperty portable_microhaplotype_object:creation_date ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:generation_method ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:pmo_version ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
@@ -602,17 +605,26 @@ portable_microhaplotype_object:PmoHeader a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:creation_date ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:creation_date ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:creation_date ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:pmo_version ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:pmo_version ] ;
+            owl:onProperty portable_microhaplotype_object:pmo_version ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:generation_method ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:creation_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:generation_method ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:PmoGenerationMethod ;
+            owl:onProperty portable_microhaplotype_object:generation_method ] ;
     skos:definition "Information on the PMO file" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -620,59 +632,20 @@ portable_microhaplotype_object:ProjectInfo a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ProjectInfo" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:project_description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty portable_microhaplotype_object:project_description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:project_contributors ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:project_type ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:project_collector_chief_scientist ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:BioProject_accession ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:project_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:project_contributors ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:project_description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:project_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:project_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:project_type ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty portable_microhaplotype_object:project_collector_chief_scientist ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:BioProject_accession ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:BioProject_accession ],
+            owl:onProperty portable_microhaplotype_object:project_contributors ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:project_type ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -680,11 +653,50 @@ portable_microhaplotype_object:ProjectInfo a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9;|\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:project_collector_chief_scientist ],
         [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:project_description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:project_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:project_name ],
+        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:project_name ] ;
+            owl:onProperty portable_microhaplotype_object:project_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:project_collector_chief_scientist ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:project_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:BioProject_accession ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty portable_microhaplotype_object:project_description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:BioProject_accession ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:project_contributors ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:project_description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:project_type ] ;
     skos:definition "Information on project info" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -692,29 +704,8 @@ portable_microhaplotype_object:Pseudocigar a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Pseudocigar" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:pseudocigar_generation_description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:pseudocigar_seq ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:pseudocigar_seq ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:ref_loc ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:ref_loc ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:pseudocigar_generation_description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:pseudocigar_generation_description ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -722,7 +713,28 @@ portable_microhaplotype_object:Pseudocigar a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:pseudocigar_seq ],
         [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:pseudocigar_generation_description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:pseudocigar_generation_description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:pseudocigar_generation_description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:pseudocigar_seq ],
+        [ a owl:Restriction ;
             owl:allValuesFrom portable_microhaplotype_object:GenomicLocation ;
+            owl:onProperty portable_microhaplotype_object:ref_loc ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:ref_loc ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:ref_loc ] ;
     skos:definition "information on pseudocigar for a sequence" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
@@ -731,6 +743,15 @@ portable_microhaplotype_object:ReactionInfo a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ReactionInfo" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty portable_microhaplotype_object:panel_targets ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:reaction_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:panel_targets ],
+        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
@@ -738,16 +759,7 @@ portable_microhaplotype_object:ReactionInfo a owl:Class,
             owl:onProperty portable_microhaplotype_object:reaction_name ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:reaction_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:panel_targets ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:reaction_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty portable_microhaplotype_object:panel_targets ] ;
+            owl:onProperty portable_microhaplotype_object:reaction_name ] ;
     skos:definition "information on a panel of targeted amplicon primer pairs" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -755,14 +767,11 @@ portable_microhaplotype_object:ReadCountsByStage a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ReadCountsByStage" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:ReadCountsByStageForLibrarySample ;
+            owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:read_counts_by_library_sample_by_stage ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:bioinformatics_run_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:read_counts_by_library_sample_by_stage ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
@@ -771,7 +780,10 @@ portable_microhaplotype_object:ReadCountsByStage a owl:Class,
             owl:onProperty portable_microhaplotype_object:bioinformatics_run_id ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:bioinformatics_run_id ] ;
+            owl:onProperty portable_microhaplotype_object:bioinformatics_run_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:ReadCountsByStageForLibrarySample ;
+            owl:onProperty portable_microhaplotype_object:read_counts_by_library_sample_by_stage ] ;
     skos:definition "Information on the reads counts at several stages of a pipeline" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -783,28 +795,28 @@ portable_microhaplotype_object:ReadCountsByStageForLibrarySample a owl:Class,
                     owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:total_raw_count ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:total_raw_count ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:library_sample_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:total_raw_count ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:read_counts_for_targets ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:total_raw_count ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:library_sample_id ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:total_raw_count ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:total_raw_count ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:library_sample_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:read_counts_for_targets ],
         [ a owl:Restriction ;
             owl:allValuesFrom portable_microhaplotype_object:ReadCountsByStageForTarget ;
             owl:onProperty portable_microhaplotype_object:read_counts_for_targets ] ;
@@ -815,22 +827,22 @@ portable_microhaplotype_object:ReadCountsByStageForTarget a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ReadCountsByStageForTarget" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:target_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:target_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:stages ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:StageReadCounts ;
-            owl:onProperty portable_microhaplotype_object:stages ],
-        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:target_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:StageReadCounts ;
+            owl:onProperty portable_microhaplotype_object:stages ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:stages ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:target_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:target_id ] ;
     skos:definition "Information on the reads counts at several stages of a pipeline for a target" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
@@ -839,8 +851,20 @@ portable_microhaplotype_object:RepresentativeMicrohaplotype a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "RepresentativeMicrohaplotype" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:MaskingInfo ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:alt_annotations ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty portable_microhaplotype_object:masking ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:microhaplotype_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:seq ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:microhaplotype_name ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -848,32 +872,11 @@ portable_microhaplotype_object:RepresentativeMicrohaplotype a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:seq ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:alt_annotations ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:quality ],
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:seq ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:quality ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:microhaplotype_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:Pseudocigar ;
-            owl:onProperty portable_microhaplotype_object:pseudocigar ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:quality ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:microhaplotype_name ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty portable_microhaplotype_object:alt_annotations ],
@@ -885,16 +888,25 @@ portable_microhaplotype_object:RepresentativeMicrohaplotype a owl:Class,
             owl:onProperty portable_microhaplotype_object:pseudocigar ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:quality ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:MaskingInfo ;
             owl:onProperty portable_microhaplotype_object:masking ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:seq ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:microhaplotype_name ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:seq ] ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:quality ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:Pseudocigar ;
+            owl:onProperty portable_microhaplotype_object:pseudocigar ] ;
     skos:definition "the representative sequence for a microhaplotype, similar to a fast(a/q) format" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -902,10 +914,10 @@ portable_microhaplotype_object:RepresentativeMicrohaplotypes a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "RepresentativeMicrohaplotypes" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:RepresentativeMicrohaplotypesForTarget ;
+            owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:targets ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:allValuesFrom portable_microhaplotype_object:RepresentativeMicrohaplotypesForTarget ;
             owl:onProperty portable_microhaplotype_object:targets ] ;
     skos:definition "a collection of representative sequences for microhaplotypes for all targets" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
@@ -914,10 +926,10 @@ portable_microhaplotype_object:RepresentativeMicrohaplotypesForTarget a owl:Clas
         linkml:ClassDefinition ;
     rdfs:label "RepresentativeMicrohaplotypesForTarget" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:GenomicLocation ;
-            owl:onProperty portable_microhaplotype_object:mhap_location ],
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:target_id ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:mhap_location ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
@@ -925,9 +937,6 @@ portable_microhaplotype_object:RepresentativeMicrohaplotypesForTarget a owl:Clas
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:target_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:mhap_location ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
@@ -935,11 +944,14 @@ portable_microhaplotype_object:RepresentativeMicrohaplotypesForTarget a owl:Clas
                                 owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:target_id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:RepresentativeMicrohaplotype ;
-            owl:onProperty portable_microhaplotype_object:microhaplotypes ],
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:mhap_location ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:target_id ] ;
+            owl:allValuesFrom portable_microhaplotype_object:GenomicLocation ;
+            owl:onProperty portable_microhaplotype_object:mhap_location ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:RepresentativeMicrohaplotype ;
+            owl:onProperty portable_microhaplotype_object:microhaplotypes ] ;
     skos:definition "a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -947,90 +959,6 @@ portable_microhaplotype_object:SequencingInfo a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "SequencingInfo" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:nucl_acid_ext ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:sequencing_info_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:nucl_acid_ext_date ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:library_selection ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:seq_platform ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:seq_date ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:nucl_acid_ext ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:library_layout ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:library_source ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:nucl_acid_ext_date ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:seq_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:library_kit ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:library_selection ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:library_layout ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:seq_instrument_model ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:library_selection ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:seq_center ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:pcr_cond ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:sequencing_info_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:library_kit ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:seq_center ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:library_kit ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:library_screen ],
-        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
@@ -1040,17 +968,26 @@ portable_microhaplotype_object:SequencingInfo a owl:Class,
             owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:library_strategy ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:pcr_cond ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:library_screen ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:sequencing_info_name ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:seq_center ],
+            owl:onProperty portable_microhaplotype_object:library_source ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:nucl_acid_amp_date ],
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:seq_instrument_model ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -1058,23 +995,26 @@ portable_microhaplotype_object:SequencingInfo a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:seq_platform ],
         [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:library_screen ],
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:pcr_cond ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:seq_center ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:library_source ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:seq_date ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:nucl_acid_amp_date ],
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:nucl_acid_ext ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:nucl_acid_ext_date ],
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:library_kit ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:library_strategy ],
@@ -1085,16 +1025,22 @@ portable_microhaplotype_object:SequencingInfo a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:sequencing_info_name ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:seq_platform ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:nucl_acid_amp ],
+            owl:onProperty portable_microhaplotype_object:nucl_acid_ext ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:sequencing_info_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:seq_instrument_model ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$" ] ) ] ) ] ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:library_screen ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:nucl_acid_amp ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
@@ -1103,40 +1049,106 @@ portable_microhaplotype_object:SequencingInfo a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:library_strategy ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:nucl_acid_amp ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:nucl_acid_amp_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:library_kit ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:library_layout ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:seq_instrument_model ],
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:library_selection ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:library_source ],
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:seq_center ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:nucl_acid_amp ],
+            owl:onProperty portable_microhaplotype_object:seq_instrument_model ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:library_layout ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:seq_platform ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:library_selection ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:seq_platform ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:seq_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:library_source ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:nucl_acid_amp_date ],
         [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:library_layout ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:library_screen ],
         [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:seq_instrument_model ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:library_source ],
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:nucl_acid_ext_date ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:seq_center ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:nucl_acid_ext_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:library_kit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:library_selection ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:seq_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:nucl_acid_amp_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:nucl_acid_amp ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:nucl_acid_ext_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty portable_microhaplotype_object:pcr_cond ] ;
     skos:definition "Information on sequencing info" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
@@ -1145,14 +1157,8 @@ portable_microhaplotype_object:SpecimenInfo a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "SpecimenInfo" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:host_taxon_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:collection_date ],
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:env_medium ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -1160,62 +1166,155 @@ portable_microhaplotype_object:SpecimenInfo a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:travel_out_six_month ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:blood_meal ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:specimen_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[-+]?\\d{1,2}(?:\\.\\d+)?,[-+]?\\d{1,3}(?:\\.\\d+)?$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:lat_lon ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:collection_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:specimen_accession ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:ParasiteDensity ;
+            owl:onProperty portable_microhaplotype_object:parasite_density_info ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:parasite_density_info ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:specimen_store_loc ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:drug_usage ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:specimen_collect_device ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:gravidity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:PlateInfo ;
+            owl:onProperty portable_microhaplotype_object:storage_plate_info ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:geo_admin1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:specimen_accession ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:host_sex ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:env_broad_scale ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:geo_admin2 ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:host_sex ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:specimen_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:geo_admin1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty portable_microhaplotype_object:geo_admin1 ],
+        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:specimen_name ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:specimen_accession ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:host_subject_id ],
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty portable_microhaplotype_object:blood_meal ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:alternate_identifiers ],
+            owl:onProperty portable_microhaplotype_object:gravid ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:env_broad_scale ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:specimen_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:specimen_accession ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:host_sex ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:project_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:travel_out_six_month ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:host_sex ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:geo_admin3 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty portable_microhaplotype_object:geo_admin3 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty portable_microhaplotype_object:geo_admin1 ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:microscopy_parasite_density_info ],
+            owl:onProperty portable_microhaplotype_object:geo_admin2 ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9;|\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:env_local_scale ],
+            owl:onProperty portable_microhaplotype_object:drug_usage ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:geo_admin3 ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:host_sex ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:gravid ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:specimen_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:storage_plate_info ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:host_taxon_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9;|\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:env_broad_scale ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:specimen_comments ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:specimen_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-Za-z0-9 ,._:'–-]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:collection_country ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:project_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:host_subject_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:storage_plate_info ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Double [ a rdfs:Datatype ;
@@ -1224,13 +1323,19 @@ portable_microhaplotype_object:SpecimenInfo a owl:Class,
             owl:onProperty portable_microhaplotype_object:host_age ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:host_age ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:project_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty portable_microhaplotype_object:geo_admin2 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:specimen_comments ],
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:collection_country ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:collection_country ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
@@ -1239,154 +1344,7 @@ portable_microhaplotype_object:SpecimenInfo a owl:Class,
             owl:onProperty portable_microhaplotype_object:gravidity ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:env_local_scale ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[-+]?\\d{1,2}(?:\\.\\d+)?,[-+]?\\d{1,3}(?:\\.\\d+)?$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:lat_lon ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:specimen_collect_device ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:specimen_type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:specimen_collect_device ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:collection_country ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:gravidity ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:host_subject_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:host_subject_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:env_local_scale ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:storage_plate_info ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9;|\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:env_broad_scale ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:gravid ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:specimen_taxon_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:collection_date ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:geo_admin1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:specimen_type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:ParasiteDensity ;
-            owl:onProperty portable_microhaplotype_object:microscopy_parasite_density_info ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:specimen_taxon_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:collection_country ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:env_broad_scale ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:env_medium ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:specimen_comments ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:specimen_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:specimen_store_loc ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:drug_usage ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-Za-z0-9 ,._:'–-]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:collection_country ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:specimen_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:gravidity ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:blood_meal ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Boolean ;
-            owl:onProperty portable_microhaplotype_object:gravid ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:blood_meal ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Boolean ;
-            owl:onProperty portable_microhaplotype_object:blood_meal ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:host_age ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:specimen_store_loc ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:specimen_accession ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:specimen_store_loc ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:gravid ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:PlateInfo ;
-            owl:onProperty portable_microhaplotype_object:storage_plate_info ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:geo_admin2 ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:host_age ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:collection_date ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
@@ -1394,17 +1352,17 @@ portable_microhaplotype_object:SpecimenInfo a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:project_id ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:specimen_collect_device ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:storage_plate_info ],
+            owl:onProperty portable_microhaplotype_object:specimen_store_loc ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9;|\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:env_medium ],
+                                owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:host_subject_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:host_age ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -1412,17 +1370,53 @@ portable_microhaplotype_object:SpecimenInfo a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:alternate_identifiers ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:gravidity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:blood_meal ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:travel_out_six_month ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:collection_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:specimen_accession ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:collection_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:host_subject_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty portable_microhaplotype_object:geo_admin3 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:specimen_collect_device ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:specimen_store_loc ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty portable_microhaplotype_object:gravid ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:host_taxon_id ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:lat_lon ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:lat_lon ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:host_taxon_id ],
+            owl:onProperty portable_microhaplotype_object:env_local_scale ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:geo_admin3 ],
+            owl:onProperty portable_microhaplotype_object:alternate_identifiers ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
@@ -1430,29 +1424,47 @@ portable_microhaplotype_object:SpecimenInfo a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:host_taxon_id ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:env_medium ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:host_sex ],
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:env_local_scale ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:geo_admin1 ],
+            owl:onProperty portable_microhaplotype_object:geo_admin3 ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9;|\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:drug_usage ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty portable_microhaplotype_object:geo_admin2 ],
+            owl:onProperty portable_microhaplotype_object:env_medium ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:project_id ] ;
+            owl:onProperty portable_microhaplotype_object:env_medium ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9;|\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:env_local_scale ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:specimen_taxon_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:specimen_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:env_broad_scale ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:specimen_taxon_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:lat_lon ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:specimen_comments ] ;
     skos:definition "Information on specimen info" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -1460,28 +1472,28 @@ portable_microhaplotype_object:StageReadCounts a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "StageReadCounts" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:read_count ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:read_count ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:stage ],
+        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:read_count ],
         [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:stage ],
+        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:stage ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:read_count ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:read_count ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:stage ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:stage ] ;
     skos:definition "Information on the reads counts at several stages" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
@@ -1490,65 +1502,65 @@ portable_microhaplotype_object:TargetInfo a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "TargetInfo" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:GenomicLocation ;
-            owl:onProperty portable_microhaplotype_object:insert_location ],
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:gene_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:target_attributes ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:forward_primer ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:PrimerInfo ;
-            owl:onProperty portable_microhaplotype_object:forward_primer ],
+            owl:onProperty portable_microhaplotype_object:reverse_primer ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty portable_microhaplotype_object:markers_of_interest ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:reverse_primer ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:target_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:target_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:target_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:gene_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:forward_primer ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:PrimerInfo ;
+            owl:onProperty portable_microhaplotype_object:reverse_primer ],
         [ a owl:Restriction ;
             owl:allValuesFrom portable_microhaplotype_object:MarkerOfInterest ;
             owl:onProperty portable_microhaplotype_object:markers_of_interest ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:target_name ],
+            owl:onProperty portable_microhaplotype_object:forward_primer ],
         [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:target_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:target_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:target_attributes ],
+            owl:allValuesFrom portable_microhaplotype_object:PrimerInfo ;
+            owl:onProperty portable_microhaplotype_object:forward_primer ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:insert_location ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:gene_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:gene_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:gene_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:reverse_primer ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:PrimerInfo ;
-            owl:onProperty portable_microhaplotype_object:reverse_primer ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:reverse_primer ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty portable_microhaplotype_object:target_attributes ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:gene_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:GenomicLocation ;
+            owl:onProperty portable_microhaplotype_object:insert_location ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty portable_microhaplotype_object:insert_location ] ;
@@ -1559,18 +1571,6 @@ portable_microhaplotype_object:ParasiteDensity a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ParasiteDensity" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:density_method_comments ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:date_measured ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:date_measured ],
-        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Double [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:integer ;
@@ -1579,35 +1579,47 @@ portable_microhaplotype_object:ParasiteDensity a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[-+]?\\\\d*\\\\.?\\\\d+(?:[eE][-+]?\\\\d+)?$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:parasite_density ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:parasite_density ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:parasite_density ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:density_method ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:density_method_comments ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty portable_microhaplotype_object:date_measured ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:parasite_density ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:density_method_comments ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:density_method ],
+            owl:onProperty portable_microhaplotype_object:parasite_density_method ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:density_method ],
+            owl:onProperty portable_microhaplotype_object:parasite_density_method ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:density_method_comments ] ;
+            owl:onProperty portable_microhaplotype_object:density_method_comments ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:date_measured ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:density_method_comments ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:parasite_density ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:date_measured ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:parasite_density_method ] ;
     skos:definition "method and value of determined parasite density" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -1615,10 +1627,7 @@ portable_microhaplotype_object:PlateInfo a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "PlateInfo" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
+            owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:plate_col ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -1629,6 +1638,9 @@ portable_microhaplotype_object:PlateInfo a owl:Class,
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:plate_row ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:plate_name ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -1636,20 +1648,20 @@ portable_microhaplotype_object:PlateInfo a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z]$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:plate_row ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:plate_name ],
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:plate_row ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:plate_col ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:plate_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:plate_col ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:plate_row ] ;
+            owl:onProperty portable_microhaplotype_object:plate_name ] ;
     skos:definition "Information about a plate location in a standard 96 well plate" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -1657,26 +1669,26 @@ portable_microhaplotype_object:PrimerInfo a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "PrimerInfo" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:location ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom portable_microhaplotype_object:GenomicLocation ;
-            owl:onProperty portable_microhaplotype_object:location ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:seq ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:seq ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:location ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:seq ] ;
+            owl:onProperty portable_microhaplotype_object:seq ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:location ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:seq ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:location ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom portable_microhaplotype_object:GenomicLocation ;
+            owl:onProperty portable_microhaplotype_object:location ] ;
     skos:definition "information on a primer sequence" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -1740,10 +1752,10 @@ portable_microhaplotype_object:drug_usage a owl:ObjectProperty,
     skos:definition "Any drug used by subject and the frequency of usage; can include multiple drugs used" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
-portable_microhaplotype_object:library_info a owl:ObjectProperty,
+portable_microhaplotype_object:library_sample_info a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "library_info" ;
-    skos:definition "a list of librarys of all the seq/amp of the specimens within this project" ;
+    rdfs:label "library_sample_info" ;
+    skos:definition "a list of libraries of all the seq/amp of the specimens within this project" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
 portable_microhaplotype_object:library_samples a owl:ObjectProperty,
@@ -1776,12 +1788,6 @@ portable_microhaplotype_object:microhaplotypes a owl:ObjectProperty,
     skos:definition "a list of the microhaplotypes detected for a target" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
-portable_microhaplotype_object:microscopy_parasite_density_info a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "microscopy_parasite_density_info" ;
-    skos:definition "one or more parasite densities in microliters for this specimen" ;
-    skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
-
 portable_microhaplotype_object:panel_info a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "panel_info" ;
@@ -1792,6 +1798,12 @@ portable_microhaplotype_object:panel_targets a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "panel_targets" ;
     skos:definition "a list of the target indexes in the target_info list" ;
+    skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
+
+portable_microhaplotype_object:parasite_density_info a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "parasite_density_info" ;
+    skos:definition "one or more parasite densities in microliters for this specimen" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
 portable_microhaplotype_object:project_contributors a owl:ObjectProperty,
@@ -1809,7 +1821,7 @@ portable_microhaplotype_object:project_info a owl:ObjectProperty,
 portable_microhaplotype_object:qpcr_parasite_density_info a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "qpcr_parasite_density_info" ;
-    skos:definition "qpcr parasite density measurement " ;
+    skos:definition "qpcr parasite density measurement for this extracted sample" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
 portable_microhaplotype_object:reactions a owl:ObjectProperty,
@@ -1912,17 +1924,20 @@ portable_microhaplotype_object:BioMethod a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "BioMethod" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:program_version ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:program ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:program_version ],
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:program ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:program_version ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:program_description ],
+            owl:onProperty portable_microhaplotype_object:program ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:program_url ],
@@ -1930,11 +1945,14 @@ portable_microhaplotype_object:BioMethod a owl:Class,
             owl:minCardinality 0 ;
             owl:onProperty portable_microhaplotype_object:program_description ],
         [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:program_version ],
+        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:program_description ],
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:program_version ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -1945,28 +1963,22 @@ portable_microhaplotype_object:BioMethod a owl:Class,
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:program_version ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9 ]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:program ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:program_url ],
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:program_description ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty portable_microhaplotype_object:additional_argument ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:program ],
+            owl:onProperty portable_microhaplotype_object:program_description ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:program_url ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty portable_microhaplotype_object:program_url ] ;
     skos:definition "methodology description of a portion of a bioinformatics pipeline" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
@@ -2053,12 +2065,6 @@ portable_microhaplotype_object:denoising_method a owl:ObjectProperty,
     skos:definition "the method used to de-noise and/or cluster the raw reads" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
-portable_microhaplotype_object:density_method a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "density_method" ;
-    skos:definition "the method of how this density was obtained" ;
-    skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
-
 portable_microhaplotype_object:density_method_comments a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "density_method_comments" ;
@@ -2087,6 +2093,12 @@ portable_microhaplotype_object:env_medium a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "env_medium" ;
     skos:definition "the environment medium from which the specimen was collected from" ;
+    skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
+
+portable_microhaplotype_object:experiment_accession a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "experiment_accession" ;
+    skos:definition "ERA/SRA experiment accession number for the sample if it was submitted" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
 portable_microhaplotype_object:fastqs_loc a owl:ObjectProperty,
@@ -2349,6 +2361,12 @@ portable_microhaplotype_object:parasite_density a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "parasite_density" ;
     skos:definition "the density in microliters" ;
+    skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
+
+portable_microhaplotype_object:parasite_density_method a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "parasite_density_method" ;
+    skos:definition "the method of how this density was obtained" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
 portable_microhaplotype_object:pcr_cond a owl:ObjectProperty,
@@ -2669,74 +2687,26 @@ portable_microhaplotype_object:GenomicLocation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "GenomicLocation" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:end ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:strand ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:genome_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:start ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:ref_seq ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:end ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:strand ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:ref_seq ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:genome_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:end ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:start ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:start ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty portable_microhaplotype_object:alt_seq ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:ref_seq ],
-        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[A-z-]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:alt_seq ],
         [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:start ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:chrom ],
         [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
-            owl:onProperty portable_microhaplotype_object:chrom ],
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:genome_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:ref_seq ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -2744,14 +2714,62 @@ portable_microhaplotype_object:GenomicLocation a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "[+-]" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:strand ],
         [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-._0-9]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:chrom ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:ref_seq ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
             owl:onProperty portable_microhaplotype_object:genome_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:end ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:start ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:end ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:end ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:start ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty portable_microhaplotype_object:alt_seq ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty portable_microhaplotype_object:chrom ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:strand ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty portable_microhaplotype_object:alt_seq ] ;
+            owl:onProperty portable_microhaplotype_object:strand ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:alt_seq ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[A-z-]+$" ] ) ] ) ] ;
+            owl:onProperty portable_microhaplotype_object:ref_seq ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty portable_microhaplotype_object:genome_id ] ;
     skos:definition "information on the genomic location of specific sequence" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
@@ -2772,7 +2790,7 @@ portable_microhaplotype_object:library_sample_id a owl:ObjectProperty,
             owl:intersectionOf ( linkml:Integer [ a rdfs:Datatype ;
                         owl:onDatatype xsd:string ;
                         owl:withRestrictions ( [ xsd:pattern "^[0-9]+$" ] ) ] ) ] ;
-    skos:definition "the index into the library_info list" ;
+    skos:definition "the index into the library_sample_info list" ;
     skos:inScheme <https://plasmogenepi.github.io/portable-microhaplotype-object> .
 
 portable_microhaplotype_object:program_version a owl:ObjectProperty,

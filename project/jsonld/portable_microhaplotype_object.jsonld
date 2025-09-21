@@ -352,7 +352,7 @@
     {
       "name": "library_sample_id",
       "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/library_sample_id",
-      "description": "the index into the library_info list",
+      "description": "the index into the library_sample_info list",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/library_sample_id",
       "owner": "ReadCountsByStageForLibrarySample",
@@ -1445,6 +1445,20 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "librarySampleInfo__experiment_accession",
+      "description": "ERA/SRA experiment accession number for the sample if it was submitted",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/experiment_accession",
+      "alias": "experiment_accession",
+      "owner": "LibrarySampleInfo",
+      "domain_of": [
+        "LibrarySampleInfo"
+      ],
+      "range": "string",
+      "pattern": "^[A-z-._0-9]+$",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "librarySampleInfo__library_sample_name",
       "description": "a unique identifier for this sequence/amplification run on a specimen_name",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
@@ -1476,7 +1490,7 @@
     },
     {
       "name": "librarySampleInfo__qpcr_parasite_density_info",
-      "description": "qpcr parasite density measurement ",
+      "description": "qpcr parasite density measurement for this extracted sample",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/qpcr_parasite_density_info",
       "alias": "qpcr_parasite_density_info",
@@ -1850,7 +1864,7 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "parasiteDensity__density_method",
+      "name": "parasiteDensity__parasite_density_method",
       "description": "the method of how this density was obtained",
       "examples": [
         {
@@ -1863,8 +1877,8 @@
         }
       ],
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/density_method",
-      "alias": "density_method",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/parasite_density_method",
+      "alias": "parasite_density_method",
       "owner": "ParasiteDensity",
       "domain_of": [
         "ParasiteDensity"
@@ -2193,11 +2207,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "specimenInfo__microscopy_parasite_density_info",
+      "name": "specimenInfo__parasite_density_info",
       "description": "one or more parasite densities in microliters for this specimen",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/microscopy_parasite_density_info",
-      "alias": "microscopy_parasite_density_info",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/parasite_density_info",
+      "alias": "parasite_density_info",
       "owner": "SpecimenInfo",
       "domain_of": [
         "SpecimenInfo"
@@ -2771,11 +2785,11 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "portableMicrohaplotypeObject__library_info",
-      "description": "a list of librarys of all the seq/amp of the specimens within this project",
+      "name": "portableMicrohaplotypeObject__library_sample_info",
+      "description": "a list of libraries of all the seq/amp of the specimens within this project",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/library_info",
-      "alias": "library_info",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/library_sample_info",
+      "alias": "library_sample_info",
       "owner": "PortableMicrohaplotypeObject",
       "domain_of": [
         "PortableMicrohaplotypeObject"
@@ -3807,6 +3821,7 @@
         "panel_id",
         "librarySampleInfo__fastqs_loc",
         "librarySampleInfo__run_accession",
+        "librarySampleInfo__experiment_accession",
         "librarySampleInfo__library_sample_name",
         "librarySampleInfo__library_prep_plate_info",
         "librarySampleInfo__qpcr_parasite_density_info"
@@ -3838,6 +3853,13 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "experiment_accession",
+          "description": "ERA/SRA experiment accession number for the sample if it was submitted",
+          "range": "string",
+          "pattern": "^[A-z-._0-9]+$",
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "library_sample_name",
           "description": "a unique identifier for this sequence/amplification run on a specimen_name",
           "identifier": true,
@@ -3854,7 +3876,7 @@
         },
         {
           "name": "qpcr_parasite_density_info",
-          "description": "qpcr parasite density measurement ",
+          "description": "qpcr parasite density measurement for this extracted sample",
           "range": "ParasiteDensity",
           "multivalued": true,
           "inlined_as_list": true,
@@ -4146,7 +4168,7 @@
       "description": "method and value of determined parasite density",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
-        "parasiteDensity__density_method",
+        "parasiteDensity__parasite_density_method",
         "parasiteDensity__parasite_density",
         "parasiteDensity__date_measured",
         "parasiteDensity__density_method_comments"
@@ -4154,7 +4176,7 @@
       "slot_usage": {},
       "attributes": [
         {
-          "name": "density_method",
+          "name": "parasite_density_method",
           "description": "the method of how this density was obtained",
           "examples": [
             {
@@ -4319,7 +4341,7 @@
         "specimenInfo__gravid",
         "specimenInfo__blood_meal",
         "specimenInfo__gravidity",
-        "specimenInfo__microscopy_parasite_density_info",
+        "specimenInfo__parasite_density_info",
         "specimenInfo__collection_date",
         "specimenInfo__host_age",
         "specimenInfo__collection_country",
@@ -4418,7 +4440,7 @@
           "@type": "SlotDefinition"
         },
         {
-          "name": "microscopy_parasite_density_info",
+          "name": "parasite_density_info",
           "description": "one or more parasite densities in microliters for this specimen",
           "range": "ParasiteDensity",
           "multivalued": true,
@@ -4890,7 +4912,7 @@
       "description": "Information on final results from a targeted amplicon analysis",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
-        "portableMicrohaplotypeObject__library_info",
+        "portableMicrohaplotypeObject__library_sample_info",
         "portableMicrohaplotypeObject__specimen_info",
         "portableMicrohaplotypeObject__sequencing_info",
         "portableMicrohaplotypeObject__panel_info",
@@ -4907,8 +4929,8 @@
       "slot_usage": {},
       "attributes": [
         {
-          "name": "library_info",
-          "description": "a list of librarys of all the seq/amp of the specimens within this project",
+          "name": "library_sample_info",
+          "description": "a list of libraries of all the seq/amp of the specimens within this project",
           "range": "LibrarySampleInfo",
           "required": true,
           "multivalued": true,
@@ -5026,9 +5048,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2025-07-16T16:06:30",
-  "source_file_size": 41567,
-  "generation_date": "2025-07-16T16:07:41",
+  "source_file_date": "2025-07-22T15:18:47",
+  "source_file_size": 41818,
+  "generation_date": "2025-07-22T15:18:58",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",

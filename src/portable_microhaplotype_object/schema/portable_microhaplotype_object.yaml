@@ -526,6 +526,12 @@ classes:
         required: false
         description: >-
           ERA/SRA run accession number for the sample if it was submitted
+      experiment_accession:
+        range: string
+        pattern: "^[A-z-._0-9]+$"
+        required: false
+        description: >-
+          ERA/SRA experiment accession number for the sample if it was submitted
       library_sample_name:
         range: string
         pattern: "^[A-z-._0-9 ]+$"
@@ -544,7 +550,7 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: >-
-          qpcr parasite density measurement 
+          qpcr parasite density measurement for this extracted sample
 
   SequencingInfo:
     description: >-
@@ -690,7 +696,7 @@ classes:
     description: >- 
       method and value of determined parasite density
     attributes:
-      density_method:
+      parasite_density_method:
         range: string
         pattern: "^[A-z-._0-9 ]+$"
         required: true
@@ -849,7 +855,7 @@ classes:
         required: false
         description: >-
           the gravidity of the specimen host (number of previous pregnancies)
-      microscopy_parasite_density_info:
+      parasite_density_info:
         range: ParasiteDensity
         required: false
         multivalued: true
@@ -1147,13 +1153,13 @@ classes:
 #      extra_slots:
 #        allowed: true
     attributes:
-      library_info:
+      library_sample_info:
         range: LibrarySampleInfo
         required: true
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of librarys of all the seq/amp of the specimens within this project
+          a list of libraries of all the seq/amp of the specimens within this project
       specimen_info:
         range: SpecimenInfo
         required: true
@@ -1244,7 +1250,7 @@ slots:
     pattern: "^[0-9]+$"
     required: true
     description: >-
-      the index into the library_info list
+      the index into the library_sample_info list
   specimen_id:
     range: integer
     pattern: "^[0-9]+$"
