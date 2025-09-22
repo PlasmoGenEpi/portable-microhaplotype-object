@@ -126,6 +126,7 @@ linkml:Sparqlpath xsd:string
     (  $<LibrarySampleInfo_tes> (  <sequencing_info_id> @linkml:Integer ;
           <specimen_id> @linkml:Integer ;
           <panel_id> @linkml:Integer ;
+          <alternate_identifiers> @linkml:String * ;
           <fastqs_loc> @linkml:String ? ;
           <run_accession> @linkml:String ? ;
           <experiment_accession> @linkml:String ? ;
@@ -245,6 +246,16 @@ linkml:Sparqlpath xsd:string
     )
 }
 
+<ProteinVariant> CLOSED {
+    (  $<ProteinVariant_tes> (  <gene_name> @linkml:String ? ;
+          <protein_location> @<GenomicLocation> ;
+          <codon_genomic_location> @<GenomicLocation> ? ;
+          <alternative_gene_name> @linkml:String ?
+       ) ;
+       rdf:type [ <ProteinVariant> ] ?
+    )
+}
+
 <Pseudocigar> CLOSED {
     (  $<Pseudocigar_tes> (  <pseudocigar_seq> @linkml:String ;
           <ref_loc> @<GenomicLocation> ;
@@ -293,7 +304,9 @@ linkml:Sparqlpath xsd:string
           <quality> @linkml:String ? ;
           <pseudocigar> @<Pseudocigar> ? ;
           <masking> @<MaskingInfo> * ;
-          <alt_annotations> @linkml:String *
+          <alt_annotations> @linkml:String * ;
+          <associated_protein_variants> @<ProteinVariant> * ;
+          <associated_seq_variants> @<GenomicLocation> *
        ) ;
        rdf:type [ <RepresentativeMicrohaplotype> ] ?
     )
@@ -336,10 +349,14 @@ linkml:Sparqlpath xsd:string
 }
 
 <SpecimenInfo> CLOSED {
-    (  $<SpecimenInfo_tes> (  <specimen_taxon_id> @linkml:Integer + ;
+    (  $<SpecimenInfo_tes> (  <alternate_identifiers> @linkml:String * ;
+          <lat_lon> @linkml:String ? ;
+          <geo_admin1> @linkml:String ? ;
+          <geo_admin2> @linkml:String ? ;
+          <geo_admin3> @linkml:String ? ;
+          <specimen_taxon_id> @linkml:Integer + ;
           <host_subject_id> @linkml:Integer ? ;
           <host_taxon_id> @linkml:Integer ;
-          <alternate_identifiers> @linkml:String * ;
           <host_sex> @linkml:String ? ;
           <specimen_accession> @linkml:String ? ;
           <gravid> @linkml:Boolean ? ;
@@ -349,21 +366,19 @@ linkml:Sparqlpath xsd:string
           <collection_date> @linkml:String ;
           <host_age> @linkml:Double ? ;
           <collection_country> @linkml:String ;
-          <geo_admin1> @linkml:String ? ;
-          <geo_admin2> @linkml:String ? ;
-          <geo_admin3> @linkml:String ? ;
-          <lat_lon> @linkml:String ? ;
           <specimen_store_loc> @linkml:String ? ;
           <specimen_collect_device> @linkml:String ? ;
           <specimen_type> @linkml:String ? ;
           <project_id> @linkml:Integer ;
           <specimen_comments> @linkml:String * ;
-          <travel_out_six_month> @linkml:String * ;
+          <has_travel_out_six_month> @linkml:Boolean ? ;
+          <travel_out_six_month> @<TravelInfo> * ;
           <storage_plate_info> @<PlateInfo> ? ;
           <env_medium> @linkml:String ? ;
           <env_local_scale> @linkml:String ? ;
           <env_broad_scale> @linkml:String ? ;
-          <drug_usage> @linkml:String *
+          <drug_usage> @linkml:String * ;
+          <treatment_status> @linkml:String *
        ) ;
        rdf:type [ <SpecimenInfo> ]
     )
@@ -378,8 +393,8 @@ linkml:Sparqlpath xsd:string
 }
 
 <TargetInfo> CLOSED {
-    (  $<TargetInfo_tes> (  <target_name> @linkml:String ;
-          <gene_name> @linkml:String ? ;
+    (  $<TargetInfo_tes> (  <gene_name> @linkml:String ? ;
+          <target_name> @linkml:String ;
           <insert_location> @<GenomicLocation> ? ;
           <forward_primer> @<PrimerInfo> ;
           <reverse_primer> @<PrimerInfo> ;
@@ -387,6 +402,20 @@ linkml:Sparqlpath xsd:string
           <target_attributes> @linkml:String *
        ) ;
        rdf:type [ <TargetInfo> ] ?
+    )
+}
+
+<TravelInfo> CLOSED {
+    (  $<TravelInfo_tes> (  <lat_lon> @linkml:String ? ;
+          <geo_admin1> @linkml:String ? ;
+          <geo_admin2> @linkml:String ? ;
+          <geo_admin3> @linkml:String ? ;
+          <travel_country> @linkml:String ;
+          <travel_start_date> @linkml:String ;
+          <travel_end_date> @linkml:String ;
+          <bed_net_usage> @linkml:Double ?
+       ) ;
+       rdf:type [ <TravelInfo> ] ?
     )
 }
 

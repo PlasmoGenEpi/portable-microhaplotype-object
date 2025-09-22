@@ -362,6 +362,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -377,6 +378,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -392,6 +394,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -408,6 +411,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -423,6 +427,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -438,6 +443,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -453,6 +459,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -468,6 +475,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -484,6 +492,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -499,6 +508,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -532,6 +542,127 @@
       "range": "string",
       "required": true,
       "pattern": "^[A-z-._0-9 ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "alternate_identifiers",
+      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/alternate_identifiers",
+      "description": "a list of optional alternative names",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/alternate_identifiers",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "LibrarySampleInfo",
+        "SpecimenInfo"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "inlined_as_list": true,
+      "pattern": "^[A-z-._0-9 ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "geo_admin1",
+      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/geo_admin1",
+      "description": "geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)",
+      "examples": [
+        {
+          "value": "State/Province",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/geo_admin1",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "TravelInfo",
+        "SpecimenInfo"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "geo_admin2",
+      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/geo_admin2",
+      "description": "geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)",
+      "examples": [
+        {
+          "value": "city",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/geo_admin2",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "TravelInfo",
+        "SpecimenInfo"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "geo_admin3",
+      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/geo_admin3",
+      "description": "geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)",
+      "examples": [
+        {
+          "value": "district of a city",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/geo_admin3",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "TravelInfo",
+        "SpecimenInfo"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "lat_lon",
+      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/lat_lon",
+      "description": "the latitude and longitude of a specific site",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/lat_lon",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "TravelInfo",
+        "SpecimenInfo"
+      ],
+      "range": "string",
+      "pattern": "^[-+]?\\d{1,2}(?:\\.\\d+)?,[-+]?\\d{1,3}(?:\\.\\d+)?$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "gene_name",
+      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/gene_name",
+      "description": "an identifier of the gene, if any, is being covered with this targeted",
+      "examples": [
+        {
+          "value": "PF3D7_0304600.1",
+          "@type": "Example"
+        },
+        {
+          "value": "PF3D7_0810800.1",
+          "@type": "Example"
+        },
+        {
+          "value": "PF3D7_1343700.1",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/gene_name",
+      "owner": "ProteinVariant",
+      "domain_of": [
+        "TargetInfo",
+        "ProteinVariant"
+      ],
+      "range": "string",
+      "pattern": "^[A-z-._0-9]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -576,20 +707,6 @@
       ],
       "range": "string",
       "required": true,
-      "pattern": "^[A-z-._0-9]+$",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "targetInfo__gene_name",
-      "description": "an identifier of the gene, if any, is being covered with this targeted",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/gene_name",
-      "alias": "gene_name",
-      "owner": "TargetInfo",
-      "domain_of": [
-        "TargetInfo"
-      ],
-      "range": "string",
       "pattern": "^[A-z-._0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -694,6 +811,7 @@
       "required": true,
       "multivalued": true,
       "inlined_as_list": true,
+      "minimum_value": 0,
       "@type": "SlotDefinition"
     },
     {
@@ -846,7 +964,7 @@
     },
     {
       "name": "representativeMicrohaplotype__alt_annotations",
-      "description": "a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc",
+      "description": "a list of additional annotations associated with this microhaplotype, e.g. wildtype",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/alt_annotations",
       "alias": "alt_annotations",
@@ -856,6 +974,38 @@
       ],
       "range": "string",
       "multivalued": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "representativeMicrohaplotype__associated_protein_variants",
+      "description": "a list of associated protein variants with this haplotype, e.g. amino acid changes/INDELS",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/associated_protein_variants",
+      "alias": "associated_protein_variants",
+      "owner": "RepresentativeMicrohaplotype",
+      "domain_of": [
+        "RepresentativeMicrohaplotype"
+      ],
+      "range": "ProteinVariant",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "representativeMicrohaplotype__associated_seq_variants",
+      "description": "a list of associated sequence variants with this haplotype, e.g. SNPS, indels",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/associated_seq_variants",
+      "alias": "associated_seq_variants",
+      "owner": "RepresentativeMicrohaplotype",
+      "domain_of": [
+        "RepresentativeMicrohaplotype"
+      ],
+      "range": "GenomicLocation",
+      "multivalued": true,
+      "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
@@ -871,6 +1021,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "@type": "SlotDefinition"
     },
     {
@@ -885,6 +1036,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "@type": "SlotDefinition"
     },
     {
@@ -899,6 +1051,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "@type": "SlotDefinition"
     },
     {
@@ -1023,6 +1176,7 @@
       "required": true,
       "multivalued": true,
       "inlined_as_list": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]$",
       "@type": "SlotDefinition"
     },
@@ -1110,6 +1264,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -1125,6 +1280,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -1171,6 +1327,63 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "proteinVariant__protein_location",
+      "description": "the position within the protein, the chromosome in this case would be the transcript name",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/protein_location",
+      "alias": "protein_location",
+      "owner": "ProteinVariant",
+      "domain_of": [
+        "ProteinVariant"
+      ],
+      "range": "GenomicLocation",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinVariant__codon_genomic_location",
+      "description": "the position within the genomic sequence of the codon",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/codon_genomic_location",
+      "alias": "codon_genomic_location",
+      "owner": "ProteinVariant",
+      "domain_of": [
+        "ProteinVariant"
+      ],
+      "range": "GenomicLocation",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "proteinVariant__alternative_gene_name",
+      "description": "an alternative gene name",
+      "examples": [
+        {
+          "value": "CSP",
+          "@type": "Example"
+        },
+        {
+          "value": "AMA1",
+          "@type": "Example"
+        },
+        {
+          "value": "DHPS",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/alternative_gene_name",
+      "alias": "alternative_gene_name",
+      "owner": "ProteinVariant",
+      "domain_of": [
+        "ProteinVariant"
+      ],
+      "range": "string",
+      "pattern": "^[A-z-._0-9]+$",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "primerInfo__location",
       "description": "what the intended genomic location of the primer is",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
@@ -1213,6 +1426,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "@type": "SlotDefinition"
     },
     {
@@ -1226,6 +1440,7 @@
         "MicrohaplotypeForTarget"
       ],
       "range": "integer",
+      "minimum_value": 0,
       "@type": "SlotDefinition"
     },
     {
@@ -1403,6 +1618,7 @@
         "PlateInfo"
       ],
       "range": "integer",
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -2061,6 +2277,99 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "travelInfo__travel_country",
+      "description": "the name of country, would be the same as admin level 0",
+      "examples": [
+        {
+          "value": "Senegal",
+          "@type": "Example"
+        },
+        {
+          "value": "USA",
+          "@type": "Example"
+        },
+        {
+          "value": "Japan",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/travel_country",
+      "alias": "travel_country",
+      "owner": "TravelInfo",
+      "domain_of": [
+        "TravelInfo"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^[A-Za-z0-9 ,._:'\u2013-]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "travelInfo__travel_start_date",
+      "description": "the date of the start of travel, can be approximate, should be YYYY-MM or YYYY-MM-DD (preferred)",
+      "examples": [
+        {
+          "value": "2024-03-10",
+          "@type": "Example"
+        },
+        {
+          "value": "2024-03",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/travel_start_date",
+      "alias": "travel_start_date",
+      "owner": "TravelInfo",
+      "domain_of": [
+        "TravelInfo"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "travelInfo__travel_end_date",
+      "description": "the date of the end of travel, can be approximate, should be YYYY-MM or YYYY-MM-DD (preferred)",
+      "examples": [
+        {
+          "value": "2024-03-10",
+          "@type": "Example"
+        },
+        {
+          "value": "2024-03",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/travel_end_date",
+      "alias": "travel_end_date",
+      "owner": "TravelInfo",
+      "domain_of": [
+        "TravelInfo"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "travelInfo__bed_net_usage",
+      "description": "approximate usage of bed net while traveling, 1 = 100% nights with bed net, 0 = 0% no bed net usage",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/bed_net_usage",
+      "alias": "bed_net_usage",
+      "owner": "TravelInfo",
+      "domain_of": [
+        "TravelInfo"
+      ],
+      "range": "double",
+      "minimum_value": 0,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "specimenInfo__specimen_name",
       "description": "an identifier for the specimen, should be unique within this sample set",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
@@ -2090,6 +2399,7 @@
       "required": true,
       "multivalued": true,
       "inlined_as_list": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -2104,6 +2414,7 @@
         "SpecimenInfo"
       ],
       "range": "integer",
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -2119,23 +2430,8 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "specimenInfo__alternate_identifiers",
-      "description": "a list of optional alternative names for the specimens",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/alternate_identifiers",
-      "alias": "alternate_identifiers",
-      "owner": "SpecimenInfo",
-      "domain_of": [
-        "SpecimenInfo"
-      ],
-      "range": "string",
-      "multivalued": true,
-      "inlined_as_list": true,
-      "pattern": "^[A-z-._0-9 ]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -2203,6 +2499,7 @@
         "SpecimenInfo"
       ],
       "range": "integer",
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -2276,6 +2573,7 @@
         "SpecimenInfo"
       ],
       "range": "double",
+      "minimum_value": 0,
       "pattern": "^\\d*\\.?\\d+$",
       "@type": "SlotDefinition"
     },
@@ -2306,77 +2604,6 @@
       "range": "string",
       "required": true,
       "pattern": "^[A-Za-z0-9 ,._:'\u2013-]+$",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "specimenInfo__geo_admin1",
-      "description": "geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)",
-      "examples": [
-        {
-          "value": "State/Province",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/geo_admin1",
-      "alias": "geo_admin1",
-      "owner": "SpecimenInfo",
-      "domain_of": [
-        "SpecimenInfo"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "specimenInfo__geo_admin2",
-      "description": "geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)",
-      "examples": [
-        {
-          "value": "city",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/geo_admin2",
-      "alias": "geo_admin2",
-      "owner": "SpecimenInfo",
-      "domain_of": [
-        "SpecimenInfo"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "specimenInfo__geo_admin3",
-      "description": "geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)",
-      "examples": [
-        {
-          "value": "district of a city",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/geo_admin3",
-      "alias": "geo_admin3",
-      "owner": "SpecimenInfo",
-      "domain_of": [
-        "SpecimenInfo"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "specimenInfo__lat_lon",
-      "description": "the latitude and longitude of the collection site of the specimen",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/lat_lon",
-      "alias": "lat_lon",
-      "owner": "SpecimenInfo",
-      "domain_of": [
-        "SpecimenInfo"
-      ],
-      "range": "string",
-      "pattern": "^[-+]?\\d{1,2}(?:\\.\\d+)?,[-+]?\\d{1,3}(?:\\.\\d+)?$",
       "@type": "SlotDefinition"
     },
     {
@@ -2457,6 +2684,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -2476,6 +2704,19 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "specimenInfo__has_travel_out_six_month",
+      "description": "has travelled out from local region in the last six months",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/has_travel_out_six_month",
+      "alias": "has_travel_out_six_month",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "SpecimenInfo"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "specimenInfo__travel_out_six_month",
       "description": "Specification of the countries travelled in the last six months; can include multiple travels",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
@@ -2485,9 +2726,9 @@
       "domain_of": [
         "SpecimenInfo"
       ],
-      "range": "string",
+      "range": "TravelInfo",
       "multivalued": true,
-      "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2603,6 +2844,35 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "specimenInfo__treatment_status",
+      "description": "If person has been treated with drugs, what was the treatment outcome",
+      "examples": [
+        {
+          "value": "failed",
+          "@type": "Example"
+        },
+        {
+          "value": "successful",
+          "@type": "Example"
+        },
+        {
+          "value": "partial_response",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/treatment_status",
+      "alias": "treatment_status",
+      "owner": "SpecimenInfo",
+      "domain_of": [
+        "SpecimenInfo"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "bioinformaticsRunInfo__run_date",
       "description": "the date when the run was done, should be YYYY-MM-DD",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
@@ -2701,6 +2971,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -2748,6 +3019,7 @@
       ],
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -3018,6 +3290,7 @@
       "usage_slot_name": "target_id",
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     },
@@ -3038,6 +3311,7 @@
       "usage_slot_name": "specimen_id",
       "range": "integer",
       "required": true,
+      "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
     }
@@ -3079,8 +3353,8 @@
       "description": "Information about a specific target within a genome",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
+        "gene_name",
         "targetInfo__target_name",
-        "targetInfo__gene_name",
         "targetInfo__insert_location",
         "targetInfo__forward_primer",
         "targetInfo__reverse_primer",
@@ -3094,13 +3368,6 @@
           "description": "an identifier for this target",
           "range": "string",
           "required": true,
-          "pattern": "^[A-z-._0-9]+$",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "gene_name",
-          "description": "an identifier of the gene, if any, is being covered with this targeted",
-          "range": "string",
           "pattern": "^[A-z-._0-9]+$",
           "@type": "SlotDefinition"
         },
@@ -3174,6 +3441,7 @@
           "required": true,
           "multivalued": true,
           "inlined_as_list": true,
+          "minimum_value": 0,
           "@type": "SlotDefinition"
         },
         {
@@ -3268,7 +3536,9 @@
         "representativeMicrohaplotype__quality",
         "representativeMicrohaplotype__pseudocigar",
         "representativeMicrohaplotype__masking",
-        "representativeMicrohaplotype__alt_annotations"
+        "representativeMicrohaplotype__alt_annotations",
+        "representativeMicrohaplotype__associated_protein_variants",
+        "representativeMicrohaplotype__associated_seq_variants"
       ],
       "slot_usage": {},
       "attributes": [
@@ -3302,8 +3572,24 @@
         },
         {
           "name": "alt_annotations",
-          "description": "a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc",
+          "description": "a list of additional annotations associated with this microhaplotype, e.g. wildtype",
           "range": "string",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "associated_protein_variants",
+          "description": "a list of associated protein variants with this haplotype, e.g. amino acid changes/INDELS",
+          "range": "ProteinVariant",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "associated_seq_variants",
+          "description": "a list of associated sequence variants with this haplotype, e.g. SNPS, indels",
+          "range": "GenomicLocation",
           "multivalued": true,
           "inlined_as_list": true,
           "@type": "SlotDefinition"
@@ -3330,6 +3616,7 @@
           "description": "the start of the masking",
           "range": "integer",
           "required": true,
+          "minimum_value": 0,
           "@type": "SlotDefinition"
         },
         {
@@ -3337,6 +3624,7 @@
           "description": "the size of the masking",
           "range": "integer",
           "required": true,
+          "minimum_value": 0,
           "@type": "SlotDefinition"
         },
         {
@@ -3344,6 +3632,7 @@
           "description": "the size of replacement mask",
           "range": "integer",
           "required": true,
+          "minimum_value": 0,
           "@type": "SlotDefinition"
         },
         {
@@ -3472,6 +3761,7 @@
           "required": true,
           "multivalued": true,
           "inlined_as_list": true,
+          "minimum_value": 0,
           "pattern": "^[0-9]$",
           "@type": "SlotDefinition"
         },
@@ -3544,6 +3834,7 @@
           "description": "the start of the location, 0-based positioning",
           "range": "integer",
           "required": true,
+          "minimum_value": 0,
           "pattern": "^[0-9]+$",
           "@type": "SlotDefinition"
         },
@@ -3552,6 +3843,7 @@
           "description": "the end of the location, 0-based positioning",
           "range": "integer",
           "required": true,
+          "minimum_value": 0,
           "pattern": "^[0-9]+$",
           "@type": "SlotDefinition"
         },
@@ -3578,6 +3870,57 @@
         }
       ],
       "class_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/GenomicLocation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ProteinVariant",
+      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/ProteinVariant",
+      "description": "information on a variant in protein sequence",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slots": [
+        "gene_name",
+        "proteinVariant__protein_location",
+        "proteinVariant__codon_genomic_location",
+        "proteinVariant__alternative_gene_name"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "protein_location",
+          "description": "the position within the protein, the chromosome in this case would be the transcript name",
+          "range": "GenomicLocation",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "codon_genomic_location",
+          "description": "the position within the genomic sequence of the codon",
+          "range": "GenomicLocation",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "alternative_gene_name",
+          "description": "an alternative gene name",
+          "examples": [
+            {
+              "value": "CSP",
+              "@type": "Example"
+            },
+            {
+              "value": "AMA1",
+              "@type": "Example"
+            },
+            {
+              "value": "DHPS",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "pattern": "^[A-z-._0-9]+$",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/ProteinVariant",
       "@type": "ClassDefinition"
     },
     {
@@ -3642,12 +3985,14 @@
           "description": "the read count associated with this microhaplotype",
           "range": "integer",
           "required": true,
+          "minimum_value": 0,
           "@type": "SlotDefinition"
         },
         {
           "name": "umis",
           "description": "the unique molecular identifier (umi) count associated with this microhaplotype",
           "range": "integer",
+          "minimum_value": 0,
           "@type": "SlotDefinition"
         }
       ],
@@ -3803,6 +4148,7 @@
           "name": "plate_col",
           "description": "the column the specimen was in",
           "range": "integer",
+          "minimum_value": 0,
           "pattern": "^[0-9]+$",
           "@type": "SlotDefinition"
         }
@@ -3819,6 +4165,7 @@
         "sequencing_info_id",
         "LibrarySampleInfo_specimen_id",
         "panel_id",
+        "alternate_identifiers",
         "librarySampleInfo__fastqs_loc",
         "librarySampleInfo__run_accession",
         "librarySampleInfo__experiment_accession",
@@ -4326,16 +4673,106 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "TravelInfo",
+      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/TravelInfo",
+      "description": "Information on travel info",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slots": [
+        "lat_lon",
+        "geo_admin1",
+        "geo_admin2",
+        "geo_admin3",
+        "travelInfo__travel_country",
+        "travelInfo__travel_start_date",
+        "travelInfo__travel_end_date",
+        "travelInfo__bed_net_usage"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "travel_country",
+          "description": "the name of country, would be the same as admin level 0",
+          "examples": [
+            {
+              "value": "Senegal",
+              "@type": "Example"
+            },
+            {
+              "value": "USA",
+              "@type": "Example"
+            },
+            {
+              "value": "Japan",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-Za-z0-9 ,._:'\u2013-]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "travel_start_date",
+          "description": "the date of the start of travel, can be approximate, should be YYYY-MM or YYYY-MM-DD (preferred)",
+          "examples": [
+            {
+              "value": "2024-03-10",
+              "@type": "Example"
+            },
+            {
+              "value": "2024-03",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "required": true,
+          "pattern": "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "travel_end_date",
+          "description": "the date of the end of travel, can be approximate, should be YYYY-MM or YYYY-MM-DD (preferred)",
+          "examples": [
+            {
+              "value": "2024-03-10",
+              "@type": "Example"
+            },
+            {
+              "value": "2024-03",
+              "@type": "Example"
+            }
+          ],
+          "range": "string",
+          "required": true,
+          "pattern": "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "bed_net_usage",
+          "description": "approximate usage of bed net while traveling, 1 = 100% nights with bed net, 0 = 0% no bed net usage",
+          "range": "double",
+          "minimum_value": 0,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/TravelInfo",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "SpecimenInfo",
       "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/SpecimenInfo",
       "description": "Information on specimen info",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
+        "alternate_identifiers",
+        "lat_lon",
+        "geo_admin1",
+        "geo_admin2",
+        "geo_admin3",
         "specimenInfo__specimen_name",
         "specimenInfo__specimen_taxon_id",
         "specimenInfo__host_subject_id",
         "specimenInfo__host_taxon_id",
-        "specimenInfo__alternate_identifiers",
         "specimenInfo__host_sex",
         "specimenInfo__specimen_accession",
         "specimenInfo__gravid",
@@ -4345,21 +4782,19 @@
         "specimenInfo__collection_date",
         "specimenInfo__host_age",
         "specimenInfo__collection_country",
-        "specimenInfo__geo_admin1",
-        "specimenInfo__geo_admin2",
-        "specimenInfo__geo_admin3",
-        "specimenInfo__lat_lon",
         "specimenInfo__specimen_store_loc",
         "specimenInfo__specimen_collect_device",
         "specimenInfo__specimen_type",
         "specimenInfo__project_id",
         "specimenInfo__specimen_comments",
+        "specimenInfo__has_travel_out_six_month",
         "specimenInfo__travel_out_six_month",
         "specimenInfo__storage_plate_info",
         "specimenInfo__env_medium",
         "specimenInfo__env_local_scale",
         "specimenInfo__env_broad_scale",
-        "specimenInfo__drug_usage"
+        "specimenInfo__drug_usage",
+        "specimenInfo__treatment_status"
       ],
       "slot_usage": {},
       "attributes": [
@@ -4379,6 +4814,7 @@
           "required": true,
           "multivalued": true,
           "inlined_as_list": true,
+          "minimum_value": 0,
           "pattern": "^[0-9]+$",
           "@type": "SlotDefinition"
         },
@@ -4386,6 +4822,7 @@
           "name": "host_subject_id",
           "description": "an identifier for the individual a specimen was collected from",
           "range": "integer",
+          "minimum_value": 0,
           "pattern": "^[0-9]+$",
           "@type": "SlotDefinition"
         },
@@ -4394,16 +4831,8 @@
           "description": "the NCBI taxonomy number of the host that the specimen was collected from",
           "range": "integer",
           "required": true,
+          "minimum_value": 0,
           "pattern": "^[0-9]+$",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "alternate_identifiers",
-          "description": "a list of optional alternative names for the specimens",
-          "range": "string",
-          "multivalued": true,
-          "inlined_as_list": true,
-          "pattern": "^[A-z-._0-9 ]+$",
           "@type": "SlotDefinition"
         },
         {
@@ -4436,6 +4865,7 @@
           "name": "gravidity",
           "description": "the gravidity of the specimen host (number of previous pregnancies)",
           "range": "integer",
+          "minimum_value": 0,
           "pattern": "^[0-9]+$",
           "@type": "SlotDefinition"
         },
@@ -4487,6 +4917,7 @@
             }
           ],
           "range": "double",
+          "minimum_value": 0,
           "pattern": "^\\d*\\.?\\d+$",
           "@type": "SlotDefinition"
         },
@@ -4510,49 +4941,6 @@
           "range": "string",
           "required": true,
           "pattern": "^[A-Za-z0-9 ,._:'\u2013-]+$",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "geo_admin1",
-          "description": "geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)",
-          "examples": [
-            {
-              "value": "State/Province",
-              "@type": "Example"
-            }
-          ],
-          "range": "string",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "geo_admin2",
-          "description": "geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)",
-          "examples": [
-            {
-              "value": "city",
-              "@type": "Example"
-            }
-          ],
-          "range": "string",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "geo_admin3",
-          "description": "geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)",
-          "examples": [
-            {
-              "value": "district of a city",
-              "@type": "Example"
-            }
-          ],
-          "range": "string",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "lat_lon",
-          "description": "the latitude and longitude of the collection site of the specimen",
-          "range": "string",
-          "pattern": "^[-+]?\\d{1,2}(?:\\.\\d+)?,[-+]?\\d{1,3}(?:\\.\\d+)?$",
           "@type": "SlotDefinition"
         },
         {
@@ -4605,6 +4993,7 @@
           "description": "the index into the project_info list",
           "range": "integer",
           "required": true,
+          "minimum_value": 0,
           "pattern": "^[0-9]+$",
           "@type": "SlotDefinition"
         },
@@ -4617,11 +5006,16 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "has_travel_out_six_month",
+          "description": "has travelled out from local region in the last six months",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "travel_out_six_month",
           "description": "Specification of the countries travelled in the last six months; can include multiple travels",
-          "range": "string",
+          "range": "TravelInfo",
           "multivalued": true,
-          "pattern": "^[A-z-._0-9\\(\\),\\/\\ ]+$",
           "@type": "SlotDefinition"
         },
         {
@@ -4695,6 +5089,28 @@
             }
           ],
           "string_serialization": "{text};{integer}/[year|month|week|day|hour]",
+          "range": "string",
+          "multivalued": true,
+          "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "treatment_status",
+          "description": "If person has been treated with drugs, what was the treatment outcome",
+          "examples": [
+            {
+              "value": "failed",
+              "@type": "Example"
+            },
+            {
+              "value": "successful",
+              "@type": "Example"
+            },
+            {
+              "value": "partial_response",
+              "@type": "Example"
+            }
+          ],
           "range": "string",
           "multivalued": true,
           "pattern": "^[A-z-._0-9;|\\(\\),\\/\\ ]+$",
@@ -4811,6 +5227,7 @@
           "description": "the read counts",
           "range": "integer",
           "required": true,
+          "minimum_value": 0,
           "pattern": "^[0-9]+$",
           "@type": "SlotDefinition"
         },
@@ -4867,6 +5284,7 @@
           "description": "the raw counts off the sequencing machine that a sample began with",
           "range": "integer",
           "required": true,
+          "minimum_value": 0,
           "pattern": "^[0-9]+$",
           "@type": "SlotDefinition"
         },
@@ -5048,9 +5466,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2025-07-22T15:18:47",
-  "source_file_size": 41818,
-  "generation_date": "2025-07-22T15:18:58",
+  "source_file_date": "2025-09-21T18:52:33",
+  "source_file_size": 45346,
+  "generation_date": "2025-09-21T18:52:39",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",

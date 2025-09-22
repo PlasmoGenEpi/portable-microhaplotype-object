@@ -3,8 +3,8 @@
 --     * Slot: marker_location_id Description: the genomic location
 -- # Class: "TargetInfo" Description: "Information about a specific target within a genome"
 --     * Slot: id Description: 
---     * Slot: target_name Description: an identifier for this target
 --     * Slot: gene_name Description: an identifier of the gene, if any, is being covered with this targeted
+--     * Slot: target_name Description: an identifier for this target
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
 --     * Slot: insert_location_id Description: the intended genomic location of the insert of the amplicon (the location between the end of the forward primer and the beginning of the reverse primer)
 --     * Slot: forward_primer_id Description: the forward primer associated with this target
@@ -59,6 +59,14 @@
 --     * Slot: strand Description: which strand the location is, either + for plus strand or - for negative strand
 --     * Slot: ref_seq Description: the reference sequence of this genomic location
 --     * Slot: alt_seq Description: a possible alternative sequence of this genomic location
+--     * Slot: RepresentativeMicrohaplotype_id Description: Autocreated FK slot
+-- # Class: "ProteinVariant" Description: "information on a variant in protein sequence"
+--     * Slot: id Description: 
+--     * Slot: gene_name Description: an identifier of the gene, if any, is being covered with this targeted
+--     * Slot: alternative_gene_name Description: an alternative gene name
+--     * Slot: RepresentativeMicrohaplotype_id Description: Autocreated FK slot
+--     * Slot: protein_location_id Description: the position within the protein, the chromosome in this case would be the transcript name
+--     * Slot: codon_genomic_location_id Description: the position within the genomic sequence of the codon
 -- # Class: "PrimerInfo" Description: "information on a primer sequence"
 --     * Slot: id Description: 
 --     * Slot: seq Description: the DNA sequence
@@ -139,7 +147,21 @@
 --     * Slot: project_collector_chief_scientist Description: can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen
 --     * Slot: BioProject_accession Description: an SRA bioproject accession e.g. PRJNA33823
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
+-- # Class: "TravelInfo" Description: "Information on travel info"
+--     * Slot: id Description: 
+--     * Slot: lat_lon Description: the latitude and longitude of a specific site
+--     * Slot: geo_admin1 Description: geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)
+--     * Slot: geo_admin2 Description: geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)
+--     * Slot: geo_admin3 Description: geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)
+--     * Slot: travel_country Description: the name of country, would be the same as admin level 0
+--     * Slot: travel_start_date Description: the date of the start of travel, can be approximate, should be YYYY-MM or YYYY-MM-DD (preferred)
+--     * Slot: travel_end_date Description: the date of the end of travel, can be approximate, should be YYYY-MM or YYYY-MM-DD (preferred)
+--     * Slot: bed_net_usage Description: approximate usage of bed net while traveling, 1 = 100% nights with bed net, 0 = 0% no bed net usage
 -- # Class: "SpecimenInfo" Description: "Information on specimen info"
+--     * Slot: lat_lon Description: the latitude and longitude of a specific site
+--     * Slot: geo_admin1 Description: geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)
+--     * Slot: geo_admin2 Description: geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)
+--     * Slot: geo_admin3 Description: geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)
 --     * Slot: specimen_name Description: an identifier for the specimen, should be unique within this sample set
 --     * Slot: host_subject_id Description: an identifier for the individual a specimen was collected from
 --     * Slot: host_taxon_id Description: the NCBI taxonomy number of the host that the specimen was collected from
@@ -151,14 +173,11 @@
 --     * Slot: collection_date Description: the date of the specimen collection, can be YYYY, YYYY-MM, or YYYY-MM-DD
 --     * Slot: host_age Description: if specimen is from a person, the age in years of the person, can be float value so for 3 month old put 0.25
 --     * Slot: collection_country Description: the name of country collected in, would be the same as admin level 0
---     * Slot: geo_admin1 Description: geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)
---     * Slot: geo_admin2 Description: geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)
---     * Slot: geo_admin3 Description: geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)
---     * Slot: lat_lon Description: the latitude and longitude of the collection site of the specimen
 --     * Slot: specimen_store_loc Description: the specimen store site, address or facility name
 --     * Slot: specimen_collect_device Description: the way the specimen was collected, e.g. whole blood, dried blood spot
 --     * Slot: specimen_type Description: what type of specimen this is, e.g. negative_control, positive_control, field_sample
 --     * Slot: project_id Description: the index into the project_info list
+--     * Slot: has_travel_out_six_month Description: has travelled out from local region in the last six months
 --     * Slot: env_medium Description: the environment medium from which the specimen was collected from
 --     * Slot: env_local_scale Description: the local environment from which the specimen was collected, e.g. jungle, urban, rural
 --     * Slot: env_broad_scale Description: the broad environment from which the specimen was collected, e.g. highlands, lowlands, mountainous region
@@ -221,7 +240,7 @@
 --     * Slot: masking_id Description: masking info for the sequence
 -- # Class: "RepresentativeMicrohaplotype_alt_annotations" Description: ""
 --     * Slot: RepresentativeMicrohaplotype_id Description: Autocreated FK slot
---     * Slot: alt_annotations Description: a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc
+--     * Slot: alt_annotations Description: a list of additional annotations associated with this microhaplotype, e.g. wildtype
 -- # Class: "RepresentativeMicrohaplotypesForTarget_microhaplotypes" Description: ""
 --     * Slot: RepresentativeMicrohaplotypesForTarget_target_id Description: Autocreated FK slot
 --     * Slot: microhaplotypes_id Description: a list of the microhaplotypes detected for a target
@@ -234,29 +253,52 @@
 -- # Class: "BioMethod_additional_argument" Description: ""
 --     * Slot: BioMethod_id Description: Autocreated FK slot
 --     * Slot: additional_argument Description: any additional arguments that differ from the default
+-- # Class: "LibrarySampleInfo_alternate_identifiers" Description: ""
+--     * Slot: LibrarySampleInfo_library_sample_name Description: Autocreated FK slot
+--     * Slot: alternate_identifiers Description: a list of optional alternative names
 -- # Class: "ProjectInfo_project_contributors" Description: ""
 --     * Slot: ProjectInfo_project_name Description: Autocreated FK slot
 --     * Slot: project_contributors Description: a list of collaborators who contributed to this project
+-- # Class: "SpecimenInfo_alternate_identifiers" Description: ""
+--     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
+--     * Slot: alternate_identifiers Description: a list of optional alternative names
 -- # Class: "SpecimenInfo_specimen_taxon_id" Description: ""
 --     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
 --     * Slot: specimen_taxon_id Description: the NCBI taxonomy number of the organism in specimen, can list multiple if a mixed sample
--- # Class: "SpecimenInfo_alternate_identifiers" Description: ""
---     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
---     * Slot: alternate_identifiers Description: a list of optional alternative names for the specimens
 -- # Class: "SpecimenInfo_specimen_comments" Description: ""
 --     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
 --     * Slot: specimen_comments Description: any additional comments about the specimen
 -- # Class: "SpecimenInfo_travel_out_six_month" Description: ""
 --     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
---     * Slot: travel_out_six_month Description: Specification of the countries travelled in the last six months; can include multiple travels
+--     * Slot: travel_out_six_month_id Description: Specification of the countries travelled in the last six months; can include multiple travels
 -- # Class: "SpecimenInfo_drug_usage" Description: ""
 --     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
 --     * Slot: drug_usage Description: Any drug used by subject and the frequency of usage; can include multiple drugs used
+-- # Class: "SpecimenInfo_treatment_status" Description: ""
+--     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
+--     * Slot: treatment_status Description: If person has been treated with drugs, what was the treatment outcome
 
 CREATE TABLE "ReactionInfo" (
 	id INTEGER NOT NULL, 
 	reaction_name TEXT NOT NULL, 
 	PRIMARY KEY (id)
+);
+CREATE TABLE "Pseudocigar" (
+	id INTEGER NOT NULL, 
+	pseudocigar_seq TEXT NOT NULL, 
+	pseudocigar_generation_description TEXT, 
+	ref_loc_id INTEGER NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(ref_loc_id) REFERENCES "GenomicLocation" (id)
+);
+CREATE TABLE "RepresentativeMicrohaplotype" (
+	id INTEGER NOT NULL, 
+	seq TEXT NOT NULL, 
+	microhaplotype_name TEXT, 
+	quality TEXT, 
+	pseudocigar_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(pseudocigar_id) REFERENCES "Pseudocigar" (id)
 );
 CREATE TABLE "MaskingInfo" (
 	id INTEGER NOT NULL, 
@@ -279,7 +321,9 @@ CREATE TABLE "GenomicLocation" (
 	strand TEXT, 
 	ref_seq TEXT, 
 	alt_seq TEXT, 
-	PRIMARY KEY (id)
+	"RepresentativeMicrohaplotype_id" INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY("RepresentativeMicrohaplotype_id") REFERENCES "RepresentativeMicrohaplotype" (id)
 );
 CREATE TABLE "BioinformaticsMethodInfo" (
 	id INTEGER NOT NULL, 
@@ -309,6 +353,18 @@ CREATE TABLE "PlateInfo" (
 	plate_col INTEGER, 
 	PRIMARY KEY (id)
 );
+CREATE TABLE "TravelInfo" (
+	id INTEGER NOT NULL, 
+	lat_lon TEXT, 
+	geo_admin1 TEXT, 
+	geo_admin2 TEXT, 
+	geo_admin3 TEXT, 
+	travel_country TEXT NOT NULL, 
+	travel_start_date TEXT NOT NULL, 
+	travel_end_date TEXT NOT NULL, 
+	bed_net_usage FLOAT, 
+	PRIMARY KEY (id)
+);
 CREATE TABLE "PmoGenerationMethod" (
 	id INTEGER NOT NULL, 
 	program_version TEXT NOT NULL, 
@@ -321,14 +377,6 @@ CREATE TABLE "MarkerOfInterest" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(marker_location_id) REFERENCES "GenomicLocation" (id)
 );
-CREATE TABLE "Pseudocigar" (
-	id INTEGER NOT NULL, 
-	pseudocigar_seq TEXT NOT NULL, 
-	pseudocigar_generation_description TEXT, 
-	ref_loc_id INTEGER NOT NULL, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(ref_loc_id) REFERENCES "GenomicLocation" (id)
-);
 CREATE TABLE "RepresentativeMicrohaplotypesForTarget" (
 	target_id INTEGER NOT NULL, 
 	"RepresentativeMicrohaplotypes_id" INTEGER, 
@@ -336,6 +384,18 @@ CREATE TABLE "RepresentativeMicrohaplotypesForTarget" (
 	PRIMARY KEY (target_id), 
 	FOREIGN KEY("RepresentativeMicrohaplotypes_id") REFERENCES "RepresentativeMicrohaplotypes" (id), 
 	FOREIGN KEY(mhap_location_id) REFERENCES "GenomicLocation" (id)
+);
+CREATE TABLE "ProteinVariant" (
+	id INTEGER NOT NULL, 
+	gene_name TEXT, 
+	alternative_gene_name TEXT, 
+	"RepresentativeMicrohaplotype_id" INTEGER, 
+	protein_location_id INTEGER NOT NULL, 
+	codon_genomic_location_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY("RepresentativeMicrohaplotype_id") REFERENCES "RepresentativeMicrohaplotype" (id), 
+	FOREIGN KEY(protein_location_id) REFERENCES "GenomicLocation" (id), 
+	FOREIGN KEY(codon_genomic_location_id) REFERENCES "GenomicLocation" (id)
 );
 CREATE TABLE "PrimerInfo" (
 	id INTEGER NOT NULL, 
@@ -358,20 +418,24 @@ CREATE TABLE "ReactionInfo_panel_targets" (
 	PRIMARY KEY ("ReactionInfo_id", panel_targets), 
 	FOREIGN KEY("ReactionInfo_id") REFERENCES "ReactionInfo" (id)
 );
+CREATE TABLE "RepresentativeMicrohaplotype_masking" (
+	"RepresentativeMicrohaplotype_id" INTEGER, 
+	masking_id INTEGER, 
+	PRIMARY KEY ("RepresentativeMicrohaplotype_id", masking_id), 
+	FOREIGN KEY("RepresentativeMicrohaplotype_id") REFERENCES "RepresentativeMicrohaplotype" (id), 
+	FOREIGN KEY(masking_id) REFERENCES "MaskingInfo" (id)
+);
+CREATE TABLE "RepresentativeMicrohaplotype_alt_annotations" (
+	"RepresentativeMicrohaplotype_id" INTEGER, 
+	alt_annotations TEXT, 
+	PRIMARY KEY ("RepresentativeMicrohaplotype_id", alt_annotations), 
+	FOREIGN KEY("RepresentativeMicrohaplotype_id") REFERENCES "RepresentativeMicrohaplotype" (id)
+);
 CREATE TABLE "BioMethod_additional_argument" (
 	"BioMethod_id" INTEGER, 
 	additional_argument TEXT, 
 	PRIMARY KEY ("BioMethod_id", additional_argument), 
 	FOREIGN KEY("BioMethod_id") REFERENCES "BioMethod" (id)
-);
-CREATE TABLE "RepresentativeMicrohaplotype" (
-	id INTEGER NOT NULL, 
-	seq TEXT NOT NULL, 
-	microhaplotype_name TEXT, 
-	quality TEXT, 
-	pseudocigar_id INTEGER, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(pseudocigar_id) REFERENCES "Pseudocigar" (id)
 );
 CREATE TABLE "PortableMicrohaplotypeObject" (
 	id INTEGER NOT NULL, 
@@ -387,10 +451,17 @@ CREATE TABLE "MarkerOfInterest_associations" (
 	PRIMARY KEY ("MarkerOfInterest_id", associations), 
 	FOREIGN KEY("MarkerOfInterest_id") REFERENCES "MarkerOfInterest" (id)
 );
+CREATE TABLE "RepresentativeMicrohaplotypesForTarget_microhaplotypes" (
+	"RepresentativeMicrohaplotypesForTarget_target_id" INTEGER, 
+	microhaplotypes_id INTEGER NOT NULL, 
+	PRIMARY KEY ("RepresentativeMicrohaplotypesForTarget_target_id", microhaplotypes_id), 
+	FOREIGN KEY("RepresentativeMicrohaplotypesForTarget_target_id") REFERENCES "RepresentativeMicrohaplotypesForTarget" (target_id), 
+	FOREIGN KEY(microhaplotypes_id) REFERENCES "RepresentativeMicrohaplotype" (id)
+);
 CREATE TABLE "TargetInfo" (
 	id INTEGER NOT NULL, 
-	target_name TEXT NOT NULL, 
 	gene_name TEXT, 
+	target_name TEXT NOT NULL, 
 	"PortableMicrohaplotypeObject_id" INTEGER, 
 	insert_location_id INTEGER, 
 	forward_primer_id INTEGER NOT NULL, 
@@ -472,6 +543,10 @@ CREATE TABLE "ProjectInfo" (
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
 );
 CREATE TABLE "SpecimenInfo" (
+	lat_lon TEXT, 
+	geo_admin1 TEXT, 
+	geo_admin2 TEXT, 
+	geo_admin3 TEXT, 
 	specimen_name TEXT NOT NULL, 
 	host_subject_id INTEGER, 
 	host_taxon_id INTEGER NOT NULL, 
@@ -483,14 +558,11 @@ CREATE TABLE "SpecimenInfo" (
 	collection_date TEXT NOT NULL, 
 	host_age FLOAT, 
 	collection_country TEXT NOT NULL, 
-	geo_admin1 TEXT, 
-	geo_admin2 TEXT, 
-	geo_admin3 TEXT, 
-	lat_lon TEXT, 
 	specimen_store_loc TEXT, 
 	specimen_collect_device TEXT, 
 	specimen_type TEXT, 
 	project_id INTEGER NOT NULL, 
+	has_travel_out_six_month BOOLEAN, 
 	env_medium TEXT, 
 	env_local_scale TEXT, 
 	env_broad_scale TEXT, 
@@ -515,26 +587,6 @@ CREATE TABLE "ReadCountsByStage" (
 	"PortableMicrohaplotypeObject_id" INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
-);
-CREATE TABLE "RepresentativeMicrohaplotype_masking" (
-	"RepresentativeMicrohaplotype_id" INTEGER, 
-	masking_id INTEGER, 
-	PRIMARY KEY ("RepresentativeMicrohaplotype_id", masking_id), 
-	FOREIGN KEY("RepresentativeMicrohaplotype_id") REFERENCES "RepresentativeMicrohaplotype" (id), 
-	FOREIGN KEY(masking_id) REFERENCES "MaskingInfo" (id)
-);
-CREATE TABLE "RepresentativeMicrohaplotype_alt_annotations" (
-	"RepresentativeMicrohaplotype_id" INTEGER, 
-	alt_annotations TEXT, 
-	PRIMARY KEY ("RepresentativeMicrohaplotype_id", alt_annotations), 
-	FOREIGN KEY("RepresentativeMicrohaplotype_id") REFERENCES "RepresentativeMicrohaplotype" (id)
-);
-CREATE TABLE "RepresentativeMicrohaplotypesForTarget_microhaplotypes" (
-	"RepresentativeMicrohaplotypesForTarget_target_id" INTEGER, 
-	microhaplotypes_id INTEGER NOT NULL, 
-	PRIMARY KEY ("RepresentativeMicrohaplotypesForTarget_target_id", microhaplotypes_id), 
-	FOREIGN KEY("RepresentativeMicrohaplotypesForTarget_target_id") REFERENCES "RepresentativeMicrohaplotypesForTarget" (target_id), 
-	FOREIGN KEY(microhaplotypes_id) REFERENCES "RepresentativeMicrohaplotype" (id)
 );
 CREATE TABLE "DetectedMicrohaplotypesForSample" (
 	id INTEGER NOT NULL, 
@@ -595,22 +647,28 @@ CREATE TABLE "GenomeInfo_chromosomes" (
 	PRIMARY KEY ("GenomeInfo_id", chromosomes), 
 	FOREIGN KEY("GenomeInfo_id") REFERENCES "GenomeInfo" (id)
 );
+CREATE TABLE "LibrarySampleInfo_alternate_identifiers" (
+	"LibrarySampleInfo_library_sample_name" TEXT, 
+	alternate_identifiers TEXT, 
+	PRIMARY KEY ("LibrarySampleInfo_library_sample_name", alternate_identifiers), 
+	FOREIGN KEY("LibrarySampleInfo_library_sample_name") REFERENCES "LibrarySampleInfo" (library_sample_name)
+);
 CREATE TABLE "ProjectInfo_project_contributors" (
 	"ProjectInfo_project_name" TEXT, 
 	project_contributors TEXT, 
 	PRIMARY KEY ("ProjectInfo_project_name", project_contributors), 
 	FOREIGN KEY("ProjectInfo_project_name") REFERENCES "ProjectInfo" (project_name)
 );
-CREATE TABLE "SpecimenInfo_specimen_taxon_id" (
-	"SpecimenInfo_specimen_name" TEXT, 
-	specimen_taxon_id INTEGER NOT NULL, 
-	PRIMARY KEY ("SpecimenInfo_specimen_name", specimen_taxon_id), 
-	FOREIGN KEY("SpecimenInfo_specimen_name") REFERENCES "SpecimenInfo" (specimen_name)
-);
 CREATE TABLE "SpecimenInfo_alternate_identifiers" (
 	"SpecimenInfo_specimen_name" TEXT, 
 	alternate_identifiers TEXT, 
 	PRIMARY KEY ("SpecimenInfo_specimen_name", alternate_identifiers), 
+	FOREIGN KEY("SpecimenInfo_specimen_name") REFERENCES "SpecimenInfo" (specimen_name)
+);
+CREATE TABLE "SpecimenInfo_specimen_taxon_id" (
+	"SpecimenInfo_specimen_name" TEXT, 
+	specimen_taxon_id INTEGER NOT NULL, 
+	PRIMARY KEY ("SpecimenInfo_specimen_name", specimen_taxon_id), 
 	FOREIGN KEY("SpecimenInfo_specimen_name") REFERENCES "SpecimenInfo" (specimen_name)
 );
 CREATE TABLE "SpecimenInfo_specimen_comments" (
@@ -621,14 +679,21 @@ CREATE TABLE "SpecimenInfo_specimen_comments" (
 );
 CREATE TABLE "SpecimenInfo_travel_out_six_month" (
 	"SpecimenInfo_specimen_name" TEXT, 
-	travel_out_six_month TEXT, 
-	PRIMARY KEY ("SpecimenInfo_specimen_name", travel_out_six_month), 
-	FOREIGN KEY("SpecimenInfo_specimen_name") REFERENCES "SpecimenInfo" (specimen_name)
+	travel_out_six_month_id INTEGER, 
+	PRIMARY KEY ("SpecimenInfo_specimen_name", travel_out_six_month_id), 
+	FOREIGN KEY("SpecimenInfo_specimen_name") REFERENCES "SpecimenInfo" (specimen_name), 
+	FOREIGN KEY(travel_out_six_month_id) REFERENCES "TravelInfo" (id)
 );
 CREATE TABLE "SpecimenInfo_drug_usage" (
 	"SpecimenInfo_specimen_name" TEXT, 
 	drug_usage TEXT, 
 	PRIMARY KEY ("SpecimenInfo_specimen_name", drug_usage), 
+	FOREIGN KEY("SpecimenInfo_specimen_name") REFERENCES "SpecimenInfo" (specimen_name)
+);
+CREATE TABLE "SpecimenInfo_treatment_status" (
+	"SpecimenInfo_specimen_name" TEXT, 
+	treatment_status TEXT, 
+	PRIMARY KEY ("SpecimenInfo_specimen_name", treatment_status), 
 	FOREIGN KEY("SpecimenInfo_specimen_name") REFERENCES "SpecimenInfo" (specimen_name)
 );
 CREATE TABLE "DetectedMicrohaplotypesForTarget" (

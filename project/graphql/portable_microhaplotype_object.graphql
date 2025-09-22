@@ -67,6 +67,7 @@ type LibrarySampleInfo
     sequencingInfoId: Integer!
     specimenId: Integer!
     panelId: Integer!
+    alternateIdentifiers: [String]
     fastqsLoc: String
     runAccession: String
     experimentAccession: String
@@ -163,6 +164,14 @@ type ProjectInfo
     bioProjectAccession: String
   }
 
+type ProteinVariant
+  {
+    geneName: String
+    proteinLocation: GenomicLocation!
+    codonGenomicLocation: GenomicLocation
+    alternativeGeneName: String
+  }
+
 type Pseudocigar
   {
     pseudocigarSeq: String!
@@ -203,6 +212,8 @@ type RepresentativeMicrohaplotype
     pseudocigar: Pseudocigar
     masking: [MaskingInfo]
     altAnnotations: [String]
+    associatedProteinVariants: [ProteinVariant]
+    associatedSeqVariants: [GenomicLocation]
   }
 
 type RepresentativeMicrohaplotypes
@@ -239,11 +250,15 @@ type SequencingInfo
 
 type SpecimenInfo
   {
+    alternateIdentifiers: [String]
+    latLon: String
+    geoAdmin1: String
+    geoAdmin2: String
+    geoAdmin3: String
     specimenName: String!
     specimenTaxonId: [Integer]!
     hostSubjectId: Integer
     hostTaxonId: Integer!
-    alternateIdentifiers: [String]
     hostSex: String
     specimenAccession: String
     gravid: Boolean
@@ -253,21 +268,19 @@ type SpecimenInfo
     collectionDate: String!
     hostAge: Double
     collectionCountry: String!
-    geoAdmin1: String
-    geoAdmin2: String
-    geoAdmin3: String
-    latLon: String
     specimenStoreLoc: String
     specimenCollectDevice: String
     specimenType: String
     projectId: Integer!
     specimenComments: [String]
-    travelOutSixMonth: [String]
+    hasTravelOutSixMonth: Boolean
+    travelOutSixMonth: [TravelInfo]
     storagePlateInfo: PlateInfo
     envMedium: String
     envLocalScale: String
     envBroadScale: String
     drugUsage: [String]
+    treatmentStatus: [String]
   }
 
 type StageReadCounts
@@ -278,12 +291,24 @@ type StageReadCounts
 
 type TargetInfo
   {
-    targetName: String!
     geneName: String
+    targetName: String!
     insertLocation: GenomicLocation
     forwardPrimer: PrimerInfo!
     reversePrimer: PrimerInfo!
     markersOfInterest: [MarkerOfInterest]
     targetAttributes: [String]
+  }
+
+type TravelInfo
+  {
+    latLon: String
+    geoAdmin1: String
+    geoAdmin2: String
+    geoAdmin3: String
+    travelCountry: String!
+    travelStartDate: String!
+    travelEndDate: String!
+    bedNetUsage: Double
   }
 

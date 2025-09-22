@@ -70,6 +70,7 @@ message LibrarySampleInfo
   integer sequencingInfoId = 0
   integer specimenId = 0
   integer panelId = 0
+ repeated  string alternateIdentifiers = 0
   string fastqsLoc = 0
   string runAccession = 0
   string experimentAccession = 0
@@ -165,6 +166,14 @@ message ProjectInfo
   string projectCollectorChiefScientist = 0
   string bioProjectAccession = 0
  }
+// information on a variant in protein sequence
+message ProteinVariant
+ {
+  string geneName = 0
+  genomicLocation proteinLocation = 0
+  genomicLocation codonGenomicLocation = 0
+  string alternativeGeneName = 0
+ }
 // information on pseudocigar for a sequence
 message Pseudocigar
  {
@@ -206,6 +215,8 @@ message RepresentativeMicrohaplotype
   pseudocigar pseudocigar = 0
  repeated  maskingInfo masking = 0
  repeated  string altAnnotations = 0
+ repeated  proteinVariant associatedProteinVariants = 0
+ repeated  genomicLocation associatedSeqVariants = 0
  }
 // a collection of representative sequences for microhaplotypes for all targets
 message RepresentativeMicrohaplotypes
@@ -242,11 +253,15 @@ message SequencingInfo
 // Information on specimen info
 message SpecimenInfo
  {
+ repeated  string alternateIdentifiers = 0
+  string latLon = 0
+  string geoAdmin1 = 0
+  string geoAdmin2 = 0
+  string geoAdmin3 = 0
   string specimenName = 0
  repeated  integer specimenTaxonId = 0
   integer hostSubjectId = 0
   integer hostTaxonId = 0
- repeated  string alternateIdentifiers = 0
   string hostSex = 0
   string specimenAccession = 0
   boolean gravid = 0
@@ -256,21 +271,19 @@ message SpecimenInfo
   string collectionDate = 0
   double hostAge = 0
   string collectionCountry = 0
-  string geoAdmin1 = 0
-  string geoAdmin2 = 0
-  string geoAdmin3 = 0
-  string latLon = 0
   string specimenStoreLoc = 0
   string specimenCollectDevice = 0
   string specimenType = 0
   integer projectId = 0
  repeated  string specimenComments = 0
- repeated  string travelOutSixMonth = 0
+  boolean hasTravelOutSixMonth = 0
+ repeated  travelInfo travelOutSixMonth = 0
   plateInfo storagePlateInfo = 0
   string envMedium = 0
   string envLocalScale = 0
   string envBroadScale = 0
  repeated  string drugUsage = 0
+ repeated  string treatmentStatus = 0
  }
 // Information on the reads counts at several stages
 message StageReadCounts
@@ -281,11 +294,23 @@ message StageReadCounts
 // Information about a specific target within a genome
 message TargetInfo
  {
-  string targetName = 0
   string geneName = 0
+  string targetName = 0
   genomicLocation insertLocation = 0
   primerInfo forwardPrimer = 0
   primerInfo reversePrimer = 0
  repeated  markerOfInterest markersOfInterest = 0
  repeated  string targetAttributes = 0
+ }
+// Information on travel info
+message TravelInfo
+ {
+  string latLon = 0
+  string geoAdmin1 = 0
+  string geoAdmin2 = 0
+  string geoAdmin3 = 0
+  string travelCountry = 0
+  string travelStartDate = 0
+  string travelEndDate = 0
+  double bedNetUsage = 0
  }

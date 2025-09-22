@@ -45,6 +45,8 @@ classes:
   TargetInfo:
     description: >-
       Information about a specific target within a genome
+    slots:
+      - gene_name
     attributes:
       target_name:
         range: string
@@ -52,12 +54,6 @@ classes:
         pattern: "^[A-z-._0-9]+$"
         description: >-
           an identifier for this target
-      gene_name:
-        range: string
-        required: false
-        pattern: "^[A-z-._0-9]+$"
-        description: >-
-          an identifier of the gene, if any, is being covered with this targeted
       insert_location:
         range: GenomicLocation
         required: false
@@ -99,6 +95,7 @@ classes:
       panel_targets:
         required: true
         range: integer
+        minimum_value: 0
         multivalued: true
         inlined_as_list: true
         description: >-
@@ -187,7 +184,21 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of additional annotations associated with this microhaplotype, e.g. wildtype, amino acid changes etc
+          a list of additional annotations associated with this microhaplotype, e.g. wildtype
+      associated_protein_variants:
+        required: false
+        range: ProteinVariant
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          a list of associated protein variants with this haplotype, e.g. amino acid changes/INDELS
+      associated_seq_variants:
+        required: false
+        range: GenomicLocation
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          a list of associated sequence variants with this haplotype, e.g. SNPS, indels
 
   MaskingInfo:
     description: >- 
@@ -196,16 +207,19 @@ classes:
       seq_start:
         required: true
         range: integer
+        minimum_value: 0
         description: >-
           the start of the masking
       seq_segment_size:
         required: true
         range: integer
+        minimum_value: 0
         description: >-
           the size of the masking
       replacement_size:
         required: true
         range: integer
+        minimum_value: 0
         description: >-
           the size of replacement mask
       masking_generation_description:
@@ -263,8 +277,6 @@ classes:
         description: >-
           a list of the microhaplotypes detected for a sample by targets 
 
-
-
   GenomeInfo:
     description: >-
       information on a genome
@@ -284,6 +296,7 @@ classes:
       taxon_id:
         range: integer
         pattern: "^[0-9]$"
+        minimum_value: 0
         multivalued: true
         inlined_as_list: true
         required: true
@@ -329,12 +342,14 @@ classes:
       start:
         range: integer
         pattern: "^[0-9]+$"
+        minimum_value: 0
         required: true
         description: >-
           the start of the location, 0-based positioning
       end:
         range: integer
         pattern: "^[0-9]+$"
+        minimum_value: 0
         required: true
         description: >-
           the end of the location, 0-based positioning
@@ -357,6 +372,32 @@ classes:
         description: >-
           a possible alternative sequence of this genomic location
 
+  ProteinVariant:
+    description: >- 
+      information on a variant in protein sequence
+    slots:
+      - gene_name
+    attributes:
+      protein_location:
+        range: GenomicLocation
+        required: true
+        description: >-
+          the position within the protein, the chromosome in this case would be the transcript name
+      codon_genomic_location:
+        range: GenomicLocation
+        required: false
+        description: >-
+          the position within the genomic sequence of the codon
+      alternative_gene_name:
+        range: string
+        pattern: "^[A-z-._0-9]+$"
+        required: false
+        description: >-
+          an alternative gene name
+        examples:
+          - value: "CSP"
+          - value: "AMA1"
+          - value: "DHPS"
 
   PrimerInfo:
     description: >- 
@@ -369,7 +410,6 @@ classes:
         required: false
         description: >-
           what the intended genomic location of the primer is
-
 
   DetectedMicrohaplotypesForSample:
     description: >-
@@ -394,11 +434,13 @@ classes:
       reads:
         required: true
         range: integer
+        minimum_value: 0
         description: >-
           the read count associated with this microhaplotype
       umis:
         required: false
         range: integer
+        minimum_value: 0
         description: >-
           the unique molecular identifier (umi) count associated with this microhaplotype
 
@@ -477,8 +519,6 @@ classes:
         inlined_as_list: true
         description: >-
           any additional arguments that differ from the default
-          
-          
 
   PlateInfo:
     description: >-
@@ -497,6 +537,7 @@ classes:
       plate_col:
         range: integer
         pattern: "^[0-9]+$"
+        minimum_value: 0
         description: >-
           the column the specimen was in
 
@@ -507,6 +548,7 @@ classes:
       - sequencing_info_id
       - specimen_id
       - panel_id
+      - alternate_identifiers
     slot_usage:
       specimen_id:
         identifier: false
@@ -781,6 +823,50 @@ classes:
         examples:
           - value: "PRJNA33823"
 
+  TravelInfo:
+    description: >-
+      Information on travel info
+    slots:
+      - lat_lon
+      - geo_admin1
+      - geo_admin2
+      - geo_admin3
+    attributes:
+      travel_country:
+        range: string
+        pattern: "^[A-Za-z0-9 ,._:'–-]+$"
+        required: true
+        description: >-
+          the name of country, would be the same as admin level 0
+        examples:
+          - value: "Senegal"
+          - value: "USA"
+          - value: "Japan"
+      travel_start_date:
+        range: string
+        pattern: "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+        required: true
+        description: >-
+          the date of the start of travel, can be approximate, should be YYYY-MM or YYYY-MM-DD (preferred)
+        examples:
+          - value: '2024-03-10'
+          - value: '2024-03'
+      travel_end_date:
+        range: string
+        pattern: "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?"
+        required: true
+        description: >-
+          the date of the end of travel, can be approximate, should be YYYY-MM or YYYY-MM-DD (preferred)
+        examples:
+          - value: '2024-03-10'
+          - value: '2024-03'
+      bed_net_usage:
+        range: double
+        minimum_value: 0
+        required: false
+        description: >-
+          approximate usage of bed net while traveling, 1 = 100% nights with bed net, 0 = 0% no bed net usage
+
   SpecimenInfo:
 #    the below is implement in future version 1.9.0, will allow for the automatic setting of allowing extra unexpected fields
 #    extra_slots:
@@ -791,6 +877,12 @@ classes:
 #          - range: integer
     description: >-
       Information on specimen info
+    slots:
+      - alternate_identifiers
+      - lat_lon
+      - geo_admin1
+      - geo_admin2
+      - geo_admin3
     attributes:
       specimen_name:
         range: string
@@ -802,6 +894,7 @@ classes:
       specimen_taxon_id:
         range: integer
         pattern: "^[0-9]+$"
+        minimum_value: 0
         required: true
         multivalued: true
         inlined_as_list: true
@@ -810,23 +903,17 @@ classes:
       host_subject_id:
         range: integer
         pattern: "^[0-9]+$"
+        minimum_value: 0
         required: false
         description: >-
           an identifier for the individual a specimen was collected from
       host_taxon_id:
         range: integer
         pattern: "^[0-9]+$"
+        minimum_value: 0
         required: true
         description: >-
           the NCBI taxonomy number of the host that the specimen was collected from
-      alternate_identifiers:
-        range: string
-        pattern: "^[A-z-._0-9 ]+$"
-        required: false
-        multivalued: true
-        inlined_as_list: true
-        description: >-
-          a list of optional alternative names for the specimens
       host_sex:
         range: string
         pattern: "^[A-z-._0-9 ]+$"
@@ -852,6 +939,7 @@ classes:
       gravidity:
         range: integer
         pattern: "^[0-9]+$"
+        minimum_value: 0
         required: false
         description: >-
           the gravidity of the specimen host (number of previous pregnancies)
@@ -885,6 +973,7 @@ classes:
       host_age:
         range: double
         pattern: "^\\d*\\.?\\d+$"
+        minimum_value: 0
         required: false
         description: >-
           if specimen is from a person, the age in years of the person, can be float value so for 3 month old put 0.25
@@ -902,40 +991,7 @@ classes:
           - value: "Senegal"
           - value: "USA"
           - value: "Japan"
-      geo_admin1:
-        range: string
-#        pattern: "^.*$"
-#        pattern: "^[A-Za-z0-9 ,._:'–-]+$"
-        required: false
-        description: >-
-          geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)
-        examples:
-          - value: 'State/Province'
-      geo_admin2:
-        range: string
-#        pattern: "^.*$"
-#        pattern: "^[A-Za-z0-9 ,._:'–-]+$"
-        required: false
-        description: >-
-          geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)
-        examples:
-          - value: 'city'
-      geo_admin3:
-        range: string
-#        pattern: "^.*$"
-#        pattern: "^[A-Za-z0-9 ,._:'–-]+$"
-        required: false
-        description: >-
-          geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)
-        examples:
-          - value: 'district of a city'
-      lat_lon:
-        range: string
-        pattern: "^[-+]?\\d{1,2}(?:\\.\\d+)?,[-+]?\\d{1,3}(?:\\.\\d+)?$"
-        #        pattern: "^-?(90(?:\\.0{1,6})?|[0-8]?\\d(?:\\.\\d{1,6})?),-?(180(?:\\.0{1,6})?|1[0-7]\\d(?:\\.\\d{1,6})?|[0-9]?\\d(?:\\.\\d{1,6})?)$"
-        required: false
-        description: >-
-          the latitude and longitude of the collection site of the specimen
+
       specimen_store_loc:
         range: string
         pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
@@ -964,6 +1020,7 @@ classes:
       project_id:
         range: integer
         pattern: "^[0-9]+$"
+        minimum_value: 0
         required: true
         description: >-
           the index into the project_info list
@@ -974,9 +1031,13 @@ classes:
         multivalued: true
         description: >-
           any additional comments about the specimen
+      has_travel_out_six_month:
+        range: boolean
+        required: false
+        description: >-
+          has travelled out from local region in the last six months
       travel_out_six_month:
-        range: string
-        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
+        range: TravelInfo
         required: false
         multivalued: true
         description: >-
@@ -1024,6 +1085,18 @@ classes:
         multivalued: true
         examples:
           - value: "Coartem;2/day"
+      treatment_status:
+        range: string
+        required: false
+        description: >-
+          If person has been treated with drugs, what was the treatment outcome
+        pattern: "^[A-z-._0-9;|\\(\\),\\/\\\ ]+$"
+        multivalued: true
+        examples:
+          - value: "failed"
+          - value: "successful"
+          - value: "partial_response"
+
 
 
   BioinformaticsRunInfo:
@@ -1088,6 +1161,7 @@ classes:
         range: integer
         pattern: "^[0-9]+$"
         required: true
+        minimum_value: 0
         description: >-
           the read counts
       stage:
@@ -1121,6 +1195,7 @@ classes:
       total_raw_count:
         range: integer
         pattern: "^[0-9]+$"
+        minimum_value: 0
         required: true
         description: >-
           the raw counts off the sequencing machine that a sample began with
@@ -1248,54 +1323,63 @@ slots:
   library_sample_id:
     range: integer
     pattern: "^[0-9]+$"
+    minimum_value: 0
     required: true
     description: >-
       the index into the library_sample_info list
   specimen_id:
     range: integer
     pattern: "^[0-9]+$"
+    minimum_value: 0
     required: true
     description: >-
       the index into the specimen_info list
   sequencing_info_id:
     range: integer
     pattern: "^[0-9]+$"
+    minimum_value: 0
     required: true
     description: >-
       the index into the sequencing_info list
   target_id:
     range: integer
     pattern: "^[0-9]+$"
+    minimum_value: 0
     required: true
     description: >-
       the index into the target_info list
   panel_id:
     range: integer
     pattern: "^[0-9]+$"
+    minimum_value: 0
     required: true
     description: >-
       the index into the panel_info list
   mhaps_target_id:
     range: integer
     pattern: "^[0-9]+$"
+    minimum_value: 0
     required: true
     description: >-
       the index for a target in the representative_microhaplotypes list
   mhap_id:
     range: integer
     pattern: "^[0-9]+$"
+    minimum_value: 0
     required: true
     description: >-
       the index for a microhaplotype for a target in the representative_microhaplotypes list, e.g. representative_microhaplotypes[mhaps_target_id][mhap_id]
   bioinformatics_methods_id:
     range: integer
     pattern: "^[0-9]+$"
+    minimum_value: 0
     required: true
     description: >-
       the index into the bioinformatics_methods_info list
   bioinformatics_run_id:
     range: integer
     pattern: "^[0-9]+$"
+    minimum_value: 0
     required: true
     description: >-
       the index into bioinformatics_run_info list
@@ -1303,6 +1387,7 @@ slots:
     range: integer
     required: true
     pattern: "^[0-9]+$"
+    minimum_value: 0
     description: >-
       the index to the genome in the targeted_genomes list that this location refers to
   seq:
@@ -1317,3 +1402,48 @@ slots:
     required: true
     description: >-
       the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]
+  alternate_identifiers:
+    range: string
+    pattern: "^[A-z-._0-9 ]+$"
+    required: false
+    multivalued: true
+    inlined_as_list: true
+    description: >-
+      a list of optional alternative names
+  geo_admin1:
+    range: string
+    required: false
+    description: >-
+      geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)
+    examples:
+      - value: 'State/Province'
+  geo_admin2:
+    range: string
+    required: false
+    description: >-
+      geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)
+    examples:
+      - value: 'city'
+  geo_admin3:
+    range: string
+    required: false
+    description: >-
+      geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)
+    examples:
+      - value: 'district of a city'
+  lat_lon:
+    range: string
+    pattern: "^[-+]?\\d{1,2}(?:\\.\\d+)?,[-+]?\\d{1,3}(?:\\.\\d+)?$"
+    required: false
+    description: >-
+      the latitude and longitude of a specific site
+  gene_name:
+    range: string
+    required: false
+    pattern: "^[A-z-._0-9]+$"
+    description: >-
+      an identifier of the gene, if any, is being covered with this targeted
+    examples:
+      - value: "PF3D7_0304600.1"
+      - value: "PF3D7_0810800.1"
+      - value: "PF3D7_1343700.1"
