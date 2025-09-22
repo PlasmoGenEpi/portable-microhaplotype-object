@@ -227,6 +227,8 @@
 <div class="mermaid"> classDiagram
     class LibrarySampleInfo
     click LibrarySampleInfo href "../LibrarySampleInfo"
+      LibrarySampleInfo : alternate_identifiers
+
       LibrarySampleInfo : experiment_accession
 
       LibrarySampleInfo : fastqs_loc
@@ -293,6 +295,12 @@
 <td><a href="../panel_id/">panel_id</a></td>
 <td>1 <br/> <a href="../Integer/">Integer</a></td>
 <td>the index into the panel_info list</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../alternate_identifiers/">alternate_identifiers</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>a list of optional alternative names</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -387,6 +395,7 @@ slots:
 - sequencing_info_id
 - specimen_id
 - panel_id
+- alternate_identifiers
 slot_usage:
   specimen_id:
     name: specimen_id
@@ -558,6 +567,7 @@ attributes:
     - LibrarySampleInfo
     range: integer
     required: true
+    minimum_value: 0
     pattern: ^[0-9]+$
   specimen_id:
     name: specimen_id
@@ -571,6 +581,7 @@ attributes:
     - LibrarySampleInfo
     range: integer
     required: true
+    minimum_value: 0
     pattern: ^[0-9]+$
   panel_id:
     name: panel_id
@@ -583,7 +594,24 @@ attributes:
     - LibrarySampleInfo
     range: integer
     required: true
+    minimum_value: 0
     pattern: ^[0-9]+$
+  alternate_identifiers:
+    name: alternate_identifiers
+    description: a list of optional alternative names
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: alternate_identifiers
+    owner: LibrarySampleInfo
+    domain_of:
+    - LibrarySampleInfo
+    - SpecimenInfo
+    range: string
+    required: false
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    pattern: ^[A-z-._0-9 ]+$
 
 </code></pre>
 </details>

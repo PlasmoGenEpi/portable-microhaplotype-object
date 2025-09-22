@@ -381,13 +381,13 @@ Alias: library_sample_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ReadCountsByStageForLibrarySample/">ReadCountsByStageForLibrarySample</a></td>
-<td>Information on the reads counts at several stages of a pipeline for a library...</td>
+<td><a href="../DetectedMicrohaplotypesForSample/">DetectedMicrohaplotypesForSample</a></td>
+<td>Microhaplotypes detected for a sample for all targets</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DetectedMicrohaplotypesForSample/">DetectedMicrohaplotypesForSample</a></td>
-<td>Microhaplotypes detected for a sample for all targets</td>
+<td><a href="../ReadCountsByStageForLibrarySample/">ReadCountsByStageForLibrarySample</a></td>
+<td>Information on the reads counts at several stages of a pipeline for a library...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -399,6 +399,9 @@ Alias: library_sample_id</p>
 </li>
 <li>
 <p>Required: True</p>
+</li>
+<li>
+<p>Minimum Value: 0</p>
 </li>
 <li>
 <p>Regex pattern: <code>^[0-9]+$</code></p>
@@ -441,6 +444,7 @@ domain_of:
 - ReadCountsByStageForLibrarySample
 range: integer
 required: true
+minimum_value: 0
 pattern: ^[0-9]+$
 
 </code></pre>

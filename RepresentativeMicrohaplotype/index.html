@@ -229,6 +229,28 @@
     click RepresentativeMicrohaplotype href "../RepresentativeMicrohaplotype"
       RepresentativeMicrohaplotype : alt_annotations
 
+      RepresentativeMicrohaplotype : associated_protein_variants
+
+
+
+
+
+        RepresentativeMicrohaplotype --&gt; "*" ProteinVariant : associated_protein_variants
+        click ProteinVariant href "../ProteinVariant"
+
+
+
+      RepresentativeMicrohaplotype : associated_seq_variants
+
+
+
+
+
+        RepresentativeMicrohaplotype --&gt; "*" GenomicLocation : associated_seq_variants
+        click GenomicLocation href "../GenomicLocation"
+
+
+
       RepresentativeMicrohaplotype : masking
 
 
@@ -305,6 +327,18 @@
 <td><a href="../alt_annotations/">alt_annotations</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
 <td>a list of additional annotations associated with this microhaplotype, e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../associated_protein_variants/">associated_protein_variants</a></td>
+<td>* <br/> <a href="../ProteinVariant/">ProteinVariant</a></td>
+<td>a list of associated protein variants with this haplotype, e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../associated_seq_variants/">associated_seq_variants</a></td>
+<td>* <br/> <a href="../GenomicLocation/">GenomicLocation</a></td>
+<td>a list of associated sequence variants with this haplotype, e</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -407,12 +441,38 @@ attributes:
   alt_annotations:
     name: alt_annotations
     description: a list of additional annotations associated with this microhaplotype,
-      e.g. wildtype, amino acid changes etc
+      e.g. wildtype
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - RepresentativeMicrohaplotype
     range: string
+    required: false
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  associated_protein_variants:
+    name: associated_protein_variants
+    description: a list of associated protein variants with this haplotype, e.g. amino
+      acid changes/INDELS
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - RepresentativeMicrohaplotype
+    range: ProteinVariant
+    required: false
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  associated_seq_variants:
+    name: associated_seq_variants
+    description: a list of associated sequence variants with this haplotype, e.g.
+      SNPS, indels
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - RepresentativeMicrohaplotype
+    range: GenomicLocation
     required: false
     multivalued: true
     inlined: true
@@ -479,7 +539,7 @@ attributes:
   alt_annotations:
     name: alt_annotations
     description: a list of additional annotations associated with this microhaplotype,
-      e.g. wildtype, amino acid changes etc
+      e.g. wildtype
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: alt_annotations
@@ -487,6 +547,36 @@ attributes:
     domain_of:
     - RepresentativeMicrohaplotype
     range: string
+    required: false
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  associated_protein_variants:
+    name: associated_protein_variants
+    description: a list of associated protein variants with this haplotype, e.g. amino
+      acid changes/INDELS
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: associated_protein_variants
+    owner: RepresentativeMicrohaplotype
+    domain_of:
+    - RepresentativeMicrohaplotype
+    range: ProteinVariant
+    required: false
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  associated_seq_variants:
+    name: associated_seq_variants
+    description: a list of associated sequence variants with this haplotype, e.g.
+      SNPS, indels
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: associated_seq_variants
+    owner: RepresentativeMicrohaplotype
+    domain_of:
+    - RepresentativeMicrohaplotype
+    range: GenomicLocation
     required: false
     multivalued: true
     inlined: true

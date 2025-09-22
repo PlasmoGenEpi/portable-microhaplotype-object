@@ -532,6 +532,10 @@
 <td>Information on project info</td>
 </tr>
 <tr>
+<td><a href="ProteinVariant/">ProteinVariant</a></td>
+<td>information on a variant in protein sequence</td>
+</tr>
+<tr>
 <td><a href="Pseudocigar/">Pseudocigar</a></td>
 <td>information on pseudocigar for a sequence</td>
 </tr>
@@ -579,6 +583,10 @@
 <td><a href="TargetInfo/">TargetInfo</a></td>
 <td>Information about a specific target within a genome</td>
 </tr>
+<tr>
+<td><a href="TravelInfo/">TravelInfo</a></td>
+<td>Information on travel info</td>
+</tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
@@ -608,11 +616,27 @@
 </tr>
 <tr>
 <td><a href="alternate_identifiers/">alternate_identifiers</a></td>
-<td>a list of optional alternative names for the specimens</td>
+<td>a list of optional alternative names</td>
+</tr>
+<tr>
+<td><a href="alternative_gene_name/">alternative_gene_name</a></td>
+<td>an alternative gene name</td>
+</tr>
+<tr>
+<td><a href="associated_protein_variants/">associated_protein_variants</a></td>
+<td>a list of associated protein variants with this haplotype, e</td>
+</tr>
+<tr>
+<td><a href="associated_seq_variants/">associated_seq_variants</a></td>
+<td>a list of associated sequence variants with this haplotype, e</td>
 </tr>
 <tr>
 <td><a href="associations/">associations</a></td>
 <td>a list of associations with this marker, e</td>
+</tr>
+<tr>
+<td><a href="bed_net_usage/">bed_net_usage</a></td>
+<td>approximate usage of bed net while traveling, 1 = 100% nights with bed net, 0...</td>
 </tr>
 <tr>
 <td><a href="bioinformatics_method_name/">bioinformatics_method_name</a></td>
@@ -653,6 +677,10 @@
 <tr>
 <td><a href="chromosomes/">chromosomes</a></td>
 <td>a list of chromosomes found within this genome</td>
+</tr>
+<tr>
+<td><a href="codon_genomic_location/">codon_genomic_location</a></td>
+<td>the position within the genomic sequence of the codon</td>
 </tr>
 <tr>
 <td><a href="collection_country/">collection_country</a></td>
@@ -759,6 +787,10 @@
 <td>the gravidity of the specimen host (number of previous pregnancies)</td>
 </tr>
 <tr>
+<td><a href="has_travel_out_six_month/">has_travel_out_six_month</a></td>
+<td>has travelled out from local region in the last six months</td>
+</tr>
+<tr>
 <td><a href="host_age/">host_age</a></td>
 <td>if specimen is from a person, the age in years of the person, can be float va...</td>
 </tr>
@@ -780,7 +812,7 @@
 </tr>
 <tr>
 <td><a href="lat_lon/">lat_lon</a></td>
-<td>the latitude and longitude of the collection site of the specimen</td>
+<td>the latitude and longitude of a specific site</td>
 </tr>
 <tr>
 <td><a href="library_kit/">library_kit</a></td>
@@ -991,6 +1023,10 @@
 <td>the type of project conducted, e</td>
 </tr>
 <tr>
+<td><a href="protein_location/">protein_location</a></td>
+<td>the position within the protein, the chromosome in this case would be the tra...</td>
+</tr>
+<tr>
 <td><a href="pseudocigar/">pseudocigar</a></td>
 <td>the pseudocigar of the haplotype</td>
 </tr>
@@ -1199,8 +1235,24 @@
 <td>the raw counts off the sequencing machine that a sample began with</td>
 </tr>
 <tr>
+<td><a href="travel_country/">travel_country</a></td>
+<td>the name of country, would be the same as admin level 0</td>
+</tr>
+<tr>
+<td><a href="travel_end_date/">travel_end_date</a></td>
+<td>the date of the end of travel, can be approximate, should be YYYY-MM or YYYY-...</td>
+</tr>
+<tr>
 <td><a href="travel_out_six_month/">travel_out_six_month</a></td>
 <td>Specification of the countries travelled in the last six months; can include ...</td>
+</tr>
+<tr>
+<td><a href="travel_start_date/">travel_start_date</a></td>
+<td>the date of the start of travel, can be approximate, should be YYYY-MM or YYY...</td>
+</tr>
+<tr>
+<td><a href="treatment_status/">treatment_status</a></td>
+<td>If person has been treated with drugs, what was the treatment outcome</td>
 </tr>
 <tr>
 <td><a href="umis/">umis</a></td>

@@ -2,838 +2,890 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/BioMethod/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/BioProject_accession/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/BioinformaticsMethodInfo/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/BioinformaticsRunInfo/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Boolean/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Curie/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Date/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/DateOrDatetime/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Datetime/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Decimal/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/DetectedMicrohaplotypes/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/DetectedMicrohaplotypesForSample/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/DetectedMicrohaplotypesForTarget/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Double/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Float/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/GenomeInfo/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/GenomicLocation/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Integer/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Jsonpath/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Jsonpointer/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/LibrarySampleInfo/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/MarkerOfInterest/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/MaskingInfo/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/MicrohaplotypeForTarget/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Ncname/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Nodeidentifier/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Objectidentifier/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/PanelInfo/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/ParasiteDensity/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/PlateInfo/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/PmoGenerationMethod/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/PmoHeader/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/PortableMicrohaplotypeObject/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/PrimerInfo/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/ProjectInfo/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
+    </url>
+    <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/ProteinVariant/</loc>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Pseudocigar/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/ReactionInfo/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/ReadCountsByStage/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/ReadCountsByStageForLibrarySample/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/ReadCountsByStageForTarget/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotype/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypes/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotypesForTarget/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/SequencingInfo/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Sparqlpath/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/SpecimenInfo/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/StageReadCounts/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/String/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/TargetInfo/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Time/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
+    </url>
+    <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/TravelInfo/</loc>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Uri/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/Uriorcurie/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/about/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/additional_argument/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/additional_methods/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/alt_annotations/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/alt_seq/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/alternate_identifiers/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
+    </url>
+    <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/alternative_gene_name/</loc>
+         <lastmod>2025-09-22</lastmod>
+    </url>
+    <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/associated_protein_variants/</loc>
+         <lastmod>2025-09-22</lastmod>
+    </url>
+    <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/associated_seq_variants/</loc>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/associations/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
+    </url>
+    <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/bed_net_usage/</loc>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/bioinformatics_method_name/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/bioinformatics_methods_id/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/bioinformatics_methods_info/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/bioinformatics_run_id/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/bioinformatics_run_info/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/bioinformatics_run_name/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/blood_meal/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/chrom/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/chromosomes/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
+    </url>
+    <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/codon_genomic_location/</loc>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/collection_country/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/collection_date/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/creation_date/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/date_measured/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/demultiplexing_method/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/denoising_method/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/density_method_comments/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/detected_microhaplotypes/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/drug_usage/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/end/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/env_broad_scale/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/env_local_scale/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/env_medium/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/experiment_accession/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/fastqs_loc/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/forward_primer/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/gene_name/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/generation_method/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/genome_id/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/genome_version/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/geo_admin1/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/geo_admin2/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/geo_admin3/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/gff_url/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/gravid/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/gravidity/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
+    </url>
+    <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/has_travel_out_six_month/</loc>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/host_age/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/host_sex/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/host_subject_id/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/host_taxon_id/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/insert_location/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/lat_lon/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/library_kit/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/library_layout/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/library_prep_plate_info/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/library_sample_id/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/library_sample_info/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/library_sample_name/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/library_samples/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/library_screen/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/library_selection/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/library_source/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/library_strategy/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/location/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/marker_location/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/markers_of_interest/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/masking/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/masking_generation_description/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/mhap_id/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/mhap_location/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/mhaps/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/mhaps_target_id/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/microhaplotype_name/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/microhaplotypes/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/name/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/nucl_acid_amp/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/nucl_acid_amp_date/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/nucl_acid_ext/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/nucl_acid_ext_date/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/panel_id/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/panel_info/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/panel_name/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/panel_targets/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/parasite_density/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/parasite_density_info/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/parasite_density_method/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/pcr_cond/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/plate_col/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/plate_name/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/plate_row/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/pmo_header/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/pmo_version/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/portable-microhaplotype-object/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/program/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/program_description/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/program_name/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/program_url/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/program_version/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/project_collector_chief_scientist/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/project_contributors/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/project_description/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/project_id/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/project_info/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/project_name/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/project_type/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
+    </url>
+    <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/protein_location/</loc>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/pseudocigar/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/pseudocigar_generation_description/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/pseudocigar_seq/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/qpcr_parasite_density_info/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/quality/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/reaction_name/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/reactions/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/read_count/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/read_counts_by_library_sample_by_stage/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/read_counts_by_stage/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/read_counts_for_targets/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/reads/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/ref_loc/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/ref_seq/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/replacement_size/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/representative_microhaplotypes/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/reverse_primer/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/run_accession/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/run_date/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/seq/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/seq_center/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/seq_date/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/seq_instrument_model/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/seq_platform/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/seq_segment_size/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/seq_start/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/sequencing_info/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/sequencing_info_id/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/sequencing_info_name/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/specimen_accession/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/specimen_collect_device/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/specimen_comments/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/specimen_id/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/specimen_info/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/specimen_name/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/specimen_store_loc/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/specimen_taxon_id/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/specimen_type/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/stage/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/stages/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/start/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/storage_plate_info/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/strand/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/target_attributes/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/target_id/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/target_info/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/target_name/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/target_results/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/targeted_genomes/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/targets/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/taxon_id/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/total_raw_count/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
+    </url>
+    <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/travel_country/</loc>
+         <lastmod>2025-09-22</lastmod>
+    </url>
+    <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/travel_end_date/</loc>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/travel_out_six_month/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
+    </url>
+    <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/travel_start_date/</loc>
+         <lastmod>2025-09-22</lastmod>
+    </url>
+    <url>
+         <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/treatment_status/</loc>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/umis/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://PlasmoGenEpi.github.io/portable-microhaplotype-object/url/</loc>
-         <lastmod>2025-09-21</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
 </urlset>

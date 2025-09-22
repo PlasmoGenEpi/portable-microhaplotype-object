@@ -253,6 +253,8 @@
 
       SpecimenInfo : gravidity
 
+      SpecimenInfo : has_travel_out_six_month
+
       SpecimenInfo : host_age
 
       SpecimenInfo : host_sex
@@ -304,6 +306,17 @@
       SpecimenInfo : travel_out_six_month
 
 
+
+
+
+        SpecimenInfo --&gt; "*" TravelInfo : travel_out_six_month
+        click TravelInfo href "../TravelInfo"
+
+
+
+      SpecimenInfo : treatment_status
+
+
 </div>
 <!-- no inheritance hierarchy -->
 <h2 id="slots">Slots</h2>
@@ -317,6 +330,36 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../alternate_identifiers/">alternate_identifiers</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>a list of optional alternative names</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../lat_lon/">lat_lon</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the latitude and longitude of a specific site</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../geo_admin1/">geo_admin1</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>geographical admin level 1, the secondary large demarcation of a nation (nati...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../geo_admin2/">geo_admin2</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>geographical admin level 2, the third large demarcation of a nation (nation =...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../geo_admin3/">geo_admin3</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>geographical admin level 3, the third large demarcation of a nation (nation =...</td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../specimen_name/">specimen_name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
@@ -339,12 +382,6 @@
 <td><a href="../host_taxon_id/">host_taxon_id</a></td>
 <td>1 <br/> <a href="../Integer/">Integer</a></td>
 <td>the NCBI taxonomy number of the host that the specimen was collected from</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../alternate_identifiers/">alternate_identifiers</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>a list of optional alternative names for the specimens</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -402,30 +439,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../geo_admin1/">geo_admin1</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>geographical admin level 1, the secondary large demarcation of a nation (nati...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../geo_admin2/">geo_admin2</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>geographical admin level 2, the third large demarcation of a nation (nation =...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../geo_admin3/">geo_admin3</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>geographical admin level 3, the third large demarcation of a nation (nation =...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../lat_lon/">lat_lon</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the latitude and longitude of the collection site of the specimen</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../specimen_store_loc/">specimen_store_loc</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>the specimen store site, address or facility name</td>
@@ -456,8 +469,14 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../has_travel_out_six_month/">has_travel_out_six_month</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>has travelled out from local region in the last six months</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../travel_out_six_month/">travel_out_six_month</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../TravelInfo/">TravelInfo</a></td>
 <td>Specification of the countries travelled in the last six months; can include ...</td>
 <td>direct</td>
 </tr>
@@ -489,6 +508,12 @@
 <td><a href="../drug_usage/">drug_usage</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
 <td>Any drug used by subject and the frequency of usage; can include multiple dru...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../treatment_status/">treatment_status</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>If person has been treated with drugs, what was the treatment outcome</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -543,6 +568,12 @@
 <pre><code class="language-yaml">name: SpecimenInfo
 description: Information on specimen info
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+slots:
+- alternate_identifiers
+- lat_lon
+- geo_admin1
+- geo_admin2
+- geo_admin3
 attributes:
   specimen_name:
     name: specimen_name
@@ -569,6 +600,7 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+    minimum_value: 0
     pattern: ^[0-9]+$
   host_subject_id:
     name: host_subject_id
@@ -579,6 +611,7 @@ attributes:
     - SpecimenInfo
     range: integer
     required: false
+    minimum_value: 0
     pattern: ^[0-9]+$
   host_taxon_id:
     name: host_taxon_id
@@ -590,20 +623,8 @@ attributes:
     - SpecimenInfo
     range: integer
     required: true
+    minimum_value: 0
     pattern: ^[0-9]+$
-  alternate_identifiers:
-    name: alternate_identifiers
-    description: a list of optional alternative names for the specimens
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-    pattern: ^[A-z-._0-9 ]+$
   host_sex:
     name: host_sex
     description: if specimen is from a person, the sex listed for that person
@@ -652,6 +673,7 @@ attributes:
     - SpecimenInfo
     range: integer
     required: false
+    minimum_value: 0
     pattern: ^[0-9]+$
   parasite_density_info:
     name: parasite_density_info
@@ -693,6 +715,7 @@ attributes:
     - SpecimenInfo
     range: double
     required: false
+    minimum_value: 0
     pattern: ^\d*\.?\d+$
   collection_country:
     name: collection_country
@@ -709,52 +732,6 @@ attributes:
     range: string
     required: true
     pattern: ^[A-Za-z0-9 ,._:'–-]+$
-  geo_admin1:
-    name: geo_admin1
-    description: geographical admin level 1, the secondary large demarcation of a
-      nation (nation = admin level 0)
-    examples:
-    - value: State/Province
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-  geo_admin2:
-    name: geo_admin2
-    description: geographical admin level 2, the third large demarcation of a nation
-      (nation = admin level 0)
-    examples:
-    - value: city
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-  geo_admin3:
-    name: geo_admin3
-    description: geographical admin level 3, the third large demarcation of a nation
-      (nation = admin level 0)
-    examples:
-    - value: district of a city
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-  lat_lon:
-    name: lat_lon
-    description: the latitude and longitude of the collection site of the specimen
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-    pattern: ^[-+]?\d{1,2}(?:\.\d+)?,[-+]?\d{1,3}(?:\.\d+)?$
   specimen_store_loc:
     name: specimen_store_loc
     description: the specimen store site, address or facility name
@@ -803,6 +780,7 @@ attributes:
     - SpecimenInfo
     range: integer
     required: true
+    minimum_value: 0
     pattern: ^[0-9]+$
   specimen_comments:
     name: specimen_comments
@@ -815,6 +793,15 @@ attributes:
     required: false
     multivalued: true
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
+  has_travel_out_six_month:
+    name: has_travel_out_six_month
+    description: has travelled out from local region in the last six months
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: boolean
+    required: false
   travel_out_six_month:
     name: travel_out_six_month
     description: Specification of the countries travelled in the last six months;
@@ -823,10 +810,9 @@ attributes:
     rank: 1000
     domain_of:
     - SpecimenInfo
-    range: string
+    range: TravelInfo
     required: false
     multivalued: true
-    pattern: ^[A-z-._0-9\(\),\/\ ]+$
   storage_plate_info:
     name: storage_plate_info
     description: 'plate location of where specimen is stored if stored in a plate '
@@ -893,6 +879,21 @@ attributes:
     required: false
     multivalued: true
     pattern: ^[A-z-._0-9;|\(\),\/\ ]+$
+  treatment_status:
+    name: treatment_status
+    description: If person has been treated with drugs, what was the treatment outcome
+    examples:
+    - value: failed
+    - value: successful
+    - value: partial_response
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    multivalued: true
+    pattern: ^[A-z-._0-9;|\(\),\/\ ]+$
 
 </code></pre>
 </details>
@@ -931,6 +932,7 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+    minimum_value: 0
     pattern: ^[0-9]+$
   host_subject_id:
     name: host_subject_id
@@ -943,6 +945,7 @@ attributes:
     - SpecimenInfo
     range: integer
     required: false
+    minimum_value: 0
     pattern: ^[0-9]+$
   host_taxon_id:
     name: host_taxon_id
@@ -956,22 +959,8 @@ attributes:
     - SpecimenInfo
     range: integer
     required: true
+    minimum_value: 0
     pattern: ^[0-9]+$
-  alternate_identifiers:
-    name: alternate_identifiers
-    description: a list of optional alternative names for the specimens
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: alternate_identifiers
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-    pattern: ^[A-z-._0-9 ]+$
   host_sex:
     name: host_sex
     description: if specimen is from a person, the sex listed for that person
@@ -1030,6 +1019,7 @@ attributes:
     - SpecimenInfo
     range: integer
     required: false
+    minimum_value: 0
     pattern: ^[0-9]+$
   parasite_density_info:
     name: parasite_density_info
@@ -1077,6 +1067,7 @@ attributes:
     - SpecimenInfo
     range: double
     required: false
+    minimum_value: 0
     pattern: ^\d*\.?\d+$
   collection_country:
     name: collection_country
@@ -1095,60 +1086,6 @@ attributes:
     range: string
     required: true
     pattern: ^[A-Za-z0-9 ,._:'–-]+$
-  geo_admin1:
-    name: geo_admin1
-    description: geographical admin level 1, the secondary large demarcation of a
-      nation (nation = admin level 0)
-    examples:
-    - value: State/Province
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: geo_admin1
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-  geo_admin2:
-    name: geo_admin2
-    description: geographical admin level 2, the third large demarcation of a nation
-      (nation = admin level 0)
-    examples:
-    - value: city
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: geo_admin2
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-  geo_admin3:
-    name: geo_admin3
-    description: geographical admin level 3, the third large demarcation of a nation
-      (nation = admin level 0)
-    examples:
-    - value: district of a city
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: geo_admin3
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-  lat_lon:
-    name: lat_lon
-    description: the latitude and longitude of the collection site of the specimen
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: lat_lon
-    owner: SpecimenInfo
-    domain_of:
-    - SpecimenInfo
-    range: string
-    required: false
-    pattern: ^[-+]?\d{1,2}(?:\.\d+)?,[-+]?\d{1,3}(?:\.\d+)?$
   specimen_store_loc:
     name: specimen_store_loc
     description: the specimen store site, address or facility name
@@ -1205,6 +1142,7 @@ attributes:
     - SpecimenInfo
     range: integer
     required: true
+    minimum_value: 0
     pattern: ^[0-9]+$
   specimen_comments:
     name: specimen_comments
@@ -1219,6 +1157,17 @@ attributes:
     required: false
     multivalued: true
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
+  has_travel_out_six_month:
+    name: has_travel_out_six_month
+    description: has travelled out from local region in the last six months
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: has_travel_out_six_month
+    owner: SpecimenInfo
+    domain_of:
+    - SpecimenInfo
+    range: boolean
+    required: false
   travel_out_six_month:
     name: travel_out_six_month
     description: Specification of the countries travelled in the last six months;
@@ -1229,10 +1178,9 @@ attributes:
     owner: SpecimenInfo
     domain_of:
     - SpecimenInfo
-    range: string
+    range: TravelInfo
     required: false
     multivalued: true
-    pattern: ^[A-z-._0-9\(\),\/\ ]+$
   storage_plate_info:
     name: storage_plate_info
     description: 'plate location of where specimen is stored if stored in a plate '
@@ -1309,6 +1257,97 @@ attributes:
     required: false
     multivalued: true
     pattern: ^[A-z-._0-9;|\(\),\/\ ]+$
+  treatment_status:
+    name: treatment_status
+    description: If person has been treated with drugs, what was the treatment outcome
+    examples:
+    - value: failed
+    - value: successful
+    - value: partial_response
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: treatment_status
+    owner: SpecimenInfo
+    domain_of:
+    - SpecimenInfo
+    range: string
+    required: false
+    multivalued: true
+    pattern: ^[A-z-._0-9;|\(\),\/\ ]+$
+  alternate_identifiers:
+    name: alternate_identifiers
+    description: a list of optional alternative names
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: alternate_identifiers
+    owner: SpecimenInfo
+    domain_of:
+    - LibrarySampleInfo
+    - SpecimenInfo
+    range: string
+    required: false
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    pattern: ^[A-z-._0-9 ]+$
+  lat_lon:
+    name: lat_lon
+    description: the latitude and longitude of a specific site
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: lat_lon
+    owner: SpecimenInfo
+    domain_of:
+    - TravelInfo
+    - SpecimenInfo
+    range: string
+    required: false
+    pattern: ^[-+]?\d{1,2}(?:\.\d+)?,[-+]?\d{1,3}(?:\.\d+)?$
+  geo_admin1:
+    name: geo_admin1
+    description: geographical admin level 1, the secondary large demarcation of a
+      nation (nation = admin level 0)
+    examples:
+    - value: State/Province
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: geo_admin1
+    owner: SpecimenInfo
+    domain_of:
+    - TravelInfo
+    - SpecimenInfo
+    range: string
+    required: false
+  geo_admin2:
+    name: geo_admin2
+    description: geographical admin level 2, the third large demarcation of a nation
+      (nation = admin level 0)
+    examples:
+    - value: city
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: geo_admin2
+    owner: SpecimenInfo
+    domain_of:
+    - TravelInfo
+    - SpecimenInfo
+    range: string
+    required: false
+  geo_admin3:
+    name: geo_admin3
+    description: geographical admin level 3, the third large demarcation of a nation
+      (nation = admin level 0)
+    examples:
+    - value: district of a city
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: geo_admin3
+    owner: SpecimenInfo
+    domain_of:
+    - TravelInfo
+    - SpecimenInfo
+    range: string
+    required: false
 
 </code></pre>
 </details>

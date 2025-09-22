@@ -292,15 +292,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../target_name/">target_name</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>an identifier for this target</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../gene_name/">gene_name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>an identifier of the gene, if any, is being covered with this targeted</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../target_name/">target_name</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>an identifier for this target</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -385,6 +385,8 @@
 <pre><code class="language-yaml">name: TargetInfo
 description: Information about a specific target within a genome
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+slots:
+- gene_name
 attributes:
   target_name:
     name: target_name
@@ -395,16 +397,6 @@ attributes:
     - TargetInfo
     range: string
     required: true
-    pattern: ^[A-z-._0-9]+$
-  gene_name:
-    name: gene_name
-    description: an identifier of the gene, if any, is being covered with this targeted
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - TargetInfo
-    range: string
-    required: false
     pattern: ^[A-z-._0-9]+$
   insert_location:
     name: insert_location
@@ -482,18 +474,6 @@ attributes:
     range: string
     required: true
     pattern: ^[A-z-._0-9]+$
-  gene_name:
-    name: gene_name
-    description: an identifier of the gene, if any, is being covered with this targeted
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: gene_name
-    owner: TargetInfo
-    domain_of:
-    - TargetInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9]+$
   insert_location:
     name: insert_location
     description: the intended genomic location of the insert of the amplicon (the
@@ -559,6 +539,23 @@ attributes:
     required: false
     multivalued: true
     inlined_as_list: false
+  gene_name:
+    name: gene_name
+    description: an identifier of the gene, if any, is being covered with this targeted
+    examples:
+    - value: PF3D7_0304600.1
+    - value: PF3D7_0810800.1
+    - value: PF3D7_1343700.1
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: gene_name
+    owner: TargetInfo
+    domain_of:
+    - TargetInfo
+    - ProteinVariant
+    range: string
+    required: false
+    pattern: ^[A-z-._0-9]+$
 
 </code></pre>
 </details>

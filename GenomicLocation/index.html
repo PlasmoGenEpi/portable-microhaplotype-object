@@ -329,8 +329,26 @@
 <td><a href="./">GenomicLocation</a></td>
 </tr>
 <tr>
+<td><a href="../RepresentativeMicrohaplotype/">RepresentativeMicrohaplotype</a></td>
+<td><a href="../associated_seq_variants/">associated_seq_variants</a></td>
+<td>range</td>
+<td><a href="./">GenomicLocation</a></td>
+</tr>
+<tr>
 <td><a href="../RepresentativeMicrohaplotypesForTarget/">RepresentativeMicrohaplotypesForTarget</a></td>
 <td><a href="../mhap_location/">mhap_location</a></td>
+<td>range</td>
+<td><a href="./">GenomicLocation</a></td>
+</tr>
+<tr>
+<td><a href="../ProteinVariant/">ProteinVariant</a></td>
+<td><a href="../protein_location/">protein_location</a></td>
+<td>range</td>
+<td><a href="./">GenomicLocation</a></td>
+</tr>
+<tr>
+<td><a href="../ProteinVariant/">ProteinVariant</a></td>
+<td><a href="../codon_genomic_location/">codon_genomic_location</a></td>
 <td>range</td>
 <td><a href="./">GenomicLocation</a></td>
 </tr>
@@ -395,6 +413,7 @@ attributes:
     - GenomicLocation
     range: integer
     required: true
+    minimum_value: 0
     pattern: ^[0-9]+$
   end:
     name: end
@@ -405,6 +424,7 @@ attributes:
     - GenomicLocation
     range: integer
     required: true
+    minimum_value: 0
     pattern: ^[0-9]+$
   strand:
     name: strand
@@ -469,6 +489,7 @@ attributes:
     - GenomicLocation
     range: integer
     required: true
+    minimum_value: 0
     pattern: ^[0-9]+$
   end:
     name: end
@@ -481,6 +502,7 @@ attributes:
     - GenomicLocation
     range: integer
     required: true
+    minimum_value: 0
     pattern: ^[0-9]+$
   strand:
     name: strand
@@ -531,6 +553,7 @@ attributes:
     - GenomicLocation
     range: integer
     required: true
+    minimum_value: 0
     pattern: ^[0-9]+$
 
 </code></pre>

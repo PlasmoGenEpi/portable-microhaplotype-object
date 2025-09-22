@@ -365,7 +365,7 @@
 
 
 <h1 id="slot-lat_lon">Slot: lat_lon</h1>
-<p><em>the latitude and longitude of the collection site of the specimen</em></p>
+<p><em>the latitude and longitude of a specific site</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/lat_lon">portable_microhaplotype_object:lat_lon</a>
 Alias: lat_lon</p>
 <!-- no inheritance hierarchy -->
@@ -383,6 +383,11 @@ Alias: lat_lon</p>
 <tr>
 <td><a href="../SpecimenInfo/">SpecimenInfo</a></td>
 <td>Information on specimen info</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TravelInfo/">TravelInfo</a></td>
+<td>Information on travel info</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -424,12 +429,12 @@ Alias: lat_lon</p>
 <details>
 
 <pre><code class="language-yaml">name: lat_lon
-description: the latitude and longitude of the collection site of the specimen
+description: the latitude and longitude of a specific site
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: lat_lon
-owner: SpecimenInfo
 domain_of:
+- TravelInfo
 - SpecimenInfo
 range: string
 required: false
