@@ -666,6 +666,21 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "reads",
+      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/reads",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/reads",
+      "owner": "StageReadCounts",
+      "domain_of": [
+        "MicrohaplotypeForTarget",
+        "StageReadCounts"
+      ],
+      "range": "integer",
+      "required": true,
+      "minimum_value": 0,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "markerOfInterest__marker_location",
       "description": "the genomic location",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
@@ -1415,21 +1430,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "microhaplotypeForTarget__reads",
-      "description": "the read count associated with this microhaplotype",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/reads",
-      "alias": "reads",
-      "owner": "MicrohaplotypeForTarget",
-      "domain_of": [
-        "MicrohaplotypeForTarget"
-      ],
-      "range": "integer",
-      "required": true,
-      "minimum_value": 0,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "microhaplotypeForTarget__umis",
       "description": "the unique molecular identifier (umi) count associated with this microhaplotype",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
@@ -1461,63 +1461,20 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "bioinformaticsMethodInfo__demultiplexing_method",
-      "description": "the demultiplexing method used to separate raw reads from barcodes and primer targets",
+      "name": "bioinformaticsMethodInfo__methods",
+      "description": "methodology used to generate the amplicon data stored in this PMO, e.g. demultiplexing method, denosing method or just a pipeline method info",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/demultiplexing_method",
-      "alias": "demultiplexing_method",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/methods",
+      "alias": "methods",
       "owner": "BioinformaticsMethodInfo",
       "domain_of": [
         "BioinformaticsMethodInfo"
       ],
       "range": "BioMethod",
       "required": true,
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "bioinformaticsMethodInfo__denoising_method",
-      "description": "the method used to de-noise and/or cluster the raw reads",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/denoising_method",
-      "alias": "denoising_method",
-      "owner": "BioinformaticsMethodInfo",
-      "domain_of": [
-        "BioinformaticsMethodInfo"
-      ],
-      "range": "BioMethod",
-      "required": true,
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "bioinformaticsMethodInfo__additional_methods",
-      "description": "any additional methods used to analyze the data",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/additional_methods",
-      "alias": "additional_methods",
-      "owner": "BioinformaticsMethodInfo",
-      "domain_of": [
-        "BioinformaticsMethodInfo"
-      ],
-      "range": "BioMethod",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "bioinformaticsMethodInfo__bioinformatics_method_name",
-      "description": "name of the collection of methods is called, e.g. pipeline ",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/bioinformatics_method_name",
-      "alias": "bioinformatics_method_name",
-      "owner": "BioinformaticsMethodInfo",
-      "domain_of": [
-        "BioinformaticsMethodInfo"
-      ],
-      "range": "string",
-      "pattern": "^[A-z-._0-9 ]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -2960,22 +2917,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "stageReadCounts__read_count",
-      "description": "the read counts",
-      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
-      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/read_count",
-      "alias": "read_count",
-      "owner": "StageReadCounts",
-      "domain_of": [
-        "StageReadCounts"
-      ],
-      "range": "integer",
-      "required": true,
-      "minimum_value": 0,
-      "pattern": "^[0-9]+$",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "stageReadCounts__stage",
       "description": "the stage of the pipeline, e.g. demultiplexed, denoised, etc",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
@@ -3295,6 +3236,26 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "MicrohaplotypeForTarget_reads",
+      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/reads",
+      "description": "the read count associated with this microhaplotype",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "is_a": "reads",
+      "domain": "MicrohaplotypeForTarget",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/reads",
+      "alias": "reads",
+      "owner": "MicrohaplotypeForTarget",
+      "domain_of": [
+        "MicrohaplotypeForTarget"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "reads",
+      "range": "integer",
+      "required": true,
+      "minimum_value": 0,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "LibrarySampleInfo_specimen_id",
       "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/specimen_id",
       "description": "the index into the specimen_info list",
@@ -3313,6 +3274,26 @@
       "required": true,
       "minimum_value": 0,
       "pattern": "^[0-9]+$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "StageReadCounts_reads",
+      "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/reads",
+      "description": "the read counts for this stage",
+      "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
+      "is_a": "reads",
+      "domain": "StageReadCounts",
+      "slot_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/reads",
+      "alias": "reads",
+      "owner": "StageReadCounts",
+      "domain_of": [
+        "StageReadCounts"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "reads",
+      "range": "integer",
+      "required": true,
+      "minimum_value": 0,
       "@type": "SlotDefinition"
     }
   ],
@@ -3975,19 +3956,11 @@
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
         "mhap_id",
-        "microhaplotypeForTarget__reads",
+        "MicrohaplotypeForTarget_reads",
         "microhaplotypeForTarget__umis"
       ],
       "slot_usage": {},
       "attributes": [
-        {
-          "name": "reads",
-          "description": "the read count associated with this microhaplotype",
-          "range": "integer",
-          "required": true,
-          "minimum_value": 0,
-          "@type": "SlotDefinition"
-        },
         {
           "name": "umis",
           "description": "the unique molecular identifier (umi) count associated with this microhaplotype",
@@ -4026,43 +3999,20 @@
     {
       "name": "BioinformaticsMethodInfo",
       "definition_uri": "https://plasmogenepi.github.io/portable-microhaplotype-object/BioinformaticsMethodInfo",
-      "description": "the targeted amplicon bioinformatics pipeline",
+      "description": "the targeted amplicon bioinformatics methods used to generate the amplicon data in this PMO",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
-        "bioinformaticsMethodInfo__demultiplexing_method",
-        "bioinformaticsMethodInfo__denoising_method",
-        "bioinformaticsMethodInfo__additional_methods",
-        "bioinformaticsMethodInfo__bioinformatics_method_name"
+        "bioinformaticsMethodInfo__methods"
       ],
       "slot_usage": {},
       "attributes": [
         {
-          "name": "demultiplexing_method",
-          "description": "the demultiplexing method used to separate raw reads from barcodes and primer targets",
+          "name": "methods",
+          "description": "methodology used to generate the amplicon data stored in this PMO, e.g. demultiplexing method, denosing method or just a pipeline method info",
           "range": "BioMethod",
           "required": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "denoising_method",
-          "description": "the method used to de-noise and/or cluster the raw reads",
-          "range": "BioMethod",
-          "required": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "additional_methods",
-          "description": "any additional methods used to analyze the data",
-          "range": "BioMethod",
           "multivalued": true,
           "inlined_as_list": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "bioinformatics_method_name",
-          "description": "name of the collection of methods is called, e.g. pipeline ",
-          "range": "string",
-          "pattern": "^[A-z-._0-9 ]+$",
           "@type": "SlotDefinition"
         }
       ],
@@ -5217,20 +5167,11 @@
       "description": "Information on the reads counts at several stages",
       "from_schema": "https://plasmogenepi.github.io/portable-microhaplotype-object",
       "slots": [
-        "stageReadCounts__read_count",
+        "StageReadCounts_reads",
         "stageReadCounts__stage"
       ],
       "slot_usage": {},
       "attributes": [
-        {
-          "name": "read_count",
-          "description": "the read counts",
-          "range": "integer",
-          "required": true,
-          "minimum_value": 0,
-          "pattern": "^[0-9]+$",
-          "@type": "SlotDefinition"
-        },
         {
           "name": "stage",
           "description": "the stage of the pipeline, e.g. demultiplexed, denoised, etc",
@@ -5466,9 +5407,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2025-09-21T18:52:33",
-  "source_file_size": 45346,
-  "generation_date": "2025-09-21T18:52:39",
+  "source_file_date": "2025-10-22T09:43:35",
+  "source_file_size": 44883,
+  "generation_date": "2025-10-22T09:44:24",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",

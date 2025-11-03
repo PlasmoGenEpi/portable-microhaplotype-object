@@ -1,13 +1,10 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// the targeted amplicon bioinformatics pipeline
+// the targeted amplicon bioinformatics methods used to generate the amplicon data in this PMO
 message BioinformaticsMethodInfo
  {
-  bioMethod demultiplexingMethod = 0
-  bioMethod denoisingMethod = 0
- repeated  bioMethod additionalMethods = 0
-  string bioinformaticsMethodName = 0
+ repeated  bioMethod methods = 0
  }
 // Information about the pipeline run that generated some of the microhaplotype detected and reads_by_stage
 message BioinformaticsRunInfo
@@ -288,7 +285,7 @@ message SpecimenInfo
 // Information on the reads counts at several stages
 message StageReadCounts
  {
-  integer readCount = 0
+  integer reads = 0
   string stage = 0
  }
 // Information about a specific target within a genome

@@ -85,12 +85,9 @@
 --     * Slot: id Description: 
 --     * Slot: mhaps_target_id Description: the index for a target in the representative_microhaplotypes list
 --     * Slot: DetectedMicrohaplotypesForSample_id Description: Autocreated FK slot
--- # Class: "BioinformaticsMethodInfo" Description: "the targeted amplicon bioinformatics pipeline"
+-- # Class: "BioinformaticsMethodInfo" Description: "the targeted amplicon bioinformatics methods used to generate the amplicon data in this PMO"
 --     * Slot: id Description: 
---     * Slot: bioinformatics_method_name Description: name of the collection of methods is called, e.g. pipeline 
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
---     * Slot: demultiplexing_method_id Description: the demultiplexing method used to separate raw reads from barcodes and primer targets
---     * Slot: denoising_method_id Description: the method used to de-noise and/or cluster the raw reads
 -- # Class: "BioMethod" Description: "methodology description of a portion of a bioinformatics pipeline"
 --     * Slot: id Description: 
 --     * Slot: program_version Description: the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]
@@ -200,7 +197,7 @@
 --     * Slot: generation_method_id Description: the generation method to create this PMO 
 -- # Class: "StageReadCounts" Description: "Information on the reads counts at several stages"
 --     * Slot: id Description: 
---     * Slot: read_count Description: the read counts
+--     * Slot: reads Description: the read counts for this stage
 --     * Slot: stage Description: the stage of the pipeline, e.g. demultiplexed, denoised, etc
 --     * Slot: ReadCountsByStageForTarget_id Description: Autocreated FK slot
 -- # Class: "ReadCountsByStageForTarget" Description: "Information on the reads counts at several stages of a pipeline for a target"
@@ -325,27 +322,6 @@ CREATE TABLE "GenomicLocation" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY("RepresentativeMicrohaplotype_id") REFERENCES "RepresentativeMicrohaplotype" (id)
 );
-CREATE TABLE "BioinformaticsMethodInfo" (
-	id INTEGER NOT NULL, 
-	bioinformatics_method_name TEXT, 
-	"PortableMicrohaplotypeObject_id" INTEGER, 
-	demultiplexing_method_id INTEGER NOT NULL, 
-	denoising_method_id INTEGER NOT NULL, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id), 
-	FOREIGN KEY(demultiplexing_method_id) REFERENCES "BioMethod" (id), 
-	FOREIGN KEY(denoising_method_id) REFERENCES "BioMethod" (id)
-);
-CREATE TABLE "BioMethod" (
-	id INTEGER NOT NULL, 
-	program_version TEXT NOT NULL, 
-	program TEXT NOT NULL, 
-	program_description TEXT, 
-	program_url TEXT, 
-	"BioinformaticsMethodInfo_id" INTEGER, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY("BioinformaticsMethodInfo_id") REFERENCES "BioinformaticsMethodInfo" (id)
-);
 CREATE TABLE "PlateInfo" (
 	id INTEGER NOT NULL, 
 	plate_name TEXT, 
@@ -431,12 +407,6 @@ CREATE TABLE "RepresentativeMicrohaplotype_alt_annotations" (
 	PRIMARY KEY ("RepresentativeMicrohaplotype_id", alt_annotations), 
 	FOREIGN KEY("RepresentativeMicrohaplotype_id") REFERENCES "RepresentativeMicrohaplotype" (id)
 );
-CREATE TABLE "BioMethod_additional_argument" (
-	"BioMethod_id" INTEGER, 
-	additional_argument TEXT, 
-	PRIMARY KEY ("BioMethod_id", additional_argument), 
-	FOREIGN KEY("BioMethod_id") REFERENCES "BioMethod" (id)
-);
 CREATE TABLE "PortableMicrohaplotypeObject" (
 	id INTEGER NOT NULL, 
 	representative_microhaplotypes_id INTEGER NOT NULL, 
@@ -492,6 +462,12 @@ CREATE TABLE "GenomeInfo" (
 	genome_version TEXT NOT NULL, 
 	url TEXT NOT NULL, 
 	gff_url TEXT, 
+	"PortableMicrohaplotypeObject_id" INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
+);
+CREATE TABLE "BioinformaticsMethodInfo" (
+	id INTEGER NOT NULL, 
 	"PortableMicrohaplotypeObject_id" INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("PortableMicrohaplotypeObject_id") REFERENCES "PortableMicrohaplotypeObject" (id)
@@ -594,6 +570,16 @@ CREATE TABLE "DetectedMicrohaplotypesForSample" (
 	"DetectedMicrohaplotypes_id" INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("DetectedMicrohaplotypes_id") REFERENCES "DetectedMicrohaplotypes" (id)
+);
+CREATE TABLE "BioMethod" (
+	id INTEGER NOT NULL, 
+	program_version TEXT NOT NULL, 
+	program TEXT NOT NULL, 
+	program_description TEXT, 
+	program_url TEXT, 
+	"BioinformaticsMethodInfo_id" INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY("BioinformaticsMethodInfo_id") REFERENCES "BioinformaticsMethodInfo" (id)
 );
 CREATE TABLE "ParasiteDensity" (
 	id INTEGER NOT NULL, 
@@ -710,6 +696,12 @@ CREATE TABLE "ReadCountsByStageForTarget" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY("ReadCountsByStageForLibrarySample_id") REFERENCES "ReadCountsByStageForLibrarySample" (id)
 );
+CREATE TABLE "BioMethod_additional_argument" (
+	"BioMethod_id" INTEGER, 
+	additional_argument TEXT, 
+	PRIMARY KEY ("BioMethod_id", additional_argument), 
+	FOREIGN KEY("BioMethod_id") REFERENCES "BioMethod" (id)
+);
 CREATE TABLE "MicrohaplotypeForTarget" (
 	id INTEGER NOT NULL, 
 	mhap_id INTEGER NOT NULL, 
@@ -721,7 +713,7 @@ CREATE TABLE "MicrohaplotypeForTarget" (
 );
 CREATE TABLE "StageReadCounts" (
 	id INTEGER NOT NULL, 
-	read_count INTEGER NOT NULL, 
+	reads INTEGER NOT NULL, 
 	stage TEXT NOT NULL, 
 	"ReadCountsByStageForTarget_id" INTEGER, 
 	PRIMARY KEY (id), 

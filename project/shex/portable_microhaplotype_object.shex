@@ -44,11 +44,7 @@ linkml:Jsonpath xsd:string
 linkml:Sparqlpath xsd:string
 
 <BioinformaticsMethodInfo> CLOSED {
-    (  $<BioinformaticsMethodInfo_tes> (  <demultiplexing_method> @<BioMethod> ;
-          <denoising_method> @<BioMethod> ;
-          <additional_methods> @<BioMethod> * ;
-          <bioinformatics_method_name> @linkml:String ?
-       ) ;
+    (  $<BioinformaticsMethodInfo_tes> <methods> @<BioMethod> + ;
        rdf:type [ <BioinformaticsMethodInfo> ] ?
     )
 }
@@ -385,7 +381,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <StageReadCounts> CLOSED {
-    (  $<StageReadCounts_tes> (  <read_count> @linkml:Integer ;
+    (  $<StageReadCounts_tes> (  <reads> @linkml:Integer ;
           <stage> @linkml:String
        ) ;
        rdf:type [ <StageReadCounts> ] ?

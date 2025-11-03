@@ -1,10 +1,7 @@
 # metamodel_version: 1.7.0
 type BioinformaticsMethodInfo
   {
-    demultiplexingMethod: BioMethod!
-    denoisingMethod: BioMethod!
-    additionalMethods: [BioMethod]
-    bioinformaticsMethodName: String
+    methods: [BioMethod]!
   }
 
 type BioinformaticsRunInfo
@@ -285,7 +282,7 @@ type SpecimenInfo
 
 type StageReadCounts
   {
-    readCount: Integer!
+    reads: Integer!
     stage: String!
   }
 

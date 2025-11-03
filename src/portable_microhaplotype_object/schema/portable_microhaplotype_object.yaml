@@ -430,13 +430,12 @@ classes:
       Microhaplotype detected for a specific target
     slots:
       - mhap_id
-    attributes:
+      - reads
+    slot_usage:
       reads:
-        required: true
-        range: integer
-        minimum_value: 0
         description: >-
           the read count associated with this microhaplotype
+    attributes:
       umis:
         required: false
         range: integer
@@ -460,31 +459,15 @@ classes:
 
   BioinformaticsMethodInfo:
     description: >-
-      the targeted amplicon bioinformatics pipeline
+      the targeted amplicon bioinformatics methods used to generate the amplicon data in this PMO
     attributes:
-      demultiplexing_method:
+      methods:
         range: BioMethod
         required: true
-        description: >-
-          the demultiplexing method used to separate raw reads from barcodes and primer targets
-      denoising_method:
-        range: BioMethod
-        required: true
-        description: >-
-          the method used to de-noise and/or cluster the raw reads
-      additional_methods:
-        range: BioMethod
-        required: false
         multivalued: true
         inlined_as_list: true
         description: >-
-          any additional methods used to analyze the data
-      bioinformatics_method_name:
-        range: string
-        pattern: "^[A-z-._0-9 ]+$"
-        required: false
-        description: >-
-          name of the collection of methods is called, e.g. pipeline 
+          methodology used to generate the amplicon data stored in this PMO, e.g. demultiplexing method, denosing method or just a pipeline method info
           
   
   BioMethod:
@@ -1156,21 +1139,19 @@ classes:
   StageReadCounts:
     description: >-
       Information on the reads counts at several stages
-    attributes:
-      read_count:
-        range: integer
-        pattern: "^[0-9]+$"
-        required: true
-        minimum_value: 0
+    slots:
+      - reads
+    slot_usage:
+      reads:
         description: >-
-          the read counts
+          the read counts for this stage
+    attributes:
       stage:
         range: string
         pattern: "^[A-z-._0-9 ]+$"
         required: true
         description: >-
           the stage of the pipeline, e.g. demultiplexed, denoised, etc
-
 
   ReadCountsByStageForTarget:
     description: >-
@@ -1447,3 +1428,7 @@ slots:
       - value: "PF3D7_0304600.1"
       - value: "PF3D7_0810800.1"
       - value: "PF3D7_1343700.1"
+  reads:
+    required: true
+    range: integer
+    minimum_value: 0
