@@ -227,7 +227,7 @@
 <div class="mermaid"> classDiagram
     class StageReadCounts
     click StageReadCounts href "../StageReadCounts"
-      StageReadCounts : read_count
+      StageReadCounts : reads
 
       StageReadCounts : stage
 
@@ -246,9 +246,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../read_count/">read_count</a></td>
+<td><a href="../reads/">reads</a></td>
 <td>1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the read counts</td>
+<td>the read counts for this stage</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -309,18 +309,13 @@
 <pre><code class="language-yaml">name: StageReadCounts
 description: Information on the reads counts at several stages
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+slots:
+- reads
+slot_usage:
+  reads:
+    name: reads
+    description: the read counts for this stage
 attributes:
-  read_count:
-    name: read_count
-    description: the read counts
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - StageReadCounts
-    range: integer
-    required: true
-    minimum_value: 0
-    pattern: ^[0-9]+$
   stage:
     name: stage
     description: the stage of the pipeline, e.g. demultiplexed, denoised, etc
@@ -339,20 +334,11 @@ attributes:
 <pre><code class="language-yaml">name: StageReadCounts
 description: Information on the reads counts at several stages
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+slot_usage:
+  reads:
+    name: reads
+    description: the read counts for this stage
 attributes:
-  read_count:
-    name: read_count
-    description: the read counts
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: read_count
-    owner: StageReadCounts
-    domain_of:
-    - StageReadCounts
-    range: integer
-    required: true
-    minimum_value: 0
-    pattern: ^[0-9]+$
   stage:
     name: stage
     description: the stage of the pipeline, e.g. demultiplexed, denoised, etc
@@ -365,6 +351,19 @@ attributes:
     range: string
     required: true
     pattern: ^[A-z-._0-9 ]+$
+  reads:
+    name: reads
+    description: the read counts for this stage
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: reads
+    owner: StageReadCounts
+    domain_of:
+    - MicrohaplotypeForTarget
+    - StageReadCounts
+    range: integer
+    required: true
+    minimum_value: 0
 
 </code></pre>
 </details>

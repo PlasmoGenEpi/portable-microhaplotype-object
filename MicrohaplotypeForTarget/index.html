@@ -319,17 +319,12 @@ description: Microhaplotype detected for a specific target
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
 - mhap_id
-attributes:
+- reads
+slot_usage:
   reads:
     name: reads
     description: the read count associated with this microhaplotype
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - MicrohaplotypeForTarget
-    range: integer
-    required: true
-    minimum_value: 0
+attributes:
   umis:
     name: umis
     description: the unique molecular identifier (umi) count associated with this
@@ -349,19 +344,11 @@ attributes:
 <pre><code class="language-yaml">name: MicrohaplotypeForTarget
 description: Microhaplotype detected for a specific target
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-attributes:
+slot_usage:
   reads:
     name: reads
     description: the read count associated with this microhaplotype
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: reads
-    owner: MicrohaplotypeForTarget
-    domain_of:
-    - MicrohaplotypeForTarget
-    range: integer
-    required: true
-    minimum_value: 0
+attributes:
   umis:
     name: umis
     description: the unique molecular identifier (umi) count associated with this
@@ -389,6 +376,19 @@ attributes:
     required: true
     minimum_value: 0
     pattern: ^[0-9]+$
+  reads:
+    name: reads
+    description: the read count associated with this microhaplotype
+    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
+    rank: 1000
+    alias: reads
+    owner: MicrohaplotypeForTarget
+    domain_of:
+    - MicrohaplotypeForTarget
+    - StageReadCounts
+    range: integer
+    required: true
+    minimum_value: 0
 
 </code></pre>
 </details>

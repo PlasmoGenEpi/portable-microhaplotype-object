@@ -222,42 +222,18 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-bioinformaticsmethodinfo">Class: BioinformaticsMethodInfo</h1>
-<p><em>the targeted amplicon bioinformatics pipeline</em></p>
+<p><em>the targeted amplicon bioinformatics methods used to generate the amplicon data in this PMO</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/BioinformaticsMethodInfo">portable_microhaplotype_object:BioinformaticsMethodInfo</a></p>
 <div class="mermaid"> classDiagram
     class BioinformaticsMethodInfo
     click BioinformaticsMethodInfo href "../BioinformaticsMethodInfo"
-      BioinformaticsMethodInfo : additional_methods
+      BioinformaticsMethodInfo : methods
 
 
 
 
 
-        BioinformaticsMethodInfo --&gt; "*" BioMethod : additional_methods
-        click BioMethod href "../BioMethod"
-
-
-
-      BioinformaticsMethodInfo : bioinformatics_method_name
-
-      BioinformaticsMethodInfo : demultiplexing_method
-
-
-
-
-
-        BioinformaticsMethodInfo --&gt; "1" BioMethod : demultiplexing_method
-        click BioMethod href "../BioMethod"
-
-
-
-      BioinformaticsMethodInfo : denoising_method
-
-
-
-
-
-        BioinformaticsMethodInfo --&gt; "1" BioMethod : denoising_method
+        BioinformaticsMethodInfo --&gt; "1..*" BioMethod : methods
         click BioMethod href "../BioMethod"
 
 
@@ -277,27 +253,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../demultiplexing_method/">demultiplexing_method</a></td>
-<td>1 <br/> <a href="../BioMethod/">BioMethod</a></td>
-<td>the demultiplexing method used to separate raw reads from barcodes and primer...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../denoising_method/">denoising_method</a></td>
-<td>1 <br/> <a href="../BioMethod/">BioMethod</a></td>
-<td>the method used to de-noise and/or cluster the raw reads</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../additional_methods/">additional_methods</a></td>
-<td>* <br/> <a href="../BioMethod/">BioMethod</a></td>
-<td>any additional methods used to analyze the data</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../bioinformatics_method_name/">bioinformatics_method_name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>name of the collection of methods is called, e</td>
+<td><a href="../methods/">methods</a></td>
+<td>1..* <br/> <a href="../BioMethod/">BioMethod</a></td>
+<td>methodology used to generate the amplicon data stored in this PMO, e</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -350,108 +308,48 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: BioinformaticsMethodInfo
-description: the targeted amplicon bioinformatics pipeline
+description: the targeted amplicon bioinformatics methods used to generate the amplicon
+  data in this PMO
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  demultiplexing_method:
-    name: demultiplexing_method
-    description: the demultiplexing method used to separate raw reads from barcodes
-      and primer targets
+  methods:
+    name: methods
+    description: methodology used to generate the amplicon data stored in this PMO,
+      e.g. demultiplexing method, denosing method or just a pipeline method info
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - BioinformaticsMethodInfo
     range: BioMethod
     required: true
-  denoising_method:
-    name: denoising_method
-    description: the method used to de-noise and/or cluster the raw reads
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - BioinformaticsMethodInfo
-    range: BioMethod
-    required: true
-  additional_methods:
-    name: additional_methods
-    description: any additional methods used to analyze the data
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - BioinformaticsMethodInfo
-    range: BioMethod
-    required: false
     multivalued: true
     inlined: true
     inlined_as_list: true
-  bioinformatics_method_name:
-    name: bioinformatics_method_name
-    description: 'name of the collection of methods is called, e.g. pipeline '
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    domain_of:
-    - BioinformaticsMethodInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9 ]+$
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: BioinformaticsMethodInfo
-description: the targeted amplicon bioinformatics pipeline
+description: the targeted amplicon bioinformatics methods used to generate the amplicon
+  data in this PMO
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
-  demultiplexing_method:
-    name: demultiplexing_method
-    description: the demultiplexing method used to separate raw reads from barcodes
-      and primer targets
+  methods:
+    name: methods
+    description: methodology used to generate the amplicon data stored in this PMO,
+      e.g. demultiplexing method, denosing method or just a pipeline method info
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: demultiplexing_method
+    alias: methods
     owner: BioinformaticsMethodInfo
     domain_of:
     - BioinformaticsMethodInfo
     range: BioMethod
     required: true
-  denoising_method:
-    name: denoising_method
-    description: the method used to de-noise and/or cluster the raw reads
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: denoising_method
-    owner: BioinformaticsMethodInfo
-    domain_of:
-    - BioinformaticsMethodInfo
-    range: BioMethod
-    required: true
-  additional_methods:
-    name: additional_methods
-    description: any additional methods used to analyze the data
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: additional_methods
-    owner: BioinformaticsMethodInfo
-    domain_of:
-    - BioinformaticsMethodInfo
-    range: BioMethod
-    required: false
     multivalued: true
     inlined: true
     inlined_as_list: true
-  bioinformatics_method_name:
-    name: bioinformatics_method_name
-    description: 'name of the collection of methods is called, e.g. pipeline '
-    from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
-    rank: 1000
-    alias: bioinformatics_method_name
-    owner: BioinformaticsMethodInfo
-    domain_of:
-    - BioinformaticsMethodInfo
-    range: string
-    required: false
-    pattern: ^[A-z-._0-9 ]+$
 
 </code></pre>
 </details>

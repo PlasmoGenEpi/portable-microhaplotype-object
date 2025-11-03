@@ -365,7 +365,6 @@
 
 
 <h1 id="slot-reads">Slot: reads</h1>
-<p><em>the read count associated with this microhaplotype</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/reads">portable_microhaplotype_object:reads</a>
 Alias: reads</p>
 <!-- no inheritance hierarchy -->
@@ -381,9 +380,14 @@ Alias: reads</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../StageReadCounts/">StageReadCounts</a></td>
+<td>Information on the reads counts at several stages</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../MicrohaplotypeForTarget/">MicrohaplotypeForTarget</a></td>
 <td>Microhaplotype detected for a specific target</td>
-<td>no</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -427,13 +431,12 @@ Alias: reads</p>
 <details>
 
 <pre><code class="language-yaml">name: reads
-description: the read count associated with this microhaplotype
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: reads
-owner: MicrohaplotypeForTarget
 domain_of:
 - MicrohaplotypeForTarget
+- StageReadCounts
 range: integer
 required: true
 minimum_value: 0
