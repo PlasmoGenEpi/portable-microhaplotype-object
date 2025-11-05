@@ -222,7 +222,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-plateinfo">Class: PlateInfo</h1>
-<p><em>Information about a plate location in a standard 96 well plate</em></p>
+<p><em>Information about a plate location, e.g. a standard 96 well plate with row having a letter and column having a number</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/PlateInfo">portable_microhaplotype_object:PlateInfo</a></p>
 <div class="mermaid"> classDiagram
     class PlateInfo
@@ -250,19 +250,19 @@
 <tr>
 <td><a href="../plate_name/">plate_name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>a name of plate the specimen was in</td>
+<td>a name for the plate</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../plate_row/">plate_row</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the row the specimen was in</td>
+<td>the row position</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../plate_col/">plate_col</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the column the specimen was in</td>
+<td>the column position</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -321,12 +321,13 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: PlateInfo
-description: Information about a plate location in a standard 96 well plate
+description: Information about a plate location, e.g. a standard 96 well plate with
+  row having a letter and column having a number
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
   plate_name:
     name: plate_name
-    description: a name of plate the specimen was in
+    description: a name for the plate
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -335,7 +336,7 @@ attributes:
     pattern: ^[A-z-._0-9 ]+$
   plate_row:
     name: plate_row
-    description: the row the specimen was in
+    description: the row position
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -344,7 +345,7 @@ attributes:
     pattern: ^[A-z]$
   plate_col:
     name: plate_col
-    description: the column the specimen was in
+    description: the column position
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -358,12 +359,13 @@ attributes:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: PlateInfo
-description: Information about a plate location in a standard 96 well plate
+description: Information about a plate location, e.g. a standard 96 well plate with
+  row having a letter and column having a number
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
   plate_name:
     name: plate_name
-    description: a name of plate the specimen was in
+    description: a name for the plate
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: plate_name
@@ -374,7 +376,7 @@ attributes:
     pattern: ^[A-z-._0-9 ]+$
   plate_row:
     name: plate_row
-    description: the row the specimen was in
+    description: the row position
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: plate_row
@@ -385,7 +387,7 @@ attributes:
     pattern: ^[A-z]$
   plate_col:
     name: plate_col
-    description: the column the specimen was in
+    description: the column position
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: plate_col

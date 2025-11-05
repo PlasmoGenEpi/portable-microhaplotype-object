@@ -390,13 +390,13 @@ Alias: gene_name</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../TargetInfo/">TargetInfo</a></td>
-<td>Information about a specific target within a genome</td>
+<td><a href="../ProteinVariant/">ProteinVariant</a></td>
+<td>information on a variant in protein sequence</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ProteinVariant/">ProteinVariant</a></td>
-<td>information on a variant in protein sequence</td>
+<td><a href="../TargetInfo/">TargetInfo</a></td>
+<td>Information about a specific targeted microhaplotype</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -407,7 +407,7 @@ Alias: gene_name</p>
 <p>Range: <a href="../String/">String</a></p>
 </li>
 <li>
-<p>Regex pattern: <code>^[A-z-._0-9]+$</code></p>
+<p>Regex pattern: <code>^[A-z-._0-9:]+$</code></p>
 </li>
 </ul>
 <h2 id="examples">Examples</h2>
@@ -470,7 +470,7 @@ domain_of:
 - ProteinVariant
 range: string
 required: false
-pattern: ^[A-z-._0-9]+$
+pattern: ^[A-z-._0-9:]+$
 
 </code></pre>
 

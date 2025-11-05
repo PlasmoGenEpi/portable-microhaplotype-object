@@ -300,7 +300,7 @@
 <tr>
 <td><a href="../alternate_identifiers/">alternate_identifiers</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
-<td>a list of optional alternative names</td>
+<td>a list of alternative names</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -324,7 +324,7 @@
 <tr>
 <td><a href="../library_sample_name/">library_sample_name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>a unique identifier for this sequence/amplification run on a specimen_name</td>
+<td>a unique identifier for this sequencing/amplification run</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -436,7 +436,7 @@ attributes:
     pattern: ^[A-z-._0-9]+$
   library_sample_name:
     name: library_sample_name
-    description: a unique identifier for this sequence/amplification run on a specimen_name
+    description: a unique identifier for this sequencing/amplification run
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     identifier: true
@@ -520,7 +520,7 @@ attributes:
     pattern: ^[A-z-._0-9]+$
   library_sample_name:
     name: library_sample_name
-    description: a unique identifier for this sequence/amplification run on a specimen_name
+    description: a unique identifier for this sequencing/amplification run
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     identifier: true
@@ -598,7 +598,7 @@ attributes:
     pattern: ^[0-9]+$
   alternate_identifiers:
     name: alternate_identifiers
-    description: a list of optional alternative names
+    description: a list of alternative names
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: alternate_identifiers

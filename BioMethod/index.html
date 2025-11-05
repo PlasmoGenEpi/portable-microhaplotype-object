@@ -222,7 +222,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-biomethod">Class: BioMethod</h1>
-<p><em>methodology description of a portion of a bioinformatics pipeline</em></p>
+<p><em>bioinformatics methodology description with info on program, version, and arguments different from the default</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/BioMethod">portable_microhaplotype_object:BioMethod</a></p>
 <div class="mermaid"> classDiagram
     class BioMethod
@@ -254,7 +254,7 @@
 <tr>
 <td><a href="../program_version/">program_version</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>the version of generation method, should be in the format of v[MAJOR]</td>
+<td>the version of program, should be in the format of v[MAJOR]</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -278,7 +278,7 @@
 <tr>
 <td><a href="../additional_argument/">additional_argument</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
-<td>any additional arguments that differ from the default</td>
+<td>any additional arguments that differ from the default arguments</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -331,7 +331,8 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: BioMethod
-description: methodology description of a portion of a bioinformatics pipeline
+description: bioinformatics methodology description with info on program, version,
+  and arguments different from the default
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
 - program_version
@@ -368,7 +369,7 @@ attributes:
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
   additional_argument:
     name: additional_argument
-    description: any additional arguments that differ from the default
+    description: any additional arguments that differ from the default arguments
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -385,7 +386,8 @@ attributes:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: BioMethod
-description: methodology description of a portion of a bioinformatics pipeline
+description: bioinformatics methodology description with info on program, version,
+  and arguments different from the default
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
   program:
@@ -426,7 +428,7 @@ attributes:
     pattern: ^[A-z-._0-9\(\),\/\ ]+$
   additional_argument:
     name: additional_argument
-    description: any additional arguments that differ from the default
+    description: any additional arguments that differ from the default arguments
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: additional_argument
@@ -441,7 +443,7 @@ attributes:
     pattern: ^[A-z-._0-9{}\(\),\/\ ]+$
   program_version:
     name: program_version
-    description: the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]
+    description: the version of program, should be in the format of v[MAJOR].[MINOR].[PATCH]
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: program_version

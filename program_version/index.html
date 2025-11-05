@@ -365,7 +365,7 @@
 
 
 <h1 id="slot-program_version">Slot: program_version</h1>
-<p><em>the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]</em></p>
+<p><em>the version of program, should be in the format of v[MAJOR].[MINOR].[PATCH]</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/program_version">portable_microhaplotype_object:program_version</a>
 Alias: program_version</p>
 <!-- no inheritance hierarchy -->
@@ -381,13 +381,13 @@ Alias: program_version</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../BioMethod/">BioMethod</a></td>
-<td>methodology description of a portion of a bioinformatics pipeline</td>
+<td><a href="../PmoGenerationMethod/">PmoGenerationMethod</a></td>
+<td>Information about how a PMO was generated</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PmoGenerationMethod/">PmoGenerationMethod</a></td>
-<td>Information about how a PMO was generated</td>
+<td><a href="../BioMethod/">BioMethod</a></td>
+<td>bioinformatics methodology description with info on program, version, and arg...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -432,7 +432,7 @@ Alias: program_version</p>
 <details>
 
 <pre><code class="language-yaml">name: program_version
-description: the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]
+description: the version of program, should be in the format of v[MAJOR].[MINOR].[PATCH]
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: program_version

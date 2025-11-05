@@ -333,7 +333,7 @@
 <tr>
 <td><a href="../alternate_identifiers/">alternate_identifiers</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
-<td>a list of optional alternative names</td>
+<td>a list of alternative names</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -369,7 +369,7 @@
 <tr>
 <td><a href="../specimen_taxon_id/">specimen_taxon_id</a></td>
 <td>1..* <br/> <a href="../Integer/">Integer</a></td>
-<td>the NCBI taxonomy number of the organism in specimen, can list multiple if a ...</td>
+<td>the NCBI taxonomy number of the organism(s) in the specimen, can list multipl...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -387,7 +387,7 @@
 <tr>
 <td><a href="../host_sex/">host_sex</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>if specimen is from a person, the sex listed for that person</td>
+<td>if specimen is collected from a host with a sex, the sex listed for that host</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -586,11 +586,11 @@ attributes:
     - SpecimenInfo
     range: string
     required: true
-    pattern: ^[A-z-._0-9 ]+$
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
   specimen_taxon_id:
     name: specimen_taxon_id
-    description: the NCBI taxonomy number of the organism in specimen, can list multiple
-      if a mixed sample
+    description: the NCBI taxonomy number of the organism(s) in the specimen, can
+      list multiple if a mixed sample
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -627,7 +627,8 @@ attributes:
     pattern: ^[0-9]+$
   host_sex:
     name: host_sex
-    description: if specimen is from a person, the sex listed for that person
+    description: if specimen is collected from a host with a sex, the sex listed for
+      that host
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -916,11 +917,11 @@ attributes:
     - SpecimenInfo
     range: string
     required: true
-    pattern: ^[A-z-._0-9 ]+$
+    pattern: ^[A-z-._0-9\(\),\/\ ]+$
   specimen_taxon_id:
     name: specimen_taxon_id
-    description: the NCBI taxonomy number of the organism in specimen, can list multiple
-      if a mixed sample
+    description: the NCBI taxonomy number of the organism(s) in the specimen, can
+      list multiple if a mixed sample
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: specimen_taxon_id
@@ -963,7 +964,8 @@ attributes:
     pattern: ^[0-9]+$
   host_sex:
     name: host_sex
-    description: if specimen is from a person, the sex listed for that person
+    description: if specimen is collected from a host with a sex, the sex listed for
+      that host
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: host_sex
@@ -1276,7 +1278,7 @@ attributes:
     pattern: ^[A-z-._0-9;|\(\),\/\ ]+$
   alternate_identifiers:
     name: alternate_identifiers
-    description: a list of optional alternative names
+    description: a list of alternative names
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: alternate_identifiers

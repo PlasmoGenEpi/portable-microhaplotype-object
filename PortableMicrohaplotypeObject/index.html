@@ -215,7 +215,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-portablemicrohaplotypeobject">Class: PortableMicrohaplotypeObject</h1>
-<p><em>Information on final results from a targeted amplicon analysis</em></p>
+<p><em>Information on final microhaplotype results from a targeted amplicon analysis with associated meta data</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/PortableMicrohaplotypeObject">portable_microhaplotype_object:PortableMicrohaplotypeObject</a></p>
 <div class="mermaid"> classDiagram
     class PortableMicrohaplotypeObject
@@ -380,19 +380,19 @@
 <tr>
 <td><a href="../library_sample_info/">library_sample_info</a></td>
 <td>1..* <br/> <a href="../LibrarySampleInfo/">LibrarySampleInfo</a></td>
-<td>a list of libraries of all the seq/amp of the specimens within this project</td>
+<td>a list of libraries of all the seq/amp of the specimens within this PMO file</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../specimen_info/">specimen_info</a></td>
 <td>1..* <br/> <a href="../SpecimenInfo/">SpecimenInfo</a></td>
-<td>a list of all the specimens within this project</td>
+<td>a list of all the specimens within this PMO file</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../sequencing_info/">sequencing_info</a></td>
 <td>1..* <br/> <a href="../SequencingInfo/">SequencingInfo</a></td>
-<td>a list of sequencing info for this project</td>
+<td>a list of sequencing infos for this PMO file</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -410,7 +410,7 @@
 <tr>
 <td><a href="../targeted_genomes/">targeted_genomes</a></td>
 <td>1..* <br/> <a href="../GenomeInfo/">GenomeInfo</a></td>
-<td>a list of genomes that the targets in TargetInfo refer to</td>
+<td>a list of genomes that any genomic location information refers to</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -422,13 +422,13 @@
 <tr>
 <td><a href="../bioinformatics_methods_info/">bioinformatics_methods_info</a></td>
 <td>1..* <br/> <a href="../BioinformaticsMethodInfo/">BioinformaticsMethodInfo</a></td>
-<td>the bioinformatics pipeline/methods used to generated the amplicon analysis f...</td>
+<td>the bioinformatics pipeline/methods used to generated the microhaplotype anal...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../bioinformatics_run_info/">bioinformatics_run_info</a></td>
 <td>1..* <br/> <a href="../BioinformaticsRunInfo/">BioinformaticsRunInfo</a></td>
-<td>the runtime info for the bioinformatics pipeline used to generated the amplic...</td>
+<td>the runtime info for the bioinformatics pipeline used to generated the microh...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -452,7 +452,7 @@
 <tr>
 <td><a href="../read_counts_by_stage/">read_counts_by_stage</a></td>
 <td>* <br/> <a href="../ReadCountsByStage/">ReadCountsByStage</a></td>
-<td>the read counts for different stages of the pipeline</td>
+<td>the read counts for library_samples for different stages of the pipeline</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -486,13 +486,14 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: PortableMicrohaplotypeObject
-description: Information on final results from a targeted amplicon analysis
+description: Information on final microhaplotype results from a targeted amplicon
+  analysis with associated meta data
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
   library_sample_info:
     name: library_sample_info
     description: a list of libraries of all the seq/amp of the specimens within this
-      project
+      PMO file
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -504,7 +505,7 @@ attributes:
     inlined_as_list: true
   specimen_info:
     name: specimen_info
-    description: a list of all the specimens within this project
+    description: a list of all the specimens within this PMO file
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -516,7 +517,7 @@ attributes:
     inlined_as_list: true
   sequencing_info:
     name: sequencing_info
-    description: a list of sequencing info for this project
+    description: a list of sequencing infos for this PMO file
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -552,7 +553,7 @@ attributes:
     inlined_as_list: true
   targeted_genomes:
     name: targeted_genomes
-    description: a list of genomes that the targets in TargetInfo refer to
+    description: a list of genomes that any genomic location information refers to
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -573,7 +574,7 @@ attributes:
     required: true
   bioinformatics_methods_info:
     name: bioinformatics_methods_info
-    description: the bioinformatics pipeline/methods used to generated the amplicon
+    description: the bioinformatics pipeline/methods used to generated the microhaplotype
       analysis for this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
@@ -587,7 +588,7 @@ attributes:
   bioinformatics_run_info:
     name: bioinformatics_run_info
     description: the runtime info for the bioinformatics pipeline used to generated
-      the amplicon analysis for this project
+      the microhaplotypes analysis for this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -632,7 +633,7 @@ attributes:
     required: true
   read_counts_by_stage:
     name: read_counts_by_stage
-    description: the read counts for different stages of the pipeline
+    description: the read counts for library_samples for different stages of the pipeline
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -649,13 +650,14 @@ tree_root: true
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: PortableMicrohaplotypeObject
-description: Information on final results from a targeted amplicon analysis
+description: Information on final microhaplotype results from a targeted amplicon
+  analysis with associated meta data
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
   library_sample_info:
     name: library_sample_info
     description: a list of libraries of all the seq/amp of the specimens within this
-      project
+      PMO file
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: library_sample_info
@@ -669,7 +671,7 @@ attributes:
     inlined_as_list: true
   specimen_info:
     name: specimen_info
-    description: a list of all the specimens within this project
+    description: a list of all the specimens within this PMO file
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: specimen_info
@@ -683,7 +685,7 @@ attributes:
     inlined_as_list: true
   sequencing_info:
     name: sequencing_info
-    description: a list of sequencing info for this project
+    description: a list of sequencing infos for this PMO file
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: sequencing_info
@@ -725,7 +727,7 @@ attributes:
     inlined_as_list: true
   targeted_genomes:
     name: targeted_genomes
-    description: a list of genomes that the targets in TargetInfo refer to
+    description: a list of genomes that any genomic location information refers to
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: targeted_genomes
@@ -750,7 +752,7 @@ attributes:
     required: true
   bioinformatics_methods_info:
     name: bioinformatics_methods_info
-    description: the bioinformatics pipeline/methods used to generated the amplicon
+    description: the bioinformatics pipeline/methods used to generated the microhaplotype
       analysis for this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
@@ -766,7 +768,7 @@ attributes:
   bioinformatics_run_info:
     name: bioinformatics_run_info
     description: the runtime info for the bioinformatics pipeline used to generated
-      the amplicon analysis for this project
+      the microhaplotypes analysis for this project
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: bioinformatics_run_info
@@ -819,7 +821,7 @@ attributes:
     required: true
   read_counts_by_stage:
     name: read_counts_by_stage
-    description: the read counts for different stages of the pipeline
+    description: the read counts for library_samples for different stages of the pipeline
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: read_counts_by_stage

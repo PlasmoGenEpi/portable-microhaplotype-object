@@ -222,7 +222,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-representativemicrohaplotype">Class: RepresentativeMicrohaplotype</h1>
-<p><em>the representative sequence for a microhaplotype, similar to a fast(a/q) format</em></p>
+<p><em>the representative sequence for a microhaplotype</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/RepresentativeMicrohaplotype">portable_microhaplotype_object:RepresentativeMicrohaplotype</a></p>
 <div class="mermaid"> classDiagram
     class RepresentativeMicrohaplotype
@@ -296,7 +296,7 @@
 <tr>
 <td><a href="../seq/">seq</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>the DNA sequence</td>
+<td>the sequence</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -308,7 +308,7 @@
 <tr>
 <td><a href="../quality/">quality</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the ansi fastq per base quality score for this sequence, this is optional</td>
+<td>the ASCII fastq per base quality score for this sequence, this is optional, m...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -332,13 +332,13 @@
 <tr>
 <td><a href="../associated_protein_variants/">associated_protein_variants</a></td>
 <td>* <br/> <a href="../ProteinVariant/">ProteinVariant</a></td>
-<td>a list of associated protein variants with this haplotype, e</td>
+<td>a list of protein variants for this haplotype, e</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../associated_seq_variants/">associated_seq_variants</a></td>
 <td>* <br/> <a href="../GenomicLocation/">GenomicLocation</a></td>
-<td>a list of associated sequence variants with this haplotype, e</td>
+<td>a list of sequence variants for this haplotype, e</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -391,8 +391,7 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: RepresentativeMicrohaplotype
-description: the representative sequence for a microhaplotype, similar to a fast(a/q)
-  format
+description: the representative sequence for a microhaplotype
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
 - seq
@@ -409,8 +408,8 @@ attributes:
     pattern: ^[A-z-._0-9]+$
   quality:
     name: quality
-    description: the ansi fastq per base quality score for this sequence, this is
-      optional
+    description: the ASCII fastq per base quality score for this sequence, this is
+      optional, must be same length as the sequence
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -453,8 +452,7 @@ attributes:
     inlined_as_list: true
   associated_protein_variants:
     name: associated_protein_variants
-    description: a list of associated protein variants with this haplotype, e.g. amino
-      acid changes/INDELS
+    description: a list of protein variants for this haplotype, e.g. amino acid changes/INDELS
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -466,8 +464,7 @@ attributes:
     inlined_as_list: true
   associated_seq_variants:
     name: associated_seq_variants
-    description: a list of associated sequence variants with this haplotype, e.g.
-      SNPS, indels
+    description: a list of sequence variants for this haplotype, e.g. SNPS, indels
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -483,8 +480,7 @@ attributes:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: RepresentativeMicrohaplotype
-description: the representative sequence for a microhaplotype, similar to a fast(a/q)
-  format
+description: the representative sequence for a microhaplotype
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
   microhaplotype_name:
@@ -501,8 +497,8 @@ attributes:
     pattern: ^[A-z-._0-9]+$
   quality:
     name: quality
-    description: the ansi fastq per base quality score for this sequence, this is
-      optional
+    description: the ASCII fastq per base quality score for this sequence, this is
+      optional, must be same length as the sequence
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: quality
@@ -553,8 +549,7 @@ attributes:
     inlined_as_list: true
   associated_protein_variants:
     name: associated_protein_variants
-    description: a list of associated protein variants with this haplotype, e.g. amino
-      acid changes/INDELS
+    description: a list of protein variants for this haplotype, e.g. amino acid changes/INDELS
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: associated_protein_variants
@@ -568,8 +563,7 @@ attributes:
     inlined_as_list: true
   associated_seq_variants:
     name: associated_seq_variants
-    description: a list of associated sequence variants with this haplotype, e.g.
-      SNPS, indels
+    description: a list of sequence variants for this haplotype, e.g. SNPS, indels
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: associated_seq_variants
@@ -583,7 +577,7 @@ attributes:
     inlined_as_list: true
   seq:
     name: seq
-    description: the DNA sequence
+    description: the sequence
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: seq

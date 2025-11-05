@@ -222,7 +222,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-targetinfo">Class: TargetInfo</h1>
-<p><em>Information about a specific target within a genome</em></p>
+<p><em>Information about a specific targeted microhaplotype</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/TargetInfo">portable_microhaplotype_object:TargetInfo</a></p>
 <div class="mermaid"> classDiagram
     class TargetInfo
@@ -300,7 +300,7 @@
 <tr>
 <td><a href="../target_name/">target_name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>an identifier for this target</td>
+<td>a name for this target</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -312,25 +312,25 @@
 <tr>
 <td><a href="../forward_primer/">forward_primer</a></td>
 <td>1 <br/> <a href="../PrimerInfo/">PrimerInfo</a></td>
-<td>the forward primer associated with this target</td>
+<td>the forward primer for this target</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../reverse_primer/">reverse_primer</a></td>
 <td>1 <br/> <a href="../PrimerInfo/">PrimerInfo</a></td>
-<td>the reverse primer associated with this target</td>
+<td>the reverse primer for this target</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../markers_of_interest/">markers_of_interest</a></td>
 <td>* <br/> <a href="../MarkerOfInterest/">MarkerOfInterest</a></td>
-<td>a list of covered markers of interest</td>
+<td>a list of markers of interest that are covered by this target</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../target_attributes/">target_attributes</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
-<td>a list of classification type for the primer target</td>
+<td>a list of classification types for this target</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -383,14 +383,14 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: TargetInfo
-description: Information about a specific target within a genome
+description: Information about a specific targeted microhaplotype
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slots:
 - gene_name
 attributes:
   target_name:
     name: target_name
-    description: an identifier for this target
+    description: a name for this target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -411,7 +411,7 @@ attributes:
     required: false
   forward_primer:
     name: forward_primer
-    description: the forward primer associated with this target
+    description: the forward primer for this target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -420,7 +420,7 @@ attributes:
     required: true
   reverse_primer:
     name: reverse_primer
-    description: the reverse primer associated with this target
+    description: the reverse primer for this target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -429,7 +429,7 @@ attributes:
     required: true
   markers_of_interest:
     name: markers_of_interest
-    description: a list of covered markers of interest
+    description: a list of markers of interest that are covered by this target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -440,7 +440,7 @@ attributes:
     inlined_as_list: false
   target_attributes:
     name: target_attributes
-    description: a list of classification type for the primer target
+    description: a list of classification types for this target
     examples:
     - value: Diversity
     - value: Drug_Resistance
@@ -459,12 +459,12 @@ attributes:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: TargetInfo
-description: Information about a specific target within a genome
+description: Information about a specific targeted microhaplotype
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
   target_name:
     name: target_name
-    description: an identifier for this target
+    description: a name for this target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: target_name
@@ -489,7 +489,7 @@ attributes:
     required: false
   forward_primer:
     name: forward_primer
-    description: the forward primer associated with this target
+    description: the forward primer for this target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: forward_primer
@@ -500,7 +500,7 @@ attributes:
     required: true
   reverse_primer:
     name: reverse_primer
-    description: the reverse primer associated with this target
+    description: the reverse primer for this target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: reverse_primer
@@ -511,7 +511,7 @@ attributes:
     required: true
   markers_of_interest:
     name: markers_of_interest
-    description: a list of covered markers of interest
+    description: a list of markers of interest that are covered by this target
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: markers_of_interest
@@ -524,7 +524,7 @@ attributes:
     inlined_as_list: false
   target_attributes:
     name: target_attributes
-    description: a list of classification type for the primer target
+    description: a list of classification types for this target
     examples:
     - value: Diversity
     - value: Drug_Resistance
@@ -555,7 +555,7 @@ attributes:
     - ProteinVariant
     range: string
     required: false
-    pattern: ^[A-z-._0-9]+$
+    pattern: ^[A-z-._0-9:]+$
 
 </code></pre>
 </details>

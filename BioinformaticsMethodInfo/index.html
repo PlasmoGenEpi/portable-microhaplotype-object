@@ -222,7 +222,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-bioinformaticsmethodinfo">Class: BioinformaticsMethodInfo</h1>
-<p><em>the targeted amplicon bioinformatics methods used to generate the amplicon data in this PMO</em></p>
+<p><em>the targeted amplicon bioinformatics methods used to generate the microhaplotype data in this PMO</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/BioinformaticsMethodInfo">portable_microhaplotype_object:BioinformaticsMethodInfo</a></p>
 <div class="mermaid"> classDiagram
     class BioinformaticsMethodInfo
@@ -255,7 +255,7 @@
 <tr>
 <td><a href="../methods/">methods</a></td>
 <td>1..* <br/> <a href="../BioMethod/">BioMethod</a></td>
-<td>methodology used to generate the amplicon data stored in this PMO, e</td>
+<td>methodology used to generate the microhaplotype data stored in this PMO, e</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -308,14 +308,15 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: BioinformaticsMethodInfo
-description: the targeted amplicon bioinformatics methods used to generate the amplicon
+description: the targeted amplicon bioinformatics methods used to generate the microhaplotype
   data in this PMO
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
   methods:
     name: methods
-    description: methodology used to generate the amplicon data stored in this PMO,
-      e.g. demultiplexing method, denosing method or just a pipeline method info
+    description: methodology used to generate the microhaplotype data stored in this
+      PMO, e.g. demultiplexing method, denosing method, or a pipeline method that
+      ties all th steps together
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -331,14 +332,15 @@ attributes:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: BioinformaticsMethodInfo
-description: the targeted amplicon bioinformatics methods used to generate the amplicon
+description: the targeted amplicon bioinformatics methods used to generate the microhaplotype
   data in this PMO
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
   methods:
     name: methods
-    description: methodology used to generate the amplicon data stored in this PMO,
-      e.g. demultiplexing method, denosing method or just a pipeline method info
+    description: methodology used to generate the microhaplotype data stored in this
+      PMO, e.g. demultiplexing method, denosing method, or a pipeline method that
+      ties all th steps together
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: methods

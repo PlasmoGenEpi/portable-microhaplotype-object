@@ -256,13 +256,13 @@
 <tr>
 <td><a href="../reads/">reads</a></td>
 <td>1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the read count associated with this microhaplotype</td>
+<td>the read count for this microhaplotype</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../umis/">umis</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the unique molecular identifier (umi) count associated with this microhaploty...</td>
+<td>the unique molecular identifier (umi) count for this microhaplotype</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -323,12 +323,11 @@ slots:
 slot_usage:
   reads:
     name: reads
-    description: the read count associated with this microhaplotype
+    description: the read count for this microhaplotype
 attributes:
   umis:
     name: umis
-    description: the unique molecular identifier (umi) count associated with this
-      microhaplotype
+    description: the unique molecular identifier (umi) count for this microhaplotype
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -347,12 +346,11 @@ from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 slot_usage:
   reads:
     name: reads
-    description: the read count associated with this microhaplotype
+    description: the read count for this microhaplotype
 attributes:
   umis:
     name: umis
-    description: the unique molecular identifier (umi) count associated with this
-      microhaplotype
+    description: the unique molecular identifier (umi) count for this microhaplotype
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: umis
@@ -378,7 +376,7 @@ attributes:
     pattern: ^[0-9]+$
   reads:
     name: reads
-    description: the read count associated with this microhaplotype
+    description: the read count for this microhaplotype
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: reads

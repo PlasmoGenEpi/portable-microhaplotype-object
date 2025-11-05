@@ -276,7 +276,7 @@
 <tr>
 <td><a href="../sequencing_info_name/">sequencing_info_name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>a name of for the sequencing done, e</td>
+<td>a name for a specific sequencing run, e</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -354,7 +354,7 @@
 <tr>
 <td><a href="../library_source/">library_source</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>Source of amplification material (common names GENOMIC, TRANSCRIPTOMIC)</td>
+<td>Source of amplification material e</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -424,7 +424,7 @@ from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
   sequencing_info_name:
     name: sequencing_info_name
-    description: a name of for the sequencing done, e.g. batch1
+    description: a name for a specific sequencing run, e.g. batch1
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -531,6 +531,9 @@ attributes:
     name: pcr_cond
     description: the method/conditions for PCR, List PCR cycles used to amplify the
       target
+    examples:
+    - value: 10 min at 95 C, 13 cycles for high density samples (or 15 cycles for
+        low density samples) of 15 sec at 98 C and 75 sec at 60 C
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -595,7 +598,8 @@ attributes:
     pattern: ^[A-z-._0-9 ]+$
   library_source:
     name: library_source
-    description: Source of amplification material (common names GENOMIC, TRANSCRIPTOMIC)
+    description: Source of amplification material e.g. was it DNA (GENOMIC) or RNA
+      (TRANSCRIPTOMIC) (common names GENOMIC, TRANSCRIPTOMIC)
     examples:
     - value: GENOMIC
     - value: TRANSCRIPTOMIC
@@ -644,7 +648,7 @@ from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 attributes:
   sequencing_info_name:
     name: sequencing_info_name
-    description: a name of for the sequencing done, e.g. batch1
+    description: a name for a specific sequencing run, e.g. batch1
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: sequencing_info_name
@@ -767,6 +771,9 @@ attributes:
     name: pcr_cond
     description: the method/conditions for PCR, List PCR cycles used to amplify the
       target
+    examples:
+    - value: 10 min at 95 C, 13 cycles for high density samples (or 15 cycles for
+        low density samples) of 15 sec at 98 C and 75 sec at 60 C
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: pcr_cond
@@ -841,7 +848,8 @@ attributes:
     pattern: ^[A-z-._0-9 ]+$
   library_source:
     name: library_source
-    description: Source of amplification material (common names GENOMIC, TRANSCRIPTOMIC)
+    description: Source of amplification material e.g. was it DNA (GENOMIC) or RNA
+      (TRANSCRIPTOMIC) (common names GENOMIC, TRANSCRIPTOMIC)
     examples:
     - value: GENOMIC
     - value: TRANSCRIPTOMIC

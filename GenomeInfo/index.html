@@ -268,7 +268,7 @@
 <tr>
 <td><a href="../taxon_id/">taxon_id</a></td>
 <td>1..* <br/> <a href="../Integer/">Integer</a></td>
-<td>the NCBI taxonomy number, can be a list of values</td>
+<td>the NCBI taxonomy number, can be a list of values if it's a genome file that ...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -280,7 +280,7 @@
 <tr>
 <td><a href="../chromosomes/">chromosomes</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
-<td>a list of chromosomes found within this genome</td>
+<td>a list of the chromosomes/contigs found within this genome</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -364,7 +364,8 @@ attributes:
     pattern: ^[A-z-._0-9]+$
   taxon_id:
     name: taxon_id
-    description: the NCBI taxonomy number, can be a list of values
+    description: the NCBI taxonomy number, can be a list of values if it's a genome
+      file that has been created by combining gnomes from different species
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -381,6 +382,8 @@ attributes:
     description: a link to the where this genome file could be downloaded
     examples:
     - value: https://plasmodb.org/common/downloads/release-65/Pfalciparum3D7/fasta/data/PlasmoDB-65_Pfalciparum3D7_Genome.fasta
+    - value: ftp://ftp.ensemblgenomes.org/pub/protists/release-62/fasta/plasmodium_falciparum/dna/Plasmodium_falciparum.GCA000002765v3.dna.toplevel.fa.gz
+    - value: https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.fna.gz
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -390,7 +393,7 @@ attributes:
     pattern: ^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$
   chromosomes:
     name: chromosomes
-    description: a list of chromosomes found within this genome
+    description: a list of the chromosomes/contigs found within this genome
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -406,6 +409,8 @@ attributes:
     description: a link to the where this genome's annotation file could be downloaded
     examples:
     - value: https://plasmodb.org/common/downloads/release-65/Pfalciparum3D7/fasta/data/PlasmoDB-65_Pfalciparum3D7.gff
+    - value: ftp://ftp.ensemblgenomes.org/pub/protists/release-62/gff3/plasmodium_falciparum/Plasmodium_falciparum.GCA000002765v3.62.gff3.gz
+    - value: https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.gff.gz
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
@@ -448,7 +453,8 @@ attributes:
     pattern: ^[A-z-._0-9]+$
   taxon_id:
     name: taxon_id
-    description: the NCBI taxonomy number, can be a list of values
+    description: the NCBI taxonomy number, can be a list of values if it's a genome
+      file that has been created by combining gnomes from different species
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: taxon_id
@@ -467,6 +473,8 @@ attributes:
     description: a link to the where this genome file could be downloaded
     examples:
     - value: https://plasmodb.org/common/downloads/release-65/Pfalciparum3D7/fasta/data/PlasmoDB-65_Pfalciparum3D7_Genome.fasta
+    - value: ftp://ftp.ensemblgenomes.org/pub/protists/release-62/fasta/plasmodium_falciparum/dna/Plasmodium_falciparum.GCA000002765v3.dna.toplevel.fa.gz
+    - value: https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.fna.gz
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: url
@@ -478,7 +486,7 @@ attributes:
     pattern: ^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$
   chromosomes:
     name: chromosomes
-    description: a list of chromosomes found within this genome
+    description: a list of the chromosomes/contigs found within this genome
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: chromosomes
@@ -496,6 +504,8 @@ attributes:
     description: a link to the where this genome's annotation file could be downloaded
     examples:
     - value: https://plasmodb.org/common/downloads/release-65/Pfalciparum3D7/fasta/data/PlasmoDB-65_Pfalciparum3D7.gff
+    - value: ftp://ftp.ensemblgenomes.org/pub/protists/release-62/gff3/plasmodium_falciparum/Plasmodium_falciparum.GCA000002765v3.62.gff3.gz
+    - value: https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.gff.gz
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     alias: gff_url

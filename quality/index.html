@@ -365,7 +365,7 @@
 
 
 <h1 id="slot-quality">Slot: quality</h1>
-<p><em>the ansi fastq per base quality score for this sequence, this is optional</em></p>
+<p><em>the ASCII fastq per base quality score for this sequence, this is optional, must be same length as the sequence</em></p>
 <p>URI: <a href="https://plasmogenepi.github.io/portable-microhaplotype-object/quality">portable_microhaplotype_object:quality</a>
 Alias: quality</p>
 <!-- no inheritance hierarchy -->
@@ -382,7 +382,7 @@ Alias: quality</p>
 <tbody>
 <tr>
 <td><a href="../RepresentativeMicrohaplotype/">RepresentativeMicrohaplotype</a></td>
-<td>the representative sequence for a microhaplotype, similar to a fast(a/q) form...</td>
+<td>the representative sequence for a microhaplotype</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -424,7 +424,8 @@ Alias: quality</p>
 <details>
 
 <pre><code class="language-yaml">name: quality
-description: the ansi fastq per base quality score for this sequence, this is optional
+description: the ASCII fastq per base quality score for this sequence, this is optional,
+  must be same length as the sequence
 from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
 rank: 1000
 alias: quality
