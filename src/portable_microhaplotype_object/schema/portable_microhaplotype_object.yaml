@@ -44,7 +44,7 @@ classes:
 
   TargetInfo:
     description: >-
-      Information about a specific target within a genome
+      Information about a specific targeted microhaplotype
     slots:
       - gene_name
     attributes:
@@ -53,7 +53,7 @@ classes:
         required: true
         pattern: "^[A-z-._0-9]+$"
         description: >-
-          an identifier for this target
+          a name for this target
       insert_location:
         range: GenomicLocation
         required: false
@@ -63,26 +63,26 @@ classes:
         range: PrimerInfo
         required: true
         description: >-
-          the forward primer associated with this target
+          the forward primer for this target
       reverse_primer:
         range: PrimerInfo
         required: true
         description: >-
-          the reverse primer associated with this target
+          the reverse primer for this target
       markers_of_interest:
         range: MarkerOfInterest
         multivalued: true
         inlined_as_list: false
         required: false
         description: >-
-          a list of covered markers of interest
+          a list of markers of interest that are covered by this target
       target_attributes:
         range: string
         multivalued: true
         inlined_as_list: false
         required: false
         description: >-
-          a list of classification type for the primer target
+          a list of classification types for this target
         examples:
           - value: "Diversity"
           - value: "Drug_Resistance"
@@ -150,7 +150,7 @@ classes:
 
   RepresentativeMicrohaplotype:
     description: >-
-      the representative sequence for a microhaplotype, similar to a fast(a/q) format
+      the representative sequence for a microhaplotype
     slots:
       - seq
     attributes:
@@ -165,7 +165,7 @@ classes:
         pattern: "^[A-z-._0-9]+$"
         required: false
         description: >-
-          the ansi fastq per base quality score for this sequence, this is optional
+          the ASCII fastq per base quality score for this sequence, this is optional, must be same length as the sequence
       pseudocigar:
         range: Pseudocigar
         pattern: "^[A-z-._0-9]+$"
@@ -191,14 +191,14 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of associated protein variants with this haplotype, e.g. amino acid changes/INDELS
+          a list of protein variants for this haplotype, e.g. amino acid changes/INDELS
       associated_seq_variants:
         required: false
         range: GenomicLocation
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of associated sequence variants with this haplotype, e.g. SNPS, indels
+          a list of sequence variants for this haplotype, e.g. SNPS, indels
 
   MaskingInfo:
     description: >- 
@@ -239,11 +239,11 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of the microhaplotype for each targets 
+          a list of the microhaplotypes for each targets 
 
   RepresentativeMicrohaplotypesForTarget:
     description: >-
-      a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format
+      a list of the representative sequence for the microhaplotypes for a target
     slots:
       - target_id
     slot_usage:
@@ -256,12 +256,12 @@ classes:
         multivalued: true
         inlined_as_list: false
         description: >-
-          a list of the microhaplotypes detected for a target
+          a list of all the microhaplotypes for a target
       mhap_location:
         required: false
         range: GenomicLocation
         description: >-
-          a genomic location that was analyzed for this target info, this allows listing location that may be different from the full target location (e.g 1 base in from the full) 
+          a genomic location that was analyzed for this target info, this allows listing location that may be different from the full target location (e.g 1 trimmed off the full length) 
 
   DetectedMicrohaplotypes:
     description: >-
@@ -275,7 +275,7 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of the microhaplotypes detected for a sample by targets 
+          a list of the microhaplotypes detected for all samples with a list for each target 
 
   GenomeInfo:
     description: >-
@@ -301,7 +301,7 @@ classes:
         inlined_as_list: true
         required: true
         description: >-
-          the NCBI taxonomy number, can be a list of values
+          the NCBI taxonomy number, can be a list of values if it's a genome file that has been created by combining gnomes from different species
       url:
         range: string
         pattern: "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$"
@@ -310,6 +310,8 @@ classes:
           a link to the where this genome file could be downloaded
         examples:
           - value: "https://plasmodb.org/common/downloads/release-65/Pfalciparum3D7/fasta/data/PlasmoDB-65_Pfalciparum3D7_Genome.fasta"
+          - value: "ftp://ftp.ensemblgenomes.org/pub/protists/release-62/fasta/plasmodium_falciparum/dna/Plasmodium_falciparum.GCA000002765v3.dna.toplevel.fa.gz"
+          - value: "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.fna.gz"
       chromosomes:
         range: string
         pattern: "^[A-z-._0-9]+$"
@@ -317,7 +319,7 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of chromosomes found within this genome
+          a list of the chromosomes/contigs found within this genome
       gff_url:
         range: string
         pattern: "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$"
@@ -326,6 +328,8 @@ classes:
           a link to the where this genome's annotation file could be downloaded
         examples:
           - value: "https://plasmodb.org/common/downloads/release-65/Pfalciparum3D7/fasta/data/PlasmoDB-65_Pfalciparum3D7.gff"
+          - value: "ftp://ftp.ensemblgenomes.org/pub/protists/release-62/gff3/plasmodium_falciparum/Plasmodium_falciparum.GCA000002765v3.62.gff3.gz"
+          - value: "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.gff.gz"
 
   GenomicLocation:
     description: >- 
@@ -434,14 +438,14 @@ classes:
     slot_usage:
       reads:
         description: >-
-          the read count associated with this microhaplotype
+          the read count for this microhaplotype
     attributes:
       umis:
         required: false
         range: integer
         minimum_value: 0
         description: >-
-          the unique molecular identifier (umi) count associated with this microhaplotype
+          the unique molecular identifier (umi) count for this microhaplotype
 
   DetectedMicrohaplotypesForTarget:
     description: >-
@@ -459,7 +463,7 @@ classes:
 
   BioinformaticsMethodInfo:
     description: >-
-      the targeted amplicon bioinformatics methods used to generate the amplicon data in this PMO
+      the targeted amplicon bioinformatics methods used to generate the microhaplotype data in this PMO
     attributes:
       methods:
         range: BioMethod
@@ -467,12 +471,12 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: >-
-          methodology used to generate the amplicon data stored in this PMO, e.g. demultiplexing method, denosing method or just a pipeline method info
+          methodology used to generate the microhaplotype data stored in this PMO, e.g. demultiplexing method, denosing method, or a pipeline method that ties all th steps together
           
   
   BioMethod:
     description: >-
-      methodology description of a portion of a bioinformatics pipeline
+      bioinformatics methodology description with info on program, version, and arguments different from the default
     slots:
       - program_version
     attributes:
@@ -501,28 +505,28 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: >-
-          any additional arguments that differ from the default
+          any additional arguments that differ from the default arguments
 
   PlateInfo:
     description: >-
-      Information about a plate location in a standard 96 well plate
+      Information about a plate location, e.g. a standard 96 well plate with row having a letter and column having a number
     attributes:
       plate_name:
         range: string
         pattern: "^[A-z-._0-9 ]+$"
         description: >-
-          a name of plate the specimen was in
+          a name for the plate
       plate_row:
         range: string
         pattern: "^[A-z]$"
         description: >-
-          the row the specimen was in
+          the row position
       plate_col:
         range: integer
         pattern: "^[0-9]+$"
         minimum_value: 0
         description: >-
-          the column the specimen was in
+          the column position
 
   LibrarySampleInfo:
     description: >-
@@ -563,7 +567,7 @@ classes:
         required: true
         identifier: true
         description: >-
-          a unique identifier for this sequence/amplification run on a specimen_name
+          a unique identifier for this sequencing/amplification run
       library_prep_plate_info:
         range: PlateInfo
         required: false
@@ -586,7 +590,7 @@ classes:
         pattern: "^[A-z-._0-9 ]+$"
         required: true
         description: >-
-          a name of for the sequencing done, e.g. batch1
+          a name for a specific sequencing run, e.g. batch1
       seq_platform:
         range: string
         pattern: "^[A-z-._0-9 ]+$"
@@ -656,6 +660,8 @@ classes:
         required: false
         description: >-
           the method/conditions for PCR, List PCR cycles used to amplify the target
+        examples:
+          - value: "10 min at 95 C, 13 cycles for high density samples (or 15 cycles for low density samples) of 15 sec at 98 C and 75 sec at 60 C"
       library_screen:
         range: string
         pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
@@ -695,7 +701,7 @@ classes:
         pattern: "^[A-z-._0-9 ]+$"
         required: true
         description: >-
-          Source of amplification material (common names GENOMIC, TRANSCRIPTOMIC)
+          Source of amplification material e.g. was it DNA (GENOMIC) or RNA (TRANSCRIPTOMIC) (common names GENOMIC, TRANSCRIPTOMIC)
         examples:
           - value: 'GENOMIC'
           - value: 'TRANSCRIPTOMIC'
@@ -763,7 +769,7 @@ classes:
 
   ProjectInfo:
     description: >-
-      Information on project info
+      Information on a project underwhich a collection of specimens belong to
     attributes:
       project_name:
         range: string
@@ -869,7 +875,7 @@ classes:
     attributes:
       specimen_name:
         range: string
-        pattern: "^[A-z-._0-9 ]+$"
+        pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
         required: true
         identifier: true
         description: >-
@@ -882,7 +888,7 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: >-
-          the NCBI taxonomy number of the organism in specimen, can list multiple if a mixed sample
+          the NCBI taxonomy number of the organism(s) in the specimen, can list multiple if a mixed sample
       host_subject_id:
         range: integer
         pattern: "^[0-9]+$"
@@ -902,7 +908,7 @@ classes:
         pattern: "^[A-z-._0-9 ]+$"
         required: false
         description: >-
-          if specimen is from a person, the sex listed for that person
+          if specimen is collected from a host with a sex, the sex listed for that host
       specimen_accession:
         range: string
         pattern: "^[A-z-._0-9 ]+$"
@@ -974,7 +980,6 @@ classes:
           - value: "Senegal"
           - value: "USA"
           - value: "Japan"
-
       specimen_store_loc:
         range: string
         pattern: "^[A-z-._0-9\\(\\),\\/\\\ ]+$"
@@ -1084,7 +1089,7 @@ classes:
 
   BioinformaticsRunInfo:
     description: >-
-      Information about the pipeline run that generated some of the microhaplotype detected and reads_by_stage
+      Information about the pipeline run that generated microhaplotype_detected and reads_by_stage
     slots:
       - bioinformatics_methods_id
     attributes:
@@ -1116,7 +1121,7 @@ classes:
 
   PmoHeader:
     description: >-
-      Information on the PMO file
+      Information on the PMO file itself
     attributes:
       pmo_version:
         range: string
@@ -1203,7 +1208,7 @@ classes:
 
   PortableMicrohaplotypeObject:
     description: >-
-      Information on final results from a targeted amplicon analysis
+      Information on final microhaplotype results from a targeted amplicon analysis with associated meta data
     tree_root: true
 #    slots:
 #      extra_slots:
@@ -1215,21 +1220,21 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of libraries of all the seq/amp of the specimens within this project
+          a list of libraries of all the seq/amp of the specimens within this PMO file
       specimen_info:
         range: SpecimenInfo
         required: true
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of all the specimens within this project
+          a list of all the specimens within this PMO file
       sequencing_info:
         range: SequencingInfo
         required: true
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of sequencing info for this project
+          a list of sequencing infos for this PMO file
       panel_info:
         range: PanelInfo
         required: true
@@ -1250,7 +1255,7 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: >-
-          a list of genomes that the targets in TargetInfo refer to
+          a list of genomes that any genomic location information refers to
       representative_microhaplotypes:
         range: RepresentativeMicrohaplotypes
         required: true
@@ -1262,14 +1267,14 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: >-
-          the bioinformatics pipeline/methods used to generated the amplicon analysis for this project
+          the bioinformatics pipeline/methods used to generated the microhaplotype analysis for this project
       bioinformatics_run_info:
         range: BioinformaticsRunInfo
         required: true
         multivalued: true
         inlined_as_list: true
         description: >-
-          the runtime info for the bioinformatics pipeline used to generated the amplicon analysis for this project
+          the runtime info for the bioinformatics pipeline used to generated the microhaplotypes analysis for this project
       detected_microhaplotypes:
         range: DetectedMicrohaplotypes
         required: true
@@ -1295,7 +1300,7 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: >-
-          the read counts for different stages of the pipeline
+          the read counts for library_samples for different stages of the pipeline
 
 
 slots:
@@ -1376,13 +1381,13 @@ slots:
     pattern: "^[A-z]+$"
     required: true
     description: >-
-      the DNA sequence
+      the sequence
   program_version:
     range: string
     pattern: "^[A-z-._0-9 ]+$"
     required: true
     description: >-
-      the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]
+      the version of program, should be in the format of v[MAJOR].[MINOR].[PATCH]
   alternate_identifiers:
     range: string
     pattern: "^[A-z-._0-9 ]+$"
@@ -1390,7 +1395,7 @@ slots:
     multivalued: true
     inlined_as_list: true
     description: >-
-      a list of optional alternative names
+      a list of alternative names
   geo_admin1:
     range: string
     required: false
@@ -1421,7 +1426,7 @@ slots:
   gene_name:
     range: string
     required: false
-    pattern: "^[A-z-._0-9]+$"
+    pattern: "^[A-z-._0-9:]+$"
     description: >-
       an identifier of the gene, if any, is being covered with this targeted
     examples:
@@ -1432,3 +1437,5 @@ slots:
     required: true
     range: integer
     minimum_value: 0
+    description: >-
+      the read count

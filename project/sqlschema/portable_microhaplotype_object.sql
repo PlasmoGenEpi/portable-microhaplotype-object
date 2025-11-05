@@ -1,14 +1,14 @@
 -- # Class: "MarkerOfInterest" Description: "A specific genomic location of interest, e.g. drug resistance, or other phenotypical marker"
 --     * Slot: id Description: 
 --     * Slot: marker_location_id Description: the genomic location
--- # Class: "TargetInfo" Description: "Information about a specific target within a genome"
+-- # Class: "TargetInfo" Description: "Information about a specific targeted microhaplotype"
 --     * Slot: id Description: 
 --     * Slot: gene_name Description: an identifier of the gene, if any, is being covered with this targeted
---     * Slot: target_name Description: an identifier for this target
+--     * Slot: target_name Description: a name for this target
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
 --     * Slot: insert_location_id Description: the intended genomic location of the insert of the amplicon (the location between the end of the forward primer and the beginning of the reverse primer)
---     * Slot: forward_primer_id Description: the forward primer associated with this target
---     * Slot: reverse_primer_id Description: the reverse primer associated with this target
+--     * Slot: forward_primer_id Description: the forward primer for this target
+--     * Slot: reverse_primer_id Description: the reverse primer for this target
 -- # Class: "ReactionInfo" Description: "information on a panel of targeted amplicon primer pairs"
 --     * Slot: id Description: 
 --     * Slot: reaction_name Description: a name for this reaction
@@ -21,11 +21,11 @@
 --     * Slot: pseudocigar_seq Description: the pseudocigar itself
 --     * Slot: pseudocigar_generation_description Description: a description of how the pseudocigar information was generated 
 --     * Slot: ref_loc_id Description: the genomic location the pseudocigar is in reference to
--- # Class: "RepresentativeMicrohaplotype" Description: "the representative sequence for a microhaplotype, similar to a fast(a/q) format"
+-- # Class: "RepresentativeMicrohaplotype" Description: "the representative sequence for a microhaplotype"
 --     * Slot: id Description: 
---     * Slot: seq Description: the DNA sequence
+--     * Slot: seq Description: the sequence
 --     * Slot: microhaplotype_name Description: an optional name for this microhaplotype
---     * Slot: quality Description: the ansi fastq per base quality score for this sequence, this is optional
+--     * Slot: quality Description: the ASCII fastq per base quality score for this sequence, this is optional, must be same length as the sequence
 --     * Slot: pseudocigar_id Description: the pseudocigar of the haplotype
 -- # Class: "MaskingInfo" Description: "information about a subsegment of the sequence that should be masked"
 --     * Slot: id Description: 
@@ -35,10 +35,10 @@
 --     * Slot: masking_generation_description Description: a description of how the masking information was generated 
 -- # Class: "RepresentativeMicrohaplotypes" Description: "a collection of representative sequences for microhaplotypes for all targets"
 --     * Slot: id Description: 
--- # Class: "RepresentativeMicrohaplotypesForTarget" Description: "a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format"
+-- # Class: "RepresentativeMicrohaplotypesForTarget" Description: "a list of the representative sequence for the microhaplotypes for a target"
 --     * Slot: target_id Description: the index into the target_info list
 --     * Slot: RepresentativeMicrohaplotypes_id Description: Autocreated FK slot
---     * Slot: mhap_location_id Description: a genomic location that was analyzed for this target info, this allows listing location that may be different from the full target location (e.g 1 base in from the full) 
+--     * Slot: mhap_location_id Description: a genomic location that was analyzed for this target info, this allows listing location that may be different from the full target location (e.g 1 trimmed off the full length) 
 -- # Class: "DetectedMicrohaplotypes" Description: "the microhaplotypes detected in a targeted amplicon analysis"
 --     * Slot: id Description: 
 --     * Slot: bioinformatics_run_id Description: the index into bioinformatics_run_info list
@@ -69,7 +69,7 @@
 --     * Slot: codon_genomic_location_id Description: the position within the genomic sequence of the codon
 -- # Class: "PrimerInfo" Description: "information on a primer sequence"
 --     * Slot: id Description: 
---     * Slot: seq Description: the DNA sequence
+--     * Slot: seq Description: the sequence
 --     * Slot: location_id Description: what the intended genomic location of the primer is
 -- # Class: "DetectedMicrohaplotypesForSample" Description: "Microhaplotypes detected for a sample for all targets"
 --     * Slot: id Description: 
@@ -78,28 +78,28 @@
 -- # Class: "MicrohaplotypeForTarget" Description: "Microhaplotype detected for a specific target"
 --     * Slot: id Description: 
 --     * Slot: mhap_id Description: the index for a microhaplotype for a target in the representative_microhaplotypes list, e.g. representative_microhaplotypes[mhaps_target_id][mhap_id]
---     * Slot: reads Description: the read count associated with this microhaplotype
---     * Slot: umis Description: the unique molecular identifier (umi) count associated with this microhaplotype
+--     * Slot: reads Description: the read count for this microhaplotype
+--     * Slot: umis Description: the unique molecular identifier (umi) count for this microhaplotype
 --     * Slot: DetectedMicrohaplotypesForTarget_id Description: Autocreated FK slot
 -- # Class: "DetectedMicrohaplotypesForTarget" Description: "Microhaplotypes detected for a specific target"
 --     * Slot: id Description: 
 --     * Slot: mhaps_target_id Description: the index for a target in the representative_microhaplotypes list
 --     * Slot: DetectedMicrohaplotypesForSample_id Description: Autocreated FK slot
--- # Class: "BioinformaticsMethodInfo" Description: "the targeted amplicon bioinformatics methods used to generate the amplicon data in this PMO"
+-- # Class: "BioinformaticsMethodInfo" Description: "the targeted amplicon bioinformatics methods used to generate the microhaplotype data in this PMO"
 --     * Slot: id Description: 
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
--- # Class: "BioMethod" Description: "methodology description of a portion of a bioinformatics pipeline"
+-- # Class: "BioMethod" Description: "bioinformatics methodology description with info on program, version, and arguments different from the default"
 --     * Slot: id Description: 
---     * Slot: program_version Description: the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]
+--     * Slot: program_version Description: the version of program, should be in the format of v[MAJOR].[MINOR].[PATCH]
 --     * Slot: program Description: name of the program used for this portion of the pipeline
 --     * Slot: program_description Description: a short description of what this method does
 --     * Slot: program_url Description: a url pointing to code base of a program, e.g. a github link
 --     * Slot: BioinformaticsMethodInfo_id Description: Autocreated FK slot
--- # Class: "PlateInfo" Description: "Information about a plate location in a standard 96 well plate"
+-- # Class: "PlateInfo" Description: "Information about a plate location, e.g. a standard 96 well plate with row having a letter and column having a number"
 --     * Slot: id Description: 
---     * Slot: plate_name Description: a name of plate the specimen was in
---     * Slot: plate_row Description: the row the specimen was in
---     * Slot: plate_col Description: the column the specimen was in
+--     * Slot: plate_name Description: a name for the plate
+--     * Slot: plate_row Description: the row position
+--     * Slot: plate_col Description: the column position
 -- # Class: "LibrarySampleInfo" Description: "Information about a specific amplification and sequencing of a specimen"
 --     * Slot: sequencing_info_id Description: the index into the sequencing_info list
 --     * Slot: specimen_id Description: the index into the specimen_info list
@@ -107,12 +107,12 @@
 --     * Slot: fastqs_loc Description: the location (url or filename path) of the fastqs for a library run
 --     * Slot: run_accession Description: ERA/SRA run accession number for the sample if it was submitted
 --     * Slot: experiment_accession Description: ERA/SRA experiment accession number for the sample if it was submitted
---     * Slot: library_sample_name Description: a unique identifier for this sequence/amplification run on a specimen_name
+--     * Slot: library_sample_name Description: a unique identifier for this sequencing/amplification run
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
 --     * Slot: library_prep_plate_info_id Description: plate location of where library was prepared for sequencing 
 -- # Class: "SequencingInfo" Description: "Information on sequencing info"
 --     * Slot: id Description: 
---     * Slot: sequencing_info_name Description: a name of for the sequencing done, e.g. batch1
+--     * Slot: sequencing_info_name Description: a name for a specific sequencing run, e.g. batch1
 --     * Slot: seq_platform Description: the sequencing technology used to sequence the run, e.g. ILLUMINA, NANOPORE, PACBIO
 --     * Slot: seq_instrument_model Description: the sequencing instrument model used to sequence the run, e.g. NextSeq 2000, MinION, Revio
 --     * Slot: seq_date Description: the date of sequencing, should be YYYY-MM or YYYY-MM-DD
@@ -125,7 +125,7 @@
 --     * Slot: library_kit Description: Name, version, and applicable cell or cycle numbers for the kit used to prepare libraries and load cells or chips for sequencing. If possible, include a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001
 --     * Slot: library_layout Description: Specify the configuration of reads, e.g. paired-end, single
 --     * Slot: library_strategy Description: what the nuceloacid sequencing/amplification strategy was (common names are AMPLICON, WGS)
---     * Slot: library_source Description: Source of amplification material (common names GENOMIC, TRANSCRIPTOMIC)
+--     * Slot: library_source Description: Source of amplification material e.g. was it DNA (GENOMIC) or RNA (TRANSCRIPTOMIC) (common names GENOMIC, TRANSCRIPTOMIC)
 --     * Slot: library_selection Description: how amplification was done (common are PCR=Source material was selected by designed primers, RANDOM =Random selection by shearing or other method)
 --     * Slot: seq_center Description: Name of facility where sequencing was performed (lab, core facility, or company)
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
@@ -137,7 +137,7 @@
 --     * Slot: density_method_comments Description: additional comments about how the density was performed
 --     * Slot: LibrarySampleInfo_library_sample_name Description: Autocreated FK slot
 --     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
--- # Class: "ProjectInfo" Description: "Information on project info"
+-- # Class: "ProjectInfo" Description: "Information on a project underwhich a collection of specimens belong to"
 --     * Slot: project_name Description: a name for the project, should be unique if multiple projects listed
 --     * Slot: project_description Description: a short description of the project
 --     * Slot: project_type Description: the type of project conducted, e.g. TES vs surveillance vs transmission
@@ -162,7 +162,7 @@
 --     * Slot: specimen_name Description: an identifier for the specimen, should be unique within this sample set
 --     * Slot: host_subject_id Description: an identifier for the individual a specimen was collected from
 --     * Slot: host_taxon_id Description: the NCBI taxonomy number of the host that the specimen was collected from
---     * Slot: host_sex Description: if specimen is from a person, the sex listed for that person
+--     * Slot: host_sex Description: if specimen is collected from a host with a sex, the sex listed for that host
 --     * Slot: specimen_accession Description: if specimen is deposited in a database, what accession is it associated with
 --     * Slot: gravid Description: whether host specimen is currently pregnant
 --     * Slot: blood_meal Description: whether host specimen has had a recent blood meal  
@@ -180,7 +180,7 @@
 --     * Slot: env_broad_scale Description: the broad environment from which the specimen was collected, e.g. highlands, lowlands, mountainous region
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
 --     * Slot: storage_plate_info_id Description: plate location of where specimen is stored if stored in a plate 
--- # Class: "BioinformaticsRunInfo" Description: "Information about the pipeline run that generated some of the microhaplotype detected and reads_by_stage"
+-- # Class: "BioinformaticsRunInfo" Description: "Information about the pipeline run that generated microhaplotype_detected and reads_by_stage"
 --     * Slot: id Description: 
 --     * Slot: bioinformatics_methods_id Description: the index into the bioinformatics_methods_info list
 --     * Slot: run_date Description: the date when the run was done, should be YYYY-MM-DD
@@ -188,9 +188,9 @@
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
 -- # Class: "PmoGenerationMethod" Description: "Information about how a PMO was generated"
 --     * Slot: id Description: 
---     * Slot: program_version Description: the version of generation method, should be in the format of v[MAJOR].[MINOR].[PATCH]
+--     * Slot: program_version Description: the version of program, should be in the format of v[MAJOR].[MINOR].[PATCH]
 --     * Slot: program_name Description: the name of the program
--- # Class: "PmoHeader" Description: "Information on the PMO file"
+-- # Class: "PmoHeader" Description: "Information on the PMO file itself"
 --     * Slot: id Description: 
 --     * Slot: pmo_version Description: the version of the PMO file, should be in the format of v[MAJOR].[MINOR].[PATCH]
 --     * Slot: creation_date Description: the date of when the PMO file was created or modified, should be YYYY-MM-DD
@@ -213,7 +213,7 @@
 --     * Slot: id Description: 
 --     * Slot: bioinformatics_run_id Description: the index into bioinformatics_run_info list
 --     * Slot: PortableMicrohaplotypeObject_id Description: Autocreated FK slot
--- # Class: "PortableMicrohaplotypeObject" Description: "Information on final results from a targeted amplicon analysis"
+-- # Class: "PortableMicrohaplotypeObject" Description: "Information on final microhaplotype results from a targeted amplicon analysis with associated meta data"
 --     * Slot: id Description: 
 --     * Slot: representative_microhaplotypes_id Description: a list of the information on the representative microhaplotypes
 --     * Slot: pmo_header_id Description: the PMO information for this file including version etc
@@ -222,10 +222,10 @@
 --     * Slot: associations Description: a list of associations with this marker, e.g. SP resistance, etc
 -- # Class: "TargetInfo_markers_of_interest" Description: ""
 --     * Slot: TargetInfo_id Description: Autocreated FK slot
---     * Slot: markers_of_interest_id Description: a list of covered markers of interest
+--     * Slot: markers_of_interest_id Description: a list of markers of interest that are covered by this target
 -- # Class: "TargetInfo_target_attributes" Description: ""
 --     * Slot: TargetInfo_id Description: Autocreated FK slot
---     * Slot: target_attributes Description: a list of classification type for the primer target
+--     * Slot: target_attributes Description: a list of classification types for this target
 -- # Class: "ReactionInfo_panel_targets" Description: ""
 --     * Slot: ReactionInfo_id Description: Autocreated FK slot
 --     * Slot: panel_targets Description: a list of the target indexes in the target_info list
@@ -240,28 +240,28 @@
 --     * Slot: alt_annotations Description: a list of additional annotations associated with this microhaplotype, e.g. wildtype
 -- # Class: "RepresentativeMicrohaplotypesForTarget_microhaplotypes" Description: ""
 --     * Slot: RepresentativeMicrohaplotypesForTarget_target_id Description: Autocreated FK slot
---     * Slot: microhaplotypes_id Description: a list of the microhaplotypes detected for a target
+--     * Slot: microhaplotypes_id Description: a list of all the microhaplotypes for a target
 -- # Class: "GenomeInfo_taxon_id" Description: ""
 --     * Slot: GenomeInfo_id Description: Autocreated FK slot
---     * Slot: taxon_id Description: the NCBI taxonomy number, can be a list of values
+--     * Slot: taxon_id Description: the NCBI taxonomy number, can be a list of values if it's a genome file that has been created by combining gnomes from different species
 -- # Class: "GenomeInfo_chromosomes" Description: ""
 --     * Slot: GenomeInfo_id Description: Autocreated FK slot
---     * Slot: chromosomes Description: a list of chromosomes found within this genome
+--     * Slot: chromosomes Description: a list of the chromosomes/contigs found within this genome
 -- # Class: "BioMethod_additional_argument" Description: ""
 --     * Slot: BioMethod_id Description: Autocreated FK slot
---     * Slot: additional_argument Description: any additional arguments that differ from the default
+--     * Slot: additional_argument Description: any additional arguments that differ from the default arguments
 -- # Class: "LibrarySampleInfo_alternate_identifiers" Description: ""
 --     * Slot: LibrarySampleInfo_library_sample_name Description: Autocreated FK slot
---     * Slot: alternate_identifiers Description: a list of optional alternative names
+--     * Slot: alternate_identifiers Description: a list of alternative names
 -- # Class: "ProjectInfo_project_contributors" Description: ""
 --     * Slot: ProjectInfo_project_name Description: Autocreated FK slot
 --     * Slot: project_contributors Description: a list of collaborators who contributed to this project
 -- # Class: "SpecimenInfo_alternate_identifiers" Description: ""
 --     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
---     * Slot: alternate_identifiers Description: a list of optional alternative names
+--     * Slot: alternate_identifiers Description: a list of alternative names
 -- # Class: "SpecimenInfo_specimen_taxon_id" Description: ""
 --     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
---     * Slot: specimen_taxon_id Description: the NCBI taxonomy number of the organism in specimen, can list multiple if a mixed sample
+--     * Slot: specimen_taxon_id Description: the NCBI taxonomy number of the organism(s) in the specimen, can list multiple if a mixed sample
 -- # Class: "SpecimenInfo_specimen_comments" Description: ""
 --     * Slot: SpecimenInfo_specimen_name Description: Autocreated FK slot
 --     * Slot: specimen_comments Description: any additional comments about the specimen

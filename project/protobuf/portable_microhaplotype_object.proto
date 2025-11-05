@@ -1,19 +1,19 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// the targeted amplicon bioinformatics methods used to generate the amplicon data in this PMO
+// the targeted amplicon bioinformatics methods used to generate the microhaplotype data in this PMO
 message BioinformaticsMethodInfo
  {
  repeated  bioMethod methods = 0
  }
-// Information about the pipeline run that generated some of the microhaplotype detected and reads_by_stage
+// Information about the pipeline run that generated microhaplotype_detected and reads_by_stage
 message BioinformaticsRunInfo
  {
   integer bioinformaticsMethodsId = 0
   string runDate = 0
   string bioinformaticsRunName = 0
  }
-// methodology description of a portion of a bioinformatics pipeline
+// bioinformatics methodology description with info on program, version, and arguments different from the default
 message BioMethod
  {
   string programVersion = 0
@@ -110,7 +110,7 @@ message ParasiteDensity
   string dateMeasured = 0
   string densityMethodComments = 0
  }
-// Information about a plate location in a standard 96 well plate
+// Information about a plate location, e.g. a standard 96 well plate with row having a letter and column having a number
 message PlateInfo
  {
   string plateName = 0
@@ -123,14 +123,14 @@ message PmoGenerationMethod
   string programVersion = 0
   string programName = 0
  }
-// Information on the PMO file
+// Information on the PMO file itself
 message PmoHeader
  {
   string pmoVersion = 0
   string creationDate = 0
   pmoGenerationMethod generationMethod = 0
  }
-// Information on final results from a targeted amplicon analysis
+// Information on final microhaplotype results from a targeted amplicon analysis with associated meta data
 message PortableMicrohaplotypeObject
  {
  repeated  librarySampleInfo librarySampleInfo = 0
@@ -153,7 +153,7 @@ message PrimerInfo
   string seq = 0
   genomicLocation location = 0
  }
-// Information on project info
+// Information on a project underwhich a collection of specimens belong to
 message ProjectInfo
  {
   string projectName = 0
@@ -203,7 +203,7 @@ message ReadCountsByStageForTarget
   integer targetId = 0
  repeated  stageReadCounts stages = 0
  }
-// the representative sequence for a microhaplotype, similar to a fast(a/q) format
+// the representative sequence for a microhaplotype
 message RepresentativeMicrohaplotype
  {
   string seq = 0
@@ -220,7 +220,7 @@ message RepresentativeMicrohaplotypes
  {
  repeated  representativeMicrohaplotypesForTarget targets = 0
  }
-// a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format
+// a list of the representative sequence for the microhaplotypes for a target
 message RepresentativeMicrohaplotypesForTarget
  {
   integer targetId = 0
@@ -288,7 +288,7 @@ message StageReadCounts
   integer reads = 0
   string stage = 0
  }
-// Information about a specific target within a genome
+// Information about a specific targeted microhaplotype
 message TargetInfo
  {
   string geneName = 0

@@ -1,5 +1,5 @@
 # Auto generated from portable_microhaplotype_object.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-10-22T09:44:26
+# Generation date: 2025-11-05T09:40:19
 # Schema: portable-microhaplotype-object
 #
 # id: https://plasmogenepi.github.io/portable-microhaplotype-object
@@ -122,7 +122,7 @@ class MarkerOfInterest(YAMLRoot):
 @dataclass(repr=False)
 class TargetInfo(YAMLRoot):
     """
-    Information about a specific target within a genome
+    Information about a specific targeted microhaplotype
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -264,7 +264,7 @@ class Pseudocigar(YAMLRoot):
 @dataclass(repr=False)
 class RepresentativeMicrohaplotype(YAMLRoot):
     """
-    the representative sequence for a microhaplotype, similar to a fast(a/q) format
+    the representative sequence for a microhaplotype
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -378,7 +378,7 @@ class RepresentativeMicrohaplotypes(YAMLRoot):
 @dataclass(repr=False)
 class RepresentativeMicrohaplotypesForTarget(YAMLRoot):
     """
-    a list of the representative sequence for a microhaplotypes, similar to a fast(a/q) format
+    a list of the representative sequence for the microhaplotypes for a target
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -699,7 +699,7 @@ class DetectedMicrohaplotypesForTarget(YAMLRoot):
 @dataclass(repr=False)
 class BioinformaticsMethodInfo(YAMLRoot):
     """
-    the targeted amplicon bioinformatics methods used to generate the amplicon data in this PMO
+    the targeted amplicon bioinformatics methods used to generate the microhaplotype data in this PMO
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -723,7 +723,7 @@ class BioinformaticsMethodInfo(YAMLRoot):
 @dataclass(repr=False)
 class BioMethod(YAMLRoot):
     """
-    methodology description of a portion of a bioinformatics pipeline
+    bioinformatics methodology description with info on program, version, and arguments different from the default
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -765,7 +765,8 @@ class BioMethod(YAMLRoot):
 @dataclass(repr=False)
 class PlateInfo(YAMLRoot):
     """
-    Information about a plate location in a standard 96 well plate
+    Information about a plate location, e.g. a standard 96 well plate with row having a letter and column having a
+    number
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -993,7 +994,7 @@ class ParasiteDensity(YAMLRoot):
 @dataclass(repr=False)
 class ProjectInfo(YAMLRoot):
     """
-    Information on project info
+    Information on a project underwhich a collection of specimens belong to
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -1252,7 +1253,7 @@ class SpecimenInfo(YAMLRoot):
 @dataclass(repr=False)
 class BioinformaticsRunInfo(YAMLRoot):
     """
-    Information about the pipeline run that generated some of the microhaplotype detected and reads_by_stage
+    Information about the pipeline run that generated microhaplotype_detected and reads_by_stage
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -1314,7 +1315,7 @@ class PmoGenerationMethod(YAMLRoot):
 @dataclass(repr=False)
 class PmoHeader(YAMLRoot):
     """
-    Information on the PMO file
+    Information on the PMO file itself
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -1468,7 +1469,7 @@ class ReadCountsByStage(YAMLRoot):
 @dataclass(repr=False)
 class PortableMicrohaplotypeObject(YAMLRoot):
     """
-    Information on final results from a targeted amplicon analysis
+    Information on final microhaplotype results from a targeted amplicon analysis with associated meta data
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -1637,7 +1638,7 @@ slots.lat_lon = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.lat_lon, name="lat_lon",
 
 slots.gene_name = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.gene_name, name="gene_name", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('gene_name'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.gene_name, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[A-z-._0-9]+$'))
+                   pattern=re.compile(r'^[A-z-._0-9:]+$'))
 
 slots.reads = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.reads, name="reads", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('reads'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.reads, domain=None, range=int)
@@ -1985,7 +1986,7 @@ slots.travelInfo__bed_net_usage = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.bed_ne
 
 slots.specimenInfo__specimen_name = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimen_name, name="specimenInfo__specimen_name", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('specimen_name'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__specimen_name, domain=None, range=URIRef,
-                   pattern=re.compile(r'^[A-z-._0-9 ]+$'))
+                   pattern=re.compile(r'^[A-z-._0-9\(\),\/\ ]+$'))
 
 slots.specimenInfo__specimen_taxon_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimen_taxon_id, name="specimenInfo__specimen_taxon_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('specimen_taxon_id'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__specimen_taxon_id, domain=None, range=Union[int, list[int]],
