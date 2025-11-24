@@ -1,7 +1,7 @@
 {
     "$defs": {
         "BioMethod": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "bioinformatics methodology description with info on program, version, and arguments different from the default",
             "properties": {
                 "additional_argument": {
@@ -50,7 +50,7 @@
             "type": "object"
         },
         "BioinformaticsMethodInfo": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "the targeted amplicon bioinformatics methods used to generate the microhaplotype data in this PMO",
             "properties": {
                 "methods": {
@@ -68,7 +68,7 @@
             "type": "object"
         },
         "BioinformaticsRunInfo": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Information about the pipeline run that generated microhaplotype_detected and reads_by_stage",
             "properties": {
                 "bioinformatics_methods_id": {
@@ -99,7 +99,7 @@
             "type": "object"
         },
         "DetectedMicrohaplotypes": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "the microhaplotypes detected in a targeted amplicon analysis",
             "properties": {
                 "bioinformatics_run_id": {
@@ -124,7 +124,7 @@
             "type": "object"
         },
         "DetectedMicrohaplotypesForSample": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Microhaplotypes detected for a sample for all targets",
             "properties": {
                 "library_sample_id": {
@@ -149,7 +149,7 @@
             "type": "object"
         },
         "DetectedMicrohaplotypesForTarget": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Microhaplotypes detected for a specific target",
             "properties": {
                 "mhaps": {
@@ -174,7 +174,7 @@
             "type": "object"
         },
         "GenomeInfo": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "information on a genome",
             "properties": {
                 "chromosomes": {
@@ -231,7 +231,7 @@
             "type": "object"
         },
         "GenomicLocation": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "information on the genomic location of specific sequence",
             "properties": {
                 "alt_seq": {
@@ -292,7 +292,7 @@
             "type": "object"
         },
         "LibrarySampleInfo": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Information about a specific amplification and sequencing of a specimen",
             "properties": {
                 "alternate_identifiers": {
@@ -385,7 +385,7 @@
             "type": "object"
         },
         "MarkerOfInterest": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "A specific genomic location of interest, e.g. drug resistance, or other phenotypical marker",
             "properties": {
                 "associations": {
@@ -411,7 +411,7 @@
             "type": "object"
         },
         "MaskingInfo": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "information about a subsegment of the sequence that should be masked",
             "properties": {
                 "masking_generation_description": {
@@ -447,7 +447,7 @@
             "type": "object"
         },
         "MicrohaplotypeForTarget": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Microhaplotype detected for a specific target",
             "properties": {
                 "mhap_id": {
@@ -478,7 +478,7 @@
             "type": "object"
         },
         "PanelInfo": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "information on a panel of targeted amplicon primer pairs",
             "properties": {
                 "panel_name": {
@@ -502,7 +502,7 @@
             "type": "object"
         },
         "ParasiteDensity": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "method and value of determined parasite density",
             "properties": {
                 "date_measured": {
@@ -541,7 +541,7 @@
             "type": "object"
         },
         "PlateInfo": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Information about a plate location, e.g. a standard 96 well plate with row having a letter and column having a number",
             "properties": {
                 "plate_col": {
@@ -574,7 +574,7 @@
             "type": "object"
         },
         "PmoGenerationMethod": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Information about how a PMO was generated",
             "properties": {
                 "program_name": {
@@ -596,7 +596,7 @@
             "type": "object"
         },
         "PmoHeader": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Information on the PMO file itself",
             "properties": {
                 "creation_date": {
@@ -631,7 +631,7 @@
             "type": "object"
         },
         "PortableMicrohaplotypeObject": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Information on final microhaplotype results from a targeted amplicon analysis with associated meta data",
             "properties": {
                 "bioinformatics_methods_info": {
@@ -741,7 +741,7 @@
             "type": "object"
         },
         "PrimerInfo": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "information on a primer sequence",
             "properties": {
                 "location": {
@@ -768,7 +768,7 @@
             "type": "object"
         },
         "ProjectInfo": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Information on a project underwhich a collection of specimens belong to",
             "properties": {
                 "BioProject_accession": {
@@ -824,7 +824,7 @@
             "type": "object"
         },
         "ProteinVariant": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "information on a variant in protein sequence",
             "properties": {
                 "alternative_gene_name": {
@@ -866,7 +866,7 @@
             "type": "object"
         },
         "Pseudocigar": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "information on pseudocigar for a sequence",
             "properties": {
                 "pseudocigar_generation_description": {
@@ -895,7 +895,7 @@
             "type": "object"
         },
         "ReactionInfo": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "information on a panel of targeted amplicon primer pairs",
             "properties": {
                 "panel_targets": {
@@ -920,7 +920,7 @@
             "type": "object"
         },
         "ReadCountsByStage": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Information on the reads counts at several stages of a pipeline",
             "properties": {
                 "bioinformatics_run_id": {
@@ -945,7 +945,7 @@
             "type": "object"
         },
         "ReadCountsByStageForLibrarySample": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Information on the reads counts at several stages of a pipeline for a library_sample",
             "properties": {
                 "library_sample_id": {
@@ -979,7 +979,7 @@
             "type": "object"
         },
         "ReadCountsByStageForTarget": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Information on the reads counts at several stages of a pipeline for a target",
             "properties": {
                 "stages": {
@@ -1004,7 +1004,7 @@
             "type": "object"
         },
         "RepresentativeMicrohaplotype": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "the representative sequence for a microhaplotype",
             "properties": {
                 "alt_annotations": {
@@ -1088,7 +1088,7 @@
             "type": "object"
         },
         "RepresentativeMicrohaplotypes": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "a collection of representative sequences for microhaplotypes for all targets",
             "properties": {
                 "targets": {
@@ -1106,7 +1106,7 @@
             "type": "object"
         },
         "RepresentativeMicrohaplotypesForTarget": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "a list of the representative sequence for the microhaplotypes for a target",
             "properties": {
                 "mhap_location": {
@@ -1142,7 +1142,7 @@
             "type": "object"
         },
         "SequencingInfo": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Information on sequencing info",
             "properties": {
                 "library_kit": {
@@ -1266,7 +1266,7 @@
             "type": "object"
         },
         "SpecimenInfo": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Information on specimen info",
             "properties": {
                 "alternate_identifiers": {
@@ -1534,7 +1534,7 @@
             "type": "object"
         },
         "StageReadCounts": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Information on the reads counts at several stages",
             "properties": {
                 "reads": {
@@ -1556,7 +1556,7 @@
             "type": "object"
         },
         "TargetInfo": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Information about a specific targeted microhaplotype",
             "properties": {
                 "forward_primer": {
@@ -1621,7 +1621,7 @@
             "type": "object"
         },
         "TravelInfo": {
-            "additionalProperties": true,
+            "additionalProperties": false,
             "description": "Information on travel info",
             "properties": {
                 "bed_net_usage": {
