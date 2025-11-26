@@ -2282,7 +2282,7 @@
       ],
       "range": "string",
       "required": true,
-      "pattern": "^[A-Za-z0-9 ,._:'\u2013-]+$",
+      "pattern": "^[\\w ,._:'\u2013-]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -2583,7 +2583,7 @@
       ],
       "range": "string",
       "required": true,
-      "pattern": "^[A-Za-z0-9 ,._:'\u2013-]+$",
+      "pattern": "^[\\w ,._:'\u2013-]+$",
       "@type": "SlotDefinition"
     },
     {
@@ -4703,7 +4703,7 @@
           ],
           "range": "string",
           "required": true,
-          "pattern": "^[A-Za-z0-9 ,._:'\u2013-]+$",
+          "pattern": "^[\\w ,._:'\u2013-]+$",
           "@type": "SlotDefinition"
         },
         {
@@ -4935,7 +4935,7 @@
           ],
           "range": "string",
           "required": true,
-          "pattern": "^[A-Za-z0-9 ,._:'\u2013-]+$",
+          "pattern": "^[\\w ,._:'\u2013-]+$",
           "@type": "SlotDefinition"
         },
         {
@@ -5452,9 +5452,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2025-11-05T12:39:58",
-  "source_file_size": 46023,
-  "generation_date": "2025-11-20T09:57:46",
+  "source_file_date": "2025-11-25T18:34:46",
+  "source_file_size": 46011,
+  "generation_date": "2025-11-25T18:35:02",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",

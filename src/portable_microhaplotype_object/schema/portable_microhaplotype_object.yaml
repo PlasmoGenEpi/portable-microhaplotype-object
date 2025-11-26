@@ -823,7 +823,7 @@ classes:
     attributes:
       travel_country:
         range: string
-        pattern: "^[A-Za-z0-9 ,._:'–-]+$"
+        pattern: "^[\\w ,._:'–-]+$"
         required: true
         description: >-
           the name of country, would be the same as admin level 0
@@ -972,7 +972,7 @@ classes:
           - value: "7"
       collection_country:
         range: string
-        pattern: "^[A-Za-z0-9 ,._:'–-]+$"
+        pattern: "^[\\w ,._:'–-]+$"
         required: true
         description: >-
           the name of country collected in, would be the same as admin level 0

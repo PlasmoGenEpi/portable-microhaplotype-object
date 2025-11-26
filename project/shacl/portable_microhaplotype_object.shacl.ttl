@@ -13,25 +13,6 @@ portable_microhaplotype_object:PortableMicrohaplotypeObject a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path portable_microhaplotype_object:target_info ],
-        [ sh:class portable_microhaplotype_object:ProjectInfo ;
-            sh:description "the information about the projects stored in this PMO" ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 10 ;
-            sh:path portable_microhaplotype_object:project_info ],
-        [ sh:class portable_microhaplotype_object:SpecimenInfo ;
-            sh:description "a list of all the specimens within this PMO file" ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path portable_microhaplotype_object:specimen_info ],
-        [ sh:class portable_microhaplotype_object:RepresentativeMicrohaplotypes ;
-            sh:description "a list of the information on the representative microhaplotypes" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 6 ;
-            sh:path portable_microhaplotype_object:representative_microhaplotypes ],
         [ sh:class portable_microhaplotype_object:PmoHeader ;
             sh:description "the PMO information for this file including version etc" ;
             sh:maxCount 1 ;
@@ -39,36 +20,12 @@ portable_microhaplotype_object:PortableMicrohaplotypeObject a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 11 ;
             sh:path portable_microhaplotype_object:pmo_header ],
-        [ sh:class portable_microhaplotype_object:BioinformaticsMethodInfo ;
-            sh:description "the bioinformatics pipeline/methods used to generated the microhaplotype analysis for this project" ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 7 ;
-            sh:path portable_microhaplotype_object:bioinformatics_methods_info ],
-        [ sh:class portable_microhaplotype_object:SequencingInfo ;
-            sh:description "a list of sequencing infos for this PMO file" ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path portable_microhaplotype_object:sequencing_info ],
-        [ sh:class portable_microhaplotype_object:LibrarySampleInfo ;
-            sh:description "a list of libraries of all the seq/amp of the specimens within this PMO file" ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path portable_microhaplotype_object:library_sample_info ],
         [ sh:class portable_microhaplotype_object:PanelInfo ;
             sh:description "a list of info on the panels" ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path portable_microhaplotype_object:panel_info ],
-        [ sh:class portable_microhaplotype_object:GenomeInfo ;
-            sh:description "a list of genomes that any genomic location information refers to" ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 5 ;
-            sh:path portable_microhaplotype_object:targeted_genomes ],
         [ sh:class portable_microhaplotype_object:DetectedMicrohaplotypes ;
             sh:description "the microhaplotypes detected in this projects" ;
             sh:minCount 1 ;
@@ -85,7 +42,50 @@ portable_microhaplotype_object:PortableMicrohaplotypeObject a sh:NodeShape ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 8 ;
-            sh:path portable_microhaplotype_object:bioinformatics_run_info ] ;
+            sh:path portable_microhaplotype_object:bioinformatics_run_info ],
+        [ sh:class portable_microhaplotype_object:SpecimenInfo ;
+            sh:description "a list of all the specimens within this PMO file" ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path portable_microhaplotype_object:specimen_info ],
+        [ sh:class portable_microhaplotype_object:LibrarySampleInfo ;
+            sh:description "a list of libraries of all the seq/amp of the specimens within this PMO file" ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path portable_microhaplotype_object:library_sample_info ],
+        [ sh:class portable_microhaplotype_object:GenomeInfo ;
+            sh:description "a list of genomes that any genomic location information refers to" ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path portable_microhaplotype_object:targeted_genomes ],
+        [ sh:class portable_microhaplotype_object:RepresentativeMicrohaplotypes ;
+            sh:description "a list of the information on the representative microhaplotypes" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path portable_microhaplotype_object:representative_microhaplotypes ],
+        [ sh:class portable_microhaplotype_object:ProjectInfo ;
+            sh:description "the information about the projects stored in this PMO" ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 10 ;
+            sh:path portable_microhaplotype_object:project_info ],
+        [ sh:class portable_microhaplotype_object:BioinformaticsMethodInfo ;
+            sh:description "the bioinformatics pipeline/methods used to generated the microhaplotype analysis for this project" ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 7 ;
+            sh:path portable_microhaplotype_object:bioinformatics_methods_info ],
+        [ sh:class portable_microhaplotype_object:SequencingInfo ;
+            sh:description "a list of sequencing infos for this PMO file" ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path portable_microhaplotype_object:sequencing_info ] ;
     sh:targetClass portable_microhaplotype_object:PortableMicrohaplotypeObject .
 
 portable_microhaplotype_object:BioMethod a sh:NodeShape ;
@@ -93,17 +93,11 @@ portable_microhaplotype_object:BioMethod a sh:NodeShape ;
     sh:description "bioinformatics methodology description with info on program, version, and arguments different from the default" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "any additional arguments that differ from the default arguments" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path portable_microhaplotype_object:additional_argument ;
-            sh:pattern "^[A-z-._0-9{}\\(\\),\\/\\ ]+$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "a short description of what this method does" ;
+            sh:description "a url pointing to code base of a program, e.g. a github link" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path portable_microhaplotype_object:program_description ;
+            sh:order 3 ;
+            sh:path portable_microhaplotype_object:program_url ;
             sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ],
         [ sh:datatype xsd:string ;
             sh:description "name of the program used for this portion of the pipeline" ;
@@ -114,12 +108,18 @@ portable_microhaplotype_object:BioMethod a sh:NodeShape ;
             sh:path portable_microhaplotype_object:program ;
             sh:pattern "^[A-z-._0-9 ]+$" ],
         [ sh:datatype xsd:string ;
-            sh:description "a url pointing to code base of a program, e.g. a github link" ;
+            sh:description "a short description of what this method does" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path portable_microhaplotype_object:program_url ;
+            sh:order 2 ;
+            sh:path portable_microhaplotype_object:program_description ;
             sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "any additional arguments that differ from the default arguments" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path portable_microhaplotype_object:additional_argument ;
+            sh:pattern "^[A-z-._0-9{}\\(\\),\\/\\ ]+$" ],
         [ sh:datatype xsd:string ;
             sh:description "the version of program, should be in the format of v[MAJOR].[MINOR].[PATCH]" ;
             sh:maxCount 1 ;
@@ -146,7 +146,16 @@ portable_microhaplotype_object:BioinformaticsRunInfo a sh:NodeShape ;
     sh:closed true ;
     sh:description "Information about the pipeline run that generated microhaplotype_detected and reads_by_stage" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:description "the index into the bioinformatics_methods_info list" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:minInclusive 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path portable_microhaplotype_object:bioinformatics_methods_id ;
+            sh:pattern "^[0-9]+$" ],
+        [ sh:datatype xsd:string ;
             sh:description "a name to for this run, needs to be unique to each run " ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -160,16 +169,7 @@ portable_microhaplotype_object:BioinformaticsRunInfo a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path portable_microhaplotype_object:run_date ;
-            sh:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ],
-        [ sh:datatype xsd:integer ;
-            sh:description "the index into the bioinformatics_methods_info list" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:minInclusive 0 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path portable_microhaplotype_object:bioinformatics_methods_id ;
-            sh:pattern "^[0-9]+$" ] ;
+            sh:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ] ;
     sh:targetClass portable_microhaplotype_object:BioinformaticsRunInfo .
 
 portable_microhaplotype_object:DetectedMicrohaplotypes a sh:NodeShape ;
@@ -197,7 +197,13 @@ portable_microhaplotype_object:DetectedMicrohaplotypesForSample a sh:NodeShape ;
     sh:closed true ;
     sh:description "Microhaplotypes detected for a sample for all targets" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:integer ;
+    sh:property [ sh:class portable_microhaplotype_object:DetectedMicrohaplotypesForTarget ;
+            sh:description "a list of the microhaplotypes detected for a list of targets" ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path portable_microhaplotype_object:target_results ],
+        [ sh:datatype xsd:integer ;
             sh:description "the index into the library_sample_info list" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -205,26 +211,14 @@ portable_microhaplotype_object:DetectedMicrohaplotypesForSample a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path portable_microhaplotype_object:library_sample_id ;
-            sh:pattern "^[0-9]+$" ],
-        [ sh:class portable_microhaplotype_object:DetectedMicrohaplotypesForTarget ;
-            sh:description "a list of the microhaplotypes detected for a list of targets" ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path portable_microhaplotype_object:target_results ] ;
+            sh:pattern "^[0-9]+$" ] ;
     sh:targetClass portable_microhaplotype_object:DetectedMicrohaplotypesForSample .
 
 portable_microhaplotype_object:DetectedMicrohaplotypesForTarget a sh:NodeShape ;
     sh:closed true ;
     sh:description "Microhaplotypes detected for a specific target" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class portable_microhaplotype_object:MicrohaplotypeForTarget ;
-            sh:description "a list of the microhaplotypes detected for this target" ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path portable_microhaplotype_object:mhaps ],
-        [ sh:datatype xsd:integer ;
+    sh:property [ sh:datatype xsd:integer ;
             sh:description "the index for a target in the representative_microhaplotypes list" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -232,7 +226,13 @@ portable_microhaplotype_object:DetectedMicrohaplotypesForTarget a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path portable_microhaplotype_object:mhaps_target_id ;
-            sh:pattern "^[0-9]+$" ] ;
+            sh:pattern "^[0-9]+$" ],
+        [ sh:class portable_microhaplotype_object:MicrohaplotypeForTarget ;
+            sh:description "a list of the microhaplotypes detected for this target" ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path portable_microhaplotype_object:mhaps ] ;
     sh:targetClass portable_microhaplotype_object:DetectedMicrohaplotypesForTarget .
 
 portable_microhaplotype_object:GenomeInfo a sh:NodeShape ;
@@ -240,6 +240,12 @@ portable_microhaplotype_object:GenomeInfo a sh:NodeShape ;
     sh:description "information on a genome" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "a list of the chromosomes/contigs found within this genome" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path portable_microhaplotype_object:chromosomes ;
+            sh:pattern "^[A-z-._0-9]+$" ],
+        [ sh:datatype xsd:string ;
             sh:description "name of the genome" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -248,19 +254,12 @@ portable_microhaplotype_object:GenomeInfo a sh:NodeShape ;
             sh:path portable_microhaplotype_object:name ;
             sh:pattern "^[A-z-._0-9]+$" ],
         [ sh:datatype xsd:string ;
-            sh:description "a list of the chromosomes/contigs found within this genome" ;
+            sh:description "a link to the where this genome's annotation file could be downloaded" ;
+            sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path portable_microhaplotype_object:chromosomes ;
-            sh:pattern "^[A-z-._0-9]+$" ],
-        [ sh:datatype xsd:integer ;
-            sh:description "the NCBI taxonomy number, can be a list of values if it's a genome file that has been created by combining gnomes from different species" ;
-            sh:minCount 1 ;
-            sh:minInclusive 0 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path portable_microhaplotype_object:taxon_id ;
-            sh:pattern "^[0-9]$" ],
+            sh:order 5 ;
+            sh:path portable_microhaplotype_object:gff_url ;
+            sh:pattern "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$" ],
         [ sh:datatype xsd:string ;
             sh:description "a link to the where this genome file could be downloaded" ;
             sh:maxCount 1 ;
@@ -270,20 +269,21 @@ portable_microhaplotype_object:GenomeInfo a sh:NodeShape ;
             sh:path portable_microhaplotype_object:url ;
             sh:pattern "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$" ],
         [ sh:datatype xsd:string ;
-            sh:description "a link to the where this genome's annotation file could be downloaded" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path portable_microhaplotype_object:gff_url ;
-            sh:pattern "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$" ],
-        [ sh:datatype xsd:string ;
             sh:description "the genome version" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path portable_microhaplotype_object:genome_version ;
-            sh:pattern "^[A-z-._0-9]+$" ] ;
+            sh:pattern "^[A-z-._0-9]+$" ],
+        [ sh:datatype xsd:integer ;
+            sh:description "the NCBI taxonomy number, can be a list of values if it's a genome file that has been created by combining gnomes from different species" ;
+            sh:minCount 1 ;
+            sh:minInclusive 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path portable_microhaplotype_object:taxon_id ;
+            sh:pattern "^[0-9]$" ] ;
     sh:targetClass portable_microhaplotype_object:GenomeInfo .
 
 portable_microhaplotype_object:LibrarySampleInfo a sh:NodeShape ;
@@ -291,20 +291,12 @@ portable_microhaplotype_object:LibrarySampleInfo a sh:NodeShape ;
     sh:description "Information about a specific amplification and sequencing of a specimen" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "ERA/SRA run accession number for the sample if it was submitted" ;
+            sh:description "the location (url or filename path) of the fastqs for a library run" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path portable_microhaplotype_object:run_accession ;
-            sh:pattern "^[A-z-._0-9]+$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "a unique identifier for this sequencing/amplification run" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path portable_microhaplotype_object:library_sample_name ;
-            sh:pattern "^[A-z-._0-9 ]+$" ],
+            sh:order 4 ;
+            sh:path portable_microhaplotype_object:fastqs_loc ;
+            sh:pattern "^[A-z-.;,_0-9\\(\\),\\/\\ ]+$" ],
         [ sh:datatype xsd:integer ;
             sh:description "the index into the panel_info list" ;
             sh:maxCount 1 ;
@@ -314,11 +306,6 @@ portable_microhaplotype_object:LibrarySampleInfo a sh:NodeShape ;
             sh:order 2 ;
             sh:path portable_microhaplotype_object:panel_id ;
             sh:pattern "^[0-9]+$" ],
-        [ sh:class portable_microhaplotype_object:ParasiteDensity ;
-            sh:description "qpcr parasite density measurement for this extracted sample" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 9 ;
-            sh:path portable_microhaplotype_object:qpcr_parasite_density_info ],
         [ sh:datatype xsd:integer ;
             sh:description "the index into the specimen_info list" ;
             sh:maxCount 1 ;
@@ -329,25 +316,31 @@ portable_microhaplotype_object:LibrarySampleInfo a sh:NodeShape ;
             sh:path portable_microhaplotype_object:specimen_id ;
             sh:pattern "^[0-9]+$" ],
         [ sh:datatype xsd:string ;
-            sh:description "the location (url or filename path) of the fastqs for a library run" ;
+            sh:description "a unique identifier for this sequencing/amplification run" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path portable_microhaplotype_object:fastqs_loc ;
-            sh:pattern "^[A-z-.;,_0-9\\(\\),\\/\\ ]+$" ],
+            sh:order 7 ;
+            sh:path portable_microhaplotype_object:library_sample_name ;
+            sh:pattern "^[A-z-._0-9 ]+$" ],
         [ sh:datatype xsd:string ;
-            sh:description "ERA/SRA experiment accession number for the sample if it was submitted" ;
+            sh:description "a list of alternative names" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path portable_microhaplotype_object:alternate_identifiers ;
+            sh:pattern "^[A-z-._0-9 ]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "ERA/SRA run accession number for the sample if it was submitted" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path portable_microhaplotype_object:experiment_accession ;
+            sh:order 5 ;
+            sh:path portable_microhaplotype_object:run_accession ;
             sh:pattern "^[A-z-._0-9]+$" ],
-        [ sh:class portable_microhaplotype_object:PlateInfo ;
-            sh:description "plate location of where library was prepared for sequencing " ;
-            sh:maxCount 1 ;
+        [ sh:class portable_microhaplotype_object:ParasiteDensity ;
+            sh:description "qpcr parasite density measurement for this extracted sample" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 8 ;
-            sh:path portable_microhaplotype_object:library_prep_plate_info ],
+            sh:order 9 ;
+            sh:path portable_microhaplotype_object:qpcr_parasite_density_info ],
         [ sh:datatype xsd:integer ;
             sh:description "the index into the sequencing_info list" ;
             sh:maxCount 1 ;
@@ -357,31 +350,38 @@ portable_microhaplotype_object:LibrarySampleInfo a sh:NodeShape ;
             sh:order 0 ;
             sh:path portable_microhaplotype_object:sequencing_info_id ;
             sh:pattern "^[0-9]+$" ],
+        [ sh:class portable_microhaplotype_object:PlateInfo ;
+            sh:description "plate location of where library was prepared for sequencing " ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 8 ;
+            sh:path portable_microhaplotype_object:library_prep_plate_info ],
         [ sh:datatype xsd:string ;
-            sh:description "a list of alternative names" ;
+            sh:description "ERA/SRA experiment accession number for the sample if it was submitted" ;
+            sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path portable_microhaplotype_object:alternate_identifiers ;
-            sh:pattern "^[A-z-._0-9 ]+$" ] ;
+            sh:order 6 ;
+            sh:path portable_microhaplotype_object:experiment_accession ;
+            sh:pattern "^[A-z-._0-9]+$" ] ;
     sh:targetClass portable_microhaplotype_object:LibrarySampleInfo .
 
 portable_microhaplotype_object:MarkerOfInterest a sh:NodeShape ;
     sh:closed true ;
     sh:description "A specific genomic location of interest, e.g. drug resistance, or other phenotypical marker" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "a list of associations with this marker, e.g. SP resistance, etc" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path portable_microhaplotype_object:associations ;
-            sh:pattern "^[A-z-._0-9]+$" ],
-        [ sh:class portable_microhaplotype_object:GenomicLocation ;
+    sh:property [ sh:class portable_microhaplotype_object:GenomicLocation ;
             sh:description "the genomic location" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
-            sh:path portable_microhaplotype_object:marker_location ] ;
+            sh:path portable_microhaplotype_object:marker_location ],
+        [ sh:datatype xsd:string ;
+            sh:description "a list of associations with this marker, e.g. SP resistance, etc" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path portable_microhaplotype_object:associations ;
+            sh:pattern "^[A-z-._0-9]+$" ] ;
     sh:targetClass portable_microhaplotype_object:MarkerOfInterest .
 
 portable_microhaplotype_object:MaskingInfo a sh:NodeShape ;
@@ -389,14 +389,6 @@ portable_microhaplotype_object:MaskingInfo a sh:NodeShape ;
     sh:description "information about a subsegment of the sequence that should be masked" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:integer ;
-            sh:description "the start of the masking" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:minInclusive 0 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path portable_microhaplotype_object:seq_start ],
-        [ sh:datatype xsd:integer ;
             sh:description "the size of replacement mask" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -404,6 +396,14 @@ portable_microhaplotype_object:MaskingInfo a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path portable_microhaplotype_object:replacement_size ],
+        [ sh:datatype xsd:integer ;
+            sh:description "the start of the masking" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:minInclusive 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path portable_microhaplotype_object:seq_start ],
         [ sh:datatype xsd:integer ;
             sh:description "the size of the masking" ;
             sh:maxCount 1 ;
@@ -426,13 +426,6 @@ portable_microhaplotype_object:MicrohaplotypeForTarget a sh:NodeShape ;
     sh:description "Microhaplotype detected for a specific target" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:integer ;
-            sh:description "the unique molecular identifier (umi) count for this microhaplotype" ;
-            sh:maxCount 1 ;
-            sh:minInclusive 0 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path portable_microhaplotype_object:umis ],
-        [ sh:datatype xsd:integer ;
             sh:description "the read count for this microhaplotype" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -448,7 +441,14 @@ portable_microhaplotype_object:MicrohaplotypeForTarget a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path portable_microhaplotype_object:mhap_id ;
-            sh:pattern "^[0-9]+$" ] ;
+            sh:pattern "^[0-9]+$" ],
+        [ sh:datatype xsd:integer ;
+            sh:description "the unique molecular identifier (umi) count for this microhaplotype" ;
+            sh:maxCount 1 ;
+            sh:minInclusive 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path portable_microhaplotype_object:umis ] ;
     sh:targetClass portable_microhaplotype_object:MicrohaplotypeForTarget .
 
 portable_microhaplotype_object:PanelInfo a sh:NodeShape ;
@@ -497,7 +497,15 @@ portable_microhaplotype_object:PmoHeader a sh:NodeShape ;
     sh:closed true ;
     sh:description "Information on the PMO file itself" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class portable_microhaplotype_object:PmoGenerationMethod ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "the version of the PMO file, should be in the format of v[MAJOR].[MINOR].[PATCH]" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path portable_microhaplotype_object:pmo_version ;
+            sh:pattern "^[A-z-._0-9 ]+$" ],
+        [ sh:class portable_microhaplotype_object:PmoGenerationMethod ;
             sh:description "the generation method to create this PMO " ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -509,15 +517,7 @@ portable_microhaplotype_object:PmoHeader a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path portable_microhaplotype_object:creation_date ;
-            sh:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ],
-        [ sh:datatype xsd:string ;
-            sh:description "the version of the PMO file, should be in the format of v[MAJOR].[MINOR].[PATCH]" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path portable_microhaplotype_object:pmo_version ;
-            sh:pattern "^[A-z-._0-9 ]+$" ] ;
+            sh:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ] ;
     sh:targetClass portable_microhaplotype_object:PmoHeader .
 
 portable_microhaplotype_object:ProjectInfo a sh:NodeShape ;
@@ -525,18 +525,18 @@ portable_microhaplotype_object:ProjectInfo a sh:NodeShape ;
     sh:description "Information on a project underwhich a collection of specimens belong to" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "a short description of the project" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path portable_microhaplotype_object:project_description ],
-        [ sh:datatype xsd:string ;
             sh:description "an SRA bioproject accession e.g. PRJNA33823" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 5 ;
             sh:path portable_microhaplotype_object:BioProject_accession ;
+            sh:pattern "^[A-z-._0-9 ]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "the type of project conducted, e.g. TES vs surveillance vs transmission" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path portable_microhaplotype_object:project_type ;
             sh:pattern "^[A-z-._0-9 ]+$" ],
         [ sh:datatype xsd:string ;
             sh:description "can be collection of names separated by a semicolon if multiple people involved or can just be the name of the primary person managing the specimen" ;
@@ -545,13 +545,6 @@ portable_microhaplotype_object:ProjectInfo a sh:NodeShape ;
             sh:order 4 ;
             sh:path portable_microhaplotype_object:project_collector_chief_scientist ;
             sh:pattern "^[A-z-._0-9;|\\(\\),\\/\\ ]+$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "the type of project conducted, e.g. TES vs surveillance vs transmission" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path portable_microhaplotype_object:project_type ;
-            sh:pattern "^[A-z-._0-9 ]+$" ],
         [ sh:datatype xsd:string ;
             sh:description "a list of collaborators who contributed to this project" ;
             sh:nodeKind sh:Literal ;
@@ -565,7 +558,14 @@ portable_microhaplotype_object:ProjectInfo a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path portable_microhaplotype_object:project_name ;
-            sh:pattern "^[A-z-._0-9 ]+$" ] ;
+            sh:pattern "^[A-z-._0-9 ]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "a short description of the project" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path portable_microhaplotype_object:project_description ] ;
     sh:targetClass portable_microhaplotype_object:ProjectInfo .
 
 portable_microhaplotype_object:ProteinVariant a sh:NodeShape ;
@@ -573,13 +573,6 @@ portable_microhaplotype_object:ProteinVariant a sh:NodeShape ;
     sh:description "information on a variant in protein sequence" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "an alternative gene name" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path portable_microhaplotype_object:alternative_gene_name ;
-            sh:pattern "^[A-z-._0-9]+$" ],
-        [ sh:datatype xsd:string ;
             sh:description "an identifier of the gene, if any, is being covered with this targeted" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -587,31 +580,38 @@ portable_microhaplotype_object:ProteinVariant a sh:NodeShape ;
             sh:path portable_microhaplotype_object:gene_name ;
             sh:pattern "^[A-z-._0-9:]+$" ],
         [ sh:class portable_microhaplotype_object:GenomicLocation ;
+            sh:description "the position within the genomic sequence of the codon" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path portable_microhaplotype_object:codon_genomic_location ],
+        [ sh:class portable_microhaplotype_object:GenomicLocation ;
             sh:description "the position within the protein, the chromosome in this case would be the transcript name" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path portable_microhaplotype_object:protein_location ],
-        [ sh:class portable_microhaplotype_object:GenomicLocation ;
-            sh:description "the position within the genomic sequence of the codon" ;
+        [ sh:datatype xsd:string ;
+            sh:description "an alternative gene name" ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path portable_microhaplotype_object:codon_genomic_location ] ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path portable_microhaplotype_object:alternative_gene_name ;
+            sh:pattern "^[A-z-._0-9]+$" ] ;
     sh:targetClass portable_microhaplotype_object:ProteinVariant .
 
 portable_microhaplotype_object:Pseudocigar a sh:NodeShape ;
     sh:closed true ;
     sh:description "information on pseudocigar for a sequence" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class portable_microhaplotype_object:GenomicLocation ;
-            sh:description "the genomic location the pseudocigar is in reference to" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "a description of how the pseudocigar information was generated " ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path portable_microhaplotype_object:ref_loc ],
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path portable_microhaplotype_object:pseudocigar_generation_description ;
+            sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ],
         [ sh:datatype xsd:string ;
             sh:description "the pseudocigar itself" ;
             sh:maxCount 1 ;
@@ -620,34 +620,34 @@ portable_microhaplotype_object:Pseudocigar a sh:NodeShape ;
             sh:order 0 ;
             sh:path portable_microhaplotype_object:pseudocigar_seq ;
             sh:pattern "^[A-z-._0-9]+$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "a description of how the pseudocigar information was generated " ;
+        [ sh:class portable_microhaplotype_object:GenomicLocation ;
+            sh:description "the genomic location the pseudocigar is in reference to" ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path portable_microhaplotype_object:pseudocigar_generation_description ;
-            sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path portable_microhaplotype_object:ref_loc ] ;
     sh:targetClass portable_microhaplotype_object:Pseudocigar .
 
 portable_microhaplotype_object:ReactionInfo a sh:NodeShape ;
     sh:closed true ;
     sh:description "information on a panel of targeted amplicon primer pairs" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:integer ;
-            sh:description "a list of the target indexes in the target_info list" ;
-            sh:minCount 1 ;
-            sh:minInclusive 0 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path portable_microhaplotype_object:panel_targets ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "a name for this reaction" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path portable_microhaplotype_object:reaction_name ;
-            sh:pattern "^[A-z-._0-9]+$" ] ;
+            sh:pattern "^[A-z-._0-9]+$" ],
+        [ sh:datatype xsd:integer ;
+            sh:description "a list of the target indexes in the target_info list" ;
+            sh:minCount 1 ;
+            sh:minInclusive 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path portable_microhaplotype_object:panel_targets ] ;
     sh:targetClass portable_microhaplotype_object:ReactionInfo .
 
 portable_microhaplotype_object:ReadCountsByStage a sh:NodeShape ;
@@ -725,43 +725,11 @@ portable_microhaplotype_object:RepresentativeMicrohaplotype a sh:NodeShape ;
     sh:closed true ;
     sh:description "the representative sequence for a microhaplotype" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "the sequence" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path portable_microhaplotype_object:seq ;
-            sh:pattern "^[A-z]+$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "a list of additional annotations associated with this microhaplotype, e.g. wildtype" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path portable_microhaplotype_object:alt_annotations ],
-        [ sh:class portable_microhaplotype_object:Pseudocigar ;
-            sh:description "the pseudocigar of the haplotype" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path portable_microhaplotype_object:pseudocigar ;
-            sh:pattern "^[A-z-._0-9]+$" ],
-        [ sh:class portable_microhaplotype_object:MaskingInfo ;
-            sh:description "masking info for the sequence" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path portable_microhaplotype_object:masking ],
-        [ sh:class portable_microhaplotype_object:GenomicLocation ;
+    sh:property [ sh:class portable_microhaplotype_object:GenomicLocation ;
             sh:description "a list of sequence variants for this haplotype, e.g. SNPS, indels" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 7 ;
             sh:path portable_microhaplotype_object:associated_seq_variants ],
-        [ sh:datatype xsd:string ;
-            sh:description "the ASCII fastq per base quality score for this sequence, this is optional, must be same length as the sequence" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path portable_microhaplotype_object:quality ;
-            sh:pattern "^[A-z-._0-9]+$" ],
         [ sh:datatype xsd:string ;
             sh:description "an optional name for this microhaplotype" ;
             sh:maxCount 1 ;
@@ -769,11 +737,43 @@ portable_microhaplotype_object:RepresentativeMicrohaplotype a sh:NodeShape ;
             sh:order 1 ;
             sh:path portable_microhaplotype_object:microhaplotype_name ;
             sh:pattern "^[A-z-._0-9]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "the sequence" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path portable_microhaplotype_object:seq ;
+            sh:pattern "^[A-z]+$" ],
+        [ sh:class portable_microhaplotype_object:MaskingInfo ;
+            sh:description "masking info for the sequence" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path portable_microhaplotype_object:masking ],
+        [ sh:datatype xsd:string ;
+            sh:description "a list of additional annotations associated with this microhaplotype, e.g. wildtype" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path portable_microhaplotype_object:alt_annotations ],
+        [ sh:datatype xsd:string ;
+            sh:description "the ASCII fastq per base quality score for this sequence, this is optional, must be same length as the sequence" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path portable_microhaplotype_object:quality ;
+            sh:pattern "^[A-z-._0-9]+$" ],
         [ sh:class portable_microhaplotype_object:ProteinVariant ;
             sh:description "a list of protein variants for this haplotype, e.g. amino acid changes/INDELS" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 6 ;
-            sh:path portable_microhaplotype_object:associated_protein_variants ] ;
+            sh:path portable_microhaplotype_object:associated_protein_variants ],
+        [ sh:class portable_microhaplotype_object:Pseudocigar ;
+            sh:description "the pseudocigar of the haplotype" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path portable_microhaplotype_object:pseudocigar ;
+            sh:pattern "^[A-z-._0-9]+$" ] ;
     sh:targetClass portable_microhaplotype_object:RepresentativeMicrohaplotype .
 
 portable_microhaplotype_object:RepresentativeMicrohaplotypes a sh:NodeShape ;
@@ -792,16 +792,7 @@ portable_microhaplotype_object:RepresentativeMicrohaplotypesForTarget a sh:NodeS
     sh:closed true ;
     sh:description "a list of the representative sequence for the microhaplotypes for a target" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:integer ;
-            sh:description "the index into the target_info list" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:minInclusive 0 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path portable_microhaplotype_object:target_id ;
-            sh:pattern "^[0-9]+$" ],
-        [ sh:class portable_microhaplotype_object:GenomicLocation ;
+    sh:property [ sh:class portable_microhaplotype_object:GenomicLocation ;
             sh:description "a genomic location that was analyzed for this target info, this allows listing location that may be different from the full target location (e.g 1 trimmed off the full length) " ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -812,7 +803,16 @@ portable_microhaplotype_object:RepresentativeMicrohaplotypesForTarget a sh:NodeS
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path portable_microhaplotype_object:microhaplotypes ] ;
+            sh:path portable_microhaplotype_object:microhaplotypes ],
+        [ sh:datatype xsd:integer ;
+            sh:description "the index into the target_info list" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:minInclusive 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path portable_microhaplotype_object:target_id ;
+            sh:pattern "^[0-9]+$" ] ;
     sh:targetClass portable_microhaplotype_object:RepresentativeMicrohaplotypesForTarget .
 
 portable_microhaplotype_object:SequencingInfo a sh:NodeShape ;
@@ -820,55 +820,12 @@ portable_microhaplotype_object:SequencingInfo a sh:NodeShape ;
     sh:description "Information on sequencing info" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Describe enrichment, screening, or normalization methods applied during amplification or library preparation, e.g. size selection 390bp, diluted to 1 ng DNA/sample" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path portable_microhaplotype_object:library_screen ;
-            sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "Name, version, and applicable cell or cycle numbers for the kit used to prepare libraries and load cells or chips for sequencing. If possible, include a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path portable_microhaplotype_object:library_kit ;
-            sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "what the nuceloacid sequencing/amplification strategy was (common names are AMPLICON, WGS)" ;
+            sh:description "a name for a specific sequencing run, e.g. batch1" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 12 ;
-            sh:path portable_microhaplotype_object:library_strategy ;
-            sh:pattern "^[A-z-._0-9 ]+$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "the date of the nucleoacid amplification" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path portable_microhaplotype_object:nucl_acid_amp_date ;
-            sh:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ],
-        [ sh:datatype xsd:string ;
-            sh:description "the date of the nucleoacid extraction" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path portable_microhaplotype_object:nucl_acid_ext_date ;
-            sh:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ],
-        [ sh:datatype xsd:string ;
-            sh:description "Link to a reference or kit that describes the recovery of nucleic acids from the sample" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path portable_microhaplotype_object:nucl_acid_ext ;
-            sh:pattern "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "Source of amplification material e.g. was it DNA (GENOMIC) or RNA (TRANSCRIPTOMIC) (common names GENOMIC, TRANSCRIPTOMIC)" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path portable_microhaplotype_object:library_source ;
+            sh:order 0 ;
+            sh:path portable_microhaplotype_object:sequencing_info_name ;
             sh:pattern "^[A-z-._0-9 ]+$" ],
         [ sh:datatype xsd:string ;
             sh:description "the sequencing technology used to sequence the run, e.g. ILLUMINA, NANOPORE, PACBIO" ;
@@ -879,12 +836,13 @@ portable_microhaplotype_object:SequencingInfo a sh:NodeShape ;
             sh:path portable_microhaplotype_object:seq_platform ;
             sh:pattern "^[A-z-._0-9 ]+$" ],
         [ sh:datatype xsd:string ;
-            sh:description "Link to a reference or kit that describes the enzymatic amplification of nucleic acids" ;
+            sh:description "Source of amplification material e.g. was it DNA (GENOMIC) or RNA (TRANSCRIPTOMIC) (common names GENOMIC, TRANSCRIPTOMIC)" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path portable_microhaplotype_object:nucl_acid_amp ;
-            sh:pattern "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$" ],
+            sh:order 13 ;
+            sh:path portable_microhaplotype_object:library_source ;
+            sh:pattern "^[A-z-._0-9 ]+$" ],
         [ sh:datatype xsd:string ;
             sh:description "how amplification was done (common are PCR=Source material was selected by designed primers, RANDOM =Random selection by shearing or other method)" ;
             sh:maxCount 1 ;
@@ -901,27 +859,18 @@ portable_microhaplotype_object:SequencingInfo a sh:NodeShape ;
             sh:path portable_microhaplotype_object:seq_date ;
             sh:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ],
         [ sh:datatype xsd:string ;
-            sh:description "Specify the configuration of reads, e.g. paired-end, single" ;
+            sh:description "Describe enrichment, screening, or normalization methods applied during amplification or library preparation, e.g. size selection 390bp, diluted to 1 ng DNA/sample" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path portable_microhaplotype_object:library_layout ;
-            sh:pattern "^[A-z-._0-9 ]+$" ],
+            sh:order 9 ;
+            sh:path portable_microhaplotype_object:library_screen ;
+            sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ],
         [ sh:datatype xsd:string ;
-            sh:description "a name for a specific sequencing run, e.g. batch1" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path portable_microhaplotype_object:sequencing_info_name ;
-            sh:pattern "^[A-z-._0-9 ]+$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "Name of facility where sequencing was performed (lab, core facility, or company)" ;
+            sh:description "the method/conditions for PCR, List PCR cycles used to amplify the target" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 15 ;
-            sh:path portable_microhaplotype_object:seq_center ;
+            sh:order 8 ;
+            sh:path portable_microhaplotype_object:pcr_cond ;
             sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ],
         [ sh:datatype xsd:string ;
             sh:description "the sequencing instrument model used to sequence the run, e.g. NextSeq 2000, MinION, Revio" ;
@@ -932,11 +881,62 @@ portable_microhaplotype_object:SequencingInfo a sh:NodeShape ;
             sh:path portable_microhaplotype_object:seq_instrument_model ;
             sh:pattern "^[A-z-._0-9 ]+$" ],
         [ sh:datatype xsd:string ;
-            sh:description "the method/conditions for PCR, List PCR cycles used to amplify the target" ;
+            sh:description "the date of the nucleoacid extraction" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path portable_microhaplotype_object:pcr_cond ;
+            sh:order 6 ;
+            sh:path portable_microhaplotype_object:nucl_acid_ext_date ;
+            sh:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ],
+        [ sh:datatype xsd:string ;
+            sh:description "the date of the nucleoacid amplification" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path portable_microhaplotype_object:nucl_acid_amp_date ;
+            sh:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ],
+        [ sh:datatype xsd:string ;
+            sh:description "Link to a reference or kit that describes the recovery of nucleic acids from the sample" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path portable_microhaplotype_object:nucl_acid_ext ;
+            sh:pattern "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "Name of facility where sequencing was performed (lab, core facility, or company)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 15 ;
+            sh:path portable_microhaplotype_object:seq_center ;
+            sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "Specify the configuration of reads, e.g. paired-end, single" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path portable_microhaplotype_object:library_layout ;
+            sh:pattern "^[A-z-._0-9 ]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "what the nuceloacid sequencing/amplification strategy was (common names are AMPLICON, WGS)" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path portable_microhaplotype_object:library_strategy ;
+            sh:pattern "^[A-z-._0-9 ]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "Link to a reference or kit that describes the enzymatic amplification of nucleic acids" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path portable_microhaplotype_object:nucl_acid_amp ;
+            sh:pattern "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "Name, version, and applicable cell or cycle numbers for the kit used to prepare libraries and load cells or chips for sequencing. If possible, include a part number, e.g. MiSeq Reagent Kit v3 (150-cycle), MS-102-3001" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path portable_microhaplotype_object:library_kit ;
             sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ;
     sh:targetClass portable_microhaplotype_object:SequencingInfo .
 
@@ -945,58 +945,20 @@ portable_microhaplotype_object:SpecimenInfo a sh:NodeShape ;
     sh:description "Information on specimen info" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "the specimen store site, address or facility name" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 18 ;
-            sh:path portable_microhaplotype_object:specimen_store_loc ;
-            sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "the local environment from which the specimen was collected, e.g. jungle, urban, rural" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 27 ;
-            sh:path portable_microhaplotype_object:env_local_scale ;
-            sh:pattern "^[A-z-._0-9;|\\(\\),\\/\\ ]+$" ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "whether host specimen has had a recent blood meal  " ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 12 ;
-            sh:path portable_microhaplotype_object:blood_meal ],
-        [ sh:datatype xsd:string ;
-            sh:description "geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path portable_microhaplotype_object:geo_admin3 ],
-        [ sh:datatype xsd:string ;
-            sh:description "the latitude and longitude of a specific site" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path portable_microhaplotype_object:lat_lon ;
-            sh:pattern "^[-+]?\\d{1,2}(?:\\.\\d+)?,[-+]?\\d{1,3}(?:\\.\\d+)?$" ],
-        [ sh:datatype xsd:string ;
             sh:description "the environment medium from which the specimen was collected from" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 26 ;
             sh:path portable_microhaplotype_object:env_medium ;
             sh:pattern "^[A-z-._0-9;|\\(\\),\\/\\ ]+$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "any additional comments about the specimen" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 22 ;
-            sh:path portable_microhaplotype_object:specimen_comments ;
-            sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ],
         [ sh:datatype xsd:integer ;
-            sh:description "the NCBI taxonomy number of the organism(s) in the specimen, can list multiple if a mixed sample" ;
+            sh:description "the NCBI taxonomy number of the host that the specimen was collected from" ;
+            sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:minInclusive 0 ;
             sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path portable_microhaplotype_object:specimen_taxon_id ;
+            sh:order 8 ;
+            sh:path portable_microhaplotype_object:host_taxon_id ;
             sh:pattern "^[0-9]+$" ],
         [ sh:datatype xsd:double ;
             sh:description "if specimen is from a person, the age in years of the person, can be float value so for 3 month old put 0.25" ;
@@ -1007,57 +969,25 @@ portable_microhaplotype_object:SpecimenInfo a sh:NodeShape ;
             sh:path portable_microhaplotype_object:host_age ;
             sh:pattern "^\\d*\\.?\\d+$" ],
         [ sh:datatype xsd:string ;
-            sh:description "Any drug used by subject and the frequency of usage; can include multiple drugs used" ;
+            sh:description "If person has been treated with drugs, what was the treatment outcome" ;
             sh:nodeKind sh:Literal ;
-            sh:order 29 ;
-            sh:path portable_microhaplotype_object:drug_usage ;
+            sh:order 30 ;
+            sh:path portable_microhaplotype_object:treatment_status ;
             sh:pattern "^[A-z-._0-9;|\\(\\),\\/\\ ]+$" ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "whether host specimen is currently pregnant" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path portable_microhaplotype_object:gravid ],
-        [ sh:datatype xsd:string ;
-            sh:description "the broad environment from which the specimen was collected, e.g. highlands, lowlands, mountainous region" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 28 ;
-            sh:path portable_microhaplotype_object:env_broad_scale ;
-            sh:pattern "^[A-z-._0-9;|\\(\\),\\/\\ ]+$" ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "has travelled out from local region in the last six months" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 23 ;
-            sh:path portable_microhaplotype_object:has_travel_out_six_month ],
-        [ sh:datatype xsd:string ;
-            sh:description "an identifier for the specimen, should be unique within this sample set" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path portable_microhaplotype_object:specimen_name ;
-            sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ],
-        [ sh:class portable_microhaplotype_object:PlateInfo ;
-            sh:description "plate location of where specimen is stored if stored in a plate " ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 25 ;
-            sh:path portable_microhaplotype_object:storage_plate_info ],
         [ sh:datatype xsd:integer ;
-            sh:description "an identifier for the individual a specimen was collected from" ;
-            sh:maxCount 1 ;
+            sh:description "the NCBI taxonomy number of the organism(s) in the specimen, can list multiple if a mixed sample" ;
+            sh:minCount 1 ;
             sh:minInclusive 0 ;
             sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path portable_microhaplotype_object:host_subject_id ;
+            sh:order 6 ;
+            sh:path portable_microhaplotype_object:specimen_taxon_id ;
             sh:pattern "^[0-9]+$" ],
-        [ sh:class portable_microhaplotype_object:ParasiteDensity ;
-            sh:description "one or more parasite densities in microliters for this specimen" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 14 ;
-            sh:path portable_microhaplotype_object:parasite_density_info ],
+        [ sh:datatype xsd:string ;
+            sh:description "any additional comments about the specimen" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 22 ;
+            sh:path portable_microhaplotype_object:specimen_comments ;
+            sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ],
         [ sh:datatype xsd:integer ;
             sh:description "the gravidity of the specimen host (number of previous pregnancies)" ;
             sh:maxCount 1 ;
@@ -1066,6 +996,26 @@ portable_microhaplotype_object:SpecimenInfo a sh:NodeShape ;
             sh:order 13 ;
             sh:path portable_microhaplotype_object:gravidity ;
             sh:pattern "^[0-9]+$" ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "whether host specimen has had a recent blood meal  " ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path portable_microhaplotype_object:blood_meal ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "whether host specimen is currently pregnant" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path portable_microhaplotype_object:gravid ],
+        [ sh:datatype xsd:string ;
+            sh:description "the name of country collected in, would be the same as admin level 0" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 17 ;
+            sh:path portable_microhaplotype_object:collection_country ;
+            sh:pattern "^[\\w ,._:'–-]+$" ],
         [ sh:datatype xsd:string ;
             sh:description "the way the specimen was collected, e.g. whole blood, dried blood spot" ;
             sh:maxCount 1 ;
@@ -1074,26 +1024,6 @@ portable_microhaplotype_object:SpecimenInfo a sh:NodeShape ;
             sh:path portable_microhaplotype_object:specimen_collect_device ;
             sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ],
         [ sh:datatype xsd:string ;
-            sh:description "geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path portable_microhaplotype_object:geo_admin1 ],
-        [ sh:datatype xsd:string ;
-            sh:description "geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path portable_microhaplotype_object:geo_admin2 ],
-        [ sh:datatype xsd:string ;
-            sh:description "the date of the specimen collection, can be YYYY, YYYY-MM, or YYYY-MM-DD" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 15 ;
-            sh:path portable_microhaplotype_object:collection_date ;
-            sh:pattern "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)" ],
-        [ sh:datatype xsd:string ;
             sh:description "if specimen is collected from a host with a sex, the sex listed for that host" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -1101,18 +1031,87 @@ portable_microhaplotype_object:SpecimenInfo a sh:NodeShape ;
             sh:path portable_microhaplotype_object:host_sex ;
             sh:pattern "^[A-z-._0-9 ]+$" ],
         [ sh:datatype xsd:string ;
-            sh:description "what type of specimen this is, e.g. negative_control, positive_control, field_sample" ;
+            sh:description "Any drug used by subject and the frequency of usage; can include multiple drugs used" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 29 ;
+            sh:path portable_microhaplotype_object:drug_usage ;
+            sh:pattern "^[A-z-._0-9;|\\(\\),\\/\\ ]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 20 ;
-            sh:path portable_microhaplotype_object:specimen_type ;
-            sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ],
+            sh:order 2 ;
+            sh:path portable_microhaplotype_object:geo_admin1 ],
         [ sh:datatype xsd:string ;
-            sh:description "If person has been treated with drugs, what was the treatment outcome" ;
+            sh:description "the latitude and longitude of a specific site" ;
+            sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 30 ;
-            sh:path portable_microhaplotype_object:treatment_status ;
+            sh:order 1 ;
+            sh:path portable_microhaplotype_object:lat_lon ;
+            sh:pattern "^[-+]?\\d{1,2}(?:\\.\\d+)?,[-+]?\\d{1,3}(?:\\.\\d+)?$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "if specimen is deposited in a database, what accession is it associated with" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path portable_microhaplotype_object:specimen_accession ;
+            sh:pattern "^[A-z-._0-9 ]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path portable_microhaplotype_object:geo_admin3 ],
+        [ sh:datatype xsd:integer ;
+            sh:description "an identifier for the individual a specimen was collected from" ;
+            sh:maxCount 1 ;
+            sh:minInclusive 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path portable_microhaplotype_object:host_subject_id ;
+            sh:pattern "^[0-9]+$" ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "has travelled out from local region in the last six months" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 23 ;
+            sh:path portable_microhaplotype_object:has_travel_out_six_month ],
+        [ sh:class portable_microhaplotype_object:ParasiteDensity ;
+            sh:description "one or more parasite densities in microliters for this specimen" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 14 ;
+            sh:path portable_microhaplotype_object:parasite_density_info ],
+        [ sh:datatype xsd:string ;
+            sh:description "the broad environment from which the specimen was collected, e.g. highlands, lowlands, mountainous region" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 28 ;
+            sh:path portable_microhaplotype_object:env_broad_scale ;
             sh:pattern "^[A-z-._0-9;|\\(\\),\\/\\ ]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "the local environment from which the specimen was collected, e.g. jungle, urban, rural" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 27 ;
+            sh:path portable_microhaplotype_object:env_local_scale ;
+            sh:pattern "^[A-z-._0-9;|\\(\\),\\/\\ ]+$" ],
+        [ sh:class portable_microhaplotype_object:TravelInfo ;
+            sh:description "Specification of the countries travelled in the last six months; can include multiple travels" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 24 ;
+            sh:path portable_microhaplotype_object:travel_out_six_month ],
+        [ sh:datatype xsd:string ;
+            sh:description "a list of alternative names" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path portable_microhaplotype_object:alternate_identifiers ;
+            sh:pattern "^[A-z-._0-9 ]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path portable_microhaplotype_object:geo_admin2 ],
         [ sh:datatype xsd:integer ;
             sh:description "the index into the project_info list" ;
             sh:maxCount 1 ;
@@ -1123,40 +1122,41 @@ portable_microhaplotype_object:SpecimenInfo a sh:NodeShape ;
             sh:path portable_microhaplotype_object:project_id ;
             sh:pattern "^[0-9]+$" ],
         [ sh:datatype xsd:string ;
-            sh:description "if specimen is deposited in a database, what accession is it associated with" ;
+            sh:description "the specimen store site, address or facility name" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path portable_microhaplotype_object:specimen_accession ;
-            sh:pattern "^[A-z-._0-9 ]+$" ],
-        [ sh:class portable_microhaplotype_object:TravelInfo ;
-            sh:description "Specification of the countries travelled in the last six months; can include multiple travels" ;
+            sh:order 18 ;
+            sh:path portable_microhaplotype_object:specimen_store_loc ;
+            sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "an identifier for the specimen, should be unique within this sample set" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path portable_microhaplotype_object:specimen_name ;
+            sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "the date of the specimen collection, can be YYYY, YYYY-MM, or YYYY-MM-DD" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 15 ;
+            sh:path portable_microhaplotype_object:collection_date ;
+            sh:pattern "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)" ],
+        [ sh:class portable_microhaplotype_object:PlateInfo ;
+            sh:description "plate location of where specimen is stored if stored in a plate " ;
+            sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 24 ;
-            sh:path portable_microhaplotype_object:travel_out_six_month ],
-        [ sh:datatype xsd:integer ;
-            sh:description "the NCBI taxonomy number of the host that the specimen was collected from" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:minInclusive 0 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path portable_microhaplotype_object:host_taxon_id ;
-            sh:pattern "^[0-9]+$" ],
+            sh:order 25 ;
+            sh:path portable_microhaplotype_object:storage_plate_info ],
         [ sh:datatype xsd:string ;
-            sh:description "a list of alternative names" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path portable_microhaplotype_object:alternate_identifiers ;
-            sh:pattern "^[A-z-._0-9 ]+$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "the name of country collected in, would be the same as admin level 0" ;
+            sh:description "what type of specimen this is, e.g. negative_control, positive_control, field_sample" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 17 ;
-            sh:path portable_microhaplotype_object:collection_country ;
-            sh:pattern "^[A-Za-z0-9 ,._:'–-]+$" ] ;
+            sh:order 20 ;
+            sh:path portable_microhaplotype_object:specimen_type ;
+            sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ;
     sh:targetClass portable_microhaplotype_object:SpecimenInfo .
 
 portable_microhaplotype_object:StageReadCounts a sh:NodeShape ;
@@ -1185,11 +1185,19 @@ portable_microhaplotype_object:TargetInfo a sh:NodeShape ;
     sh:closed true ;
     sh:description "Information about a specific targeted microhaplotype" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "a list of classification types for this target" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path portable_microhaplotype_object:target_attributes ],
+    sh:property [ sh:class portable_microhaplotype_object:PrimerInfo ;
+            sh:description "the forward primer for this target" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path portable_microhaplotype_object:forward_primer ],
+        [ sh:class portable_microhaplotype_object:GenomicLocation ;
+            sh:description "the intended genomic location of the insert of the amplicon (the location between the end of the forward primer and the beginning of the reverse primer)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path portable_microhaplotype_object:insert_location ],
         [ sh:datatype xsd:string ;
             sh:description "an identifier of the gene, if any, is being covered with this targeted" ;
             sh:maxCount 1 ;
@@ -1197,13 +1205,16 @@ portable_microhaplotype_object:TargetInfo a sh:NodeShape ;
             sh:order 0 ;
             sh:path portable_microhaplotype_object:gene_name ;
             sh:pattern "^[A-z-._0-9:]+$" ],
-        [ sh:class portable_microhaplotype_object:PrimerInfo ;
-            sh:description "the forward primer for this target" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
+        [ sh:datatype xsd:string ;
+            sh:description "a list of classification types for this target" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path portable_microhaplotype_object:target_attributes ],
+        [ sh:class portable_microhaplotype_object:MarkerOfInterest ;
+            sh:description "a list of markers of interest that are covered by this target" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path portable_microhaplotype_object:forward_primer ],
+            sh:order 5 ;
+            sh:path portable_microhaplotype_object:markers_of_interest ],
         [ sh:class portable_microhaplotype_object:PrimerInfo ;
             sh:description "the reverse primer for this target" ;
             sh:maxCount 1 ;
@@ -1211,17 +1222,6 @@ portable_microhaplotype_object:TargetInfo a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path portable_microhaplotype_object:reverse_primer ],
-        [ sh:class portable_microhaplotype_object:GenomicLocation ;
-            sh:description "the intended genomic location of the insert of the amplicon (the location between the end of the forward primer and the beginning of the reverse primer)" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path portable_microhaplotype_object:insert_location ],
-        [ sh:class portable_microhaplotype_object:MarkerOfInterest ;
-            sh:description "a list of markers of interest that are covered by this target" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 5 ;
-            sh:path portable_microhaplotype_object:markers_of_interest ],
         [ sh:datatype xsd:string ;
             sh:description "a name for this target" ;
             sh:maxCount 1 ;
@@ -1237,19 +1237,24 @@ portable_microhaplotype_object:TravelInfo a sh:NodeShape ;
     sh:description "Information on travel info" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path portable_microhaplotype_object:geo_admin2 ],
+        [ sh:datatype xsd:string ;
             sh:description "geographical admin level 1, the secondary large demarcation of a nation (nation = admin level 0)" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path portable_microhaplotype_object:geo_admin1 ],
-        [ sh:datatype xsd:string ;
-            sh:description "the name of country, would be the same as admin level 0" ;
+        [ sh:datatype xsd:double ;
+            sh:description "approximate usage of bed net while traveling, 1 = 100% nights with bed net, 0 = 0% no bed net usage" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
+            sh:minInclusive 0 ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path portable_microhaplotype_object:travel_country ;
-            sh:pattern "^[A-Za-z0-9 ,._:'–-]+$" ],
+            sh:order 7 ;
+            sh:path portable_microhaplotype_object:bed_net_usage ],
         [ sh:datatype xsd:string ;
             sh:description "the latitude and longitude of a specific site" ;
             sh:maxCount 1 ;
@@ -1265,13 +1270,12 @@ portable_microhaplotype_object:TravelInfo a sh:NodeShape ;
             sh:order 6 ;
             sh:path portable_microhaplotype_object:travel_end_date ;
             sh:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ],
-        [ sh:datatype xsd:double ;
-            sh:description "approximate usage of bed net while traveling, 1 = 100% nights with bed net, 0 = 0% no bed net usage" ;
+        [ sh:datatype xsd:string ;
+            sh:description "geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)" ;
             sh:maxCount 1 ;
-            sh:minInclusive 0 ;
             sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path portable_microhaplotype_object:bed_net_usage ],
+            sh:order 3 ;
+            sh:path portable_microhaplotype_object:geo_admin3 ],
         [ sh:datatype xsd:string ;
             sh:description "the date of the start of travel, can be approximate, should be YYYY-MM or YYYY-MM-DD (preferred)" ;
             sh:maxCount 1 ;
@@ -1281,17 +1285,13 @@ portable_microhaplotype_object:TravelInfo a sh:NodeShape ;
             sh:path portable_microhaplotype_object:travel_start_date ;
             sh:pattern "\\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?" ],
         [ sh:datatype xsd:string ;
-            sh:description "geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)" ;
+            sh:description "the name of country, would be the same as admin level 0" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path portable_microhaplotype_object:geo_admin2 ],
-        [ sh:datatype xsd:string ;
-            sh:description "geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path portable_microhaplotype_object:geo_admin3 ] ;
+            sh:order 4 ;
+            sh:path portable_microhaplotype_object:travel_country ;
+            sh:pattern "^[\\w ,._:'–-]+$" ] ;
     sh:targetClass portable_microhaplotype_object:TravelInfo .
 
 portable_microhaplotype_object:ParasiteDensity a sh:NodeShape ;
@@ -1299,13 +1299,6 @@ portable_microhaplotype_object:ParasiteDensity a sh:NodeShape ;
     sh:description "method and value of determined parasite density" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "the date the qpcr was performed, can be YYYY, YYYY-MM, or YYYY-MM-DD" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path portable_microhaplotype_object:date_measured ;
-            sh:pattern "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)" ],
-        [ sh:datatype xsd:string ;
             sh:description "the method of how this density was obtained" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -1313,6 +1306,13 @@ portable_microhaplotype_object:ParasiteDensity a sh:NodeShape ;
             sh:order 0 ;
             sh:path portable_microhaplotype_object:parasite_density_method ;
             sh:pattern "^[A-z-._0-9 ]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "additional comments about how the density was performed" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path portable_microhaplotype_object:density_method_comments ;
+            sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ],
         [ sh:datatype xsd:double ;
             sh:description "the density in microliters" ;
             sh:maxCount 1 ;
@@ -1323,12 +1323,12 @@ portable_microhaplotype_object:ParasiteDensity a sh:NodeShape ;
             sh:path portable_microhaplotype_object:parasite_density ;
             sh:pattern "^[-+]?\\\\d*\\\\.?\\\\d+(?:[eE][-+]?\\\\d+)?$" ],
         [ sh:datatype xsd:string ;
-            sh:description "additional comments about how the density was performed" ;
+            sh:description "the date the qpcr was performed, can be YYYY, YYYY-MM, or YYYY-MM-DD" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path portable_microhaplotype_object:density_method_comments ;
-            sh:pattern "^[A-z-._0-9\\(\\),\\/\\ ]+$" ] ;
+            sh:order 2 ;
+            sh:path portable_microhaplotype_object:date_measured ;
+            sh:pattern "(?:\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?|NA)" ] ;
     sh:targetClass portable_microhaplotype_object:ParasiteDensity .
 
 portable_microhaplotype_object:PlateInfo a sh:NodeShape ;
@@ -1336,6 +1336,13 @@ portable_microhaplotype_object:PlateInfo a sh:NodeShape ;
     sh:description "Information about a plate location, e.g. a standard 96 well plate with row having a letter and column having a number" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "a name for the plate" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path portable_microhaplotype_object:plate_name ;
+            sh:pattern "^[A-z-._0-9 ]+$" ],
+        [ sh:datatype xsd:string ;
             sh:description "the row position" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -1349,34 +1356,27 @@ portable_microhaplotype_object:PlateInfo a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path portable_microhaplotype_object:plate_col ;
-            sh:pattern "^[0-9]+$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "a name for the plate" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path portable_microhaplotype_object:plate_name ;
-            sh:pattern "^[A-z-._0-9 ]+$" ] ;
+            sh:pattern "^[0-9]+$" ] ;
     sh:targetClass portable_microhaplotype_object:PlateInfo .
 
 portable_microhaplotype_object:PrimerInfo a sh:NodeShape ;
     sh:closed true ;
     sh:description "information on a primer sequence" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class portable_microhaplotype_object:GenomicLocation ;
-            sh:description "what the intended genomic location of the primer is" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path portable_microhaplotype_object:location ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "the sequence" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path portable_microhaplotype_object:seq ;
-            sh:pattern "^[A-z]+$" ] ;
+            sh:pattern "^[A-z]+$" ],
+        [ sh:class portable_microhaplotype_object:GenomicLocation ;
+            sh:description "what the intended genomic location of the primer is" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path portable_microhaplotype_object:location ] ;
     sh:targetClass portable_microhaplotype_object:PrimerInfo .
 
 portable_microhaplotype_object:GenomicLocation a sh:NodeShape ;
@@ -1384,6 +1384,37 @@ portable_microhaplotype_object:GenomicLocation a sh:NodeShape ;
     sh:description "information on the genomic location of specific sequence" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:integer ;
+            sh:description "the start of the location, 0-based positioning" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:minInclusive 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path portable_microhaplotype_object:start ;
+            sh:pattern "^[0-9]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "a possible alternative sequence of this genomic location" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path portable_microhaplotype_object:alt_seq ;
+            sh:pattern "^[A-z-]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "the reference sequence of this genomic location" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path portable_microhaplotype_object:ref_seq ;
+            sh:pattern "^[A-z-]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "the chromosome name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path portable_microhaplotype_object:chrom ;
+            sh:pattern "^[A-z-._0-9]+$" ],
+        [ sh:datatype xsd:integer ;
             sh:description "the index to the genome in the targeted_genomes list that this location refers to" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -1392,13 +1423,6 @@ portable_microhaplotype_object:GenomicLocation a sh:NodeShape ;
             sh:order 0 ;
             sh:path portable_microhaplotype_object:genome_id ;
             sh:pattern "^[0-9]+$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "the reference sequence of this genomic location" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path portable_microhaplotype_object:ref_seq ;
-            sh:pattern "^[A-z-]+$" ],
         [ sh:datatype xsd:integer ;
             sh:description "the end of the location, 0-based positioning" ;
             sh:maxCount 1 ;
@@ -1414,30 +1438,6 @@ portable_microhaplotype_object:GenomicLocation a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
             sh:path portable_microhaplotype_object:strand ;
-            sh:pattern "[+-]" ],
-        [ sh:datatype xsd:string ;
-            sh:description "the chromosome name" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path portable_microhaplotype_object:chrom ;
-            sh:pattern "^[A-z-._0-9]+$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "a possible alternative sequence of this genomic location" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path portable_microhaplotype_object:alt_seq ;
-            sh:pattern "^[A-z-]+$" ],
-        [ sh:datatype xsd:integer ;
-            sh:description "the start of the location, 0-based positioning" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:minInclusive 0 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path portable_microhaplotype_object:start ;
-            sh:pattern "^[0-9]+$" ] ;
+            sh:pattern "[+-]" ] ;
     sh:targetClass portable_microhaplotype_object:GenomicLocation .
 

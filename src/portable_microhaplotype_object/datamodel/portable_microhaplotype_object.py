@@ -1,5 +1,5 @@
 # Auto generated from portable_microhaplotype_object.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-20T09:57:48
+# Generation date: 2025-11-25T18:35:04
 # Schema: portable-microhaplotype-object
 #
 # id: https://plasmogenepi.github.io/portable-microhaplotype-object
@@ -1971,7 +1971,7 @@ slots.projectInfo__BioProject_accession = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJEC
 
 slots.travelInfo__travel_country = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.travel_country, name="travelInfo__travel_country", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('travel_country'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.travelInfo__travel_country, domain=None, range=str,
-                   pattern=re.compile(r'^[A-Za-z0-9 ,._:'–-]+$'))
+                   pattern=re.compile(r'^[\w ,._:'–-]+$'))
 
 slots.travelInfo__travel_start_date = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.travel_start_date, name="travelInfo__travel_start_date", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('travel_start_date'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.travelInfo__travel_start_date, domain=None, range=str,
@@ -2031,7 +2031,7 @@ slots.specimenInfo__host_age = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.host_age,
 
 slots.specimenInfo__collection_country = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.collection_country, name="specimenInfo__collection_country", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('collection_country'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__collection_country, domain=None, range=str,
-                   pattern=re.compile(r'^[A-Za-z0-9 ,._:'–-]+$'))
+                   pattern=re.compile(r'^[\w ,._:'–-]+$'))
 
 slots.specimenInfo__specimen_store_loc = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimen_store_loc, name="specimenInfo__specimen_store_loc", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('specimen_store_loc'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__specimen_store_loc, domain=None, range=Optional[str],
