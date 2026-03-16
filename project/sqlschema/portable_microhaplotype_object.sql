@@ -160,7 +160,7 @@
 --     * Slot: geo_admin2 Description: geographical admin level 2, the third large demarcation of a nation (nation = admin level 0)
 --     * Slot: geo_admin3 Description: geographical admin level 3, the third large demarcation of a nation (nation = admin level 0)
 --     * Slot: specimen_name Description: an identifier for the specimen, should be unique within this sample set
---     * Slot: host_subject_id Description: an identifier for the individual a specimen was collected from
+--     * Slot: host_subject_name Description: an identifier for the individual/person/patient a specimen was collected from
 --     * Slot: host_taxon_id Description: the NCBI taxonomy number of the host that the specimen was collected from
 --     * Slot: host_sex Description: if specimen is collected from a host with a sex, the sex listed for that host
 --     * Slot: specimen_accession Description: if specimen is deposited in a database, what accession is it associated with
@@ -324,9 +324,9 @@ CREATE TABLE "GenomicLocation" (
 );
 CREATE TABLE "PlateInfo" (
 	id INTEGER NOT NULL, 
-	plate_name TEXT, 
-	plate_row TEXT, 
-	plate_col INTEGER, 
+	plate_name TEXT NOT NULL, 
+	plate_row TEXT NOT NULL, 
+	plate_col INTEGER NOT NULL, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE "TravelInfo" (
@@ -524,7 +524,7 @@ CREATE TABLE "SpecimenInfo" (
 	geo_admin2 TEXT, 
 	geo_admin3 TEXT, 
 	specimen_name TEXT NOT NULL, 
-	host_subject_id INTEGER, 
+	host_subject_name TEXT, 
 	host_taxon_id INTEGER NOT NULL, 
 	host_sex TEXT, 
 	specimen_accession TEXT, 

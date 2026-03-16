@@ -257,7 +257,7 @@ message SpecimenInfo
   string geoAdmin3 = 0
   string specimenName = 0
  repeated  integer specimenTaxonId = 0
-  integer hostSubjectId = 0
+  string hostSubjectName = 0
   integer hostTaxonId = 0
   string hostSex = 0
   string specimenAccession = 0

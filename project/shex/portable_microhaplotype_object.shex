@@ -179,9 +179,9 @@ linkml:Sparqlpath xsd:string
 }
 
 <PlateInfo> CLOSED {
-    (  $<PlateInfo_tes> (  <plate_name> @linkml:String ? ;
-          <plate_row> @linkml:String ? ;
-          <plate_col> @linkml:Integer ?
+    (  $<PlateInfo_tes> (  <plate_name> @linkml:String ;
+          <plate_row> @linkml:String ;
+          <plate_col> @linkml:Integer
        ) ;
        rdf:type [ <PlateInfo> ] ?
     )
@@ -351,7 +351,7 @@ linkml:Sparqlpath xsd:string
           <geo_admin2> @linkml:String ? ;
           <geo_admin3> @linkml:String ? ;
           <specimen_taxon_id> @linkml:Integer + ;
-          <host_subject_id> @linkml:Integer ? ;
+          <host_subject_name> @linkml:String ? ;
           <host_taxon_id> @linkml:Integer ;
           <host_sex> @linkml:String ? ;
           <specimen_accession> @linkml:String ? ;

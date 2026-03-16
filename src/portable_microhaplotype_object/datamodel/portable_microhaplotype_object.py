@@ -1,5 +1,5 @@
 # Auto generated from portable_microhaplotype_object.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-25T18:35:04
+# Generation date: 2026-03-06T13:03:46
 # Schema: portable-microhaplotype-object
 #
 # id: https://plasmogenepi.github.io/portable-microhaplotype-object
@@ -775,18 +775,24 @@ class PlateInfo(YAMLRoot):
     class_name: ClassVar[str] = "PlateInfo"
     class_model_uri: ClassVar[URIRef] = PORTABLE_MICROHAPLOTYPE_OBJECT.PlateInfo
 
-    plate_name: Optional[str] = None
-    plate_row: Optional[str] = None
-    plate_col: Optional[int] = None
+    plate_name: str = None
+    plate_row: str = None
+    plate_col: int = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.plate_name is not None and not isinstance(self.plate_name, str):
+        if self._is_empty(self.plate_name):
+            self.MissingRequiredField("plate_name")
+        if not isinstance(self.plate_name, str):
             self.plate_name = str(self.plate_name)
 
-        if self.plate_row is not None and not isinstance(self.plate_row, str):
+        if self._is_empty(self.plate_row):
+            self.MissingRequiredField("plate_row")
+        if not isinstance(self.plate_row, str):
             self.plate_row = str(self.plate_row)
 
-        if self.plate_col is not None and not isinstance(self.plate_col, int):
+        if self._is_empty(self.plate_col):
+            self.MissingRequiredField("plate_col")
+        if not isinstance(self.plate_col, int):
             self.plate_col = int(self.plate_col)
 
         super().__post_init__(**kwargs)
@@ -1115,7 +1121,7 @@ class SpecimenInfo(YAMLRoot):
     geo_admin1: Optional[str] = None
     geo_admin2: Optional[str] = None
     geo_admin3: Optional[str] = None
-    host_subject_id: Optional[int] = None
+    host_subject_name: Optional[str] = None
     host_sex: Optional[str] = None
     specimen_accession: Optional[str] = None
     gravid: Optional[Union[bool, Bool]] = None
@@ -1184,8 +1190,8 @@ class SpecimenInfo(YAMLRoot):
         if self.geo_admin3 is not None and not isinstance(self.geo_admin3, str):
             self.geo_admin3 = str(self.geo_admin3)
 
-        if self.host_subject_id is not None and not isinstance(self.host_subject_id, int):
-            self.host_subject_id = int(self.host_subject_id)
+        if self.host_subject_name is not None and not isinstance(self.host_subject_name, str):
+            self.host_subject_name = str(self.host_subject_name)
 
         if self.host_sex is not None and not isinstance(self.host_sex, str):
             self.host_sex = str(self.host_sex)
@@ -1685,7 +1691,7 @@ slots.panelInfo__panel_name = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.panel_name
 
 slots.pseudocigar__pseudocigar_seq = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.pseudocigar_seq, name="pseudocigar__pseudocigar_seq", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('pseudocigar_seq'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.pseudocigar__pseudocigar_seq, domain=None, range=str,
-                   pattern=re.compile(r'^[A-z-._0-9]+$'))
+                   pattern=re.compile(r'^[a-zA-Z0-9+=.]+$'))
 
 slots.pseudocigar__ref_loc = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.ref_loc, name="pseudocigar__ref_loc", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('ref_loc'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.pseudocigar__ref_loc, domain=None, range=Union[dict, GenomicLocation])
@@ -1703,8 +1709,7 @@ slots.representativeMicrohaplotype__quality = Slot(uri=PORTABLE_MICROHAPLOTYPE_O
                    pattern=re.compile(r'^[A-z-._0-9]+$'))
 
 slots.representativeMicrohaplotype__pseudocigar = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.pseudocigar, name="representativeMicrohaplotype__pseudocigar", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('pseudocigar'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.representativeMicrohaplotype__pseudocigar, domain=None, range=Optional[Union[dict, Pseudocigar]],
-                   pattern=re.compile(r'^[A-z-._0-9]+$'))
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.representativeMicrohaplotype__pseudocigar, domain=None, range=Optional[Union[dict, Pseudocigar]])
 
 slots.representativeMicrohaplotype__masking = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.masking, name="representativeMicrohaplotype__masking", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('masking'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.representativeMicrohaplotype__masking, domain=None, range=Optional[Union[Union[dict, MaskingInfo], list[Union[dict, MaskingInfo]]]])
@@ -1833,15 +1838,15 @@ slots.bioMethod__additional_argument = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.a
                    pattern=re.compile(r'^[A-z-._0-9{}\(\),\/\ ]+$'))
 
 slots.plateInfo__plate_name = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_name, name="plateInfo__plate_name", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('plate_name'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plateInfo__plate_name, domain=None, range=Optional[str],
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plateInfo__plate_name, domain=None, range=str,
                    pattern=re.compile(r'^[A-z-._0-9 ]+$'))
 
 slots.plateInfo__plate_row = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_row, name="plateInfo__plate_row", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('plate_row'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plateInfo__plate_row, domain=None, range=Optional[str],
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plateInfo__plate_row, domain=None, range=str,
                    pattern=re.compile(r'^[A-z]$'))
 
 slots.plateInfo__plate_col = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plate_col, name="plateInfo__plate_col", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('plate_col'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plateInfo__plate_col, domain=None, range=Optional[int],
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.plateInfo__plate_col, domain=None, range=int,
                    pattern=re.compile(r'^[0-9]+$'))
 
 slots.librarySampleInfo__fastqs_loc = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.fastqs_loc, name="librarySampleInfo__fastqs_loc", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('fastqs_loc'),
@@ -1992,9 +1997,8 @@ slots.specimenInfo__specimen_taxon_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__specimen_taxon_id, domain=None, range=Union[int, list[int]],
                    pattern=re.compile(r'^[0-9]+$'))
 
-slots.specimenInfo__host_subject_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.host_subject_id, name="specimenInfo__host_subject_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('host_subject_id'),
-                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__host_subject_id, domain=None, range=Optional[int],
-                   pattern=re.compile(r'^[0-9]+$'))
+slots.specimenInfo__host_subject_name = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.host_subject_name, name="specimenInfo__host_subject_name", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('host_subject_name'),
+                   model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__host_subject_name, domain=None, range=Optional[str])
 
 slots.specimenInfo__host_taxon_id = Slot(uri=PORTABLE_MICROHAPLOTYPE_OBJECT.host_taxon_id, name="specimenInfo__host_taxon_id", curie=PORTABLE_MICROHAPLOTYPE_OBJECT.curie('host_taxon_id'),
                    model_uri=PORTABLE_MICROHAPLOTYPE_OBJECT.specimenInfo__host_taxon_id, domain=None, range=int,

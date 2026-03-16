@@ -133,7 +133,7 @@ classes:
       pseudocigar_seq:
         required: true
         range: string
-        pattern: "^[A-z-._0-9]+$"
+        pattern: "^[a-zA-Z0-9+=.]+$"
         description: >-
           the pseudocigar itself
       ref_loc:
@@ -168,7 +168,6 @@ classes:
           the ASCII fastq per base quality score for this sequence, this is optional, must be same length as the sequence
       pseudocigar:
         range: Pseudocigar
-        pattern: "^[A-z-._0-9]+$"
         required: false
         description: >-
           the pseudocigar of the haplotype
@@ -513,16 +512,19 @@ classes:
     attributes:
       plate_name:
         range: string
+        required: true
         pattern: "^[A-z-._0-9 ]+$"
         description: >-
           a name for the plate
       plate_row:
         range: string
+        required: true
         pattern: "^[A-z]$"
         description: >-
           the row position
       plate_col:
         range: integer
+        required: true
         pattern: "^[0-9]+$"
         minimum_value: 0
         description: >-
@@ -889,13 +891,20 @@ classes:
         inlined_as_list: true
         description: >-
           the NCBI taxonomy number of the organism(s) in the specimen, can list multiple if a mixed sample
-      host_subject_id:
-        range: integer
-        pattern: "^[0-9]+$"
+# The below is commented out for now, we may have a table with host_subjects at some point (e.g. person/patient) but right now we don't, so will store for now as a string
+#      host_subject_id:
+#        range: integer
+#        pattern: "^[0-9]+$"
+#        minimum_value: 0
+#        required: false
+#        description: >-
+#          an identifier for the individual a specimen was collected from
+      host_subject_name:
+        range: string
         minimum_value: 0
         required: false
         description: >-
-          an identifier for the individual a specimen was collected from
+          an identifier for the individual/person/patient a specimen was collected from
       host_taxon_id:
         range: integer
         pattern: "^[0-9]+$"

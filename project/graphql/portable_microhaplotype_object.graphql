@@ -110,9 +110,9 @@ type ParasiteDensity
 
 type PlateInfo
   {
-    plateName: String
-    plateRow: String
-    plateCol: Integer
+    plateName: String!
+    plateRow: String!
+    plateCol: Integer!
   }
 
 type PmoGenerationMethod
@@ -254,7 +254,7 @@ type SpecimenInfo
     geoAdmin3: String
     specimenName: String!
     specimenTaxonId: [Integer]!
-    hostSubjectId: Integer
+    hostSubjectName: String
     hostTaxonId: Integer!
     hostSex: String
     specimenAccession: String
