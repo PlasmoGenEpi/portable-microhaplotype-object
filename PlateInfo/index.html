@@ -249,19 +249,19 @@
 <tbody>
 <tr>
 <td><a href="../plate_name/">plate_name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
 <td>a name for the plate</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../plate_row/">plate_row</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
 <td>the row position</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../plate_col/">plate_col</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>1 <br/> <a href="../Integer/">Integer</a></td>
 <td>the column position</td>
 <td>direct</td>
 </tr>
@@ -333,6 +333,7 @@ attributes:
     domain_of:
     - PlateInfo
     range: string
+    required: true
     pattern: ^[A-z-._0-9 ]+$
   plate_row:
     name: plate_row
@@ -342,6 +343,7 @@ attributes:
     domain_of:
     - PlateInfo
     range: string
+    required: true
     pattern: ^[A-z]$
   plate_col:
     name: plate_col
@@ -351,6 +353,7 @@ attributes:
     domain_of:
     - PlateInfo
     range: integer
+    required: true
     minimum_value: 0
     pattern: ^[0-9]+$
 
@@ -373,6 +376,7 @@ attributes:
     domain_of:
     - PlateInfo
     range: string
+    required: true
     pattern: ^[A-z-._0-9 ]+$
   plate_row:
     name: plate_row
@@ -384,6 +388,7 @@ attributes:
     domain_of:
     - PlateInfo
     range: string
+    required: true
     pattern: ^[A-z]$
   plate_col:
     name: plate_col
@@ -395,6 +400,7 @@ attributes:
     domain_of:
     - PlateInfo
     range: integer
+    required: true
     minimum_value: 0
     pattern: ^[0-9]+$
 

@@ -259,7 +259,7 @@
 
       SpecimenInfo : host_sex
 
-      SpecimenInfo : host_subject_id
+      SpecimenInfo : host_subject_name
 
       SpecimenInfo : host_taxon_id
 
@@ -373,9 +373,9 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../host_subject_id/">host_subject_id</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>an identifier for the individual a specimen was collected from</td>
+<td><a href="../host_subject_name/">host_subject_name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>an identifier for the individual/person/patient a specimen was collected from</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -602,17 +602,17 @@ attributes:
     inlined_as_list: true
     minimum_value: 0
     pattern: ^[0-9]+$
-  host_subject_id:
-    name: host_subject_id
-    description: an identifier for the individual a specimen was collected from
+  host_subject_name:
+    name: host_subject_name
+    description: an identifier for the individual/person/patient a specimen was collected
+      from
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
     domain_of:
     - SpecimenInfo
-    range: integer
+    range: string
     required: false
     minimum_value: 0
-    pattern: ^[0-9]+$
   host_taxon_id:
     name: host_taxon_id
     description: the NCBI taxonomy number of the host that the specimen was collected
@@ -935,19 +935,19 @@ attributes:
     inlined_as_list: true
     minimum_value: 0
     pattern: ^[0-9]+$
-  host_subject_id:
-    name: host_subject_id
-    description: an identifier for the individual a specimen was collected from
+  host_subject_name:
+    name: host_subject_name
+    description: an identifier for the individual/person/patient a specimen was collected
+      from
     from_schema: https://plasmogenepi.github.io/portable-microhaplotype-object
     rank: 1000
-    alias: host_subject_id
+    alias: host_subject_name
     owner: SpecimenInfo
     domain_of:
     - SpecimenInfo
-    range: integer
+    range: string
     required: false
     minimum_value: 0
-    pattern: ^[0-9]+$
   host_taxon_id:
     name: host_taxon_id
     description: the NCBI taxonomy number of the host that the specimen was collected
