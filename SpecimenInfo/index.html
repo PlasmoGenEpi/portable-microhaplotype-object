@@ -368,7 +368,7 @@
 </tr>
 <tr>
 <td><a href="../specimen_taxon_id/">specimen_taxon_id</a></td>
-<td>1..* <br/> <a href="../Integer/">Integer</a></td>
+<td>* <br/> <a href="../Integer/">Integer</a></td>
 <td>the NCBI taxonomy number of the organism(s) in the specimen, can list multipl...</td>
 <td>direct</td>
 </tr>
@@ -380,7 +380,7 @@
 </tr>
 <tr>
 <td><a href="../host_taxon_id/">host_taxon_id</a></td>
-<td>1 <br/> <a href="../Integer/">Integer</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>the NCBI taxonomy number of the host that the specimen was collected from</td>
 <td>direct</td>
 </tr>
@@ -596,7 +596,7 @@ attributes:
     domain_of:
     - SpecimenInfo
     range: integer
-    required: true
+    required: false
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -622,7 +622,7 @@ attributes:
     domain_of:
     - SpecimenInfo
     range: integer
-    required: true
+    required: false
     minimum_value: 0
     pattern: ^[0-9]+$
   host_sex:
@@ -929,7 +929,7 @@ attributes:
     domain_of:
     - SpecimenInfo
     range: integer
-    required: true
+    required: false
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -959,7 +959,7 @@ attributes:
     domain_of:
     - SpecimenInfo
     range: integer
-    required: true
+    required: false
     minimum_value: 0
     pattern: ^[0-9]+$
   host_sex:
