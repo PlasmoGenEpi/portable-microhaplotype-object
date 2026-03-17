@@ -525,7 +525,7 @@ CREATE TABLE "SpecimenInfo" (
 	geo_admin3 TEXT, 
 	specimen_name TEXT NOT NULL, 
 	host_subject_name TEXT, 
-	host_taxon_id INTEGER NOT NULL, 
+	host_taxon_id INTEGER, 
 	host_sex TEXT, 
 	specimen_accession TEXT, 
 	gravid BOOLEAN, 
@@ -653,7 +653,7 @@ CREATE TABLE "SpecimenInfo_alternate_identifiers" (
 );
 CREATE TABLE "SpecimenInfo_specimen_taxon_id" (
 	"SpecimenInfo_specimen_name" TEXT, 
-	specimen_taxon_id INTEGER NOT NULL, 
+	specimen_taxon_id INTEGER, 
 	PRIMARY KEY ("SpecimenInfo_specimen_name", specimen_taxon_id), 
 	FOREIGN KEY("SpecimenInfo_specimen_name") REFERENCES "SpecimenInfo" (specimen_name)
 );

@@ -217,7 +217,7 @@
                 },
                 "url": {
                     "description": "a link to the where this genome file could be downloaded",
-                    "pattern": "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$",
+                    "pattern": "^(?:NA|(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*)$",
                     "type": "string"
                 }
             },
@@ -1400,7 +1400,10 @@
                     "description": "the NCBI taxonomy number of the host that the specimen was collected from",
                     "minimum": 0,
                     "pattern": "^[0-9]+$",
-                    "type": "integer"
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
                 "lat_lon": {
                     "description": "the latitude and longitude of a specific site",
@@ -1473,7 +1476,10 @@
                         "pattern": "^[0-9]+$",
                         "type": "integer"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "specimen_type": {
                     "description": "what type of specimen this is, e.g. negative_control, positive_control, field_sample",
@@ -1518,8 +1524,6 @@
             },
             "required": [
                 "specimen_name",
-                "specimen_taxon_id",
-                "host_taxon_id",
                 "collection_date",
                 "collection_country",
                 "project_id"

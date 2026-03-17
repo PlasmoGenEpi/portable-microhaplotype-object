@@ -253,9 +253,9 @@ type SpecimenInfo
     geoAdmin2: String
     geoAdmin3: String
     specimenName: String!
-    specimenTaxonId: [Integer]!
+    specimenTaxonId: [Integer]
     hostSubjectName: String
-    hostTaxonId: Integer!
+    hostTaxonId: Integer
     hostSex: String
     specimenAccession: String
     gravid: Boolean

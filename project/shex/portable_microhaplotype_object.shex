@@ -350,9 +350,9 @@ linkml:Sparqlpath xsd:string
           <geo_admin1> @linkml:String ? ;
           <geo_admin2> @linkml:String ? ;
           <geo_admin3> @linkml:String ? ;
-          <specimen_taxon_id> @linkml:Integer + ;
+          <specimen_taxon_id> @linkml:Integer * ;
           <host_subject_name> @linkml:String ? ;
-          <host_taxon_id> @linkml:Integer ;
+          <host_taxon_id> @linkml:Integer ? ;
           <host_sex> @linkml:String ? ;
           <specimen_accession> @linkml:String ? ;
           <gravid> @linkml:Boolean ? ;

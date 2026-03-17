@@ -303,7 +303,7 @@ classes:
           the NCBI taxonomy number, can be a list of values if it's a genome file that has been created by combining gnomes from different species
       url:
         range: string
-        pattern: "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$"
+        pattern: "^(?:NA|(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*)$"
         required: true
         description: >-
           a link to the where this genome file could be downloaded
@@ -886,7 +886,7 @@ classes:
         range: integer
         pattern: "^[0-9]+$"
         minimum_value: 0
-        required: true
+        required: false
         multivalued: true
         inlined_as_list: true
         description: >-
@@ -909,7 +909,7 @@ classes:
         range: integer
         pattern: "^[0-9]+$"
         minimum_value: 0
-        required: true
+        required: false
         description: >-
           the NCBI taxonomy number of the host that the specimen was collected from
       host_sex:

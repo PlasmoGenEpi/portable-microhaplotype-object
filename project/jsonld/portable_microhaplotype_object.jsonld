@@ -1221,7 +1221,7 @@
       ],
       "range": "string",
       "required": true,
-      "pattern": "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$",
+      "pattern": "^(?:NA|(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*)$",
       "@type": "SlotDefinition"
     },
     {
@@ -2378,7 +2378,6 @@
         "SpecimenInfo"
       ],
       "range": "integer",
-      "required": true,
       "multivalued": true,
       "inlined_as_list": true,
       "minimum_value": 0,
@@ -2410,7 +2409,6 @@
         "SpecimenInfo"
       ],
       "range": "integer",
-      "required": true,
       "minimum_value": 0,
       "pattern": "^[0-9]+$",
       "@type": "SlotDefinition"
@@ -3788,7 +3786,7 @@
           ],
           "range": "string",
           "required": true,
-          "pattern": "^(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*$",
+          "pattern": "^(?:NA|(https?|ftp):\\/\\/[^\\s/$.?#].[^\\s]*)$",
           "@type": "SlotDefinition"
         },
         {
@@ -4809,7 +4807,6 @@
           "name": "specimen_taxon_id",
           "description": "the NCBI taxonomy number of the organism(s) in the specimen, can list multiple if a mixed sample",
           "range": "integer",
-          "required": true,
           "multivalued": true,
           "inlined_as_list": true,
           "minimum_value": 0,
@@ -4827,7 +4824,6 @@
           "name": "host_taxon_id",
           "description": "the NCBI taxonomy number of the host that the specimen was collected from",
           "range": "integer",
-          "required": true,
           "minimum_value": 0,
           "pattern": "^[0-9]+$",
           "@type": "SlotDefinition"
@@ -5454,9 +5450,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "portable_microhaplotype_object.yaml",
-  "source_file_date": "2026-03-06T13:03:30",
-  "source_file_size": 46435,
-  "generation_date": "2026-03-06T13:03:44",
+  "source_file_date": "2026-03-17T01:03:06",
+  "source_file_size": 46444,
+  "generation_date": "2026-03-17T01:03:13",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/portable_microhaplotype_object.context.jsonld",
